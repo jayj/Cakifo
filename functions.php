@@ -84,6 +84,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'audio', 'image', 'status', 'chat' ) );
 	add_theme_support( 'automatic-feed-links' );
 	add_custom_background();
+	add_editor_style();
 	
 	/* Load JavaScript */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );

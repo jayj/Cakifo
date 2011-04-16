@@ -11,3 +11,5 @@
  * Copyright (c) 2010 Jesper J. All rights reserved.
  * http://jayj.dk
  */
+
+@import url( 'style.dev.css' ); /* Will be removed in the final version and replaced by a compressed version of style.dev.css */
