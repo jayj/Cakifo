@@ -106,7 +106,7 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
-		'href' => 'http://twitter.com', //get_permalink(),
+		'href' => get_permalink(),
 		'layout' => 'standard', // standard, button_count, box_count
 		'action' => 'like' ,// like, recommend
 		'width' => 450,
