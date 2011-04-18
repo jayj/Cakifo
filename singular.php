@@ -45,7 +45,7 @@ get_header(); // Loads the header.php template ?>
             <?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
 
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
-            
+
 			<?php
 				$display = apply_filters( 'show_singular_comments', true ); // To disable in child theme: add_filter( 'show_singular_comments', '__return_false' ); 
 				
