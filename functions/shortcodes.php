@@ -26,13 +26,13 @@ function cakifo_register_shortcodes() {
  * @since 1.0
  */
 function cakifo_rss_link_shortcode( $atts ) {
-	
+
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
  	), $atts) );
-	
-	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  __( 'RSS', hybrid_get_textdomain() ) . '</a>' . $after;	
+
+	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  __( 'RSS', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
 /**
@@ -43,7 +43,7 @@ function cakifo_rss_link_shortcode( $atts ) {
  * @since 1.0
  */
 function cakifo_twitter_shortcode( $atts ) {
-	
+
 	extract( shortcode_atts( array(   
     	'link' => true,
 		'before' => '',
@@ -51,10 +51,10 @@ function cakifo_twitter_shortcode( $atts ) {
 		'username' => hybrid_get_setting( 'twitter_username' ),
 		'text' => __( 'Follow me on Twitter', hybrid_get_textdomain() )
  	), $atts) );
-	
+
 	if ( empty( $username ) )
 		return;
-	
+
 	if ( ! $link )
 		return $username;
 	else
@@ -67,12 +67,12 @@ function cakifo_twitter_shortcode( $atts ) {
  * @since 1.0
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
-	
+
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
  	), $atts) );
-	
+
 	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;">' . __( 'Delicious', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
@@ -83,14 +83,14 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
  * @since 1.0
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
-	
+
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
  	), $atts) );
-	
-	$url = esc_url( 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) ) );
 
+	$url = esc_url( 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) ) );
+	
 	return $before . '<a href="' . $url . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
@@ -102,7 +102,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  * @since 1.0
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
-	
+
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
@@ -114,17 +114,16 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 		'colorscheme' => 'light', // light, dark
 		'locale' => get_locale(), // Language of the button - ex: da_DK, fr_FR
  	), $atts) );
-	
+
 	// Set the height to 60px if the layout is box_count and the height is lower than 62px
 	if ( $layout == 'box_count' && $height < 60 )
 		$height = 60;
-	
+
 	// Set width to 50px if the layout not is standard and the width is higher than 50px
 	if ( $layout != 'standard' && $width > 50 )
 		$width = 50;
-		
-	return $before . '<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode( $href ) . '&amp;layout=' . esc_attr( $layout ) . '&amp;width=' . intval( $width ) . '&amp;action=' . esc_attr( $action ) . '&amp;font&amp;colorscheme=' . esc_attr( $colorsceme ) . '&amp;height=' . intval( $height ) . '&amp;locale=' . esc_attr( $locale ) . '" class="facebook-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowTransparency="true" scrolling="no"></iframe>' . $after;
 	
+	return $before . '<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode( $href ) . '&amp;layout=' . esc_attr( $layout ) . '&amp;width=' . intval( $width ) . '&amp;action=' . esc_attr( $action ) . '&amp;font&amp;colorscheme=' . esc_attr( $colorsceme ) . '&amp;height=' . intval( $height ) . '&amp;locale=' . esc_attr( $locale ) . '" class="facebook-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowTransparency="true" scrolling="no"></iframe>' . $after;
 }
 
 /**
@@ -144,15 +143,15 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 		'height' => 20,
 		'via' => hybrid_get_setting( 'twitter_username' ),	
  	), $atts) );
-	
+
 	// Set the height to 62px if the layout is vertical and the height is lower than 62px
 	if ( $layout == 'vertical' && $height < 62 )
 		$height = 62;
-	
+
 	// Set width to 110px if the layout is horizontal and the width is lower than 55px
 	if ( $layout == 'horizontal' && $width <= 55 )
 		$width = 110;
-	
+
 	return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
 }
 

@@ -91,7 +91,14 @@
 
             <?php $results = absint( $wp_query->found_posts ); ?>
 
-            <h1 class="loop-title"><?php printf( _n( "%d Search Result for: %s", "%d Search Results for: %s", $results, '<span>' . esc_attr( get_search_query() ) . '</span>' ), $results, '<span>' . esc_attr( get_search_query() ) . '</span>' ); ?></h1>
+            <h1 class="loop-title">
+				<?php
+					printf( _n( "%d Search Result for: %s", "%d Search Results for: %s",
+						$results, '<span>' . esc_attr( get_search_query() ) . '</span>' ),
+						$results, '<span>' . esc_attr( get_search_query() ) . '</span>'
+					);
+				?>
+			</h1>
 
 			<div class="loop-description">
 				<p>
@@ -114,7 +121,7 @@
 
 		</div> <!-- .loop-meta -->
 
-	<?php elseif ( function_exists( 'is_post_type_archive' ) && is_post_type_archive() ) : ?>
+	<?php elseif ( is_post_type_archive() ) : ?>
 
 		<?php $post_type = get_post_type_object( get_query_var( 'post_type' ) ); ?>
 

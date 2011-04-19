@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.0.0
+ * @version 1.0
  * @author Jayj.dk <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011, Jesper J
  * @link http://wpthemes.jayj.dk/cakifo
@@ -41,14 +41,14 @@ add_action( 'after_setup_theme', 'cakifo_theme_setup' );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters
  *
- * @since 1.0.0
+ * @since 1.0
  */
 function cakifo_theme_setup() {
 
 	/* Get action/filter hook prefix */
 	$prefix = hybrid_get_prefix();
 	$domain = hybrid_get_textdomain();
-	
+
 	$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
 	$child_data = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 
@@ -60,9 +60,12 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-post-meta-box' );
 	add_theme_support( 'hybrid-core-theme-settings' );
 	add_theme_support( 'hybrid-core-meta-box-footer' );
-	//add_theme_support( 'hybrid-core-drop-downs' );
-	add_theme_support( 'hybrid-core-seo' );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
+	//add_theme_support( 'hybrid-core-drop-downs' );
+
+	// Add hybrid core seo if the WordPress SEO plugin isn't activated
+	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) )
+		add_theme_support( 'hybrid-core-seo' );
 
 	/* Add theme support for framework extensions */
 	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
@@ -72,25 +75,20 @@ function cakifo_theme_setup() {
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
 	add_theme_support( 'cleaner-gallery' );
-	
+
 	/* Load shortcodes file. */
 	require_once( THEME_DIR . '/functions/shortcodes.php' );
-	
+
 	/* Load Theme Settings */
 	if ( is_admin() )
 		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/admin.php' );
-	
+
 	/* Add theme support for WordPress features */
 	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'audio', 'image', 'status', 'chat' ) );
 	add_theme_support( 'automatic-feed-links' );
 	add_custom_background();
 	add_editor_style();
-	
-	/* Load JavaScript */
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
-	
-	add_action( 'wp_print_styles', 'cakifo_enqueue_style' );
-		
+
 	/*
 	 * Set new image sizes 
 	 *
@@ -104,8 +102,12 @@ function cakifo_theme_setup() {
 	/* Register shortcodes. */
 	add_action( 'init', 'cakifo_register_shortcodes' );
 	
+	/* Load JavaScript and CSS styles */
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
+	add_action( 'wp_print_styles', 'cakifo_enqueue_style' );
+	
 	/* Topbar RSS link */
-	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss', 10 );
+	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
 	
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
@@ -119,6 +121,7 @@ function cakifo_theme_setup() {
 	add_action( 'template_redirect', 'cakifo_front_page' );
 	add_action( 'wp_footer', 'cakifo_slider_javascript' );
 	
+	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
 	
 	/* Add an author box after singular posts */
@@ -155,13 +158,13 @@ function cakifo_theme_setup() {
 
 /**
  * Loads the theme JavaScript files
- * It loads jQuery from the Google API, Modernizr and the javascript needed for this theme
+ * It loads jQuery, Modernizr and the javascript needed for this theme
  *
  * @since 1.0
  */
 
 function cakifo_enqueue_script() {
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-1.6.min.js', '', '1.6' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-1.7.min.js', '', '1.7' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.0', true );
 }
@@ -196,12 +199,12 @@ function cakifo_front_page() {
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
 }
-	
-	
+
+	/* REMOVE AFTER TESTING */
 	function my_slider_args( $args ) { $args['play'] = 'false'; $args['start'] = '1'; return $args; } add_filter( 'cakifo_slider_args', 'my_slider_args' );
-													 												 
+
 function cakifo_slider_javascript() {
-	
+
 	/* If we're not looking at the front page, return */
 	if ( !is_home() && !is_front_page() )
 		return;
@@ -234,40 +237,39 @@ function cakifo_slider_javascript() {
 		// 'animationStart'=> 'function(){}', // Function called at the start of animation
 		// 'animationComplete'=> 'function(){}' // Function called at the completion of animation
 	);
-	
+
 	$args = '';
-	
+
 	/* @link http://slidesjs.com for more info */
 	$args = apply_atomic( 'slider_args', $args ); 
-	
-	/* Change the arguments in a child theme:   function my_slider_args( $args ) { $args['play'] = 'false'; $args['start'] = '3'; return $args; } 
+
+	/* How to change the arguments in a child theme:   function my_slider_args( $args ) { $args['play'] = 'false'; $args['start'] = '3'; return $args; } 
 				add_filter( 'cakifo_slider_args', 'my_slider_args' ); */
-	
+
 	/**
-	 *  Parse incoming $args into an array and merge it with $defaults
+	 * Parse incoming $args into an array and merge it with $defaults
 	 */ 
 	$args = wp_parse_args( $args, $defaults );
 
 	echo "<script type='text/javascript'>		
 			jQuery(document).ready(function($) {
 				$('#slider').slides({ ";
-				
+
 				foreach ( $args as $arg => $val ) {
 					if ( $val == 'true' || $val == 'false' )
 						echo $arg . ' : ' . $val . ',' . "\n";
 					else 
 						echo $arg . ' : "' . $val . '",' . "\n";
 				}
-					
+
 	echo "		});
-	
+
 				// Add display block if there's only 1 slide
 				if ( $('.slide').length == 1 )
 					$('.slide').css( 'display', 'block' );
 			});
 		</script>";
 }
-
 
 /**
  * New excerpt function with the length as a parameter
@@ -279,22 +281,22 @@ function cakifo_slider_javascript() {
  */
 function cakifo_the_excerpt( $length = 55 ) {
 	global $post;
-	
+
 	$limit = $length + 1;
     $excerpt = explode( ' ', get_the_excerpt(), $limit );
     array_pop( $excerpt );
-	
+
     $excerpt = implode( " ", $excerpt ) . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
-	
+
     echo $excerpt;
 }
 
 function cakifo_excerpt_more( $more ) {
 	global $post;
-	
+
 	if ( is_archive() )
 		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .  __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a></p>';
-		
+
 	return $more;
 }
 
@@ -304,7 +306,7 @@ function cakifo_excerpt_more( $more ) {
  * @since 1.0
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-	
+
 	$args['before'] = __( 'You are here:', hybrid_get_textdomain() ); // Change the text before the breadcrumb trail 
 
 	return $args;
@@ -316,10 +318,10 @@ function cakifo_breadcrumb_trail_args( $args ) {
  * @since 1.0
  */
 function cakifo_quote_hide_entry( $meta ) {
-	
+
 	if ( is_single() )
 		return $meta;
-		
+
 	return;
 }
 
@@ -331,7 +333,6 @@ add_filter( 'cakifo_entry_meta_quote', 'cakifo_quote_hide_entry' );
  *
  * @since 1.0
  */
- 
 function cakifo_topbar_rss() {
 	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', hybrid_get_textdomain() ) . '</div>' );
 }
@@ -345,10 +346,10 @@ function cakifo_one_column() {
 
 	if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
-	
+
 	elseif ( is_front_page() && ! is_home() ) // Static frontpage
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
-		
+
 	elseif ( is_attachment() )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 }
@@ -388,17 +389,17 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * @since 1.0
  */
 function cakifo_logo( $title ) {
-	
+
 	$tag = ( is_home() || is_front_page() ) ? 'h1' : 'div';
 
 	if ( $title = get_bloginfo( 'name' ) ) {
-		
-		// Check there's a header image else return the blog name
+
+		// Check there's a header image, else return the blog name
 		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . $title . '" />' : '<span>' . $title . '</span>';
-		
+
 		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
 	}
-	
+
 	return $title;
 }
 
@@ -417,11 +418,12 @@ function cakifo_admin_header_style() {
 		      </style>';	
 }
 
+/**
+ * Debug function
+ */
 if ( ! function_exists('debug')) { 
 	function debug( $function ) {
-		echo '<pre>';
-		print_r ( $function );
-		echo '</pre>';	
+		echo '<pre>' . print_r ( $function, true ) . '</pre>';	
 	}
 }
 
@@ -433,24 +435,24 @@ if ( ! function_exists('debug')) {
 function cakifo_author_box() { ?>
 	
     <?php if ( get_the_author_meta( 'description' ) ) : ?>
-    
+
         <div class="author-profile vcard">
-    
+
             <h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', hybrid_get_textdomain() ) ); ?></h4>
-    
+
             <?php echo get_avatar( get_the_author_meta( 'user_email' ), '48' ); ?>
-    
+
             <div class="author-description author-bio">
                 <?php the_author_meta( 'description' ); ?>
             </div>
-    
+
             <?php if ( get_the_author_meta( 'twitter' ) ) { ?>
                 <p class="twitter-link clear">
                     <a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?></a>
                 </p>
             <?php } // End check for twitter ?>
         </div><?php
-	
+
 	endif;
 }
 

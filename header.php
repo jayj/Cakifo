@@ -10,15 +10,16 @@
  * @subpackage Template
  */
 ?>
-<!DOCTYPE html>
-<!--[if lt IE 6 ]> <html <?php language_attributes(); ?> class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html <?php language_attributes(); ?> class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html <?php language_attributes(); ?> class="no-js ie8"> <![endif]-->
-<!--[if (lt IE 9)|!(IE)]><!--> <html <?php language_attributes(); ?> class="no-js"> <!--<![endif]-->
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="<?php language_attributes(); ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="<?php language_attributes(); ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="<?php language_attributes(); ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php language_attributes(); ?>"> <!--<![endif]-->
 
 <head>
-
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+
 	<title><?php hybrid_document_title(); ?></title>
 
 	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="all" />
@@ -58,6 +59,7 @@
     	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
 
         <?php
+			 // Load the slider.php template
 			if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
-				get_template_part( 'slider' ); // Loads the slider.php template
+				get_template_part( 'slider' );
 		?>

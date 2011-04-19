@@ -37,12 +37,12 @@ get_header(); // Loads the header.php template ?>
                         <?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
                             <div class="image">
 								<?php 
-									get_the_image( array( 
+									get_the_image( array(
 										'meta_key' => 'Thumbnail',
 										'size' => 'recent',
 										'image_class' => 'thumbnail',
 										'default_image' => THEME_URI . '/images/default-thumb-190-130.gif'
-									) ); 
+									) );
 								?>
 							</div>
                         <?php } ?>
@@ -75,7 +75,7 @@ get_header(); // Loads the header.php template ?>
         <div id="headlines">
 			<?php do_atomic( 'open_headlines' ); // cakifo_open_headlines ?>
 
-            <?php 
+            <?php
 				$i = 0;
 				foreach ( hybrid_get_setting( 'headlines_category' ) as $category ) :
 			?>
@@ -91,7 +91,7 @@ get_header(); // Loads the header.php template ?>
 
                 <?php if ( !empty( $headlines ) ) : ?>
 
-                    <div class="headline-list <?php echo ( $i++ % 3 == 2 ) ? 'last' : ''; // 'Last' class for every 3 category ?>">
+                    <div class="headline-list <?php echo ( $i++ % 3 == 2 ) ? 'last' : ''; // 'Last' class for every 3rd category ?>">
 						<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 
                         <?php $cat = get_category( $category ); ?>
@@ -106,12 +106,12 @@ get_header(); // Loads the header.php template ?>
                                 <?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
 									<div class="image">
 										<?php 
-											get_the_image( array( 
+											get_the_image( array(
 												'meta_key' => 'Thumbnail',
 												'size' => 'small',
 												'image_class' => 'thumbnail',
 												'default_image' => THEME_URI . '/images/default-thumb-mini.gif'
-											) ); 
+											) );
 										?>
 									</div>
                                 <?php } ?>
@@ -138,7 +138,7 @@ get_header(); // Loads the header.php template ?>
 
         <?php do_atomic( 'after_headlines' ); // cakifo_after_headlines ?>
 
-	<?php endif; // End check if headline categories were selected ?>  
+	<?php endif; // End check if headline categories were selected ?>
 
 	<?php do_atomic( 'close_main' ); // cakifo_close_main ?>
 
@@ -147,5 +147,5 @@ get_header(); // Loads the header.php template ?>
     </div> <!-- #main -->
 
     <?php do_atomic( 'after_main' ); // cakifo_after_main ?>
-  
+
 <?php get_footer(); // Loads the footer.php template ?>

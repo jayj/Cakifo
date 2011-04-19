@@ -48,28 +48,30 @@ get_header(); // Loads the header.php template ?>
                 </div> <!-- .entry-content -->
 
                 <?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>
+
 				<div id="image-info">
 					<div class="headline-list">
                         <?php cakifo_image_info(); ?>
                     </div> <!-- .headline-list -->
-                    
+
                     <div id="attachment-gallery" class="headline-list last">
                         <h4><?php _e( 'Gallery', hybrid_get_textdomain() ); ?></h4>
                         <?php
                             echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small"]', $post->post_parent, get_the_ID() ) );
-                        ?>	
+                        ?>
                     </div> <!-- #attachment-gallery -->		
                 </div> <!-- #image-info -->	
+
 				<?php endif; ?>
 
             	<div class="clear"></div>
 
                 <?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
- 
+
             </div> <!-- #post-<?php the_ID(); ?> -->
 
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
-            
+
             <?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
 
         <?php endwhile; ?>
@@ -81,5 +83,5 @@ get_header(); // Loads the header.php template ?>
     </div> <!-- #main -->
 
     <?php do_atomic( 'after_main' ); // cakifo_after_main ?>
- 
+
 <?php get_footer(); // Loads the footer.php template ?>

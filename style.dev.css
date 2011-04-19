@@ -348,18 +348,24 @@ td, td img { vertical-align: top; }
  * Header
 **************************************/
 #header {
-	padding: 80px 0 60px;
+	padding: 80px 0 50px;
 	overflow: hidden;
+
 }
 
 #site-title {
 	float: left;
-	font-size: 36px;
 	margin: 0 0 0 20px;
 }
 
-#site a {
-	
+#site-title span {
+	font-size: 46px;
+	letter-spacing: -2px;
+	text-shadow: 0px 1px 0px #fff;
+}
+
+#site-title a:hover {
+	color: #d64e20;
 }
 
 #site-description {
@@ -1470,6 +1476,14 @@ img.alignright {
 .layout-3c-c #sidebar-secondary {
 	float: right;
 	width: 200px;
+}
+
+
+
+.shake-it-baby #content {-webkit-animation: shake-it-baby 150ms infinite;}
+@-webkit-keyframes shake-it-baby {
+	0% {margin-top: -50px;margin-left: -20px;}
+	100% {margin-top: 50px;margin-right: -30px;	}
 }
 
 /**

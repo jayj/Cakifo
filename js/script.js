@@ -9,14 +9,13 @@ jQuery(document).ready(function($) {
 	rowDivs = new Array(),
 	$el,
 	topPosition = 0;
-	
+
 	$('.page-template-template-front-page .headline-list').each(function() {
-	
+
 		$el = $(this);
 		topPostion = $el.position().top;
-		
+
 		if (currentRowStart != topPostion) {
-		
 			// we just came to a new row.  Set all the heights on the completed row
 			for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
 				rowDivs[currentDiv].height(currentTallest);
@@ -27,20 +26,19 @@ jQuery(document).ready(function($) {
 			currentRowStart = topPostion;
 			currentTallest = $el.height();
 			rowDivs.push($el);
-			
 		} else {
-		
 			// another div on the current row.  Add it to the list and check if it's taller
 			rowDivs.push($el);
 			currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
-		
 		}
-		
+
 		// do the last row
 		for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
 			rowDivs[currentDiv].height(currentTallest);
 		}
-	
 	});
 
+	/* A little surprise ;-) */
+	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
+	$(document).keydown(function(e){kkeys.push(e.keyCode);if( kkeys.toString().indexOf(kkkeys)>= 0){$(document).unbind('keydown',arguments.callee);$('body').addClass('shake-it-baby');}});
 });

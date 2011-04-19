@@ -31,11 +31,11 @@
 				<?php endif; ?>
 
 				<?php comment_text( $comment->comment_ID ); ?>
-			</div><!-- .comment-content .comment-text -->
+			</div> <!-- .comment-content .comment-text -->
 
 			<?php do_atomic( 'close_comment' ); // cakifo_close_comment ?>
 
-		</div><!-- .comment-wrap -->
+		</div> <!-- .comment-wrap -->
 
 		<?php do_atomic( 'after_comment' ); // cakifo_after_comment ?>
 

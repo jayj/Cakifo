@@ -22,7 +22,7 @@ get_header(); // Loads the header.php template ?>
 			<?php get_template_part( 'post-format', get_post_format() ); ?>
 
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
-            
+
             <?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
 
         <?php endwhile; ?>
@@ -34,5 +34,5 @@ get_header(); // Loads the header.php template ?>
     </div> <!-- #main -->
 
     <?php do_atomic( 'after_main' ); // retro-fitted_after_main ?>
-   
+
 <?php get_footer(); // Loads the footer.php template. ?>

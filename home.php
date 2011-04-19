@@ -18,7 +18,7 @@ get_header(); // Loads the header.php template ?>
         <?php do_atomic( 'open_main' ); // cakifo_open_main ?>
 
 		<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template ?>
-        
+
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'post-format', get_post_format() ); ?>
