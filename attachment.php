@@ -50,30 +50,7 @@ get_header(); // Loads the header.php template ?>
                 <?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>
 				<div id="image-info">
 					<div class="headline-list">
-                        <h4><?php _e( 'Image Info', hybrid_get_textdomain() ); ?></h4>
-                        <?php 
-                            $imgmeta = wp_get_attachment_metadata( get_the_ID() );
-                            
-                            echo '<ul>';
-                            
-                                printf( '<li>' . __( '<strong>Dimensions:</strong> %1$s x %2$s', hybrid_get_textdomain() ), $imgmeta['width'], $imgmeta['height'] ) . '</li>';
-                                
-                                if ( $imgmeta['image_meta']['created_timestamp'] ) {
-                                    $date_format = __( 'F d, Y H:i a', hybrid_get_textdomain() );
-                                    printf( '<li>' . __( '<strong>Date:</strong> %1$s', hybrid_get_textdomain() ), date( $date_format, $imgmeta['image_meta']['created_timestamp'] ) ) . '</li>';
-                                }
-                                
-                                if ( $imgmeta['image_meta']['camera'] )
-                                    printf( '<li>' . __( '<strong>Camera:</strong> %1$s', hybrid_get_textdomain() ), $imgmeta['image_meta']['camera'] ) . '</li>';
-        
-                                if ( $imgmeta['image_meta']['iso'] )
-                                    printf( '<li>' . __( '<strong>ISO:</strong> %1$s', hybrid_get_textdomain() ), $imgmeta['image_meta']['iso'] ) . '</li>';
-                                
-                                if ( $imgmeta['image_meta']['shutter_speed'] )
-                                    printf( '<li>' . __( '<strong>Shutter Speed:</strong> %1$s seconds', hybrid_get_textdomain() ), number_format( $imgmeta['image_meta']['shutter_speed'], 2 ) ) . '</li>';
-                                    
-                            echo '</ul>';
-                        ?>
+                        <?php cakifo_image_info(); ?>
                     </div> <!-- .headline-list -->
                     
                     <div id="attachment-gallery" class="headline-list last">

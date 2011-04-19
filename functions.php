@@ -453,4 +453,75 @@ function cakifo_author_box() { ?>
 	
 	endif;
 }
+
+/**
+ * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
+ *
+ * Note: This function will most likely be restructured completely in the future.  The eventual plan is to 
+ * separate each of the elements into an attachment API that can be used across multiple themes.  Keep 
+ * this in mind if you plan on using the current filter hooks in this function.
+ *
+ * @since 1.0
+ */
+function cakifo_image_info() {
+
+	/* Set up some default variables and get the image metadata. */
+	$meta = wp_get_attachment_metadata( get_the_ID() );
+	$items = array();
+	$list = '';
+
+	/* Add the width/height to the $items array. */
+	$items['dimensions'] = sprintf( __( '<span class="prep">Dimensions:</span> %s', hybrid_get_textdomain() ), '<span class="image-data"><a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', hybrid_get_textdomain() ), $meta['width'], $meta['height'] ) . '</a></span>' );
+
+	/* If a timestamp exists, add it to the $items array. */
+	if ( !empty( $meta['image_meta']['created_timestamp'] ) )
+		$items['created_timestamp'] = sprintf( __( '<span class="prep">Date:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) . '</span>' );
+
+	/* If a camera exists, add it to the $items array. */
+	if ( !empty( $meta['image_meta']['camera'] ) )
+		$items['camera'] = sprintf( __( '<span class="prep">Camera:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . $meta['image_meta']['camera'] . '</span>' );
+
+	/* If an aperture exists, add it to the $items array. */
+	if ( !empty( $meta['image_meta']['aperture'] ) )
+		$items['aperture'] = sprintf( __( '<span class="prep">Aperture:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( 'f/%s', hybrid_get_textdomain() ), $meta['image_meta']['aperture'] ) . '</span>' );
+
+	/* If a focal length is set, add it to the $items array. */
+	if ( !empty( $meta['image_meta']['focal_length'] ) )
+		$items['focal_length'] = sprintf( __( '<span class="prep">Focal Length:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s mm', hybrid_get_textdomain() ), $meta['image_meta']['focal_length'] ) . '</span>' );
+
+	/* If an ISO is set, add it to the $items array. */
+	if ( !empty( $meta['image_meta']['iso'] ) )
+		$items['iso'] = sprintf( __( '<span class="prep">ISO:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . $meta['image_meta']['iso'] . '</span>' );
+
+	/* If a shutter speed is given, format the float into a fraction and add it to the $items array. */
+	if ( !empty( $meta['image_meta']['shutter_speed'] ) ) {
+
+		if ( ( 1 / $meta['image_meta']['shutter_speed'] ) > 1 ) {
+			$shutter_speed = '1/';
+
+			if ( number_format( ( 1 / $meta['image_meta']['shutter_speed'] ), 1 ) ==  number_format( ( 1 / $meta['image_meta']['shutter_speed'] ), 0 ) )
+				$shutter_speed .= number_format( ( 1 / $meta['image_meta']['shutter_speed'] ), 0, '.', '' );
+			else
+				$shutter_speed .= number_format( ( 1 / $meta['image_meta']['shutter_speed'] ), 1, '.', '' );
+		} else {
+			$shutter_speed = $meta['image_meta']['shutter_speed'];
+		}
+
+		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s sec', hybrid_get_textdomain() ), $shutter_speed ) . '</span>' );
+	}
+
+	/* Allow devs to overwrite the array of items. */
+	$items = apply_atomic( 'image_info_items', $items );
+
+	/* Loop through the items, wrapping each in an <li> element. */
+	foreach ( $items as $item )
+		$list .= "<li>{$item}</li>";
+
+	/* Format the HTML output of the function. */
+	$output = '<div class="image-info"><h4>' . __( 'Image Info', hybrid_get_textdomain() ) . '</h4><ul>' . $list . '</ul></div>';
+
+	/* Display the image info and allow devs to overwrite the final output. */
+	echo apply_atomic( 'image_info', $output );
+}
+
 ?>
