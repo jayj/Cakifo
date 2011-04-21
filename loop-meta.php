@@ -10,7 +10,7 @@
  */
 ?>
 
-	<?php if ( is_home() && !is_front_page() ) : ?>
+	<?php if ( ( is_home() && !is_front_page() ) && hybrid_get_setting( 'featured_show' ) ) : ?>
 
 		<?php global $wp_query; ?>
 

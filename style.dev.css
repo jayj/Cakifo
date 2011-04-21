@@ -326,8 +326,7 @@ td, td img { vertical-align: top; }
 		top: 0;
 		left: auto;
 	}
-	
-	
+		
 /* RSS Subscribe link */
 #rss-subscribe {
 	font: bold 13px Arial, Helvetica, sans-serif;
@@ -504,7 +503,7 @@ td, td img { vertical-align: top; }
 }
 
 .sticky {
-	background: #f8f8f8 url(images/content-orange-line.png) repeat-x;
+	background: #f8f8f8;
 	padding: 25px 20px 20px;	
 }
 
@@ -724,10 +723,10 @@ td, td img { vertical-align: top; }
 
 	/* Home loop-meta */
 	.loop-meta-home {
-		background: none;
+		background: url(images/content-orange-line.png) repeat-x left bottom;
 		border: none;
-		margin: 0 0 5px 10px;
-		padding: 0;
+		margin: 0;
+		padding: 0 0 5px 10px;
 	}
 	
 	.loop-meta-home .loop-title {

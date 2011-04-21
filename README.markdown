@@ -10,14 +10,16 @@ The theme is not done yet but it's close!
 
 No demo available yet!
 
+But here's a preview
+![Cakifo preview](http://i.imgur.com/rUY1z.png)
+
 ## What needs to be done
 
+* The header/logo upload can be done better
 * Code overhaul
-* Maybe some widgets
-* Add or remove shortcodes
-* Page templates
 * Testing, browser testing, testing
 * Code overhaul
+* Demo
 
 ## Child themes
 
