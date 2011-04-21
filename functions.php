@@ -144,7 +144,7 @@ function cakifo_theme_setup() {
 		)
 	) );
 		
-	/* If the user is using a child theme, add the logo.png from that as well */
+	// If the user is using a child theme, add the logo.png from that as well
 	if ( TEMPLATEPATH != STYLESHEETPATH ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
@@ -403,19 +403,89 @@ function cakifo_logo( $title ) {
 	return $title;
 }
 
-// Added to wp_head
+/**
+ * Styles the header image and text displayed on the blog
+ *
+ * @since 1.0
+ */
 function cakifo_header_style() {
-	if ( !get_header_image() && get_header_textcolor() ) 
-		echo '<style type="text/css"> #site-title a { color: #' . get_header_textcolor() . '; } </style>';
+	
+	// If no custom options for text are set, let's bail
+	// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
+	if ( HEADER_TEXTCOLOR == get_header_textcolor() )
+		return;
+	
+	// If we get this far, we have custom styles. Let's do this. ?>
+    
+	<style type="text/css">
+	<?php
+		// Has the text been hidden?
+		if ( 'blank' == get_header_textcolor() && !get_header_image() ) :
+	?>
+		#site-title,
+		#site-description {
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+	<?php
+		// If the user has set a custom color for the text use that
+		elseif( !get_header_image() ) :
+	?>
+		#site-title a,
+		#site-description {
+			color: #<?php echo get_header_textcolor(); ?>;
+		}
+	<?php endif; ?>
+	</style>
+	<?php
 }
 
 // Used on the header admin screen
 function cakifo_admin_header_style() {
-		echo '<style type="text/css">
-				#headimg { background-repeat: no-repeat; background-position: 10px 10px; }
-				#headimg #name { font: 36px Georgia, Times, "Times New Roman", serif; text-decoration: none; padding-left: 10px; }
-				#headimg #desc { display: none!important; }
-		      </style>';	
+?>
+	<style type="text/css">
+	.appearance_page_custom-header #headimg {
+		border: none;
+		width: 980px;
+		background-repeat: no-repeat;
+	}
+	#headimg h1,
+	#desc {
+		font-family: Georgia, "Times New Roman", Times, serif;
+	}
+	#headimg h1 {
+		margin: 0;
+	}
+	#headimg h1 a {
+		font-size: 46px;
+		font-weight: normal;
+		line-height: 36px;
+		text-decoration: none;
+		letter-spacing: -2px;
+	}
+	#desc {
+		font-size: 18px;
+		line-height: 23px;
+		color: #909090;
+		float: right;
+	}
+	<?php
+		// If the user has set a custom color for the text use that
+		if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
+	?>
+		#site-title a,
+		#site-description {
+			color: #<?php echo get_header_textcolor(); ?>!important;
+		}
+	<?php endif; ?>
+	#headimg img {
+		max-width: 1000px;
+		height: auto;
+		width: 100%;
+	}
+	</style>
+<?php
 }
 
 /**
