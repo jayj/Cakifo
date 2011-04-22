@@ -7,7 +7,7 @@
  */
  
 /* Reset stylesheet */
-html,body,div,span,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;vertical-align:baseline;font-size:100%;background:transparent;border:none;text-decoration:none}b,i,hr,u,center,menu,layer,s,strike,font,xmp{margin:0;padding:0;vertical-align:baseline;outline:none;font-size:100%;font-weight:normal;font-style:normal;background:transparent;border:none;text-decoration:none}font{color:#333}center{text-align:left}h1,h2,h3,h4,h5,h6{font-style:normal;font-weight:normal;margin:0 0 25px 0}p{margin:0 0 25px 0}ol,ul{list-style:none}ul{list-style:square;margin:0 0 25px 2.5em}ol{list-style-type:decimal;margin:0 0 25px 3em}ol ol{list-style:upper-roman}ol ol ol{list-style:lower-roman}ol ol ol ol{list-style:upper-alpha}ol ol ol ol ol{list-style:lower-alpha}ul ul,ol ol,ul ol,ol ul{margin-bottom:0}dl{margin:0 0 25px 5px}dl dt{font-weight:bold;margin:10px 0 0 0}dl dd{margin:5px 0 0 1.5em}strong{font-weight:bold}strong strong{font-weight:normal}em,cite{font-style:italic}em em,cite cite{font-style:normal}abbr{cursor:help}acronym{text-transform:uppercase;border-bottom:1px dashed #666;cursor:help}big{font-size:120%}small,sup,sub{font-size:80%}sup{vertical-align:baseline;position:relative;bottom:0.3em}sub{vertical-align:baseline;position:relative;top:0.3em}address{font-style:italic;margin:0 0 25px 0}li address,dd address{margin:0}blockquote{margin:0 25px;font-style:normal}blockquote em,blockquote cite{font-style:italic}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{cursor:pointer}a img{border:none}pre{overflow:auto;font:.9em Monaco,monospace,Courier,"Courier New";line-height:25px;margin-bottom:25px;padding:10px}code{font:.9em Monaco,monospace,Courier,"Courier New"}pre code{font-size:1em}ins,dfn{font-style:italic;text-decoration:none;border-bottom:1px solid #666}del{text-decoration:line-through}object{margin-bottom:25px}input,textarea{font-size:1em;font-family:Georgia,Times,"Times New Roman",serif;padding:3px}form label{cursor:pointer}option{padding:1px 2px}table{border-collapse:collapse;border-spacing:0;margin-bottom:25px}th,td{text-align:left}hr{margin-bottom:25px}img.wp-smiley{margin:0;padding:0;border:none}.gallery{display:block;text-align:center;margin-bottom:25px !important}.alignleft,.left{float:left;}.alignright,.right{float:right;}.aligncenter,.center{display:block;margin-left: auto; margin-right: auto; }.alignnone,.block{clear:both;}.clear{clear:both}img.alignleft,img.alignright{display:inline}blockquote.alignleft,blockquote .alignright{width:33%}.clearfix:before,.clearfix:after{content:"";display:block;overflow:hidden}.clearfix:after{clear:both}.clearfix{zoom:1}.last{margin-right: 0!important}
+html,body,div,span,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;vertical-align:baseline;font-size:100%;background:transparent;border:none;text-decoration:none}b,i,hr,u,center,menu,layer,s,strike,font,xmp{margin:0;padding:0;vertical-align:baseline;outline:none;font-size:100%;font-weight:normal;font-style:normal;background:transparent;border:none;text-decoration:none}font{color:#333}center{text-align:left}h1,h2,h3,h4,h5,h6{font-style:normal;font-weight:normal;margin:0 0 25px 0}p{margin:0 0 25px 0}ol,ul{list-style:none}ul{list-style:square;margin:0 0 25px 2.5em}ol{list-style-type:decimal;margin:0 0 25px 3em}ol ol{list-style:upper-roman}ol ol ol{list-style:lower-roman}ol ol ol ol{list-style:upper-alpha}ol ol ol ol ol{list-style:lower-alpha}ul ul,ol ol,ul ol,ol ul{margin-bottom:0}dl{margin:0 0 25px 5px}dl dt{font-weight:bold;margin:10px 0 0 0}dl dd{margin:5px 0 0 1.5em}strong{font-weight:bold}strong strong{font-weight:normal}em,cite{font-style:italic}em em,cite cite{font-style:normal}abbr{cursor:help}acronym{text-transform:uppercase;border-bottom:1px dashed #666;cursor:help}big{font-size:120%}small,sup,sub{font-size:80%}sup{vertical-align:baseline;position:relative;bottom:0.3em}sub{vertical-align:baseline;position:relative;top:0.3em}address{font-style:italic;margin:0 0 25px 0}li address,dd address{margin:0}blockquote{margin:0 25px;font-style:normal}blockquote em,blockquote cite{font-style:italic}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{cursor:pointer}a img{border:none}pre{overflow:auto;font:.9em Monaco,monospace,Courier,"Courier New";line-height:25px;margin-bottom:25px;padding:10px}code{font:.9em Monaco,monospace,Courier,"Courier New"}pre code{font-size:1em}ins,dfn{font-style:italic;text-decoration:none;border-bottom:1px solid #666}del{text-decoration:line-through}object{margin-bottom:25px}input,textarea{font-size:1em;font-family:Georgia,Times,"Times New Roman",serif;padding:3px}form label{cursor:pointer}textarea{overflow:auto}option{padding:1px 2px}table{border-collapse:collapse;border-spacing:0;margin-bottom:25px}th,td{text-align:left}hr{margin-bottom:25px}img.wp-smiley{margin:0;padding:0;border:none}.gallery{display:block;text-align:center;margin-bottom:25px !important}.alignleft,.left{float:left;}.alignright,.right{float:right;}.aligncenter,.center{display:block;margin-left: auto; margin-right: auto; }.alignnone,.block{clear:both;}.clear{clear:both}img.alignleft,img.alignright{display:inline}blockquote.alignleft,blockquote .alignright{width:33%}.clearfix:before,.clearfix:after{content:"";display:block;overflow:hidden}.clearfix:after{clear:both}.clearfix{zoom:1}.last{margin-right: 0!important}
 /* End reset */
 
 body {
@@ -236,10 +236,11 @@ td, td img { vertical-align: top; }
 #topbar:after {
 	background: url(images/topbar-bottom.png) repeat-x;
 	content: "\00a0";
-	min-width: 100%;
+	width: 100%;
 	height: 10px;	
 	position: absolute;
-	bottom: -11px;	
+	bottom: -11px;
+	left: 0;
 }
 
 #topbar .wrap {
@@ -298,6 +299,10 @@ td, td img { vertical-align: top; }
 		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
 	}
 	
+	.ie7 #topbar .sub-menu  {
+		top: 100%;	
+	}
+	
 	#topbar li:hover > ul {
 		display: block;	
 	}
@@ -349,8 +354,6 @@ td, td img { vertical-align: top; }
 **************************************/
 #header {
 	padding: 80px 0 50px;
-	overflow: hidden;
-
 }
 
 #site-title {
@@ -728,6 +731,10 @@ td, td img { vertical-align: top; }
 		border: none;
 		margin: 0;
 		padding: 0 0 5px 10px;
+	}
+	
+	.paged .loop-meta-home {
+		margin-bottom: 25px;	
 	}
 	
 	.loop-meta-home .loop-title {
@@ -1498,11 +1505,12 @@ img.alignright {
 	#site-description { margin-right: 25px; }
 	#main { width: 100%; }
 	
-	#slider {  width: 100%; margin: 5px 0 0; }
+	.sidebar, #slider { display: none; }
+/*	#slider {  width: 100%; margin: 5px 0 0; }
 	.slides_container{ width: 100%; margin: 0; }
 	#slider .slide { width: 58%; text-align: center; margin: 0 auto; }
 	#slider .entry-summary { display: none; }
-	#slider .thumbnail { float: none; margin: 0 auto; }
+	#slider .thumbnail { float: none; margin: 0 auto; }*/
 	
 	#sidebar-primary { float: left; width: 45%;}
 	#sidebar-secondary { width: 45%; }
@@ -1514,47 +1522,5 @@ img.alignright {
 	.sidebar, #slider { display: none; }
 }
 
-/**
- * Print styles
- * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
- */
-@media print {
-  * { background: transparent !important; color: #909090 !important; text-shadow: none !important; }
-  a, a:visited { color: #54a8cf !important; text-decoration: underline; }
-  a:after { content: " (" attr(href) ")"; } 
-  abbr:after { content: " (" attr(title) ")"; }
-  
-  #header a:after { content: ""; } 
-  
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
-  tr, img { page-break-inside: avoid; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
-  
-  .comment-meta, .entry-meta, .byline{ font-size: 12px !important; }
-  
-  #topbar, #slider, .pagination, .loop-nav,
-	#respond,
-	.comment-edit-link,
-	.post-edit-link,
-	.comments-link,
-	.sidebar, 
-	.reply {
-		display: none !important;
-	} 
-  	#wrapper {
-		clear: both !important;
-		display: block !important;
-		float: none !important;
-		position: relative !important;
-	}
-		#wrapper,
-		#main,
-	#header,
-	#footer {
-		margin: 0;
-		width: 100%;
-	}
-/*}*/
+
+/* Print styles removed for now.. Will come back in version 1.1 */

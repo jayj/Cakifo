@@ -110,14 +110,14 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 		'layout' => 'standard', // standard, button_count, box_count
 		'action' => 'like' ,// like, recommend
 		'width' => 450,
-		'height' => 23,
+		'height' => 25,
 		'colorscheme' => 'light', // light, dark
 		'locale' => get_locale(), // Language of the button - ex: da_DK, fr_FR
  	), $atts) );
 
 	// Set the height to 60px if the layout is box_count and the height is lower than 62px
 	if ( $layout == 'box_count' && $height < 60 )
-		$height = 60;
+		$height = 62;
 
 	// Set width to 50px if the layout not is standard and the width is higher than 50px
 	if ( $layout != 'standard' && $width > 50 )

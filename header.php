@@ -37,7 +37,7 @@
 
     	<?php do_atomic( 'before_header' ); // cakifo_before_header ?>
 
-    	<div id="header">
+    	<div id="header" class="clearfix">
 
         	<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 

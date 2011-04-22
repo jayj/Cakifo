@@ -268,6 +268,8 @@ function cakifo_slider_javascript() {
 
 					echo $arg . ' : "' . $val . '",' . "\n";
 				}
+				
+					echo "foo: 'bar' "; // IE7 fix
 
 	echo "		});
 
@@ -277,6 +279,17 @@ function cakifo_slider_javascript() {
 			});
 		</script>";
 }
+
+function cakifo_remove_autostart( $args ) {
+	
+	// 7 seconds between slide animation on home
+	if ( is_home() )
+		$args['play'] = '7000';
+	
+	return $args;
+} 
+
+add_filter( 'cakifo_slider_args', 'cakifo_remove_autostart' );
 
 /**
  * New excerpt function with the length as a parameter

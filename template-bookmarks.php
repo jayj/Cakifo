@@ -62,7 +62,7 @@ get_header(); // Loads the header.php template ?>
 						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
 					</div> <!-- .entry-content -->
 
-                    <?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-edit-link]', hybrid_get_textdomain() ) . '</div>' ); ?>
+                    <?php edit_post_link( __( 'Edit', hybrid_get_textdomain() ), '<div class="entry-meta">', '</div>' ); ?>
 
                     <div class="clear"></div>
 
