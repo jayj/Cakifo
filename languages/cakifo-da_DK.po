@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-22 21:21+0100\n"
-"PO-Revision-Date: 2011-04-22 22:14+0100\n"
+"POT-Creation-Date: 2011-04-23 00:23+0100\n"
+"PO-Revision-Date: 2011-04-23 00:23+0100\n"
 "Last-Translator: Jesper <kontakt@jayj.dk>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -84,14 +84,14 @@ msgstr "Kommentarer er lukket, men <a href=\"%1$s\" title=\"Trackback URL for th
 msgid "Comments are closed."
 msgstr "Der er lukket for muligheden for at kommenterer."
 
-#: functions.php:143
-#: functions.php:153
+#: functions.php:147
+#: functions.php:157
 #, php-format
 msgid "Logo.png from the %1$s images folder"
 msgstr "Logo.png fra %1$s images mappen"
 
-#: functions.php:289
-#: functions.php:298
+#: functions.php:309
+#: functions.php:318
 #: post-format.php:40
 #: post-format.php:53
 #: post-format.php:75
@@ -100,79 +100,79 @@ msgstr "Logo.png fra %1$s images mappen"
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Læs mere <span class=\"meta-nav\">&raquo;</span>"
 
-#: functions.php:310
+#: functions.php:330
 msgid "You are here:"
 msgstr "Du er her:"
 
-#: functions.php:337
+#: functions.php:357
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
 msgstr "Abonnér på [rss-link] [twitter-username before=\"eller \"]"
 
-#: functions.php:511
+#: functions.php:531
 msgid "Article written by [entry-author]"
 msgstr "Indlæg skrevet af  [entry-author]"
 
-#: functions.php:521
+#: functions.php:541
 #, php-format
 msgid "Follow %1$s on Twitter"
 msgstr "Følg %1$s på Twitter"
 
-#: functions.php:546
+#: functions.php:566
 #, php-format
 msgid "<span class=\"prep\">Dimensions:</span> %s"
 msgstr "<span class=\"prep\">Dimensioner:</span> %s"
 
-#: functions.php:546
+#: functions.php:566
 #, php-format
 msgid "%1$s &#215; %2$s pixels"
 msgstr "%1$s &#215; %2$s pixels"
 
-#: functions.php:550
+#: functions.php:570
 #, php-format
 msgid "<span class=\"prep\">Date:</span> %s"
 msgstr "<span class=\"prep\">Dato:</span> %s"
 
-#: functions.php:554
+#: functions.php:574
 #, php-format
 msgid "<span class=\"prep\">Camera:</span> %s"
 msgstr "<span class=\"prep\">Kamera:</span> %s"
 
-#: functions.php:558
+#: functions.php:578
 #, php-format
 msgid "<span class=\"prep\">Aperture:</span> %s"
 msgstr "<span class=\"prep\">Blænde:</span> %s"
 
-#: functions.php:558
+#: functions.php:578
 #, php-format
 msgid "f/%s"
 msgstr "f/%s"
 
-#: functions.php:562
+#: functions.php:582
 #, php-format
 msgid "<span class=\"prep\">Focal Length:</span> %s"
 msgstr "<span class=\"prep\">Brændvidde:</span> %s"
 
-#: functions.php:562
+#: functions.php:582
 #, php-format
 msgid "%s mm"
 msgstr "%s mm"
 
-#: functions.php:566
+#: functions.php:586
 #, php-format
 msgid "<span class=\"prep\">ISO:</span> %s"
 msgstr "<span class=\"prep\">ISO:</span> %s"
 
-#: functions.php:582
+#: functions.php:602
 #, php-format
 msgid "<span class=\"prep\">Shutter Speed:</span> %s"
 msgstr "<span class=\"prep\">Lukkerhastighed:</span> %s"
 
-#: functions.php:582
+#: functions.php:602
 #, php-format
 msgid "%s sec"
 msgstr "%s sek"
 
-#: functions.php:593
+#: functions.php:613
 msgid "Image Info"
 msgstr "Billede info"
 
@@ -255,8 +255,8 @@ msgstr "Søg"
 #: singular.php:44
 #: template-archives.php:71
 #: template-bookmarks.php:65
-msgid "[entry-edit-link]"
-msgstr "[entry-edit-link]"
+msgid "Edit"
+msgstr "Rediger"
 
 #: template-archives.php:43
 msgid "Archives by category"
@@ -827,10 +827,6 @@ msgstr "Tagd"
 msgid "View"
 msgstr "Vis"
 
-#: library/classes/widget-tags.php:184
-msgid "Edit"
-msgstr "Rediger"
-
 #: library/classes/widget-tags.php:185
 msgid "Flat"
 msgstr "Fladt"
@@ -1199,3 +1195,5 @@ msgstr "After singular"
 msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
 msgstr "Indlæg på singular indlæg (sider, attachments mm.) lige før kommentarerne"
 
+#~ msgid "[entry-edit-link]"
+#~ msgstr "[entry-edit-link]"
