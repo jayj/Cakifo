@@ -133,7 +133,11 @@ function cakifo_theme_setup() {
 	/* Custom header for logo upload */
 	add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
 	
+	// The color, height and width of your custom header.
+	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 0 ) );
 	
 	// Load the logo from the parent theme images folder and the childtheme image folder 
 	register_default_headers( array(
@@ -200,9 +204,6 @@ function cakifo_front_page() {
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
 }
 
-	/* REMOVE AFTER TESTING */
-	function my_slider_args( $args ) { $args['play'] = 'false'; $args['start'] = '1'; return $args; } add_filter( 'cakifo_slider_args', 'my_slider_args' );
-
 function cakifo_slider_javascript() {
 
 	/* If we're not looking at the front page, return */
@@ -214,16 +215,16 @@ function cakifo_slider_javascript() {
 	 */
 	$defaults = array(
 		'play' => '3500', // number, Autoplay slideshow, a positive number will set to true and be the time between slide animation in milliseconds
-		'hoverPause' => 'true', // boolean, Set to true and hovering over slideshow will pause it
-		'generatePagination' => 'true', // boolean, Auto generate pagination
-		'autoHeight' => 'true', // boolean, Set to true to auto adjust height
+		'hoverPause' => true, // boolean, Set to true and hovering over slideshow will pause it
+		'generatePagination' => true, // boolean, Auto generate pagination
+		'autoHeight' => true, // boolean, Set to true to auto adjust height
 		'effect' => 'fade', // string, '[next/prev], [pagination]', e.g. 'slide, fade' or simply 'fade' for both
 		'fadeSpeed' => 50, // number, Set the speed of the fading animation in milliseconds
 		'slideSpeed' => 150, // number, Set the speed of the sliding animation in milliseconds
 		'paginationClass' => 'slider-pagination',
-		'preload' => 'false', // boolean, Set true to preload images in an image based slideshow
+		'preload' => false, // boolean, Set true to preload images in an image based slideshow
 		'preloadImage' => CHILD_THEME_URI . '/images/loading.gif',
-		'randomize' => 'false', // boolean, Set to true to randomize slides
+		'randomize' => false, // boolean, Set to true to randomize slides
 		// 'container => 'slides_container', // string, Class name for slides container. Default is "slides_container"
 		// 'generateNextPrev' => false, // boolean, Auto generate next/prev buttons
 		// 'next' => 'next', // string, Class name for next button
@@ -243,7 +244,7 @@ function cakifo_slider_javascript() {
 	/* @link http://slidesjs.com for more info */
 	$args = apply_atomic( 'slider_args', $args ); 
 
-	/* How to change the arguments in a child theme:   function my_slider_args( $args ) { $args['play'] = 'false'; $args['start'] = '3'; return $args; } 
+	/* How to change the arguments in a child theme:   function my_slider_args( $args ) { $args['play'] = false; $args['start'] = '3'; return $args; } 
 				add_filter( 'cakifo_slider_args', 'my_slider_args' ); */
 
 	/**
@@ -256,10 +257,16 @@ function cakifo_slider_javascript() {
 				$('#slider').slides({ ";
 
 				foreach ( $args as $arg => $val ) {
-					if ( $val == 'true' || $val == 'false' )
-						echo $arg . ' : ' . $val . ',' . "\n";
-					else 
-						echo $arg . ' : "' . $val . '",' . "\n";
+
+					// Convert arguments with true or false into strings instead of booleans.. True => 'true', false => 'false'
+					if ( is_bool( $val ) ) {
+						if ( $val )
+							$val = 'true';
+						else
+							$val = 'false';
+					} 					
+
+					echo $arg . ' : "' . $val . '",' . "\n";
 				}
 
 	echo "		});

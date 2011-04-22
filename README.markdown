@@ -66,7 +66,7 @@ Let's say you want to change the speed of the slider. That's very easy. In your 
 <pre>
 function my_slider_args( $args ) {
 	$args['slideSpeed'] = 500; // Speed of the sliding animation in milliseconds
-	$args['play'] = 'false'; // Disables auto start - Remember the quotes
+	$args['play'] = false; // Disables auto start
 	
 	return $args;
 }
