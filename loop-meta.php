@@ -92,12 +92,8 @@
             <?php $results = absint( $wp_query->found_posts ); ?>
 
             <h1 class="loop-title">
-				<?php
-					printf( _n( "%d Search Result for: %s", "%d Search Results for: %s",
-						$results, '<span>' . esc_attr( get_search_query() ) . '</span>' ),
-						$results, '<span>' . esc_attr( get_search_query() ) . '</span>'
-					);
-				?>
+				<?php printf( _n( "%d Search Result for:", "%d Search Results for:", $results, hybrid_get_textdomain() ), $results ); ?>
+                <span><?php echo esc_attr( get_search_query() ); ?></span>
 			</h1>
 
 			<div class="loop-description">

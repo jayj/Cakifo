@@ -30,7 +30,15 @@ get_header(); // Loads the header.php template ?>
 
             <?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
 
-			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'thumbnail', 'attachment' => false ) ); ?>
+			<?php
+				if ( current_theme_supports( 'get-the-image' ) )
+					get_the_image( array(
+						'meta_key' => 'Thumbnail',
+						'size' => 'small',
+						'image_class' => 'thumbnail',
+						'attachment' => false
+					) );
+            ?>
 
             <div class="entry-content">
 				<?php the_excerpt(); ?>
