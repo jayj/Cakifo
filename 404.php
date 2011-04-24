@@ -10,8 +10,6 @@
  * @link http://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
-@header( 'HTTP/1.1 404 Not found', true, 404 );
-
 get_header(); // Loads the header.php template ?>
 
 	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
@@ -22,7 +20,7 @@ get_header(); // Loads the header.php template ?>
 
             <div id="post-0" class="<?php hybrid_entry_class(); ?>">
 
-                <h1 class="error-404-title entry-title"><?php _e( 'Not Found', hybrid_get_textdomain() ); ?></h1>
+                <h1 class="error-404-title entry-title"><?php _e( 'Oops! 404! 404!.. Help!.. We can\'t find the page!', hybrid_get_textdomain() ); ?></h1>
 
                 <div class="entry-content">
                 	<p>
