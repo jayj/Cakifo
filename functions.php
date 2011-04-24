@@ -169,8 +169,13 @@ function cakifo_theme_setup() {
 
 function cakifo_enqueue_script() {
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-1.7.min.js', '', '1.7' );
-	wp_enqueue_script( 'jquery' );
+	
+	// Make sure jQuery is loaded after Modernizr
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), '1.4.4', true );
+	
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.0', true );
+
 }
 
 /**

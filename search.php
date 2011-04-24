@@ -1,8 +1,9 @@
 <?php
 /**
- * Archive Template
+ * Search Template
  *
- * The archive template is the default template used for archives pages without a more specific template. 
+ * The search template is loaded when a visitor uses the search form to search for something
+ * on the site.
  *
  * @package Cakifo
  * @subpackage Template
