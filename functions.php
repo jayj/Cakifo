@@ -121,11 +121,29 @@ function cakifo_theme_setup() {
 	add_action( 'template_redirect', 'cakifo_front_page' );
 	add_action( 'wp_footer', 'cakifo_slider_javascript' );
 	
+	/* Change entry meta for certain post formats */
+	add_filter( 'cakifo_entry_meta_quote', 'cakifo_quote_entry_meta' );
+	add_filter( 'cakifo_entry_meta_aside', 'cakifo_aside_entry_meta' );
+	add_filter( 'cakifo_entry_meta_link', 'cakifo_link_entry_meta' );
+	
+	/* Hide byline and/or entry meta for certain post formats */
+	add_filter( 'cakifo_byline_quote', '__return_false' );
+	add_filter( 'cakifo_byline_aside', '__return_false' );
+	add_filter( 'cakifo_byline_link', '__return_false' );
+	add_filter( 'cakifo_byline_status', '__return_false' );
+	add_filter( 'cakifo_entry_meta_status', '__return_false' );
+
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
 	
 	/* Add an author box after singular posts */
 	add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
+
+	/* Slider arguments */
+	add_filter( 'cakifo_slider_args', 'cakifo_remove_autostart' );
+	
+	/* Get the Image arguments */
+	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
 
 	/* Custom logo */
 	add_filter( "{$prefix}_site_title", 'cakifo_logo' );
@@ -294,7 +312,20 @@ function cakifo_remove_autostart( $args ) {
 	return $args;
 } 
 
-add_filter( 'cakifo_slider_args', 'cakifo_remove_autostart' );
+/**
+ * Change to small thumbnail for archives and search
+ *
+ * @since 1.1
+ */
+function cakifo_get_the_image_arguments( $args ) {
+
+	if ( is_archive() || is_search() ) {
+		$args['size'] = 'small';
+		$args['image_class'] = 'thumbnail';
+	}
+
+	return $args;
+} 
 
 /**
  * New excerpt function with the length as a parameter
@@ -338,20 +369,26 @@ function cakifo_breadcrumb_trail_args( $args ) {
 }
 
 /**
- * Quote post format: Hide entry meta except on single page
+ * Change entry meta for different post formats
  *
- * @since 1.0
+ * @since 1.1
  */
-function cakifo_quote_hide_entry( $meta ) {
+function cakifo_quote_entry_meta( $meta ) {
 
 	if ( is_single() )
-		return $meta;
+		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 
 	return;
 }
 
-add_filter( 'cakifo_entry_meta_quote', 'cakifo_quote_hide_entry' );
-//remove_filter( 'cakifo_entry_meta_quote', 'cakifo_quote_hide_entry' );
+function cakifo_aside_entry_meta( $meta ) {
+	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+}
+
+
+function cakifo_link_entry_meta( $meta ) {
+	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+}
 
 /**
  * Display RSS feed link in the topbar 
@@ -420,7 +457,7 @@ function cakifo_logo( $title ) {
 	if ( $title = get_bloginfo( 'name' ) ) {
 
 		// Check there's a header image, else return the blog name
-		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . $title . '" />' : '<span>' . $title . '</span>';
+		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
 
 		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
 	}
