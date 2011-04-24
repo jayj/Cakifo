@@ -122,16 +122,16 @@ function cakifo_theme_setup() {
 	add_action( 'wp_footer', 'cakifo_slider_javascript' );
 	
 	/* Change entry meta for certain post formats */
-	add_filter( 'cakifo_entry_meta_quote', 'cakifo_quote_entry_meta' );
-	add_filter( 'cakifo_entry_meta_aside', 'cakifo_aside_entry_meta' );
-	add_filter( 'cakifo_entry_meta_link', 'cakifo_link_entry_meta' );
+	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
+	add_filter( "{$prefix}_entry_meta_aside", 'cakifo_aside_entry_meta' );
+	add_filter( "{$prefix}_entry_meta_link", 'cakifo_link_entry_meta' );
 	
 	/* Hide byline and/or entry meta for certain post formats */
-	add_filter( 'cakifo_byline_quote', '__return_false' );
-	add_filter( 'cakifo_byline_aside', '__return_false' );
-	add_filter( 'cakifo_byline_link', '__return_false' );
-	add_filter( 'cakifo_byline_status', '__return_false' );
-	add_filter( 'cakifo_entry_meta_status', '__return_false' );
+	add_filter( "{$prefix}_byline_quote", '__return_false' );
+	add_filter( "{$prefix}_byline_aside", '__return_false' );
+	add_filter( "{$prefix}_byline_link", '__return_false' );
+	add_filter( "{$prefix}_byline_status", '__return_false' );
+	add_filter( "{$prefix}_entry_meta_status", '__return_false' );
 
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
@@ -140,7 +140,7 @@ function cakifo_theme_setup() {
 	add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
 
 	/* Slider arguments */
-	add_filter( 'cakifo_slider_args', 'cakifo_remove_autostart' );
+	add_filter( "{$prefix}_slider_args", 'cakifo_remove_autostart' );
 	
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
@@ -149,7 +149,7 @@ function cakifo_theme_setup() {
 	add_filter( "{$prefix}_site_title", 'cakifo_logo' );
 	
 	/* Custom header for logo upload */
-	add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
+	add_custom_image_header( "{$prefix}_header_style", 'cakifo_admin_header_style' );
 	
 	// The color, height and width of your custom header.
 	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
