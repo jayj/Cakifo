@@ -38,7 +38,12 @@
 
 					<?php
 						if ( current_theme_supports( 'get-the-image' ) )
-							get_the_image( array( 'size' => 'slider' ) );
+							get_the_image( array(
+								'size' => 'slider',
+								'attachment' => false,
+								'meta_key' => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
+								'image_class' => 'thumbnail'
+							) );
 					?>
 
 					<div class="entry-summary">

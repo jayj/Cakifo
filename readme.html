@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cakifo documentation</title>
+
+<style type="text/css">
+body{width:750px;margin:36px auto 60px auto;font:16px/30px Georgia,Times,'Times New Roman',serif}
+a:link,a:visited{color:#2f6eb9;text-decoration:none}
+a:hover,a:active{text-decoration:underline}
+h1,h2,h3,h4,h5,h6{margin:40px 0 30px 0;color:#000;font-weight:bold;font-family:Arial,sans-serif}
+h1{margin-top:80px;font-size:2.2em; border-bottom: 1px solid #e7e7e7; padding-bottom: 30px;}
+h1 small { text-transform: uppercase; font-size: 16px; color: #ccc;}
+code{padding:0 3px;background:#ffc}
+pre code{padding:0}
+pre{background:#464646;border:2px solid #3e3e3e;border-right:none;border-left:none;border-radius:5px;color:#fff;font:14px/25px monospace,"Courier New",Courier;padding: 0 25px 25px;word-wrap:break-word;text-shadow:1px 1px 0px #3e3e3e;overflow:auto;margin-bottom:25px;}
+ul{list-style:square}
+blockquote{font-size:21px; line-height: 32px;}
+ul.space li{margin-bottom:10px}
+.section{overflow:hidden}
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<h1>Cakifo <small>By <a href="http://jayj.dk">Jayj.dk</a></small></h1> 
+<blockquote> 
+<p>Cakifo is a free WordPress theme built with from the rock-solid <a href="http://themehybrid.com/hybrid-core" title="Hybrid Core">Hybrid Core theme framework</a> by Justin Tadlock, so it provides a great starting point with many useful features..</p> 
+</blockquote> 
+<p>This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.</p> 
+ 
+<ul> 
+<li>Requires at least WordPress 3.1</li> 
+<li>Tested up to 3.2-bleeding</li> 
+</ul>
+ 
+<h2>Features</h2> 
+ 
+<ul> 
+<li>Child theme friendly - Nearly everything can be customized in a child theme</li> 
+<li>Uses Hybrid Core as framework</li> 
+<li>Custom front page with slider, recent posts, and posts from categories</li> 
+<li>Per-post layouts that allow you to quickly change the layout of your site</li> 
+<li>Post setting that allows you to add a custom stylesheet for individual posts</li> 
+<li>A smart breadcrumb menu that handles tons of permalink setups</li> 
+<li>Built-in pagination for your home, archive, and search pages</li> 
+<li>Killer post thumbnails function that work with WordPress' featured image functionality and provide extra features</li> 
+<li>Multiple sidebars that you can customize however you like</li> 
+<li>Fully internationalized, so you can run the theme in any language - Danish are already added!</li> 
+<li>Uses the built-in WordPress menu system</li> 
+<li>Context-aware action and filter hooks, so you don't have to learn WordPress conditional tags</li> 
+<li>Many useful shortcodes</li> 
+<li>Small theme settings page (yes, that's a feature)</li> 
+<li>Ability to create custom templates for any post type in multiple ways</li> 
+<li>Highly-configurable widgets that give you full control over their display</li> 
+<li>Widget areas are content-aware, meaning that they only appear if they contain active widgets.</li> 
+<li>And much, much more!</li> 
+</ul><p>(yes, the features are totally stolen from Justins' themes)</p> 
+
+<h2>Github</h2> 
+
+<p>You can find the latest version of this documentation and of the theme <a href="https://github.com/jayj/Cakifo">on Cakifo's Github page</a>.
+
+<h2>Child themes</h2> 
+ 
+<p>Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations. <em>Don't know how to make a child theme?</em> It's relatively simple. Just follow the below steps.</p> 
+ 
+<ul> 
+<li>Create a theme folder in your /wp-content/themes directory called cakifo-child (or something else - you decide)</li> 
+<li>Then, create a style.css file within your theme folder</li> 
+<li>At the top of your style.css file, add the below information</li> 
+</ul><pre> 
+/**
+ * Theme Name: Cakifo child
+ * Theme URI: http://link-to-your-site.com
+ * Description: Describe what your theme should be like.
+ * Version: 1.0
+ * Author: Your Name
+ * Author URI: http://link-to-your-site.com
+ * Tags: Add, Whatever, Tags, You, Want
+ * Template: cakifo
+ */
+</pre> 
+ 
+<p>This will give you a blank design. If you want to import the Cakifo parent theme style, simply append this code after the above information:</p> 
+ 
+<pre> 
+@import url( '../cakifo/style.css' );
+ 
+/* Custom code goes below here. */
+</pre> 
+ 
+<p>See more about <a href="http://codex.wordpress.org/Child_Themes">Child Themes at the Codex</a></p> 
+ 
+<h4>Functions.php</h4> 
+ 
+<p>You can make more than just style changes in a child theme. Unlike style.css, the functions.php of a child theme does not override its counterpart from the parent. Instead, it is loaded in addition to the parent's functions.php. (Specifically, it is loaded right before the parent's file.)</p> 
+ 
+<p>Adding functions or changing things in the parent theme will be lost when it's updated. Fortunately Cakifo is very user child theme friendly. It has a lot of hooks and filter to make it easy for you to change the functionality of the parent theme <em>in your child theme</em>. See the <a href="http://themehybrid.com/hybrid-core/hooks">Hybrid Core Hooks guide</a> for more information.</p> 
+ 
+<h5>Example</h5> 
+ 
+<p>An example child theme is included in the download. But I'll give an example here as well</p> 
+ 
+<p>Let's say you want to change the speed of the slider. That's very easy. In your child theme functions.php do this</p> 
+ 
+<pre> 
+function my_slider_args( $args ) {
+    $args['slideSpeed'] = 500; // Speed of the sliding animation in milliseconds
+    $args['play'] = false; // Disables auto start
+    
+    return $args;
+}
+ 
+add_filter( 'cakifo_slider_args', 'my_slider_args' );
+</pre> 
+ 
+<p>Or you want to remove comments from pages. Easy</p> 
+ 
+<pre> 
+    add_filter( 'show_singular_comments', '__return_false' ); 
+</pre> 
+ 
+<h2>License</h2> 
+ 
+<p><em>Cakifo</em> is licensed under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License v2.0</a></p> 
+ 
+<h2>Credits</h2> 
+ 
+<ul> 
+<li> 
+<a href="http://themehybrid.com/hybrid-core" title="Hybrid Core">Hybrid Core</a> by Justin Tadlock</li> 
+<li><a href="http://modernizr.com">Modernizr</a></li> 
+<li>Slides by <a href="http://slidesjs.com">Nathan Searles</a> 
+</li> 
+<li>Equal Heights In Rows by <a href="http://css-tricks.com/equal-height-blocks-in-rows/">Chris Coyier</a> 
+</li> 
+<li> 
+<a href="http://www.premiumpixels.com/">Premium Pixels</a> for the topbar</li> 
+<li>And others! More people are credited in the source</li> 
+</ul><h2>Support</h2> 
+ 
+<p>I can help a bit with support for this theme. But Theme Hybrid has a Theme Club where you'll get the benefit of access to all of the tutorials and documentation and complete read/write access to the support forums.
+The support package exists to get you up and running as quickly as possible, and they have a great community of people willing to help each other out.</p> 
+ 
+<p><a href="http://themehybrid.com/hybrid-core">See guides for Hybrid Core</a></p> 
+ 
+<p>Visit my blog on <a href="http://jayj.dk">Jayj.dk</a> to contact me or <a href="http://twitter.com/jayjdk">follow me on Twitter</a></p></div>
+
+</body>
+</html>
