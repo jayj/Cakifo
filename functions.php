@@ -154,8 +154,8 @@ function cakifo_theme_setup() {
 	// The color, height and width of your custom header.
 	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 0 ) );
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 960 ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
 	
 	// Load the logo from the parent theme images folder and the childtheme image folder 
 	register_default_headers( array(
