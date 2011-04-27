@@ -21,7 +21,7 @@ get_header(); // Loads the header.php template ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-        	<?php get_template_part( 'post-format', get_post_format() ); ?>
+        	<?php get_template_part( 'loop', 'search' ); ?>
 
         <?php endwhile; ?>
 

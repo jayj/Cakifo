@@ -167,7 +167,7 @@ function cakifo_theme_setup() {
 	) );
 		
 	// If the user is using a child theme, add the logo.png from that as well
-	if ( TEMPLATEPATH != STYLESHEETPATH ) {
+	if ( TEMPLATEPATH != STYLESHEETPATH && file_exists( CHILD_THEME_URI . '/images/logo.png' ) ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
 				'url' => CHILD_THEME_URI . '/images/logo.png',
@@ -190,7 +190,7 @@ function cakifo_enqueue_script() {
 	
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), '1.4.4', true );
+	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), '1.4.4', true ); // WordPress 3.2 will have jQuery  1.5.2
 	
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.0', true );
 
@@ -541,9 +541,9 @@ function cakifo_admin_header_style() {
 			color: #<?php echo get_header_textcolor(); ?>!important;
 		}
 	<?php endif; ?>
-	#headimg img {
+	#headimg {
 		max-width: 1000px;
-		height: auto;
+		height: auto!important;
 		width: 100%;
 	}
 	</style>

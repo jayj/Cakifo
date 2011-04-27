@@ -1,20 +1,23 @@
 <?php
 /**
- * Post format Template
+ * The loop that displays posts.
  *
- * This is the loops for each post format. Each section is seperated by
- * if ( has_post_format( 'foo' ) ) : 
- * elseif ( has_post_format( 'bar' ) ) : 
- * endif;
- * Loops can be overwrited in your child theme by creating 
- * the file post-format-formatname.php (ex post-format-aside.php for aside posts)
+ * The loop displays the posts and the post content.  See
+ * http://codex.wordpress.org/The_Loop to understand it and
+ * http://codex.wordpress.org/Template_Tags to understand
+ * the tags used in it.
+ *
+ * This can be overridden in child themes with loop.php or
+ * loop-template.php, where 'template' is the loop context
+ * requested by a template. For example, loop-index.php would
+ * be used if it exists and we ask for the loop with:
+ * <code>get_template_part( 'loop', 'index' );</code>
  *
  * @package Cakifo
  * @subpackage Template
+ * @since 1.1
  */
-
 ?>
-
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
     <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
@@ -24,7 +27,14 @@
         <header class="entry-header">
         	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
         
-        	<?php echo apply_atomic_shortcode( 'byline_' . get_post_format(), '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+        	<?php
+				// Tthe default format (i.e., a normal post) returns false
+				$format = get_post_format();
+				if ( false === $format )
+					$format = 'standard';
+
+				echo apply_atomic_shortcode( 'byline_' . $format, '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+			?>
         </header> <!-- .entry-header --> 
         
         <?php
@@ -50,7 +60,7 @@
         
         <?php
 			/* Entry meta */
-			echo apply_atomic_shortcode( 'entry_meta_' . get_post_format(), '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+			echo apply_atomic_shortcode( 'entry_meta_' . $format, '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 		?>
         
         <div class="clear"></div>
