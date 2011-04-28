@@ -18,6 +18,9 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-digg-link', 'cakifo_entry_digg_link_shortcode' );
 	add_shortcode( 'entry-facebook-link', 'cakifo_entry_facebook_link_shortcode' );
 	add_shortcode( 'entry-twitter-link', 'cakifo_entry_twitter_link_shortcode' );
+	
+	remove_shortcode( 'entry-published' );
+	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
 }
 
 /** 
@@ -149,6 +152,26 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 		$width = 110;
 
 	return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
+}
+
+/**
+ * Displays the published date of an individual post in HTML5 format.
+ * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * @since 1.1
+ * @param array $attr
+ */
+function cakifo_entry_published_shortcode( $attr ) {
+	
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after' => '',
+		'format' => get_option( 'date_format' )
+	), $attr );
+
+	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" pubdate>' . get_the_date( $attr['format'] ) . '</time>';
+	
+	return $attr['before'] . $published . $attr['after'];
 }
 
 ?>
