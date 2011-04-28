@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.0
+ * @version 1.1
  * @author Jayj.dk <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011, Jesper J
  * @link http://wpthemes.jayj.dk/cakifo
@@ -595,6 +595,8 @@ function cakifo_author_box() { ?>
  * separate each of the elements into an attachment API that can be used across multiple themes.  Keep 
  * this in mind if you plan on using the current filter hooks in this function.
  *
+ * @author Justin Tadlock
+ * @link http://justintadlock.com
  * @since 1.0
  */
 function cakifo_image_info() {

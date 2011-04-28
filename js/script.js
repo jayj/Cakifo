@@ -6,24 +6,25 @@ jQuery(document).ready(function($) {
 	 */
 	var currentTallest = 0,
 	currentRowStart = 0,
-	rowDivs = new Array(),
+	rowDivs = [],
 	$el,
-	topPosition = 0;
+	topPosition = 0,
+	currentDiv = 0;
 
 	$('.page-template-template-front-page .headline-list').each(function() {
 
 		$el = $(this);
-		topPostion = $el.position().top;
+		topPosition = $el.position().top;
 
-		if (currentRowStart != topPostion) {
+		if (currentRowStart != topPosition) {
 			// we just came to a new row.  Set all the heights on the completed row
-			for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+			for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
 				rowDivs[currentDiv].height(currentTallest);
 			}
 			
 			// set the variables for the new row
 			rowDivs.length = 0; // empty the array
-			currentRowStart = topPostion;
+			currentRowStart = topPosition;
 			currentTallest = $el.height();
 			rowDivs.push($el);
 		} else {
