@@ -25,7 +25,10 @@
 		<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
         
         <header class="entry-header">
-        	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+        	<hgroup>
+        		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+                <?php if ( get_post_format() ) echo '<h2 class="entry-format">' . get_post_format() . '</h2>'; ?>
+            </hgroup>
         
         	<?php
 				// Tthe default format (i.e., a normal post) returns false
@@ -46,13 +49,21 @@
 				) );
         ?>
 
-		<?php if ( is_archive() || is_search() ) : // Only display Excerpts for Archives and Search ?>
-        	<div class="entry-summary <?php if ( has_post_format( 'status' ) ) echo 'note'; ?>">
+		<?php if ( has_post_format( 'status' ) ) : ?>
+        	<div class="entry-content">
+            	<div class="note">
+                    <?php echo get_avatar( $post->post_author, apply_atomic( 'status_avatar', '48' ) ); ?>
+                    <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
+                </div>
+        		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+        	</div> <!-- .entry-content -->
+		<?php elseif ( is_archive() || is_search() ) : // Only display Excerpts for Archives and Search ?>
+        	<div class="entry-summary">
         		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
                 <?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-summary -->
         <?php else : ?>
-        	<div class="entry-content <?php if ( has_post_format( 'status' ) ) echo 'note'; ?>">
+        	<div class="entry-content">
         		<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->

@@ -579,6 +579,20 @@ td, td img { vertical-align: top; }
 }
 
 /* Post formats */
+.entry-header .entry-format {
+	color: #888;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	line-height: 2.6em;
+	position: absolute;
+	text-transform: uppercase;
+	top: -5px;
+}
+
+.entry-header hgroup .entry-title {
+	padding-top: 25px;
+}
 
 	/* Hide titles */
 	.format-aside .entry-title,
@@ -591,6 +605,14 @@ td, td img { vertical-align: top; }
 	border-top: 5px solid #eee;
 	margin-top: -26px;
 	padding-top: 25px;
+}
+
+.format-aside .entry-format {
+	top: 10px;
+}
+
+.format-aside .entry-header hgroup {
+	padding-top: 15px;
 }
 
 .format-quote {
@@ -627,11 +649,23 @@ td, td img { vertical-align: top; }
 	background: #f7f7f7;
 }
 
+.format-status .note {
+	position: relative;	
+}
+
 .format-status .note p:last-of-type {
 	margin-bottom: 0;
 }
 
+.format-status .entry-header hgroup {
+	padding-top: 35px;
+}
 
+.format-status .avatar {
+	position: relative;
+	top: -10px;
+	left: -10px;
+}
 
 /* Author profile box (Find the other styles under Quotes */
 
