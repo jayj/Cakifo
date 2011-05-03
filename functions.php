@@ -221,7 +221,7 @@ function cakifo_front_page() {
 		return;
 
 	/* Load the Slides jQuery Plugin */
-	wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.0.9', true );
+	wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.7', true );
 
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
@@ -233,6 +233,8 @@ function cakifo_slider_javascript() {
 	if ( !is_home() && !is_front_page() )
 		return;
 
+	$loading_gif = ( file_exists( CHILD_THEME_URI . '/images/loading.gif' ) ) ? CHILD_THEME_URI . '/images/loading.gif' : THEME_URI . '/images/loading.gif';
+	
 	/**
 	 * Default args
 	 */
@@ -246,8 +248,9 @@ function cakifo_slider_javascript() {
 		'slideSpeed' => 150, // number, Set the speed of the sliding animation in milliseconds
 		'paginationClass' => 'slider-pagination',
 		'preload' => false, // boolean, Set true to preload images in an image based slideshow
-		'preloadImage' => CHILD_THEME_URI . '/images/loading.gif',
+		'preloadImage' => esc_url( $loading_gif ),
 		'randomize' => false, // boolean, Set to true to randomize slides
+		// 'currentClass' => 'current'
 		// 'container => 'slides_container', // string, Class name for slides container. Default is "slides_container"
 		// 'generateNextPrev' => false, // boolean, Auto generate next/prev buttons
 		// 'next' => 'next', // string, Class name for next button
@@ -281,18 +284,16 @@ function cakifo_slider_javascript() {
 
 				foreach ( $args as $arg => $val ) {
 
-					// Convert arguments with true or false into strings instead of booleans.. True => 'true', false => 'false'
-					if ( is_bool( $val ) ) {
-						if ( $val )
-							$val = 'true';
-						else
-							$val = 'false';
-					} 					
-
-					echo $arg . ' : "' . $val . '",' . "\n";
+					// Make sure true and false aren't encoded in quotes
+					if ( $val === true )
+						echo $arg . ' : true,' . "\n";
+					elseif ( $val === false )
+						echo $arg . ' : false,' . "\n";
+					else
+						echo $arg . ' : "' . $val . '",' . "\n";
 				}
-				
-					echo "foo: 'bar' "; // IE7 fix
+
+					echo 'foo: "bar" '; // IE7 fix
 
 	echo "		});
 
