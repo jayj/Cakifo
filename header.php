@@ -41,12 +41,9 @@
 
         	<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
-			<hgroup>
-				<?php
-                    hybrid_site_title();
-                    hybrid_site_description();
-                ?>
-            </hgroup>
+				<?php hybrid_site_title(); ?>
+                
+                <?php hybrid_site_description(); ?>
 
 			<?php do_atomic( 'header' ); // cakifo_header ?>
 

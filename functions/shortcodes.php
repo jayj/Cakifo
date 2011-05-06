@@ -19,8 +19,11 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-facebook-link', 'cakifo_entry_facebook_link_shortcode' );
 	add_shortcode( 'entry-twitter-link', 'cakifo_entry_twitter_link_shortcode' );
 	
+	/* Replace shortcodes */
 	remove_shortcode( 'entry-published' );
+	remove_shortcode( 'comment-published' );
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
+	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
 }
 
 /** 
@@ -173,5 +176,25 @@ function cakifo_entry_published_shortcode( $attr ) {
 	
 	return $attr['before'] . $published . $attr['after'];
 }
+
+/**
+ * Displays the published date of an individual comment in HTML5 format.
+ * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * @since 1.1
+ * @param array $attr
+ */
+function cakifo_comment_published_shortcode( $attr ) {
+	
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after' => ''
+	), $attr );
+
+	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
+	
+	return $attr['before'] . $published . $attr['after'];
+}
+
 
 ?>

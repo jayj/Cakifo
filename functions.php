@@ -647,7 +647,7 @@ function cakifo_image_info() {
 		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s sec', hybrid_get_textdomain() ), $shutter_speed ) . '</span>' );
 	}
 
-	/* Allow devs to overwrite the array of items. */
+	/* Allow ¨child themes to overwrite the array of items. */
 	$items = apply_atomic( 'image_info_items', $items );
 
 	/* Loop through the items, wrapping each in an <li> element. */
@@ -657,7 +657,7 @@ function cakifo_image_info() {
 	/* Format the HTML output of the function. */
 	$output = '<div class="image-info"><h4>' . __( 'Image Info', hybrid_get_textdomain() ) . '</h4><ul>' . $list . '</ul></div>';
 
-	/* Display the image info and allow devs to overwrite the final output. */
+	/* Display the image info and allow child themes to overwrite the final output. */
 	echo apply_atomic( 'image_info', $output );
 }
 

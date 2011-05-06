@@ -26,7 +26,7 @@
 
 	<?php do_atomic( 'before_footer' ); // cakifo_before_footer ?>
 
-	<div id="footer">
+	<footer id="footer" role="contentinfo">
 
 		<?php do_atomic( 'open_footer' ); // cakifo_open_footer ?>
 
@@ -42,7 +42,7 @@
 
 		<?php do_atomic( 'close_footer' ); // cakifo_close_footer ?>
 
-	</div> <!-- #footer -->
+	</footer> <!-- #footer -->
 
 	<?php do_atomic( 'after_footer' ); // cakifo_after_footer ?>
 

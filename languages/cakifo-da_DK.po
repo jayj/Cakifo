@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cakifo\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-23 00:23+0100\n"
-"PO-Revision-Date: 2011-04-23 00:23+0100\n"
+"PO-Revision-Date: 2011-05-03 17:17+0100\n"
 "Last-Translator: Jesper <kontakt@jayj.dk>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -821,7 +821,7 @@ msgstr "Et advanceret widget der giver dig total kontrol over dine tags"
 #: library/classes/widget-tags.php:58
 #: library/classes/widget-tags.php:157
 msgid "Tags"
-msgstr "Tagd"
+msgstr "Tags"
 
 #: library/classes/widget-tags.php:184
 msgid "View"
