@@ -138,9 +138,6 @@ function cakifo_theme_setup() {
 	
 	/* Add an author box after singular posts */
 	add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
-
-	/* Slider arguments */
-	add_filter( "{$prefix}_slider_args", 'cakifo_remove_autostart' );
 	
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
@@ -304,13 +301,6 @@ function cakifo_slider_javascript() {
 			});
 		</script>";
 }
-
-function cakifo_remove_autostart( $args ) {
-
-	$args['play'] = false;
-	
-	return $args;
-} 
 
 /**
  * Change to small thumbnail for archives and search
