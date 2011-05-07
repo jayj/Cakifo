@@ -15,22 +15,18 @@
 
         <?php
         	$i = 0;
+			$number = ( hybrid_get_setting( 'headlines_num_posts' ) ) ? hybrid_get_setting( 'headlines_num_posts' ) : 4;
+			
         	foreach ( hybrid_get_setting( 'headlines_category' ) as $category ) :
         ?>
 
 				<?php
                 	// Create the loop for each selected category, ignoring Aside, Link, Quote and Status posts
 					$headlines = get_posts( array(
-						'numberposts' => ( hybrid_get_setting( 'headlines_num_posts' ) ) ? hybrid_get_setting( 'headlines_num_posts' ) : 4,
+						'numberposts' => $number,
 						'post__not_in' => $GLOBALS['cakifo_do_not_duplicate'],
+						'category' => $category,
 						'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'category',
-									'field' => 'id',
-									'terms' => $category,
-									'operator' => 'IN',
-								),
 								array(
 									'taxonomy' => 'post_format',
 									'terms' => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),

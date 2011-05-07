@@ -47,6 +47,20 @@
 			</div> <!-- .loop-description -->
 
 		</div> <!-- .loop-meta -->
+        
+	<?php elseif ( is_tax( 'post_format' ) ) : ?>
+
+		<div class="loop-meta">
+
+			<h1 class="loop-title">
+                <?php printf( __( 'Post format: %s', hybrid_get_textdomain() ), '<span>' . get_post_format_string( get_post_format( get_the_ID() ) ) . '</span>' ); ?>
+            </h1>
+
+			<div class="loop-description">
+				<?php echo term_description( '', get_query_var( 'taxonomy' ) ); ?>
+			</div> <!-- .loop-description -->
+
+		</div> <!-- .loop-meta -->
 
 	<?php elseif ( is_tax() ) : ?>
 
