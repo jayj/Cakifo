@@ -1,0 +1,493 @@
+/*
+ * Theme Name: Cakifo
+ * CSS for languages written in a Right To Left (RTL) direction
+ * http://codex.wordpress.org/Right_to_Left_Language_Support
+ */
+ 
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+
+ul { margin:0 2.5em 25px 0; }
+ol { margin:0 3em 25px 0; }
+dl { margin:0 5px 25px 0; }
+dl dd { margin:5px 1.5em 0 0; }
+th,td { text-align:right;}
+
+.alignright,.right {
+	float:right;
+}
+
+.alignleft,.left {
+	float:left;
+}
+
+.aligncenter,.center {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.last {
+	margin-left: 0!important;
+	margin-right: auto;
+}
+
+blockquote:after {
+	background: url(images/blockquote-quote.png) no-repeat top right;
+	right: -7px;
+	left: auto;
+}
+
+blockquote p:first-of-type:after {
+	background: url(images/blockquote-endquote.png) no-repeat bottom left;
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+/* Code */
+
+pre {
+	border-left: none;
+	border-right: none;
+}
+
+/* Tables */
+table {
+	text-align: right;
+}
+
+tr th,
+thead th {
+	border-right: 1px solid #e9f2f7;
+	border-left: none;
+}
+
+/**
+ * Topbar
+**************************************/
+
+#topbar:after {
+	right: 0;
+	left: auto;
+}
+
+/* Menu */
+
+#topbar li {
+	float: right;
+}
+
+/* Level 2 */
+	#topbar .sub-menu {
+	right: -5px;
+	left: auto;
+}
+
+/* Level 3 */
+	#topbar .sub-menu .sub-menu {
+	left: -145px;
+	right: auto;
+}
+
+/* RSS Subscribe link */
+#rss-subscribe {
+	float: left;
+}
+
+/**
+ * Header
+**************************************/
+
+#site-title {
+	float: right;
+	margin: 0 20px 0 0;
+}
+
+#site-description {
+	float: left;
+}
+
+/**
+ * Content
+**************************************/
+
+#main {
+	float: right;
+}
+
+/**
+ * Slider
+**************************************/
+
+#slider {
+	margin: -14px -20px 0 0;
+}
+
+/* Slider content */
+
+#slider .entry-summary {
+	float: right;
+}
+
+#slider .thumbnail {
+	float: right;
+	margin: 0 0 0 40px;
+}
+
+/* Slider pagination */
+
+.slider-pagination li {
+	float: right;
+}
+
+.slider-pagination li a {
+	float: right;
+}
+
+/**
+ * Posts
+**************************************/
+
+/* Breadrumbs */
+
+.breadcrumbs .trail-before {
+	margin-left: 3px;
+	margin-right: auto;
+}
+
+.format-status .avatar {
+	right: -10px;
+	left: auto;
+}
+
+.twitter-link a {
+	background: url(images/twitter.png) no-repeat right bottom;
+	padding-right: 25px;
+	padding-left: 0;
+}
+
+.author-profile .twitter-link {
+	text-align: left;
+}
+
+.loop-description .avatar {
+	float: left;
+	margin: 0 15px 10px 0;
+}
+
+.loop-meta-home {
+	background: url(images/content-orange-line.png) repeat-x right bottom;
+	padding: 0 10px 5px 0;
+}
+
+/**
+ * Recent Posts (on frontpage)
+**************************************/
+
+#recent-posts article {
+	float: right;
+	margin-left: 40px;
+	margin-right: auto;
+}
+
+#recent-posts article:last-of-type {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+/**
+ * Headlines (category lists on frontpage)
+**************************************/
+
+.headline-list {
+	float: right;
+	margin: 0 0 40px 40px;
+}
+
+.headline-list .image {
+	float: right;
+}
+
+.headline-list .details {
+	float: left;
+}
+
+/**
+ * Attachments
+**************************************/
+
+#image-info li {
+	text-align: left;
+}
+
+#image-info li .prep {
+	float: right;
+	text-align: right;
+}
+
+/**
+ * Pagination (.pagination .loop-pagination)
+**************************************/
+
+.pagination a,
+.pagination > span {
+	margin-left: 2px;
+	margin-right: auto;
+}
+
+/* Prev and next post pagination */
+.post-pagination a[rel=prev] {
+	float: right;
+}
+
+.post-pagination a[rel=next] {
+	float: left;
+}
+
+/**
+ * Sidebar
+**************************************/
+
+.sidebar {
+	float: left;
+}
+
+#sidebar-secondary {
+	clear: left;
+}
+
+
+/**
+ * Footer
+**************************************/
+
+/* Footer text */
+#footer .copyleft {
+	float: right;
+}
+
+#footer .credit {
+	float: left;
+	text-align: left;
+}
+
+/* Footer widgets */
+
+#sidebar-subsidiary .widget {
+	float: right;
+	margin-left: 20px;
+	margin-right: auto;
+}
+
+#sidebar-subsidiary .widget:nth-child(4n) {
+	margin-left: 0 !important;
+	margin-right: auto;
+}
+
+/**
+ * Comments
+**************************************/
+
+/* Replies */
+
+.comment-list .depth-2 {
+	border-right: 3px solid #04648d;
+	border-left: none;
+}
+
+.comment-list .depth-3 {
+	border-right: 3px solid #ce3000;
+	border-left: none;
+}
+
+.comment-list .depth-4 {
+	border-right: 3px solid #849219;
+	border-left: none;
+}
+
+.comment-list .depth-5,
+	.comment-list .depth-5 li {
+	border-right: 3px solid #E1C40F;
+	border-left: none;
+}
+
+.comment-text {
+	clear: right;
+}
+
+/**
+ * Comment form
+**************************************/
+
+
+/* Cancel reply link */
+#reply-title small a {
+	padding-right: 10px;
+	padding-left: 0;
+}
+
+/* Comment form paragraphs */
+#respond p.form-author {
+	float: right;
+}
+
+#respond p.form-email {
+	float: left;
+}
+
+/* Comment form inputs and textarea elements */
+
+#respond p.form-email input[type="text"] {
+	float: left;
+}
+
+/**
+ * Forms
+**************************************/
+
+/* Labels */
+label {
+	padding-right: 2px;
+	padding-left: 0;
+}
+
+#respond p.form-email label {
+	padding-right: 18px;
+	padding-left: 0;
+}
+
+/**
+ * Images
+*************************************/
+.thumbnail {
+	float: left;
+	margin-right: 15px;
+	margin-left: auto;
+}
+
+/* Aligned images */
+
+img.alignright {
+	margin: 10px 0 0 25px;
+}
+
+img.alignleft {
+	margin: 10px 25px 0 0;
+}
+
+/* Aligned captions */
+
+.wp-caption.alignright {
+	margin: 0 0 0 25px;
+}
+
+.wp-caption.alignleft {
+	margin: 0 25px 0 0;
+}
+
+/* Avatars */
+.avatar {
+	float: right;
+	margin: 0 0 15px 15px;
+}
+
+/* Galleries. */
+
+.gallery .gallery-item {
+	float:right;
+}
+
+.gallery-caption {
+	margin-right:0;
+	margin-left: auto;
+}
+
+
+/**
+ * Layouts
+**************************************/
+/* One column layout */
+
+/* Two columns, content left layout */
+.layout-2c-r #main {
+	float: left;
+}
+
+.layout-2c-r #sidebar-primary {
+	float: right;
+}
+
+.layout-2c-r #sidebar-secondary {
+	float: right;
+	clear: right;
+}
+
+/* Three columns, content right layout */
+.layout-3c-l #main {
+	float: right;
+}
+
+.layout-3c-l #sidebar-primary, .layout-3c-l #sidebar-secondary {
+	float: right;
+	margin-right: 25px;
+	margin-left: auto;
+}
+
+/* Three columns, content left layout */
+.layout-3c-r #main {
+	float: left;
+}
+
+.layout-3c-r #sidebar-primary, .layout-3c-r #sidebar-secondary {
+	float: right;
+	margin-left: 25px;
+	margin-right: auto;
+}
+
+/* Three columns, content centered layout */
+.layout-3c-c #main {
+	float: right;
+	margin-right: 220px;
+	margin-left: auto;
+}
+
+.layout-3c-c #sidebar-primary {
+	float: right;
+	margin-right: -720px;
+	margin-left: auto;
+}
+
+.layout-3c-c #sidebar-secondary {
+	float: left;
+}
+
+#site-description {
+	margin-left: 25px;
+	margin-right: auto;
+}
+
+/**
+ * Media queries for smaller screen sizes
+ *
+ * These follow after primary styles so they will successfully override.
+ */
+
+@media screen and (max-width: 979px) {
+
+.layout-3c-c #sidebar-primary {
+	float: right;
+	margin-right: -720px;
+	margin-left: auto;
+}
+
+.layout-3c-c #sidebar-secondary {
+	float: left;
+}
+
+#site-description {
+	margin-left: 25px;
+	margin-right: auto;
+}
+
+}

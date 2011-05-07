@@ -1545,12 +1545,17 @@ img.alignright {
  */
 
 @media print {
+
+	* {
+		text-shadow: none !important;	
+	}
+	
 	body {
 		background: none !important;
-		font-size: 10pt;
+		font-size: 16px;
 	}
-	footer.entry-meta a[rel=bookmark]:link:after,
-	footer.entry-meta a[rel=bookmark]:visited:after {
+	
+	.entry-content a:after {
 		content:" [" attr(href) "] "; /* Show URLs */
 	}
 	
@@ -1561,4 +1566,58 @@ img.alignright {
 		max-width: 100%;
 		position: relative !important;
 	}
+	
+	#content, #footer, .loop-meta { background-image: none !important; }
+	
+	#content {
+	    margin: 0;
+	    width: auto;
+	}
+	
+	#main { width: 100%; }
+	
+	h3,
+	.breadcrumbs,
+	.section-title {
+		background: none;
+		color: #333;	
+		border-bottom: none;
+	}
+	
+	#topbar, #site-title img, .sidebar, #footer, #respond, .pagination, iframe[src*=youtube], #slider, .format-quote .entry-format { display: none; }
+	
+	#site-title a:after {
+		content: attr(title);
+		color: #111;
+		font-size: 46px;
+		letter-spacing: -2px;
+	}
+	
+	blockquote, .author-profile {
+		background: none;
+		border: none;
+		-moz-box-shadow: none;
+		
+		box-shadow: none;	
+	}
+	
+	.comment-list li {
+		background: #fff !important;
+		border-left: none !important;
+	}
+	
+	code, pre { background: none; }
+	
+	pre { color: #111; border: none; }
+
+	table, tr th, thead th {
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+
+	table, tr th, thead th, tr td, tr:nth-child(2n) td, table caption {
+		background: none;
+	}
+
 }

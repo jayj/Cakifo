@@ -25,10 +25,15 @@
 		<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
         
         <header class="entry-header">
-        	<hgroup>
-        		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-                <?php if ( get_post_format() ) echo '<h2 class="entry-format">' . get_post_format() . '</h2>'; ?>
-            </hgroup>
+        	
+            <?php if ( get_post_format() ) : ?>
+                <hgroup>
+                    <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+                    <h2 class="entry-format"><?php echo get_post_format(); ?></h2>
+                </hgroup>
+            <?php else: ?>
+            	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+            <?php endif; ?>
         
         	<?php
 				// Tthe default format (i.e., a normal post) returns false
