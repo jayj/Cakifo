@@ -148,7 +148,11 @@ function cakifo_theme_setup() {
 	/* Custom logo */
 	add_filter( "{$prefix}_site_title", 'cakifo_logo' );
 	
-	/* Custom header for logo upload */
+	/*
+	 * Custom header for logo upload
+	 *
+	 * @todo Improve this when WordPress 3.2 comes out!
+	 */
 	add_custom_image_header( "{$prefix}_header_style", 'cakifo_admin_header_style' );
 	
 	// The color, height and width of your custom header.
@@ -270,9 +274,6 @@ function cakifo_slider_javascript() {
 	/* @link http://slidesjs.com for more info */
 	$args = apply_atomic( 'slider_args', $args ); 
 
-	/* How to change the arguments in a child theme:   function my_slider_args( $args ) { $args['play'] = false; $args['start'] = '3'; return $args; } 
-				add_filter( 'cakifo_slider_args', 'my_slider_args' ); */
-
 	/**
 	 * Parse incoming $args into an array and merge it with $defaults
 	 */ 
@@ -305,10 +306,8 @@ function cakifo_slider_javascript() {
 }
 
 function cakifo_remove_autostart( $args ) {
-	
-	// 7 seconds between slide animation on home
-	if ( is_home() )
-		$args['play'] = '7000';
+
+	$args['play'] = false;
 	
 	return $args;
 } 
@@ -647,7 +646,7 @@ function cakifo_image_info() {
 		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s sec', hybrid_get_textdomain() ), $shutter_speed ) . '</span>' );
 	}
 
-	/* Allow ¨child themes to overwrite the array of items. */
+	/* Allow child themes to overwrite the array of items. */
 	$items = apply_atomic( 'image_info_items', $items );
 
 	/* Loop through the items, wrapping each in an <li> element. */

@@ -60,5 +60,5 @@
         <?php
 			 // Load the slider.php template
 			if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
-				get_template_part( 'slider' );
+				get_template_part( 'section', 'slider' );
 		?>

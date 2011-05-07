@@ -615,30 +615,6 @@ td, td img { vertical-align: top; }
 	padding-top: 15px;
 }
 
-.format-quote {
-	
-}
-
-.format-link {
-	
-}
-
-.format-video {
-	
-}
-
-.format-gallery {
-	
-}
-
-.format-image {
-	
-}
-
-.format-chat {
-	
-}
-
 .format-chat p {
 	background: #f2f2f2;
 	padding: 5px 10px;
@@ -667,12 +643,27 @@ td, td img { vertical-align: top; }
 	left: -10px;
 }
 
-/* Author profile box (Find the other styles under Quotes */
-
-.author-profile {
+.format-quote {
 	
 }
 
+.format-link {
+	
+}
+
+.format-video {
+	
+}
+
+.format-gallery {
+	
+}
+
+.format-image {
+	
+}
+
+/* Author profile box (Find the other styles under Quotes */
 .author-profile .author-name {
 	font-size: 18px;
 	margin: 0 0 15px 0;
@@ -680,10 +671,6 @@ td, td img { vertical-align: top; }
 
 .author-profile .avatar {
 	padding: 4px;
-}
-
-.author-profile .author-description {
-	
 }
 
 .twitter-link a {
@@ -697,9 +684,7 @@ td, td img { vertical-align: top; }
 	margin-bottom: 0;
 }
 
-
 /* Page and section titles */
-
 .section-title {
 	font-size: 18px;	
 }
@@ -781,11 +766,7 @@ td, td img { vertical-align: top; }
  * Recent Posts (on frontpage)
 **************************************/
 
-#recent-posts {
-	overflow: hidden;
-}
-
-#recent-posts li {
+#recent-posts article {
 	float: left;
 	margin-right: 40px;
 	width: 205px;
@@ -794,13 +775,13 @@ td, td img { vertical-align: top; }
 	transition: opacity .3s ease;
 }
 
-#recent-posts li:last-of-type { margin-right: 0; }
+#recent-posts article:last-of-type { margin-right: 0; }
 
 	/* Lower opacity on every col except the hovered */
-	#recent-posts ul:hover li {
+	#recent-posts:hover article {
 		opacity: 0.75; 
 	}
-	#recent-posts ul:hover li:hover {
+	#recent-posts:hover article:hover {
 		opacity: 1;
 	}
 
@@ -835,7 +816,6 @@ td, td img { vertical-align: top; }
 **************************************/
 
 #headlines {
-	overflow: hidden;
 	margin: 40px 0;
 }
 
@@ -1558,4 +1538,27 @@ img.alignright {
 }
 
 
-/* Print styles removed for now.. Will come back in version 1.1 */
+/**
+ * Print styles
+ *
+ * Not done
+ */
+
+@media print {
+	body {
+		background: none !important;
+		font-size: 10pt;
+	}
+	footer.entry-meta a[rel=bookmark]:link:after,
+	footer.entry-meta a[rel=bookmark]:visited:after {
+		content:" [" attr(href) "] "; /* Show URLs */
+	}
+	
+	#wrapper {
+		clear: both !important;
+		display: block !important;
+		float: none !important;
+		max-width: 100%;
+		position: relative !important;
+	}
+}

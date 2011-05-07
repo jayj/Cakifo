@@ -33,7 +33,7 @@
 
 				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
 
-				<div class="slide">
+				<article class="slide">
 					<?php do_atomic( 'open_slide' ); // cakifo_open_slide ?>
 
 					<?php
@@ -53,7 +53,7 @@
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
-				</div> <!-- .slide -->
+				</article> <!-- .slide -->
 
 				<?php do_atomic( 'after_slide' ); // after_close_slide ?>
 
