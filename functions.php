@@ -141,6 +141,10 @@ function cakifo_theme_setup() {
 	
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
+	
+	/* Theme update check */
+	add_action( 'admin_notices', 'cakifo_update_notice' );
+	add_action( 'network_admin_notices', 'cakifo_update_notice' );
 
 	/* Custom logo */
 	add_filter( "{$prefix}_site_title", 'cakifo_logo' );
@@ -648,6 +652,42 @@ function cakifo_image_info() {
 
 	/* Display the image info and allow child themes to overwrite the final output. */
 	echo apply_atomic( 'image_info', $output );
+}
+
+
+/**
+ * Check for theme update
+ * 
+ * Displays a update notice if there's a new version of the theme
+ * 
+ * @since 1.2
+ */
+function cakifo_update_notice() {
+	
+	if ( current_user_can( 'update_themes' ) ) :
+		
+		include_once( ABSPATH . WPINC . '/feed.php' );
+		$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+		
+		// Get the update feed
+		$rss = fetch_feed( 'http://wpthemes.jayj.dk/themerss/cakifo.xml' );
+		
+		if ( ! is_wp_error( $rss ) ) :
+			$maxitems = $rss->get_item_quantity(1); // We only want the latest
+			$rss_items = $rss->get_items(0, 1);
+		endif;
+		
+		if ( $maxitems != 0 ) :
+			
+			foreach ( $rss_items as $item ) {
+				// Compare feed version to theme version
+				if ( version_compare( $item->get_title(), $theme_data['Version'] ) > 0 )
+					echo '<div id="update-nag">Version ' . esc_html( $item->get_title() ) .' for the Cakifo theme is available! <a href="' . esc_url( $item->get_permalink() ) .'">Click here to download the update</a>. ' . esc_html( $item->get_description() ) .'</div>';
+			}
+			
+		endif;
+		
+	endif; // current_user_can('update_themes')
 }
 
 ?>
