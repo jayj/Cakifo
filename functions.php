@@ -75,6 +75,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
 	add_theme_support( 'cleaner-gallery' );
+	add_theme_support( 'custom-field-series' );
 
 	/* Load shortcodes file. */
 	require_once( THEME_DIR . '/functions/shortcodes.php' );
@@ -135,6 +136,10 @@ function cakifo_theme_setup() {
 
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
+	
+	/* Add Custom Field Series */
+	if ( current_theme_supports( 'custom-field-series' ) )
+		add_action( "{$prefix}_after_singular", 'custom_field_series' );
 	
 	/* Add an author box after singular posts */
 	add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
@@ -552,11 +557,11 @@ if ( ! function_exists('debug')) {
 		echo '<pre>' . print_r ( $function, true ) . '</pre>';	
 	}
 }
-
+ 
 /**
- * Adds an author box at the end of single posts.
+ * Adds an author box at the end of single posts
  *
- * @since 0.1
+ * @since 1.0
  */
 function cakifo_author_box() { ?>
 	
