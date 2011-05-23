@@ -194,7 +194,6 @@ function cakifo_theme_setup() {
  *
  * @since 1.0
  */
-
 function cakifo_enqueue_script() {
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-1.7.min.js', '', '1.7' );
 	
@@ -582,7 +581,7 @@ function cakifo_author_box() { ?>
                     <a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?></a>
                 </p>
             <?php } // End check for twitter ?>
-        </div><?php
+        </div>  <!-- .author-profile --> <?php
 
 	endif;
 }
