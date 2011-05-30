@@ -152,14 +152,14 @@ function cakifo_theme_setup() {
 	add_action( 'network_admin_notices', 'cakifo_update_notice' );
 
 	/* Custom logo */
-	add_filter( "{$prefix}_site_title", 'cakifo_logo' );
+	add_filter( "cakifo_site_title", 'cakifo_logo' );
 	
 	/*
 	 * Custom header for logo upload
 	 *
 	 * @todo Improve this when WordPress 3.2 comes out!
 	 */
-	add_custom_image_header( "{$prefix}_header_style", 'cakifo_admin_header_style' );
+	add_custom_image_header( "cakifo_header_style", 'cakifo_admin_header_style' );
 	
 	// The color, height and width of your custom header.
 	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
