@@ -177,7 +177,7 @@ function cakifo_theme_setup() {
 	) );
 		
 	// If the user is using a child theme, add the logo.png from that as well
-	if ( TEMPLATEPATH != STYLESHEETPATH && file_exists( CHILD_THEME_URI . '/images/logo.png' ) ) {
+	if ( TEMPLATEPATH != STYLESHEETPATH && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
 				'url' => CHILD_THEME_URI . '/images/logo.png',
@@ -186,6 +186,7 @@ function cakifo_theme_setup() {
 			)
 		) );
 	}
+	
 }
 
 /**
