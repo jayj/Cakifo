@@ -221,31 +221,7 @@ $j(document).ready(
 	function() {
 
 		/* Drop-down controls. */
-		$j('div.menu ul:first-child').supersubs( {
-			minWidth: 12,
-			maxWidth: 27,
-			extraWidth: 1
-			}
-		).superfish( {
-			delay: 100,
-			animation: { opacity: 'show', height: 'show' },
-			dropShadows: false
-			}
-		);
-
-		/* @deprecated 0.8 Page and cat nav drop-downs. */
-		$j('#page-nav ul.menu').supersubs( {
-			minWidth: 12,
-			maxWidth: 27,
-			extraWidth: 1
-			}
-		).superfish( {
-			delay: 100,
-			animation: { opacity: 'show', height: 'show' },
-			dropShadows: false
-			}
-		);
-		$j('#cat-nav ul.menu').supersubs( {
+		$j('.menu ul:first-child').supersubs( {
 			minWidth: 12,
 			maxWidth: 27,
 			extraWidth: 1
