@@ -182,7 +182,7 @@ pre {
 pre code { background: none; font: 14px/25px monospace, "Courier New", Courier;	padding: 0; }
 
 /* Acronyms and abbreviations */
-acronym, abbr {
+acronym, abbr[title] {
 	border-bottom: 1px dotted #ccc;
 }
 
@@ -195,51 +195,67 @@ hr {
 /* Tables */
 table {
 	border: 1px solid #e7e7e7;
+	border-collapse: collapse; border-spacing: 0;
 	font-size: 14px;
 	width: 100%;
 	text-align: left;
-	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
-	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
-	box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
 }
 
-tr th,
-thead th {
-	background: #f3f9fc;
-	border-left: 1px solid #e9f2f7;
-	color: #444;
-	font-size: 15px;
-	font-weight: bold;
-	padding: 9px 24px;
-	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
-	-moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
-}
+	/* th */
+	tr th,
+	thead th {
+		background: #f3f9fc;
+		border-left: 1px solid #e9f2f7;
+		color: #444;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 9px 24px;
+		-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
+		-moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
+		box-shadow: inset 0 0 10px rgba(0, 0, 0, .04);
+	}
 
-tr td {
-	background: #fafafa;
-	border: 1px solid #e7e7e7;
-	padding: 6px 24px;
-}
+	/* td */
+	tr td {
+		background: #fafafa;
+		border: 1px solid #e7e7e7;
+		padding: 6px 24px;
+	}
+	
+	td { vertical-align: top; }
+	
+	tr:nth-child(2n) td {
+		background: #f7f7f7;
+	}
+	
+	tr:hover td {
+		background: #fff;
+	}
+	
+	td, td img { vertical-align: top; }
+	
+	/* tfoot */
+	tfoot td {
+		color: #777;
+		font-size: 11px;
+		text-transform: uppercase;	
+	}
+	
+	tfoot th {
+		color: #444;
+		font-size: 12px;
+		text-transform: uppercase;	
+	}
 
-tr:nth-child(2n) td {
-	background: #f7f7f7;
-}
-
-tr:hover td {
-	background: #fff;
-}
-
-table caption {
-	background: #fffff2;
-	border: 1px solid #ffc;
-	font-size: 16px;
-	margin-bottom: 5px;
-	padding: 10px;
-	border-radius: 5px;
-}
-
-td, td img { vertical-align: top; } 
+	/* Table caption */
+	table caption {
+		background: #FFFFDB;
+		border: 1px solid #F7F7AB;
+		font-size: 16px;
+		margin-bottom: 5px;
+		padding: 10px;
+		border-radius: 5px;
+	}
 
 /* Change color of selections */
 ::-moz-selection {

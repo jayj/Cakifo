@@ -451,7 +451,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  */
 function cakifo_logo( $title ) {
 
-	$tag = ( is_home() || is_front_page() ) ? 'h1' : 'div';
+	$tag = ( is_home() || is_front_page() ) ? 'h1' : 'h4';
 
 	if ( $title = get_bloginfo( 'name' ) ) {
 
