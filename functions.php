@@ -164,7 +164,7 @@ function cakifo_theme_setup() {
 	// The color, height and width of your custom header.
 	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 960 ) );
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
 	
 	// Load the logo from the parent theme images folder and the childtheme image folder 
@@ -196,11 +196,20 @@ function cakifo_theme_setup() {
  * @since 1.0
  */
 function cakifo_enqueue_script() {
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-1.7.min.js', '', '1.7' );
+	
+	/**
+	 * Modernizr enables HTML5 elements & feature detects
+	 *
+     * For optimal performance in your child theme, use a custom Modernizr build: www.modernizr.com/download/
+	 * use wp_deregister_script( 'modernizr' ); and
+	 * wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
+	 * in your child theme functions.php
+	 */
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
 	
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), '1.4.4', true ); // WordPress 3.2 will have jQuery  1.5.2
+	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
 	
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.0', true );
 

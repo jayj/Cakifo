@@ -42,7 +42,7 @@
         	<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
 				<?php hybrid_site_title(); ?>
-                
+
                 <?php hybrid_site_description(); ?>
 
 			<?php do_atomic( 'header' ); // cakifo_header ?>

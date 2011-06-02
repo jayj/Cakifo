@@ -5,11 +5,11 @@ jQuery(document).ready(function($) {
 	 * http://css-tricks.com/equal-height-blocks-in-rows/
 	 */
 	var currentTallest = 0,
-	currentRowStart = 0,
-	rowDivs = [],
-	$el,
-	topPosition = 0,
-	currentDiv = 0;
+		currentRowStart = 0,
+		rowDivs = [],
+		$el,
+		topPosition = 0,
+		currentDiv = 0;
 
 	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget').each(function() {
 
