@@ -55,7 +55,6 @@ function cakifo_theme_setup() {
 
 	/* Add theme support for core framework features */
 	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
-	add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-post-meta-box' );
@@ -67,6 +66,11 @@ function cakifo_theme_setup() {
 	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO ) plugin isn't activated
 	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) && ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
+		
+	/* Load the sidebars if supported */
+	//add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
+	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular' ) );
+	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
 
 	/* Add theme support for framework extensions */
 	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
@@ -143,7 +147,7 @@ function cakifo_theme_setup() {
 		add_action( "{$prefix}_after_singular", 'custom_field_series' );
 	
 	/* Add an author box after singular posts */
-	add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
+	add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
 	
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
@@ -578,7 +582,7 @@ if ( ! function_exists('debug')) {
  */
 function cakifo_author_box() { ?>
 	
-    <?php if ( get_the_author_meta( 'description' ) ) : ?>
+    <?php if ( get_the_author_meta( 'description' ) && ( function_exists( 'is_multi_author' ) && is_multi_author() ) ) : ?>
 
         <div class="author-profile vcard">
 

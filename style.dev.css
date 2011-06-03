@@ -42,15 +42,34 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.5;
 }
 
-h1, h2 { font-size: 24px; }
-h3 { font-size: 22px;}
-h4 { font-size: 20px; font-weight: bold;  }
-h5 { font-size: 18px; }
-h6 { font-size: 16px; font-weight: bold; }
+h1, h2 {
+	font-size: 24px;
+}
+
+h3,
+.widget-title {
+	color: #d54e21;	
+	font-size: 22px;
+}
+
+h4 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+	font-weight: bold;
+}
 
 h3,
 .breadcrumbs,
-.section-title {
+.section-title,
+.widget-title {
 	background: #f7f7f7;
 	border-bottom: 1px dashed #eee;
 	padding: 7px 5px;	
@@ -58,8 +77,14 @@ h3,
 	border-radius: 3px 3px 0 0;
 }
 
-h3 {
-	color: #d54e21;	
+#main .widget-title {
+	background: none;
+	border-bottom: none;
+	color: #666;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	padding: 0;
 }
 
 /* Lists */
@@ -472,7 +497,8 @@ table {
 	float: left;
 }
 
-.sidebar {
+#sidebar-primary,
+#sidebar-secondary {
 	width: 280px;
 	float: right;	
 }
@@ -1062,7 +1088,8 @@ table {
  * Sidebar
 **************************************/
 
-.sidebar {
+#sidebar-primary,
+#sidebar-secondary {
 	font-size: 14px;
 	line-height: 25px;
 	word-wrap: break-word;
@@ -1579,7 +1606,7 @@ img.alignright {
 
 /**
  * Media queries for smaller screen sizes
- *
+ * @todo Improve this
  * These follow after primary styles so they will successfully override.
  */
 
@@ -1590,7 +1617,7 @@ img.alignright {
 	#site-description { margin-right: 25px; }
 	#main { width: 100%; }
 	
-	.sidebar, #slider { display: none; }
+	#sidebar-primary, #sidebar-secondary, #slider { display: none; }
 /*	#slider {  width: 100%; margin: 5px 0 0; }
 	.slides_container{ width: 100%; margin: 0; }
 	#slider .slide { width: 58%; text-align: center; margin: 0 auto; }
@@ -1604,7 +1631,7 @@ img.alignright {
 }
 
 @media screen and (max-width: 460px) {
-	.sidebar, #slider { display: none; }
+	#sidebar-primary,#sidebar-secondary, #slider { display: none; }
 }
 
 
@@ -1654,7 +1681,7 @@ img.alignright {
 		border-bottom: none;
 	}
 	
-	#topbar, #site-title img, .sidebar, #footer, #respond, .pagination, iframe[src*=youtube], #slider, .format-quote .entry-format { display: none; }
+	#topbar, #site-title img, #sidebar-primary, #sidebar-secondary, #footer, #respond, .pagination, iframe[src*=youtube], #slider, .format-quote .entry-format { display: none; }
 	
 	#site-title a:after {
 		content: attr(title);

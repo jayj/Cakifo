@@ -18,6 +18,7 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-digg-link', 'cakifo_entry_digg_link_shortcode' );
 	add_shortcode( 'entry-facebook-link', 'cakifo_entry_facebook_link_shortcode' );
 	add_shortcode( 'entry-twitter-link', 'cakifo_entry_twitter_link_shortcode' );
+	add_shortcode( 'entry-googleplus-link', 'cakifo_entry_googleplus_link_shortcode' );
 	
 	/* Replace shortcodes */
 	remove_shortcode( 'entry-published' );
@@ -36,9 +37,10 @@ function cakifo_rss_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
+		'text' => __( 'RSS', hybrid_get_textdomain() ),
  	), $atts) );
 
-	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  __( 'RSS', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  $text . '</a>' . $after;
 }
 
 /**
@@ -155,6 +157,32 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 		$width = 110;
 
 	return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
+}
+
+/**
+ * Google +1 shortcode
+ *
+ * @note This won't work from your computer (http://localhost). Must be a live site.
+ * @link http://www.google.com/+1/button/
+ * @since 1.2
+ */
+function cakifo_entry_googleplus_link_shortcode( $atts ) {
+	
+	extract( shortcode_atts( array(   
+		'before' => '',
+		'after' => '',
+		'href' => get_permalink(),
+		'layout' => 'standard', // small, medium, standard, tall
+		'callback' => '',
+		'count' => 'true' // true, false
+ 	), $atts) );
+	
+	$script = '<script src="https://apis.google.com/js/plusone.js"></script>';
+	
+	$text = '<g:plusone size="' . $layout . '" count="' . $count . '" href="' . $href . '" callback="' . $callback . '"></g:plusone>';
+	
+	return $before . $text . $after . $script;
+	
 }
 
 /**

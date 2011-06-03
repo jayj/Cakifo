@@ -70,7 +70,9 @@ get_header(); // Loads the header.php template ?>
 
             </div> <!-- #post-<?php the_ID(); ?> -->
 
-            <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
+			<?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template ?>
+            
+			<?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
 
             <?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
 
