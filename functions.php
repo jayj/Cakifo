@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.2
+ * @version 1.2-rc1
  * @author Jayj.dk <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011, Jesper J
  * @link http://wpthemes.jayj.dk/cakifo
