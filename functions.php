@@ -1,13 +1,13 @@
 <?php
-
 /**
  * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and 
  * sets up the supported features, default actions, and default filters.  If making customizations, users 
  * should create a child theme and make changes to its functions.php file (not this one).  Friends don't let 
- * friends modify parent theme files. ;)
+ * friends modify parent theme files ;)
  *
  * Child themes should do their setup on the 'after_setup_theme' hook with a priority of 11 if they want to
  * override parent theme features.  Use a priority of 9 if wanting to run before the parent theme.
+ *
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
  * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.1
+ * @version 1.2
  * @author Jayj.dk <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011, Jesper J
  * @link http://wpthemes.jayj.dk/cakifo
@@ -32,7 +32,8 @@
 require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
 $theme = new Hybrid();
 
-if ( ! isset( $content_width ) ) $content_width = 630;
+if ( ! isset( $content_width ) )
+	$content_width = 630;
 
 /* Do theme setup on the 'after_setup_theme' hook */
 add_action( 'after_setup_theme', 'cakifo_theme_setup' );
@@ -63,8 +64,8 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 	//add_theme_support( 'hybrid-core-drop-downs' );
 
-	// Add hybrid core seo if the WordPress SEO plugin isn't activated
-	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) )
+	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO ) plugin isn't activated
+	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) && ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
 	/* Add theme support for framework extensions */
@@ -157,14 +158,17 @@ function cakifo_theme_setup() {
 	/*
 	 * Custom header for logo upload
 	 *
-	 * @todo Improve this when WordPress 3.2 comes out!
+	 * @todo Improve this
 	 */
 	add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
 	
-	// The color, height and width of your custom header.
-	// Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height to change these values.
+	/**
+	 * The color, height and width of your custom logo
+	 * Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height 
+	 * to change these values in your child theme
+	 */
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) ); // Could be cool with flexible width and heights (@http://core.trac.wordpress.org/ticket/17242)
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
 	
 	// Load the logo from the parent theme images folder and the childtheme image folder 

@@ -131,7 +131,6 @@ blockquote blockquote {
 	.singular blockquote.pull {
 		font-size: 19px;
 		margin: 45px 10px 0;
-		
 		/* Remove styles from <blockquote> */
 		background: none;
 		border: none;
@@ -145,6 +144,7 @@ blockquote blockquote {
 		padding-right: 0;
 		margin: 45px 25px 0 0;
 	}
+	
 	.singular .pull.alignright {
 		margin: 45px 0 0 25px;
 	}
@@ -156,7 +156,10 @@ blockquote blockquote {
 	
 	.singular blockquote.pull:after,
 	.singular blockquote.pull p:first-of-type:after {
-		opacity: 0.5;	
+		opacity: 0.8;
+		-webkit-transform: scale(0.7);
+		-moz-transform: scale(0.7);
+		transform: scale(0.7);
 	}
 
 /* Code */

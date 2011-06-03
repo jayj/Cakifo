@@ -137,6 +137,38 @@ blockquote blockquote {
 	color: #666;
 }
 
+blockquote.pull {
+	font-size: 19px;
+	margin: 45px 10px 0;
+		
+	/* Remove styles from <blockquote> */
+	background: none;
+	border: none;
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+	
+.pull.alignleft {
+	padding-right: 0;
+	margin: 45px 25px 0 0;
+}
+
+.pull.alignright {
+	margin: 45px 0 0 25px;
+}
+	
+blockquote.pull.alignleft,
+blockquote.pull.alignright {
+	width: 33%;
+}
+	
+blockquote.pull:after,
+blockquote.pull p:first-of-type:after {
+	opacity: 0.5;	
+}
+
 code {
 	background: #ffc;
 	font: 12px/25px monospace, "Courier New", Courier;	
