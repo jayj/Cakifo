@@ -31,6 +31,15 @@ a:hover {
 	color: #d64e20;	
 }
 
+a:hover,
+a:active {
+    outline: 0;
+}
+
+a:focus {
+    outline: thin dotted;
+}
+
 /**
  * HTML elements
 **************************************/
@@ -1437,7 +1446,7 @@ span.required {
 /* Search form */
 .search-form input[type="text"],
 .search-form input[type="search"] {
-	width: 60%;
+	width: 55%;
 }
 .search-form input[type="submit"] {
 	width: 30%;

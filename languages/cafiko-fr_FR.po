@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-11 15:50+0100\n"
-"PO-Revision-Date: 2011-05-11 15:53+0100\n"
+"POT-Creation-Date: 2011-06-04 21:52+0100\n"
+"PO-Revision-Date: 2011-06-04 21:54+0100\n"
 "Last-Translator: Jesper <kontakt@jayj.dk>\n"
 "Language-Team: Wolforg <contact@wolforg.eu>\n"
 "MIME-Version: 1.0\n"
@@ -67,105 +67,106 @@ msgstr "Commentaires clos, mais <a href=\"%1$s\" title=\"URL de Trackback URL po
 msgid "Comments are closed."
 msgstr "Commentaires clos."
 
-#: functions.php:175
-#: functions.php:185
+#: functions.php:183
+#: functions.php:193
 #, php-format
 msgid "Logo.png from the %1$s images folder"
 msgstr "Logo.png à partir du répertoire d'images %1$s"
 
-#: functions.php:344
-#: functions.php:353
-#: loop.php:61
-#: loop.php:67
-#: loop.php:72
+#: functions.php:361
+#: functions.php:370
+#: loop.php:62
+#: loop.php:70
+#: loop.php:77
+#: loop.php:84
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Lire la suite <span class=\"meta-nav\">&raquo;</span>"
 
-#: functions.php:365
+#: functions.php:382
 msgid "You are here:"
 msgstr "Vous êtes ici :"
 
-#: functions.php:378
+#: functions.php:395
 msgid "Posted by [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr "Par [entry-author] le [entry-published] [entry-edit-link before=\" | \"]"
 
-#: functions.php:384
+#: functions.php:401
 msgid "By [entry-author] on [entry-published] [entry-terms taxonomy=\"category\" before=\"in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "Par [entry-author] le [entry-published] [entry-terms taxonomy=\"category\" before=\"dans \"] [entry-terms before=\"| Mots-Clés \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 
-#: functions.php:389
+#: functions.php:406
 msgid "Link recommended by [entry-author] on [entry-published] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "Recommandé par [entry-author] le [entry-published] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 
-#: functions.php:398
+#: functions.php:415
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
 msgstr "Suivre par [rss-link] [twitter-username before=\"or \"]"
 
-#: functions.php:572
+#: functions.php:589
 msgid "Article written by [entry-author]"
 msgstr "Article rédigé par [entry-author]"
 
-#: functions.php:582
+#: functions.php:599
 #, php-format
 msgid "Follow %1$s on Twitter"
 msgstr "Suivre %1$s sur Twitter"
 
-#: functions.php:609
+#: functions.php:626
 #, php-format
 msgid "<span class=\"prep\">Dimensions:</span> %s"
 msgstr "<span class=\"prep\">Dimensions :</span> %s"
 
-#: functions.php:609
+#: functions.php:626
 #, php-format
 msgid "%1$s &#215; %2$s pixels"
 msgstr "%1$s &#215; %2$s pixels"
 
-#: functions.php:613
+#: functions.php:630
 #, php-format
 msgid "<span class=\"prep\">Date:</span> %s"
 msgstr "<span class=\"prep\">Date :</span> %s"
 
-#: functions.php:617
+#: functions.php:634
 #, php-format
 msgid "<span class=\"prep\">Camera:</span> %s"
 msgstr "<span class=\"prep\">Caméra :</span> %s"
 
-#: functions.php:621
+#: functions.php:638
 #, php-format
 msgid "<span class=\"prep\">Aperture:</span> %s"
 msgstr "a<span class=\"prep\">Ouverture :</span> %s"
 
-#: functions.php:621
+#: functions.php:638
 #, php-format
 msgid "f/%s"
 msgstr "f/%s"
 
-#: functions.php:625
+#: functions.php:642
 #, php-format
 msgid "<span class=\"prep\">Focal Length:</span> %s"
 msgstr "<span class=\"prep\">Focale :</span> %s"
 
-#: functions.php:625
+#: functions.php:642
 #, php-format
 msgid "%s mm"
 msgstr "%s mm"
 
-#: functions.php:629
+#: functions.php:646
 #, php-format
 msgid "<span class=\"prep\">ISO:</span> %s"
 msgstr "<span class=\"prep\">ISO :</span> %s"
 
-#: functions.php:645
+#: functions.php:662
 #, php-format
 msgid "<span class=\"prep\">Shutter Speed:</span> %s"
 msgstr "<span class=\"prep\">Vitesse d'Obturation :</span> %s"
 
-#: functions.php:645
+#: functions.php:662
 #, php-format
 msgid "%s sec"
 msgstr "%s sec"
 
-#: functions.php:656
+#: functions.php:673
 msgid "Image Info"
 msgstr "Info Image"
 
@@ -238,15 +239,20 @@ msgstr "Suivant &rarr;"
 msgid "By [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr "Par [entry-author] le [entry-published] [entry-edit-link before=\" | \"]"
 
-#: loop.php:63
-#: loop.php:68
-#: loop.php:73
+#: loop.php:64
+#: loop.php:71
+#: loop.php:78
+#: loop.php:85
 msgid "Pages:"
 msgstr "Pages :"
 
-#: loop.php:79
+#: loop.php:92
 msgid "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "[entry-terms taxonomy=\"category\" before=\"Publié dans \"] [entry-terms before=\"| Mots-Clés \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
+
+#: menu-primary.php:22
+msgid "Main menu"
+msgstr ""
 
 #: searchform.php:19
 msgid "Search this site..."
@@ -267,6 +273,10 @@ msgstr "Articles Récents"
 #: section-recentposts.php:61
 msgid "[entry-published] by [entry-author]"
 msgstr "[entry-published] par [entry-author]"
+
+#: section-slider.php:28
+msgid "Featured Posts"
+msgstr "Articles mis en avant"
 
 #: singular.php:44
 #: template-archives.php:71
@@ -340,27 +350,100 @@ msgstr "Nom d'utilisateur Twitter :"
 msgid "Your Twitter username (if you have one)"
 msgstr "Votre nom d'utilisateur Twitter (si vous en possédez un)"
 
-#: functions/shortcodes.php:41
+#: functions/shortcodes.php:40
 msgid "RSS"
 msgstr "RSS"
 
-#: functions/shortcodes.php:58
+#: functions/shortcodes.php:60
 msgid "Follow me on Twitter"
 msgstr "Me suivre sur Twitter"
 
-#: functions/shortcodes.php:82
+#: functions/shortcodes.php:84
 msgid "Delicious"
 msgstr "Delicious"
 
-#: functions/shortcodes.php:100
+#: functions/shortcodes.php:102
 msgid "Digg this entry"
 msgstr "Publier sur Digg"
 
-#: functions/shortcodes.php:100
+#: functions/shortcodes.php:102
 msgid "Digg"
 msgstr "Digg"
 
+#: functions/sidebars.php:41
+msgid "Primary"
+msgstr "Primaire"
+
+#: functions/sidebars.php:42
+msgid "The main (primary) widget area, most often used as a sidebar."
+msgstr "La zone principale (primaire) de widgets, souvent utilisée comme barre latérale."
+
+#: functions/sidebars.php:52
+msgid "Secondary"
+msgstr "Secondaire"
+
+#: functions/sidebars.php:53
+msgid "The second most important widget area, most often used as a secondary sidebar."
+msgstr "La seconde plus importante zone de widgets, souvent utilisée comme seconde barre latérale."
+
+#: functions/sidebars.php:63
+msgid "Subsidiary"
+msgstr "Subsidiaire"
+
+#: functions/sidebars.php:64
+msgid "A widget area loaded in the footer of the site."
+msgstr "Une zone de widgets dans le pied du site."
+
+#: functions/sidebars.php:74
+msgid "Header"
+msgstr "Haut"
+
+#: functions/sidebars.php:75
+msgid "Displayed within the site's header area."
+msgstr "Affiché dans la zone en haut du site."
+
+#: functions/sidebars.php:85
+msgid "Before Content"
+msgstr "Avant le contenu"
+
+#: functions/sidebars.php:86
+msgid "Loaded before the page's main content area."
+msgstr "Affiché avant la zone de contenu de la page."
+
+#: functions/sidebars.php:96
+msgid "After Content"
+msgstr "Après le contenu"
+
+#: functions/sidebars.php:97
+msgid "Loaded after the page's main content area."
+msgstr "Affiché après la zone de contenu de la page."
+
+#: functions/sidebars.php:107
+msgid "After Singular"
+msgstr "Après la page"
+
+#: functions/sidebars.php:108
+msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
+msgstr "Affiché sur les publications (articles, pages, fichiers joints, etc...) avant la zone de commentaires."
+
+#: functions/sidebars.php:118
+msgid "After Single"
+msgstr ""
+
+#: functions/sidebars.php:119
+msgid "Loaded on single post views before the comments area."
+msgstr ""
+
+#: functions/sidebars.php:129
+msgid "Error Page"
+msgstr ""
+
+#: functions/sidebars.php:130
+msgid "Loaded on 404 error pages"
+msgstr ""
+
 #: library/admin/post-meta-box.php:39
+#: library/admin/theme-settings.php:40
 #, php-format
 msgid "%1$s Settings"
 msgstr "Paramètres %1$s"
@@ -1175,62 +1258,6 @@ msgstr "Répondre"
 #: library/functions/shortcodes.php:400
 msgid "Log in to reply."
 msgstr "Se connecter pour répondre."
-
-#: library/functions/sidebars.php:37
-msgid "Primary"
-msgstr "Primaire"
-
-#: library/functions/sidebars.php:38
-msgid "The main (primary) widget area, most often used as a sidebar."
-msgstr "La zone principale (primaire) de widgets, souvent utilisée comme barre latérale."
-
-#: library/functions/sidebars.php:48
-msgid "Secondary"
-msgstr "Secondaire"
-
-#: library/functions/sidebars.php:49
-msgid "The second most important widget area, most often used as a secondary sidebar."
-msgstr "La seconde plus importante zone de widgets, souvent utilisée comme seconde barre latérale."
-
-#: library/functions/sidebars.php:59
-msgid "Subsidiary"
-msgstr "Subsidiaire"
-
-#: library/functions/sidebars.php:60
-msgid "A widget area loaded in the footer of the site."
-msgstr "Une zone de widgets dans le pied du site."
-
-#: library/functions/sidebars.php:70
-msgid "Header"
-msgstr "Haut"
-
-#: library/functions/sidebars.php:71
-msgid "Displayed within the site's header area."
-msgstr "Affiché dans la zone en haut du site."
-
-#: library/functions/sidebars.php:81
-msgid "Before Content"
-msgstr "Avant le contenu"
-
-#: library/functions/sidebars.php:82
-msgid "Loaded before the page's main content area."
-msgstr "Affiché avant la zone de contenu de la page."
-
-#: library/functions/sidebars.php:92
-msgid "After Content"
-msgstr "Après le contenu"
-
-#: library/functions/sidebars.php:93
-msgid "Loaded after the page's main content area."
-msgstr "Affiché après la zone de contenu de la page."
-
-#: library/functions/sidebars.php:103
-msgid "After Singular"
-msgstr "Après la page"
-
-#: library/functions/sidebars.php:104
-msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
-msgstr "Affiché sur les publications (articles, pages, fichiers joints, etc...) avant la zone de commentaires."
 
 #~ msgid "Not Found"
 #~ msgstr "Non Trouvé"

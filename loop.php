@@ -55,6 +55,7 @@
         ?>
 
 		<?php if ( has_post_format( 'status' ) ) : ?>
+        
         	<div class="entry-content">
             	<div class="note">
                     <?php echo get_avatar( $post->post_author, apply_atomic( 'status_avatar', '48' ) ); ?>
@@ -62,16 +63,28 @@
                 </div>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
+            
+        <?php elseif ( has_post_format( 'quote' ) ) : ?>
+        
+            <div class="entry-content">
+            	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
+            	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+            </div> <!-- .entry-content -->
+            
 		<?php elseif ( is_archive() || is_search() ) : // Only display Excerpts for Archives and Search ?>
+        
         	<div class="entry-summary">
         		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
                 <?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-summary -->
+            
         <?php else : ?>
+        
         	<div class="entry-content">
         		<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
+            
         <?php endif; ?>
 
         <?php

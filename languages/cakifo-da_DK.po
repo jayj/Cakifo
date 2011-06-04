@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-11 15:50+0100\n"
-"PO-Revision-Date: 2011-05-11 15:52+0100\n"
+"POT-Creation-Date: 2011-06-04 21:52+0100\n"
+"PO-Revision-Date: 2011-06-04 21:54+0100\n"
 "Last-Translator: Jesper <kontakt@jayj.dk>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -64,105 +64,106 @@ msgstr "Kommentarer er lukket, men <a href=\"%1$s\" title=\"Trackback URL for th
 msgid "Comments are closed."
 msgstr "Der er lukket for muligheden for at kommenterer."
 
-#: functions.php:175
-#: functions.php:185
+#: functions.php:183
+#: functions.php:193
 #, php-format
 msgid "Logo.png from the %1$s images folder"
 msgstr "Logo.png fra %1$s images mappen"
 
-#: functions.php:344
-#: functions.php:353
-#: loop.php:61
-#: loop.php:67
-#: loop.php:72
+#: functions.php:361
+#: functions.php:370
+#: loop.php:62
+#: loop.php:70
+#: loop.php:77
+#: loop.php:84
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Læs mere <span class=\"meta-nav\">&raquo;</span>"
 
-#: functions.php:365
+#: functions.php:382
 msgid "You are here:"
 msgstr "Du er her:"
 
-#: functions.php:378
+#: functions.php:395
 msgid "Posted by [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr "Af [entry-author], [entry-published] [entry-edit-link before=\" | \"]"
 
-#: functions.php:384
+#: functions.php:401
 msgid "By [entry-author] on [entry-published] [entry-terms taxonomy=\"category\" before=\"in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "Af [entry-author], [entry-published] [entry-terms taxonomy=\"category\" before=\"i \"] [entry-terms before=\"| Tagget med \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 
-#: functions.php:389
+#: functions.php:406
 msgid "Link recommended by [entry-author] on [entry-published] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "Anbefalet af [entry-author], [entry-published] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 
-#: functions.php:398
+#: functions.php:415
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
 msgstr "Abonnér på [rss-link] [twitter-username before=\"eller \"]"
 
-#: functions.php:572
+#: functions.php:589
 msgid "Article written by [entry-author]"
 msgstr "Indlæg skrevet af  [entry-author]"
 
-#: functions.php:582
+#: functions.php:599
 #, php-format
 msgid "Follow %1$s on Twitter"
 msgstr "Følg %1$s på Twitter"
 
-#: functions.php:609
+#: functions.php:626
 #, php-format
 msgid "<span class=\"prep\">Dimensions:</span> %s"
 msgstr "<span class=\"prep\">Dimensioner:</span> %s"
 
-#: functions.php:609
+#: functions.php:626
 #, php-format
 msgid "%1$s &#215; %2$s pixels"
 msgstr "%1$s &#215; %2$s pixels"
 
-#: functions.php:613
+#: functions.php:630
 #, php-format
 msgid "<span class=\"prep\">Date:</span> %s"
 msgstr "<span class=\"prep\">Dato:</span> %s"
 
-#: functions.php:617
+#: functions.php:634
 #, php-format
 msgid "<span class=\"prep\">Camera:</span> %s"
 msgstr "<span class=\"prep\">Kamera:</span> %s"
 
-#: functions.php:621
+#: functions.php:638
 #, php-format
 msgid "<span class=\"prep\">Aperture:</span> %s"
 msgstr "<span class=\"prep\">Blænde:</span> %s"
 
-#: functions.php:621
+#: functions.php:638
 #, php-format
 msgid "f/%s"
 msgstr "f/%s"
 
-#: functions.php:625
+#: functions.php:642
 #, php-format
 msgid "<span class=\"prep\">Focal Length:</span> %s"
 msgstr "<span class=\"prep\">Brændvidde:</span> %s"
 
-#: functions.php:625
+#: functions.php:642
 #, php-format
 msgid "%s mm"
 msgstr "%s mm"
 
-#: functions.php:629
+#: functions.php:646
 #, php-format
 msgid "<span class=\"prep\">ISO:</span> %s"
 msgstr "<span class=\"prep\">ISO:</span> %s"
 
-#: functions.php:645
+#: functions.php:662
 #, php-format
 msgid "<span class=\"prep\">Shutter Speed:</span> %s"
 msgstr "<span class=\"prep\">Lukkerhastighed:</span> %s"
 
-#: functions.php:645
+#: functions.php:662
 #, php-format
 msgid "%s sec"
 msgstr "%s sek"
 
-#: functions.php:656
+#: functions.php:673
 msgid "Image Info"
 msgstr "Billede info"
 
@@ -235,15 +236,20 @@ msgstr "Næste &rarr;"
 msgid "By [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr "Af [entry-author], [entry-published] [entry-edit-link before=\" | \"]"
 
-#: loop.php:63
-#: loop.php:68
-#: loop.php:73
+#: loop.php:64
+#: loop.php:71
+#: loop.php:78
+#: loop.php:85
 msgid "Pages:"
 msgstr "Sider:"
 
-#: loop.php:79
+#: loop.php:92
 msgid "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr "[entry-terms taxonomy=\"category\" before=\"Skrevet i \"] [entry-terms before=\"| Tagget med \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
+
+#: menu-primary.php:22
+msgid "Main menu"
+msgstr "Hovedmenu"
 
 #: searchform.php:19
 msgid "Search this site..."
@@ -264,6 +270,10 @@ msgstr "Seneste indlæg"
 #: section-recentposts.php:61
 msgid "[entry-published] by [entry-author]"
 msgstr "[entry-published] af [entry-author]"
+
+#: section-slider.php:28
+msgid "Featured Posts"
+msgstr "Fremhævede indlæg"
 
 #: singular.php:44
 #: template-archives.php:71
@@ -337,27 +347,100 @@ msgstr "Twitter brugernavn:"
 msgid "Your Twitter username (if you have one)"
 msgstr "Dit Twitter brugernavn (hvis du har et)"
 
-#: functions/shortcodes.php:41
+#: functions/shortcodes.php:40
 msgid "RSS"
 msgstr "RSS"
 
-#: functions/shortcodes.php:58
+#: functions/shortcodes.php:60
 msgid "Follow me on Twitter"
 msgstr "Følg mig på Twitter"
 
-#: functions/shortcodes.php:82
+#: functions/shortcodes.php:84
 msgid "Delicious"
 msgstr "Delicious"
 
-#: functions/shortcodes.php:100
+#: functions/shortcodes.php:102
 msgid "Digg this entry"
 msgstr "Digg dette indlæg"
 
-#: functions/shortcodes.php:100
+#: functions/shortcodes.php:102
 msgid "Digg"
 msgstr "Digg"
 
+#: functions/sidebars.php:41
+msgid "Primary"
+msgstr "Primær"
+
+#: functions/sidebars.php:42
+msgid "The main (primary) widget area, most often used as a sidebar."
+msgstr "Det primære widgetområde, ofte brugt som sidebar"
+
+#: functions/sidebars.php:52
+msgid "Secondary"
+msgstr "Sekundær"
+
+#: functions/sidebars.php:53
+msgid "The second most important widget area, most often used as a secondary sidebar."
+msgstr "The andet mest vigtige widgetområde, ofte brugt som sekundær sidebar"
+
+#: functions/sidebars.php:63
+msgid "Subsidiary"
+msgstr "Footer"
+
+#: functions/sidebars.php:64
+msgid "A widget area loaded in the footer of the site."
+msgstr "Et widgetområde i footeren"
+
+#: functions/sidebars.php:74
+msgid "Header"
+msgstr "Header"
+
+#: functions/sidebars.php:75
+msgid "Displayed within the site's header area."
+msgstr "Vist i sidens headerområde"
+
+#: functions/sidebars.php:85
+msgid "Before Content"
+msgstr "Før indhold"
+
+#: functions/sidebars.php:86
+msgid "Loaded before the page's main content area."
+msgstr "Indlæst før sidens primære indhold"
+
+#: functions/sidebars.php:96
+msgid "After Content"
+msgstr "Efter indhold"
+
+#: functions/sidebars.php:97
+msgid "Loaded after the page's main content area."
+msgstr "Indlæst efter sidens primære indhold"
+
+#: functions/sidebars.php:107
+msgid "After Singular"
+msgstr "After singular"
+
+#: functions/sidebars.php:108
+msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
+msgstr "Indlæg på singular indlæg (sider, attachments mm.) lige før kommentarerne"
+
+#: functions/sidebars.php:118
+msgid "After Single"
+msgstr "Efter single"
+
+#: functions/sidebars.php:119
+msgid "Loaded on single post views before the comments area."
+msgstr "Indlæg på single indlæg lige før kommentarerne"
+
+#: functions/sidebars.php:129
+msgid "Error Page"
+msgstr "404 Fejlside"
+
+#: functions/sidebars.php:130
+msgid "Loaded on 404 error pages"
+msgstr "Indlæst på 404 fejlsider"
+
 #: library/admin/post-meta-box.php:39
+#: library/admin/theme-settings.php:40
 #, php-format
 msgid "%1$s Settings"
 msgstr "%1$s Indstillinger"
@@ -1172,62 +1255,6 @@ msgstr "Besvar"
 #: library/functions/shortcodes.php:400
 msgid "Log in to reply."
 msgstr "Log ind for at besvare"
-
-#: library/functions/sidebars.php:37
-msgid "Primary"
-msgstr "Primær"
-
-#: library/functions/sidebars.php:38
-msgid "The main (primary) widget area, most often used as a sidebar."
-msgstr "Det primære widgetområde, ofte brugt som sidebar"
-
-#: library/functions/sidebars.php:48
-msgid "Secondary"
-msgstr "Sekundær"
-
-#: library/functions/sidebars.php:49
-msgid "The second most important widget area, most often used as a secondary sidebar."
-msgstr "The andet mest vigtige widgetområde, ofte brugt som sekundær sidebar"
-
-#: library/functions/sidebars.php:59
-msgid "Subsidiary"
-msgstr "Footer"
-
-#: library/functions/sidebars.php:60
-msgid "A widget area loaded in the footer of the site."
-msgstr "Et widgetområde i footeren"
-
-#: library/functions/sidebars.php:70
-msgid "Header"
-msgstr "Header"
-
-#: library/functions/sidebars.php:71
-msgid "Displayed within the site's header area."
-msgstr "Vist i sidens headerområde"
-
-#: library/functions/sidebars.php:81
-msgid "Before Content"
-msgstr "Før indhold"
-
-#: library/functions/sidebars.php:82
-msgid "Loaded before the page's main content area."
-msgstr "Indlæst før sidens primære indhold"
-
-#: library/functions/sidebars.php:92
-msgid "After Content"
-msgstr "Efter indhold"
-
-#: library/functions/sidebars.php:93
-msgid "Loaded after the page's main content area."
-msgstr "Indlæst efter sidens primære indhold"
-
-#: library/functions/sidebars.php:103
-msgid "After Singular"
-msgstr "After singular"
-
-#: library/functions/sidebars.php:104
-msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
-msgstr "Indlæg på singular indlæg (sider, attachments mm.) lige før kommentarerne"
 
 #~ msgid "Not Found"
 #~ msgstr "Ikke fundet"
