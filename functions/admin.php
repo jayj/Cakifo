@@ -72,7 +72,7 @@ function cakifo_theme_meta_box() { ?>
             </p>
 
             <p><?php _e( 'Leave blank to use sticky posts', hybrid_get_textdomain() ); ?></p>
-            </td> 
+            </td>
 		</tr>
 
 		<tr>
@@ -113,7 +113,7 @@ function cakifo_theme_meta_box() { ?>
 		</tr>
 
 		<tr>
-        
+
         	<?php $current_user = wp_get_current_user(); ?>
 
 			<th>

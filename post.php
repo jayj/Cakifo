@@ -20,9 +20,9 @@ get_header(); // Loads the header.php template ?>
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'loop', 'single' ); // Maybe get_post_format() ?>
-            
+
             <?php get_sidebar( 'after-single' ); // Loads the sidebar-after-single.php template ?>
-            
+
             <?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template ?>
 
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>

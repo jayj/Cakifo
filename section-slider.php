@@ -24,7 +24,7 @@
 	<?php do_atomic( 'before_slider' ); // cakifo_before_slider ?>
 
 	<section id="slider">
-    
+
     	<h1 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h1>
 
 		<div class="slides_container">

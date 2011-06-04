@@ -23,8 +23,8 @@
 			<?php next_post_link( '%link', '<span class="next">%title &rarr;</span>' ); ?>
 		</div> <!-- .pagination.post-pagination -->
 
-	<?php 
-		elseif ( !is_singular() && current_theme_supports( 'loop-pagination' ) ) : 
+	<?php
+		elseif ( !is_singular() && current_theme_supports( 'loop-pagination' ) ) :
 
 			loop_pagination( array( 'prev_text' => __( '&larr; Previous', hybrid_get_textdomain() ), 'next_text' => __( 'Next &rarr;', hybrid_get_textdomain() ) ) ); 
 	?>

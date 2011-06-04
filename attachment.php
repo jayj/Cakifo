@@ -59,7 +59,7 @@ get_header(); // Loads the header.php template ?>
                         <?php
                             echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small"]', $post->post_parent, get_the_ID() ) );
                         ?>
-                    </div> <!-- #attachment-gallery -->		
+                    </div> <!-- #attachment-gallery -->
                 </div> <!-- #image-info -->	
 
 				<?php endif; ?>
@@ -71,7 +71,7 @@ get_header(); // Loads the header.php template ?>
             </div> <!-- #post-<?php the_ID(); ?> -->
 
 			<?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template ?>
-            
+
 			<?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
 
             <?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>

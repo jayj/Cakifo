@@ -21,11 +21,11 @@
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
     <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
-    
+
 		<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
-        
+
         <header class="entry-header">
-        	
+
             <?php if ( get_post_format() ) : ?>
                 <hgroup>
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
@@ -34,7 +34,7 @@
             <?php else: ?>
             	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
             <?php endif; ?>
-        
+
         	<?php
 				// Tthe default format (i.e., a normal post) returns false
 				$format = get_post_format();
@@ -43,8 +43,8 @@
 
 				echo apply_atomic_shortcode( "byline_{$format}", '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
 			?>
-        </header> <!-- .entry-header --> 
-        
+        </header> <!-- .entry-header -->
+
         <?php
 			if ( current_theme_supports( 'get-the-image' ) )
 				get_the_image( array(
@@ -73,16 +73,16 @@
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
         <?php endif; ?>
-        
+
         <?php
 			/* Entry meta */
 			echo apply_atomic_shortcode( "entry_meta_{$format}", '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 		?>
-        
+
         <div class="clear"></div>
-        
+
     <?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
-    
+
     </article> <!-- #post-<?php the_ID(); ?> -->
-	
+
 <?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>

@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
 			for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
 				rowDivs[currentDiv].height(currentTallest);
 			}
-			
+
 			// set the variables for the new row
 			rowDivs.length = 0; // empty the array
 			currentRowStart = topPosition;

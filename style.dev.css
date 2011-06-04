@@ -1649,40 +1649,32 @@ img.alignright {
 
 @media screen and (max-width: 979px) {
 	
-	#wrapper, #topbar .wrap { width: 100%; }
+	#wrapper, #topbar .wrap { width: 98%; }
+	#main { width: 100% !important; }
+	#slider { display: none; }
+	
 	#rss-subscribe { display: none; }
 	#site-description { margin-right: 25px; }
-	#main { width: 100%; }
-	
-	#sidebar-primary, #sidebar-secondary, #slider { display: none; }
-/*	#slider {  width: 100%; margin: 5px 0 0; }
-	.slides_container{ width: 100%; margin: 0; }
-	#slider .slide { width: 58%; text-align: center; margin: 0 auto; }
-	#slider .entry-summary { display: none; }
-	#slider .thumbnail { float: none; margin: 0 auto; }*/
-	
+
 	#sidebar-primary { float: left; width: 45%;}
 	#sidebar-secondary { width: 45%; }
-	
+
 	#recent-posts li, .headline-list { margin-right: 20px; }
+	#recent-posts article { margin-right: 1%; }
 }
 
 @media screen and (max-width: 460px) {
-	#sidebar-primary,#sidebar-secondary, #slider { display: none; }
+	#sidebar-primary, #sidebar-secondary, #slider, #sidebar-subsidiary .widget { display: none; }
 }
 
 
 /**
  * Print styles
- *
- * Not done
  */
 
 @media print {
 
-	* {
-		text-shadow: none !important;	
-	}
+	* { text-shadow: none !important; }
 	
 	body {
 		background: none !important;
@@ -1701,6 +1693,8 @@ img.alignright {
 		position: relative !important;
 	}
 	
+	#branding { padding: 20px 0 0; }
+	
 	#content, #footer, .loop-meta { background-image: none !important; }
 	
 	#content {
@@ -1708,7 +1702,23 @@ img.alignright {
 	    width: auto;
 	}
 	
-	#main { width: 100%; }
+	#content, .thumbnail {
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+	
+	.thumbnail { border: none; padding: 0; }
+	
+	#main { width: 100%; margin-top: 0; }
+	#headlines { margin: 10px 0; }
+	#headlines h2, .breadcrumb { margin-bottom: 0; }
+	.headline-list  { margin-bottom: 5px; }
+	
+	#sidebar-after-singular .widget,
+	#sidebar-after-single  .widget {
+		margin-bottom: 5px;
+	}
 	
 	h3,
 	.breadcrumbs,
@@ -1730,9 +1740,28 @@ img.alignright {
 	blockquote, .author-profile {
 		background: none;
 		border: none;
+		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
-		
 		box-shadow: none;	
+	}
+	
+	.author-profile {
+		margin: 0;
+		padding: 0 25px;
+	}
+	
+	#comments {
+		page-break-before: always;
+	}
+
+	.twitter-share-button,
+	.facebook-share-button,
+	.delicious-share-button,
+	.digg-share-button,
+	#___plusone_0,
+	.author-profile .twitter-link,
+	.avatar	{
+		display: none !important;
 	}
 	
 	.comment-list li {

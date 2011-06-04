@@ -19,8 +19,8 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-facebook-link', 'cakifo_entry_facebook_link_shortcode' );
 	add_shortcode( 'entry-twitter-link', 'cakifo_entry_twitter_link_shortcode' );
 	add_shortcode( 'entry-googleplus-link', 'cakifo_entry_googleplus_link_shortcode' );
-	
-	/* Replace shortcodes */
+
+	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
 	remove_shortcode( 'comment-published' );
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
@@ -76,12 +76,12 @@ function cakifo_twitter_shortcode( $atts ) {
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
 
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
  	), $atts) );
 
-	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;">' . __( 'Delicious', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Delicious', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
 /**
@@ -92,14 +92,14 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
 
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
  	), $atts) );
 
 	$url = esc_url( 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) ) );
 	
-	return $before . '<a href="' . $url . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="' . $url . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '" class="digg-share-button">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
 /**
@@ -111,7 +111,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
 
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'href' => get_permalink(),
@@ -137,7 +137,7 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
  */
 function cakifo_entry_twitter_link_shortcode( $atts ) {
 
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'href' => get_permalink(),
@@ -168,7 +168,7 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  */
 function cakifo_entry_googleplus_link_shortcode( $atts ) {
 	
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'href' => get_permalink(),
@@ -227,6 +227,5 @@ function cakifo_comment_published_shortcode( $attr ) {
 
 	return $attr['before'] . $published . $attr['after'];
 }
-
 
 ?>

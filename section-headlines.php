@@ -54,7 +54,7 @@
 
                                     <?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
                                         <div class="image">
-											<?php 
+											<?php
 												get_the_image( array(
 													'meta_key' => 'Thumbnail',
 													'size' => 'small',
@@ -82,7 +82,7 @@
                 <?php endif; ?>
 
         <?php endforeach; ?>
-        
+
         <?php do_atomic( 'close_headlines' ); // cakifo_close_headlines ?>
 
     </section> <!-- #headlines -->

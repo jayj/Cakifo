@@ -111,7 +111,7 @@ function cakifo_register_sidebars() {
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>'
 	);
-	
+
 	/* Set up the after single sidebar arguments. */
 	$after_single = array(
 		'id' => 'after-single',

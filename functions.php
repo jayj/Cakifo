@@ -66,7 +66,7 @@ function cakifo_theme_setup() {
 	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO ) plugin isn't activated
 	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) && ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
-		
+
 	/* Load the sidebars if supported */
 	//add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
 	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
@@ -104,34 +104,34 @@ function cakifo_theme_setup() {
 	add_image_size( 'small', apply_filters( 'small_thumb_width', '100' ), apply_filters( 'small_thumb_height', '100' ), true );
 	add_image_size( 'slider', apply_filters( 'slider_image_width', '500' ), apply_filters( 'slider_image_height', '230' ), true );
 	add_image_size( 'recent', apply_filters( 'recent_image_width', '190' ), apply_filters( 'recent_image_height', '130' ), true );
-	
+
 	/* Register shortcodes. */
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
-	
+
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
 	add_action( 'wp_print_styles', 'cakifo_enqueue_style' );
-	
+
 	/* Topbar RSS link */
 	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
-	
+
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
 	add_action( 'template_redirect', 'cakifo_one_column' );
-	
+
 	/* Add the breadcrumb trail just after the container is open */
 	add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
 	add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
-	
+
 	/* Frontpage javascript loading */
 	add_action( 'template_redirect', 'cakifo_front_page' );
 	add_action( 'wp_footer', 'cakifo_slider_javascript' );
-	
+
 	/* Change entry meta for certain post formats */
 	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_aside", 'cakifo_aside_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_link", 'cakifo_link_entry_meta' );
-	
+
 	/* Hide byline and/or entry meta for certain post formats */
 	add_filter( "{$prefix}_byline_quote", '__return_false' );
 	add_filter( "{$prefix}_byline_aside", '__return_false' );
@@ -141,17 +141,17 @@ function cakifo_theme_setup() {
 
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
-	
+
 	/* Add Custom Field Series */
 	if ( current_theme_supports( 'custom-field-series' ) )
 		add_action( "{$prefix}_after_singular", 'custom_field_series' );
-	
+
 	/* Add an author box after singular posts */
 	add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
-	
+
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
-	
+
 	/* Theme update check */
 	add_action( 'admin_notices', 'cakifo_update_notice' );
 	add_action( 'network_admin_notices', 'cakifo_update_notice' );
@@ -165,7 +165,7 @@ function cakifo_theme_setup() {
 	 * @todo Improve this
 	 */
 	add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
-	
+
 	/**
 	 * The color, height and width of your custom logo
 	 * Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height 
@@ -174,7 +174,7 @@ function cakifo_theme_setup() {
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
 	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) ); // Could be cool with flexible width and heights (@http://core.trac.wordpress.org/ticket/17242)
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
-	
+
 	// Load the logo from the parent theme images folder and the childtheme image folder 
 	register_default_headers( array(
 		'logo' => array(
@@ -183,7 +183,7 @@ function cakifo_theme_setup() {
 			'description' => sprintf( __( 'Logo.png from the %1$s images folder', $domain ), $theme_data['Title'] )
 		)
 	) );
-		
+
 	// If the user is using a child theme, add the logo.png from that as well
 	if ( TEMPLATEPATH != STYLESHEETPATH && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
 		register_default_headers( array(
@@ -194,7 +194,7 @@ function cakifo_theme_setup() {
 			)
 		) );
 	}
-	
+
 }
 
 /**
@@ -204,7 +204,7 @@ function cakifo_theme_setup() {
  * @since 1.0
  */
 function cakifo_enqueue_script() {
-	
+
 	/**
 	 * Modernizr enables HTML5 elements & feature detects
 	 *
@@ -214,11 +214,11 @@ function cakifo_enqueue_script() {
 	 * in your child theme functions.php
 	 */
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
-	
+
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
-	
+
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.0', true );
 
 }
@@ -233,22 +233,22 @@ function cakifo_enqueue_style() {
 }
 
 /**
- * Front page stuff
+ * Front Page stuff
  *
  * Adds JavaScript to the Front Page.
- * Also removes the breadcrumb menu.
+ * Removes the breadcrumb menu.
  *
  * @since 1.0
  */
 function cakifo_front_page() {
 	$prefix = hybrid_get_prefix();
-	
+
 	/* If we're not looking at the front page, return */
 	if ( !is_home() && !is_front_page() )
 		return;
 
 	/* Load the Slides jQuery Plugin */
-	wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.7', true );
+	wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
 
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
@@ -260,8 +260,8 @@ function cakifo_slider_javascript() {
 	if ( !is_home() && !is_front_page() )
 		return;
 
-	$loading_gif = ( file_exists( CHILD_THEME_URI . '/images/loading.gif' ) ) ? CHILD_THEME_URI . '/images/loading.gif' : THEME_URI . '/images/loading.gif';
-	
+	$loading_gif = ( file_exists( CHILD_THEME_DIR . '/images/loading.gif' ) ) ? CHILD_THEME_URI . '/images/loading.gif' : THEME_URI . '/images/loading.gif';
+
 	/**
 	 * Default args
 	 */
@@ -302,7 +302,7 @@ function cakifo_slider_javascript() {
 	 */ 
 	$args = wp_parse_args( $args, $defaults );
 
-	echo "<script type='text/javascript'>		
+	echo "<script type='text/javascript'>
 			jQuery(document).ready(function($) {
 				$('#slider').slides({ ";
 
@@ -341,7 +341,7 @@ function cakifo_get_the_image_arguments( $args ) {
 	}
 
 	return $args;
-} 
+}
 
 /**
  * New excerpt function with the length as a parameter
@@ -487,14 +487,14 @@ function cakifo_logo( $title ) {
  * @since 1.0
  */
 function cakifo_header_style() {
-	
+
 	// If no custom options for text are set, let's bail
 	// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
 	if ( HEADER_TEXTCOLOR == get_header_textcolor() )
 		return;
-	
+
 	// If we get this far, we have custom styles. Let's do this. ?>
-    
+
 	<style type="text/css">
 	<?php
 		// Has the text been hidden?
@@ -581,7 +581,7 @@ if ( ! function_exists('debug')) {
  * @since 1.0
  */
 function cakifo_author_box() { ?>
-	
+
     <?php if ( get_the_author_meta( 'description' ) && ( function_exists( 'is_multi_author' ) && is_multi_author() ) ) : ?>
 
         <div class="author-profile vcard">
@@ -687,28 +687,28 @@ function cakifo_image_info() {
 function cakifo_update_notice() {
 	
 	if ( current_user_can( 'update_themes' ) ) :
-		
+
 		include_once( ABSPATH . WPINC . '/feed.php' );
 		$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
-		
+
 		// Get the update feed
 		$rss = fetch_feed( 'http://wpthemes.jayj.dk/themerss/cakifo.xml' );
-		
+
 		if ( ! is_wp_error( $rss ) ) :
 			$maxitems = $rss->get_item_quantity(1); // We only want the latest
 			$rss_items = $rss->get_items(0, 1);
 		endif;
-		
+
 		if ( $maxitems != 0 ) :
-			
+
 			foreach ( $rss_items as $item ) {
 				// Compare feed version to theme version
 				if ( version_compare( $item->get_title(), $theme_data['Version'] ) > 0 )
 					echo '<div id="update-nag">Version ' . esc_html( $item->get_title() ) .' for the Cakifo theme is available! <a href="' . esc_url( $item->get_permalink() ) .'">Click here to download the update</a>. ' . esc_html( $item->get_description() ) .'</div>';
 			}
-			
+
 		endif;
-		
+
 	endif; // current_user_can('update_themes')
 }
 
