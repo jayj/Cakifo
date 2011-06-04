@@ -885,7 +885,6 @@ table {
  * Recent Posts (on frontpage)
 **************************************/
 
-
 #recent-posts article {
 	float: left;
 	margin-right: 40px;
@@ -1032,6 +1031,24 @@ table {
 	text-align: left;
 }
 
+/**
+ * 404 Error page
+**************************************/
+
+.not-found-widgets {
+	margin-top: 40px;
+	padding-left: 5px;
+} 
+
+.not-found-widgets .widget {
+	width: 270px;
+	float: left;
+	margin: 0 20px 20px;
+}
+
+.not-found-widgets .widget:nth-of-type(3n) {
+	margin-right: 0;	
+}
 
 /**
  * Pagination (.pagination .loop-pagination)
@@ -1277,11 +1294,6 @@ table {
 	.comment-text {
 		clear: left;
 	}
-
-	/* Comments closed. */
-	.comments-closed {
-		
-	}
 	
 /**
  * Comment form
@@ -1368,6 +1380,17 @@ textarea:focus, textarea:hover {
 	color: #555;
 }
 
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
 /* Submit button */
 input[type="submit"],
 input[type="button"] {
@@ -1409,6 +1432,17 @@ span.required {
 	color: #555;
 	font: bold 16px Arial, Helvetica, sans-serif;
 	display: none; /* Hides the required * star */
+}
+
+/* Search form */
+.search-form input[type="text"],
+.search-form input[type="search"] {
+	width: 60%;
+}
+.search-form input[type="submit"] {
+	width: 30%;
+	padding: 10px;
+	margin-left: 4%;
 }
 
 /**

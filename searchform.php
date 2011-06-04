@@ -23,7 +23,7 @@
 
     <form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>">
         <div>
-            <input class="search-text" type="text" name="s" <?php echo $value; ?> />
+            <input class="search-text" type="search" name="s" <?php echo $value; ?> />
             <input class="search-submit" type="submit" value="<?php esc_attr_e( 'Search', hybrid_get_textdomain() ); ?>" />
         </div>
     </form> <!-- .search-form -->

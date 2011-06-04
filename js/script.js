@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 		topPosition = 0,
 		currentDiv = 0;
 
-	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget').each(function() {
+	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget').each(function() {
 
 		$el = $(this);
 		topPosition = $el.position().top;

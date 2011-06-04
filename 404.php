@@ -35,6 +35,15 @@ get_header(); // Loads the header.php template ?>
 
             </div> <!-- .hentry -->
 
+			<?php 
+				// Widget ready 404 page - You can use widgets to put content here
+				if ( is_active_sidebar( 'error-page' ) ) {
+					echo '<div class="not-found-widgets clearfix">';
+						dynamic_sidebar( 'error-page' );
+					echo '</div>';
+				}
+            ?>
+
             <?php do_atomic( 'close_main' ); // cakifo_close_main ?>
 
         </div> <!-- #main -->

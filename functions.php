@@ -69,7 +69,7 @@ function cakifo_theme_setup() {
 		
 	/* Load the sidebars if supported */
 	//add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
-	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular' ) );
+	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
 	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
 
 	/* Add theme support for framework extensions */
@@ -451,7 +451,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
 
-		if ( 'layout-1c' == theme_layouts_get_layout() ) {
+		if ( 'layout-1c' == theme_layouts_get_layout() || is_404() ) {
 			$sidebars_widgets['primary'] = false;
 			$sidebars_widgets['secondary'] = false;
 		}

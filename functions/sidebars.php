@@ -122,6 +122,17 @@ function cakifo_register_sidebars() {
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>'
 	);
+	
+	/* Set up the 404 error page arguments. */
+	$error_page = array(
+		'id' => 'error-page',
+		'name' => __( 'Error Page', $domain ),
+		'description' => __( 'Loaded on 404 error pages', $domain ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
+	);
 
 	/* Register the primary sidebar. */
 	if ( in_array( 'primary', $sidebars[0] ) )
@@ -154,6 +165,10 @@ function cakifo_register_sidebars() {
 	/* Register the after singular sidebar. */
 	if ( in_array( 'after-single', $sidebars[0] ) )
 		register_sidebar( $after_single );
+		
+	/* Register the error page sidebar. */
+	if ( in_array( 'error-page', $sidebars[0] ) )
+		register_sidebar( $error_page );
 }
 
 ?>
