@@ -472,8 +472,8 @@ function cakifo_logo( $title ) {
 
 	if ( $title = get_bloginfo( 'name' ) ) {
 
-		// Check there's a header image, else return the blog name
-		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
+		// Check if there's a header image, else return the blog name
+		$maybe_image = ( get_header_image() ) ? '<span class="assistive-text">' . $title . '</span><img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
 
 		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
 	}

@@ -23,7 +23,9 @@
 
 	<?php do_atomic( 'before_slider' ); // cakifo_before_slider ?>
 
-	<div id="slider">
+	<section id="slider">
+    
+    	<h1 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h1>
 
 		<div class="slides_container">
 
@@ -63,7 +65,7 @@
 
 		</div> <!-- .slides_container -->
 
-	</div> <!-- #slider -->
+	</section> <!-- #slider -->
 
 	<?php do_atomic( 'after_slider' ); // cakifo_after_slider ?>
 

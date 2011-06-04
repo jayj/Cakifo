@@ -17,17 +17,19 @@ if ( has_nav_menu( 'primary' ) ) : ?>
         <div class="wrap">
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
-
-            <?php
-            	wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'container' => 'nav',
-					'container_class' => 'menu',
-					'menu_class' => '',
-					'after' => '<span class="sep">|</span>',
-					'fallback_cb' => ''
-				 ) );
-			?>
+			
+            <nav class="menu">
+            	<h1 class="assistive-text"><?php _e( 'Main menu', hybrid_get_textdomain() ); ?></h1>
+				<?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'primary',
+                        'container' => '',
+                        'menu_class' => '',
+                        'after' => '<span class="sep">|</span>',
+                        'fallback_cb' => ''
+                     ) );
+                ?>
+            </nav> <!-- .menu -->
 
             <?php do_atomic( 'close_menu_primary' ); // cakifo_close_menu_primary ?>
 

@@ -45,7 +45,7 @@
 
                         <?php $cat = get_category( $category ); ?>
 
-                        <h3 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h3>
+                        <h2 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h2>
 
                         <ul>
 							<?php foreach ( $headlines as $post ) : $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; ?>
@@ -66,7 +66,7 @@
                                     <?php } ?>
 
                                     <div class="details">
-                                    	<h4><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+                                    	<h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
                                     	<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
                                     </div> <!-- .details -->
 

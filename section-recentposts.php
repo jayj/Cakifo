@@ -56,7 +56,7 @@
                     <?php } ?>
     
                     <div class="details">
-                        <h4><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+                        <h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
     
                         <?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
     
