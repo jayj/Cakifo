@@ -131,6 +131,7 @@ function cakifo_theme_setup() {
 	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_aside", 'cakifo_aside_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_link", 'cakifo_link_entry_meta' );
+	add_filter( "{$prefix}_entry_meta_image", 'cakifo_image_entry_meta' );
 
 	/* Hide byline and/or entry meta for certain post formats */
 	add_filter( "{$prefix}_byline_quote", '__return_false' );
@@ -138,6 +139,7 @@ function cakifo_theme_setup() {
 	add_filter( "{$prefix}_byline_link", '__return_false' );
 	add_filter( "{$prefix}_byline_status", '__return_false' );
 	add_filter( "{$prefix}_entry_meta_status", '__return_false' );
+	add_filter( "{$prefix}_byline_image", '__return_false' );
 
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
@@ -147,7 +149,7 @@ function cakifo_theme_setup() {
 		add_action( "{$prefix}_after_singular", 'custom_field_series' );
 
 	/* Add an author box after singular posts */
-	add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
+	add_action( 'init', 'cakifo_place_author_box' );
 
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
@@ -405,11 +407,6 @@ function cakifo_link_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 }
 
-
-
-add_filter( "cakifo_entry_meta_image", 'cakifo_image_entry_meta' );
-add_filter( "cakifo_byline_image", '__return_false' );
-
 function cakifo_image_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', hybrid_get_textdomain() ) . '</footer>' );
 }
@@ -591,7 +588,7 @@ if ( ! function_exists('debug')) {
  */
 function cakifo_author_box() { ?>
 
-    <?php if ( get_the_author_meta( 'description' ) && ( function_exists( 'is_multi_author' ) && is_multi_author() ) ) : ?>
+    <?php if ( get_the_author_meta( 'description' ) /*&& ( function_exists( 'is_multi_author' ) && is_multi_author() )*/ ) : ?>
 
         <div class="author-profile vcard">
 
@@ -611,6 +608,15 @@ function cakifo_author_box() { ?>
         </div>  <!-- .author-profile --> <?php
 
 	endif;
+}
+
+function cakifo_place_author_box() {
+	$prefix = hybrid_get_prefix();
+	
+	if ( is_active_sidebar( 'after-single' ) )
+		add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
+	else
+		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );	
 }
 
 /**
