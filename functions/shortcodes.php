@@ -276,7 +276,7 @@ function cakifo_entry_title_shortcode( $attr ) {
 
 	/* If there's no post title, return a clickable '(No title)'. */
 	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
-		$title = "<h2 class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></h2>";
+		$title = "<{$attr['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></{$attr['heading']}>";
 
 	return $title;
 }
