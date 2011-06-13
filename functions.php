@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.2
+ * @version 1.3
  * @author Jayj.dk <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011, Jesper J
  * @link http://wpthemes.jayj.dk/cakifo
@@ -588,7 +588,7 @@ if ( ! function_exists('debug')) {
  */
 function cakifo_author_box() { ?>
 
-    <?php if ( get_the_author_meta( 'description' ) /*&& ( function_exists( 'is_multi_author' ) && is_multi_author() )*/ ) : ?>
+    <?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
 
         <div class="author-profile vcard">
 
@@ -618,6 +618,24 @@ function cakifo_place_author_box() {
 	else
 		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );	
 }
+
+if ( ! function_exists( 'is_multi_author' ) ) :
+/**
+ * Add the WordPress 3.2 is_multi_author() function
+ * if it doesn't exits yet
+ */
+function is_multi_author() {
+	global $wpdb;
+	
+	if ( false === ( $is_multi_author = wp_cache_get('is_multi_author', 'posts') ) ) {
+		$rows = (array) $wpdb->get_col("SELECT DISTINCT post_author FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 2");
+		$is_multi_author = 1 < count( $rows ) ? 1 : 0;
+		wp_cache_set('is_multi_author', $is_multi_author, 'posts');
+	}
+	
+	return (bool) $is_multi_author;
+}
+endif;
 
 /**
  * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
