@@ -26,6 +26,7 @@
 						'numberposts' => $number,
 						'post__not_in' => $GLOBALS['cakifo_do_not_duplicate'],
 						'category' => $category,
+						'no_found_rows' => true,
 						'tax_query' => array(
 								array(
 									'taxonomy' => 'post_format',
@@ -45,9 +46,9 @@
 
                         <?php $cat = get_category( $category ); ?>
 
-                        <h2 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h2>
+                        <h1 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h1>
 
-                        <ul>
+                        <ol>
 							<?php foreach ( $headlines as $post ) : $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; ?>
                                 <li>
 									<?php do_atomic( 'open_headline_list_item' ); // cakifo_open_headline_list_item ?>
@@ -66,14 +67,14 @@
                                     <?php } ?>
 
                                     <div class="details">
-                                    	<h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+                                    	<?php echo apply_atomic_shortcode( 'headline_entry_title', '[entry-title heading="h3"]' ); ?>
                                     	<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
                                     </div> <!-- .details -->
 
                                     <?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>
                                 </li>
                             <?php endforeach; ?>
-                        </ul>
+                        </ol>
 
                         <?php do_atomic( 'close_headline_list' ); // cakifo_close_headline_list ?>
 

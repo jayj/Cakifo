@@ -918,8 +918,8 @@ table {
 	margin: 0;
 }
 
-.headline-list h3,
-#recent-posts h1 {
+#recent-posts .entry-title ,
+.headline-list .entry-title {
 	background: none;
 	border-bottom: 0;
 	font-size: 16px;
@@ -933,13 +933,21 @@ table {
 	padding: 0 5px;	
 }
 
-#recent-posts .headline-meta {
+.recentposts-meta {
 	display: block;
 	margin-bottom: 5px;
 }
 
-#recent-posts .entry-summary {
-	font-size: 14px;	
+.recentposts-meta,
+.headline-meta {
+	color: #aaa;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.recentposts-meta a,
+.headline-meta a {
+	color: #999;
 }
 
 /**
@@ -956,8 +964,7 @@ table {
 	margin: 0 40px 40px 0;
 }
 
-.headline-list ul,
-#recent-posts ul {
+.headline-list ol {
 	list-style: none;
 	margin: 0;	
 }
@@ -989,23 +996,8 @@ table {
 	margin: 0;
 }
 
-.headline-list h5 {
+.headline-list .entry-title {
 	margin: 0 0 5px;
-}
-
-.headline-meta {
-	color: #aaa;
-	font-size: 12px;
-	font-style: italic;
-}
-
-.headline-meta a {
-	color: #999;
-}
-
-.headline-meta abbr {
-	border-bottom: none;
-	cursor: default;	
 }
 
 /**

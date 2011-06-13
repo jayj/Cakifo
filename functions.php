@@ -90,7 +90,7 @@ function cakifo_theme_setup() {
 		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/admin.php' );
 
 	/* Add theme support for WordPress features */
-	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'audio', 'image', 'status', 'chat' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
 	add_theme_support( 'automatic-feed-links' );
 	add_custom_background();
 	add_editor_style();

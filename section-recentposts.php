@@ -13,7 +13,7 @@
 
 		<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
 
-        <h3 class="section-title"><?php _e( 'Recent Posts', hybrid_get_textdomain() ); ?></h3>
+        <h1 class="section-title"><?php _e( 'Recent Posts', hybrid_get_textdomain() ); ?></h1>
 
 		<?php
             // Display our recent posts, ignoring Aside, Link, Quote and Status posts
@@ -21,6 +21,7 @@
                 'showposts' => 4,
                 'ignore_sticky_posts' => 1,
                 'order' => 'DESC',
+				'no_found_rows' => true,
                 'tax_query' => array( array(
                         'taxonomy' => 'post_format',
                         'terms' => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),
@@ -31,11 +32,12 @@
             );
 
             // Our query for the Recent Posts section
-            $recent = new WP_Query();
-            $recent->query( $recent_args );
-
+            $recent = new WP_Query( $recent_args );
+			
 			$i = 0;
+			
             while ( $recent->have_posts() ) : $recent->the_post();
+			
                 $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; // Put the post ID in an array to make sure it's only showing once (this array is used in the headline lists as well)
         ?>
 
@@ -56,9 +58,9 @@
                     <?php } ?>
     
                     <div class="details">
-                        <h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+                        <?php echo apply_atomic_shortcode( 'recent_post_entry_title', '[entry-title heading="h1"]' ); ?>
     
-                        <?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
+                        <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recentposts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
     
                         <div class="entry-summary">
                             <?php cakifo_the_excerpt( 20 ); ?>

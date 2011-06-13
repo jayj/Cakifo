@@ -23,8 +23,13 @@ function cakifo_register_shortcodes() {
 	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
 	remove_shortcode( 'comment-published' );
+	remove_shortcode( 'entry-title' );
+	remove_shortcode( 'entry-author' );
+	
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
 	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
+	add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
+	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
 }
 
 /** 
@@ -226,6 +231,54 @@ function cakifo_comment_published_shortcode( $attr ) {
 	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
 
 	return $attr['before'] . $published . $attr['after'];
+}
+
+/**
+ * Displays an individual post's author with a link to his or her archive.
+ * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * @since 1.3
+ * @param array $attr
+ */
+function cakifo_entry_author_shortcode( $attr ) {
+	
+	$attr = shortcode_atts( array(
+		'rel' => 'author',
+		'before' => '',
+		'after' => '',
+	), $attr );
+	
+	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="' . esc_attr( $attr['rel'] ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	
+	return $attr['before'] . $author . $attr['after'];
+}
+
+/**
+ * Displays a post's title with a link to the post.
+ * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * @since 1.3
+ */
+function cakifo_entry_title_shortcode( $attr ) {
+	
+	$attr = shortcode_atts( array(
+		'heading' => 'h1'
+	), $attr );
+	
+	global $post;
+	
+	// $attr['heading']
+
+	$title = the_title( "<{$attr['heading']} class='" . esc_attr( $post->post_type ) . "-title entry-title'><a href='" . get_permalink() . "' title='" . the_title_attribute( 'echo=0' ) . "' rel='bookmark'>", "</a></{$attr['heading']}>", false );
+
+	if ( 'link_category' == get_query_var( 'taxonomy' ) )
+		$title = false;
+
+	/* If there's no post title, return a clickable '(No title)'. */
+	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
+		$title = "<h2 class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></h2>";
+
+	return $title;
 }
 
 ?>

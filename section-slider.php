@@ -10,11 +10,24 @@
 ?>
 
 <?php
-	// Select posts from selected categories or sticky posts
-	if ( hybrid_get_setting( 'featured_category' ) )
-		$feature_query = array( 'cat' => hybrid_get_setting( 'featured_category' ), 'showposts' => hybrid_get_setting( 'featured_posts' ), 'ignore_sticky_posts' => 1 );
-	else
-		$feature_query = array( 'post__in' => get_option( 'sticky_posts' ), 'showposts' => hybrid_get_setting( 'featured_posts' ) );
+	/**
+	 * Select posts from selected categories
+	 * or sticky posts
+	 */
+	if ( hybrid_get_setting( 'featured_category' ) ) :
+		$feature_query = array( 
+			'cat' => hybrid_get_setting( 'featured_category' ),
+			'showposts' => hybrid_get_setting( 'featured_posts' ),
+			'ignore_sticky_posts' => 1,
+			'no_found_rows' => true
+		);
+	else :
+		$feature_query = array(
+			'post__in' => get_option( 'sticky_posts' ),
+			'showposts' => hybrid_get_setting( 'featured_posts' ),
+			'no_found_rows' => true
+		);
+	endif;
 ?>
 
 <?php $loop = new WP_Query( $feature_query ); ?>
