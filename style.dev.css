@@ -163,7 +163,7 @@ blockquote blockquote {
 }
 
 	/* Pull quotes */
-	.singular blockquote.pull {
+	.singular .pull {
 		font-size: 19px;
 		margin: 45px 10px 0;
 		/* Remove styles from 'blockquote' */
@@ -184,13 +184,13 @@ blockquote blockquote {
 		margin: 45px 0 0 25px;
 	}
 	
-	.singular blockquote.pull.alignleft,
-	.singular blockquote.pull.alignright {
+	.singular .pull.alignleft,
+	.singular .pull.alignright {
 		width: 33%;
 	}
 	
-	.singular blockquote.pull:after,
-	.singular blockquote.pull p:first-of-type:after {
+	.singular .pull:after,
+	.singular .pull p:first-of-type:after {
 		opacity: 0.8;
 		-webkit-transform: scale(0.7);
 		-moz-transform: scale(0.7);
@@ -1119,7 +1119,7 @@ img.alignright {
 	margin: 0;
 }
 
-#recent-posts .entry-title ,
+#recent-posts .entry-title,
 .headline-list .entry-title {
 	background: none;
 	border-bottom: 0;
@@ -1207,11 +1207,6 @@ img.alignright {
 
 #image-info {
 	overflow: hidden;
-}
-
-#image-info h4 {
-	font-size: 18px;
-	font-weight: bold;	
 }
 
 #image-info .headline-list {
