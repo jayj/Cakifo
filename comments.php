@@ -32,10 +32,11 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
         <?php do_atomic( 'after_comment_list' ); // cakifo_after_comment_list ?>
 
-        <?php if ( get_option( 'page_comments' ) ) : ?>
-            <div class="pagination comment-pagination">
+        <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+            <nav class="pagination comment-pagination">
+            	<h2 class="assistive-text"><?php _e( 'Comment navigation', hybrid_get_textdomain() ); ?></h2>
             	<?php paginate_comments_links(); ?>
-            </div> <!-- .comment-navigation -->
+            </nav> <!-- .comment-navigation -->
         <?php endif; ?>
 
     <?php endif; // have_comments() ?>
