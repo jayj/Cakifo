@@ -50,9 +50,6 @@ function cakifo_theme_setup() {
 	$prefix = hybrid_get_prefix();
 	$domain = hybrid_get_textdomain();
 
-	$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
-	$child_data = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
-
 	/* Add theme support for core framework features */
 	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
@@ -182,17 +179,17 @@ function cakifo_theme_setup() {
 		'logo' => array(
 			'url' => '%s/images/logo.png',
 			'thumbnail_url' => '%s/images/logo.png',
-			'description' => sprintf( __( 'Logo.png from the %1$s images folder', $domain ), $theme_data['Title'] )
+			'description' => __( 'Logo.png from the Cakifo images folder', $domain )
 		)
 	) );
 
 	// If the user is using a child theme, add the logo.png from that as well
-	if ( TEMPLATEPATH != STYLESHEETPATH && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
+	if ( is_child_theme() && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
 				'url' => CHILD_THEME_URI . '/images/logo.png',
 				'thumbnail_url' => CHILD_THEME_URI . '/images/logo.png',
-				'description' => sprintf( __( 'Logo.png from the %1$s images folder', $domain ), $child_data['Title'] )
+				'description' => __( 'Logo.png from the Cakifo child theme images folder', $domain )
 			)
 		) );
 	}
@@ -402,7 +399,6 @@ function cakifo_aside_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 }
 
-
 function cakifo_link_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 }
@@ -575,9 +571,12 @@ function cakifo_admin_header_style() {
 /**
  * Debug function
  */
-if ( ! function_exists('debug')) { 
-	function debug( $function ) {
-		echo '<pre>' . print_r ( $function, true ) . '</pre>';	
+if ( ! function_exists( 'debug' ) ) { 
+	function debug( $function, $var_dump = true ) {
+		if ( $var_dump )
+			var_dump( $function );
+		else
+			echo '<pre>' . print_r ( $function, true ) . '</pre>';	
 	}
 }
  
@@ -654,6 +653,10 @@ function cakifo_image_info() {
 	$meta = wp_get_attachment_metadata( get_the_ID() );
 	$items = array();
 	$list = '';
+	
+	// If there's no image meta, return
+	if ( empty( $meta ) )
+		return;
 
 	/* Add the width/height to the $items array. */
 	$items['dimensions'] = sprintf( __( '<span class="prep">Dimensions:</span> %s', hybrid_get_textdomain() ), '<span class="image-data"><a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', hybrid_get_textdomain() ), $meta['width'], $meta['height'] ) . '</a></span>' );

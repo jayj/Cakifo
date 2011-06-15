@@ -42,8 +42,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'The main (primary) widget area, most often used as a sidebar.', $domain ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>'
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
 	);
 
 	/* Set up the secondary sidebar arguments. */
@@ -53,8 +53,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'The second most important widget area, most often used as a secondary sidebar.', $domain ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 
 	/* Set up the subsidiary sidebar arguments. */
@@ -64,8 +64,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'A widget area loaded in the footer of the site.', $domain ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>'
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
 	);
 
 	/* Set up the header sidebar arguments. */
@@ -86,8 +86,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded before the page\'s main content area.', $domain ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget' => '</div></section>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>'
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
 	);
 
 	/* Set up the after content sidebar arguments. */
@@ -97,8 +97,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded after the page\'s main content area.', $domain ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget' => '</div></section>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>'
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
 	);
 
 	/* Set up the after singular sidebar arguments. */
