@@ -64,7 +64,7 @@
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
             
-        <?php elseif ( has_post_format( 'quote' ) ) : ?>
+        <?php elseif ( has_post_format( 'quote' ) || has_post_format( 'image' ) || has_post_format( 'gallery' )  ) : ?>
         
             <div class="entry-content">
             	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>

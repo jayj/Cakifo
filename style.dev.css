@@ -80,7 +80,7 @@ h3,
 	background: #f7f7f7;
 	border-bottom: 1px dashed #eee;
 	padding: 7px 5px;	
-	text-shadow: 1px 1px 0px #fff;
+	text-shadow: 1px 1px 0 #fff;
 	border-radius: 3px 3px 0 0;
 }
 
@@ -115,9 +115,9 @@ blockquote,
 	padding: 25px;
 	position: relative;
 	text-shadow: 0 1px 0 #fff;
-	-webkit-box-shadow: inset 0 0 20px #e8f0f4, 0px 1px 1px #dde5e8, 0px 0px 3px rgba(0, 0, 0, .05);
-	-moz-box-shadow: inset 0 0 20px #e8f0f4, 0px 1px 1px #dde5e8, 0px 0px 3px rgba(0, 0, 0, .05);
-	box-shadow: inset 0 0 20px #e8f0f4, 0px 1px 1px #dde5e8, 0px 0px 3px rgba(0, 0, 0, .05);
+	-webkit-box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px rgba(0, 0, 0, .05);
+	-moz-box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px rgba(0, 0, 0, .05);
 }
 
 blockquote {
@@ -212,7 +212,7 @@ pre {
 	border-radius: 5px;
 	color: #fff;
 	font: 14px/25px monospace, "Courier New", Courier;
-	text-shadow: 1px 1px 0px #3e3e3e;
+	text-shadow: 1px 1px 0 #3e3e3e;
 	padding: 25px; 
 	white-space: pre; white-space: pre-wrap; word-wrap: break-word;
 }	
@@ -352,7 +352,7 @@ table {
 	display: inline-block;
 	font: bold 14px Arial, Helvetica, sans-serif;
 	padding: 16px 18px;
-	text-shadow: 1px 1px 0px #242424;
+	text-shadow: 1px 1px 0 #242424;
 	-webkit-transition: all .15s ease;
 	-moz-transition: all .15s ease;
 	transition: all .15s ease;
@@ -425,7 +425,7 @@ table {
 	font: bold 13px Arial, Helvetica, sans-serif;
 	float: right;	
 	padding: 16px 0;
-	text-shadow: -1px -1px 0px #242424;
+	text-shadow: -1px -1px 0 #242424;
 }
 
 #rss-subscribe a {
@@ -451,7 +451,7 @@ table {
 #site-title span {
 	font-size: 46px;
 	letter-spacing: -2px;
-	text-shadow: 0px 1px 0px #fff;
+	text-shadow: 0 1px 0 #fff;
 }
 
 #site-title a:hover {
@@ -463,7 +463,7 @@ table {
 	font: 21px 'PT Serif', Georgia, "Times New Roman", Times, serif;
 	float: right;
 	margin: 15px 0 0;
-	text-shadow: 0px 1px 0px #fff;
+	text-shadow: 0 1px 0 #fff;
 }
 
 	/* If you have a background image, you might want to use this in a childtheme */
@@ -478,9 +478,9 @@ table {
 		margin-top: 5px;
 		padding: 10px;
 		text-shadow: none;
-		-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,.3);
-		-moz-box-shadow: 0px 0px 8px rgba(0,0,0,.3);
-		box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+		-webkit-box-shadow: 0 0 8px rgba(0,0,0,.3);
+		-moz-box-shadow: 0 0 8px rgba(0,0,0,.3);
+		box-shadow: 0 0 8px rgba(0,0,0,.3);
 	}*/
 
 /**
@@ -492,9 +492,9 @@ table {
 	background: #fff url(images/content-orange-line.png) repeat-x;
 	padding: 20px;
 	border-radius: 0 0 5px 5px;
-	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #main,
@@ -806,9 +806,9 @@ table {
 	float: right;
 	padding: 4px;	
 	margin-left: 15px;
-	-webkit-box-shadow: 0px 1px 3px #eee;
-	-moz-box-shadow: 0px 1px 3px #eee;
-	box-shadow: 0px 1px 3px #eee;
+	-webkit-box-shadow: 0 1px 3px #eee;
+	-moz-box-shadow: 0 1px 3px #eee;
+	box-shadow: 0 1px 3px #eee;
 }
 
 /* Images in post content */
@@ -838,12 +838,6 @@ img[class*="wp-image-"],
 img.size-full {
 	max-width: 97.5%;
 	width: auto; /* Prevent stretching of full-size images in IE8 */
-}
-
-img.wp-smiley {
-	border: none;
-	margin: 0;
-	padding: 0;
 }
 
 /* Aligned images */
@@ -898,7 +892,7 @@ img.alignright {
 	font: 14px 'PT Serif', Georgia, Palatino, "Times New Roman";
 	color: #999;
 	margin-bottom: 0;
-	padding: 10px 0px 10px;
+	padding: 10px 0 10px;
 	text-align: center;
 }
 
@@ -1041,11 +1035,11 @@ img.alignright {
 	overflow: hidden;
 	margin: 0 0 25px 0;
 	padding: 25px 20px 15px 20px;
-	text-shadow: 1px 1px 0px #fff;
+	text-shadow: 1px 1px 0 #fff;
 	border-radius: 5px 5px 0 0;
-	-webkit-box-shadow: inset 0px 4px 2px #fff;
-	-moz-box-shadow: inset 0px 4px 2px #fff;
-	box-shadow: inset 0px 4px 2px #fff;
+	-webkit-box-shadow: inset 0 4px 2px #fff;
+	-moz-box-shadow: inset 0 4px 2px #fff;
+	box-shadow: inset 0 4px 2px #fff;
 }
 
 /* Loop title */
@@ -1281,32 +1275,32 @@ img.alignright {
 	display: inline-block;
 	margin-right: 2px;
 	padding: 6px 10px 5px;
-	text-shadow: 0px 1px 0px #fff;
+	text-shadow: 0 1px 0 #fff;
 	border-radius: 3px;
-	-webkit-box-shadow: 0px 2px 0px #ccc;
-	-moz-box-shadow: 0px 2px 0px #ccc;
-	box-shadow: 0px 2px 0px #ccc;
-	-webkit-transition: all .15s ease-in-out;
-	-moz-transition: all .15s ease-in-out;
-	transition: all .15s ease-in-out;
+	-webkit-box-shadow: 0 2px 0 #ccc;
+	-moz-box-shadow: 0 2px 0 #ccc;
+	box-shadow: 0 2px 0 #ccc;
+	-webkit-transition: all 150ms ease-in-out;
+	-moz-transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
 }
  
 .pagination a:hover {
     color: #fff;
     background: #d54e21;
-    text-shadow: 0px -1px 0px #7b000f;
-    -webkit-box-shadow: 0px 2px 0px #9b000f;
-	-moz-box-shadow: 0px 2px 0px #9b000f;
-	box-shadow: 0px 2px 0px #9b000f;
+    text-shadow: 0 -1px 0 #7b000f;
+    -webkit-box-shadow: 0 2px 0 #9b000f;
+	-moz-box-shadow: 0 2px 0 #9b000f;
+	box-shadow: 0 2px 0 #9b000f;
 }
  
 .pagination .current {
     background: #464646;
     color: #fff;
-    text-shadow: 0px -1px 0px #000;
-    -webkit-box-shadow: 0px 2px 0px #3e3e3e;
-	-moz-box-shadow: 0px 2px 0px #3e3e3e;
-	box-shadow: 0px 2px 0px #3e3e3e;
+    text-shadow: 0 -1px 0 #000;
+    -webkit-box-shadow: 0 2px 0 #3e3e3e;
+	-moz-box-shadow: 0 2px 0 #3e3e3e;
+	box-shadow: 0 2px 0 #3e3e3e;
 }
 
 	/* Prev and next post pagination */
@@ -1355,7 +1349,7 @@ img.alignright {
 	background-color: rgba(255, 255, 255, 0.75);
 	margin: 40px 0;
 	position: relative;
-	text-shadow: 1px 1px 0px #fff;
+	text-shadow: 1px 1px 0 #fff;
 }
 
 #footer .wrap {
@@ -1613,7 +1607,7 @@ input[type="button"] {
 	color: #fff;
 	font: bold 16px 'PT Serif', Georgia, "Times New Roman", Times, serif;
 	padding: 11px 15px;
-	text-shadow: 1px 1px 0px #3e3e3e;
+	text-shadow: 1px 1px 0 #3e3e3e;
 	border-radius: 5px;
 }
 
@@ -1621,7 +1615,7 @@ input[type="submit"]:hover,
 input[type="button"]:hover {
 	background: #d54e21;
 	cursor: pointer;
-	text-shadow: 1px 1px 0px #b92b00;
+	text-shadow: 1px 1px 0 #b92b00;
 }
 
 /* Labels */
@@ -1688,14 +1682,14 @@ span.required {
 .alert {
 	background: #fffbbc;
 	/*border: 1px solid #E6DB55;*/
-	box-shadow: 0px 0px 10px #E6DB55;
+	box-shadow: 0 0 10px #E6DB55;
 }
 
 /* Errors */
 .error {
 	background: #ffebe8;
 	/*border: 1px solid #C00;*/
-	box-shadow: 0px 0px 4px #C00;
+	box-shadow: 0 0 4px #C00;
 }
 
 /* Downloads/Success */
@@ -1703,7 +1697,7 @@ span.required {
 .success {
 	background: #e7f7d3;
 	/*border: 1px solid #6c3;*/
-	box-shadow: 0px 0px 5px #6c3;
+	box-shadow: 0 0 5px #6c3;
 }
 
 
