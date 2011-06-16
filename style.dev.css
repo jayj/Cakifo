@@ -359,7 +359,8 @@ table {
 }
 
 #topbar li a:hover,
-#topbar .current-menu-item > a {
+#topbar .current-menu-item > a,
+#topbar .current-menu-ancestor > a {
 	background: rgba(255, 255, 255, 0.03);
 	color: #f1faff;
 }
@@ -888,7 +889,8 @@ img.alignright {
 }
 
 .wp-caption .wp-caption-text,
-.entry-caption {
+.entry-caption,
+.gallery-caption {
 	font: 14px 'PT Serif', Georgia, Palatino, "Times New Roman";
 	color: #999;
 	margin-bottom: 0;
@@ -897,6 +899,11 @@ img.alignright {
 }
 
 .entry-caption {
+	padding: 0 0 20px;	
+}
+
+.gallery-caption {
+	line-height: 2;
 	padding: 0 0 20px;	
 }
 
@@ -1647,6 +1654,28 @@ span.required {
 	width: 30%;
 	padding: 10px;
 	margin-left: 4%;
+}
+
+/* Search form in the topbar */
+#topbar .search {
+	float: right;
+	margin-top: 6px;
+}
+
+#topbar .search input[type="text"],
+#topbar .search input[type="search"] {
+	border: none;
+	padding: 7px 6px;
+}
+
+#topbar .search input[type="submit"] {
+	background: #4f4f4f;
+	font-size: 14px;
+	padding: 7px 10px;
+}
+
+#topbar .search input[type="submit"]:hover {
+	background: #d54e21;
 }
 
 /**
