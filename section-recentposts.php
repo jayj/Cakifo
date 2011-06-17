@@ -51,7 +51,8 @@
                                     'meta_key' => 'Thumbnail',
                                     'size' => 'recent',
                                     'image_class' => 'thumbnail',
-                                    'default_image' => THEME_URI . '/images/default-thumb-190-130.gif'
+									'height' => apply_filters( 'recent_image_height', '130' ),
+                                    'default_image' => THEME_URI . '/images/default-thumb-190-130.gif',
                                 ) );
                             ?>
                         </div>
