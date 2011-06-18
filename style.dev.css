@@ -531,7 +531,7 @@ table {
 
 /* Three columns */
 .layout-3c-l #content,
-.layout-3c-l #content,
+.layout-3c-r #content,
 .layout-3c-c #content {
 	display: -webkit-box;
 	display: -moz-box;
@@ -1414,19 +1414,19 @@ img.alignright {
 **************************************/
 
 .comment-list, 
-.comment-list ol {
+.comment-list > ol {
 	list-style: none;
 	margin: 0;
 }
 
-.comment-list li {
+.comment-list .comment {
 	border-bottom: 1px solid #eee;
 	padding: 20px 20px 0 20px;
 	overflow: hidden;
 }
 
 	/* Replies */
-	.comment-list .children li {
+	.comment-list .children .comment {
 		background: #fff;
 		border-top: 1px solid #eee;
 		border-bottom: none;

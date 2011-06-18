@@ -108,6 +108,9 @@ function cakifo_theme_setup() {
 
 	/* Register shortcodes. */
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
+	
+	/* Set $content_width */
+	add_action( 'init', 'cakifo_content_width' );
 
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
@@ -492,6 +495,25 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 	}
 
 	return $sidebars_widgets;
+}
+
+/**
+ * Set $content_width based on the current post layout
+ *
+ * @since 1.3
+ */
+function cakifo_content_width() {
+	global $content_width;
+	
+	$layout = theme_layouts_get_layout();
+	
+	if ( current_theme_supports( 'theme-layouts' ) ) {
+		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout )
+			$content_width = 490;
+		elseif ( 'layout-3c-c' == $layout )
+			$content_width = 500;	
+	}
+
 }
 
 /**
