@@ -56,8 +56,8 @@
 #cboxPrevious, 
 #cboxNext{background:#fff url(../images/colorbox.png) no-repeat; border-radius:12px; width:24px; height:24px; margin:0; position:absolute; top:45%; opacity:0.4; text-indent:-9999px; -webkit-box-shadow:0 0 10px rgba(0,0,0,0.3); -moz-box-shadow:0 0 10px rgba(0,0,0,0.3); box-shadow:0 0 10px rgba(0,0,0,0.3); -webkit-transition:opacity 150ms ease; -moz-transition:opacity 150ms ease; transition:opacity 150ms ease}
 
-#cboxPrevious{background-position:-14px -75px; left:4%}
-#cboxNext{background-position:-80px -75px; right:4%}
+#cboxPrevious{background-position:-2px -2px; left:4%}
+#cboxNext{background-position:-67px -2px; right:4%}
 
 #cboxContent:hover #cboxPrevious, 
 #cboxContent:hover #cboxNext{opacity:0.8}

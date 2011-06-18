@@ -80,7 +80,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'custom-field-series' );
 	
 	/* Load the colorbox script if supported. */
-	add_theme_support( 'cakifo-colorbox' ); /* Remove after testing */
+	add_theme_support( 'cakifo-colorbox' );
 	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
 
 	/* Load shortcodes file. */
