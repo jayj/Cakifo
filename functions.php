@@ -78,9 +78,13 @@ function cakifo_theme_setup() {
 	add_theme_support( 'breadcrumb-trail' );
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
+	
+	/* Load the colorbox script if supported. */
+	add_theme_support( 'cakifo-colorbox' ); /* Remove after testing */
+	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
 
 	/* Load shortcodes file. */
-	require_once( THEME_DIR . '/functions/shortcodes.php' );
+	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
 
 	/* Load Theme Settings */
 	if ( is_admin() )
@@ -106,7 +110,7 @@ function cakifo_theme_setup() {
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
 
 	/* Load JavaScript and CSS styles */
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
 	add_action( 'wp_print_styles', 'cakifo_enqueue_style' );
 
 	/* Topbar RSS link */
@@ -212,7 +216,7 @@ function cakifo_enqueue_script() {
 	 * wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
 	 * in your child theme functions.php
 	 */
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.4.min.js', '', '2.0.4' );
 
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
@@ -298,10 +302,10 @@ function cakifo_slider_javascript() {
 		// 'animationComplete'=> 'function(){}' // Function called at the completion of animation
 	);
 
-	$args = '';
+	$args = array();
 
 	/* @link http://slidesjs.com for more info */
-	$args = apply_atomic( 'slider_args', $args ); 
+	$args = apply_filters( 'cakifo_slider_args', $args ); 
 
 	/**
 	 * Parse incoming $args into an array and merge it with $defaults

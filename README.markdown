@@ -54,6 +54,7 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 * Equal Heights In Rows by [Chris Coyier](http://css-tricks.com/equal-height-blocks-in-rows/)
 * [Premium Pixels](http://www.premiumpixels.com/) for the topbar
 * [Wolforg](http://wolforg.eu/) for french translation
+* Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)
 * And others! More people are credited in the source
 
 ## Support

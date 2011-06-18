@@ -1725,6 +1725,25 @@ span.required {
 	box-shadow: 0 0 5px #6c3;
 }
 
+/* No use for this yet.. Maybe colorbox plugin for a child theme?? */
+/*.overlay {
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-transition: 0.25s opacity;
+  background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5),
+                                      rgba(127, 127, 127, 0.5) 35%,
+                                      rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  display: -webkit-box;
+  left: 0;
+  padding: 20px;
+  padding-bottom: 130px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}*/
+
 
 .shake-it-baby{-webkit-animation:shake-it-baby 1s infinite;-webkit-transition:all 1s ease;-moz-animation:shake-it-baby 1s infinite;-moz-transition:all 1s ease;animation:shake-it-baby 1s infinite;transition:all 1s ease}
 @-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
