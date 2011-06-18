@@ -154,6 +154,9 @@ function cakifo_theme_setup() {
 
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
+	
+	/* wp_list_comments() arguments */
+	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
 
 	/* Theme update check */
 	add_action( 'admin_notices', 'cakifo_update_notice' );
@@ -240,6 +243,12 @@ function cakifo_enqueue_script() {
  */
 function cakifo_enqueue_style() {
 	wp_enqueue_style( 'PT-Serif', 'http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' );
+	
+	// Add a new bbPress stylesheet, if the plugin is active
+	if ( class_exists( 'bbPress' ) ) :
+		wp_dequeue_style( 'bbpress-style' );
+		wp_enqueue_style( 'bbp-cakifo-bbpress', THEME_URI . '/css/bbpress.css', array(), '1.3', 'screen' );
+	endif;
 }
 
 /**
@@ -350,6 +359,18 @@ function cakifo_get_the_image_arguments( $args ) {
 		$args['image_class'] = 'thumbnail';
 	}
 
+	return $args;
+}
+
+/**
+ * Change the arguments of wp_list_comments()
+ * Change avatar size to 48
+ *
+ * @since 1.3
+ */
+function cakifo_change_list_comments_args( $args ) {
+	$args['avatar_size'] = 48;
+	
 	return $args;
 }
 

@@ -131,7 +131,7 @@
 
 	</div> <!-- .loop-meta -->
 
-<?php elseif ( is_post_type_archive() ) : ?>
+<?php elseif ( is_post_type_archive() && ! is_post_type_archive( 'forum' ) ) : ?>
 
 	<?php $post_type = get_post_type_object( get_query_var( 'post_type' ) ); ?>
 

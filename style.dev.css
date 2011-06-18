@@ -925,7 +925,7 @@ img.alignright {
 .avatar {
 	background: #fff;
 	float: left;
-	width: 48px; height: 48px;
+	/*width: 48px; height: 48px;*/
 	margin: 0 15px 15px 0;
 	padding: 3px;
 	border-radius: 5px;
@@ -1604,7 +1604,8 @@ input[type="search"]::-webkit-search-decoration {
 
 /* Submit button */
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+button {
 	background: #464646;
 	border: none;
 	color: #fff;
@@ -1615,7 +1616,8 @@ input[type="button"] {
 }
 
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+button:hover {
 	background: #d54e21;
 	cursor: pointer;
 	text-shadow: 1px 1px 0 #b92b00;

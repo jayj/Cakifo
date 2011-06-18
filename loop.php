@@ -41,7 +41,8 @@
 				if ( false === $format )
 					$format = 'standard';
 
-				echo apply_atomic_shortcode( "byline_{$format}", '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+				if ( 'post' == get_post_type() )
+					echo apply_atomic_shortcode( "byline_{$format}", '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
 			?>
         </header> <!-- .entry-header -->
 
@@ -89,7 +90,8 @@
 
         <?php
 			/* Entry meta */
-			echo apply_atomic_shortcode( "entry_meta_{$format}", '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+			if ( 'post' == get_post_type() )
+				echo apply_atomic_shortcode( "entry_meta_{$format}", '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 		?>
 
         <div class="clear"></div>
