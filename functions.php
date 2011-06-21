@@ -417,7 +417,6 @@ function cakifo_excerpt_more( $more ) {
  * @since 1.0
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-
 	$args['before'] = __( 'You are here:', hybrid_get_textdomain() ); // Change the text before the breadcrumb trail 
 
 	return $args;
@@ -540,6 +539,19 @@ function cakifo_logo( $title ) {
 	}
 
 	return $title;
+}
+
+/**
+ * Return the URL for the first link found in the post content
+ *
+ * @since 1.0
+ * @return string|bool URL or false when no link is present.
+ */
+function cakifo_url_grabber() {
+	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+		return false;
+
+	return esc_url_raw( $matches[1] );
 }
 
 /**

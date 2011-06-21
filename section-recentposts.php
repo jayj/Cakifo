@@ -46,14 +46,42 @@
     
                     <?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
                         <div class="image">
-                            <?php
-                                get_the_image( array(
-                                    'meta_key' => 'Thumbnail',
-                                    'size' => 'recent',
-                                    'image_class' => 'thumbnail',
+							<?php
+								/**
+								 * Get the post thumbnail
+								 *
+								 * Either from a custom field, the featured image function,
+								 * An embed video (video post format) or fallback to default image
+								 */
+								$thumbnail = get_the_image( array(
+									'meta_key' => 'Thumbnail',
+									'size' => 'recent',
+									'image_class' => 'thumbnail',
 									'height' => apply_filters( 'recent_image_height', '130' ),
-                                    'default_image' => THEME_URI . '/images/default-thumb-190-130.gif',
-                                ) );
+									'echo' => false
+								) );
+
+								if ( $thumbnail ) :
+
+									echo $thumbnail;
+
+								elseif ( has_post_format( 'video' ) ) :
+									// Try to embed a video from the post content
+									echo wp_oembed_get( get_the_content(), array( 
+										'width' => apply_filters( 'recent_image_width', '190' ),
+										'height' => apply_filters( 'recent_image_height', '130' ) )
+									);
+
+								else :
+									// Fallback to the default image
+									get_the_image( array(
+										'meta_key' => false,
+										'the_post_thumbnail' => false,
+										'image_class' => 'thumbnail',
+										'default_image' => THEME_URI . '/images/default-thumb-190-130.gif',
+									) );
+
+								endif;	
                             ?>
                         </div>
                     <?php } ?>

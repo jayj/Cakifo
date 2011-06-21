@@ -46,7 +46,7 @@
 
                         <?php $cat = get_category( $category ); ?>
 
-                        <h1 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h1>
+                        <h2 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h2>
 
                         <ol>
 							<?php foreach ( $headlines as $post ) : $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; ?>
