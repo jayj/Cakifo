@@ -266,11 +266,12 @@ function cakifo_front_page() {
 	$prefix = hybrid_get_prefix();
 
 	/* If we're not looking at the front page, return */
-	if ( !is_home() && !is_front_page() )
+	if ( ! is_home() && ! is_front_page() )
 		return;
 
 	/* Load the Slides jQuery Plugin */
-	wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
+	if ( hybrid_get_setting( 'featured_show' ) )
+		wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
 
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
@@ -279,7 +280,11 @@ function cakifo_front_page() {
 function cakifo_slider_javascript() {
 
 	/* If we're not looking at the front page, return */
-	if ( !is_home() && !is_front_page() )
+	if ( ! is_home() && ! is_front_page() )
+		return;
+
+	//* If slider is disabled, return */
+	if ( ! hybrid_get_setting( 'featured_show' ) )
 		return;
 
 	$loading_gif = ( file_exists( CHILD_THEME_DIR . '/images/loading.gif' ) ) ? CHILD_THEME_URI . '/images/loading.gif' : THEME_URI . '/images/loading.gif';

@@ -28,7 +28,7 @@ function cakifo_colorbox_script() {
  * Load the style
  */
 function cakifo_colorbox_style() {
-	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css' );
+	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3', 'screen' );
 }
 
 /**
