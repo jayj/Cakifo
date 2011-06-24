@@ -34,7 +34,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
         <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
             <nav class="pagination comment-pagination">
-            	<h2 class="assistive-text"><?php _e( 'Comment navigation', hybrid_get_textdomain() ); ?></h2>
+            	<h3 class="assistive-text"><?php _e( 'Comment navigation', hybrid_get_textdomain() ); ?></h3>
             	<?php paginate_comments_links(); ?>
             </nav> <!-- .comment-navigation -->
         <?php endif; ?>

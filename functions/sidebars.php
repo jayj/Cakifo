@@ -64,8 +64,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'A widget area loaded in the footer of the site.', $domain ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 
 	/* Set up the header sidebar arguments. */
@@ -86,8 +86,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded before the page\'s main content area.', $domain ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget' => '</div></section>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 
 	/* Set up the after content sidebar arguments. */
@@ -97,8 +97,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded after the page\'s main content area.', $domain ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget' => '</div></section>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 
 	/* Set up the after singular sidebar arguments. */
@@ -108,8 +108,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded on singular post (page, attachment, etc.) views before the comments area.', $domain ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 
 	/* Set up the after single sidebar arguments. */
@@ -119,8 +119,8 @@ function cakifo_register_sidebars() {
 		'description' => __( 'Loaded on single post views before the comments area.', $domain ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
 	);
 	
 	/* Set up the 404 error page arguments. */

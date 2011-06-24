@@ -67,7 +67,7 @@
                                     <?php } ?>
 
                                     <div class="details">
-                                    	<?php echo apply_atomic_shortcode( 'headline_entry_title', '[entry-title heading="h3"]' ); ?>
+                                    	<?php echo apply_atomic( 'headline_entry_title', the_title( '<h3 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h3>', false ) ); ?>
                                     	<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
                                     </div> <!-- .details -->
 

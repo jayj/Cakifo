@@ -29,7 +29,7 @@
             <?php if ( get_post_format() ) : ?>
                 <hgroup>
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-                    <h2 class="entry-format"><?php echo get_post_format(); ?></h2>
+                    <h3 class="entry-format"><?php echo get_post_format(); ?></h2>
                 </hgroup>
             <?php else: ?>
             	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>

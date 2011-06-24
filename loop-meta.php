@@ -121,6 +121,7 @@
 <?php elseif ( is_date() ) : ?>
 
 	<div class="loop-meta">
+
 		<h1 class="loop-title"><?php _e( 'Archives by date', hybrid_get_textdomain() ); ?></h1>
 
 		<div class="loop-description">

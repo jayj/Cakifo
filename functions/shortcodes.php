@@ -23,12 +23,12 @@ function cakifo_register_shortcodes() {
 	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
 	remove_shortcode( 'comment-published' );
-	remove_shortcode( 'entry-title' );
+	//remove_shortcode( 'entry-title' );
 	remove_shortcode( 'entry-author' );
 	
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
 	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
-	add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
+	//add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
 	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
 }
 
@@ -43,7 +43,7 @@ function cakifo_rss_link_shortcode( $atts ) {
 		'before' => '',
 		'after' => '',
 		'text' => __( 'RSS', hybrid_get_textdomain() ),
- 	), $atts) );
+ 	), $atts ) );
 
 	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  $text . '</a>' . $after;
 }
@@ -63,7 +63,7 @@ function cakifo_twitter_shortcode( $atts ) {
 		'after' => '',
 		'username' => hybrid_get_setting( 'twitter_username' ),
 		'text' => __( 'Follow me on Twitter', hybrid_get_textdomain() )
- 	), $atts) );
+ 	), $atts ) );
 
 	if ( empty( $username ) )
 		return;
@@ -167,7 +167,6 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 /**
  * Google +1 shortcode
  *
- * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://www.google.com/+1/button/
  * @since 1.2
  */
@@ -259,7 +258,7 @@ function cakifo_entry_author_shortcode( $attr ) {
  *
  * @since 1.3
  */
-function cakifo_entry_title_shortcode( $attr ) {
+/*function cakifo_entry_title_shortcode( $attr ) {
 	
 	$attr = shortcode_atts( array(
 		'heading' => 'h1'
@@ -274,11 +273,11 @@ function cakifo_entry_title_shortcode( $attr ) {
 	if ( 'link_category' == get_query_var( 'taxonomy' ) )
 		$title = false;
 
-	/* If there's no post title, return a clickable '(No title)'. */
+	// If there's no post title, return a clickable '(No title)'.
 	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
 		$title = "<{$attr['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></{$attr['heading']}>";
 
 	return $title;
-}
+}*/
 
 ?>

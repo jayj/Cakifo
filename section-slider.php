@@ -38,7 +38,7 @@
 
 	<section id="slider">
 
-    	<h1 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h1>
+    	<h3 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h3>
 
 		<div class="slides_container">
 

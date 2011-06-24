@@ -87,7 +87,7 @@
                     <?php } ?>
     
                     <div class="details">
-                        <?php echo apply_atomic_shortcode( 'recent_post_entry_title', '[entry-title heading="h1"]' ); ?>
+                        <?php echo apply_atomic( 'recent_post_entry_title', the_title( '<h2 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>', false ) ); ?>
     
                         <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recentposts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
     
