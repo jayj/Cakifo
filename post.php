@@ -26,14 +26,14 @@ get_header(); // Loads the header.php template ?>
             <?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template ?>
 
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
+			
+			<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
 
             <?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
 
         <?php endwhile; ?>
 
         <?php do_atomic( 'close_main' ); // retro-fitted_close_main ?>
-
-        <?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
 
     </div> <!-- #main -->
 

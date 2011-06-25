@@ -1312,12 +1312,17 @@ img.alignright {
 }
 
 	/* Prev and next post pagination */
+	.post-pagination a {
+		max-width: 49%;
+		line-height: 1.6;
+	}
+
 	.post-pagination a[rel=prev] {
 		float: left;
 	}
-	
+
 	.post-pagination a[rel=next] {
-		float: right;	
+		float: right;
 	}
 
 /**

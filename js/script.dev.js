@@ -3,7 +3,6 @@
  * Use this file for development purposes by adding this to your 'wp-config.php' file:
  * define( 'SCRIPT_DEBUG', true );
  */
-
 jQuery(document).ready(function($) {
 
 	/**
@@ -45,8 +44,4 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	/* A little surprise ;-) */
-	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
-	$(document).keydown(function(e){kkeys.push(e.keyCode);if( kkeys.toString().indexOf(kkkeys)>= 0){$(document).unbind('keydown',arguments.callee);$('body').addClass('shake-it-baby');}});
-	
 });
