@@ -19,6 +19,7 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-facebook-link', 'cakifo_entry_facebook_link_shortcode' );
 	add_shortcode( 'entry-twitter-link', 'cakifo_entry_twitter_link_shortcode' );
 	add_shortcode( 'entry-googleplus-link', 'cakifo_entry_googleplus_link_shortcode' );
+	add_shortcode( 'entry-format', 'cakifo_entry_format_shortcode' );
 
 	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
@@ -36,6 +37,7 @@ function cakifo_register_shortcodes() {
  * RSS link shortcode
  *
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_rss_link_shortcode( $atts ) {
 
@@ -54,6 +56,7 @@ function cakifo_rss_link_shortcode( $atts ) {
  *
  * @link http://wordpress.org/extend/plugins/twitter-profile-field/
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_twitter_shortcode( $atts ) {
 
@@ -78,6 +81,7 @@ function cakifo_twitter_shortcode( $atts ) {
  * Delicious link shortcode.
  *
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
 
@@ -94,6 +98,7 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
  * @note This won't work from your computer (http://localhost). Must be a live site.
  *
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
 
@@ -113,6 +118,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  *
  * @link http://developers.facebook.com/docs/reference/plugins/like/
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
 
@@ -139,6 +145,7 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
  * Twitter link shortcode.
  *
  * @since 1.0
+ * @param array $atts
  */
 function cakifo_entry_twitter_link_shortcode( $atts ) {
 
@@ -169,6 +176,7 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  *
  * @link http://www.google.com/+1/button/
  * @since 1.2
+ * @param array $atts
  */
 function cakifo_entry_googleplus_link_shortcode( $atts ) {
 	
@@ -194,23 +202,23 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
  * It replaces the default Hybrid Core shortcode. The name will be the same
  *
  * @since 1.1
- * @param array $attr
+ * @param array $atts
  */
-function cakifo_entry_published_shortcode( $attr ) {
+function cakifo_entry_published_shortcode( $atts ) {
 
-	$attr = shortcode_atts( array(
+	$atts = shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'format' => get_option( 'date_format' ),
 		'pubdate' => true,
-	), $attr );
+	), $atts );
 
 	// Pubdate attribute can be removed with [entry-published pubdate="something"] 
-	$pubdate = ( $attr['pubdate'] === true ) ? 'pubdate' : '';
+	$pubdate = ( $atts['pubdate'] === true ) ? 'pubdate' : '';
 
-	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $attr['format'] ) . '</time>';
+	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $atts['format'] ) . '</time>';
 
-	return $attr['before'] . $published . $attr['after'];
+	return $atts['before'] . $published . $atts['after'];
 }
 
 /**
@@ -218,18 +226,18 @@ function cakifo_entry_published_shortcode( $attr ) {
  * It replaces the default Hybrid Core shortcode. The name will be the same
  *
  * @since 1.1
- * @param array $attr
+ * @param array $atts
  */
-function cakifo_comment_published_shortcode( $attr ) {
+function cakifo_comment_published_shortcode( $atts ) {
 
-	$attr = shortcode_atts( array(
+	$atts = shortcode_atts( array(
 		'before' => '',
 		'after' => ''
-	), $attr );
+	), $atts );
 
 	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
 
-	return $attr['before'] . $published . $attr['after'];
+	return $atts['before'] . $published . $atts['after'];
 }
 
 /**
@@ -237,19 +245,35 @@ function cakifo_comment_published_shortcode( $attr ) {
  * It replaces the default Hybrid Core shortcode. The name will be the same
  *
  * @since 1.3
- * @param array $attr
+ * @param array $atts
  */
-function cakifo_entry_author_shortcode( $attr ) {
+function cakifo_entry_author_shortcode( $atts ) {
 	
-	$attr = shortcode_atts( array(
+	$atts = shortcode_atts( array(
 		'rel' => 'author',
 		'before' => '',
 		'after' => '',
-	), $attr );
+	), $atts );
 	
-	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="' . esc_attr( $attr['rel'] ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="' . esc_attr( $atts['rel'] ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 	
-	return $attr['before'] . $author . $attr['after'];
+	return $atts['before'] . $author . $atts['after'];
+}
+
+/**
+ * Displays the post format of the current post
+ *
+ * @since 1.3
+ * @param array $atts
+ */
+function cakifo_entry_format_shortcode( $atts ) {
+	
+	$atts = shortcode_atts( array(
+		'before' => '',
+		'after' => ''
+	), $atts );
+	
+	return $atts['before'] . get_post_format() . $atts['after'];
 }
 
 /**
@@ -257,25 +281,26 @@ function cakifo_entry_author_shortcode( $attr ) {
  * It replaces the default Hybrid Core shortcode. The name will be the same
  *
  * @since 1.3
+ * @param array $atts
  */
-/*function cakifo_entry_title_shortcode( $attr ) {
+/*function cakifo_entry_title_shortcode( $atts ) {
 	
-	$attr = shortcode_atts( array(
+	$atts = shortcode_atts( array(
 		'heading' => 'h1'
-	), $attr );
+	), $atts );
 	
 	global $post;
 	
-	// $attr['heading']
+	// $atts['heading']
 
-	$title = the_title( "<{$attr['heading']} class='" . esc_attr( $post->post_type ) . "-title entry-title'><a href='" . get_permalink() . "' title='" . the_title_attribute( 'echo=0' ) . "' rel='bookmark'>", "</a></{$attr['heading']}>", false );
+	$title = the_title( "<{$atts['heading']} class='" . esc_attr( $post->post_type ) . "-title entry-title'><a href='" . get_permalink() . "' title='" . the_title_attribute( 'echo=0' ) . "' rel='bookmark'>", "</a></{$atts['heading']}>", false );
 
 	if ( 'link_category' == get_query_var( 'taxonomy' ) )
 		$title = false;
 
 	// If there's no post title, return a clickable '(No title)'.
 	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
-		$title = "<{$attr['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></{$attr['heading']}>";
+		$title = "<{$atts['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></{$atts['heading']}>";
 
 	return $title;
 }*/
