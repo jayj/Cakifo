@@ -19,15 +19,15 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
 			
             <nav class="menu">
-            	<h3 class="assistive-text"><?php _e( 'Main menu', hybrid_get_textdomain() ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Main menu', hybrid_get_textdomain() ); ?></h3>
 				<?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                        'container' => '',
-                        'menu_class' => '',
-                        'after' => '<span class="sep">|</span>',
-                        'fallback_cb' => ''
-                     ) );
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'container' => '',
+						'menu_class' => '',
+						'after' => '<span class="sep">|</span>',
+						'fallback_cb' => ''
+					) );
                 ?>
             </nav> <!-- .menu -->
 

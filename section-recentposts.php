@@ -20,8 +20,7 @@
             $recent_args = array(
                 'showposts' => 4,
                 'ignore_sticky_posts' => 1,
-                'order' => 'DESC',
-				'no_found_rows' => true,
+				'post_status' => 'publish',
                 'tax_query' => array( array(
                         'taxonomy' => 'post_format',
                         'terms' => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),
@@ -33,69 +32,42 @@
 
             // Our query for the Recent Posts section
             $recent = new WP_Query( $recent_args );
-			
+
 			$i = 0;
-			
+
             while ( $recent->have_posts() ) : $recent->the_post();
-			
+
                 $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; // Put the post ID in an array to make sure it's only showing once (this array is used in the headline lists as well)
         ?>
 
             <article class="recent-post">
 				<?php do_atomic( 'open_recent_posts_item' ); // cakifo_open_recent_posts_item ?>
-    
+
                     <?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
                         <div class="image">
 							<?php
-								/**
-								 * Get the post thumbnail
-								 *
-								 * Either from a custom field, the featured image function,
-								 * An embed video (video post format) or fallback to default image
-								 */
-								$thumbnail = get_the_image( array(
+								// Get the post thumbnail
+								 get_the_image( array(
 									'meta_key' => 'Thumbnail',
 									'size' => 'recent',
 									'image_class' => 'thumbnail',
 									'height' => apply_filters( 'recent_image_height', '130' ),
-									'echo' => false
+									'default_image' => THEME_URI . '/images/default-thumb-190-130.gif'
 								) );
-
-								if ( $thumbnail ) :
-
-									echo $thumbnail;
-
-								elseif ( has_post_format( 'video' ) ) :
-									// Try to embed a video from the post content
-									echo wp_oembed_get( get_the_content(), array( 
-										'width' => apply_filters( 'recent_image_width', '190' ),
-										'height' => apply_filters( 'recent_image_height', '130' ) )
-									);
-
-								else :
-									// Fallback to the default image
-									get_the_image( array(
-										'meta_key' => false,
-										'the_post_thumbnail' => false,
-										'image_class' => 'thumbnail',
-										'default_image' => THEME_URI . '/images/default-thumb-190-130.gif',
-									) );
-
-								endif;	
                             ?>
                         </div>
                     <?php } ?>
-    
+
                     <div class="details">
                         <?php echo apply_atomic( 'recent_post_entry_title', the_title( '<h2 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>', false ) ); ?>
-    
+
                         <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recentposts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
-    
+
                         <div class="entry-summary">
-                            <?php cakifo_the_excerpt( 20 ); ?>
+                            <?php cakifo_the_excerpt( 120 ); ?>
                         </div>
                     </div> <!-- .details -->
-    
+
                 <?php do_atomic( 'close_recent_posts_item' ); // cakifo_close_recent_posts_item ?>
             </article>
 

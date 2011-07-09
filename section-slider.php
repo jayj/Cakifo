@@ -19,13 +19,13 @@
 			'cat' => hybrid_get_setting( 'featured_category' ),
 			'showposts' => hybrid_get_setting( 'featured_posts' ),
 			'ignore_sticky_posts' => 1,
-			'no_found_rows' => true
+			'post_status' => 'publish',
 		);
 	else :
 		$feature_query = array(
 			'post__in' => get_option( 'sticky_posts' ),
 			'showposts' => hybrid_get_setting( 'featured_posts' ),
-			'no_found_rows' => true
+			'post_status' => 'publish',
 		);
 	endif;
 ?>
@@ -40,9 +40,9 @@
 
     	<h3 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h3>
 
-		<div class="slides_container">
+        <div class="inner-slider">
 
-			<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
+		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
 
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
@@ -52,13 +52,41 @@
 					<?php do_atomic( 'open_slide' ); // cakifo_open_slide ?>
 
 					<?php
-						if ( current_theme_supports( 'get-the-image' ) )
-							get_the_image( array(
+						if ( current_theme_supports( 'get-the-image' ) ) :
+
+							/**
+							 * Get the post thumbnail with the slider image size
+							 *
+							 * Either from a custom field, the featured image function,
+							 * or an embed video (video post format)
+							 */	 
+							$thumbnail = get_the_image( array(
 								'size' => 'slider',
 								'attachment' => false,
 								'meta_key' => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
-								'image_class' => 'thumbnail'
+								'image_class' => 'thumbnail',
+								'echo' => false
 							) );
+
+							$thumbnail_size = cakifo_get_image_size( 'slider' );
+
+							if ( $thumbnail ) :
+
+								echo $thumbnail;
+
+							// Try to embed a video from the post content	
+							elseif ( has_post_format( 'video' ) && 
+									$video = wp_oembed_get( cakifo_http_url_grabber(), array( 
+										'width' => $thumbnail_size['width'],
+										'height' => $thumbnail_size['width'] / 1.77777778
+									) )
+							) :
+
+								echo '<div class="slider-video">' . $video . '</div>';
+
+							endif;
+
+						endif;
 					?>
 
 					<div class="entry-summary">
@@ -68,7 +96,7 @@
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
-				</article> <!-- .slide -->
+				</article>
 
 				<?php do_atomic( 'after_slide' ); // after_close_slide ?>
 
@@ -76,8 +104,7 @@
 
 			<?php do_atomic( 'close_slider' ); // cakifo_close_slider ?>
 
-		</div> <!-- .slides_container -->
-
+            </div> <!-- .inner-slider -->
 	</section> <!-- #slider -->
 
 	<?php do_atomic( 'after_slider' ); // cakifo_after_slider ?>

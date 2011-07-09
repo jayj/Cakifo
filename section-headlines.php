@@ -16,7 +16,7 @@
         <?php
         	$i = 0;
 			$number = ( hybrid_get_setting( 'headlines_num_posts' ) ) ? hybrid_get_setting( 'headlines_num_posts' ) : 4;
-			
+
         	foreach ( hybrid_get_setting( 'headlines_category' ) as $category ) :
         ?>
 
@@ -26,7 +26,7 @@
 						'numberposts' => $number,
 						'post__not_in' => $GLOBALS['cakifo_do_not_duplicate'],
 						'category' => $category,
-						'no_found_rows' => true,
+						'post_status' => 'publish',
 						'tax_query' => array(
 								array(
 									'taxonomy' => 'post_format',

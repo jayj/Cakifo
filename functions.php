@@ -163,7 +163,6 @@ function cakifo_theme_setup() {
 
 	/* Theme update check */
 	add_action( 'admin_notices', 'cakifo_update_notice' );
-	add_action( 'network_admin_notices', 'cakifo_update_notice' );
 
 	/* Custom logo */
 	add_filter( 'cakifo_site_title', 'cakifo_logo' );
@@ -217,12 +216,14 @@ function cakifo_enqueue_script() {
 	/**
 	 * Modernizr enables HTML5 elements & feature detects
 	 *
-     * For optimal performance in your child theme, use a custom Modernizr build: www.modernizr.com/download/
-	 * use wp_deregister_script( 'modernizr' ); and
-	 * wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.0.min.js', '', '2.0' );
+     * For more/fewer features and optimal performance in your child theme,
+	 * use a custom Modernizr build: www.modernizr.com/download/
+	 *
+	 * Use wp_deregister_script( 'modernizr' ); and
+	 * wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
 	 * in your child theme functions.php
 	 */
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.4.min.js', '', '2.0.4' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr-2.0.6.min.js', '', '2.0.6' );
 
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
@@ -271,7 +272,8 @@ function cakifo_front_page() {
 
 	/* Load the Slides jQuery Plugin */
 	if ( hybrid_get_setting( 'featured_show' ) )
-		wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
+		wp_enqueue_script( 'slides', THEME_URI . '/js/slides.js', array( 'jquery' ), '2.0-beta1', true );
+		//wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
 
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
@@ -293,30 +295,34 @@ function cakifo_slider_javascript() {
 	 * Default args
 	 */
 	$defaults = array(
-		'play' => '3500', // number, Autoplay slideshow, a positive number will set to true and be the time between slide animation in milliseconds
-		'hoverPause' => true, // boolean, Set to true and hovering over slideshow will pause it
-		'generatePagination' => true, // boolean, Auto generate pagination
-		'autoHeight' => true, // boolean, Set to true to auto adjust height
-		'effect' => 'fade', // string, '[next/prev], [pagination]', e.g. 'slide, fade' or simply 'fade' for both
-		'fadeSpeed' => 50, // number, Set the speed of the fading animation in milliseconds
-		'slideSpeed' => 150, // number, Set the speed of the sliding animation in milliseconds
-		'paginationClass' => 'slider-pagination',
-		'preload' => false, // boolean, Set true to preload images in an image based slideshow
-		'preloadImage' => esc_url( $loading_gif ),
-		'randomize' => false, // boolean, Set to true to randomize slides
-		// 'currentClass' => 'current'
-		// 'container => 'slides_container', // string, Class name for slides container. Default is "slides_container"
-		// 'generateNextPrev' => false, // boolean, Auto generate next/prev buttons
-		// 'next' => 'next', // string, Class name for next button
-		// 'prev '=> 'prev', // string, Class name for previous button
-		// 'pagination' => 'true', // boolean, If you're not using pagination you can set to false, but don't have to
-		// 'start' => 1, // number, starting slide
-		// 'crossfade' => 'false', // boolean, Crossfade images in a image based slideshow
-		// 'pause' => 0, // number, Pause slideshow on click of next/prev or pagination. A positive number will set to true and be the time of pause in milliseconds
-		// 'autoHeightSpeed'=> 350, // number, Set auto height animation time in milliseconds
-		// 'bigTarget' => 'false', // boolean, Set to true and the whole slide will link to next slide on click
-		// 'animationStart'=> 'function(){}', // Function called at the start of animation
-		// 'animationComplete'=> 'function(){}' // Function called at the completion of animation
+		'width' => 880, // [Number] Define the slide width
+		'height' => 290, // [Number] Define the slide height
+		'responsive' => false, // [Boolean] Slideshow will scale to its container
+		'navigation' => false, // [Boolean] Auto generate the navigation, next/previous buttons
+		'pagination' => true, // [Boolean] Auto generate the pagination
+		'effects' => array(
+			'navigation' =>  'fade',  // [String] Can be either "slide" or "fade"
+			'pagination' =>  'fade' // [String] Can be either "slide" or "fade"
+		),
+		'direction' => 'down', // [String] Define the slide direction => "up", "right", "down", "left"
+		'fade' => array(
+			'interval' => 200, // [Number] Interval of fade in milliseconds
+			'crossfade' => false, // [Boolean] TODO: add this feature. Crossfade the slides, great for images, bad for text
+			'easing' => '' // [String] Dependency: jQuery Easing plug-in <http://gsgd.co.uk/sandbox/jquery/easing/>
+		),
+		'slide' => array(
+			'interval' => 400, // [Number] Interval of fade in milliseconds
+			'browserWindow' => false, // [Boolean] Slide in/out from browser window, bad ass
+			'easing' => '' // [String] Dependency: jQuery Easing plug-in <http://gsgd.co.uk/sandbox/jquery/easing/>
+		),
+		'preload' => array(
+			'active' => false, // [Boolean] Preload the slides before showing them, this needs some work
+			'image' => esc_url( $loading_gif ) // [String] Define the path to a load .gif
+		),
+		'startAtSlide' => 1, // [Number] What should the first slide be?
+		'playInterval' => 5000, // [Number] Time spent on each slide in milliseconds
+		'pauseInterval' => 8000, // [Number] Time spent on pause, triggered on any navigation or pagination click
+		'autoHeight' => true, // [Boolean] TODO: add this feature. Auto sets height based on each slide
 	);
 
 	$args = array();
@@ -329,30 +335,64 @@ function cakifo_slider_javascript() {
 	 */ 
 	$args = wp_parse_args( $args, $defaults );
 
-	echo "<script type='text/javascript'>
-			jQuery(document).ready(function($) {
-				$('#slider').slides({ ";
+	// Find the last argument in the array, and remove the comma after it
+	$last_arg = end( array_keys( $args ) );
 
-				foreach ( $args as $arg => $val ) {
+	echo "<script>
+		jQuery(document).ready(function($) {
+			$('#slider .inner-slider').slides({ ";
 
-					// Make sure true and false aren't encoded in quotes
-					if ( $val === true )
-						echo $arg . ' : true,' . "\n";
-					elseif ( $val === false )
-						echo $arg . ' : false,' . "\n";
-					else
-						echo $arg . ' : "' . $val . '",' . "\n";
-				}
+			foreach ( $args as $arg => $val ) :
 
-					echo 'foo: "bar" '; // IE7 fix
+				// Don't put a comma after the last argument
+				$comma = ( $arg == $last_arg ) ? "\n" : ",\n";
+	
+				// Is the value an array?
+				if ( is_array( $val ) ) :
 
-	echo "		});
+					echo $arg . ': {' . "\n";
 
-				// Add display block if there's only 1 slide
-				if ( $('.slide').length == 1 )
-					$('.slide').css( 'display', 'block' );
-			});
-		</script>";
+						// Find the last argument in the array
+						$last_childarg = end( array_keys( $val ) );
+
+						foreach ( $val as $childarg => $childval ) {
+
+							// Don't put a comma after the last argument
+							$childcomma = ( $childarg == $last_childarg ) ? "\n" : ",\n";
+
+							if ( $childval === true )
+								echo $childarg . ': true' . $childcomma;
+							elseif ( $val === false  )
+								echo $childarg . ': false' . $childcomma;
+							elseif ( is_int( $childval ) )
+								echo $childarg . ': ' . $childval . $childcomma;
+							else
+								echo $childarg . ': "' . $childval . '"' . $childcomma;
+						}
+
+					echo '}' . $comma;
+
+				// A true boolean?
+				elseif( $val === true ) :
+					echo $arg . ': true' . $comma;
+	
+				// A false when?
+				elseif ( $val === false ) :
+					echo $arg . ': false' . $comma;
+
+				// A number?
+				elseif ( is_int( $val ) ) :
+					echo $arg . ': ' . $val . $comma;
+
+				// Nope, it's just a regular string
+				else :
+					echo $arg . ': "' . $val . '"' . $comma;
+
+				endif;
+
+			endforeach;
+
+	echo '}); });</script>';
 }
 
 /**
@@ -385,21 +425,31 @@ function cakifo_change_list_comments_args( $args ) {
 /**
  * New excerpt function with the length as a parameter
  * The ideal solution would be to change the excerpt_length filter but we need different excerpt lengths 
- * Props: http://wordpress.stackexchange.com/questions/6310/howto-control-manual-excerpt-length#answer-6316
  *
  * @since 1.0
- * @param int $length The length of the excerpt
+ * @credits Genesis Framework
+ * @note 1.3 $length changed from words to characters
+ * @param int $length The length of the excerpt in characters
  */
-function cakifo_the_excerpt( $length = 55 ) {
+function cakifo_the_excerpt( $length = 120, $echo = true ) {
+
 	global $post;
 
-	$limit = $length + 1;
-    $excerpt = explode( ' ', get_the_excerpt(), $limit );
-    array_pop( $excerpt );
+	$excerpt = trim( get_the_excerpt() );
 
-    $excerpt = implode( " ", $excerpt ) . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
+	if ( strlen( $excerpt ) > $length ) {
 
-    echo $excerpt;
+		// Truncate $phrase to $length + 1
+		$excerpt = substr( $excerpt, 0, $length + 1 );
+
+		// Truncate to the last space in the truncated string.
+		$excerpt = trim( substr( $excerpt, 0, strrpos( $excerpt, ' ' ) ) );
+	}
+
+	if ( $echo )
+		echo $excerpt . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
+	else
+		return $excerpt . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
 }
 
 function cakifo_excerpt_more( $more ) {
@@ -785,38 +835,156 @@ function cakifo_image_info() {
 
 
 /**
- * Check for theme update
- * 
- * Displays a update notice if there's a new version of the theme
+ * Get the values of image sizes
+ *
+ * @since 1.3
+ * @return array
+ */
+function cakifo_get_image_sizes() {
+	global $_wp_additional_image_sizes;
+
+	$builtin_sizes = array(
+		'large'		=> array(
+			'width' => get_option( 'large_size_w' ),
+			'height' => get_option( 'large_size_h' )
+		),
+		'medium'	=> array(
+			'width' => get_option( 'medium_size_w' ),
+			'height' => get_option( 'medium_size_h' )
+		),
+		'thumbnail'	=> array(
+			'width' => get_option( 'thumbnail_size_w' ),
+			'height' => get_option( 'thumbnail_size_h' ),
+			'crop' => (boolean) get_option( 'thumbnail_crop' )
+		)
+	);
+
+	if ( $_wp_additional_image_sizes )
+		return array_merge( $builtin_sizes, $_wp_additional_image_sizes );
+
+	return $builtin_sizes;
+}
+
+/**
+ * Get the values of a image size
+ *
+ * @since 1.3
+ * @param string $name Your unique name for this image size or a WP default
+ * @return array Array containing 'width', 'height', 'crop'.
+ */
+
+function cakifo_get_image_size( $name ) {
+
+	$image_sizes = cakifo_get_image_sizes();
+
+	if ( isset( $image_sizes[$name] ) )
+		return $image_sizes[$name];
+
+	return false;
+}
+
+/**
+ * Return the URL for the first <a href=""> link found in the post content.
+ *
+ * @since 1.3
+ * @return string|bool URL or false when no link is present.
+ */
+function cakifo_href_url_grabber() {
+	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+		return false;
+
+	return esc_url_raw( $matches[1] );
+}
+
+/**
+ * Return the URL for the first http:// or https:// link found in the post content.
+ *
+ * @since 1.3
+ * @return string|bool URL or false when no link is present
+ * @todo Figure out if the first regex can be merged into the second. Any ideas?
+ */
+function cakifo_http_url_grabber() {
+	// If the first http:// in a <a href="">, return false
+	if ( preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+		return false;
+
+	// (((http|https)\://){1}\S+) is more readable but a tiny bit slower
+	if ( ! preg_match( '/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/', get_the_content(), $matches ) )
+		return false;
+
+	return esc_url_raw( $matches[0] );
+}
+
+/**
+ * Check for theme updates
+ *
+ * @since 1.3
+ */
+function cakifo_update_check() {
+
+	// Send request to see if there's an update available
+	$url = 'http://wpthemes.jayj.dk/themerss/cakifo.json';
+	$cakifo_update = wp_remote_retrieve_body( wp_remote_get( $url ) );
+
+	if ( empty( $cakifo_update ) )
+		return false;
+
+	// Decode the JSON object
+	$update = json_decode( $cakifo_update, true );
+
+	return array(
+		'title' => $update['items'][0]['title'],
+		'version' => $update['items'][0]['version'],
+		'link' => $update['items'][0]['link'],
+		'message' => $update['items'][0]['message'],
+		'childmessage' => $update['items'][0]['childmessage'],
+		'requires' => $update['items'][0]['requires'],
+	);
+}
+	
+/**
+ * Display an update notice if there's a new version available 
  * 
  * @since 1.2
  */
 function cakifo_update_notice() {
 	
 	if ( current_user_can( 'update_themes' ) ) :
-
-		include_once( ABSPATH . WPINC . '/feed.php' );
+		
 		$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+		$update = get_transient( 'cakifo-update-check' );
+		$update_available = (boolean) get_transient( 'cakifo-update-available' );
 
-		// Get the update feed
-		$rss = fetch_feed( 'http://wpthemes.jayj.dk/themerss/cakifo.xml' );
+		// Get a fresh result from the server
+		if ( false === $update ) {
+			$update = cakifo_update_check();
+			set_transient( 'cakifo-update-check', $update, 60*60*24 ); // 24 hours
+		}
 
-		if ( ! is_wp_error( $rss ) ) :
-			$maxitems = $rss->get_item_quantity(1); // We only want the latest
-			$rss_items = $rss->get_items(0, 1);
-		endif;
+		// Is there a new version?
+		if ( false === $update_available ) {
+			if ( version_compare( $update['version'], $theme_data['Version'], '>' ) )
+				$update_available = true;
+			else
+				$update_available = false;
+			
+			set_transient( 'cakifo-update-available', $update_available, 60*60*24 ); // 24 hours
+		}
 
-		if ( $maxitems != 0 ) :
+		// There's an update available
+		if ( $update_available ) {
+			echo '<div class="update-nag">';
+			echo 'Version ' . esc_html( $update['version'] ) . ' for the Cakifo theme is available! ';
+			echo '<a href="' . esc_url( $update['link'] ) . '">Click here to download the update</a> ';
+			echo $update['message'];
+			if ( is_child_theme() )
+				echo '&nbsp;' . $update['childmessage'];
+			echo '</div>';
+		}
 
-			foreach ( $rss_items as $item ) {
-				// Compare feed version to theme version
-				if ( version_compare( $item->get_title(), $theme_data['Version'] ) > 0 )
-					echo '<div id="update-nag">Version ' . esc_html( $item->get_title() ) .' for the Cakifo theme is available! <a href="' . esc_url( $item->get_permalink() ) .'">Click here to download the update</a>. ' . esc_html( $item->get_description() ) .'</div>';
-			}
+	endif; // current_user_can( 'update_themes' )
 
-		endif;
-
-	endif; // current_user_can('update_themes')
+	return;
 }
 
 ?>

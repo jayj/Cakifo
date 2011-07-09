@@ -59,7 +59,7 @@
         
         	<div class="entry-content">
             	<div class="note">
-                    <?php echo get_avatar( $post->post_author, apply_atomic( 'status_avatar', '48' ) ); ?>
+                    <?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ); ?>
                     <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
                 </div>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>

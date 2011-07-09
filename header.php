@@ -56,8 +56,8 @@
 	<div id="content" class="clearfix">
 
     	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
-
-        <?php
+        
+        <?php 
 			 // Load the slider.php template
 			if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
 				get_template_part( 'section', 'slider' );
