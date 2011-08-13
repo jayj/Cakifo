@@ -84,6 +84,8 @@
 
         <?php endforeach; ?>
 
+        <?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); ?>
+
         <?php do_atomic( 'close_headlines' ); // cakifo_close_headlines ?>
 
     </section> <!-- #headlines -->

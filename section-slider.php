@@ -86,6 +86,8 @@
 
 							endif;
 
+							unset( $thumbnail, $video );
+
 						endif;
 					?>
 
@@ -96,6 +98,7 @@
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
+
 				</article>
 
 				<?php do_atomic( 'after_slide' ); // after_close_slide ?>

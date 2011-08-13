@@ -64,7 +64,7 @@
                         <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recentposts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
 
                         <div class="entry-summary">
-                            <?php cakifo_the_excerpt( 120 ); ?>
+                            <?php cakifo_the_excerpt( 20 ); ?>
                         </div>
                     </div> <!-- .details -->
 
