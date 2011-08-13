@@ -1,4 +1,12 @@
 <?php
+
+/* debug function, REMOVE!! */
+function convert($size)
+ {
+    $unit=array('b','kb','mb','gb','tb','pb');
+    return @round($size/pow(1024,($i=floor(log($size,1024)))),5).' '.$unit[$i];
+ }
+ 
 /**
  * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and 
  * sets up the supported features, default actions, and default filters.  If making customizations, users 
@@ -60,7 +68,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 	//add_theme_support( 'hybrid-core-drop-downs' );
 
-	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO ) plugin isn't activated
+	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO) plugin isn't activated
 	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) && ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
@@ -99,8 +107,9 @@ function cakifo_theme_setup() {
 	/*
 	 * Set new image sizes 
 	 *
-	 * Add a smaller image for use in archives and searches
-	 * Add a image size for use in the slider
+	 * Small: For use in archives and searches
+	 * Slider: For use in the slider
+	 * Recent: For use in the recent posts
 	 */
 	add_image_size( 'small', apply_filters( 'small_thumb_width', '100' ), apply_filters( 'small_thumb_height', '100' ), true );
 	add_image_size( 'slider', apply_filters( 'slider_image_width', '500' ), apply_filters( 'slider_image_height', '230' ), true );
@@ -180,10 +189,10 @@ function cakifo_theme_setup() {
 	 * to change these values in your child theme
 	 */
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) ); // Could be cool with flexible width and heights (@http://core.trac.wordpress.org/ticket/17242)
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) ); // Could be cool with flexible width and heights (@link http://core.trac.wordpress.org/ticket/17242)
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
 
-	// Load the logo from the parent theme images folder and the childtheme image folder 
+	// Load the logo from the parent theme images folder
 	register_default_headers( array(
 		'logo' => array(
 			'url' => '%s/images/logo.png',
@@ -207,7 +216,8 @@ function cakifo_theme_setup() {
 
 /**
  * Loads the theme JavaScript files
- * It loads jQuery, Modernizr and the javascript needed for this theme
+ * It loads jQuery, Modernizr,
+ * and the javascript needed for this theme
  *
  * @since 1.0
  */
@@ -242,6 +252,9 @@ function cakifo_enqueue_script() {
 
 /**
  * Loads fonts from the Google Font API
+ *
+ * Adds bbPress stylesheet as well,
+ * if the plugin is active
  *
  * @since 1.0
  */
@@ -327,12 +340,14 @@ function cakifo_slider_javascript() {
 
 	$args = array();
 
-	/* @link http://slidesjs.com for more info */
+	/**
+	 * For more information about the arguments, see
+	 * @link https://github.com/jayj/Cakifo/wiki/Child-themes
+	 * @link http://slidesjs.com
+	 */
 	$args = apply_filters( 'cakifo_slider_args', $args ); 
 
-	/**
-	 * Parse incoming $args into an array and merge it with $defaults
-	 */ 
+	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
 
 	// Find the last argument in the array, and remove the comma after it
@@ -355,6 +370,7 @@ function cakifo_slider_javascript() {
 						// Find the last argument in the array
 						$last_childarg = end( array_keys( $val ) );
 
+						// Loop through the arguments in the child array
 						foreach ( $val as $childarg => $childval ) {
 
 							// Don't put a comma after the last argument
@@ -424,32 +440,31 @@ function cakifo_change_list_comments_args( $args ) {
 
 /**
  * New excerpt function with the length as a parameter
- * The ideal solution would be to change the excerpt_length filter but we need different excerpt lengths 
+ *
+ * The ideal solution would be to change the excerpt_length filter,
+ * but we need different excerpt lengths 
  *
  * @since 1.0
- * @credits Genesis Framework
- * @note 1.3 $length changed from words to characters
- * @param int $length The length of the excerpt in characters
+ * @param int $length Number of words. Default 55.
  */
-function cakifo_the_excerpt( $length = 120, $echo = true ) {
+function cakifo_the_excerpt( $length = 55, $echo = true ) {
 
-	global $post;
+	$text = get_the_excerpt();
+	$words_array = preg_split( "/[\n\r\t ]+/", $text, $length + 1, PREG_SPLIT_NO_EMPTY );
+	$more_link = '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
 
-	$excerpt = trim( get_the_excerpt() );
-
-	if ( strlen( $excerpt ) > $length ) {
-
-		// Truncate $phrase to $length + 1
-		$excerpt = substr( $excerpt, 0, $length + 1 );
-
-		// Truncate to the last space in the truncated string.
-		$excerpt = trim( substr( $excerpt, 0, strrpos( $excerpt, ' ' ) ) );
+	if ( count( $words_array ) > $length ) {
+		array_pop( $words_array );
+		$text = implode( ' ', $words_array );
+		$text = $text . apply_filters( 'excerpt_more', '...' );
+	} else {
+		$text = implode( ' ', $words_array ); 
 	}
-
+	
 	if ( $echo )
-		echo $excerpt . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
+		echo $text . $more_link;
 	else
-		return $excerpt . apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink( $post->ID ) . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
+		return $text . $more_link;
 }
 
 function cakifo_excerpt_more( $more ) {
@@ -592,19 +607,6 @@ function cakifo_logo( $title ) {
 }
 
 /**
- * Return the URL for the first link found in the post content
- *
- * @since 1.0
- * @return string|bool URL or false when no link is present.
- */
-function cakifo_url_grabber() {
-	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
-		return false;
-
-	return esc_url_raw( $matches[1] );
-}
-
-/**
  * Styles the header image and text displayed on the blog
  *
  * @since 1.0
@@ -739,24 +741,6 @@ function cakifo_place_author_box() {
 		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );	
 }
 
-if ( ! function_exists( 'is_multi_author' ) ) :
-/**
- * Add the WordPress 3.2 is_multi_author() function
- * if it doesn't exits yet
- */
-function is_multi_author() {
-	global $wpdb;
-	
-	if ( false === ( $is_multi_author = wp_cache_get('is_multi_author', 'posts') ) ) {
-		$rows = (array) $wpdb->get_col("SELECT DISTINCT post_author FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 2");
-		$is_multi_author = 1 < count( $rows ) ? 1 : 0;
-		wp_cache_set('is_multi_author', $is_multi_author, 'posts');
-	}
-	
-	return (bool) $is_multi_author;
-}
-endif;
-
 /**
  * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
  *
@@ -884,6 +868,17 @@ function cakifo_get_image_size( $name ) {
 }
 
 /**
+ * Return the URL for the first link found in the post content
+ *
+ * @since 1.0
+ * @deprecated 1.3
+ */
+function cakifo_url_grabber() {
+	_deprecated_function( __FUNCTION__, '1.3', 'cakifo_href_url_grabber()' );
+	return cakifo_href_url_grabber();
+}
+
+/**
  * Return the URL for the first <a href=""> link found in the post content.
  *
  * @since 1.3
@@ -904,12 +899,14 @@ function cakifo_href_url_grabber() {
  * @todo Figure out if the first regex can be merged into the second. Any ideas?
  */
 function cakifo_http_url_grabber() {
-	// If the first http:// in a <a href="">, return false
-	if ( preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+	
+	$content = get_the_content();
+	
+	// If the first http:// is in a <a href="">, return false
+	if ( preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
 		return false;
 
-	// (((http|https)\://){1}\S+) is more readable but a tiny bit slower
-	if ( ! preg_match( '/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/', get_the_content(), $matches ) )
+	if ( ! preg_match( '(((http|https)\://){1}\S+)', $content, $matches ) )
 		return false;
 
 	return esc_url_raw( $matches[0] );
@@ -958,7 +955,7 @@ function cakifo_update_notice() {
 		// Get a fresh result from the server
 		if ( false === $update ) {
 			$update = cakifo_update_check();
-			set_transient( 'cakifo-update-check', $update, 60*60*24 ); // 24 hours
+			set_transient( 'cakifo-update-check', $update, 60*60*48 ); // 48 hours
 		}
 
 		// Is there a new version?
@@ -968,7 +965,7 @@ function cakifo_update_notice() {
 			else
 				$update_available = false;
 			
-			set_transient( 'cakifo-update-available', $update_available, 60*60*24 ); // 24 hours
+			set_transient( 'cakifo-update-available', $update_available, 60*60*48 ); // 48 hours
 		}
 
 		// There's an update available
