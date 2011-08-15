@@ -74,21 +74,35 @@
 
 								echo $thumbnail;
 
-							// Try to embed a video from the post content	
-							elseif ( has_post_format( 'video' ) && 
-									$video = wp_oembed_get( cakifo_http_url_grabber(), array( 
-										'width' => $thumbnail_size['width'],
-										'height' => $thumbnail_size['width'] / 1.77777778
-									) )
-							) :
+							/**
+							 * Try to embed a video from the post content
+							 */
+							elseif ( has_post_format( 'video' ) ) :
 
-								echo '<div class="slider-video">' . $video . '</div>';
+								// oEmbed stores the video HTML in a custom field that starts with '_oembed_'
+								$post_metas = get_post_custom_keys();
+
+								if ( ! empty( $post_metas ) ) {
+									foreach( $post_metas as $post_meta_key ) {
+										if ( '_oembed_' == substr( $post_meta_key, 0, 8 ) )
+											$video = get_post_meta( get_the_ID(), $post_meta_key, true );
+									}
+								}
+
+								if ( isset( $video ) ) {
+									// Change the width and height attributes
+									$video = preg_replace( array( '/width=".*?"/', '/height=".*?"/' ), array( 'width="' . $thumbnail_size['width'] . '"', 'height="' . round( 600 / 2.3 ) . '"' ), $video );
+
+									// The video
+									echo '<div class="slider-video">' . $video . '</div>';
+								}
 
 							endif;
 
 							unset( $thumbnail, $video );
 
 						endif;
+						
 					?>
 
 					<div class="entry-summary">
