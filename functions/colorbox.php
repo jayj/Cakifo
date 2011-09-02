@@ -15,7 +15,7 @@
 
 add_action( 'wp_enqueue_scripts', 'cakifo_colorbox_script' );
 add_action( 'wp_print_styles', 'cakifo_colorbox_style' );
-add_action( 'wp_footer', 'cakifo_colorbox' );
+add_action( 'wp_footer', 'cakifo_colorbox', 100 );
 
 /**
  * Load the script

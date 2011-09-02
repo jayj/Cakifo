@@ -138,7 +138,7 @@ function cakifo_theme_setup() {
 
 	/* Frontpage javascript loading */
 	add_action( 'template_redirect', 'cakifo_front_page' );
-	add_action( 'wp_footer', 'cakifo_slider_javascript' );
+	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
 
 	/* Change entry meta for certain post formats */
 	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
