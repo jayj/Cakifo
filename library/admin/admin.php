@@ -17,42 +17,52 @@ add_action( 'admin_init', 'hybrid_admin_init' );
  */
 function hybrid_admin_init() {
 
-	/* Load the admin stylesheet for the widgets screen. */
-	if ( current_theme_supports( 'hybrid-core-widgets' ) )
-		add_action( 'load-widgets.php', 'hybrid_admin_enqueue_style' );
+	/* Load the post meta boxes on the new post and edit post screens. */
+	add_action( 'load-post.php', 'hybrid_admin_load_post_meta_boxes' );
+	add_action( 'load-post-new.php', 'hybrid_admin_load_post_meta_boxes' );
 
-	/* Load the admin stylesheet for the post editor screen. */
-	if ( current_theme_supports( 'custom-post-formats' ) || current_theme_supports( 'post-layouts' ) || current_theme_supports( 'hybrid-core-post-meta-box' ) )
-		add_action( 'load-post.php', 'hybrid_admin_enqueue_style' );
+	/* Registers admin stylesheets for the framework. */
+	add_action( 'admin_enqueue_scripts', 'hybrid_admin_register_styles', 1 );
+
+	/* Loads admin stylesheets for the framework. */
+	add_action( 'admin_enqueue_scripts', 'hybrid_admin_enqueue_styles' );
 }
 
 /**
- * Creates a settings field id attribute for use on the theme settings page.  This is a helper function for use
- * with the WordPress settings API.
+ * Loads the core post meta box files on the 'load-post.php' action hook.  Each meta box file is only loaded if 
+ * the theme declares support for the feature.
  *
- * @since 1.0.0
+ * @since 1.2.0
  */
-function hybrid_settings_field_id( $setting ) {
-	return hybrid_get_prefix() . "_theme_settings-{$setting}";
+function hybrid_admin_load_post_meta_boxes() {
+
+	/* Load the SEO post meta box. */
+	require_if_theme_supports( 'hybrid-core-seo', trailingslashit( HYBRID_ADMIN ) . 'meta-box-post-seo.php' );
+
+	/* Load the post template meta box. */
+	require_if_theme_supports( 'hybrid-core-template-hierarchy', trailingslashit( HYBRID_ADMIN ) . 'meta-box-post-template.php' );
 }
 
 /**
- * Creates a settings field name attribute for use on the theme settings page.  This is a helper function for 
- * use with the WordPress settings API.
+ * Registers the framework's 'admin.css' stylesheet file.  The function does not load the stylesheet.  It merely
+ * registers it with WordPress.
  *
- * @since 1.0.0
+ * @since 1.2.0
  */
-function hybrid_settings_field_name( $setting ) {
-	return hybrid_get_prefix() . "_theme_settings[{$setting}]";
+function hybrid_admin_register_styles() {
+	wp_register_style( 'hybrid-core-admin', trailingslashit( HYBRID_CSS ) . 'admin.css', false, '20110512', 'screen' );
 }
 
 /**
  * Loads the admin.css stylesheet for admin-related features.
  *
- * @since 1.0.0
+ * @since 1.2.0
  */
-function hybrid_admin_enqueue_style() {
-	wp_enqueue_style( hybrid_get_prefix() . '-admin', trailingslashit( HYBRID_CSS ) . 'admin.css', false, 0.7, 'screen' );
+function hybrid_admin_enqueue_styles( $hook_suffix ) {
+
+	/* Load admin styles if on the widgets screen and the current theme supports 'hybrid-core-widgets'. */
+	if ( current_theme_supports( 'hybrid-core-widgets' ) && 'widgets.php' == $hook_suffix )
+		wp_enqueue_style( 'hybrid-core-admin' );
 }
 
 /**

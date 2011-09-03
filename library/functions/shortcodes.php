@@ -71,6 +71,7 @@ function hybrid_site_link_shortcode() {
 
 /**
  * Shortcode to display a link to WordPress.org.
+ *
  * @since 0.6.0
  */
 function hybrid_wp_link_shortcode() {
@@ -84,7 +85,7 @@ function hybrid_wp_link_shortcode() {
  * @uses get_theme_data() Gets theme (parent theme) information.
  */
 function hybrid_theme_link_shortcode() {
-	$data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+	$data = hybrid_get_theme_data();
 	return '<a class="theme-link" href="' . esc_url( $data['URI'] ) . '" title="' . esc_attr( $data['Name'] ) . '"><span>' . esc_attr( $data['Name'] ) . '</span></a>';
 }
 
@@ -95,7 +96,7 @@ function hybrid_theme_link_shortcode() {
  * @uses get_theme_data() Gets theme (child theme) information.
  */
 function hybrid_child_link_shortcode() {
-	$data = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
+	$data = hybrid_get_theme_data( 'stylesheet' );
 	return '<a class="child-link" href="' . esc_url( $data['URI'] ) . '" title="' . esc_attr( $data['Name'] ) . '"><span>' . esc_attr( $data['Name'] ) . '</span></a>';
 }
 
@@ -124,9 +125,9 @@ function hybrid_loginout_link_shortcode() {
  * @uses current_user_can() Checks if the current user can edit themes.
  */
 function hybrid_query_counter_shortcode() {
-	if ( current_user_can( 'edit_themes' ) )
-		$out = sprintf( __( 'This page loaded in %1$s seconds with %2$s database queries.', hybrid_get_textdomain() ), timer_stop( 0, 3 ), get_num_queries() );
-	return $out;
+	if ( current_user_can( 'edit_theme_options' ) )
+		return sprintf( __( 'This page loaded in %1$s seconds with %2$s database queries.', hybrid_get_textdomain() ), timer_stop( 0, 3 ), get_num_queries() );
+	return '';
 }
 
 /**
@@ -203,7 +204,7 @@ function hybrid_entry_comments_link_shortcode( $attr ) {
 
 	$domain = hybrid_get_textdomain();
 	$comments_link = '';
-	$number = get_comments_number();
+	$number = doubleval( get_comments_number() );
 	$attr = shortcode_atts( array( 'zero' => __( 'Leave a response', $domain ), 'one' => __( '%1$s Response', $domain ), 'more' => __( '%1$s Responses', $domain ), 'css_class' => 'comments-link', 'none' => '', 'before' => '', 'after' => '' ), $attr );
 
 	if ( 0 == $number && !comments_open() && !pings_open() ) {
@@ -273,14 +274,8 @@ function hybrid_entry_title_shortcode() {
 		$title = the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>', false );
 
 	/* If there's no post title, return a clickable '(No title)'. */
-	if ( empty( $title ) && 'link_category' !== get_query_var( 'taxonomy' ) ) {
-
-		if ( is_singular() )
-			$title = '<h1 class="' . esc_attr( $post->post_type ) . '-title entry-title no-entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . __( '(Untitled)', hybrid_get_textdomain() ) . '</a></h1>';
-
-		else
-			$title = '<h2 class="entry-title no-entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . __( '(Untitled)', hybrid_get_textdomain() ) . '</a></h2>';
-	}
+	if ( empty( $title ) && !is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
+		$title = '<h2 class="entry-title no-entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . __( '(Untitled)', hybrid_get_textdomain() ) . '</a></h2>';
 
 	return $title;
 }
@@ -331,7 +326,14 @@ function hybrid_comment_published_shortcode() {
 function hybrid_comment_author_shortcode( $attr ) {
 	global $comment;
 
-	$attr = shortcode_atts( array( 'before' => '', 'after' => '' ), $attr );
+	$attr = shortcode_atts(
+		array(
+			'before' => '',
+			'after' => '',
+			'tag' => 'span' // @deprecated 1.2.0 Back-compatibility. Please don't use this argument.
+		),
+		$attr
+	);
 
 	$author = esc_html( get_comment_author( $comment->comment_ID ) );
 	$url = esc_url( get_comment_author_url( $comment->comment_ID ) );
@@ -342,10 +344,9 @@ function hybrid_comment_author_shortcode( $attr ) {
 	else
 		$output = '<cite class="fn">' . $author . '</cite>';
 
-	$output = '<div class="comment-author vcard">' . $attr['before'] . apply_filters( 'get_comment_author_link', $output ) . $attr['after'] . '</div><!-- .comment-author .vcard -->';
+	$output = '<' . tag_escape( $attr['tag'] ) . ' class="comment-author vcard">' . $attr['before'] . apply_filters( 'get_comment_author_link', $output ) . $attr['after'] . '</' . tag_escape( $attr['tag'] ) . '><!-- .comment-author .vcard -->';
 
-	/* @deprecated 0.8. Create a custom shortcode instead of filtering hybrid_comment_author. */
-	return apply_filters( hybrid_get_prefix() . '_comment_author', $output );
+	return $output;
 }
 
 /**

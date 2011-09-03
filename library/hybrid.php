@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package HybridCore
- * @version 1.1.1
+ * @version 1.2.0-Beta-1
  * @author Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2011, Justin Tadlock
  * @link http://themehybrid.com/hybrid-core
@@ -46,16 +46,6 @@
 class Hybrid {
 
 	/**
-	 * PHP4 constructor method.  This simply provides backwards compatibility for users with setups
-	 * on older versions of PHP.  Once WordPress no longer supports PHP4, this method will be removed.
-	 *
-	 * @since 0.9.0
-	 */
-	function Hybrid() {
-		$this->__construct();
-	}
-
-	/**
 	 * Constructor method for the Hybrid class.  This method adds other methods of the class to 
 	 * specific hooks within WordPress.  It controls the load order of the required files for running 
 	 * the framework.
@@ -74,7 +64,7 @@ class Hybrid {
 		add_action( 'after_setup_theme', array( &$this, 'default_filters' ), 3 );
 
 		/* Language functions and translations setup. */
-		add_action( 'after_setup_theme', array( &$this, 'locale' ), 4 );
+		add_action( 'after_setup_theme', array( &$this, 'i18n' ), 4 );
 
 		/* Load the framework functions. */
 		add_action( 'after_setup_theme', array( &$this, 'functions' ), 12 );
@@ -87,13 +77,16 @@ class Hybrid {
 	}
 
 	/**
-	 * Defines the constant paths for use within the core framework, parent theme, and
-	 * child theme.  Constants prefixed with 'HYBRID_' are for use only within the core
-	 * framework and don't reference other areas of the parent or child theme.
+	 * Defines the constant paths for use within the core framework, parent theme, and child theme.  
+	 * Constants prefixed with 'HYBRID_' are for use only within the core framework and don't 
+	 * reference other areas of the parent or child theme.
 	 *
 	 * @since 0.7.0
 	 */
 	function constants() {
+
+		/* Sets the framework version number. */
+		define( 'HYBRID_VERSION', '1.2.0' );
 
 		/* Sets the path to the parent theme directory. */
 		define( 'THEME_DIR', get_template_directory() );
@@ -151,14 +144,22 @@ class Hybrid {
 	}
 
 	/**
-	 * Handles the locale functions file and translations.
+	 * Loads both the parent and child theme translation files.  If a locale-based functions file exists
+	 * in either the parent or child theme (child overrides parent), it will also be loaded.  All translation 
+	 * and locale functions files are expected to be within the theme's '/languages' folder, but the 
+	 * framework will fall back on the theme root folder if necessary.  Translation files are expected 
+	 * to be prefixed with the template or stylesheet path (example: 'templatename-en_US.mo').
 	 *
-	 * @since 1.0.0
+	 * @since 1.2.0
 	 */
-	function locale() {
+	function i18n() {
 
 		/* Load theme textdomain. */
 		load_theme_textdomain( hybrid_get_textdomain() );
+
+		/* Load child theme textdomain. */
+		if ( is_child_theme() )
+			load_child_theme_textdomain( hybrid_get_child_textdomain() );
 
 		/* Get the user's locale. */
 		$locale = get_locale();
@@ -187,6 +188,9 @@ class Hybrid {
 
 		/* Load the utility functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'utility.php' );
+
+		/* Load the theme settings functions if supported. */
+		require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( HYBRID_FUNCTIONS ) . 'settings.php' );
 
 		/* Load the menus functions if supported. */
 		require_if_theme_supports( 'hybrid-core-menus', trailingslashit( HYBRID_FUNCTIONS ) . 'menus.php' );
@@ -220,18 +224,23 @@ class Hybrid {
 	 */
 	function extensions() {
 
-		/* Load the Breadcrumb Trail extension if supported. */
-		require_if_theme_supports( 'breadcrumb-trail', trailingslashit( HYBRID_EXTENSIONS ) . 'breadcrumb-trail.php' );
+		/* Load the Breadcrumb Trail extension if supported and the plugin isn't active. */
+		if ( !function_exists( 'breadcrumb_trail' ) )
+			require_if_theme_supports( 'breadcrumb-trail', trailingslashit( HYBRID_EXTENSIONS ) . 'breadcrumb-trail.php' );
 
 		/* Load the Cleaner Gallery extension if supported and the plugin isn't active. */
 		if ( !function_exists( 'cleaner_gallery' ) )
 			require_if_theme_supports( 'cleaner-gallery', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-gallery.php' );
 
+		/* Load the Get the Image extension if supported and the plugin isn't active. */
+		if ( !function_exists( 'get_the_image' ) )
+			require_if_theme_supports( 'get-the-image', trailingslashit( HYBRID_EXTENSIONS ) . 'get-the-image.php' );
+
+		/* Load the Cleaner Caption extension if supported. */
+		require_if_theme_supports( 'cleaner-caption', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-caption.php' );
+
 		/* Load the Custom Field Series extension if supported. */
 		require_if_theme_supports( 'custom-field-series', trailingslashit( HYBRID_EXTENSIONS ) . 'custom-field-series.php' );
-
-		/* Load the Get the Image extension if supported. */
-		require_if_theme_supports( 'get-the-image', trailingslashit( HYBRID_EXTENSIONS ) . 'get-the-image.php' );
 
 		/* Load the Loop Pagination extension if supported. */
 		require_if_theme_supports( 'loop-pagination', trailingslashit( HYBRID_EXTENSIONS ) . 'loop-pagination.php' );
@@ -261,9 +270,6 @@ class Hybrid {
 
 			/* Load the theme settings feature if supported. */
 			require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( HYBRID_ADMIN ) . 'theme-settings.php' );
-
-			/* Load the post meta box if supported. */
-			require_if_theme_supports( 'hybrid-core-post-meta-box', trailingslashit( HYBRID_ADMIN ) . 'post-meta-box.php' );
 		}
 	}
 
@@ -288,6 +294,7 @@ class Hybrid {
 		add_filter( 'breadcrumb_trail_textdomain', 'hybrid_get_textdomain' );
 		add_filter( 'theme_layouts_textdomain', 'hybrid_get_textdomain' );
 		add_filter( 'custom_field_series_textdomain', 'hybrid_get_textdomain' );
+		add_filter( 'post_stylesheets_textdomain', 'hybrid_get_textdomain' );
 
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );

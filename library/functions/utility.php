@@ -10,6 +10,9 @@
 /* Add extra support for post types. */
 add_action( 'init', 'hybrid_add_post_type_support' );
 
+/* Add extra file headers for themes. */
+add_filter( 'extra_theme_headers', 'hybrid_extra_theme_headers' );
+
 /**
  * This function is for adding extra support for features not default to the core post types.
  * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
@@ -19,9 +22,48 @@ add_action( 'init', 'hybrid_add_post_type_support' );
  * @since 0.8.0
  */
 function hybrid_add_post_type_support() {
-	add_post_type_support( 'post', array( hybrid_get_prefix() . '-post-settings', 'entry-views' ) );
-	add_post_type_support( 'page', array( 'excerpt', hybrid_get_prefix() . '-post-settings', 'entry-views' ) );
-	add_post_type_support( 'attachment', array( 'comments', 'trackbacks', 'entry-views' ) );
+
+	/* Add support for excerpts and entry-views to the 'page' post type. */
+	add_post_type_support( 'page', array( 'excerpt' ) );
+
+	/* Add support for comments, trackbacks, and entry-views to the 'attachment' post type. */
+	add_post_type_support( 'attachment', array( 'trackbacks' ) );
+}
+
+/**
+ * Creates custom theme headers.  This is the information shown in the header block of a theme's 'style.css' 
+ * file.  Themes are not required to use this information, but the framework does make use of the data for 
+ * displaying additional information to the theme user.
+ *
+ * @since 1.2.0
+ * @link http://codex.wordpress.org/Theme_Review#Licensing
+ * @param array $headers Array of extra headers added by plugins/themes.
+ * @return array $headers
+ */
+function hybrid_extra_theme_headers( $headers ) {
+
+	/* Add support for 'Template Version'. This is for use in child themes to note the version of the parent theme. */
+	if ( !in_array( 'Template Version', $headers ) )
+		$headers[] = 'Template Version';
+
+	/* Add support for 'License'.  Proposed in the guidelines for the WordPress.org theme review. */
+	if ( !in_array( 'License', $headers ) )
+		$headers[] = 'License';
+
+	/* Add support for 'License URI'. Proposed in the guidelines for the WordPress.org theme review. */
+	if ( !in_array( 'License URI', $headers ) )
+		$headers[] = 'License URI';
+
+	/* Add support for 'Support URI'.  This should be a link to the theme's support forums. */
+	if ( !in_array( 'Support URI', $headers ) )
+		$headers[] = 'Support URI';
+
+	/* Add support for 'Documentation URI'.  This should be a link to the theme's documentation. */
+	if ( !in_array( 'Documentation URI', $headers ) )
+		$headers[] = 'Documentation URI';
+
+	/* Return the array of custom theme headers. */
+	return $headers;
 }
 
 /**
@@ -64,7 +106,7 @@ function get_atomic_template( $template ) {
  * @since 0.4.0
  */
 function hybrid_meta_template() {
-	$data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+	$data = hybrid_get_theme_data();
 	$template = '<meta name="template" content="' . esc_attr( "{$data['Title']} {$data['Version']}" ) . '" />' . "\n";
 	echo apply_atomic( 'meta_template', $template );
 }
@@ -76,11 +118,15 @@ function hybrid_meta_template() {
  * @since 0.1.0
  */
 function hybrid_site_title() {
+
+	/* If viewing the front page of the site, use an <h1> tag.  Otherwise, use a <div> tag. */
 	$tag = ( is_front_page() ) ? 'h1' : 'div';
 
+	/* Get the site title.  If it's not empty, wrap it with the appropriate HTML. */
 	if ( $title = get_bloginfo( 'name' ) )
 		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home"><span>' . $title . '</span></a></' . $tag . '>';
 
+	/* Display the site title and apply filters for developers to overwrite. */
 	echo apply_atomic( 'site_title', $title );
 }
 
@@ -91,12 +137,48 @@ function hybrid_site_title() {
  * @since 0.1.0
  */
 function hybrid_site_description() {
+
+	/* If viewing the front page of the site, use an <h2> tag.  Otherwise, use a <div> tag. */
 	$tag = ( is_front_page() ) ? 'h2' : 'div';
 
+	/* Get the site description.  If it's not empty, wrap it with the appropriate HTML. */
 	if ( $desc = get_bloginfo( 'description' ) )
 		$desc = "\n\t\t\t" . '<' . $tag . ' id="site-description"><span>' . $desc . '</span></' . $tag . '>' . "\n";
 
+	/* Display the site description and apply filters for developers to overwrite. */
 	echo apply_atomic( 'site_description', $desc );
+}
+
+/**
+ * Checks if a post of any post type has a custom template.  This is the equivalent of WordPress' 
+ * is_page_template() function with the exception that it works for all post types.
+ *
+ * @since 1.2.0
+ * @param string $template The name of the template to check for.
+ * @return bool Whether the post has a template.
+ */
+function hybrid_has_post_template( $template = '' ) {
+
+	/* Assume we're viewing a singular post. */
+	if ( is_singular() ) {
+
+		/* Get the queried object. */
+		$post = get_queried_object();
+
+		/* Get the post template, which is saved as metadata. */
+		$post_template = get_post_meta( get_queried_object_id(), "_wp_{$post->post_type}_template", true );
+
+		/* If a specific template was input, check that the post template matches. */
+		if ( !empty( $template) && ( $template == $post_template ) )
+			return true;
+
+		/* If no specific template was input, check if the post has a template. */
+		elseif ( empty( $template) && !empty( $post_template ) )
+			return true;
+	}
+
+	/* Return false for everything else. */
+	return false;
 }
 
 ?>

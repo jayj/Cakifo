@@ -25,12 +25,16 @@
  * @return array $hybrid->context Several contexts based on the current page.
  */
 function hybrid_get_context() {
-	global $wp_query, $hybrid;
+	global $hybrid;
 
+	/* If $hybrid->context has been set, don't run through the conditionals again. Just return the variable. */
 	if ( isset( $hybrid->context ) )
 		return $hybrid->context;
 
+	/* Set some variables for use within the function. */
 	$hybrid->context = array();
+	$object = get_queried_object();
+	$object_id = get_queried_object_id();
 
 	/* Front page of the site. */
 	if ( is_front_page() )
@@ -44,8 +48,8 @@ function hybrid_get_context() {
 	/* Singular views. */
 	elseif ( is_singular() ) {
 		$hybrid->context[] = 'singular';
-		$hybrid->context[] = "singular-{$wp_query->post->post_type}";
-		$hybrid->context[] = "singular-{$wp_query->post->post_type}-{$wp_query->post->ID}";
+		$hybrid->context[] = "singular-{$object->post_type}";
+		$hybrid->context[] = "singular-{$object->post_type}-{$object_id}";
 	}
 
 	/* Archive views. */
@@ -54,14 +58,13 @@ function hybrid_get_context() {
 
 		/* Taxonomy archives. */
 		if ( is_tax() || is_category() || is_tag() ) {
-			$term = $wp_query->get_queried_object();
 			$hybrid->context[] = 'taxonomy';
-			$hybrid->context[] = "taxonomy-{$term->taxonomy}";
-			$hybrid->context[] = "taxonomy-{$term->taxonomy}-" . sanitize_html_class( $term->slug, $term->term_id );
+			$hybrid->context[] = "taxonomy-{$object->taxonomy}";
+			$hybrid->context[] = "taxonomy-{$object->taxonomy}-" . sanitize_html_class( $object->slug, $object->term_id );
 		}
 
 		/* Post type archives. */
-		elseif ( function_exists( 'is_post_type_archive' ) && is_post_type_archive() ) {
+		elseif ( is_post_type_archive() ) {
 			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
 			$hybrid->context[] = "archive-{$post_type->name}";
 		}
@@ -69,7 +72,7 @@ function hybrid_get_context() {
 		/* User/author archives. */
 		elseif ( is_author() ) {
 			$hybrid->context[] = 'user';
-			$hybrid->context[] = 'user-' . sanitize_html_class( get_the_author_meta( 'user_nicename', get_query_var( 'author' ) ), $wp_query->get_queried_object_id() );
+			$hybrid->context[] = 'user-' . sanitize_html_class( get_the_author_meta( 'user_nicename', $object_id ), $object_id );
 		}
 
 		/* Time/Date archives. */
@@ -128,7 +131,7 @@ function hybrid_entry_class( $class = '', $post_id = null ) {
 
 		$post_id = $post->ID;
 
-		/* Add hentry for microformats compliance and the post type. */
+		/* Add hentry for microformats compliance, the post type, and post status. */
 		$classes = array( 'hentry', $post->post_type, $post->post_status );
 
 		/* Post alt class. */
@@ -151,7 +154,7 @@ function hybrid_entry_class( $class = '', $post_id = null ) {
 			$classes[] = 'has-excerpt';
 
 		/* Post format. */
-		if ( current_theme_supports( 'post-formats' ) ) {
+		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
 			$post_format = get_post_format( $post_id );
 			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? 'format-standard' : "format-{$post_format}" );
 		}
@@ -235,6 +238,13 @@ function hybrid_comment_class( $class = '' ) {
 			$classes[] = 'entry-author';
 	}
 
+	/* Get comment types that are allowed to have an avatar. */
+	$avatar_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
+
+	/* If avatars are enabled and the comment types can display avatars, add the 'has-avatar' class. */
+	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_comment_types ) )
+		$classes[] = 'has-avatar';
+
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
 
@@ -255,6 +265,9 @@ function hybrid_body_class( $class = '' ) {
 	/* Text direction (which direction does the text flow). */
 	$classes = array( 'wordpress', get_bloginfo( 'text_direction' ), get_locale() );
 
+	/* Check if the current theme is a parent or child theme. */
+	$classes[] = ( is_child_theme() ? 'child-theme' : 'parent-theme' );
+
 	/* Multisite check adds the 'multisite' class and the blog ID. */
 	if ( is_multisite() ) {
 		$classes[] = 'multisite';
@@ -269,7 +282,7 @@ function hybrid_body_class( $class = '' ) {
 	$classes[] = ( is_user_logged_in() ) ? 'logged-in' : 'logged-out';
 
 	/* WP admin bar. */
-	if ( function_exists( 'is_admin_bar_showing' ) && is_admin_bar_showing() )
+	if ( is_admin_bar_showing() )
 		$classes[] = 'admin-bar';
 
 	/* Merge base contextual classes with $classes. */
@@ -278,15 +291,18 @@ function hybrid_body_class( $class = '' ) {
 	/* Singular post (post_type) classes. */
 	if ( is_singular() ) {
 
+		/* Get the queried post object. */
+		$post = get_queried_object();
+
 		/* Checks for custom template. */
-		$template = str_replace( array ( "{$wp_query->post->post_type}-template-", "{$wp_query->post->post_type}-", '.php' ), '', get_post_meta( $wp_query->post->ID, "_wp_{$wp_query->post->post_type}_template", true ) );
+		$template = str_replace( array ( "{$post->post_type}-template-", "{$post->post_type}-", '.php' ), '', get_post_meta( get_queried_object_id(), "_wp_{$post->post_type}_template", true ) );
 		if ( !empty( $template ) )
-			$classes[] = "{$wp_query->post->post_type}-template-{$template}";
+			$classes[] = "{$post->post_type}-template-{$template}";
 
 		/* Post format. */
-		if ( current_theme_supports( 'post-formats' ) ) {
-			$post_format = get_post_format( $wp_query->post->ID );
-			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$wp_query->post->post_type}-format-standard" : "{$wp_query->post->post_type}-format-{$post_format}" );
+		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
+			$post_format = get_post_format( get_queried_object_id() );
+			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}" );
 		}
 
 		/* Attachment mime types. */
@@ -297,10 +313,8 @@ function hybrid_body_class( $class = '' ) {
 	}
 
 	/* Paged views. */
-	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 ) {
-		$page = intval( $page );
-		$classes[] = 'paged paged-' . $page;
-	}
+	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
+		$classes[] = 'paged paged-' . intval( $page );
 
 	/* Input class. */
 	if ( !empty( $class ) ) {
@@ -340,15 +354,14 @@ function hybrid_document_title() {
 
 	/* If viewing the posts page or a singular post. */
 	elseif ( is_home() || is_singular() ) {
-		$post_id = $wp_query->get_queried_object_id();
 
-		$doctitle = get_post_meta( $post_id, 'Title', true );
+		$doctitle = get_post_meta( get_queried_object_id(), 'Title', true );
 
 		if ( empty( $doctitle ) && is_front_page() )
 			$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
 
 		elseif ( empty( $doctitle ) )
-			$doctitle = get_post_field( 'post_title', $post_id );
+			$doctitle = single_post_title( '', false );
 	}
 
 	/* If viewing any type of archive page. */
@@ -356,24 +369,22 @@ function hybrid_document_title() {
 
 		/* If viewing a taxonomy term archive. */
 		if ( is_category() || is_tag() || is_tax() ) {
-
-			if ( function_exists( 'single_term_title' ) ) {
-				$doctitle = single_term_title( '', false );
-			} else { // 3.0 compat
-				$term = $wp_query->get_queried_object();
-				$doctitle = $term->name;
-			}
+			$doctitle = single_term_title( '', false );
 		}
 
 		/* If viewing a post type archive. */
-		elseif ( function_exists( 'is_post_type_archive' ) && is_post_type_archive() ) {
+		elseif ( is_post_type_archive() ) {
 			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
 			$doctitle = $post_type->labels->name;
 		}
 
 		/* If viewing an author/user archive. */
-		elseif ( is_author() )
-			$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+		elseif ( is_author() ) {
+			$doctitle = get_user_meta( get_query_var( 'author' ), 'Title', true );
+
+			if ( empty( $doctitle ) )
+				$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+		}
 
 		/* If viewing a date-/time-based archive. */
 		elseif ( is_date () ) {
@@ -397,6 +408,11 @@ function hybrid_document_title() {
 
 			elseif ( is_year() )
 				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'Y', $domain ) ) );
+		}
+
+		/* For any other archives. */
+		else {
+			$doctitle = __( 'Archives', $domain );
 		}
 	}
 

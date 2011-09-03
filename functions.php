@@ -63,8 +63,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-post-meta-box' );
-	add_theme_support( 'hybrid-core-theme-settings' );
-	add_theme_support( 'hybrid-core-meta-box-footer' );
+	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 	//add_theme_support( 'hybrid-core-drop-downs' );
 
@@ -85,6 +84,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
 	add_theme_support( 'cleaner-gallery' );
+	//add_theme_support( 'cleaner-caption' );
 	add_theme_support( 'custom-field-series' );
 	
 	/* Load the colorbox script if supported. */

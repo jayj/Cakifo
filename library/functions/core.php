@@ -30,12 +30,12 @@ function hybrid_get_prefix() {
 }
 
 /**
- * Defines the theme textdomain. This allows the framework to recognize the proper textdomain 
- * of the theme. Theme developers building from the framework should use their template name 
- * (i.e., directory name) as their textdomain within template files.
+ * Defines the theme textdomain. This allows the framework to recognize the proper textdomain of the 
+ * parent theme. Theme developers building from the framework should use this function in their templates 
+ * to easily define the correct textdomain.
  *
  * @since 0.7.0
- * @uses get_template() Defines the theme textdomain based on the theme directory.
+ * @uses get_template() Defines the theme textdomain based on the template directory.
  * @global object $hybrid The global Hybrid object.
  * @return string $hybrid->textdomain The textdomain of the theme.
  */
@@ -50,6 +50,28 @@ function hybrid_get_textdomain() {
 }
 
 /**
+ * Returns the textdomain for the child theme.
+ *
+ * @since 1.2.0
+ * @uses get_stylesheet() Defines the child theme textdomain based on the stylesheet directory.
+ * @global object $hybrid The global Hybrid object.
+ * @return string $hybrid->child_theme_textdomain The textdomain of the child theme.
+ */
+function hybrid_get_child_textdomain() {
+	global $hybrid;
+
+	/* If a child theme isn't active, return an empty string. */
+	if ( !is_child_theme() )
+		return '';
+
+	/* If the global textdomain isn't set, define it. Plugin/theme authors may also define a custom textdomain. */
+	if ( empty( $hybrid->child_textdomain ) )
+		$hybrid->child_textdomain = sanitize_key( apply_filters( hybrid_get_prefix() . '_child_textdomain', get_stylesheet() ) );
+
+	return $hybrid->child_textdomain;
+}
+
+/**
  * Filters the 'load_textdomain_mofile' filter hook so that we can change the directory and file name 
  * of the mofile for translations.  This allows child themes to have a folder called /languages with translations
  * of their parent theme so that the translations aren't lost on a parent theme upgrade.
@@ -60,8 +82,8 @@ function hybrid_get_textdomain() {
  */
 function hybrid_load_textdomain( $mofile, $domain ) {
 
-	/* If the $domain is for the parent theme, search for a $domain-$locale.mo file. */
-	if ( $domain == hybrid_get_textdomain() ) {
+	/* If the $domain is for the parent or child theme, search for a $domain-$locale.mo file. */
+	if ( $domain == hybrid_get_textdomain() || $domain == hybrid_get_child_textdomain() ) {
 
 		/* Check for a $domain-$locale.mo file in the parent and child theme root and /languages folder. */
 		$locale = get_locale();
@@ -83,9 +105,6 @@ function hybrid_load_textdomain( $mofile, $domain ) {
  * An example of a basic hook would be 'hybrid_header'.  The do_atomic() function extends that to 
  * give extra hooks such as 'hybrid_singular_header', 'hybrid_singular-post_header', and 
  * 'hybrid_singular-post-ID_header'.
- *
- * Major props to Ptah Dunbar for the do_atomic() function.
- * @link http://ptahdunbar.com/wordpress/smarter-hooks-context-sensitive-hooks
  *
  * @since 0.7.0
  * @uses hybrid_get_prefix() Gets the theme prefix.
@@ -165,37 +184,6 @@ function apply_atomic_shortcode( $tag = '', $value = '' ) {
 }
 
 /**
- * Loads the Hybrid theme settings once and allows the input of the specific field the user would 
- * like to show.  Hybrid theme settings are added with 'autoload' set to 'yes', so the settings are 
- * only loaded once on each page load.
- *
- * @since 0.7.0
- * @uses get_option() Gets an option from the database.
- * @uses hybrid_get_prefix() Gets the prefix of the theme.
- * @global object $hybrid The global Hybrid object.
- * @global array $hybrid_settings Deprecated. Developers should use hybrid_get_setting().
- * @param string $option The specific theme setting the user wants.
- * @return string|int|array $settings[$option] Specific setting asked for.
- */
-function hybrid_get_setting( $option = '' ) {
-	global $hybrid, $hybrid_settings;
-
-	if ( !$option )
-		return false;
-
-	if ( !isset( $hybrid->settings ) )
-		$hybrid->settings = $hybrid_settings = get_option( hybrid_get_prefix() . '_theme_settings' );
-
-	if ( !is_array( $hybrid->settings ) || empty( $hybrid->settings[$option] ) )
-		return false;
-
-	if ( is_array( $hybrid->settings[$option] ) )
-		return $hybrid->settings[$option];
-	else
-		return wp_kses_stripslashes( $hybrid->settings[$option] );
-}
-
-/**
  * The theme can save multiple things in a transient to help speed up page load times. We're
  * setting a default of 12 hours or 43,200 seconds (60 * 60 * 12).
  *
@@ -216,6 +204,69 @@ function hybrid_get_transient_expiration() {
  */
 function hybrid_format_hook( $tag, $context = '' ) {
 	return hybrid_get_prefix() . ( ( !empty( $context ) ) ? "_{$context}" : "" ). "_{$tag}";
+}
+
+/**
+ * Function for setting the content width of a theme.  This does not check if a content width has been set; it 
+ * simply overwrites whatever the content width is.
+ *
+ * @since 1.2.0
+ * @global int $content_width The width for the theme's content area.
+ * @param int $width Numeric value of the width to set.
+ */
+function hybrid_set_content_width( $width = '' ) {
+	global $content_width;
+
+	$content_width = absint( $width );
+}
+
+/**
+ * Function for getting the theme's content width.
+ *
+ * @since 1.2.0
+ * @global int $content_width The width for the theme's content area.
+ * @return int $content_width
+ */
+function hybrid_get_content_width() {
+	global $content_width;
+
+	return $content_width;
+}
+
+/**
+ * Gets theme data and stores it in the global $hybrid variable.  By storing it, it can be accessed quickly without 
+ * having to run through the get_theme_data() function again.
+ *
+ * @since 1.2.0
+ * @param string $path Whether to use the template (parent theme) or stylesheet (child theme) path.
+ */
+function hybrid_get_theme_data( $path = 'template' ) {
+	global $hybrid;
+
+	/* If 'template' is requested, get the parent theme data. */
+	if ( 'template' == $path ) {
+
+		/* If the parent theme data isn't set, grab it with the get_theme_data() function. */
+		if ( empty( $hybrid->theme_data ) )
+			$hybrid->theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+
+		/* Return the parent theme data. */
+		return $hybrid->theme_data;
+	}
+
+	/* If 'stylesheet' is requested, get the child theme data. */
+	elseif ( 'stylesheet' == $path ) {
+
+		/* If the child theme data isn't set, grab it with the get_theme_data() function. */
+		if ( empty( $hybrid->child_theme_data ) )
+			$hybrid->child_theme_data = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
+
+		/* Return the child theme data. */
+		return $hybrid->child_theme_data;
+	}
+
+	/* Return false for everything else. */
+	return false;
 }
 
 ?>
