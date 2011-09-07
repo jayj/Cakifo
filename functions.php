@@ -1,12 +1,5 @@
 <?php
 
-/* debug function, REMOVE!! */
-function convert($size)
- {
-    $unit=array('b','kb','mb','gb','tb','pb');
-    return @round($size/pow(1024,($i=floor(log($size,1024)))),5).' '.$unit[$i];
- }
- 
 /**
  * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and 
  * sets up the supported features, default actions, and default filters.  If making customizations, users 
@@ -94,9 +87,11 @@ function cakifo_theme_setup() {
 	/* Load shortcodes file. */
 	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
 
-	/* Load Theme Settings */
-	if ( is_admin() )
+	/* Load Theme Settings and upgrade functionality */
+	if ( is_admin() ) {
 		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/admin.php' );
+		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/upgrade.php' );
+	}
 
 	/* Add theme support for WordPress features */
 	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
@@ -169,9 +164,6 @@ function cakifo_theme_setup() {
 	
 	/* wp_list_comments() arguments */
 	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
-
-	/* Theme update check */
-	add_action( 'admin_notices', 'cakifo_update_notice' );
 
 	/* Custom logo */
 	add_filter( 'cakifo_site_title', 'cakifo_logo' );
@@ -572,15 +564,14 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * @since 1.3
  */
 function cakifo_content_width() {
-	global $content_width;
-	
+
 	$layout = theme_layouts_get_layout();
 	
 	if ( current_theme_supports( 'theme-layouts' ) ) {
 		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout )
-			$content_width = 490;
+			hybrid_set_content_width( 490 );
 		elseif ( 'layout-3c-c' == $layout )
-			$content_width = 500;	
+			hybrid_set_content_width( 500 );
 	}
 
 }
@@ -910,78 +901,6 @@ function cakifo_http_url_grabber() {
 		return false;
 
 	return esc_url_raw( $matches[0] );
-}
-
-/**
- * Check for theme updates
- *
- * @since 1.3
- */
-function cakifo_update_check() {
-
-	// Send request to see if there's an update available
-	$url = 'http://wpthemes.jayj.dk/themerss/cakifo.json';
-	$cakifo_update = wp_remote_retrieve_body( wp_remote_get( $url ) );
-
-	if ( empty( $cakifo_update ) )
-		return false;
-
-	// Decode the JSON object
-	$update = json_decode( $cakifo_update, true );
-
-	return array(
-		'title' => $update['items'][0]['title'],
-		'version' => $update['items'][0]['version'],
-		'link' => $update['items'][0]['link'],
-		'message' => $update['items'][0]['message'],
-		'childmessage' => $update['items'][0]['childmessage'],
-		'requires' => $update['items'][0]['requires'],
-	);
-}
-	
-/**
- * Display an update notice if there's a new version available 
- * 
- * @since 1.2
- */
-function cakifo_update_notice() {
-	
-	if ( current_user_can( 'update_themes' ) ) :
-		
-		$theme_data = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
-		$update = get_transient( 'cakifo-update-check' );
-		$update_available = (boolean) get_transient( 'cakifo-update-available' );
-
-		// Get a fresh result from the server
-		if ( false === $update ) {
-			$update = cakifo_update_check();
-			set_transient( 'cakifo-update-check', $update, 60*60*48 ); // 48 hours
-		}
-
-		// Is there a new version?
-		if ( false === $update_available ) {
-			if ( version_compare( $update['version'], $theme_data['Version'], '>' ) )
-				$update_available = true;
-			else
-				$update_available = false;
-			
-			set_transient( 'cakifo-update-available', $update_available, 60*60*48 ); // 48 hours
-		}
-
-		// There's an update available
-		if ( $update_available ) {
-			echo '<div class="update-nag">';
-			echo 'Version ' . esc_html( $update['version'] ) . ' for the Cakifo theme is available! ';
-			echo '<a href="' . esc_url( $update['link'] ) . '">Click here to download the update</a> ';
-			echo $update['message'];
-			if ( is_child_theme() )
-				echo '&nbsp;' . $update['childmessage'];
-			echo '</div>';
-		}
-
-	endif; // current_user_can( 'update_themes' )
-
-	return;
 }
 
 ?>
