@@ -18,21 +18,21 @@ add_action( 'wp_print_styles', 'cakifo_colorbox_style' );
 add_action( 'wp_footer', 'cakifo_colorbox', 100 );
 
 /**
- * Load the script
+ * Load the Colorbox script
  */
 function cakifo_colorbox_script() {
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.17.2', true );
 }
 
 /**
- * Load the style
+ * Load the Colorbox style
  */
 function cakifo_colorbox_style() {
 	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3', 'screen' );
 }
 
 /**
- * Prints the script in the footer
+ * Prints the Colorbox script in the footer
  */
 function cakifo_colorbox() {
 
@@ -57,7 +57,7 @@ function cakifo_colorbox() {
 	 *
 	 * add_filter( 'cakifo_colorbox_args', 'my_child_colorbox_args' );
 	 * function my_child_colorbox_args( $args ) {
-	 * 		$args['selector'] = '.colorbox, .my-new-selector';
+	 * 		$args['selector'] = '.colorbox, .my-new-awesome-selector';
      *		return $args;
 	 *	}
 	 */
@@ -87,7 +87,7 @@ function cakifo_colorbox() {
 						echo $arg . ' : "' . $val . '",' . "\n";
 				}
 
-					echo 'foo: "bar" '; // IE7 fix
+				echo 'foo: "bar" '; // IE7 fix
 
 	echo "		});
 			});

@@ -55,7 +55,6 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
-	add_theme_support( 'hybrid-core-post-meta-box' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 	//add_theme_support( 'hybrid-core-drop-downs' );
@@ -77,12 +76,16 @@ function cakifo_theme_setup() {
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
 	add_theme_support( 'cleaner-gallery' );
-	//add_theme_support( 'cleaner-caption' );
 	add_theme_support( 'custom-field-series' );
+	//add_theme_support( 'cleaner-caption' );
 	
-	/* Load the colorbox script if supported. */
+	/* Load the Colorbox Script extention if supported. */
 	add_theme_support( 'cakifo-colorbox' );
 	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
+	
+	/* Load the Twitter Button extention if supported */
+	add_theme_support( 'cakifo-twitter-button' );
+	require_if_theme_supports( 'cakifo-twitter-button', trailingslashit( THEME_DIR ) . 'functions/tweet_button.php' );
 
 	/* Load shortcodes file. */
 	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
@@ -96,7 +99,7 @@ function cakifo_theme_setup() {
 	/* Add theme support for WordPress features */
 	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
 	add_theme_support( 'automatic-feed-links' );
-	add_custom_background();
+	add_custom_background( 'cakifo_custom_background_callback' );
 	add_editor_style();
 
 	/*
@@ -208,8 +211,9 @@ function cakifo_theme_setup() {
 
 /**
  * Loads the theme JavaScript files
- * It loads jQuery, Modernizr,
- * and the javascript needed for this theme
+ *
+ * It loads jQuery, Modernizr, and the javascript 
+ * needed for this theme
  *
  * @since 1.0
  */
@@ -245,14 +249,13 @@ function cakifo_enqueue_script() {
 /**
  * Loads fonts from the Google Font API
  *
- * Adds bbPress stylesheet as well,
- * if the plugin is active
+ * Adds a bbPress stylesheet as well if the plugin is active
  *
  * @since 1.0
  */
 function cakifo_enqueue_style() {
-	wp_enqueue_style( 'PT-Serif', 'http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' );
-	
+	wp_enqueue_style( 'PT-Serif', 'http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
+
 	// Add a new bbPress stylesheet, if the plugin is active
 	if ( class_exists( 'bbPress' ) ) :
 		wp_dequeue_style( 'bbpress-style' );
@@ -334,10 +337,14 @@ function cakifo_slider_javascript() {
 
 	/**
 	 * For more information about the arguments, see
+	 *
 	 * @link https://github.com/jayj/Cakifo/wiki/Child-themes
-	 * @link http://slidesjs.com
+	 * @link http://slidesjs.com<
+	 *
+	 * @notice The name of this filter changed in version 1.3
+	 *	from cakifo_slider_args to cakifo_slider_arguments
 	 */
-	$args = apply_filters( 'cakifo_slider_args', $args ); 
+	$args = apply_filters( 'cakifo_slider_arguments', $args ); 
 
 	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
@@ -409,7 +416,6 @@ function cakifo_slider_javascript() {
  * @since 1.1
  */
 function cakifo_get_the_image_arguments( $args ) {
-
 	if ( is_archive() || is_search() ) {
 		$args['size'] = 'small';
 		$args['image_class'] = 'thumbnail';
@@ -488,7 +494,7 @@ function cakifo_quote_entry_meta( $meta ) {
 	if ( is_single() )
 		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 
-	return;
+	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-shortlink] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
 }
 
 function cakifo_aside_entry_meta( $meta ) {
@@ -573,6 +579,41 @@ function cakifo_content_width() {
 		elseif ( 'layout-3c-c' == $layout )
 			hybrid_set_content_width( 500 );
 	}
+
+}
+
+/**
+ * Custom Background callback
+ *
+ * Removes the background image from style.css if
+ * the user has selected a custom background color
+ *
+ * @since 1.3
+ */
+function cakifo_custom_background_callback() {
+
+	/* Get the background image */
+	$image = get_background_image();
+
+	/* If there's an image, just call the normal WordPress callback. We won't do anything here */
+	if ( !empty( $image ) ) {
+		_custom_background_cb();
+		return;
+	}
+
+	/* Get the background color */
+	$color = get_background_color();
+
+	/* If no background color, return */
+	if ( empty( $color ) )
+		return;
+
+	/* Use 'background' instead of 'background-color' */
+	$style = "background: #{$color};";
+
+?>
+	<style type="text/css">body { <?php echo trim( $style ); ?> }</style>
+<?php
 
 }
 
@@ -813,7 +854,7 @@ function cakifo_image_info() {
  * Get the values of image sizes
  *
  * @since 1.3
- * @return array
+ * @return array An array of all the images sizes
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
@@ -862,7 +903,7 @@ function cakifo_get_image_size( $name ) {
  * Return the URL for the first link found in the post content
  *
  * @since 1.0
- * @deprecated 1.3
+ * @deprecated 1.3 Use cakifo_href_url_grabber() instead
  */
 function cakifo_url_grabber() {
 	_deprecated_function( __FUNCTION__, '1.3', 'cakifo_href_url_grabber()' );

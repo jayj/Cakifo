@@ -40,18 +40,18 @@ function cakifo_register_shortcodes() {
  * @param array $atts
  */
 function cakifo_rss_link_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
 		'text' => __( 'RSS', hybrid_get_textdomain() ),
  	), $atts ) );
 
-	return $before . '<a href="' . get_bloginfo( 'rss2_url' ) . '" class="rss-link">' .  $text . '</a>' . $after;
+	return $before . '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' .  $text . '</a>' . $after;
 }
 
 /**
- * Twitter username and/or link. 
+ * Twitter username and/or link.
+ *
  * Taken from my Twitter Profile Field plugin
  *
  * @link http://wordpress.org/extend/plugins/twitter-profile-field/
@@ -59,7 +59,6 @@ function cakifo_rss_link_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_twitter_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(   
     	'link' => true,
 		'before' => '',
@@ -84,7 +83,6 @@ function cakifo_twitter_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
@@ -95,33 +93,31 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
 
 /**
  * Digg link shortcode.
- * @note This won't work from your computer (http://localhost). Must be a live site.
  *
+ * @note This won't work from your computer (http://localhost). Must be a live site.
  * @since 1.0
  * @param array $atts
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
  	), $atts) );
 
-	$url = esc_url( 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) ) );
+	$url = 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) );
 	
-	return $before . '<a href="' . $url . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '" class="digg-share-button">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="' . esc_url( $url ) . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '" class="digg-share-button">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
 }
 
 /**
  * Facebook share link shortcode.
- * @note This won't work from your computer (http://localhost). Must be a live site.
  *
+ * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
  * @since 1.0
  * @param array $atts
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
@@ -134,11 +130,14 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 		'locale' => get_locale(), // Language of the button - ex: da_DK, fr_FR
  	), $atts) );
 
-	// Set the height to 62px if the layout is box_count and the height is lower than 62px
-	if ( $layout == 'box_count' && $height < 60 )
+	// Set the height to 62px if the layout is box_count and the height is the default value
+	if ( $layout == 'box_count' && $height == 25 )
 		$height = 62;
-	
-	return $before . '<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode( $href ) . '&amp;layout=' . esc_attr( $layout ) . '&amp;width=' . intval( $width ) . '&amp;action=' . esc_attr( $action ) . '&amp;font&amp;colorscheme=' . esc_attr( $colorscheme ) . '&amp;height=' . intval( $height ) . '&amp;locale=' . esc_attr( $locale ) . '" class="facebook-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowTransparency="true" scrolling="no"></iframe>' . $after;
+
+	$width = intval( $width );
+	$height = intval( $height );
+
+	return $before . '<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode( $href ) . '&amp;layout=' . esc_attr( $layout ) . '&amp;width=' . $width . '&amp;action=' . esc_attr( $action ) . '&amp;font&amp;colorscheme=' . esc_attr( $colorscheme ) . '&amp;height=' . $height . '&amp;locale=' . esc_attr( $locale ) . '" class="facebook-share-button" style="width:' . $width . 'px; height:' . $height . 'px;" allowTransparency="true" scrolling="no"></iframe>' . $after;
 }
 
 /**
@@ -148,27 +147,44 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_twitter_link_shortcode( $atts ) {
-
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'href' => get_permalink(),
 		'text' => the_title_attribute( 'echo=0' ),
 		'layout' => 'horizontal', // horizontal, vertical, none
-		'width' => 55,
-		'height' => 20,
-		'via' => hybrid_get_setting( 'twitter_username' ),	
+		'via' => hybrid_get_setting( 'twitter_username' ),
+		'width' => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
+		'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
  	), $atts) );
 
-	// Set the height to 62px if the layout is vertical and the height is lower than 62px
-	if ( $layout == 'vertical' && $height < 62 )
-		$height = 62;
+	// Load the PHP tweet button script if the theme supports it
+	if ( current_theme_supports( 'cakifo-twitter-button' ) ) :
 
-	// Set width to 110px if the layout is horizontal and the width is lower than 55px
-	if ( $layout == 'horizontal' && $width <= 55 )
-		$width = 110;
+		return cakifo_tweet_button( array(
+			'before' => $before,
+			'after' => $after,
+			'layout' => $layout,
+			'href' => $href,
+			'text' => $text,
+			'layout' => $layout,
+			'via' => $via,
+		) );
 
-	return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
+	// Load the Twitter iframe
+	else :
+
+		// Set the height to 62px if the layout is vertical and the height is the default value
+		if ( $layout == 'vertical' && $height == 20 )
+			$height = 62;
+
+		// Set width to 110px if the layout is horizontal and the width is the default value
+		if ( $layout == 'horizontal' && $width == 55 )
+			$width = 110;
+
+		return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
+	
+	endif;
 }
 
 /**
@@ -179,7 +195,9 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_googleplus_link_shortcode( $atts ) {
-	
+
+	static $first = true;
+
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
@@ -188,24 +206,26 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
 		'callback' => '',
 		'count' => 'true' // true, false
  	), $atts) );
-	
-	$script = '<script src="https://apis.google.com/js/plusone.js"></script>';
-	
-	$text = '<g:plusone size="' . $layout . '" count="' . $count . '" href="' . $href . '" callback="' . $callback . '"></g:plusone>';
-	
+
+	// Only add the script once
+	$script = ( $first == true ) ? "<script>(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>" : "";
+
+	$first = false;
+
+	$text = '<div class="g-plusone" data-size="' . $layout . '" data-count="' . $count . '" data-href="' . $href . '" data-callback="' . $callback . '"></div>';
+
 	return $before . $text . $after . $script;
-	
 }
 
 /**
  * Displays the published date of an individual post in HTML5 format.
- * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
  * @since 1.1
  * @param array $atts
  */
 function cakifo_entry_published_shortcode( $atts ) {
-
 	$atts = shortcode_atts( array(
 		'before' => '',
 		'after' => '',
@@ -223,13 +243,13 @@ function cakifo_entry_published_shortcode( $atts ) {
 
 /**
  * Displays the published date of an individual comment in HTML5 format.
- * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
  * @since 1.1
  * @param array $atts
  */
 function cakifo_comment_published_shortcode( $atts ) {
-
 	$atts = shortcode_atts( array(
 		'before' => '',
 		'after' => ''
@@ -242,21 +262,21 @@ function cakifo_comment_published_shortcode( $atts ) {
 
 /**
  * Displays an individual post's author with a link to his or her archive.
- * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
  * @since 1.3
  * @param array $atts
  */
 function cakifo_entry_author_shortcode( $atts ) {
-	
 	$atts = shortcode_atts( array(
 		'rel' => 'author',
 		'before' => '',
 		'after' => '',
 	), $atts );
-	
-	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="' . esc_attr( $atts['rel'] ) . '">' . esc_html( get_the_author() ) . '</a></span>';
-	
+
+	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author_meta( 'display_name' ) ) . '">' . get_the_author_meta( 'display_name' ) . '</a></span>';
+
 	return $atts['before'] . $author . $atts['after'];
 }
 
@@ -267,30 +287,29 @@ function cakifo_entry_author_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_format_shortcode( $atts ) {
-	
 	$atts = shortcode_atts( array(
 		'before' => '',
 		'after' => ''
 	), $atts );
-	
+
 	return $atts['before'] . get_post_format() . $atts['after'];
 }
 
 /**
  * Displays a post's title with a link to the post.
- * It replaces the default Hybrid Core shortcode. The name will be the same
+ *
+ * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
  * @since 1.3
  * @param array $atts
  */
 /*function cakifo_entry_title_shortcode( $atts ) {
-	
 	$atts = shortcode_atts( array(
 		'heading' => 'h1'
 	), $atts );
-	
+
 	global $post;
-	
+
 	// $atts['heading']
 
 	$title = the_title( "<{$atts['heading']} class='" . esc_attr( $post->post_type ) . "-title entry-title'><a href='" . get_permalink() . "' title='" . the_title_attribute( 'echo=0' ) . "' rel='bookmark'>", "</a></{$atts['heading']}>", false );

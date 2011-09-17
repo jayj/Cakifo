@@ -16,33 +16,37 @@ jQuery(document).ready(function($) {
 		topPosition = 0,
 		currentDiv = 0;
 
+	$(window).load(function() { // Make sure everyting is loaded
 	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget').each(function() {
 
-		$el = $(this);
+		$el = $(this),
 		topPosition = $el.position().top;
-
+		
 		if (currentRowStart != topPosition) {
-			// we just came to a new row.  Set all the heights on the completed row
+			// We just came to a new row.  Set all the heights on the completed row
 			for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
 				rowDivs[currentDiv].height(currentTallest);
 			}
-
-			// set the variables for the new row
-			rowDivs.length = 0; // empty the array
-			currentRowStart = topPosition;
-			currentTallest = $el.height();
+			
+			// Set the variables for the new row
+			rowDivs.length = 0, // empty the array
+			currentRowStart = topPosition,
+			currentTallest = $el.height(),
 			rowDivs.push($el);
 		} else {
-			// another div on the current row.  Add it to the list and check if it's taller
 			rowDivs.push($el);
 			currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
 		}
-
-		// do the last row
+		
+		// Do the last row
 		for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
 			rowDivs[currentDiv].height(currentTallest);
 		}
-	});
+	});	});
+
+	/*$.fn.setAllToMaxHeight = function(){
+		return this.height( Math.max.apply(this, $.map( this , function(e){ return $(e).outerHeight() }) ) );
+	}$('.page-template-template-front-page .headline-list').setAllToMaxHeight(); */
 	
 	/* A little surprise ;-) */ 	
 	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";

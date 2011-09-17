@@ -10,6 +10,8 @@
  */
 ?>
 
+<?php do_atomic( 'before_loop_meta' ); // cakifo_before_loop_meta ?>
+
 <?php if ( ( is_home() && !is_front_page() ) && hybrid_get_setting( 'featured_show' ) ) : ?>
 
 	<?php global $wp_query; ?>
@@ -161,3 +163,5 @@
 	</div> <!-- .loop-meta -->
 
 <?php endif; ?>
+
+<?php do_atomic( 'after_loop_meta' ); // cakifo_after_loop_meta ?>

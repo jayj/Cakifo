@@ -13,7 +13,9 @@
 
 		<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
 
-        <h1 class="section-title"><?php _e( 'Recent Posts', hybrid_get_textdomain() ); ?></h1>
+		<?php $posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' ); ?>
+
+        <h1 class="section-title"><a href="<?php echo esc_url( $posts_page ); ?>" title="<?php _e( 'See more posts', hybrid_get_textdomain() ); ?>"><?php _e( 'Recent Posts', hybrid_get_textdomain() ); ?></a></h1>
 
 		<?php
             // Display our recent posts, ignoring Aside, Link, Quote and Status posts
@@ -61,7 +63,7 @@
                     <div class="details">
                         <?php echo apply_atomic( 'recent_post_entry_title', the_title( '<h2 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>', false ) ); ?>
 
-                        <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recentposts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
+                        <?php echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recent-posts-meta">' . __( '[entry-published] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
 
                         <div class="entry-summary">
                             <?php cakifo_the_excerpt( 20 ); ?>

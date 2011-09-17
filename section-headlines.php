@@ -19,7 +19,6 @@
 
         	foreach ( hybrid_get_setting( 'headlines_category' ) as $category ) :
         ?>
-
 				<?php
                 	// Create the loop for each selected category, ignoring Aside, Link, Quote and Status posts
 					$headlines = get_posts( array(
@@ -46,7 +45,7 @@
 
                         <?php $cat = get_category( $category ); ?>
 
-                        <h2 class="section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h2>
+                        <h2 class="section-title alternative-section-title"><a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a></h2>
 
                         <ol>
 							<?php foreach ( $headlines as $post ) : $GLOBALS['cakifo_do_not_duplicate'][] = $post->ID; ?>

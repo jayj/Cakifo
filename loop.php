@@ -25,11 +25,10 @@
 		<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
 
         <header class="entry-header">
-
             <?php if ( get_post_format() ) : ?>
                 <hgroup>
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-                    <?php echo apply_atomic_shortcode( 'entry_format', '<h3 class="entry-format">[entry-format]</h3>' ); ?>
+                    <?php echo apply_atomic_shortcode( 'entry_format', '<h3 class="entry-format"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '">[entry-format]</a></h3>' ); ?>
                 </hgroup>
             <?php else: ?>
             	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
@@ -59,7 +58,7 @@
         
         	<div class="entry-content">
             	<div class="note">
-                    <?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ); ?>
+					<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ); ?>
                     <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
                 </div>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
