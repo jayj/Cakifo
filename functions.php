@@ -339,7 +339,7 @@ function cakifo_slider_javascript() {
 	 * For more information about the arguments, see
 	 *
 	 * @link https://github.com/jayj/Cakifo/wiki/Child-themes
-	 * @link http://slidesjs.com<
+	 * @link http://slidesjs.com
 	 *
 	 * @notice The name of this filter changed in version 1.3
 	 *	from cakifo_slider_args to cakifo_slider_arguments
@@ -625,14 +625,15 @@ function cakifo_custom_background_callback() {
  */
 function cakifo_logo( $title ) {
 
-	$tag = ( is_home() || is_front_page() ) ? 'h1' : 'h4';
+	//$tag = ( is_home() || is_front_page() ) ? 'h1' : 'h4';
 
 	if ( $title = get_bloginfo( 'name' ) ) {
 
 		// Check if there's a header image, else return the blog name
 		$maybe_image = ( get_header_image() ) ? '<span class="assistive-text">' . $title . '</span><img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
 
-		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
+		//$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
+		$title = '<h1 id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
 	}
 
 	return $title;
