@@ -23,6 +23,7 @@
                 'showposts' => 4,
                 'ignore_sticky_posts' => 1,
 				'post_status' => 'publish',
+				'no_found_rows' => true,
                 'tax_query' => array( array(
                         'taxonomy' => 'post_format',
                         'terms' => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),

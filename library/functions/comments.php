@@ -164,7 +164,7 @@ function hybrid_comment_form_args( $args ) {
 	$input_class = ( ( get_option( 'require_name_email' ) ) ? ' req' : '' );
 
 	/* Sets up the default comment form fields. */
-$fields = array(
+	$fields = array(
 		'author' => '<p class="form-author' . esc_attr( $input_class ) . '"><label for="author">' . __( 'Name', $domain ) . $req . '</label> <input type="text" class="text-input" name="author" id="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40" /></p>',
 		'email' => '<p class="form-email' . esc_attr( $input_class ) . '"><label for="email">' . __( 'Email', $domain ) . $req . '</label> <input type="text" class="text-input" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="40" /></p>',
 		'url' => '<p class="form-url"><label for="url">' . __( 'Website', $domain ) . '</label><input type="text" class="text-input" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></p>'

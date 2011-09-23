@@ -4,8 +4,8 @@
 
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
-* Requires at least WordPress 3.1
-* Tested up to 3.2
+* Requires at least WordPress 3.2
+* Tested up to 3.2.x
 
 ## Demo
 
@@ -25,11 +25,11 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Built-in pagination
 * Killer post thumbnails function that work with WordPress' featured image functionality and provide extra features
 * Multiple sidebars that you can customize however you like
-* Fully internationalized, so you can run the theme in any language (Danish and french are already added!)
+* Fully internationalized, so you can run the theme in any language (Danish and French are already added!)
 * Uses the built-in WordPress menu system
-* Context-aware action and filter hooks, so you don't have to learn WordPress conditional tags
+* Context-aware action and filter hooks
 * Many useful shortcodes
-* Small theme settings page (yes, that's a feature)
+* Small theme settings page (yep, that's a feature)
 * Ability to create custom templates for any post type in multiple ways
 * Highly-configurable widgets that give you full control over their display
 * And much, much more!

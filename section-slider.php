@@ -20,12 +20,14 @@
 			'showposts' => hybrid_get_setting( 'featured_posts' ),
 			'ignore_sticky_posts' => 1,
 			'post_status' => 'publish',
+			'no_found_rows' => true,
 		);
 	else :
 		$feature_query = array(
 			'post__in' => get_option( 'sticky_posts' ),
 			'showposts' => hybrid_get_setting( 'featured_posts' ),
 			'post_status' => 'publish',
+			'no_found_rows' => true,
 		);
 	endif;
 ?>

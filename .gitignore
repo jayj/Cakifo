@@ -1,0 +1,11 @@
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+.cache
+
+# Dreamweaver added files
+_notes
+dwsync.xml
+
+# Folders to ignore
+.svn

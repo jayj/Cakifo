@@ -150,8 +150,12 @@ function hybrid_entry_class( $class = '', $post_id = null ) {
 			$classes[] = 'protected';
 
 		/* Has excerpt. */
-		if ( has_excerpt() )
+		if ( post_type_supports( $post->post_type, 'excerpt' ) && has_excerpt() )
 			$classes[] = 'has-excerpt';
+
+		/* Has <!--more--> link. */
+		if ( !is_singular() && false !== strpos( $post->post_content, '<!--more-->' ) )
+			$classes[] = 'has-more-link';
 
 		/* Post format. */
 		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {

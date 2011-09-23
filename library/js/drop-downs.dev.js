@@ -221,7 +221,19 @@ $j(document).ready(
 	function() {
 
 		/* Drop-down controls. */
-		$j('.menu ul:first-child').supersubs( {
+		$j('div.menu ul:first-child').supersubs( {
+			minWidth: 12,
+			maxWidth: 27,
+			extraWidth: 1
+			}
+		).superfish( {
+			delay: 100,
+			animation: { opacity: 'show', height: 'show' },
+			dropShadows: false
+			}
+		);
+
+		$j( 'nav.menu ul:first-child' ).supersubs( {
 			minWidth: 12,
 			maxWidth: 27,
 			extraWidth: 1

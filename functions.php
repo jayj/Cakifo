@@ -57,10 +57,10 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
-	//add_theme_support( 'hybrid-core-drop-downs' );
+	//add_theme_support( 'hybrid-core-drop-downs' ); // @todo Test if it works
 
-	// Add Hybrid Core SEO if the (WordPress SEO || All in One SEO || HeadSpace2 SEO) plugin isn't activated
-	if ( ! class_exists( 'Yoast_WPSEO_Plugin_Admin' ) && ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
+	// Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated (WordPress SEO is checked for in Hybrid Core)
+	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
 	/* Load the sidebars if supported */
