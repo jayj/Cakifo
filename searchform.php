@@ -16,7 +16,7 @@
 	elseif ( is_404() )
 		$value = 'value="' . esc_attr( basename($_SERVER['REQUEST_URI']) ) . '"'; // Requested URI for 404 page
 	else
-		$value= 'placeholder="' . esc_attr__( 'Search this site...', hybrid_get_textdomain() ) . '"'; // Or Search this site... as placeholder
+		$value= 'placeholder="' . esc_attr__( 'Search', hybrid_get_textdomain() ) . '"'; // Or Search as placeholder
 ?>
 
 <div class="search">

@@ -30,7 +30,7 @@
 
 		<?php do_atomic( 'open_footer' ); // cakifo_open_footer ?>
 
-		<div class="wrap">
+		<div class="wrap clearfix">
 
 			<?php echo apply_atomic_shortcode( 'footer_content', hybrid_get_setting( 'footer_insert' ) ); ?>
 

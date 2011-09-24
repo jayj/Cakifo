@@ -11,6 +11,8 @@
 
 if ( is_active_sidebar( 'subsidiary' ) ) : ?>
 
+	<div class="clear"></div>
+
 	<?php do_atomic( 'before_sidebar_subsidiary' ); // cakifo_before_sidebar_subsidiary ?>
 
 	<div id="sidebar-subsidiary">
