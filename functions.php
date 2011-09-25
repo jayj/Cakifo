@@ -79,6 +79,10 @@ function cakifo_theme_setup() {
 	add_theme_support( 'custom-field-series' );
 	//add_theme_support( 'cleaner-caption' );
 	
+	/* Load Cakifo shortcodes if supported */
+	add_theme_support( 'cakifo-shortcodes' );
+	require_if_theme_supports( 'cakifo-shortcodes', trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
+
 	/* Load the Colorbox Script extention if supported. */
 	add_theme_support( 'cakifo-colorbox' );
 	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
@@ -86,9 +90,6 @@ function cakifo_theme_setup() {
 	/* Load the Twitter Button extention if supported */
 	add_theme_support( 'cakifo-twitter-button' );
 	require_if_theme_supports( 'cakifo-twitter-button', trailingslashit( THEME_DIR ) . 'functions/tweet_button.php' );
-
-	/* Load shortcodes file. */
-	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
 
 	/* Load Theme Settings and upgrade functionality */
 	if ( is_admin() ) {
