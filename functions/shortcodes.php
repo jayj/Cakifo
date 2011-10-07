@@ -118,26 +118,32 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
+	
+	static $first = true;
+
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after' => '',
 		'href' => get_permalink(),
 		'layout' => 'standard', // standard, button_count, box_count
-		'action' => 'like' ,// like, recommend
+		'action' => 'like', // like, recommend
 		'width' => 450,
-		'height' => 25,
+		'faces' => 'false', // true, false
 		'colorscheme' => 'light', // light, dark
 		'locale' => get_locale(), // Language of the button - ex: da_DK, fr_FR
  	), $atts) );
+	
+	// Set default locale
+	$locale = ( isset( $locale ) ) ? $locale : 'en_US';
 
-	// Set the height to 62px if the layout is box_count and the height is the default value
-	if ( $layout == 'box_count' && $height == 25 )
-		$height = 62;
+	// Only add the script once
+	$script = ( $first == true ) ? "<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/$locale/all.js#xfbml=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>" : "";
 
-	$width = intval( $width );
-	$height = intval( $height );
+	$first = false;
 
-	return $before . '<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode( $href ) . '&amp;layout=' . esc_attr( $layout ) . '&amp;width=' . $width . '&amp;action=' . esc_attr( $action ) . '&amp;font&amp;colorscheme=' . esc_attr( $colorscheme ) . '&amp;height=' . $height . '&amp;locale=' . esc_attr( $locale ) . '" class="facebook-share-button" style="width:' . $width . 'px; height:' . $height . 'px;" allowTransparency="true" scrolling="no"></iframe>' . $after;
+	$text = '<div class="fb-like" data-href="' . esc_url( $href ) . '" data-send="false" data-layout="' . esc_attr( $layout ) . '" data-width="' . intval( $width ) . '" data-show-faces="' . esc_attr( $faces ) . '" data-action="' . esc_attr( $action ) . '" data-colorscheme="' . esc_attr( $colorscheme ) . '"></div>';
+
+	return $before . $text . $after . $script;
 }
 
 /**
