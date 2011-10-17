@@ -454,6 +454,17 @@ hr {
 	margin-bottom:25px;
 }
 
+iframe {
+	border: none;
+}
+
+iframe[seamless] {
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+}
+
 b, strong {
     font-weight: bold; /* Addresses style set to 'bolder' in FF3/4, S4/5, Chrome */
 }

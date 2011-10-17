@@ -188,8 +188,16 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 		if ( $layout == 'horizontal' && $width == 55 )
 			$width = 110;
 
-		return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode( $href ) . '&amp;via=' . esc_attr( $via ) . '&amp;text=' . esc_attr( $text ) . '&amp;count=' . esc_attr( $layout ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" allowtransparency="true" scrolling="no"></iframe>' . $after;
-	
+		// Build the query
+		$query_args = array(
+			'url' => $href,
+			'via' => esc_attr( $via ),
+			'text' => esc_attr( $text ),
+			'count' => esc_attr( $layout )
+    	);
+
+		return $before . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?' . http_build_query( $query_args, '', '&amp;' ) . '" class="twitter-share-button" style="width:' . intval( $width ) . 'px; height:' . intval( $height ) . 'px;" scrolling="no" seamless></iframe>' . $after;
+
 	endif;
 }
 
