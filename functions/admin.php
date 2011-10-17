@@ -80,7 +80,7 @@ function cakifo_theme_meta_box() { ?>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts:', hybrid_get_textdomain() ); ?></label>
 			</th>
 			<td>
-				<p><input type="text" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
+				<p><input type="number" min="-1" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
 				<p><?php _e( 'How many featured posts should be shown? <code>-1</code> will show all posts in the category.', hybrid_get_textdomain() ); ?>
                 <?php printf( __( '%s is the default', hybrid_get_textdomain() ), '<code>5</code>' ); ?></p>
 			</td>
@@ -106,14 +106,13 @@ function cakifo_theme_meta_box() { ?>
 		<tr>
 			<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts:', hybrid_get_textdomain() ); ?></label></th>
 			<td>
-				<p><input type="text" id="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_num_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'headlines_num_posts' ) ); ?>" class="small-text" /></p>
+				<p><input type="number" min="1" id="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_num_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'headlines_num_posts' ) ); ?>" class="small-text" /></p>
                 
 				<p><?php _e( 'How many posts should be shown per headline category?', hybrid_get_textdomain() ); ?> <?php printf( __( '%s is the default', hybrid_get_textdomain() ), '<code>4</code>' ); ?></p></p>
 			</td>
 		</tr>
 
 		<tr>
-
         	<?php $current_user = wp_get_current_user(); ?>
 
 			<th>
