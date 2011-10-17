@@ -20,6 +20,7 @@
  * second during a specific minute within a specific hour on a specific day and so on.
  *
  * @since 0.7.0
+ * @access public
  * @global $wp_query The current page's query object.
  * @global $hybrid The global Hybrid object.
  * @return array $hybrid->context Several contexts based on the current page.
@@ -117,9 +118,10 @@ function hybrid_get_context() {
  * even, and alt are added.
  *
  * @since 0.5.0
+ * @access public
  * @global $post The current post's DB object.
  * @param string|array $class Additional classes for more control.
- * @return string $class
+ * @return void
  */
 function hybrid_entry_class( $class = '', $post_id = null ) {
 	static $post_alt;
@@ -203,8 +205,10 @@ function hybrid_entry_class( $class = '', $post_id = null ) {
  * (Odd should come first, even second).
  *
  * @since 0.2.0
+ * @access public
  * @global $wpdb WordPress DB access object.
  * @global $comment The current comment's DB object.
+ * @return void
  */
 function hybrid_comment_class( $class = '' ) {
 	global $post, $comment, $hybrid;
@@ -259,9 +263,10 @@ function hybrid_comment_class( $class = '' ) {
  * Provides classes for the <body> element depending on page context.
  *
  * @since 0.1.0
+ * @access public
  * @uses $wp_query
  * @param string|array $class Additional classes for more control.
- * @return string
+ * @return void
  */
 function hybrid_body_class( $class = '' ) {
 	global $wp_query;
@@ -342,13 +347,14 @@ function hybrid_body_class( $class = '' ) {
  * possible situation WordPress throws at it for the best optimization.
  *
  * @since 0.1.0
+ * @access public
  * @global $wp_query
+ * @return void
  */
 function hybrid_document_title() {
 	global $wp_query;
 
 	/* Set up some default variables. */
-	$domain = hybrid_get_textdomain();
 	$doctitle = '';
 	$separator = ':';
 
@@ -393,44 +399,44 @@ function hybrid_document_title() {
 		/* If viewing a date-/time-based archive. */
 		elseif ( is_date () ) {
 			if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'g:i a', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for %1$s', 'hybrid-core' ), get_the_time( __( 'g:i a', 'hybrid-core' ) ) );
 
 			elseif ( get_query_var( 'minute' ) )
-				$doctitle = sprintf( __( 'Archive for minute %1$s', $domain ), get_the_time( __( 'i', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for minute %1$s', 'hybrid-core' ), get_the_time( __( 'i', 'hybrid-core' ) ) );
 
 			elseif ( get_query_var( 'hour' ) )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'g a', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for %1$s', 'hybrid-core' ), get_the_time( __( 'g a', 'hybrid-core' ) ) );
 
 			elseif ( is_day() )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'F jS, Y', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for %1$s', 'hybrid-core' ), get_the_time( __( 'F jS, Y', 'hybrid-core' ) ) );
 
 			elseif ( get_query_var( 'w' ) )
-				$doctitle = sprintf( __( 'Archive for week %1$s of %2$s', $domain ), get_the_time( __( 'W', $domain ) ), get_the_time( __( 'Y', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for week %1$s of %2$s', 'hybrid-core' ), get_the_time( __( 'W', 'hybrid-core' ) ), get_the_time( __( 'Y', 'hybrid-core' ) ) );
 
 			elseif ( is_month() )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), single_month_title( ' ', false) );
+				$doctitle = sprintf( __( 'Archive for %1$s', 'hybrid-core' ), single_month_title( ' ', false) );
 
 			elseif ( is_year() )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'Y', $domain ) ) );
+				$doctitle = sprintf( __( 'Archive for %1$s', 'hybrid-core' ), get_the_time( __( 'Y', 'hybrid-core' ) ) );
 		}
 
 		/* For any other archives. */
 		else {
-			$doctitle = __( 'Archives', $domain );
+			$doctitle = __( 'Archives', 'hybrid-core' );
 		}
 	}
 
 	/* If viewing a search results page. */
 	elseif ( is_search() )
-		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', $domain ), esc_attr( get_search_query() ) );
+		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', 'hybrid-core' ), esc_attr( get_search_query() ) );
 
 	/* If viewing a 404 not found page. */
 	elseif ( is_404() )
-		$doctitle = __( '404 Not Found', $domain );
+		$doctitle = __( '404 Not Found', 'hybrid-core' );
 
 	/* If the current page is a paged page. */
 	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$doctitle = sprintf( __( '%1$s Page %2$s', $domain ), $doctitle . $separator, number_format_i18n( $page ) );
+		$doctitle = sprintf( __( '%1$s Page %2$s', 'hybrid-core' ), $doctitle . $separator, number_format_i18n( $page ) );
 
 	/* Apply the wp_title filters so we're compatible with plugins. */
 	$doctitle = apply_filters( 'wp_title', $doctitle, $separator, '' );

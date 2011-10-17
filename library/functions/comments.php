@@ -21,6 +21,7 @@ add_filter( 'get_avatar_comment_types', 'hybrid_avatar_comment_types' );
  * element to use for listing comments.
  *
  * @since 0.7.0
+ * @access public
  * @return array $args Arguments for listing comments.
  */
 function hybrid_list_comments_args() {
@@ -48,9 +49,11 @@ function hybrid_list_comments_args() {
  * is only located once if it is needed. Following comments will use the saved template.
  *
  * @since 0.2.3
+ * @access public
  * @param $comment The comment object.
- * @param $args Array of arguments passed from wp_list_comments()
- * @param $depth What level the particular comment is
+ * @param $args Array of arguments passed from wp_list_comments().
+ * @param $depth What level the particular comment is.
+ * @return void
  */
 function hybrid_comments_callback( $comment, $args, $depth ) {
 	global $hybrid;
@@ -85,6 +88,8 @@ function hybrid_comments_callback( $comment, $args, $depth ) {
  * case something is changed.
  *
  * @since 0.2.3
+ * @access public
+ * @return void
  */
 function hybrid_comments_end_callback() {
 	echo '</li><!-- .comment -->';
@@ -96,8 +101,10 @@ function hybrid_comments_end_callback() {
  * trackbacks and pingbacks.
  *
  * @since 0.2.0
+ * @access public
  * @global $comment The current comment's DB object.
  * @global $hybrid The global Hybrid object.
+ * @return void
  */
 function hybrid_avatar() {
 	global $comment, $hybrid;
@@ -147,43 +154,41 @@ function hybrid_avatar() {
  * users to build custom comment forms by filtering 'comment_form_defaults' in their child theme.
  *
  * @since 0.8.0
+ * @access public
  * @param array $args The default comment form arguments.
  * @return array $args The filtered comment form arguments.
  */
 function hybrid_comment_form_args( $args ) {
 	global $user_identity;
 
-	/* Get the theme textdomain. */
-	$domain = hybrid_get_textdomain();
-
 	/* Get the current commenter. */
 	$commenter = wp_get_current_commenter();
 
 	/* Create the required <span> and <input> element class. */
-	$req = ( ( get_option( 'require_name_email' ) ) ? ' <span class="required">' . __( '*', $domain ) . '</span> ' : '' );
+	$req = ( ( get_option( 'require_name_email' ) ) ? ' <span class="required">' . __( '*', 'hybrid-core' ) . '</span> ' : '' );
 	$input_class = ( ( get_option( 'require_name_email' ) ) ? ' req' : '' );
 
 	/* Sets up the default comment form fields. */
 	$fields = array(
-		'author' => '<p class="form-author' . esc_attr( $input_class ) . '"><label for="author">' . __( 'Name', $domain ) . $req . '</label> <input type="text" class="text-input" name="author" id="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40" /></p>',
-		'email' => '<p class="form-email' . esc_attr( $input_class ) . '"><label for="email">' . __( 'Email', $domain ) . $req . '</label> <input type="text" class="text-input" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="40" /></p>',
-		'url' => '<p class="form-url"><label for="url">' . __( 'Website', $domain ) . '</label><input type="text" class="text-input" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></p>'
+		'author' => '<p class="form-author' . esc_attr( $input_class ) . '"><label for="author">' . __( 'Name', 'hybrid-core' ) . $req . '</label> <input type="text" class="text-input" name="author" id="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40" /></p>',
+		'email' => '<p class="form-email' . esc_attr( $input_class ) . '"><label for="email">' . __( 'Email', 'hybrid-core' ) . $req . '</label> <input type="text" class="text-input" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="40" /></p>',
+		'url' => '<p class="form-url"><label for="url">' . __( 'Website', 'hybrid-core' ) . '</label><input type="text" class="text-input" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></p>'
 	);
 
 	/* Sets the default arguments for displaying the comment form. */
 	$args = array(
 		'fields' => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field' => '<p class="form-textarea req"><label for="comment">' . __( 'Comment', $domain ) . '</label><textarea name="comment" id="comment" cols="60" rows="10"></textarea></p>',
-		'must_log_in' => '<p class="alert">' . sprintf( __( 'You must be <a href="%1$s" title="Log in">logged in</a> to post a comment.', $domain ), wp_login_url( get_permalink() ) ) . '</p><!-- .alert -->',
-		'logged_in_as' => '<p class="log-in-out">' . sprintf( __( 'Logged in as <a href="%1$s" title="%2$s">%2$s</a>.', $domain ), admin_url( 'profile.php' ), esc_attr( $user_identity ) ) . ' <a href="' . wp_logout_url( get_permalink() ) . '" title="' . esc_attr__( 'Log out of this account', $domain ) . '">' . __( 'Log out &raquo;', $domain ) . '</a></p><!-- .log-in-out -->',
+		'comment_field' => '<p class="form-textarea req"><label for="comment">' . __( 'Comment', 'hybrid-core' ) . '</label><textarea name="comment" id="comment" cols="60" rows="10"></textarea></p>',
+		'must_log_in' => '<p class="alert">' . sprintf( __( 'You must be <a href="%1$s" title="Log in">logged in</a> to post a comment.', 'hybrid-core' ), wp_login_url( get_permalink() ) ) . '</p><!-- .alert -->',
+		'logged_in_as' => '<p class="log-in-out">' . sprintf( __( 'Logged in as <a href="%1$s" title="%2$s">%2$s</a>.', 'hybrid-core' ), admin_url( 'profile.php' ), esc_attr( $user_identity ) ) . ' <a href="' . wp_logout_url( get_permalink() ) . '" title="' . esc_attr__( 'Log out of this account', 'hybrid-core' ) . '">' . __( 'Log out &raquo;', 'hybrid-core' ) . '</a></p><!-- .log-in-out -->',
 		'comment_notes_before' => '',
 		'comment_notes_after' => '',
 		'id_form' => 'commentform',
 		'id_submit' => 'submit',
-		'title_reply' => __( 'Leave a Reply', $domain ),
-		'title_reply_to' => __( 'Leave a Reply to %s', $domain ),
-		'cancel_reply_link' => __( 'Click here to cancel reply.', $domain ),
-		'label_submit' => __( 'Post Comment', $domain ),
+		'title_reply' => __( 'Leave a Reply', 'hybrid-core' ),
+		'title_reply_to' => __( 'Leave a Reply to %s', 'hybrid-core' ),
+		'cancel_reply_link' => __( 'Click here to cancel reply.', 'hybrid-core' ),
+		'label_submit' => __( 'Post Comment', 'hybrid-core' ),
 	);
 
 	/* Return the arguments for displaying the comment form. */
@@ -195,6 +200,7 @@ function hybrid_comment_form_args( $args ) {
  * default, WordPress only allows the 'comment' comment type to have an avatar.
  *
  * @since 1.2.0
+ * @access private
  * @param array $types List of all comment types allowed to have avatars.
  * @return array $types
  */

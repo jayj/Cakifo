@@ -15,11 +15,12 @@
  * only loaded once on each page load.
  *
  * @since 0.7.0
+ * @access public
  * @uses get_option() Gets an option from the database.
  * @uses hybrid_get_prefix() Gets the prefix of the theme.
  * @global object $hybrid The global Hybrid object.
  * @param string $option The specific theme setting the user wants.
- * @return string|int|array $settings[$option] Specific setting asked for.
+ * @return mixed $settings[$option] Specific setting asked for.
  */
 function hybrid_get_setting( $option = '' ) {
 	global $hybrid;
@@ -51,12 +52,13 @@ function hybrid_get_setting( $option = '' ) {
  * provide a hook for default settings at this time.
  *
  * @since 1.0.0
+ * @access public
+ * @return array $settings The default theme settings.
  */
 function hybrid_get_default_theme_settings() {
 
 	/* Set up some default variables. */
 	$settings = array();
-	$domain = hybrid_get_textdomain();
 	$prefix = hybrid_get_prefix();
 
 	/* Get theme-supported meta boxes for the settings page. */
@@ -67,11 +69,11 @@ function hybrid_get_default_theme_settings() {
 
 		/* If there is a child theme active, add the [child-link] shortcode to the $footer_insert. */
 		if ( is_child_theme() )
-			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', $domain ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link], [theme-link], and [child-link].', $domain ) . '</p>';
+			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', 'hybrid-core' ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link], [theme-link], and [child-link].', 'hybrid-core' ) . '</p>';
 
 		/* If no child theme is active, leave out the [child-link] shortcode. */
 		else
-			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', $domain ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link] and [theme-link].', $domain ) . '</p>';
+			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', 'hybrid-core' ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link] and [theme-link].', 'hybrid-core' ) . '</p>';
 	}
 
 	/* Return the $settings array and provide a hook for overwriting the default settings. */

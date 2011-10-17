@@ -13,6 +13,9 @@ add_action( 'init', 'hybrid_add_post_type_support' );
 /* Add extra file headers for themes. */
 add_filter( 'extra_theme_headers', 'hybrid_extra_theme_headers' );
 
+/* Add all image sizes to the image editor to insert into post. */
+add_filter( 'image_size_names_choose', 'hybrid_image_size_names_choose' );
+
 /**
  * This function is for adding extra support for features not default to the core post types.
  * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
@@ -20,13 +23,15 @@ add_filter( 'extra_theme_headers', 'hybrid_extra_theme_headers' );
  * they're not registered.
  *
  * @since 0.8.0
+ * @access private
+ * @return void
  */
 function hybrid_add_post_type_support() {
 
-	/* Add support for excerpts and entry-views to the 'page' post type. */
+	/* Add support for excerpts to the 'page' post type. */
 	add_post_type_support( 'page', array( 'excerpt' ) );
 
-	/* Add support for comments, trackbacks, and entry-views to the 'attachment' post type. */
+	/* Add support for trackbacks to the 'attachment' post type. */
 	add_post_type_support( 'attachment', array( 'trackbacks' ) );
 }
 
@@ -36,6 +41,7 @@ function hybrid_add_post_type_support() {
  * displaying additional information to the theme user.
  *
  * @since 1.2.0
+ * @access private
  * @link http://codex.wordpress.org/Theme_Review#Licensing
  * @param array $headers Array of extra headers added by plugins/themes.
  * @return array $headers
@@ -67,12 +73,39 @@ function hybrid_extra_theme_headers( $headers ) {
 }
 
 /**
+ * Adds theme/plugin custom images sizes added with add_image_size() to the image uploader/editor.  This 
+ * allows users to insert these images within their post content editor.
+ *
+ * @since 1.3.0
+ * @access private
+ * @param array $sizes Selectable image sizes.
+ * @return array $sizes
+ */
+function hybrid_image_size_names_choose( $sizes ) {
+
+	/* Get all intermediate image sizes. */
+	$intermediate_sizes = get_intermediate_image_sizes();
+	$add_sizes = array();
+
+	/* Loop through each of the intermediate sizes, adding them to the $add_sizes array. */
+	foreach ( $intermediate_sizes as $size )
+		$add_sizes[$size] = $size;
+
+	/* Merge the original array, keeping it intact, with the new array of image sizes. */
+	$sizes = array_merge( $add_sizes, $sizes );
+
+	/* Return the new sizes plus the old sizes back. */
+	return $sizes;
+}
+
+/**
  * Looks for a template based on the hybrid_get_context() function.  If the $template parameter
  * is a directory, it will look for files within that directory.  Otherwise, $template becomes the 
  * template name prefix.  The function looks for templates based on the context of the current page
  * being viewed by the user.
  *
  * @since 0.8.0
+ * @access public
  * @param string $template The slug of the template whose context we're searching for.
  * @return string $template The full path of the located template.
  */
@@ -104,6 +137,8 @@ function get_atomic_template( $template ) {
  * filter hook.
  *
  * @since 0.4.0
+ * @access private
+ * @return void
  */
 function hybrid_meta_template() {
 	$data = hybrid_get_theme_data();
@@ -116,6 +151,8 @@ function hybrid_meta_template() {
  * pages, wrap it in a <div> element. 
  *
  * @since 0.1.0
+ * @access public
+ * @return void
  */
 function hybrid_site_title() {
 
@@ -135,6 +172,8 @@ function hybrid_site_title() {
  * On other pages, wrap it in a <div> element.
  *
  * @since 0.1.0
+ * @access public
+ * @return void
  */
 function hybrid_site_description() {
 
@@ -154,6 +193,7 @@ function hybrid_site_description() {
  * is_page_template() function with the exception that it works for all post types.
  *
  * @since 1.2.0
+ * @access public
  * @param string $template The name of the template to check for.
  * @return bool Whether the post has a template.
  */

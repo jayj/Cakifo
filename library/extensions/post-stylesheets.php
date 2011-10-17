@@ -21,18 +21,21 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+/* Add post type support for the 'post-stylesheets' feature. */
 add_action( 'init', 'post_stylesheets_add_post_type_support' );
 
 /* Filters stylesheet_uri with a function for adding a new style. */
 add_filter( 'stylesheet_uri', 'post_stylesheets_stylesheet_uri', 10, 2 );
 
-/* Create the post stylesheets meta box on the 'admin_menu' hook. */
-add_action( 'admin_menu', 'post_stylesheets_create_meta_box' );
+/* Admin setup for the 'post-stylesheets' feature. */
+add_action( 'admin_menu', 'post_stylesheets_admin_setup' );
 
 /**
  * Adds post type support for the 'post-stylesheets' feature to all 'public' post types.
  *
  * @since 0.3.0
+ * @access private
+ * @return void
  */
 function post_stylesheets_add_post_type_support() {
 
@@ -51,6 +54,11 @@ function post_stylesheets_add_post_type_support() {
  * than the typical style.css file.
  *
  * @since 0.1.0
+ * @todo Use features from Ticket #18302 when available. http://core.trac.wordpress.org/ticket/18302
+ * @access private
+ * @param string $stylesheet_uri The URI of the active theme's stylesheet.
+ * @param string $stylesheet_dir_uri The directory URI of the active theme's stylesheet.
+ * @return string $stylesheet_uri
  */
 function post_stylesheets_stylesheet_uri( $stylesheet_uri, $stylesheet_dir_uri ) {
 
@@ -88,28 +96,42 @@ function post_stylesheets_stylesheet_uri( $stylesheet_uri, $stylesheet_dir_uri )
  * Returns the post stylesheet if one is saved as post metadata.
  *
  * @since 0.3.0
+ * @access public
  * @param int $post_id The ID of the post to get the stylesheet for.
  * @return string|bool Stylesheet name if given.  False for no stylesheet.
  */
 function get_post_stylesheet( $post_id ) {
-	return get_post_meta( $post_id, apply_filters( 'post_stylesheets_meta_key', 'Stylesheet' ), true );
+	return get_post_meta( $post_id, post_stylesheets_get_meta_key(), true );
 }
 
 /**
  * Adds/updates the post stylesheet for a specific post.
  *
  * @since 0.3.0
+ * @access public
  * @param int $post_id The ID of the post to set the stylesheet for.
  * @param string $stylesheet The filename of the stylesheet.
  */
 function set_post_stylesheet( $post_id, $stylesheet ) {
-	return update_post_meta( $post_id, apply_filters( 'post_stylesheets_meta_key', 'Stylesheet' ), $stylesheet );
+	return update_post_meta( $post_id, post_stylesheets_get_meta_key(), $stylesheet );
+}
+
+/**
+ * Deletes a post stylesheet.
+ *
+ * @since 0.3.0
+ * @access public
+ * @param int $post_id The ID of the post to delete the stylesheet for.
+ */
+function delete_post_stylesheet( $post_id ) {
+	return delete_post_meta( $post_id, post_stylesheets_get_meta_key() );
 }
 
 /**
  * Checks if a post has a specific post stylesheet.
  *
  * @since 0.3.0
+ * @access public
  * @param string $stylesheet The filename of the stylesheet.
  * @param int $post_id The ID of the post to check.
  * @return bool True|False depending on whether the post has the stylesheet.
@@ -125,36 +147,66 @@ function has_post_stylesheet( $stylesheet, $post_id = '' ) {
 }
 
 /**
- * Creates the post stylesheets meta box.
+ * Admin setup for the post stylesheets script.
  *
- * @since 0.2.0
+ * @since 0.3.0
+ * @access private
+ * @return void
  */
-function post_stylesheets_create_meta_box() {
+function post_stylesheets_admin_setup() {
 
-	/* Get all available 'public' post types. */
-	$post_types = get_post_types( array( 'public' => true ), 'objects' );
+	/* Load the post meta boxes on the new post and edit post screens. */
+	add_action( 'load-post.php', 'post_stylesheets_load_meta_boxes' );
+	add_action( 'load-post-new.php', 'post_stylesheets_load_meta_boxes' );
+}
 
-	/* Loop through each of the public post types. */
-	foreach ( $post_types as $type ) {
+/**
+ * Hooks into the 'add_meta_boxes' hook to add the post stylesheets meta box and the 'save_post' hook 
+ * to save the metadata.
+ *
+ * @since 0.3.0
+ * @access private
+ * @return void
+ */
+function post_stylesheets_load_meta_boxes() {
 
-		/* Add the meta box if the post type supports 'post-stylesheets'. */
-		if ( post_type_supports( $type->name, 'post-stylesheets' ) )
-			add_meta_box( "post-stylesheets", sprintf( __( '%s Stylesheet', apply_filters( 'post_stylesheets_textdomain', 'post-stylesheets' ) ), $type->labels->singular_name ), 'post_stylesheets_meta_box', $type->name, 'side', 'default' );
-	}
+	/* Add the post stylesheets meta box on the 'add_meta_boxes' hook. */
+	add_action( 'add_meta_boxes', 'post_stylesheets_create_meta_box', 10, 2 );
 
 	/* Saves the post meta box data. */
 	add_action( 'save_post', 'post_stylesheets_meta_box_save', 10, 2 );
 }
 
 /**
+ * Adds the post stylesheets meta box if the post type supports 'post-stylesheets' and the current user has 
+ * permission to edit post meta.
+ *
+ * @since 0.2.0
+ * @access private
+ * @param string $post_type The post type of the current post being edited.
+ * @param object $post The current post object.
+ * @return void
+ */
+function post_stylesheets_create_meta_box( $post_type, $post ) {
+
+	/* Add the meta box if the post type supports 'post-stylesheets'. */
+	if ( ( post_type_supports( $post_type, 'post-stylesheets' ) ) && ( current_user_can( 'edit_post_meta', $post->ID ) || current_user_can( 'add_post_meta', $post->ID ) || current_user_can( 'delete_post_meta', $post->ID ) ) )
+		add_meta_box( "post-stylesheets", __( 'Stylesheet', 'post-stylesheets' ), 'post_stylesheets_meta_box', $post_type, 'side', 'default' );
+}
+
+/**
  * Displays the input field for entering a custom stylesheet.
  *
  * @since 0.2.0
+ * @access private
+ * @param object $object The post object currently being edited.
+ * @param array $box Specific information about the meta box being loaded.
+ * @return void
  */
 function post_stylesheets_meta_box( $object, $box ) { ?>
 
 	<p>
-		<input type="hidden" name="post_stylesheets_meta_box_nonce" value="<?php echo wp_create_nonce( basename( __FILE__ ) ); ?>" />
+		<?php wp_nonce_field( basename( __FILE__ ), 'post-stylesheets-nonce' ); ?>
 		<input type="text" class="widefat" name="post-stylesheets" id="post-stylesheets" value="<?php echo esc_attr( get_post_stylesheet( $object->ID ) ); ?>" />
 	</p>
 <?php
@@ -164,22 +216,22 @@ function post_stylesheets_meta_box( $object, $box ) { ?>
  * Saves the user-selected post stylesheet on the 'save_post' hook.
  *
  * @since 0.2.0
+ * @access private
+ * @param int $post_id The ID of the current post being saved.
+ * @param object $post The post object currently being saved.
  */
 function post_stylesheets_meta_box_save( $post_id, $post ) {
 
 	/* Verify the nonce before proceeding. */
-	if ( !isset( $_POST["post_stylesheets_meta_box_nonce"] ) || !wp_verify_nonce( $_POST["post_stylesheets_meta_box_nonce"], basename( __FILE__ ) ) )
+	if ( !isset( $_POST['post-stylesheets-nonce'] ) || !wp_verify_nonce( $_POST['post-stylesheets-nonce'], basename( __FILE__ ) ) )
 		return;
 
 	/* Check if the post type supports 'post-stylesheets'. */
 	if ( !post_type_supports( $post->post_type, 'post-stylesheets' ) )
 		return;
 
-	/* Get the post type object. */
-	$post_type = get_post_type_object( $post->post_type );
-
 	/* Check if the current user has permission to edit the post. */
-	if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+	if ( !current_user_can( 'edit_post_meta', $post_id ) )
 		return;
 
 	/* Get the previous post stylesheet. */
@@ -188,9 +240,24 @@ function post_stylesheets_meta_box_save( $post_id, $post ) {
 	/* Get the submitted post stylesheet. */
 	$new_stylesheet = esc_attr( strip_tags( $_POST['post-stylesheets'] ) );
 
+	/* If the stylesheet has been removed, delete the metadata completely. */
+	if ( !empty( $old_stylesheet ) && '' == $new_stylesheet )
+		delete_post_stylesheet( $post_id );
+
 	/* If the old stylesheet doesn't match the new stylesheet, update the post stylesheet meta. */
-	if ( $old_stylesheet !== $new_stylesheet )
+	elseif ( $old_stylesheet !== $new_stylesheet )
 		set_post_stylesheet( $post_id, $new_stylesheet );
+}
+
+/**
+ * Returns the meta key used by the script for post metadata.
+ *
+ * @since 0.3.0
+ * @access public
+ * @return string
+ */
+function post_stylesheets_get_meta_key() {
+	return apply_filters( 'post_stylesheets_meta_key', 'Stylesheet' );
 }
 
 ?>

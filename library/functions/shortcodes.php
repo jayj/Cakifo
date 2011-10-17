@@ -1,9 +1,10 @@
 <?php
 /**
- * Shortcodes bundled for use with themes.  These shortcodes can be used in any shortcode-ready area, 
- * which includes the post content area.  Themes may optionally make alternate shortcode-aware areas 
- * where these shortcodes may be used.  Note that some shortcodes are specific to posts and comments 
- * and would be useless outside of the post and comment loops.
+ * Shortcodes bundled for use with themes.  These shortcodes are not meant to be used with the post content 
+ * editor.  Their purpose is to make it easier for users to filter hooks without having to know too much PHP code
+ * and to provide access to specific functionality in other (non-post content) shortcode-aware areas.  Note that 
+ * some shortcodes are specific to posts and comments and would be useless outside of the post and comment 
+ * loops.  To use the shortcodes, a theme must register support for 'hybrid-core-shortcodes'.
  *
  * @package HybridCore
  * @subpackage Functions
@@ -17,8 +18,10 @@ add_action( 'init', 'hybrid_add_shortcodes' );
  * function to register new shortcodes with WordPress.
  *
  * @since 0.8.0
+ * @access private
  * @uses add_shortcode() to create new shortcodes.
  * @link http://codex.wordpress.org/Shortcode_API
+ * @return void
  */
 function hybrid_add_shortcodes() {
 
@@ -53,17 +56,21 @@ function hybrid_add_shortcodes() {
  * Shortcode to display the current year.
  *
  * @since 0.6.0
+ * @access public
  * @uses date() Gets the current year.
+ * @return string
  */
 function hybrid_the_year_shortcode() {
-	return date( __( 'Y', hybrid_get_textdomain() ) );
+	return date( __( 'Y', 'hybrid-core' ) );
 }
 
 /**
  * Shortcode to display a link back to the site.
  *
  * @since 0.6.0
+ * @access public
  * @uses get_bloginfo() Gets information about the install.
+ * @return string
  */
 function hybrid_site_link_shortcode() {
 	return '<a class="site-link" href="' . home_url() . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home"><span>' . get_bloginfo( 'name' ) . '</span></a>';
@@ -73,16 +80,20 @@ function hybrid_site_link_shortcode() {
  * Shortcode to display a link to WordPress.org.
  *
  * @since 0.6.0
+ * @access public
+ * @return string
  */
 function hybrid_wp_link_shortcode() {
-	return '<a class="wp-link" href="http://wordpress.org" title="' . esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform', hybrid_get_textdomain() ) . '"><span>' . __( 'WordPress', hybrid_get_textdomain() ) . '</span></a>';
+	return '<a class="wp-link" href="http://wordpress.org" title="' . esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform', 'hybrid-core' ) . '"><span>' . __( 'WordPress', 'hybrid-core' ) . '</span></a>';
 }
 
 /**
  * Shortcode to display a link to the Hybrid theme page.
  *
  * @since 0.6.0
+ * @access public
  * @uses get_theme_data() Gets theme (parent theme) information.
+ * @return string
  */
 function hybrid_theme_link_shortcode() {
 	$data = hybrid_get_theme_data();
@@ -93,7 +104,9 @@ function hybrid_theme_link_shortcode() {
  * Shortcode to display a link to the child theme's page.
  *
  * @since 0.6.0
+ * @access public
  * @uses get_theme_data() Gets theme (child theme) information.
+ * @return string
  */
 function hybrid_child_link_shortcode() {
 	$data = hybrid_get_theme_data( 'stylesheet' );
@@ -104,16 +117,17 @@ function hybrid_child_link_shortcode() {
  * Shortcode to display a login link or logout link.
  *
  * @since 0.6.0
+ * @access public
  * @uses is_user_logged_in() Checks if the current user is logged into the site.
  * @uses wp_logout_url() Creates a logout URL.
  * @uses wp_login_url() Creates a login URL.
+ * @return string
  */
 function hybrid_loginout_link_shortcode() {
-	$domain = hybrid_get_textdomain();
 	if ( is_user_logged_in() )
-		$out = '<a class="logout-link" href="' . esc_url( wp_logout_url( site_url( $_SERVER['REQUEST_URI'] ) ) ) . '" title="' . esc_attr__( 'Log out of this account', $domain ) . '">' . __( 'Log out', $domain ) . '</a>';
+		$out = '<a class="logout-link" href="' . esc_url( wp_logout_url( site_url( $_SERVER['REQUEST_URI'] ) ) ) . '" title="' . esc_attr__( 'Log out of this account', 'hybrid-core' ) . '">' . __( 'Log out', 'hybrid-core' ) . '</a>';
 	else
-		$out = '<a class="login-link" href="' . esc_url( wp_login_url( site_url( $_SERVER['REQUEST_URI'] ) ) ) . '" title="' . esc_attr__( 'Log into this account', $domain ) . '">' . __( 'Log in', $domain ) . '</a>';
+		$out = '<a class="login-link" href="' . esc_url( wp_login_url( site_url( $_SERVER['REQUEST_URI'] ) ) ) . '" title="' . esc_attr__( 'Log into this account', 'hybrid-core' ) . '">' . __( 'Log in', 'hybrid-core' ) . '</a>';
 
 	return $out;
 }
@@ -122,11 +136,13 @@ function hybrid_loginout_link_shortcode() {
  * Displays query count and load time if the current user can edit themes.
  *
  * @since 0.6.0
+ * @access public
  * @uses current_user_can() Checks if the current user can edit themes.
+ * @return string
  */
 function hybrid_query_counter_shortcode() {
 	if ( current_user_can( 'edit_theme_options' ) )
-		return sprintf( __( 'This page loaded in %1$s seconds with %2$s database queries.', hybrid_get_textdomain() ), timer_stop( 0, 3 ), get_num_queries() );
+		return sprintf( __( 'This page loaded in %1$s seconds with %2$s database queries.', 'hybrid-core' ), timer_stop( 0, 3 ), get_num_queries() );
 	return '';
 }
 
@@ -134,7 +150,9 @@ function hybrid_query_counter_shortcode() {
  * Displays a nav menu that has been created from the Menus screen in the admin.
  *
  * @since 0.8.0
+ * @access public
  * @uses wp_nav_menu() Displays the nav menu.
+ * @return string
  */
 function hybrid_nav_menu_shortcode( $attr ) {
 
@@ -164,12 +182,13 @@ function hybrid_nav_menu_shortcode( $attr ) {
  * Displays the edit link for an individual post.
  *
  * @since 0.7.0
+ * @access public
  * @param array $attr
+ * @return string
  */
 function hybrid_entry_edit_link_shortcode( $attr ) {
 	global $post;
 
-	$domain = hybrid_get_textdomain();
 	$post_type = get_post_type_object( $post->post_type );
 
 	if ( !current_user_can( $post_type->cap->edit_post, $post->ID ) )
@@ -177,20 +196,21 @@ function hybrid_entry_edit_link_shortcode( $attr ) {
 
 	$attr = shortcode_atts( array( 'before' => '', 'after' => '' ), $attr );
 
-	return $attr['before'] . '<span class="edit"><a class="post-edit-link" href="' . esc_url( get_edit_post_link( $post->ID ) ) . '" title="' . sprintf( esc_attr__( 'Edit %1$s', $domain ), $post_type->labels->singular_name ) . '">' . __( 'Edit', $domain ) . '</a></span>' . $attr['after'];
+	return $attr['before'] . '<span class="edit"><a class="post-edit-link" href="' . esc_url( get_edit_post_link( $post->ID ) ) . '" title="' . sprintf( esc_attr__( 'Edit %1$s', 'hybrid-core' ), $post_type->labels->singular_name ) . '">' . __( 'Edit', 'hybrid-core' ) . '</a></span>' . $attr['after'];
 }
 
 /**
  * Displays the published date of an individual post.
  *
  * @since 0.7.0
+ * @access public
  * @param array $attr
+ * @return string
  */
 function hybrid_entry_published_shortcode( $attr ) {
-	$domain = hybrid_get_textdomain();
 	$attr = shortcode_atts( array( 'before' => '', 'after' => '', 'format' => get_option( 'date_format' ) ), $attr );
 
-	$published = '<abbr class="published" title="' . sprintf( get_the_time( esc_attr__( 'l, F jS, Y, g:i a', $domain ) ) ) . '">' . sprintf( get_the_time( $attr['format'] ) ) . '</abbr>';
+	$published = '<abbr class="published" title="' . sprintf( get_the_time( esc_attr__( 'l, F jS, Y, g:i a', 'hybrid-core' ) ) ) . '">' . sprintf( get_the_time( $attr['format'] ) ) . '</abbr>';
 	return $attr['before'] . $published . $attr['after'];
 }
 
@@ -198,25 +218,26 @@ function hybrid_entry_published_shortcode( $attr ) {
  * Displays a post's number of comments wrapped in a link to the comments area.
  *
  * @since 0.7.0
+ * @access public
  * @param array $attr
+ * @return string
  */
 function hybrid_entry_comments_link_shortcode( $attr ) {
 
-	$domain = hybrid_get_textdomain();
 	$comments_link = '';
 	$number = doubleval( get_comments_number() );
-	$attr = shortcode_atts( array( 'zero' => __( 'Leave a response', $domain ), 'one' => __( '%1$s Response', $domain ), 'more' => __( '%1$s Responses', $domain ), 'css_class' => 'comments-link', 'none' => '', 'before' => '', 'after' => '' ), $attr );
+	$attr = shortcode_atts( array( 'zero' => __( 'Leave a response', 'hybrid-core' ), 'one' => __( '%1$s Response', 'hybrid-core' ), 'more' => __( '%1$s Responses', 'hybrid-core' ), 'css_class' => 'comments-link', 'none' => '', 'before' => '', 'after' => '' ), $attr );
 
 	if ( 0 == $number && !comments_open() && !pings_open() ) {
 		if ( $attr['none'] )
 			$comments_link = '<span class="' . esc_attr( $attr['css_class'] ) . '">' . sprintf( $attr['none'], number_format_i18n( $number ) ) . '</span>';
 	}
 	elseif ( 0 == $number )
-		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_permalink() . '#respond" title="' . sprintf( esc_attr__( 'Comment on %1$s', $domain ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['zero'], number_format_i18n( $number ) ) . '</a>';
+		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_permalink() . '#respond" title="' . sprintf( esc_attr__( 'Comment on %1$s', 'hybrid-core' ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['zero'], number_format_i18n( $number ) ) . '</a>';
 	elseif ( 1 == $number )
-		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_comments_link() . '" title="' . sprintf( esc_attr__( 'Comment on %1$s', $domain ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['one'], number_format_i18n( $number ) ) . '</a>';
+		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_comments_link() . '" title="' . sprintf( esc_attr__( 'Comment on %1$s', 'hybrid-core' ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['one'], number_format_i18n( $number ) ) . '</a>';
 	elseif ( 1 < $number )
-		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_comments_link() . '" title="' . sprintf( esc_attr__( 'Comment on %1$s', $domain ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['more'], number_format_i18n( $number ) ) . '</a>';
+		$comments_link = '<a class="' . esc_attr( $attr['css_class'] ) . '" href="' . get_comments_link() . '" title="' . sprintf( esc_attr__( 'Comment on %1$s', 'hybrid-core' ), the_title_attribute( 'echo=0' ) ) . '">' . sprintf( $attr['more'], number_format_i18n( $number ) ) . '</a>';
 
 	if ( $comments_link )
 		$comments_link = $attr['before'] . $comments_link . $attr['after'];
@@ -228,7 +249,9 @@ function hybrid_entry_comments_link_shortcode( $attr ) {
  * Displays an individual post's author with a link to his or her archive.
  *
  * @since 0.7.0
+ * @access public
  * @param array $attr
+ * @return string
  */
 function hybrid_entry_author_shortcode( $attr ) {
 	$attr = shortcode_atts( array( 'before' => '', 'after' => '' ), $attr );
@@ -240,7 +263,9 @@ function hybrid_entry_author_shortcode( $attr ) {
  * Displays a list of terms for a specific taxonomy.
  *
  * @since 0.7.0
+ * @access public
  * @param array $attr
+ * @return string
  */
 function hybrid_entry_terms_shortcode( $attr ) {
 	global $post;
@@ -257,6 +282,8 @@ function hybrid_entry_terms_shortcode( $attr ) {
  * Displays a post's title with a link to the post.
  *
  * @since 0.7.0
+ * @access public
+ * @return string
  */
 function hybrid_entry_title_shortcode() {
 	global $post;
@@ -275,7 +302,7 @@ function hybrid_entry_title_shortcode() {
 
 	/* If there's no post title, return a clickable '(No title)'. */
 	if ( empty( $title ) && !is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
-		$title = '<h2 class="entry-title no-entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . __( '(Untitled)', hybrid_get_textdomain() ) . '</a></h2>';
+		$title = '<h2 class="entry-title no-entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . __( '(Untitled)', 'hybrid-core' ) . '</a></h2>';
 
 	return $title;
 }
@@ -284,15 +311,15 @@ function hybrid_entry_title_shortcode() {
  * Displays the shortlinke of an individual entry.
  *
  * @since 0.8.0
+ * @access public
+ * @return string
  */
 function hybrid_entry_shortlink_shortcode( $attr ) {
 	global $post;
 
-	$domain = hybrid_get_textdomain();
-
 	$attr = shortcode_atts(
 		array(
-			'text' => __( 'Shortlink', $domain ),
+			'text' => __( 'Shortlink', 'hybrid-core' ),
 			'title' => the_title_attribute( array( 'echo' => false ) ),
 			'before' => '',
 			'after' => ''
@@ -309,10 +336,11 @@ function hybrid_entry_shortlink_shortcode( $attr ) {
  * Displays the published date and time of an individual comment.
  *
  * @since 0.7.0
+ * @access public
+ * @return string
  */
 function hybrid_comment_published_shortcode() {
-	$domain = hybrid_get_textdomain();
-	$link = '<span class="published">' . sprintf( __( '%1$s at %2$s', $domain ), '<abbr class="comment-date" title="' . get_comment_date( esc_attr__( 'l, F jS, Y, g:i a', $domain ) ) . '">' . get_comment_date() . '</abbr>', '<abbr class="comment-time" title="' . get_comment_date( esc_attr__( 'l, F jS, Y, g:i a', $domain ) ) . '">' . get_comment_time() . '</abbr>' ) . '</span>';
+	$link = '<span class="published">' . sprintf( __( '%1$s at %2$s', 'hybrid-core' ), '<abbr class="comment-date" title="' . get_comment_date( esc_attr__( 'l, F jS, Y, g:i a', 'hybrid-core' ) ) . '">' . get_comment_date() . '</abbr>', '<abbr class="comment-time" title="' . get_comment_date( esc_attr__( 'l, F jS, Y, g:i a', 'hybrid-core' ) ) . '">' . get_comment_time() . '</abbr>' ) . '</span>';
 	return $link;
 }
 
@@ -320,6 +348,7 @@ function hybrid_comment_published_shortcode() {
  * Displays the comment author of an individual comment.
  *
  * @since 0.8.0
+ * @access public
  * @global $comment The current comment's DB object.
  * @return string
  */
@@ -353,13 +382,14 @@ function hybrid_comment_author_shortcode( $attr ) {
  * Displays the permalink to an individual comment.
  *
  * @since 0.7.0
+ * @access public
+ * @return string
  */
 function hybrid_comment_permalink_shortcode( $attr ) {
 	global $comment;
 
 	$attr = shortcode_atts( array( 'before' => '', 'after' => '' ), $attr );
-	$domain = hybrid_get_textdomain();
-	$link = '<a class="permalink" href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '" title="' . sprintf( esc_attr__( 'Permalink to comment %1$s', $domain ), $comment->comment_ID ) . '">' . __( 'Permalink', $domain ) . '</a>';
+	$link = '<a class="permalink" href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '" title="' . sprintf( esc_attr__( 'Permalink to comment %1$s', 'hybrid-core' ), $comment->comment_ID ) . '">' . __( 'Permalink', 'hybrid-core' ) . '</a>';
 	return $attr['before'] . $link . $attr['after'];
 }
 
@@ -367,6 +397,8 @@ function hybrid_comment_permalink_shortcode( $attr ) {
  * Displays a comment's edit link to users that have the capability to edit the comment.
  *
  * @since 0.7.0
+ * @access public
+ * @return string
  */
 function hybrid_comment_edit_link_shortcode( $attr ) {
 	global $comment;
@@ -377,9 +409,8 @@ function hybrid_comment_edit_link_shortcode( $attr ) {
 		return '';
 
 	$attr = shortcode_atts( array( 'before' => '', 'after' => '' ), $attr );
-	$domain = hybrid_get_textdomain();
 
-	$link = '<a class="comment-edit-link" href="' . esc_url( $edit_link ) . '" title="' . sprintf( esc_attr__( 'Edit %1$s', $domain ), $comment->comment_type ) . '"><span class="edit">' . __( 'Edit', $domain ) . '</span></a>';
+	$link = '<a class="comment-edit-link" href="' . esc_url( $edit_link ) . '" title="' . sprintf( esc_attr__( 'Edit %1$s', 'hybrid-core' ), $comment->comment_type ) . '"><span class="edit">' . __( 'Edit', 'hybrid-core' ) . '</span></a>';
 	$link = apply_filters( 'edit_comment_link', $link, $comment->comment_ID );
 
 	return $attr['before'] . $link . $attr['after'];
@@ -389,16 +420,17 @@ function hybrid_comment_edit_link_shortcode( $attr ) {
  * Displays a reply link for the 'comment' comment_type if threaded comments are enabled.
  *
  * @since 0.7.0
+ * @access public
+ * @return string
  */
 function hybrid_comment_reply_link_shortcode( $attr ) {
-	$domain = hybrid_get_textdomain();
 
 	if ( !get_option( 'thread_comments' ) || 'comment' !== get_comment_type() )
 		return '';
 
 	$defaults = array(
-		'reply_text' => __( 'Reply', $domain ),
-		'login_text' => __( 'Log in to reply.', $domain ),
+		'reply_text' => __( 'Reply', 'hybrid-core' ),
+		'login_text' => __( 'Log in to reply.', 'hybrid-core' ),
 		'depth' => intval( $GLOBALS['comment_depth'] ),
 		'max_depth' => get_option( 'thread_comments_depth' ),
 		'before' => '',

@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package HybridCore
- * @version 1.2.1
+ * @version 1.3.0
  * @author Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2011, Justin Tadlock
  * @link http://themehybrid.com/hybrid-core
@@ -66,11 +66,14 @@ class Hybrid {
 		/* Language functions and translations setup. */
 		add_action( 'after_setup_theme', array( &$this, 'i18n' ), 4 );
 
+		/* Handle theme supported features. */
+		add_action( 'after_setup_theme', array( &$this, 'theme_support' ), 12 );
+
 		/* Load the framework functions. */
-		add_action( 'after_setup_theme', array( &$this, 'functions' ), 12 );
+		add_action( 'after_setup_theme', array( &$this, 'functions' ), 13 );
 
 		/* Load the framework extensions. */
-		add_action( 'after_setup_theme', array( &$this, 'extensions' ), 13 );
+		add_action( 'after_setup_theme', array( &$this, 'extensions' ), 14 );
 
 		/* Load admin files. */
 		add_action( 'wp_loaded', array( &$this, 'admin' ) );
@@ -86,7 +89,7 @@ class Hybrid {
 	function constants() {
 
 		/* Sets the framework version number. */
-		define( 'HYBRID_VERSION', '1.2.1' );
+		define( 'HYBRID_VERSION', '1.3.0' );
 
 		/* Sets the path to the parent theme directory. */
 		define( 'THEME_DIR', get_template_directory() );
@@ -118,6 +121,9 @@ class Hybrid {
 		/* Sets the path to the core framework functions directory. */
 		define( 'HYBRID_FUNCTIONS', trailingslashit( HYBRID_DIR ) . 'functions' );
 
+		/* Sets the path to the core framework languages directory. */
+		define( 'HYBRID_LANGUAGES', trailingslashit( HYBRID_DIR ) . 'languages' );
+
 		/* Sets the path to the core framework images directory URI. */
 		define( 'HYBRID_IMAGES', trailingslashit( HYBRID_URI ) . 'images' );
 
@@ -141,6 +147,9 @@ class Hybrid {
 
 		/* Load the context-based functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'context.php' );
+
+		/* Load the core framework internationalization functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'i18n.php' );
 	}
 
 	/**
@@ -154,8 +163,11 @@ class Hybrid {
 	 */
 	function i18n() {
 
+		/* Load the framework textdomain. */
+		hybrid_load_framework_textdomain( 'hybrid-core' );
+
 		/* Load theme textdomain. */
-		load_theme_textdomain( hybrid_get_textdomain() );
+		load_theme_textdomain( hybrid_get_parent_textdomain() );
 
 		/* Load child theme textdomain. */
 		if ( is_child_theme() )
@@ -170,6 +182,31 @@ class Hybrid {
 		/* If the locale file exists and is readable, load it. */
 		if ( !empty( $locale_functions ) && is_readable( $locale_functions ) )
 			require_once( $locale_functions );
+	}
+
+	/**
+	 * Removes theme supported features from themes in the case that a user has a plugin installed
+	 * that handles the functionality.
+	 *
+	 * @since 1.3.0
+	 */
+	function theme_support() {
+
+		/* Remove support for the core SEO component if the WP SEO plugin is installed. */
+		if ( defined( 'WPSEO_VERSION' ) )
+			remove_theme_support( 'hybrid-core-seo' );
+
+		/* Remove support for the the Breadcrumb Trail extension if the plugin is installed. */
+		if ( function_exists( 'breadcrumb_trail' ) )
+			remove_theme_support( 'breadcrumb-trail' );
+
+		/* Remove support for the the Cleaner Gallery extension if the plugin is installed. */
+		if ( function_exists( 'cleaner_gallery' ) )
+			remove_theme_support( 'cleaner-gallery' );
+
+		/* Remove support for the the Get the Image extension if the plugin is installed. */
+		if ( function_exists( 'get_the_image' ) )
+			remove_theme_support( 'get-the-image' );
 	}
 
 	/**
@@ -196,8 +233,7 @@ class Hybrid {
 		require_if_theme_supports( 'hybrid-core-menus', trailingslashit( HYBRID_FUNCTIONS ) . 'menus.php' );
 
 		/* Load the core SEO component if supported and WPSEO_VERSION isn't defined. */
-		if ( !defined( 'WPSEO_VERSION' ) )
-			require_if_theme_supports( 'hybrid-core-seo', trailingslashit( HYBRID_FUNCTIONS ) . 'core-seo.php' );
+		require_if_theme_supports( 'hybrid-core-seo', trailingslashit( HYBRID_FUNCTIONS ) . 'core-seo.php' );
 
 		/* Load the shortcodes if supported. */
 		require_if_theme_supports( 'hybrid-core-shortcodes', trailingslashit( HYBRID_FUNCTIONS ) . 'shortcodes.php' );
@@ -226,16 +262,13 @@ class Hybrid {
 	function extensions() {
 
 		/* Load the Breadcrumb Trail extension if supported and the plugin isn't active. */
-		if ( !function_exists( 'breadcrumb_trail' ) )
-			require_if_theme_supports( 'breadcrumb-trail', trailingslashit( HYBRID_EXTENSIONS ) . 'breadcrumb-trail.php' );
+		require_if_theme_supports( 'breadcrumb-trail', trailingslashit( HYBRID_EXTENSIONS ) . 'breadcrumb-trail.php' );
 
 		/* Load the Cleaner Gallery extension if supported and the plugin isn't active. */
-		if ( !function_exists( 'cleaner_gallery' ) )
-			require_if_theme_supports( 'cleaner-gallery', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-gallery.php' );
+		require_if_theme_supports( 'cleaner-gallery', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-gallery.php' );
 
 		/* Load the Get the Image extension if supported and the plugin isn't active. */
-		if ( !function_exists( 'get_the_image' ) )
-			require_if_theme_supports( 'get-the-image', trailingslashit( HYBRID_EXTENSIONS ) . 'get-the-image.php' );
+		require_if_theme_supports( 'get-the-image', trailingslashit( HYBRID_EXTENSIONS ) . 'get-the-image.php' );
 
 		/* Load the Cleaner Caption extension if supported. */
 		require_if_theme_supports( 'cleaner-caption', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-caption.php' );
@@ -281,6 +314,8 @@ class Hybrid {
 	 */
 	function default_filters() {
 
+		remove_action( 'bbp_init', 'bbp_setup_theme_compat', 8 );
+
 		/* Move the WordPress generator to a better priority. */
 		remove_action( 'wp_head', 'wp_generator' );
 		add_action( 'wp_head', 'wp_generator', 1 );
@@ -289,13 +324,11 @@ class Hybrid {
 		add_action( 'wp_head', 'hybrid_meta_template', 1 );
 
 		/* Filter the textdomain mofile to allow child themes to load the parent theme translation. */
-		add_filter( 'load_textdomain_mofile', 'hybrid_load_textdomain', 10, 2 );
+		add_filter( 'load_textdomain_mofile', 'hybrid_load_textdomain_mofile', 10, 2 );
 
-		/* Filter textdomain for extensions. */
-		add_filter( 'breadcrumb_trail_textdomain', 'hybrid_get_textdomain' );
-		add_filter( 'theme_layouts_textdomain', 'hybrid_get_textdomain' );
-		add_filter( 'custom_field_series_textdomain', 'hybrid_get_textdomain' );
-		add_filter( 'post_stylesheets_textdomain', 'hybrid_get_textdomain' );
+		/* Filter text strings for Hybrid Core and extensions so themes can serve up translations. */
+		add_filter( 'gettext', 'hybrid_gettext', 1, 3 );
+		add_filter( 'gettext', 'hybrid_extensions_gettext', 1, 3 );
 
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );
