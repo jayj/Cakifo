@@ -20,10 +20,10 @@ get_header(); // Loads the header.php template ?>
 
             <article id="post-0" class="<?php hybrid_entry_class(); ?>">
 
-                <h1 class="error-404-title entry-title"><?php _e( "Oops! 404! 404!.. Help!.. We can't find the page!", hybrid_get_textdomain() ); ?></h1>
+                <h1 class="error-404-title entry-title"><?php _e( "Oops! 404! 404!.. Help!.. We can't find the page!", 'cakifo' ); ?></h1>
 
                 <div class="entry-content">
-                    <p><?php printf( __( "You tried going to %s but it doesn't exist. All is not lost! You can search for what you're looking for.", hybrid_get_textdomain() ), '<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?></p>
+                    <p><?php printf( __( "You tried going to %s but it doesn't exist. All is not lost! You can search for what you're looking for.", 'cakifo' ), '<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?></p>
 
                     <?php get_search_form(); // Loads the searchform.php template ?>
 

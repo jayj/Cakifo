@@ -96,11 +96,11 @@ function cakifo_update_notice() {
 		if ( $update_available ) :
 			$update = get_transient( 'cakifo-update-check' );
 			$update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=cakifo', 'upgrade-theme_cakifo' );
-			$update_onclick = __( 'Upgrading Cakifo will overwrite the current installed version of Cakifo. Are you sure you want to upgrade?. "Cancel" to stop, "OK" to upgrade.', hybrid_get_textdomain() );
+			$update_onclick = __( 'Upgrading Cakifo will overwrite the current installed version of Cakifo. Are you sure you want to upgrade?. "Cancel" to stop, "OK" to upgrade.', 'cakifo' );
 
 			// The notice
 			echo '<div class="update-nag">';
-				printf( __('Cakifo %s is available. <a href="%s">Check out what\'s new</a> or <a href="%s" onclick="return cakifo_confirm_upgrade(\'%s\');">update now</a>. ', hybrid_get_textdomain() ), 
+				printf( __( 'Cakifo %s is available. <a href="%s">Check out what\'s new</a> or <a href="%s" onclick="return cakifo_confirm_upgrade(\'%s\');">update now</a>. ', 'cakifo' ), 
 					esc_html( $update['new_version'] ),
 					esc_url( $update['url'] ),
 					$update_url,

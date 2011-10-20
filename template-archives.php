@@ -36,11 +36,11 @@ get_header(); // Loads the header.php template ?>
 					?>
 
 					<div class="entry-content">
-						<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
+						<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
 
 						<?php do_atomic( 'before_archives' ); //cakifo_before_archives ?>
 
-						<h2><?php _e( 'Archives by category', hybrid_get_textdomain() ); ?></h2>
+						<h2><?php _e( 'Archives by category', 'cakifo' ); ?></h2>
 
 						<ul class="xoxo category-archives">
 							<?php
@@ -52,7 +52,7 @@ get_header(); // Loads the header.php template ?>
 							?>
 						</ul> <!-- .xoxo .category-archives -->
 
-						<h2><?php _e( 'Archives by month', hybrid_get_textdomain() ); ?></h2>
+						<h2><?php _e( 'Archives by month', 'cakifo' ); ?></h2>
 
 						<ul class="xoxo monthly-archives">
 							<?php
@@ -65,10 +65,10 @@ get_header(); // Loads the header.php template ?>
 
 						<?php do_atomic( 'after_archives' ); //cakifo_after_archives ?>
 
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
 					</div> <!-- .entry-content -->
 
-                    <?php edit_post_link( __( 'Edit', hybrid_get_textdomain() ), '<div class="entry-meta">', '</div>' ); ?>
+                    <?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>
 
                     <div class="clear"></div>
 

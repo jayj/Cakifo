@@ -12,7 +12,7 @@
 
 <?php do_atomic( 'before_loop_meta' ); // cakifo_before_loop_meta ?>
 
-<?php if ( ( is_home() && !is_front_page() ) && hybrid_get_setting( 'featured_show' ) ) : ?>
+<?php if ( ( is_home() && ! is_front_page() ) && hybrid_get_setting( 'featured_show' ) ) : ?>
 
 	<?php global $wp_query; ?>
 
@@ -30,7 +30,7 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php printf( __( 'Category Archives: %s', hybrid_get_textdomain() ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+		<h1 class="loop-title"><?php printf( __( 'Category Archives: %s', 'cakifo' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
 
 		<div class="loop-description">
 			<?php echo category_description(); ?>
@@ -42,7 +42,7 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php printf( __( 'Tag Archives: %s', hybrid_get_textdomain() ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+		<h1 class="loop-title"><?php printf( __( 'Tag Archives: %s', 'cakifo' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 
 		<div class="loop-description">
 			<?php echo tag_description(); ?>
@@ -55,7 +55,7 @@
 	<div class="loop-meta">
 
 		<h1 class="loop-title">
-			<?php printf( __( 'Post format: %s', hybrid_get_textdomain() ), '<span>' . get_post_format_string( get_post_format( get_the_ID() ) ) . '</span>' ); ?>
+			<?php printf( __( 'Post format: %s', 'cakifo' ), '<span>' . get_post_format_string( get_post_format( get_the_ID() ) ) . '</span>' ); ?>
 		</h1>
 
 		<div class="loop-description">
@@ -70,7 +70,7 @@
 
 		<h1 class="loop-title">
 			<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-			<?php printf( __( 'Archives: %s', hybrid_get_textdomain() ), '<span>' . $term->name . '</span>' ); ?>
+			<?php printf( __( 'Archives: %s', 'cakifo' ), '<span>' . $term->name . '</span>' ); ?>
 		</h1>
 
 		<div class="loop-description">
@@ -85,7 +85,7 @@
 
 	<div id="hcard-<?php the_author_meta( 'user_nicename', $user_id ); ?>" class="loop-meta vcard">
 
-		<h1 class="loop-title"><?php printf( __( 'Author: %s', hybrid_get_textdomain() ), '<span class="fn n">' . get_the_author_meta( 'display_name', $user_id ) . '</span>' ); ?></h1>
+		<h1 class="loop-title"><?php printf( __( 'Author: %s', 'cakifo' ), '<span class="fn n">' . get_the_author_meta( 'display_name', $user_id ) . '</span>' ); ?></h1>
 
 		<div class="loop-description">
 			<?php $desc = get_the_author_meta( 'description', $user_id ); ?>
@@ -108,13 +108,13 @@
 		<?php $results = absint( $wp_query->found_posts ); ?>
 
 		<h1 class="loop-title">
-			<?php printf( _n( "%d Search Result for:", "%d Search Results for:", $results, hybrid_get_textdomain() ), $results ); ?>
+			<?php printf( _n( "%d Search Result for:", "%d Search Results for:", $results, 'cakifo' ), $results ); ?>
 			<span><?php echo esc_attr( get_search_query() ); ?></span>
 		</h1>
 
 		<div class="loop-description">
 			<p>
-			<?php printf( __( 'You are browsing the search results for &quot;%1$s&quot;', hybrid_get_textdomain() ), esc_attr( get_search_query() ) ); ?>
+			<?php printf( __( 'You are browsing the search results for &quot;%1$s&quot;', 'cakifo' ), esc_attr( get_search_query() ) ); ?>
 			</p>
 		</div> <!-- .loop-description -->
 
@@ -124,11 +124,11 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php _e( 'Archives by date', hybrid_get_textdomain() ); ?></h1>
+		<h1 class="loop-title"><?php _e( 'Archives by date', 'cakifo' ); ?></h1>
 
 		<div class="loop-description">
 			<p>
-			<?php _e( 'You are browsing the site archives by date.', hybrid_get_textdomain() ); ?>
+			<?php _e( 'You are browsing the site archives by date.', 'cakifo' ); ?>
 			</p>
 		</div> <!-- .loop-description -->
 
@@ -152,11 +152,11 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php _e( 'Archives', hybrid_get_textdomain() ); ?></h1>
+		<h1 class="loop-title"><?php _e( 'Archives', 'cakifo' ); ?></h1>
 
 		<div class="loop-description">
 			<p>
-				<?php _e( 'You are browsing the site archives.', hybrid_get_textdomain() ); ?>
+				<?php _e( 'You are browsing the site archives.', 'cakifo' ); ?>
 			</p>
 		</div> <!-- .loop-description -->
 

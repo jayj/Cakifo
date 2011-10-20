@@ -67,7 +67,7 @@
 
                                     <div class="details">
                                     	<?php echo apply_atomic( 'headline_entry_title', the_title( '<h3 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h3>', false ) ); ?>
-                                    	<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', hybrid_get_textdomain() ) . '</span>' ); ?>
+                                    	<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', 'cakifo' ) . '</span>' ); ?>
                                     </div> <!-- .details -->
 
                                     <?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>

@@ -31,7 +31,7 @@
 
                 <div class="comment-content comment-text">
                     <?php if ( '0' == $comment->comment_approved ) : ?>
-                        <?php echo apply_atomic_shortcode( 'comment_moderation', '<p class="alert comment-awaiting-moderation">' . __( 'Your comment is awaiting moderation.', hybrid_get_textdomain() ) . '</p>' ); ?>
+                        <?php echo apply_atomic_shortcode( 'comment_moderation', '<p class="alert comment-awaiting-moderation">' . __( 'Your comment is awaiting moderation.', 'cakifo' ) . '</p>' ); ?>
                     <?php endif; ?>
 
                     <?php comment_text( $comment->comment_ID ); ?>

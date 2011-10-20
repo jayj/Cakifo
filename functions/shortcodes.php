@@ -43,7 +43,7 @@ function cakifo_rss_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
 		'before' => '',
 		'after' => '',
-		'text' => __( 'RSS', hybrid_get_textdomain() ),
+		'text' => __( 'RSS', 'cakifo' ),
  	), $atts ) );
 
 	return $before . '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' .  $text . '</a>' . $after;
@@ -64,7 +64,7 @@ function cakifo_twitter_shortcode( $atts ) {
 		'before' => '',
 		'after' => '',
 		'username' => hybrid_get_setting( 'twitter_username' ),
-		'text' => __( 'Follow me on Twitter', hybrid_get_textdomain() )
+		'text' => __( 'Follow me on Twitter', 'cakifo' )
  	), $atts ) );
 
 	if ( empty( $username ) )
@@ -88,7 +88,7 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
 		'after' => '',
  	), $atts) );
 
-	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Delicious', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Delicious', 'cakifo' ) . '</a>' . $after;
 }
 
 /**
@@ -106,7 +106,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
 
 	$url = 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) );
 	
-	return $before . '<a href="' . esc_url( $url ) . '" title="' . __( 'Digg this entry', hybrid_get_textdomain() ) . '" class="digg-share-button">' . __( 'Digg', hybrid_get_textdomain() ) . '</a>' . $after;
+	return $before . '<a href="' . esc_url( $url ) . '" title="' . __( 'Digg this entry', 'cakifo' ) . '" class="digg-share-button">' . __( 'Digg', 'cakifo' ) . '</a>' . $after;
 }
 
 /**
@@ -333,7 +333,7 @@ function cakifo_entry_format_shortcode( $atts ) {
 
 	// If there's no post title, return a clickable '(No title)'.
 	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
-		$title = "<{$atts['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', hybrid_get_textdomain() ) . "</a></{$atts['heading']}>";
+		$title = "<{$atts['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', 'cakifo' ) . "</a></{$atts['heading']}>";
 
 	return $title;
 }*/

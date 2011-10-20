@@ -40,7 +40,7 @@
 
 	<section id="slider">
 
-    	<h3 class="assistive-text"><?php _e( 'Featured Posts', hybrid_get_textdomain() ); ?></h3>
+    	<h3 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h3>
 
         <div class="inner-slider">
 
@@ -95,7 +95,6 @@
 									// Change the width and height attributes
 									$video = preg_replace( array( '/width=".*?"/', '/height=".*?"/' ), array( 'width="' . $thumbnail_size['width'] . '"', 'height="' . round( 600 / 2.3 ) . '"' ), $video );
 
-									// The video
 									echo '<div class="slider-video">' . $video . '</div>';
 								}
 
@@ -110,7 +109,7 @@
 					<div class="entry-summary">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title]' ); ?>
 						<?php the_excerpt(); ?>
-						<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ); ?></a>
+						<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ); ?></a>
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
