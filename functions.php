@@ -49,7 +49,6 @@ function cakifo_theme_setup() {
 
 	/* Get action/filter hook prefix */
 	$prefix = hybrid_get_prefix();
-	$domain = hybrid_get_textdomain();
 
 	/* Add theme support for core framework features */
 	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
@@ -193,7 +192,7 @@ function cakifo_theme_setup() {
 		'logo' => array(
 			'url' => '%s/images/logo.png',
 			'thumbnail_url' => '%s/images/logo.png',
-			'description' => __( 'Logo.png from the Cakifo images folder', $domain )
+			'description' => __( 'Logo.png from the Cakifo images folder', 'cakifo' )
 		)
 	) );
 
@@ -203,7 +202,7 @@ function cakifo_theme_setup() {
 			'childtheme_logo' => array(
 				'url' => CHILD_THEME_URI . '/images/logo.png',
 				'thumbnail_url' => CHILD_THEME_URI . '/images/logo.png',
-				'description' => __( 'Logo.png from the Cakifo child theme images folder', $domain )
+				'description' => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' )
 			)
 		) );
 	}
@@ -450,7 +449,7 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 
 	$text = get_the_excerpt();
 	$words_array = preg_split( "/[\n\r\t ]+/", $text, $length + 1, PREG_SPLIT_NO_EMPTY );
-	$more_link = '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a>';
+	$more_link = '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
 
 	if ( count( $words_array ) > $length ) {
 		array_pop( $words_array );
@@ -470,7 +469,7 @@ function cakifo_excerpt_more( $more ) {
 	global $post;
 
 	if ( is_archive() )
-		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .  __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) . '</a></p>';
+		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .  __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a></p>';
 
 	return $more;
 }
@@ -481,7 +480,7 @@ function cakifo_excerpt_more( $more ) {
  * @since 1.0
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-	$args['before'] = __( 'You are here:', hybrid_get_textdomain() ); // Change the text before the breadcrumb trail 
+	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail 
 
 	return $args;
 }
@@ -493,21 +492,21 @@ function cakifo_breadcrumb_trail_args( $args ) {
  */
 function cakifo_quote_entry_meta( $meta ) {
 	if ( is_single() )
-		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 
-	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-shortlink] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-shortlink] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
 function cakifo_aside_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
 function cakifo_link_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
 function cakifo_image_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', hybrid_get_textdomain() ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', 'cakifo' ) . '</footer>' );
 }
 
 
@@ -517,7 +516,7 @@ function cakifo_image_entry_meta( $meta ) {
  * @since 1.0
  */
 function cakifo_topbar_rss() {
-	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', hybrid_get_textdomain() ) . '</div>' );
+	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) . '</div>' );
 }
 
 /**
@@ -748,7 +747,7 @@ function cakifo_author_box() { ?>
 
         <div class="author-profile vcard">
 
-            <h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', hybrid_get_textdomain() ) ); ?></h4>
+            <h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?></h4>
 
             <?php echo get_avatar( get_the_author_meta( 'user_email' ), '48' ); ?>
 
@@ -758,7 +757,7 @@ function cakifo_author_box() { ?>
 
             <?php if ( get_the_author_meta( 'twitter' ) ) { ?>
                 <p class="twitter-link clear">
-                    <a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', hybrid_get_textdomain() ), get_the_author_meta( 'display_name' ) ); ?></a>
+                    <a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
                 </p>
             <?php } // End check for twitter ?>
         </div>  <!-- .author-profile --> <?php
@@ -798,27 +797,27 @@ function cakifo_image_info() {
 		return;
 
 	/* Add the width/height to the $items array. */
-	$items['dimensions'] = sprintf( __( '<span class="prep">Dimensions:</span> %s', hybrid_get_textdomain() ), '<span class="image-data"><a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', hybrid_get_textdomain() ), $meta['width'], $meta['height'] ) . '</a></span>' );
+	$items['dimensions'] = sprintf( __( '<span class="prep">Dimensions:</span> %s', 'cakifo' ), '<span class="image-data"><a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a></span>' );
 
 	/* If a timestamp exists, add it to the $items array. */
 	if ( !empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = sprintf( __( '<span class="prep">Date:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) . '</span>' );
+		$items['created_timestamp'] = sprintf( __( '<span class="prep">Date:</span> %s', 'cakifo' ), '<span class="image-data">' . date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) . '</span>' );
 
 	/* If a camera exists, add it to the $items array. */
 	if ( !empty( $meta['image_meta']['camera'] ) )
-		$items['camera'] = sprintf( __( '<span class="prep">Camera:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . $meta['image_meta']['camera'] . '</span>' );
+		$items['camera'] = sprintf( __( '<span class="prep">Camera:</span> %s', 'cakifo' ), '<span class="image-data">' . $meta['image_meta']['camera'] . '</span>' );
 
 	/* If an aperture exists, add it to the $items array. */
 	if ( !empty( $meta['image_meta']['aperture'] ) )
-		$items['aperture'] = sprintf( __( '<span class="prep">Aperture:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( 'f/%s', hybrid_get_textdomain() ), $meta['image_meta']['aperture'] ) . '</span>' );
+		$items['aperture'] = sprintf( __( '<span class="prep">Aperture:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) . '</span>' );
 
 	/* If a focal length is set, add it to the $items array. */
 	if ( !empty( $meta['image_meta']['focal_length'] ) )
-		$items['focal_length'] = sprintf( __( '<span class="prep">Focal Length:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s mm', hybrid_get_textdomain() ), $meta['image_meta']['focal_length'] ) . '</span>' );
+		$items['focal_length'] = sprintf( __( '<span class="prep">Focal Length:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) . '</span>' );
 
 	/* If an ISO is set, add it to the $items array. */
 	if ( !empty( $meta['image_meta']['iso'] ) )
-		$items['iso'] = sprintf( __( '<span class="prep">ISO:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . $meta['image_meta']['iso'] . '</span>' );
+		$items['iso'] = sprintf( __( '<span class="prep">ISO:</span> %s', 'cakifo' ), '<span class="image-data">' . $meta['image_meta']['iso'] . '</span>' );
 
 	/* If a shutter speed is given, format the float into a fraction and add it to the $items array. */
 	if ( !empty( $meta['image_meta']['shutter_speed'] ) ) {
@@ -834,7 +833,7 @@ function cakifo_image_info() {
 			$shutter_speed = $meta['image_meta']['shutter_speed'];
 		}
 
-		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', hybrid_get_textdomain() ), '<span class="image-data">' . sprintf( __( '%s sec', hybrid_get_textdomain() ), $shutter_speed ) . '</span>' );
+		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) . '</span>' );
 	}
 
 	/* Allow child themes to overwrite the array of items. */
@@ -845,7 +844,7 @@ function cakifo_image_info() {
 		$list .= "<li>{$item}</li>";
 
 	/* Format the HTML output of the function. */
-	$output = '<div class="image-info"><h4>' . __( 'Image Info', hybrid_get_textdomain() ) . '</h4><ul>' . $list . '</ul></div>';
+	$output = '<div class="image-info"><h4>' . __( 'Image Info', 'cakifo' ) . '</h4><ul>' . $list . '</ul></div>';
 
 	/* Display the image info and allow child themes to overwrite the final output. */
 	echo apply_atomic( 'image_info', $output );
@@ -860,6 +859,8 @@ function cakifo_image_info() {
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
+	
+	// $intermediate_sizes = get_intermediate_image_sizes();
 
 	$builtin_sizes = array(
 		'large'		=> array(
@@ -902,48 +903,32 @@ function cakifo_get_image_size( $name ) {
 }
 
 /**
- * Return the URL for the first link found in the post content
+ * Returns URLs found in the content
  *
  * @since 1.0
- * @deprecated 1.3 Use cakifo_href_url_grabber() instead
+ * @param string $type http|href Default is http
+ * @param $content The content to find URLs in. Default is the post content
+ * @return array Array containing URLs found in the content
  */
-function cakifo_url_grabber() {
-	_deprecated_function( __FUNCTION__, '1.3', 'cakifo_href_url_grabber()' );
-	return cakifo_href_url_grabber();
-}
+function cakifo_url_grabber( $type = 'http', $content = null ) {
 
-/**
- * Return the URL for the first <a href=""> link found in the post content.
- *
- * @since 1.3
- * @return string|bool URL or false when no link is present.
- */
-function cakifo_href_url_grabber() {
-	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+	// Set default content to post content
+	if ( ! isset( $content ) )
+		$content = get_the_content();
+
+	/* If $type == 'href', get all URLs from <a href=""> */
+	if ( $type == 'href' ) {
+		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
+			return false;
+
+		return array_map( 'esc_url_raw', $matches[1] );
+	}
+
+	/* Else, get all http:// URLs (including those in <a href="">) */
+	if ( ! preg_match_all( '/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
 		return false;
 
-	return esc_url_raw( $matches[1] );
-}
-
-/**
- * Return the URL for the first http:// or https:// link found in the post content.
- *
- * @since 1.3
- * @return string|bool URL or false when no link is present
- * @todo Figure out if the first regex can be merged into the second. Any ideas?
- */
-function cakifo_http_url_grabber() {
-	
-	$content = get_the_content();
-	
-	// If the first http:// is in a <a href="">, return false
-	if ( preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
-		return false;
-
-	if ( ! preg_match( '(((http|https)\://){1}\S+)', $content, $matches ) )
-		return false;
-
-	return esc_url_raw( $matches[0] );
+	return array_map( 'esc_url_raw', $matches[0] );
 }
 
 ?>
