@@ -15,7 +15,7 @@
 
 		<?php $posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' ); ?>
 
-        <h1 class="section-title"><a href="<?php echo esc_url( $posts_page ); ?>" title="<?php _e( 'See more posts', 'cakifo' ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a></h1>
+        <h1 class="section-title"><a href="<?php echo esc_url( $posts_page ); ?>" title="<?php esc_attr_e( 'See more posts', 'cakifo' ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a></h1>
 
 		<?php
             // Display our recent posts, ignoring Aside, Link, Quote and Status posts

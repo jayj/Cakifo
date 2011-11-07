@@ -95,8 +95,29 @@
 
         <div class="clear"></div>
 
-    <?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
+		<?php
+			// Loads the sidebar-after-single.php template
+			if ( is_single() )
+				get_sidebar( 'after-single' );
+		?>
 
+		<?php
+			// Loads the sidebar-after-singular.php template
+			if ( is_singular() ) {
+				get_sidebar( 'after-singular' );
+				do_atomic( 'after_singular' ); // cakifo_after_singular
+			}
+		?>
+
+		<?php
+			// Loads the loop-nav.php template
+			if ( is_single() )
+				get_template_part( 'loop-nav' );
+		?>
+
+		<?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
+
+		<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
     </article> <!-- #post-<?php the_ID(); ?> -->
 
 <?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>

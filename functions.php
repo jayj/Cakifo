@@ -859,8 +859,6 @@ function cakifo_image_info() {
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
-	
-	// $intermediate_sizes = get_intermediate_image_sizes();
 
 	$builtin_sizes = array(
 		'large'		=> array(
