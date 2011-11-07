@@ -322,7 +322,7 @@ blockquote p:last-of-type {
 	margin-bottom: 0;
 }
 blockquote.alignleft, 
-blockquote .alignright {
+blockquote.alignright {
 	width: 33%;
 }
 
