@@ -18,13 +18,13 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 	return;
 ?>
 
-<div id="comments">
+<section id="comments">
 
 	<?php if ( have_comments() ) : ?>
 
-        <h3 id="comments-number" class="comments-header"><?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?></h3>
+        <h2 id="comments-number" class="comments-header"><?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?></h2>
 
-        <?php do_atomic( 'before_comment_list' );// cakifo_before_comment_list ?>
+        <?php do_atomic( 'before_comment_list' ); // cakifo_before_comment_list ?>
 
             <ol class="comment-list">
             	<?php wp_list_comments( hybrid_list_comments_args() ); ?>
@@ -41,13 +41,13 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
     <?php endif; // have_comments() ?>
 
-    <?php if ( pings_open() && !comments_open() ) : ?>
+    <?php if ( pings_open() && ! comments_open() ) : ?>
 
         <p class="comments-closed pings-open warning">
         	<?php printf( __( 'Comments are closed, but <a href="%1$s" title="Trackback URL for this post">trackbacks</a> and pingbacks are open.', 'cakifo' ), get_trackback_url() ); ?>
         </p> <!-- .comments-closed .pings-open .warning -->
 
-    <?php elseif ( !comments_open() ) : ?>
+    <?php elseif ( ! comments_open() ) : ?>
 
         <p class="comments-closed warning">
         	<?php _e( 'Comments are closed.', 'cakifo' ); ?>
@@ -57,4 +57,4 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
     <?php comment_form(); // Loads the comment form ?>
 
-</div> <!-- #comments -->
+</section> <!-- #comments -->
