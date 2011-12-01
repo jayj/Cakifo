@@ -666,8 +666,6 @@ table {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	/*display: -webkit-box; display: -moz-box; display: -ms-box; display: box;
-	-webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center;*/ /* Align items to the center */
 }
 
 #topbar:after {
@@ -693,26 +691,20 @@ table {
 	margin: 0;
 }
 
-/*#topbar .menu > ul {
-	position: absolute;
-	top: 0;
-	height: 100%;
-}*/
-
-#topbar li {
+#topbar .menu-item {
 	float: left;
 	position: relative;
 }
 
-#topbar li,
-#topbar li a {
+#topbar .menu-item,
+#topbar .menu-item > a {
 	/* Align items to the center */ 
 	/*height: 100%;
 	display: -webkit-box; display: -moz-box; display: -ms-box; display: box;
 	-webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center;*/
 }
 
-#topbar li a {
+#topbar .menu-item > a {
 	display: inline-block;
 	font: bold 14px sans-serif;
 	padding: 21px 18px;
@@ -727,7 +719,7 @@ table {
 	box-sizing: border-box;*/
 }
 
-#topbar li a:hover,
+#topbar .menu-item > a:hover,
 #topbar .current-menu-item > a,
 #topbar .current-menu-ancestor > a {
 	background: #444;
@@ -742,9 +734,9 @@ table {
 
 	/* Level 2 */
 	#topbar .sub-menu {
-		display: none;
 		background: #333 url(images/topbar.png) repeat;
 		border-radius: 0 0 5px 5px;
+		display: none;
 		min-width: 150px;
 		position: absolute;
 		top: 99%; left: 0;
@@ -753,15 +745,15 @@ table {
 		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
 	}
 
-	#topbar li:hover > ul {
+	#topbar .menu-item:hover > ul {
 		display: block;
 	}
 
-	#topbar .sub-menu li {
+	#topbar .sub-menu .menu-item {
 		float: none;
 	}
 
-	#topbar .sub-menu li a {
+	#topbar .sub-menu .menu-item > a {
 		border-top: 1px solid #3a3a3a;
 		border-bottom: 1px solid #262627;
 		display: block;
@@ -769,11 +761,11 @@ table {
 		/*width: 100%;*/
 	}
 
-	#topbar .sub-menu li:first-of-type a {
+	#topbar .sub-menu .menu-item:first-of-type > a {
 		border-top: none;
 	}
 
-	#topbar .sub-menu li:last-of-type a {
+	#topbar .sub-menu .menu-item:last-of-type > a {
 		border-bottom: none;
 	}
 
@@ -785,7 +777,6 @@ table {
 	
 /* Seperator */
 #topbar .sep { color: #6c6c6c; }
-
 #topbar .sub-menu .sep { display: none; }
 #topbar li:last-of-type .sep { display: none; }
 	
@@ -848,7 +839,7 @@ table {
 	text-shadow: 0 1px 0 #fff;
 }
 
-	/* If you have a background image, you might want to use something like this in a childtheme */
+	/* If you have a background image, you might want to use something like this in a child theme */
 /*	#branding {
 		background: rgba(255, 255, 255, .6);	
 	}
@@ -873,8 +864,8 @@ table {
 	background: #fff url(images/content-orange-line.png) repeat-x;
 	border-radius: 0 0 5px 5px;
 	padding: 20px;
-	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 #main,
@@ -1185,6 +1176,7 @@ table {
 /**
  * Images
 *************************************/
+
 .thumbnail {
 	background: #fff;
 	border: 1px solid #e6e6e6;
@@ -1196,7 +1188,8 @@ table {
 }
 
 /* Images in post content */
-img[class*="wp-image-"] {
+img[class*="wp-image-"],
+img[class*="attachment-"] {
 	border: 1px solid #ddd;
 	padding: 6px;
 }
@@ -1219,9 +1212,11 @@ img[class*="wp-image-"],
 	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */ 
 }
 
-img.size-full {
+img.size-full,
+img.size-large {
 	max-width: 97.5%;
 	width: auto; /* Prevent stretching of full-size images with height and width attributes in IE8 */ 
+	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */ 
 }
 
 /* Aligned images */
@@ -1319,7 +1314,7 @@ img.alignright {
 }
 
 /* Galleries. */
-.gallery{display:block;clear:both;overflow:hidden;margin:0 auto 25px;text-align:center;}.gallery .gallery-row{display:block;clear:both;overflow:hidden;margin:0}.gallery .gallery-item{overflow:hidden;float:left;margin:0;text-align:center;list-style:none;padding:0}.gallery .gallery-item img,.gallery .gallery-item img.thumbnail{max-width:89%;height:auto;padding:1%;margin:0 auto}.gallery-caption{margin-left:0}.col-0{width:100%}.col-1{width:100%}.col-2{width:50%}.col-3{width:33.33%}.col-4{width:25%}.col-5{width:20%}.col-6{width:16.66%}.col-7{width:14.28%}.col-8{width:12.5%}.col-9{width:11.11%}.col-10{width:10%}.col-11{width:9.09%}.col-12{width:8.33%}.col-13{width:7.69%}.col-14{width:7.14%}.col-15{width:6.66%}.col-16{width:6.25%}.col-17{width:5.88%}.col-18{width:5.55%}.col-19{width:5.26%}.col-20{width:5%}.col-21{width:4.76%}.col-22{width:4.54%}.col-23{width:4.34%}.col-24{width:4.16%}.col-25{width:4%}.col-26{width:3.84%}.col-27{width:3.7%}.col-28{width:3.57%}.col-29{width:3.44%}.col-30{width:3.33%}
+.gallery{display:block;clear:both;overflow:hidden;margin:0 auto 25px;text-align:center;}.gallery .gallery-row{display:block;clear:both;overflow:hidden;margin:0}.gallery .gallery-item{overflow:hidden;float:left;margin:0;text-align:center;list-style:none;padding:0}.gallery .gallery-item img,.gallery .gallery-item img.thumbnail{max-width:89%;height:auto;margin:0 auto}.gallery-caption{margin-left:0}.col-0{width:100%}.col-1{width:100%}.col-2{width:50%}.col-3{width:33.33%}.col-4{width:25%}.col-5{width:20%}.col-6{width:16.66%}.col-7{width:14.28%}.col-8{width:12.5%}.col-9{width:11.11%}.col-10{width:10%}.col-11{width:9.09%}.col-12{width:8.33%}.col-13{width:7.69%}.col-14{width:7.14%}.col-15{width:6.66%}.col-16{width:6.25%}.col-17{width:5.88%}.col-18{width:5.55%}.col-19{width:5.26%}.col-20{width:5%}.col-21{width:4.76%}.col-22{width:4.54%}.col-23{width:4.34%}.col-24{width:4.16%}.col-25{width:4%}.col-26{width:3.84%}.col-27{width:3.7%}.col-28{width:3.57%}.col-29{width:3.44%}.col-30{width:3.33%}
 
 /* Image post format */
 .format-image .entry-content {
@@ -2179,8 +2174,6 @@ span.required {
 		width: auto;
 		margin-left: 5px;
 	}
-	
-
 
 /**
  * Boxes

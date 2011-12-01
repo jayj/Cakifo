@@ -46,7 +46,7 @@
 
 		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
 
-			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+			<?php while ( $loop->have_posts() ) : $loop->the_post();?>
 
 				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
 
@@ -92,8 +92,19 @@
 								}
 
 								if ( isset( $video ) ) {
+
+									// Get the original width and height
+									preg_match('/width="(\d+)(px)?" height="(\d+)(px)?"/', $video, $matches);
+
+									$width = intval( $matches[1] );
+									$height = intval( $matches[3] );
+
+									// Calculate the new height to maintain the right aspect ratio
+									$new_width = $thumbnail_size['width'];
+									$new_height = intval( $new_width * $height / $width );
+
 									// Change the width and height attributes
-									$video = preg_replace( array( '/width=".*?"/', '/height=".*?"/' ), array( 'width="' . $thumbnail_size['width'] . '"', 'height="' . round( 600 / 2.3 ) . '"' ), $video );
+									$video = preg_replace('/width="(\d+)(px)?" height="(\d+)(px)?"/', 'width="' . $new_width . '" height="' . $new_height . '"', $video);
 
 									echo '<div class="slider-video">' . $video . '</div>';
 								}
@@ -103,7 +114,6 @@
 							unset( $thumbnail, $video );
 
 						endif;
-						
 					?>
 
 					<div class="entry-summary">
