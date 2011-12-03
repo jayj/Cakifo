@@ -46,7 +46,7 @@
 
 		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
 
-			<?php while ( $loop->have_posts() ) : $loop->the_post();?>
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
 				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
 
