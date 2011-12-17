@@ -31,6 +31,7 @@ add_action( 'init', 'theme_layouts_register_meta' );
 
 /* Add post type support for theme layouts. */
 add_action( 'init', 'theme_layouts_add_post_type_support' );
+add_action( 'init', 'theme_layouts_remove_post_type_support' );
 
 /* Set up the custom post layouts. */
 add_action( 'admin_menu', 'theme_layouts_admin_setup' );
@@ -46,8 +47,23 @@ add_filter( 'body_class', 'theme_layouts_body_class' );
  * @return void
  */
 function theme_layouts_register_meta() {
-	register_meta( 'post', theme_layouts_get_meta_key(), 'esc_attr' );
-	register_meta( 'user', theme_layouts_get_meta_key(), 'esc_attr' );
+	register_meta( 'post', theme_layouts_get_meta_key(), 'theme_layouts_sanitize_meta' );
+	register_meta( 'user', theme_layouts_get_meta_key(), 'theme_layouts_sanitize_meta' );
+}
+
+/**
+ * Callback function for sanitizing meta when add_metadata() or update_metadata() is called by WordPress. 
+ * If a developer wants to set up a custom method for sanitizing the data, they should use the 
+ * "sanitize_{$meta_type}_meta_{$meta_key}" filter hook to do so.
+ *
+ * @since 0.4.0
+ * @param mixed $meta_value The value of the data to sanitize.
+ * @param string $meta_key The meta key name.
+ * @param string $meta_type The type of metadata (post, comment, user, etc.)
+ * @return mixed $meta_value
+ */
+function theme_layouts_sanitize_meta( $meta_value, $meta_key, $meta_type ) {
+	return esc_attr( strip_tags( $meta_value ) );
 }
 
 /**
@@ -65,6 +81,19 @@ function theme_layouts_add_post_type_support() {
 	/* For each available post type, create a meta box on its edit page if it supports '$prefix-post-settings'. */
 	foreach ( $post_types as $type )
 		add_post_type_support( $type, 'theme-layouts' );
+}
+
+/**
+ * Removes theme layouts support from specific post types created by plugins.
+ *
+ * @since 0.4.0
+ * @return void
+ */
+function theme_layouts_remove_post_type_support() {
+
+	/* Removes theme layouts support of the bbPress 'reply' post type. */
+	if ( function_exists( 'bbp_get_reply_post_type' ) )
+		remove_post_type_support( bbp_get_reply_post_type(), 'theme-layouts' );
 }
 
 /**
@@ -106,6 +135,10 @@ function theme_layouts_get_layout() {
 	if ( empty( $layout ) || !in_array( $layout, $post_layouts[0] ) )
 		$layout = 'default';
 
+	/* If the theme set a default layout, use it if the layout should be set to default. */
+	if ( 'default' == $layout && !empty( $post_layouts[1] ) && isset( $post_layouts[1]['default'] ) )
+		$layout = $post_layouts[1]['default'];
+
 	/* @deprecated 0.2.0. Use the 'get_theme_layout' hook. */
 	$layout = apply_filters( 'get_post_layout', "layout-{$layout}" );
 
@@ -135,7 +168,7 @@ function get_post_layout( $post_id ) {
  * @since 0.2.0
  * @param int $post_id The ID of the post to set the layout for.
  * @param string $layout The name of the layout to set.
- * @return bool The return value of the update_post_meta() function.
+ * @return bool True on successful update, false on failure.
  */
 function set_post_layout( $post_id, $layout ) {
 	return update_post_meta( $post_id, theme_layouts_get_meta_key(), $layout );
@@ -147,6 +180,7 @@ function set_post_layout( $post_id, $layout ) {
  * @since 0.4.0
  * @access public
  * @param int $post_id The ID of the post to delete the layout for.
+ * @return bool True on successful delete, false on failure.
  */
 function delete_post_layout( $post_id ) {
 	return delete_post_meta( $post_id, theme_layouts_get_meta_key() );
@@ -175,6 +209,7 @@ function has_post_layout( $layout, $post_id = '' ) {
  *
  * @since 0.3.0
  * @param int $user_id The ID of the user to get the layout for.
+ * @return string The layout if one exists, 'default' if one doesn't.
  */
 function get_user_layout( $user_id ) {
 
@@ -191,7 +226,7 @@ function get_user_layout( $user_id ) {
  * @since 0.3.0
  * @param int $user_id The ID of the user to set the layout for.
  * @param string $layout The name of the layout to set.
- * @return bool The return value of update_user_meta() function.
+ * @return bool True on successful update, false on failure.
  */
 function set_user_layout( $user_id, $layout ) {
 	return update_user_meta( $user_id, theme_layouts_get_meta_key(), $layout );
@@ -203,6 +238,7 @@ function set_user_layout( $user_id, $layout ) {
  * @since 0.4.0
  * @access public
  * @param int $user_id The ID of the user to delete the layout for.
+ * @return bool True on successful delete, false on failure.
  */
 function delete_user_layout( $user_id ) {
 	return delete_user_meta( $user_id, theme_layouts_get_meta_key() );
@@ -394,19 +430,26 @@ function theme_layouts_save_post( $post_id, $post ) {
 	if ( !isset( $_POST['theme-layouts-nonce'] ) || !wp_verify_nonce( $_POST['theme-layouts-nonce'], basename( __FILE__ ) ) )
 		return $post_id;
 
-	/* Check if the current user has permission to edit the post. */
-	if ( !current_user_can( 'edit_post_meta', $post_id ) )
-		return $post_id;
+	/* Get the meta key. */
+	$meta_key = theme_layouts_get_meta_key();
 
 	/* Get the previous post layout. */
-	$old_layout = get_post_layout( $post_id );
+	$meta_value = get_post_layout( $post_id );
 
 	/* Get the submitted post layout. */
-	$new_layout = esc_attr( $_POST['post-layout'] );
+	$new_meta_value = $_POST['post-layout'];
+
+	/* If there is no new meta value but an old value exists, delete it. */
+	if ( current_user_can( 'delete_post_meta', $post_id, $meta_key ) && '' == $new_meta_value && $meta_value )
+		delete_post_layout( $post_id );
+
+	/* If a new meta value was added and there was no previous value, add it. */
+	elseif ( current_user_can( 'add_post_meta', $post_id, $meta_key ) && $new_meta_value && '' == $meta_value )
+		set_post_layout( $post_id, $new_meta_value );
 
 	/* If the old layout doesn't match the new layout, update the post layout meta. */
-	if ( $old_layout !== $new_layout )
-		set_post_layout( $post_id, $new_layout );
+	elseif ( current_user_can( 'edit_post_meta', $post_id, $meta_key ) && $meta_value !== $new_meta_value )
+		set_post_layout( $post_id, $new_meta_value );
 }
 
 /**
@@ -462,15 +505,26 @@ function theme_layouts_attachment_fields_to_save( $post, $fields ) {
 	/* If the theme layouts field was submitted. */
 	if ( isset( $fields['theme-layouts-post-layout'] ) ) {
 
+		/* Get the meta key. */
+		$meta_key = theme_layouts_get_meta_key();
+
 		/* Get the previous post layout. */
-		$old_layout = get_post_layout( $post['ID'] );
+		$meta_value = get_post_layout( $post['ID'] );
 
 		/* Get the submitted post layout. */
-		$new_layout = esc_attr( $fields['theme-layouts-post-layout'] );
+		$new_meta_value = $fields['theme-layouts-post-layout'];
+
+		/* If there is no new meta value but an old value exists, delete it. */
+		if ( current_user_can( 'delete_post_meta', $post['ID'], $meta_key ) && '' == $new_meta_value && $meta_value )
+			delete_post_layout( $post['ID'] );
+
+		/* If a new meta value was added and there was no previous value, add it. */
+		elseif ( current_user_can( 'add_post_meta', $post['ID'], $meta_key ) && $new_meta_value && '' == $meta_value )
+			set_post_layout( $post['ID'], $new_meta_value );
 
 		/* If the old layout doesn't match the new layout, update the post layout meta. */
-		if ( $old_layout !== $new_layout )
-			set_post_layout( $post['ID'], $new_layout );
+		elseif ( current_user_can( 'edit_post_meta', $post['ID'], $meta_key ) && $meta_value !== $new_meta_value )
+			set_post_layout( $post['ID'], $new_meta_value );
 	}
 
 	/* Return the attachment post array. */

@@ -37,11 +37,11 @@ get_header(); // Loads the header.php template ?>
 					?>
 
                     <div class="entry-content">
-                    	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_textdomain() ) ); ?>
-                    	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+                    	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_parent_textdomain() ) ); ?>
+                    	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_parent_textdomain() ), 'after' => '</p>' ) ); ?>
                     </div> <!-- .entry-content -->
 
-                    <?php edit_post_link( __( 'Edit', hybrid_get_textdomain() ), '<div class="entry-meta">', '</div>' ); ?>
+                    <?php edit_post_link( __( 'Edit', hybrid_get_parent_textdomain() ), '<div class="entry-meta">', '</div>' ); ?>
 
                     <div class="clear"></div>
 

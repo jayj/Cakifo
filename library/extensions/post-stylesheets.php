@@ -19,16 +19,48 @@
  * @copyright Copyright (c) 2010 - 2011, Justin Tadlock
  * @link http://justintadlock.com
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ *
+ * @todo register_meta()
  */
+
+/* Register metadata with WordPress. */
+add_action( 'init', 'post_stylesheets_register_meta' );
 
 /* Add post type support for the 'post-stylesheets' feature. */
 add_action( 'init', 'post_stylesheets_add_post_type_support' );
+add_action( 'init', 'post_stylesheets_remove_post_type_support' );
 
 /* Filters stylesheet_uri with a function for adding a new style. */
 add_filter( 'stylesheet_uri', 'post_stylesheets_stylesheet_uri', 10, 2 );
 
 /* Admin setup for the 'post-stylesheets' feature. */
 add_action( 'admin_menu', 'post_stylesheets_admin_setup' );
+
+/**
+ * Registers the post stylesheets meta key ('Stylesheet') for posts and provides a function to sanitize
+ * the metadata on update.
+ *
+ * @since 0.3.0
+ * @return void
+ */
+function post_stylesheets_register_meta() {
+	register_meta( 'post', post_stylesheets_get_meta_key(), 'post_stylesheets_sanitize_meta' );
+}
+
+/**
+ * Callback function for sanitizing meta when add_metadata() or update_metadata() is called by WordPress. 
+ * If a developer wants to set up a custom method for sanitizing the data, they should use the 
+ * "sanitize_{$meta_type}_meta_{$meta_key}" filter hook to do so.
+ *
+ * @since 0.3.0
+ * @param mixed $meta_value The value of the data to sanitize.
+ * @param string $meta_key The meta key name.
+ * @param string $meta_type The type of metadata (post, comment, user, etc.)
+ * @return mixed $meta_value
+ */
+function post_styleheets_sanitize_meta( $meta_value, $meta_key, $meta_type ) {
+	return esc_attr( strip_tags( $meta_value ) );
+}
 
 /**
  * Adds post type support for the 'post-stylesheets' feature to all 'public' post types.
@@ -40,11 +72,29 @@ add_action( 'admin_menu', 'post_stylesheets_admin_setup' );
 function post_stylesheets_add_post_type_support() {
 
 	/* Get all available 'public' post types. */
-	$post_types = get_post_types( array( 'public' => true ), 'objects' );
+	$post_types = get_post_types( array( 'public' => true ) );
 
 	/* Loop through each of the public post types and add support for post stylesheets. */
 	foreach ( $post_types as $type )
-		add_post_type_support( $type->name, 'post-stylesheets' );
+		add_post_type_support( $type, 'post-stylesheets' );
+}
+
+/**
+ * Removes post stylesheets support for certain post types created by plugins.
+ *
+ * @since 0.3.0
+ * @access private
+ * @return void
+ */
+function post_stylesheets_remove_post_type_support() {
+
+	/* Removes post stylesheets support of the bbPress 'topic' post type. */
+	if ( function_exists( 'bbp_get_topic_post_type' ) )
+		remove_post_type_support( bbp_get_topic_post_type(), 'post-stylesheets' );
+
+	/* Removes post stylesheets support of the bbPress 'reply' post type. */
+	if ( function_exists( 'bbp_get_reply_post_type' ) )
+		remove_post_type_support( bbp_get_reply_post_type(), 'post-stylesheets' );
 }
 
 /**
@@ -65,14 +115,23 @@ function post_stylesheets_stylesheet_uri( $stylesheet_uri, $stylesheet_dir_uri )
 	/* Check if viewing a singular post. */
 	if ( is_singular() ) {
 
+		/* If viewing a bbPress topic, use its forum object. */
+		if ( function_exists( 'bbp_is_single_topic' ) && bbp_is_single_topic() )
+			$post = get_post( bbp_get_topic_forum_id( get_queried_object_id() ) );
+
+		/* If viewing a bbPress reply, use its forum object. */
+		elseif ( function_exists( 'bbp_is_single_reply' ) && bbp_is_single_reply() )
+			$post = get_post( bbp_get_reply_forum_id( get_queried_object_id() ) );
+
 		/* Get the queried object (post). */
-		$post = get_queried_object();
+		else
+			$post = get_queried_object();
 
 		/* Check if the post type supports 'post-stylesheets' before proceeding. */
 		if ( post_type_supports( $post->post_type, 'post-stylesheets' ) ) {
 
 			/* Check if the user has set a value for the post stylesheet. */
-			$stylesheet = get_post_stylesheet( get_queried_object_id() );
+			$stylesheet = get_post_stylesheet( $post->ID );
 
 			/* If a meta value was given and the file exists, set $stylesheet_uri to the new file. */
 			if ( !empty( $stylesheet ) ) {
@@ -98,7 +157,7 @@ function post_stylesheets_stylesheet_uri( $stylesheet_uri, $stylesheet_dir_uri )
  * @since 0.3.0
  * @access public
  * @param int $post_id The ID of the post to get the stylesheet for.
- * @return string|bool Stylesheet name if given.  False for no stylesheet.
+ * @return string Stylesheet name if given.  Empty string for no stylesheet.
  */
 function get_post_stylesheet( $post_id ) {
 	return get_post_meta( $post_id, post_stylesheets_get_meta_key(), true );
@@ -111,6 +170,7 @@ function get_post_stylesheet( $post_id ) {
  * @access public
  * @param int $post_id The ID of the post to set the stylesheet for.
  * @param string $stylesheet The filename of the stylesheet.
+ * @return bool True on successful update, false on failure.
  */
 function set_post_stylesheet( $post_id, $stylesheet ) {
 	return update_post_meta( $post_id, post_stylesheets_get_meta_key(), $stylesheet );
@@ -122,6 +182,7 @@ function set_post_stylesheet( $post_id, $stylesheet ) {
  * @since 0.3.0
  * @access public
  * @param int $post_id The ID of the post to delete the stylesheet for.
+ * @return bool True on successful delete, false on failure.
  */
 function delete_post_stylesheet( $post_id ) {
 	return delete_post_meta( $post_id, post_stylesheets_get_meta_key() );
@@ -230,23 +291,26 @@ function post_stylesheets_meta_box_save( $post_id, $post ) {
 	if ( !post_type_supports( $post->post_type, 'post-stylesheets' ) )
 		return;
 
-	/* Check if the current user has permission to edit the post. */
-	if ( !current_user_can( 'edit_post_meta', $post_id ) )
-		return;
+	/* Get the meta key. */
+	$meta_key = post_stylesheets_get_meta_key();
 
 	/* Get the previous post stylesheet. */
-	$old_stylesheet = get_post_stylesheet( $post_id );
+	$meta_value = get_post_stylesheet( $post_id );
 
 	/* Get the submitted post stylesheet. */
-	$new_stylesheet = esc_attr( strip_tags( $_POST['post-stylesheets'] ) );
+	$new_meta_value = $_POST['post-stylesheets'];
 
-	/* If the stylesheet has been removed, delete the metadata completely. */
-	if ( !empty( $old_stylesheet ) && '' == $new_stylesheet )
+	/* If there is no new meta value but an old value exists, delete it. */
+	if ( current_user_can( 'delete_post_meta', $post_id, $meta_key ) && '' == $new_meta_value && $meta_value )
 		delete_post_stylesheet( $post_id );
 
-	/* If the old stylesheet doesn't match the new stylesheet, update the post stylesheet meta. */
-	elseif ( $old_stylesheet !== $new_stylesheet )
-		set_post_stylesheet( $post_id, $new_stylesheet );
+	/* If a new meta value was added and there was no previous value, add it. */
+	elseif ( current_user_can( 'add_post_meta', $post_id, $meta_key ) && $new_meta_value && '' == $meta_value )
+		set_post_stylesheet( $post_id, $new_meta_value );
+
+	/* If the old layout doesn't match the new layout, update the post layout meta. */
+	elseif ( current_user_can( 'edit_post_meta', $post_id, $meta_key ) && $meta_value !== $new_meta_value )
+		set_post_stylesheet( $post_id, $new_meta_value );
 }
 
 /**

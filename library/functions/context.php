@@ -65,7 +65,9 @@ function hybrid_get_context() {
 		if ( is_tax() || is_category() || is_tag() ) {
 			$hybrid->context[] = 'taxonomy';
 			$hybrid->context[] = "taxonomy-{$object->taxonomy}";
-			$hybrid->context[] = "taxonomy-{$object->taxonomy}-" . sanitize_html_class( $object->slug, $object->term_id );
+
+			$slug = ( ( 'post_format' == $object->taxonomy ) ? str_replace( 'post-format-', '', $object->slug ) : $object->slug );
+			$hybrid->context[] = "taxonomy-{$object->taxonomy}-" . sanitize_html_class( $slug, $object->term_id );
 		}
 
 		/* Post type archives. */
@@ -298,6 +300,10 @@ function hybrid_body_class( $class = '' ) {
 	if ( is_admin_bar_showing() )
 		$classes[] = 'admin-bar';
 
+	/* Use the '.custom-background' class to integrate with the WP background feature. */
+	if ( get_background_image() || get_background_color() )
+		$classes[] = 'custom-background';
+
 	/* Merge base contextual classes with $classes. */
 	$classes = array_merge( $classes, hybrid_get_context() );
 
@@ -444,6 +450,9 @@ function hybrid_document_title() {
 
 	/* Apply the wp_title filters so we're compatible with plugins. */
 	$doctitle = apply_filters( 'wp_title', $doctitle, $separator, '' );
+
+	/* Trim separator + space from beginning and end in case a plugin adds it. */
+	$doctitle = trim( $doctitle, "{$separator} " );
 
 	/* Print the title to the screen. */
 	echo apply_atomic( 'document_title', esc_attr( $doctitle ) );

@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package HybridCore
- * @version 1.3.0
+ * @version 1.3.0-beta-1
  * @author Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2011, Justin Tadlock
  * @link http://themehybrid.com/hybrid-core
@@ -223,6 +223,9 @@ class Hybrid {
 		/* Load media-related functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'media.php' );
 
+		/* Load the metadata functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'meta.php' );
+
 		/* Load the utility functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'utility.php' );
 
@@ -314,7 +317,9 @@ class Hybrid {
 	 */
 	function default_filters() {
 
-		remove_action( 'bbp_init', 'bbp_setup_theme_compat', 8 );
+		/* Remove bbPress theme compatibility if current theme supports bbPress. */
+		if ( current_theme_supports( 'bbpress' ) )
+			remove_action( 'bbp_init', 'bbp_setup_theme_compat', 8 );
 
 		/* Move the WordPress generator to a better priority. */
 		remove_action( 'wp_head', 'wp_generator' );
@@ -330,7 +335,8 @@ class Hybrid {
 		add_filter( 'gettext', 'hybrid_gettext', 1, 3 );
 		add_filter( 'gettext', 'hybrid_extensions_gettext', 1, 3 );
 
-		/* Make term descriptions shortcode aware. */
+		/* Make text widgets and term descriptions shortcode aware. */
+		add_filter( 'widget_text', 'do_shortcode' );
 		add_filter( 'term_description', 'do_shortcode' );
 	}
 }

@@ -15,6 +15,7 @@
 
 /* Add the post template meta box on the 'add_meta_boxes' hook. */
 add_action( 'add_meta_boxes', 'hybrid_meta_box_post_add_template', 10, 2 );
+add_action( 'add_meta_boxes', 'hybrid_meta_box_post_remove_template', 10, 2 );
 
 /* Save the post template meta box data on the 'save_post' hook. */
 add_action( 'save_post', 'hybrid_meta_box_post_save_template', 10, 2 );
@@ -31,8 +32,31 @@ function hybrid_meta_box_post_add_template( $post_type, $post ) {
 	$post_type_object = get_post_type_object( $post_type );
 
 	/* Only add meta box if current user can edit, add, or delete meta for the post. */
-	if ( ( 'page' !== $post_type ) && ( true === $post_type_object->public ) && ( current_user_can( 'edit_post_meta', $post->ID ) || current_user_can( 'add_post_meta', $post->ID ) || current_user_can( 'delete_post_meta', $post->ID ) ) )
+	if ( ( true === $post_type_object->public ) && ( current_user_can( 'edit_post_meta', $post->ID ) || current_user_can( 'add_post_meta', $post->ID ) || current_user_can( 'delete_post_meta', $post->ID ) ) )
 		add_meta_box( 'hybrid-core-post-template', __( 'Template', 'hybrid-core' ), 'hybrid_meta_box_post_display_template', $post_type, 'side', 'default' );
+}
+
+/**
+ * Remove the meta box from some post types.
+ *
+ * @since 1.3.0
+ * @param string $post_type The post type of the current post being edited.
+ * @param object $post The current post being edited.
+ * @return void
+ */ 
+function hybrid_meta_box_post_remove_template( $post_type, $post ) {
+
+	/* Removes meta box from pages since this is a built-in WordPress feature. */
+	if ( 'page' == $post_type )
+		remove_meta_box( 'hybrid-core-post-template', 'page', 'side' );
+
+	/* Removes meta box from the bbPress 'topic' post type. */
+	elseif ( function_exists( 'bbp_get_topic_post_type' ) && bbp_get_topic_post_type() == $post_type )
+		remove_meta_box( 'hybrid-core-post-template', bbp_get_topic_post_type(), 'side' );
+
+	/* Removes meta box from the bbPress 'reply' post type. */
+	elseif ( function_exists( 'bbp_get_reply_post_type' ) && bbp_get_reply_post_type() == $post_type )
+		remove_meta_box( 'hybrid-core-post-template', bbp_get_reply_post_type(), 'side' );
 }
 
 /**
@@ -80,16 +104,12 @@ function hybrid_meta_box_post_save_template( $post_id, $post ) {
 	if ( !isset( $_POST['hybrid-core-post-meta-box-template'] ) || !wp_verify_nonce( $_POST['hybrid-core-post-meta-box-template'], basename( __FILE__ ) ) )
 		return $post_id;
 
-	/* Check if the current user has permission to edit the post meta. */
-	if ( !current_user_can( 'edit_post_meta', $post_id ) )
-		return $post_id;
-
 	/* Return here if the template is not set. There's a chance it won't be if the post type doesn't have any templates. */
 	if ( !isset( $_POST['hybrid-post-template'] ) )
 		return $post_id;
 
 	/* Get the posted meta value. */
-	$new_meta_value = strip_tags( $_POST['hybrid-post-template'] );
+	$new_meta_value = $_POST['hybrid-post-template'];
 
 	/* Set the $meta_key variable based off the post type name. */
 	$meta_key = "_wp_{$post->post_type}_template";
@@ -98,11 +118,15 @@ function hybrid_meta_box_post_save_template( $post_id, $post ) {
 	$meta_value = get_post_meta( $post_id, $meta_key, true );
 
 	/* If there is no new meta value but an old value exists, delete it. */
-	if ( '' == $new_meta_value && $meta_value )
+	if ( current_user_can( 'delete_post_meta', $post_id ) && '' == $new_meta_value && $meta_value )
 		delete_post_meta( $post_id, $meta_key, $meta_value );
 
+	/* If a new meta value was added and there was no previous value, add it. */
+	elseif ( current_user_can( 'add_post_meta', $post_id, $meta_key ) && $new_meta_value && '' == $meta_value )
+		add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+
 	/* If the new meta value does not match the old value, update it. */
-	elseif ( $new_meta_value && $new_meta_value != $meta_value )
+	elseif ( current_user_can( 'edit_post_meta', $post_id ) && $new_meta_value && $new_meta_value != $meta_value )
 		update_post_meta( $post_id, $meta_key, $new_meta_value );
 }
 

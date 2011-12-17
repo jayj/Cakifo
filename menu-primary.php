@@ -17,7 +17,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
         <div class="wrap">
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
-			
+
             <nav class="menu">
 				<h3 class="assistive-text"><?php _e( 'Main menu', 'cakifo' ); ?></h3>
 				<?php
