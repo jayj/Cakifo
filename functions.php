@@ -349,65 +349,16 @@ function cakifo_slider_javascript() {
 	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
 
-	// Find the last argument in the array, and remove the comma after it
-	$last_arg = end( array_keys( $args ) );
+	// JSON encode the arguments
+	$json = json_encode( $args );
 
 	echo "<script>
-		jQuery(document).ready(function($) {
-			$('#slider .inner-slider').slides({ ";
-
-			foreach ( $args as $arg => $val ) :
-
-				// Don't put a comma after the last argument
-				$comma = ( $arg == $last_arg ) ? "\n" : ",\n";
-	
-				// Is the value an array?
-				if ( is_array( $val ) ) :
-
-					echo $arg . ': {' . "\n";
-
-						// Find the last argument in the array
-						$last_childarg = end( array_keys( $val ) );
-
-						// Loop through the arguments in the child array
-						foreach ( $val as $childarg => $childval ) {
-
-							// Don't put a comma after the last argument
-							$childcomma = ( $childarg == $last_childarg ) ? "\n" : ",\n";
-
-							if ( $childval === true )
-								echo $childarg . ': true' . $childcomma;
-							elseif ( $val === false  )
-								echo $childarg . ': false' . $childcomma;
-							elseif ( is_int( $childval ) )
-								echo $childarg . ': ' . $childval . $childcomma;
-							else
-								echo $childarg . ': "' . $childval . '"' . $childcomma;
-						}
-
-					echo '}' . $comma;
-
-				// A true boolean?
-				elseif( $val === true ) :
-					echo $arg . ': true' . $comma;
-	
-				// A false when?
-				elseif ( $val === false ) :
-					echo $arg . ': false' . $comma;
-
-				// A number?
-				elseif ( is_int( $val ) ) :
-					echo $arg . ': ' . $val . $comma;
-
-				// Nope, it's just a regular string
-				else :
-					echo $arg . ': "' . $val . '"' . $comma;
-
-				endif;
-
-			endforeach;
-
-	echo '}); });</script>';
+			jQuery(document).ready(function($) {
+				$('#slider .inner-slider').slides(
+					{$json}
+				);
+			});
+		</script>";
 }
 
 /**

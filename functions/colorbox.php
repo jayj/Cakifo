@@ -2,7 +2,7 @@
 /**
  * Colorbox script
  *
- * Adds the Colorbox jQuery lightbox script to the theme if it supports it
+ * Adds the Colorbox jQuery lightbox script to the theme if supported
  * Supported by default, remove it in a child theme with
  * remove_theme_support( 'cakifo-colorbox' );
  *
@@ -67,28 +67,18 @@ function cakifo_colorbox() {
 	 */
 	$args = wp_parse_args( $args, $defaults );
 
-	echo "<script type='text/javascript'>
+	// Get the selector and remove it from the arguments
+	$selector = $args['selector'];
+	unset( $args['selector'] );
+
+	// JSON encode the arguments
+	$json = json_encode( $args );
+
+	echo "<script>
 			jQuery(document).ready(function($) {
-				$('" . $args['selector'] . "').colorbox({ ";
-
-				foreach ( $args as $arg => $val ) {
-
-					// Don't add the selector argument to the list
-					if ( $arg == 'selector' )
-						continue;
-
-					// Make sure true and false aren't encoded in quotes
-					if ( $val === true )
-						echo $arg . ' : true,' . "\n";
-					elseif ( $val === false )
-						echo $arg . ' : false,' . "\n";
-					else
-						echo $arg . ' : "' . $val . '",' . "\n";
-				}
-
-				echo 'foo: "bar" '; // IE7 fix
-
-	echo "		});
+				$('" . esc_js( $selector ) . "').colorbox(
+					{$json}
+				);
 			});
 		</script>";
 }
