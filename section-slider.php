@@ -42,7 +42,7 @@
 
     	<h3 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h3>
 
-        <div class="inner-slider">
+		<div class="slides_container">
 
 		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
 
@@ -51,6 +51,7 @@
 				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
 
 				<article class="slide">
+
 					<?php do_atomic( 'open_slide' ); // cakifo_open_slide ?>
 
 					<?php
@@ -124,7 +125,7 @@
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
 
-				</article>
+				</article> <!-- .slide -->
 
 				<?php do_atomic( 'after_slide' ); // after_close_slide ?>
 
@@ -132,7 +133,8 @@
 
 			<?php do_atomic( 'close_slider' ); // cakifo_close_slider ?>
 
-            </div> <!-- .inner-slider -->
+		</div> <!-- .slides_container -->
+
 	</section> <!-- #slider -->
 
 	<?php do_atomic( 'after_slider' ); // cakifo_after_slider ?>

@@ -121,7 +121,7 @@ function cakifo_theme_setup() {
 
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
-	add_action( 'wp_print_styles', 'cakifo_enqueue_style' );
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
 
 	/* Topbar RSS link */
 	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
@@ -280,8 +280,7 @@ function cakifo_front_page() {
 
 	/* Load the Slides jQuery Plugin */
 	if ( hybrid_get_setting( 'featured_show' ) )
-		wp_enqueue_script( 'slides', THEME_URI . '/js/slides.js', array( 'jquery' ), '2.0-beta1', true );
-		//wp_enqueue_script( 'slides', THEME_URI . '/js/slides.min.jquery.js', array( 'jquery' ), '1.1.8', true );
+		wp_enqueue_script( 'slides', THEME_URI . '/js/slides.js', array( 'jquery' ), '1.1.9', true );
 
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
@@ -303,34 +302,30 @@ function cakifo_slider_javascript() {
 	 * Default args
 	 */
 	$defaults = array(
-		'width' => 880, // [Number] Define the slide width
-		'height' => 290, // [Number] Define the slide height
-		'responsive' => false, // [Boolean] Slideshow will scale to its container
-		'navigation' => false, // [Boolean] Auto generate the navigation, next/previous buttons
-		'pagination' => true, // [Boolean] Auto generate the pagination
-		'effects' => array(
-			'navigation' =>  'fade',  // [String] Can be either "slide" or "fade"
-			'pagination' =>  'fade' // [String] Can be either "slide" or "fade"
-		),
-		'direction' => 'down', // [String] Define the slide direction => "up", "right", "down", "left"
-		'fade' => array(
-			'interval' => 200, // [Number] Interval of fade in milliseconds
-			'crossfade' => false, // [Boolean] TODO: add this feature. Crossfade the slides, great for images, bad for text
-			'easing' => '' // [String] Dependency: jQuery Easing plug-in <http://gsgd.co.uk/sandbox/jquery/easing/>
-		),
-		'slide' => array(
-			'interval' => 400, // [Number] Interval of fade in milliseconds
-			'browserWindow' => false, // [Boolean] Slide in/out from browser window, bad ass
-			'easing' => '' // [String] Dependency: jQuery Easing plug-in <http://gsgd.co.uk/sandbox/jquery/easing/>
-		),
-		'preload' => array(
-			'active' => false, // [Boolean] Preload the slides before showing them, this needs some work
-			'image' => esc_url( $loading_gif ) // [String] Define the path to a load .gif
-		),
-		'startAtSlide' => 1, // [Number] What should the first slide be?
-		'playInterval' => 5000, // [Number] Time spent on each slide in milliseconds
-		'pauseInterval' => 8000, // [Number] Time spent on pause, triggered on any navigation or pagination click
-		'autoHeight' => true, // [Boolean] TODO: add this feature. Auto sets height based on each slide
+		'play' => '3500', // number, Autoplay slideshow, a positive number will set to true and be the time between slide animation in milliseconds  	
+		'hoverPause' => true, // boolean, Set to true and hovering over slideshow will pause it
+		'generatePagination' => true, // boolean, Auto generate pagination
+		'generateNextPrev' => true, // boolean, Auto generate next/prev buttons
+		'next' => 'slider-next', // string, Class name for next button
+		'prev' => 'slider-prev', // string, Class name for previous button
+		'autoHeight' => true, // boolean, Set to true to auto adjust height
+		'effect' => 'fade', // string, '[next/prev], [pagination]', e.g. 'slide, fade' or simply 'fade' for both
+		'fadeSpeed' => 50, // number, Set the speed of the fading animation in milliseconds
+		'slideSpeed' => 150, // number, Set the speed of the sliding animation in milliseconds
+		'paginationClass' => 'slidesPagination',
+		'preload' => false, // boolean, Set true to preload images in an image based slideshow
+		'preloadImage' => esc_url( $loading_gif ),
+		'randomize' => false, // boolean, Set to true to randomize slides
+		// 'currentClass' => 'current'
+		// 'container => 'slides_container', // string, Class name for slides container. Default is "slides_container"
+		// 'pagination' => 'true', // boolean, If you're not using pagination you can set to false, but don't have to
+		// 'start' => 1, // number, starting slide
+		// 'crossfade' => 'false', // boolean, Crossfade images in a image based slideshow
+		// 'pause' => 0, // number, Pause slideshow on click of next/prev or pagination. A positive number will set to true and be the time of pause in milliseconds
+		// 'autoHeightSpeed'=> 350, // number, Set auto height animation time in milliseconds
+		// 'bigTarget' => 'false', // boolean, Set to true and the whole slide will link to next slide on click
+		// 'animationStart'=> 'function(){}', // Function called at the start of animation
+		// 'animationComplete'=> 'function(){}' // Function called at the completion of animation
 	);
 
 	$args = array();
@@ -354,9 +349,13 @@ function cakifo_slider_javascript() {
 
 	echo "<script>
 			jQuery(document).ready(function($) {
-				$('#slider .inner-slider').slides(
+				$('#slider').slides(
 					{$json}
 				);
+				
+				 // Add display: block; if there's only 1 slide
+				if ( $('.slide').length == 1 )
+					$('.slide').css( 'display', 'block' );
 			});
 		</script>";
 }

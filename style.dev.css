@@ -942,16 +942,29 @@ table {
 #slider {
 	background: #fffff5;
 	border-bottom: 1px solid #edece6;
+	width: 980px;
+	min-height: 340px;
 	position: relative;
 	margin: -14px 0 0 -20px;
 	padding-top: 60px;
-	width: 980px;
-	min-height: 340px;
+	position: relative;
 }
 
-.slidesContainer {
-	margin: 0 auto 25px;
+.slides_container {
+	width: 880px;
+	min-height: 250px;
+	margin: 0 50px 40px 50px;
+	overflow: hidden;
+	position: relative;
 }
+
+#slider .slide {  	
+	width: 880px;
+	min-height: 250px;
+	display: none;
+}
+
+.no-js #slider .slide { display: block; }
 
 	/* Slider content */
 	#slider .entry-summary {
@@ -989,7 +1002,7 @@ table {
 		text-indent: -9999px;
 	}
 
-	.slidesPagination .slidesCurrent a {
+	.slidesPagination .current a {
 		background-position: 0 -14px;
 	}
 	
@@ -1000,6 +1013,45 @@ table {
 	.ie7 .slidesPagination li {
 		float: left;
 	}
+	
+	/* Next/prev button */
+	.slider-prev,
+	.slider-next {
+		background: #fff url(images/colorbox.png) no-repeat;
+		border-radius: 12px;
+		width: 24px;
+		height: 24px;
+		margin: 0;
+		position: absolute;
+		top: 45%;
+		opacity: 0.9;
+		text-indent: -9999px;
+		-webkit-box-shadow: 0 0 7px rgba(0,0,0, 0.3);
+		box-shadow: 0 0 7px rgba(0,0,0, 0.3);
+		-webkit-transition: opacity 150ms ease;
+		-moz-transition: opacity 150ms ease;
+		transition: opacity 150ms ease;
+	}
+	
+	.slider-prev {
+		background-position: -2px -2px; left: -10px;
+	}
+	
+	.slider-next {
+		background-position: -67px -2px; right: -10px;
+	}
+	
+	.slider-prev:hover,
+	.slider-next:hover {
+		opacity: 1;
+	}
+	
+	.slider-prev:active,
+	.slider-next:active {
+		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0, 0.3);
+		box-shadow: inset 0 0 5px rgba(0,0,0,0.3), 0 0 10px rgba(0,0,0, 0.3);
+	}
+
 
 /**
  * Posts
