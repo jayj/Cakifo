@@ -62,7 +62,7 @@
 							 *
 							 * Either from a custom field, the featured image function,
 							 * or an embed video (video post format)
-							 */	 
+							 */
 							$thumbnail = get_the_image( array(
 								'size' => 'slider',
 								'attachment' => false,

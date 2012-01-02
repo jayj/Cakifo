@@ -2,11 +2,10 @@
 /**
  * Handles the Cakifo upgrades
  *
- * The functions will check a server for information about
- * a new version
+ * The functions will check a server for information about a new version
  *
- * If there's a update, it will show a notice in the dashboard and
- * allow you to upgrade directly from it
+ * If there's a update, it will show a notice in the dashboard
+ * and allows you to upgrade directly from the dashboard
  *
  * @credits to the Genesis Framework for some of the code
  */
@@ -149,7 +148,7 @@ function cakifo_clear_update_transient() {
 function cakifo_update_push( $value ) {
 
 	$update_available = cakifo_update_available();
-	
+
 	if ( $update_available ) {
 		$update = get_transient( 'cakifo-update-check' );
 		$value->response['cakifo'] = $update;

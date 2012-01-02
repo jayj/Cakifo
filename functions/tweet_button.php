@@ -6,10 +6,11 @@
  * It's a fully customisable HTML and CSS Tweet Button for WordPress built using PHP
  *
  * @version 1.0
+ * @since 1.3
  * @author Nicolas Gallagher and Jesper J
  * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
  
-	Copyright 2010-2011 Nicolas Gallagher
+	Copyright 2010-2012 Nicolas Gallagher
 	
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -32,7 +33,9 @@ function cakifo_tweet_button( $args = array() ) {
 	static $i = 0;
     $i++;
 
-	// Set up default values
+	/**
+	 * Default values
+	 */
 	$defaults = array(
 		'before' => '',
 		'after' => '',
@@ -43,11 +46,13 @@ function cakifo_tweet_button( $args = array() ) {
 		'layout' => 'vertical', // none, horizontal, vertical
 		'counturl' => get_permalink(),
 	);
-	
+
 	// Merge them
 	$args = wp_parse_args( $args, $defaults );
-	
-	// Set up variables
+
+	/**
+	 * Set up variables
+	 */
 	$post_id = get_queried_object_id();
 	$url = trailingslashit( $args['href'] );
 	$counturl = trailingslashit( $args['counturl'] );
@@ -65,12 +70,12 @@ function cakifo_tweet_button( $args = array() ) {
 		$retweet_timestamp = (int) $retweet_pieces[0];
 		$retweet_count = (int) $retweet_pieces[1];
 	}
-	
+
 	// Expire retweet cache
 	if ( $retweet_count === null || time() > $retweet_timestamp + $cache_interval ) :
-	
+
 		$retweet_response = wp_remote_get( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $counturl );
-		
+
 		if ( ! is_wp_error( $retweet_response ) ) :
 
 			$retweet_data = json_decode( wp_remote_retrieve_body( $retweet_response ), true );
@@ -85,7 +90,7 @@ function cakifo_tweet_button( $args = array() ) {
 						add_post_meta( $post_id, "retweet_{$i}_cache", time() . ':' . $retweet_count );
 					else
 						update_post_meta( $post_id, "retweet_{$i}_cache", time() . ':' . $retweet_count );
-		
+
 				endif;
 
 			endif;
@@ -102,7 +107,7 @@ function cakifo_tweet_button( $args = array() ) {
 	 * from the estimated number of retweets according to the topsy, backtype, or tweetmeme services
 	 */
 	$retweet_count_start = get_post_meta( $post_id, "retweet_{$i}_count_start", true );
-	
+
 	/* Calculate the total count to display */
 	$count = $retweet_count + (int) $retweet_count_start;
 
@@ -121,10 +126,10 @@ function cakifo_tweet_button( $args = array() ) {
 	$twitter_params .= '&amp;counturl=' . urlencode( $args['counturl'] );
 	$twitter_params .= ( $args['via'] ) ? '&amp;via=' . $args['via'] : '';
 	$twitter_params .= ( $args['related'] ) ? '&amp;related=' . $args['related'] : '';
-	
+
 	if ( $args['layout'] != 'none' )
 		$counter = '<a class="twitter-count" href="http://twitter.com/search?q=' . urlencode( $url ) . '" target="_blank">' . $count . '</a>';
-		
+
 	// HTML for the tweet button
 	$twitter_share = '
 		<div class="twitter-share twitter-button-size-' . sanitize_html_class( $args['layout'] ) . '">

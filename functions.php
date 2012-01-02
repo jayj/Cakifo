@@ -77,7 +77,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
 	//add_theme_support( 'cleaner-caption' );
-	
+
 	/* Load Cakifo shortcodes if supported */
 	add_theme_support( 'cakifo-shortcodes' );
 	require_if_theme_supports( 'cakifo-shortcodes', trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
@@ -115,7 +115,7 @@ function cakifo_theme_setup() {
 
 	/* Register shortcodes. */
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
-	
+
 	/* Set $content_width */
 	add_action( 'init', 'cakifo_content_width' );
 
@@ -164,13 +164,13 @@ function cakifo_theme_setup() {
 
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
-	
+
 	/* wp_list_comments() arguments */
 	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
 
 	/* Custom logo */
 	add_filter( 'cakifo_site_title', 'cakifo_logo' );
-	
+
 	/*
 	 * Custom header for logo upload
 	 *
@@ -352,7 +352,7 @@ function cakifo_slider_javascript() {
 				$('#slider').slides(
 					{$json}
 				);
-				
+
 				 // Add display: block; if there's only 1 slide
 				if ( $('.slide').length == 1 )
 					$('.slide').css( 'display', 'block' );
@@ -408,7 +408,7 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	} else {
 		$text = implode( ' ', $words_array ); 
 	}
-	
+
 	if ( $echo )
 		echo $text . $more_link;
 	else

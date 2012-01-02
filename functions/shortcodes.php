@@ -23,14 +23,13 @@ function cakifo_register_shortcodes() {
 
 	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
-	remove_shortcode( 'comment-published' );
-	//remove_shortcode( 'entry-title' );
-	remove_shortcode( 'entry-author' );
-	
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
+
+	remove_shortcode( 'comment-published' );
 	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
-	//add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
-	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
+
+	remove_shortcode( 'entry-author' );
+	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );	
 }
 
 /** 
@@ -118,7 +117,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  * @param array $atts
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
-	
+
 	static $first = true;
 
 	extract( shortcode_atts( array(
@@ -308,34 +307,5 @@ function cakifo_entry_format_shortcode( $atts ) {
 
 	return $atts['before'] . get_post_format() . $atts['after'];
 }
-
-/**
- * Displays a post's title with a link to the post.
- *
- * It replaces the default Hybrid Core shortcode. The name is still the the same
- *
- * @since 1.3
- * @param array $atts
- */
-/*function cakifo_entry_title_shortcode( $atts ) {
-	$atts = shortcode_atts( array(
-		'heading' => 'h1'
-	), $atts );
-
-	global $post;
-
-	// $atts['heading']
-
-	$title = the_title( "<{$atts['heading']} class='" . esc_attr( $post->post_type ) . "-title entry-title'><a href='" . get_permalink() . "' title='" . the_title_attribute( 'echo=0' ) . "' rel='bookmark'>", "</a></{$atts['heading']}>", false );
-
-	if ( 'link_category' == get_query_var( 'taxonomy' ) )
-		$title = false;
-
-	// If there's no post title, return a clickable '(No title)'.
-	if ( empty( $title ) && ! is_singular() && 'link_category' !== get_query_var( 'taxonomy' ) )
-		$title = "<{$atts['heading']}  class='entry-title no-entry-title'><a href='" . get_permalink() . "' rel='bookmark'>" . __( '(Untitled)', 'cakifo' ) . "</a></{$atts['heading']}>";
-
-	return $title;
-}*/
 
 ?>

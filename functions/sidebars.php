@@ -158,11 +158,11 @@ function cakifo_register_sidebars() {
 	/* Register the after singular sidebar. */
 	if ( in_array( 'after-singular', $sidebars[0] ) )
 		register_sidebar( $after_singular );
-		
+
 	/* Register the after singular sidebar. */
 	if ( in_array( 'after-single', $sidebars[0] ) )
 		register_sidebar( $after_single );
-		
+
 	/* Register the error page sidebar. */
 	if ( in_array( 'error-page', $sidebars[0] ) )
 		register_sidebar( $error_page );
