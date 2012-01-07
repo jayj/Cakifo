@@ -335,11 +335,8 @@ function cakifo_slider_javascript() {
 	 *
 	 * @link https://github.com/jayj/Cakifo/wiki/Child-themes
 	 * @link http://slidesjs.com
-	 *
-	 * @notice The name of this filter changed in version 1.3
-	 *	from cakifo_slider_args to cakifo_slider_arguments
 	 */
-	$args = apply_filters( 'cakifo_slider_arguments', $args ); 
+	$args = apply_filters( 'cakifo_slider_args', $args );
 
 	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
