@@ -66,9 +66,7 @@ get_header(); // Loads the header.php template ?>
             <?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>
 
                 <div id="image-info">
-                    <div class="headline-list">
-                    	<?php cakifo_image_info(); // Get image meta data ?>
-                    </div> <!-- .headline-list -->
+  					<?php cakifo_image_info(); // Get image meta data ?>
 
                     <div id="attachment-gallery" class="headline-list last">
                         <h4><?php _e( 'Gallery', 'cakifo' ); ?></h4>

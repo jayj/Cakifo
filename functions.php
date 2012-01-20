@@ -737,37 +737,38 @@ function cakifo_image_info() {
 	/* Set up some default variables and get the image metadata. */
 	$meta = wp_get_attachment_metadata( get_the_ID() );
 	$items = array();
+	$test = array();
 	$list = '';
-	
+
 	// If there's no image meta, return
 	if ( empty( $meta ) )
 		return;
 
 	/* Add the width/height to the $items array. */
-	$items['dimensions'] = sprintf( __( '<span class="prep">Dimensions:</span> %s', 'cakifo' ), '<span class="image-data"><a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a></span>' );
+	$items['dimensions'] = array(  __( 'Dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
 
-	/* If a timestamp exists, add it to the $items array. */
-	if ( !empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = sprintf( __( '<span class="prep">Date:</span> %s', 'cakifo' ), '<span class="image-data">' . date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) . '</span>' );
+	/* If a timestamp exists, add it to the $items array */
+	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
+		$items['created_timestamp'] = array(  __( 'Date', 'cakifo' ) => date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
 
-	/* If a camera exists, add it to the $items array. */
-	if ( !empty( $meta['image_meta']['camera'] ) )
-		$items['camera'] = sprintf( __( '<span class="prep">Camera:</span> %s', 'cakifo' ), '<span class="image-data">' . $meta['image_meta']['camera'] . '</span>' );
+	/* If a camera exists, add it to the $items array */
+	if ( ! empty( $meta['image_meta']['camera'] ) )
+		$items['camera'] = array(  __( 'Camera', 'cakifo' ), $meta['image_meta']['camera'] );
 
-	/* If an aperture exists, add it to the $items array. */
-	if ( !empty( $meta['image_meta']['aperture'] ) )
-		$items['aperture'] = sprintf( __( '<span class="prep">Aperture:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) . '</span>' );
+	/* If an aperture exists, add it to the $items array */
+	if ( ! empty( $meta['image_meta']['aperture'] ) )
+		$items['aperture'] = array(  __( 'Aperture', 'cakifo' ), sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) );
 
-	/* If a focal length is set, add it to the $items array. */
-	if ( !empty( $meta['image_meta']['focal_length'] ) )
-		$items['focal_length'] = sprintf( __( '<span class="prep">Focal Length:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) . '</span>' );
+	/* If a focal length is set, add it to the $items array */
+	if ( ! empty( $meta['image_meta']['focal_length'] ) )
+		$items['focal_length'] = array(  __( 'Focal Length', 'cakifo' ), sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
 
-	/* If an ISO is set, add it to the $items array. */
-	if ( !empty( $meta['image_meta']['iso'] ) )
-		$items['iso'] = sprintf( __( '<span class="prep">ISO:</span> %s', 'cakifo' ), '<span class="image-data">' . $meta['image_meta']['iso'] . '</span>' );
+	/* If an ISO is set, add it to the $items array */
+	if ( ! empty( $meta['image_meta']['iso'] ) )
+		$items['iso'] = array(  __( 'ISO', 'cakifo' ), $meta['image_meta']['iso'] );
 
-	/* If a shutter speed is given, format the float into a fraction and add it to the $items array. */
-	if ( !empty( $meta['image_meta']['shutter_speed'] ) ) {
+	/* If a shutter speed is given, format the float into a fraction and add it to the $items array */
+	if ( ! empty( $meta['image_meta']['shutter_speed'] ) ) {
 
 		if ( ( 1 / $meta['image_meta']['shutter_speed'] ) > 1 ) {
 			$shutter_speed = '1/';
@@ -780,20 +781,28 @@ function cakifo_image_info() {
 			$shutter_speed = $meta['image_meta']['shutter_speed'];
 		}
 
-		$items['shutter_speed'] = sprintf( __( '<span class="prep">Shutter Speed:</span> %s', 'cakifo' ), '<span class="image-data">' . sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) . '</span>' );
+		$items['shutter_speed'] = array(  __( 'Shutter Speed', 'cakifo' ), sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) );
 	}
 
-	/* Allow child themes to overwrite the array of items. */
-	$items = apply_atomic( 'image_info_items', $items );
+	/**
+	 * Allow child themes to overwrite the array of items
+	 * @note Changed name to 'image_meta_items' in Version 1.3 
+	 */
+	$items = apply_atomic( 'image_meta_items', $items );
 
-	/* Loop through the items, wrapping each in an <li> element. */
-	foreach ( $items as $item )
-		$list .= "<li>{$item}</li>";
+	/* Loop through the items, wrapping the first item in the array in <dt> and the second in <dd> */
+	foreach ( $items as $item ) {
+		$list .= "<dt>{$item[0]}</dt>";
+		$list .= "<dd>{$item[1]}</dd>";
+	}
 
-	/* Format the HTML output of the function. */
-	$output = '<div class="image-info"><h4>' . __( 'Image Info', 'cakifo' ) . '</h4><ul>' . $list . '</ul></div>';
+	/* Format the HTML output of the function */
+	$output = '<div class="image-info">
+					<h4>' . __( 'Image Info', 'cakifo' ) . '</h4>
+					<dl>' . $list . '</dl>
+				</div> <!-- .image-info -->';
 
-	/* Display the image info and allow child themes to overwrite the final output. */
+	/* Display the image info and allow child themes to overwrite the final output */
 	echo apply_atomic( 'image_info', $output );
 }
 

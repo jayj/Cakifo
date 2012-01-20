@@ -48,7 +48,6 @@
         <?php
 			if ( current_theme_supports( 'get-the-image' ) )
 				get_the_image( array(
-					'meta_key' => 'Thumbnail',
 					'size' => 'thumbnail',
 					'attachment' => false
 				) );

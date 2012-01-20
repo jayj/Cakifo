@@ -92,6 +92,7 @@
 									}
 								}
 
+								// There's a video!
 								if ( isset( $video ) ) {
 
 									// Get the original width and height
