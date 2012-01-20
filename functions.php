@@ -737,7 +737,6 @@ function cakifo_image_info() {
 	/* Set up some default variables and get the image metadata. */
 	$meta = wp_get_attachment_metadata( get_the_ID() );
 	$items = array();
-	$test = array();
 	$list = '';
 
 	// If there's no image meta, return
@@ -749,7 +748,7 @@ function cakifo_image_info() {
 
 	/* If a timestamp exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = array(  __( 'Date', 'cakifo' ) => date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
+		$items['created_timestamp'] = array(  __( 'Date', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
 
 	/* If a camera exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['camera'] ) )
