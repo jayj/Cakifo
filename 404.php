@@ -5,12 +5,18 @@
  * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will 
  * display a generic message.
  *
- * @package Cakifo
- * @subpackage Template
- * @link http://codex.wordpress.org/Creating_an_Error_404_Page
+ * @package		Cakifo
+ * @subpackage	Template
+ * @link		http://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
-get_header(); // Loads the header.php template ?>
+/**
+ * Include the header template part file
+ * 
+ * Child Themes can replace this template part file globally, via {header.php},
+ * or in a specific context only, via {header-404.php}
+ */
+get_header( '404' ); ?>
 
 	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
 
@@ -27,25 +33,21 @@ get_header(); // Loads the header.php template ?>
 
                     <?php get_search_form(); // Loads the searchform.php template ?>
 
-                    <?php do_atomic( '404_content' ); // You can add more content here by using the 'cakifo_404_content' actino ?>
+                    <?php do_atomic( '404_content' ); // You can add more content here by using the 'cakifo_404_content' action ?>
                 </div> <!-- .entry-content -->
 
             </article> <!-- .hentry -->
 
-            <?php
+            <?php 
 				/**
-				 * Widget ready 404 page
-				 *
-				 * You can use widgets to put content here
+				 * Include the Error Page widgets "sidebar" template part file
+				 * 
+				 * Child Themes can replace this template part file globally, 
+				 * via "sidebar.php", or in the Error 404 Page context only, via
+				 * "sidebar-404.php"
 				 */
-				if ( is_active_sidebar( 'error-page' ) ) :
-
-					echo '<div class="not-found-widgets clearfix">';
-						dynamic_sidebar( 'error-page' );
-					echo '</div>';
-
-				endif;
-            ?>
+				get_sidebar( '404' ); 
+			?>
 
         <?php do_atomic( 'close_main' ); // cakifo_close_main ?>
 
@@ -53,4 +55,12 @@ get_header(); // Loads the header.php template ?>
 
     <?php do_atomic( 'after_main' ); // cakifo_after_main ?>
 
-<?php get_footer(); // Loads the footer.php template ?>
+<?php 
+/**
+ * Include the footer template part file
+ * 
+ * Child Themes can replace this template part file globally, via {footer.php},
+ * or in a specific context only, via {footer-404.php}
+ */
+get_footer( '404' );  
+?>

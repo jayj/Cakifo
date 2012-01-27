@@ -5,8 +5,8 @@
  * This is the default singular template.  It is used when a more specific template can't be found to display
  * singular views of posts (any post type).
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 get_header(); // Loads the header.php template ?>
@@ -28,6 +28,7 @@ get_header(); // Loads the header.php template ?>
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
                     <?php
+						// Get the thumbnail
 						if ( current_theme_supports( 'get-the-image' ) )
 							get_the_image( array(
 								'meta_key' => 'Thumbnail',
@@ -37,11 +38,11 @@ get_header(); // Loads the header.php template ?>
 					?>
 
                     <div class="entry-content">
-                    	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', hybrid_get_parent_textdomain() ) ); ?>
-                    	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_parent_textdomain() ), 'after' => '</p>' ) ); ?>
+                    	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+                    	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
                     </div> <!-- .entry-content -->
 
-                    <?php edit_post_link( __( 'Edit', hybrid_get_parent_textdomain() ), '<div class="entry-meta">', '</div>' ); ?>
+                    <?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>
 
                     <div class="clear"></div>
 
@@ -56,7 +57,13 @@ get_header(); // Loads the header.php template ?>
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
 
 			<?php
-				$display = apply_filters( 'show_singular_comments', true ); // To disable in child theme: add_filter( 'show_singular_comments', '__return_false' );
+				/**
+				 * Show comments on singular pages? (not single posts)
+				 *
+				 * On by default. Disable in child theme with
+				 * add_filter( 'show_singular_comments', '__return_false' );
+				 */
+				$display = apply_filters( 'show_singular_comments', true );
 
 				if ( $display )
 					comments_template( '/comments.php', true ); // Loads the comments.php template

@@ -2,37 +2,37 @@
 /**
  * Colorbox script
  *
- * Adds the Colorbox jQuery lightbox script to the theme if supported
+ * Adds the Colorbox jQuery lightbox script to the theme if supported.
+ *
  * Supported by default, remove it in a child theme with
  * remove_theme_support( 'cakifo-colorbox' );
  *
- * @package Cakifo
- * @version 1.3
- * @subpackage Functions
- * @link http://jacklmoore.com/colorbox/
- * @since 1.3
+ * @package		Cakifo
+ * @subpackage	Functions
+ * @version		1.3
+ * @link		http://jacklmoore.com/colorbox/
  */
 
 add_action( 'wp_enqueue_scripts', 'cakifo_colorbox_script' );
-add_action( 'wp_print_styles', 'cakifo_colorbox_style' );
 add_action( 'wp_footer', 'cakifo_colorbox', 100 );
 
 /**
- * Load the Colorbox script
+ * Load the Colorbox script and style
+ *
+ * @uses	wp_enqueue_script()
+ * @uses	wp_enqueue_style()
+ *
+ * @since	1.3
  */
 function cakifo_colorbox_script() {
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.18', true );
-}
-
-/**
- * Load the Colorbox style
- */
-function cakifo_colorbox_style() {
 	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3', 'screen' );
 }
 
 /**
  * Prints the Colorbox script in the footer
+ *
+ * @since	1.3
  */
 function cakifo_colorbox() {
 

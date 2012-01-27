@@ -5,8 +5,8 @@
  * This template is used to show your your next/previous post links on singular pages and
  * the next/previous posts links on the home/posts page and archive pages.
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 ?>
 
@@ -19,6 +19,7 @@
 		</nav> <!-- .pagination.post-pagination -->
 
 	<?php
+		// Pagination if the theme supports "loop-pagination"
 		elseif ( ! is_singular() && current_theme_supports( 'loop-pagination' ) ) :
 
 			loop_pagination( array(
@@ -29,6 +30,7 @@
 				'next_text' => __( 'Next &rarr;', 'cakifo' )
 			) );
 		
+		// Normal 'Previous' and 'Next' links
 		elseif ( ! is_singular() && $nav = get_posts_nav_link( array( 'sep' => '', 'prelabel' => '<span class="previous">' . __( '&larr; Previous', 'cakifo' ) . '</span>', 'nxtlabel' => '<span class="next">' . __( 'Next &rarr;', 'cakifo' ) . '</span>' ) ) ) : ?>
 
 		<nav class="pagination">

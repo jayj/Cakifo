@@ -2,8 +2,10 @@
 /**
  * Creates additional theme settings
  *
- * @link http://themehybrid.com/hybrid-core/features/theme-settings
- * @since 1.0
+ * @package		Cakifo
+ * @subpackage	Functions
+ * @link		http://themehybrid.com/hybrid-core/features/theme-settings
+ * @since		1.0
  */
 
 add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
@@ -126,7 +128,9 @@ function cakifo_theme_meta_box() { ?>
 	</table> <!-- .form-table --> <?php
 }
 
-/* Validates theme settings */
+/**
+ * Validates theme settings
+ */
 function cakifo_theme_validate_settings( $input ) {
 
 	/* Validate and/or sanitize the options */

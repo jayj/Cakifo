@@ -5,10 +5,12 @@
  * This is my fork of Nicolas Gallagher original "Custom Tweet Button for WordPress"
  * It's a fully customisable HTML and CSS Tweet Button for WordPress built using PHP
  *
- * @version 1.0
- * @since 1.3
- * @author Nicolas Gallagher and Jesper J
- * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
+ * @package		Cakifo
+ * @subpackage	Functions
+ * @author		Nicolas Gallagher, fork by Jesper Johansen
+ * @link		http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
+ * @version		1.0
+ * @since		1.3
  
 	Copyright 2010-2012 Nicolas Gallagher
 	

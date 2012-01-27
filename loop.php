@@ -13,9 +13,9 @@
  * be used if it exists and we ask for the loop with:
  * <code>get_template_part( 'loop', 'index' );</code>
  *
- * @package Cakifo
- * @subpackage Template
- * @since 1.1
+ * @package		Cakifo
+ * @subpackage	Template
+ * @since		1.1
  */
 ?>
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
@@ -30,22 +30,28 @@
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
                     <?php echo apply_atomic_shortcode( 'entry_format', '<h3 class="entry-format"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '">[entry-format]</a></h3>' ); ?>
                 </hgroup>
-            <?php else: ?>
+            <?php else : ?>
             	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
             <?php endif; ?>
 
         	<?php
-				// Tthe default format (i.e., a normal post) returns false
+				// The default format (i.e., a normal post) returns false
 				$format = get_post_format();
 				if ( false === $format )
 					$format = 'standard';
 
+				/**
+				 * Byline
+				 */
 				if ( 'post' == get_post_type() )
 					echo apply_atomic_shortcode( "byline_{$format}", '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' );
 			?>
         </header> <!-- .entry-header -->
 
         <?php
+			/**
+			 * Get the thumbnail
+			 */
 			if ( current_theme_supports( 'get-the-image' ) )
 				get_the_image( array(
 					'size' => 'thumbnail',
@@ -53,7 +59,14 @@
 				) );
         ?>
 
-		<?php if ( has_post_format( 'status' ) ) : ?>
+		<?php
+        	/**
+        	 * Status format
+			 *
+        	 * Can be overwritten in a Child theme via {loop-status.php}
+        	 */
+			if ( has_post_format( 'status' ) ) :
+		?>
         
         	<div class="entry-content">
             	<div class="note">
@@ -62,32 +75,55 @@
                 </div>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
-            
-        <?php elseif ( has_post_format( 'quote' ) || has_post_format( 'image' ) || has_post_format( 'gallery' )  ) : ?>
-        
+
+		<?php
+        	/**
+        	 * Quote, Image or Gallery format
+			 *
+        	 * Can be overwritten in a Child theme via
+			 * {loop-quote.php}, {loop-image.php}, or {loop-gallery.php}
+        	 */
+			elseif ( has_post_format( 'quote' ) || has_post_format( 'image' ) || has_post_format( 'gallery' )  ) :
+		?>
+
             <div class="entry-content">
             	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
             	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
             </div> <!-- .entry-content -->
-            
-		<?php elseif ( is_archive() || is_search() ) : // Only display Excerpts for Archives and Search ?>
-        
+
+		<?php
+        	/**
+        	 * Only display Excerpts for Archives and Search pages
+        	 */
+			elseif ( is_archive() || is_search() ) :
+		?>
+
         	<div class="entry-summary">
         		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
                 <?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-summary -->
-            
-        <?php else : ?>
-        
+
+		<?php
+        	/**
+        	 * Any other post format
+			 *
+        	 * Can be overwritten in a Child theme via
+			 * {loop-link.php}, {loop-aside.php}, {loop-video.php}, {loop-chat.php}, or {loop-audio.php}
+        	 */
+			else :
+		?>
+
         	<div class="entry-content">
         		<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
         		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
         	</div> <!-- .entry-content -->
-            
+
         <?php endif; ?>
 
         <?php
-			/* Entry meta */
+			/**
+			 * Entry meta
+			 */
 			if ( 'post' == get_post_type() )
 				echo apply_atomic_shortcode( "entry_meta_{$format}", '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 		?>

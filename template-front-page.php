@@ -4,8 +4,8 @@
  *
  * This is the frontpage page template
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 get_header(); // Loads the header.php template ?>
@@ -16,9 +16,17 @@ get_header(); // Loads the header.php template ?>
 
 		<?php do_atomic( 'open_main' ); // cakifo_open_main ?>
 
-        	<?php get_template_part( 'section', 'recentposts' ); ?>
+        	<?php
+				/**
+				 * Get the [section-recentposts.php} template file
+				 */
+            	get_template_part( 'section', 'recentposts' );
+			?>
 
 			<?php
+				/**
+				 * Get the [section-headlines.php} template file
+				 */
 				if ( hybrid_get_setting( 'headlines_category' ) )
 					get_template_part( 'section', 'headlines' );
             ?>

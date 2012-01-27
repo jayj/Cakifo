@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and 
  * sets up the supported features, default actions, and default filters.  If making customizations, users 
@@ -20,21 +19,18 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, write 
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @package Cakifo
- * @subpackage Functions
- * @version 1.3
- * @author Jayj.dk <kontakt@jayj.dk>
- * @copyright Copyright (c) 2011, Jesper J
- * @link http://wpthemes.jayj.dk/cakifo
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package		Cakifo
+ * @subpackage	Functions
+ * @version		1.3
+ * @author		Jesper Johansen <kontakt@jayj.dk>
+ * @copyright	Copyright (c) 2011-2012, Jesper Johansen
+ * @link		http://wpthemes.jayj.dk/cakifo
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
 
 /* Load the core theme framework */
 require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
 $theme = new Hybrid();
-
-if ( ! isset( $content_width ) )
-	$content_width = 630;
 
 /* Do theme setup on the 'after_setup_theme' hook */
 add_action( 'after_setup_theme', 'cakifo_theme_setup' );
@@ -43,7 +39,7 @@ add_action( 'after_setup_theme', 'cakifo_theme_setup' );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_theme_setup() {
 
@@ -56,13 +52,12 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
-	//add_theme_support( 'hybrid-core-drop-downs' ); // @todo Test if it works
 
 	// Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated (WordPress SEO is checked for in Hybrid Core)
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
-	/* Load the sidebars if supported */
+	/* Load the Cakifo sidebars if supported */
 	//add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
 	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
 	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
@@ -102,6 +97,12 @@ function cakifo_theme_setup() {
 	add_custom_background( 'cakifo_custom_background_callback' );
 	add_editor_style();
 
+	/* Set $content_width */
+	hybrid_set_content_width( 630 );
+	
+	/* Set $content_width for other post layouts */
+	add_action( 'init', 'cakifo_content_width' );
+
 	/*
 	 * Set new image sizes 
 	 *
@@ -113,11 +114,8 @@ function cakifo_theme_setup() {
 	add_image_size( 'slider', apply_filters( 'slider_image_width', '500' ), apply_filters( 'slider_image_height', '230' ), true );
 	add_image_size( 'recent', apply_filters( 'recent_image_width', '190' ), apply_filters( 'recent_image_height', '130' ), true );
 
-	/* Register shortcodes. */
+	/* Register shortcodes */
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
-
-	/* Set $content_width */
-	add_action( 'init', 'cakifo_content_width' );
 
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
@@ -212,10 +210,10 @@ function cakifo_theme_setup() {
 /**
  * Loads the theme JavaScript files
  *
- * It loads jQuery, Modernizr, and the javascript 
+ * It loads jQuery, Modernizr, and the Javascript 
  * needed for this theme
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_enqueue_script() {
 
@@ -251,7 +249,7 @@ function cakifo_enqueue_script() {
  *
  * Adds a bbPress stylesheet as well if the plugin is active
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_enqueue_style() {
 	wp_enqueue_style( 'PT-Serif', 'http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
@@ -266,10 +264,10 @@ function cakifo_enqueue_style() {
 /**
  * Front Page stuff
  *
- * Adds JavaScript to the Front Page.
- * Removes the breadcrumb menu.
+ * Adds JavaScript to the frontpage and
+ * removes the breadcrumb menu.
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_front_page() {
 	$prefix = hybrid_get_prefix();
@@ -360,9 +358,12 @@ function cakifo_slider_javascript() {
 /**
  * Change to small thumbnail for archives and search
  *
- * @since 1.1
+ * @param	array	$args	The Get the Image arguments
+ * @return	array	$args	The filtered arguments
+ * @since	1.1
  */
 function cakifo_get_the_image_arguments( $args ) {
+	
 	if ( is_archive() || is_search() ) {
 		$args['size'] = 'small';
 		$args['image_class'] = 'thumbnail';
@@ -373,13 +374,13 @@ function cakifo_get_the_image_arguments( $args ) {
 
 /**
  * Change the arguments of wp_list_comments()
- * Change avatar size to 48
  *
- * @since 1.3
+ * @param	array	$args	The wp_list_comments() arguments
+ * @return	array	$args	The filtered wp_list_comments() arguments
+ * @since	1.3
  */
 function cakifo_change_list_comments_args( $args ) {
 	$args['avatar_size'] = 48;
-	
 	return $args;
 }
 
@@ -389,8 +390,9 @@ function cakifo_change_list_comments_args( $args ) {
  * The ideal solution would be to change the excerpt_length filter,
  * but we need different excerpt lengths 
  *
- * @since 1.0
- * @param int $length Number of words. Default 55.
+ * @param	int		$length		Number of words. Default 55
+ * @param	boolean	$echo		Default to echo and not return the form
+ * @since	1.0
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
 
@@ -412,6 +414,12 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 		return $text . $more_link;
 }
 
+/**
+ * Edit the "More link" for archive excerpts.
+ *
+ * @param	string	$more	The default more link
+ * @return	$more
+ */
 function cakifo_excerpt_more( $more ) {
 	global $post;
 
@@ -422,20 +430,23 @@ function cakifo_excerpt_more( $more ) {
 }
 
 /**
- * Custom breadcrumb trail arguments
+ * Custom breadcrumb trail arguments.
  *
- * @since 1.0
+ * @param	array	$args	The Breadcrumb arguments
+ * @return	array	$args	The filtered Breadcrumb arguments
+ * @since	1.0
  */
 function cakifo_breadcrumb_trail_args( $args ) {
 	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail 
-
 	return $args;
 }
 
 /**
- * Change entry meta for different post formats
+ * Change entry meta for the Quote post format.
  *
- * @since 1.1
+ * @param	string	$meta	The normal entry meta
+ * @return	string
+ * @since	1.1
  */
 function cakifo_quote_entry_meta( $meta ) {
 	if ( is_single() )
@@ -444,23 +455,46 @@ function cakifo_quote_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-shortlink] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
+/**
+ * Change entry meta for the Aaside post format.
+ *
+ * @param	string	$meta	The normal entry meta
+ * @return	string
+ * @since	1.1
+ */
 function cakifo_aside_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
+/**
+ * Change entry meta for the Link post format.
+ *
+ * @param	string	$meta	The normal entry meta
+ * @return	string
+ * @since	1.1
+ */
 function cakifo_link_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
+/**
+/**
+ * Change entry meta for the Image post format.
+ *
+ * @param	string	$meta	The normal entry meta
+ * @return	string
+ * @since	1.1
+ */
 function cakifo_image_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', 'cakifo' ) . '</footer>' );
 }
 
 
 /**
- * Display RSS feed link in the topbar 
+ * Display RSS feed link in the topbar.
  *
- * @since 1.0
+ * @return	string	The RSS feed and maybe a Twitter link
+ * @since	1.0
  */
 function cakifo_topbar_rss() {
 	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) . '</div>' );
@@ -469,11 +503,11 @@ function cakifo_topbar_rss() {
 /**
  * Function for deciding which pages should have a one-column layout.
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_one_column() {
 
-	if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) )
+	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
 	elseif ( is_front_page() && ! is_home() ) // Static frontpage
@@ -486,7 +520,8 @@ function cakifo_one_column() {
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
  *
- * @since 1.0
+ * @return	string	'layout-1c'
+ * @since	1.0
  */
 function cakifo_theme_layout_one_column( $layout ) {
 	return 'layout-1c';
@@ -495,13 +530,14 @@ function cakifo_theme_layout_one_column( $layout ) {
 /**
  * Disables sidebars if viewing a one-column page.
  *
- * @since 1.0
+ * @param	array	$sidebars_widgets	Array with all the widgets for all the sidebars
+ * @return	array	$sidebars_widgets	Array with with the primary and secondary sidebar removed
+ * @since	1.0
  */
 function cakifo_disable_sidebars( $sidebars_widgets ) {
 	global $wp_query;
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
-
 		if ( 'layout-1c' == theme_layouts_get_layout() || is_404() ) {
 			$sidebars_widgets['primary'] = false;
 			$sidebars_widgets['secondary'] = false;
@@ -514,7 +550,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 /**
  * Set $content_width based on the current post layout
  *
- * @since 1.3
+ * @since	1.3
  */
 function cakifo_content_width() {
 
@@ -535,7 +571,7 @@ function cakifo_content_width() {
  * Removes the background image from style.css if
  * the user has selected a custom background color
  *
- * @since 1.3
+ * @since	1.3
  */
 function cakifo_custom_background_callback() {
 
@@ -543,7 +579,7 @@ function cakifo_custom_background_callback() {
 	$image = get_background_image();
 
 	/* If there's an image, just call the normal WordPress callback. We won't do anything here */
-	if ( !empty( $image ) ) {
+	if ( ! empty( $image ) ) {
 		_custom_background_cb();
 		return;
 	}
@@ -568,14 +604,13 @@ function cakifo_custom_background_callback() {
  * Allow the user to upload a new logo or change between image and text 
  * using the WordPress header function 
  *
- * @since 1.0
+ * @param	string	$title
+ * @return	string	$title	The title as an image or as text
+ * @since	1.0
  */
 function cakifo_logo( $title ) {
 
-	//$tag = ( is_home() || is_front_page() ) ? 'h1' : 'h4';
-
 	if ( $title = get_bloginfo( 'name' ) ) {
-
 		// Check if there's a header image, else return the blog name
 		$maybe_image = ( get_header_image() ) ? '<span class="assistive-text">' . $title . '</span><img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
 
@@ -589,7 +624,7 @@ function cakifo_logo( $title ) {
 /**
  * Styles the header image and text displayed on the blog
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_header_style() {
 
@@ -684,9 +719,9 @@ if ( ! function_exists( 'debug' ) ) {
 }
  
 /**
- * Adds an author box at the end of single posts
+ * Function to add an author box
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_author_box() { ?>
 
@@ -712,6 +747,11 @@ function cakifo_author_box() { ?>
 	endif;
 }
 
+/**
+ * Place the author box at the end of single posts
+ *
+ * @since	1.3
+ */
 function cakifo_place_author_box() {
 	$prefix = hybrid_get_prefix();
 	
@@ -728,9 +768,9 @@ function cakifo_place_author_box() {
  * separate each of the elements into an attachment API that can be used across multiple themes.  Keep 
  * this in mind if you plan on using the current filter hooks in this function.
  *
- * @author Justin Tadlock
- * @link http://justintadlock.com
- * @since 1.0
+ * @author	Justin Tadlock
+ * @link	http://justintadlock.com
+ * @since	1.0
  */
 function cakifo_image_info() {
 
@@ -809,8 +849,8 @@ function cakifo_image_info() {
 /**
  * Get the values of image sizes
  *
- * @since 1.3
- * @return array An array of all the images sizes
+ * @return	array	An array of all the images sizes
+ * @since	1.3
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
@@ -840,11 +880,10 @@ function cakifo_get_image_sizes() {
 /**
  * Get the values of a image size
  *
- * @since 1.3
- * @param string $name Your unique name for this image size or a WP default
- * @return array Array containing 'width', 'height', 'crop'.
+ * @param	string	$name	Your unique name for this image size or a WP default
+ * @return	array	Array containing 'width', 'height', 'crop'
+ * @since	1.3
  */
-
 function cakifo_get_image_size( $name ) {
 
 	$image_sizes = cakifo_get_image_sizes();
@@ -858,10 +897,10 @@ function cakifo_get_image_size( $name ) {
 /**
  * Returns URLs found in the content
  *
- * @since 1.0
- * @param string $type http|href Default is http
- * @param $content The content to find URLs in. Default is the post content
- * @return array Array containing URLs found in the content
+ * @param	string	$type		Can be http or href. Default is http
+ * @param	string	$content	The content to find URLs in. Default is the post content
+ * @return	array				Array containing URLs found in the content
+ * @since	1.0
  */
 function cakifo_url_grabber( $type = 'http', $content = null ) {
 
@@ -869,8 +908,8 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 	if ( ! isset( $content ) )
 		$content = get_the_content();
 
-	/* If $type == 'href', get all URLs from <a href=""> */
-	if ( $type == 'href' ) {
+	/* If 'href' == $type, get all URLs from <a href=""> */
+	if ( 'href' == $type ) {
 		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
 			return false;
 

@@ -5,8 +5,8 @@
  * This is the default attachment template.  It is used when visiting the singular view of a post attachment 
  * page (images, videos, audio, etc.).
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 get_header(); // Loads the header.php template ?>
@@ -28,7 +28,7 @@ get_header(); // Loads the header.php template ?>
             <header class="entry-header">
 				<?php
 					echo apply_atomic_shortcode( "attachment_metadeta", '<div class="entry-format">' . sprintf( 
-						__( 'Published on [entry-published] in <a href="%1$s" title="Return to %2$s" rel="gallery">%2$s</a> [entry-edit-link before=" | "]', 'cakifo' ), 
+							__( 'Published on [entry-published] in <a href="%1$s" title="Return to %2$s" rel="gallery">%2$s</a> [entry-edit-link before=" | "]', 'cakifo' ), 
 							esc_url( get_permalink( $post->post_parent ) ),
 							get_the_title( $post->post_parent )
 					) . '</div>' );

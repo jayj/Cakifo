@@ -4,8 +4,8 @@
  *
  * A custom page template for displaying blog archives.
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 get_header(); // Loads the header.php template ?>
@@ -27,6 +27,7 @@ get_header(); // Loads the header.php template ?>
                     <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
                     <?php
+						// Get the thumbnail
 						if ( current_theme_supports( 'get-the-image' ) )
 							get_the_image( array(
 								'meta_key' => 'Thumbnail',
@@ -81,7 +82,13 @@ get_header(); // Loads the header.php template ?>
             <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
 
 			<?php
-				$display = apply_filters( 'show_singular_comments', true ); // To disable in child theme: add_filter( 'show_singular_comments', '__return_false' ); 
+				/**
+				 * Show comments on singular pages? (not single posts)
+				 *
+				 * On by default. Disable in child theme with
+				 * add_filter( 'show_singular_comments', '__return_false' );
+				 */
+				$display = apply_filters( 'show_singular_comments', true );
 
 				if ( $display )
 					comments_template( '/comments.php', true ); // Loads the comments.php template

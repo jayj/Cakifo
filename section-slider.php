@@ -2,17 +2,17 @@
 /**
  * Featured Content (slider) Template
  *
- * This file is used for the slider on the home and blog page.
+ * This template file is used for the slider on the home and blog page.
+ * Child Themes can replace it via {section-slider.php}
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 ?>
 
 <?php
 	/**
-	 * Select posts from selected categories
-	 * or sticky posts
+	 * Select posts from the selected categories
 	 */
 	if ( hybrid_get_setting( 'featured_category' ) ) :
 		$feature_query = array( 
@@ -22,6 +22,7 @@
 			'post_status' => 'publish',
 			'no_found_rows' => true,
 		);
+	// No selected categories, use Sticky Posts
 	else :
 		$feature_query = array(
 			'post__in' => get_option( 'sticky_posts' ),
@@ -61,7 +62,7 @@
 							 * Get the post thumbnail with the slider image size
 							 *
 							 * Either from a custom field, the featured image function,
-							 * or an embed video (video post format)
+							 * or an embed video (video post format only)
 							 */
 							$thumbnail = get_the_image( array(
 								'size' => 'slider',
@@ -73,6 +74,7 @@
 
 							$thumbnail_size = cakifo_get_image_size( 'slider' );
 
+							// There's a thumbnail!
 							if ( $thumbnail ) :
 
 								echo $thumbnail;

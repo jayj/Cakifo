@@ -6,8 +6,8 @@
  * to the comment type (comment.php, comment-{$comment_type}.php, comment-pingback.php, 
  * comment-trackback.php) in a child theme.
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 	global $post, $comment;

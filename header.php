@@ -6,8 +6,8 @@
  * somewhere near the top of the file. It is used mostly as an opening wrapper, which is closed with the 
  * footer.php file. It also executes key functions needed by the theme, child themes, and plugins. 
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 ?>
 <!doctype html>
@@ -58,7 +58,12 @@
     	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
 
         <?php 
-			 // Load the slider.php template
+			/**
+			 * Include the slider {section-slider.php} template part file
+			 * if it's the front/post page and the setting is activated
+			 * 
+			 * Child Themes can replace this template part file via {section-slider.php}
+			 */
 			if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
 				get_template_part( 'section', 'slider' );
 		?>

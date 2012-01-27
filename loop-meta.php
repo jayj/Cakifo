@@ -5,8 +5,8 @@
  * Displays information at the top of the page about archive and search results when viewing those pages.  
  * This is not shown on the front page or singular views.
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 ?>
 

@@ -2,14 +2,14 @@
 /**
  * Additional shortcodes for use within the theme.
  *
- * @package Cakifo
- * @subpackage Functions
+ * @package		Cakifo
+ * @subpackage	Functions
  */
 
 /**
- * Registers new shortcodes.
+ * Registers new shortcodes
  *
- * @since 1.0
+ * @since	1.0
  */
 function cakifo_register_shortcodes() {
 	add_shortcode( 'rss-link', 'cakifo_rss_link_shortcode' );
@@ -35,8 +35,8 @@ function cakifo_register_shortcodes() {
 /** 
  * RSS link shortcode
  *
- * @since 1.0
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.0
  */
 function cakifo_rss_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
@@ -52,10 +52,10 @@ function cakifo_rss_link_shortcode( $atts ) {
  * Twitter username and/or link.
  *
  * Taken from my Twitter Profile Field plugin
+ * @link	http://wordpress.org/extend/plugins/twitter-profile-field/
  *
- * @link http://wordpress.org/extend/plugins/twitter-profile-field/
+ * @param	array	$atts
  * @since 1.0
- * @param array $atts
  */
 function cakifo_twitter_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
@@ -76,10 +76,10 @@ function cakifo_twitter_shortcode( $atts ) {
 }
 
 /**
- * Delicious link shortcode.
+ * Delicious link shortcode
  *
- * @since 1.0
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.0
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -91,11 +91,12 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
 }
 
 /**
- * Digg link shortcode.
+ * Digg link shortcode
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
- * @since 1.0
- * @param array $atts
+ *
+ * @param	array	$atts
+ * @since	1.0
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -113,8 +114,9 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
- * @since 1.0
- * @param array $atts
+ *
+ * @param	array	$atts
+ * @since	1.0
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
 
@@ -146,10 +148,10 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 }
 
 /**
- * Twitter link shortcode.
+ * Twitter link shortcode
  *
- * @since 1.0
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.0
  */
 function cakifo_entry_twitter_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -176,7 +178,7 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 			'via' => $via,
 		) );
 
-	// Load the Twitter iframe
+	// Else, load the Twitter iframe
 	else :
 
 		// Set the height to 62px if the layout is vertical and the height is the default value
@@ -204,8 +206,9 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  * Google +1 shortcode
  *
  * @link http://www.google.com/+1/button/
- * @since 1.2
- * @param array $atts
+ *
+ * @param	array	$atts
+ * @since	1.2
  */
 function cakifo_entry_googleplus_link_shortcode( $atts ) {
 
@@ -235,8 +238,8 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @since 1.1
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.1
  */
 function cakifo_entry_published_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -259,8 +262,8 @@ function cakifo_entry_published_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @since 1.1
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.1
  */
 function cakifo_comment_published_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -278,8 +281,8 @@ function cakifo_comment_published_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @since 1.3
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.3
  */
 function cakifo_entry_author_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -296,8 +299,8 @@ function cakifo_entry_author_shortcode( $atts ) {
 /**
  * Displays the post format of the current post
  *
- * @since 1.3
- * @param array $atts
+ * @param	array	$atts
+ * @since	1.3
  */
 function cakifo_entry_format_shortcode( $atts ) {
 	$atts = shortcode_atts( array(

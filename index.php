@@ -5,8 +5,8 @@
  * This is the default template.  It is used when a more specific template can't be found to display
  * posts.  It is unlikely that this template will ever be used, but there may be rare cases.
  *
- * @package Cakifo
- * @subpackage Template
+ * @package		Cakifo
+ * @subpackage	Template
  */
 
 get_header(); // Loads the header.php template ?>

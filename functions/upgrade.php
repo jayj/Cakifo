@@ -7,7 +7,9 @@
  * If there's a update, it will show a notice in the dashboard
  * and allows you to upgrade directly from the dashboard
  *
- * @credits to the Genesis Framework for some of the code
+ * @package		Cakifo
+ * @subpackage	Functions
+ * @credits		Genesis Framework for some of the code
  */
 
 add_action( 'admin_notices', 'cakifo_update_notice' );
@@ -19,14 +21,15 @@ add_action( 'load-themes.php', 'cakifo_clear_update_transient' );
 /**
  * Pings the server for information about the new version
  *
- * @since 1.3
- * @return array List of information about the new update
+ * @return	array	List of information about the new update
+ * @since	1.3
  */
 function cakifo_update_check() {
 
 	// Send request to see if there's an update available
 	$response = wp_remote_get( 'http://wpthemes.jayj.dk/themerss/cakifo.json' );
 
+	// Error, abort
 	if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
 		return false;
 
@@ -52,8 +55,8 @@ function cakifo_update_check() {
 /**
  * Checks if there's a new version available 
  *
- * @since 1.3
- * @return boolean true if there's an update, false if no
+ * @return	boolean		True if there's an update, false if no
+ * @since 	1.3
  */
 function cakifo_update_available() {
 
@@ -83,7 +86,7 @@ function cakifo_update_available() {
 /**
  * Display the update notice
  * 
- * @since 1.2
+ * @since	1.2
  */
 function cakifo_update_notice() {
 
@@ -128,7 +131,7 @@ function cakifo_update_notice() {
  * so that the server will do a fresh check, when the user
  * loads certain admin pages.
  *
- * @since 1.3
+ * @since	1.3
  */
 function cakifo_clear_update_transient() {
 	delete_transient( 'cakifo-update-check' );
@@ -143,7 +146,7 @@ function cakifo_clear_update_transient() {
  * update, and if so, adds the proper array to the $value->response
  * object. WordPress handles the rest.
  *
- * @since 1.3
+ * @since	1.3
  */
 function cakifo_update_push( $value ) {
 
