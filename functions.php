@@ -171,26 +171,42 @@ function cakifo_theme_setup() {
 
 	/*
 	 * Custom header for logo upload
-	 *
-	 * @todo Improve this
 	 */
 	add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
 
 	/**
-	 * The color, height and width of your custom logo
-	 * Add a filter to cakifo_header_textcolor, cakifo_header_image_width and cakifo_header_image_height 
-	 * to change these values in your child theme
+	 * Header text color
 	 */
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) ); // #54a8cf is the link color from style.css
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) ); // Could be cool with flexible width and heights (@link http://core.trac.wordpress.org/ticket/17242)
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 500 ) );
+
+	/**
+	 * Define header width and height
+	 */
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 150 ) );
+
+	/**
+	 * Add support for flexible headers
+	 * WordPress 3.4+ only
+	 * @link http://core.trac.wordpress.org/ticket/17242
+	 */
+	$header_args = array(
+		'random-default' => false,
+		'flex-height' => true,
+		'flex-width' => true,
+		'max-width' => 980,
+	);
+
+	add_theme_support( 'custom-header', $header_args );
 
 	// Load the logo from the parent theme images folder
 	register_default_headers( array(
 		'logo' => array(
 			'url' => '%s/images/logo.png',
 			'thumbnail_url' => '%s/images/logo.png',
-			'description' => __( 'Logo.png from the Cakifo images folder', 'cakifo' )
+			'description' => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
+			'width' => 300,
+			'height' => 59
 		)
 	) );
 
@@ -200,11 +216,10 @@ function cakifo_theme_setup() {
 			'childtheme_logo' => array(
 				'url' => CHILD_THEME_URI . '/images/logo.png',
 				'thumbnail_url' => CHILD_THEME_URI . '/images/logo.png',
-				'description' => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' )
+				'description' => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
 			)
 		) );
 	}
-
 }
 
 /**
@@ -638,7 +653,7 @@ function cakifo_header_style() {
 	<style type="text/css">
 	<?php
 		// Has the text been hidden?
-		if ( 'blank' == get_header_textcolor() && !get_header_image() ) :
+		if ( 'blank' == get_header_textcolor() && ! get_header_image() ) :
 	?>
 		#site-title,
 		#site-description {
@@ -648,7 +663,7 @@ function cakifo_header_style() {
 		}
 	<?php
 		// If the user has set a custom color for the text use that
-		elseif( !get_header_image() ) :
+		elseif( ! get_header_image() ) :
 	?>
 		#site-title a,
 		#site-description {
@@ -698,12 +713,15 @@ function cakifo_admin_header_style() {
 		}
 	<?php endif; ?>
 	#headimg {
-		max-width: 1000px;
-		height: auto!important;
-		width: 100%;
+		<?php if ( ! function_exists( 'get_current_header_data' ) ) { ?>
+			max-width: 1000px;
+			height: auto!important;
+			width: 100%;
+		<?php } ?>
 	}
 	</style>
 <?php
+
 }
 
 /**
