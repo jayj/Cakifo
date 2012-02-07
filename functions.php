@@ -121,8 +121,15 @@ function cakifo_theme_setup() {
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
 
-	/* Topbar RSS link */
-	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+	/* Topbar search form */
+	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+	
+	/**
+	 * If you want the old RSS and Twitter link, do this in your child theme:
+	 * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+	*/
+	
 
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
@@ -239,7 +246,7 @@ function cakifo_enqueue_script() {
 	 * use a custom Modernizr build: www.modernizr.com/download/
 	 *
 	 * Use wp_deregister_script( 'modernizr' ); and
-	 * wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
+	 * 	wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
 	 * in your child theme functions.php
 	 */
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', '', '2.5.1' );
@@ -359,13 +366,16 @@ function cakifo_slider_javascript() {
 
 	echo "<script>
 			jQuery(document).ready(function($) {
+
 				$('#slider').slides(
 					{$json}
 				);
 
-				 // Add display: block; if there's only 1 slide
-				if ( $('.slide').length == 1 )
-					$('.slide').css( 'display', 'block' );
+				// Add display: block; if there's only 1 slide
+				var slide = $('.slide');
+				if ( slide.length === 1 ) {
+					slide.css( 'display', 'block' );
+				}
 			});
 		</script>";
 }
@@ -508,11 +518,25 @@ function cakifo_image_entry_meta( $meta ) {
 /**
  * Display RSS feed link in the topbar.
  *
+ * No longer showed by default in version 1.3
+ * If you still want it, use this in your child theme:
+ * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+ * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+ *
  * @return	string	The RSS feed and maybe a Twitter link
  * @since	1.0
  */
 function cakifo_topbar_rss() {
 	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) . '</div>' );
+}
+
+/**
+ * Add a search form to the topbar.
+ *
+ * @since	1.3
+ */
+function cakifo_topbar_search() {
+	get_search_form();	
 }
 
 /**
