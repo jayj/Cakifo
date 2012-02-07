@@ -51,7 +51,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
-	add_theme_support( 'hybrid-core-template-hierarchy' );
+	//add_theme_support( 'hybrid-core-template-hierarchy' );
 
 	// Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated (WordPress SEO is checked for in Hybrid Core)
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
