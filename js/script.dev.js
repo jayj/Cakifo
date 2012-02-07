@@ -19,19 +19,19 @@ jQuery(document).ready(function($) {
 	$(window).load(function() { // Make sure everyting is loaded
 	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget').each(function() {
 
-		$el = $(this),
+		var $el = $(this),
 		topPosition = $el.position().top;
 
-		if (currentRowStart != topPosition) {
+		if (currentRowStart !== topPosition) {
 			// We just came to a new row.  Set all the heights on the completed row
 			for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
 				rowDivs[currentDiv].height(currentTallest);
 			}
 
 			// Set the variables for the new row
-			rowDivs.length = 0, // empty the array
-			currentRowStart = topPosition,
-			currentTallest = $el.height(),
+			rowDivs.length = 0; // empty the array
+			currentRowStart = topPosition;
+			currentTallest = $el.height();
 			rowDivs.push($el);
 		} else {
 			rowDivs.push($el);
