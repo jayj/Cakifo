@@ -689,6 +689,7 @@ table {
 }
 
 #topbar .menu-item {
+	background: #262626 url(images/topbar.png) repeat;
 	float: left;
 	position: relative;
 }
