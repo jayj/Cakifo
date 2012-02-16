@@ -104,6 +104,9 @@ function get_the_image( $args = array() ) {
 	if ( !is_array( $image_cache ) )
 		$image_cache = array();
 
+	/* Set up a default, empty $image_html variable. */
+	$image_html = '';
+
 	/* If there is no cached image, let's see if one exists. */
 	if ( !isset( $image_cache[$key] ) || empty( $cache ) ) {
 
@@ -139,21 +142,21 @@ function get_the_image( $args = array() ) {
 				get_the_image_meta_key_save( $args, $image['src'] );
 
 			/* Format the image HTML. */
-			$image = get_the_image_format( $args, $image );
+			$image_html = get_the_image_format( $args, $image );
 
 			/* Set the image cache for the specific post. */
-			$image_cache[$key] = $image;
+			$image_cache[$key] = $image_html;
 			wp_cache_set( $post_id, $image_cache, 'get_the_image' );
 		}
 	}
 
 	/* If an image was already cached for the post and arguments, use it. */
 	else {
-		$image = $image_cache[$key];
+		$image_html = $image_cache[$key];
 	}
 
 	/* Allow plugins/theme to override the final output. */
-	$image = apply_filters( 'get_the_image', $image );
+	$image_html = apply_filters( 'get_the_image', $image_html );
 
 	/* If $format is set to 'array', return an array of image attributes. */
 	if ( 'array' == $format ) {
@@ -162,7 +165,7 @@ function get_the_image( $args = array() ) {
 		$out = array();
 
 		/* Get the image attributes. */
-		$atts = wp_kses_hair( $image, array( 'http' ) );
+		$atts = wp_kses_hair( $image_html, array( 'http' ) );
 
 		/* Loop through the image attributes and add them in key/value pairs for the return array. */
 		foreach ( $atts as $att )
@@ -176,11 +179,19 @@ function get_the_image( $args = array() ) {
 
 	/* Or, if $echo is set to false, return the formatted image. */
 	elseif ( false === $echo ) {
-		return $args['before'] . $image . $args['after'];
+		return $args['before'] . $image_html . $args['after'];
 	}
 
+	/* If there is a $post_thumbnail_id, do the actions associated with get_the_post_thumbnail(). */
+	if ( isset( $image['post_thumbnail_id'] ) )
+		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
+
 	/* Display the image if we get to this point. */
-	echo $args['before'] . $image . $args['after'];
+	echo $args['before'] . $image_html . $args['after'];
+
+	/* If there is a $post_thumbnail_id, do the actions associated with get_the_post_thumbnail(). */
+	if ( isset( $image['post_thumbnail_id'] ) )
+		do_action( 'end_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
 }
 
 /* Internal Functions */
@@ -197,25 +208,18 @@ function get_the_image( $args = array() ) {
 function get_the_image_by_meta_key( $args = array() ) {
 
 	/* If $meta_key is not an array. */
-	if ( !is_array( $args['meta_key'] ) ) {
+	if ( !is_array( $args['meta_key'] ) )
+		$args['meta_key'] = array( $args['meta_key'] );
 
-		/* Get the image URL by the single meta key. */
-		$image = get_post_meta( $args['post_id'], $args['meta_key'], true );
-	}
+	/* Loop through each of the given meta keys. */
+	foreach ( $args['meta_key'] as $meta_key ) {
 
-	/* If $meta_key is an array. */
-	elseif ( is_array( $args['meta_key'] ) ) {
+		/* Get the image URL by the current meta key in the loop. */
+		$image = get_post_meta( $args['post_id'], $meta_key, true );
 
-		/* Loop through each of the given meta keys. */
-		foreach ( $args['meta_key'] as $meta_key ) {
-
-			/* Get the image URL by the current meta key in the loop. */
-			$image = get_post_meta( $args['post_id'], $meta_key, true );
-
-			/* If an image was found, break out of the loop. */
-			if ( !empty( $image ) )
-				break;
-		}
+		/* If an image was found, break out of the loop. */
+		if ( !empty( $image ) )
+			break;
 	}
 
 	/* If a custom key value has been given for one of the keys, return the image URL. */
@@ -395,19 +399,15 @@ function get_the_image_format( $args = array(), $image = false ) {
 	/* Loop through the custom field keys and add them as classes. */
 	if ( is_array( $meta_key ) ) {
 		foreach ( $meta_key as $key )
-			$classes[] = str_replace( ' ', '-', strtolower( $key ) );
+			$classes[] = sanitize_html_class( $key );
 	}
 
 	/* Add the $size and any user-added $image_class to the class. */
-	$classes[] = $size;
-	$classes[] = $image_class;
+	$classes[] = sanitize_html_class( $size );
+	$classes[] = sanitize_html_class( $image_class );
 
 	/* Join all the classes into a single string and make sure there are no duplicates. */
 	$class = join( ' ', array_unique( $classes ) );
-
-	/* If there is a $post_thumbnail_id, apply the WP filters normally associated with get_the_post_thumbnail(). */
-	if ( !empty( $image['post_thumbnail_id'] ) )
-		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
 
 	/* Add the image attributes to the <img /> element. */
 	$html = '<img src="' . $image['src'] . '" alt="' . esc_attr( strip_tags( $image_alt ) ) . '" class="' . esc_attr( $class ) . '"' . $width . $height . ' />';
@@ -415,10 +415,6 @@ function get_the_image_format( $args = array(), $image = false ) {
 	/* If $link_to_post is set to true, link the image to its post. */
 	if ( $link_to_post )
 		$html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( apply_filters( 'the_title', get_post_field( 'post_title', $post_id ) ) ) . '">' . $html . '</a>';
-
-	/* If there is a $post_thumbnail_id, apply the WP filters normally associated with get_the_post_thumbnail(). */
-	if ( !empty( $image['post_thumbnail_id'] ) )
-		do_action( 'end_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
 
 	/* If there is a $post_thumbnail_id, apply the WP filters normally associated with get_the_post_thumbnail(). */
 	if ( !empty( $image['post_thumbnail_id'] ) )
