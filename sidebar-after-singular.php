@@ -18,6 +18,6 @@ if ( is_active_sidebar( 'after-singular' ) ) : ?>
 
 	</aside> <!-- #sidebar-after-singular -->
 
-    <?php do_atomic( 'after_sidebar_singular' ); // cakifo_after_sidebar_singular ?>
+	<?php do_atomic( 'after_sidebar_singular' ); // cakifo_after_sidebar_singular ?>
 
 <?php endif; ?>

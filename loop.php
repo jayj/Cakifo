@@ -20,23 +20,24 @@
 ?>
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
-    <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+	<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
 		<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
 
-        <header class="entry-header">
-            <?php if ( get_post_format() ) : ?>
-                <hgroup>
-                    <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-                    <?php echo apply_atomic_shortcode( 'entry_format', '<h3 class="entry-format"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '">[entry-format]</a></h3>' ); ?>
-                </hgroup>
-            <?php else : ?>
-            	<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-            <?php endif; ?>
+		<header class="entry-header">
+			<?php if ( get_post_format() ) : ?>
+				<hgroup>
+					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+					<?php echo apply_atomic_shortcode( 'entry_format', '<h3 class="entry-format"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '">[entry-format]</a></h3>' ); ?>
+				</hgroup>
+			<?php else : ?>
+				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+			<?php endif; ?>
 
-        	<?php
+			<?php
 				// The default format (i.e., a normal post) returns false
 				$format = get_post_format();
+
 				if ( false === $format )
 					$format = 'standard';
 
@@ -46,81 +47,81 @@
 				if ( 'post' == get_post_type() )
 					echo apply_atomic_shortcode( "byline_{$format}", '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' );
 			?>
-        </header> <!-- .entry-header -->
+		</header> <!-- .entry-header -->
 
-        <?php
+		<?php
 			/**
 			 * Get the thumbnail
 			 */
 			if ( current_theme_supports( 'get-the-image' ) )
 				get_the_image( array(
-					'size' => 'thumbnail',
+					'size'       => 'thumbnail',
 					'attachment' => false
 				) );
-        ?>
+		?>
 
 		<?php
-        	/**
-        	 * Status format
+			/**
+			 * Status format
 			 *
-        	 * Can be overwritten in a Child theme via {loop-status.php}
-        	 */
+			 * Can be overwritten in a Child theme via {loop-status.php}
+			 */
 			if ( has_post_format( 'status' ) ) :
 		?>
-        
-        	<div class="entry-content">
-            	<div class="note">
+		
+			<div class="entry-content">
+				<div class="note">
 					<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ); ?>
-                    <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-                </div>
-        		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-        	</div> <!-- .entry-content -->
+					<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+				</div>
+				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			</div> <!-- .entry-content -->
 
 		<?php
-        	/**
-        	 * Quote, Image or Gallery format
+			/**
+			 * Quote, Image or Gallery format
 			 *
-        	 * Can be overwritten in a Child theme via
+			 * Can be overwritten in a Child theme via
 			 * {loop-quote.php}, {loop-image.php}, or {loop-gallery.php}
-        	 */
+			 */
 			elseif ( has_post_format( 'quote' ) || has_post_format( 'image' ) || has_post_format( 'gallery' )  ) :
 		?>
 
-            <div class="entry-content">
-            	<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-            	<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-            </div> <!-- .entry-content -->
+			<div class="entry-content">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			</div> <!-- .entry-content -->
 
 		<?php
-        	/**
-        	 * Only display Excerpts for Archives and Search pages
-        	 */
+			/**
+			 * Only display Excerpts for Archives and Search pages
+			 */
 			elseif ( is_archive() || is_search() ) :
 		?>
 
-        	<div class="entry-summary">
-        		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-                <?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-        	</div> <!-- .entry-summary -->
+			<div class="entry-summary">
+				<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			</div> <!-- .entry-summary -->
 
 		<?php
-        	/**
-        	 * Any other post format
+			/**
+			 * Any other post format
 			 *
-        	 * Can be overwritten in a Child theme via
+			 * Can be overwritten in a Child theme via
 			 * {loop-link.php}, {loop-aside.php}, {loop-video.php}, {loop-chat.php}, or {loop-audio.php}
-        	 */
+			 */
 			else :
 		?>
 
-        	<div class="entry-content">
-        		<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-        		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-        	</div> <!-- .entry-content -->
+			<div class="entry-content">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			</div> <!-- .entry-content -->
 
-        <?php endif; ?>
+		<?php endif; ?>
 
-        <?php
+		<?php
 			/**
 			 * Entry meta
 			 */
@@ -128,7 +129,7 @@
 				echo apply_atomic_shortcode( "entry_meta_{$format}", '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 		?>
 
-        <div class="clear"></div>
+		<div class="clear"></div>
 
 		<?php
 			// Loads the sidebar-after-single.php template
@@ -153,6 +154,6 @@
 		<?php comments_template( '/comments.php', true ); // Loads the comments.php template ?>
 
 		<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
-    </article> <!-- #post-<?php the_ID(); ?> -->
+	</article> <!-- #post-<?php the_ID(); ?> -->
 
 <?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>

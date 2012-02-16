@@ -43,37 +43,37 @@ function cakifo_theme_meta_box() { ?>
 	<table class="form-table">
 
 		<tr>
-        	<th>
-            	<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show Featured Content slider?', 'cakifo' ); ?></label>
-            </th>
+			<th>
+				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show Featured Content slider?', 'cakifo' ); ?></label>
+			</th>
 
-            <td>
-            	<p><input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" value="1" <?php checked( hybrid_get_setting( 'featured_show' ), 1 ); ?> /></p>
+			<td>
+				<p><input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" value="1" <?php checked( hybrid_get_setting( 'featured_show' ), 1 ); ?> /></p>
 				<p><?php _e( 'Check to display the "Featured Content" slider', 'cakifo' ); ?></p>
-            </td>
-        </tr>
+			</td>
+		</tr>
 
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category:', 'cakifo' ); ?></label>
 			</th>
 
-            <td>
-            <?php $categories = get_categories(); ?>
+			<td>
+			<?php $categories = get_categories(); ?>
 
-            <p>
-                <select id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>">
-                <option value="" <?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
+			<p>
+				<select id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>">
+				<option value="" <?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
 
-                    <?php foreach ( $categories as $cat ) { ?>
-                        <option value="<?php echo $cat->term_id; ?>" <?php selected( hybrid_get_setting( 'featured_category' ), $cat->term_id ); ?>><?php echo esc_attr( $cat->name ); ?></option>
-                    <?php } ?>
+					<?php foreach ( $categories as $cat ) { ?>
+						<option value="<?php echo $cat->term_id; ?>" <?php selected( hybrid_get_setting( 'featured_category' ), $cat->term_id ); ?>><?php echo esc_attr( $cat->name ); ?></option>
+					<?php } ?>
 
-                </select>
-            </p>
+				</select>
+			</p>
 
-            <p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
-            </td>
+			<p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
+			</td>
 		</tr>
 
 		<tr>
@@ -83,25 +83,25 @@ function cakifo_theme_meta_box() { ?>
 			<td>
 				<p><input type="number" min="-1" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
 				<p><?php _e( 'How many featured posts should be shown? <code>-1</code> will show all posts in the category.', 'cakifo' ); ?>
-                <?php printf( __( '%s is the default', 'cakifo' ), '<code>5</code>' ); ?></p>
+				<?php printf( __( '%s is the default', 'cakifo' ), '<code>5</code>' ); ?></p>
 			</td>
 		</tr>
 
 		<tr>
 			<th>
-            	<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Categories:', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Categories:', 'cakifo' ); ?></label>
 			</th>
 			<td>
 				<p>
-                	<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Multiple categories may be chosen by holding the <code>Ctrl</code> key and selecting.', 'cakifo' ); ?></label>
-                    <br />
+					<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Multiple categories may be chosen by holding the <code>Ctrl</code> key and selecting.', 'cakifo' ); ?></label>
+					<br />
 
-                    <select id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" style="height:150px;">
+					<select id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" style="height:150px;">
 						<?php foreach( $categories as $cat ) { ?>
-                            <option value="<?php echo $cat->term_id; ?>" <?php if ( is_array( hybrid_get_setting( 'headlines_category' ) ) && in_array( $cat->term_id, hybrid_get_setting( 'headlines_category' ) ) ) echo ' selected="selected"'; ?>><?php echo esc_html( $cat->name ); ?></option>
-                        <?php } ?>
-                    </select>
-                </p>
+							<option value="<?php echo $cat->term_id; ?>" <?php if ( is_array( hybrid_get_setting( 'headlines_category' ) ) && in_array( $cat->term_id, hybrid_get_setting( 'headlines_category' ) ) ) echo ' selected="selected"'; ?>><?php echo esc_html( $cat->name ); ?></option>
+						<?php } ?>
+					</select>
+				</p>
 			</td>
 		</tr>
 		<tr>
@@ -114,7 +114,7 @@ function cakifo_theme_meta_box() { ?>
 		</tr>
 
 		<tr>
-        	<?php $current_user = wp_get_current_user(); ?>
+			<?php $current_user = wp_get_current_user(); ?>
 
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>"><?php _e( 'Twitter username:', 'cakifo' ); ?></label>
@@ -134,10 +134,10 @@ function cakifo_theme_meta_box() { ?>
 function cakifo_theme_validate_settings( $input ) {
 
 	/* Validate and/or sanitize the options */
-	$input['featured_show'] = ( isset( $input['featured_show'] ) ? 1 : 0 );
+	$input['featured_show']     = ( isset( $input['featured_show'] ) ? 1 : 0 );
 	$input['featured_category'] = absint( $input['featured_category'] );
-	$input['twitter_username'] = wp_filter_nohtml_kses( $input['twitter_username'] );
-	$input['featured_posts'] = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : '5' ); // 5 is the default number of featured posts
+	$input['twitter_username']  = wp_filter_nohtml_kses( $input['twitter_username'] );
+	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : '5' ); // 5 is the default number of featured posts
 
 	/* Return the array of theme settings */
 	return $input;

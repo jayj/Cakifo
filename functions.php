@@ -129,7 +129,6 @@ function cakifo_theme_setup() {
 	 * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
 	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
 	*/
-	
 
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
@@ -199,9 +198,9 @@ function cakifo_theme_setup() {
 	 */
 	$header_args = array(
 		'random-default' => false,
-		'flex-height' => true,
-		'flex-width' => true,
-		'max-width' => 980,
+		'flex-height'    => true,
+		'flex-width'     => true,
+		'max-width'      => 980,
 	);
 
 	add_theme_support( 'custom-header', $header_args );
@@ -209,11 +208,11 @@ function cakifo_theme_setup() {
 	// Load the logo from the parent theme images folder
 	register_default_headers( array(
 		'logo' => array(
-			'url' => '%s/images/logo.png',
+			'url'           => '%s/images/logo.png',
 			'thumbnail_url' => '%s/images/logo.png',
-			'description' => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
-			'width' => 300,
-			'height' => 59
+			'description'   => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
+			'width'         => 300,
+			'height'        => 59
 		)
 	) );
 
@@ -221,9 +220,9 @@ function cakifo_theme_setup() {
 	if ( is_child_theme() && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
-				'url' => CHILD_THEME_URI . '/images/logo.png',
+				'url'           => CHILD_THEME_URI . '/images/logo.png',
 				'thumbnail_url' => CHILD_THEME_URI . '/images/logo.png',
-				'description' => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
+				'description'   => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
 			)
 		) );
 	}
@@ -242,7 +241,7 @@ function cakifo_enqueue_script() {
 	/**
 	 * Modernizr enables HTML5 elements & feature detects
 	 *
-     * For more/fewer features and optimal performance in your child theme,
+	 * For more/fewer features and optimal performance in your child theme,
 	 * use a custom Modernizr build: www.modernizr.com/download/
 	 *
 	 * Use wp_deregister_script( 'modernizr' ); and
@@ -322,30 +321,30 @@ function cakifo_slider_javascript() {
 	 * Default args
 	 */
 	$defaults = array(
-		'play' => '3500', // number, Autoplay slideshow, a positive number will set to true and be the time between slide animation in milliseconds  	
-		'hoverPause' => true, // boolean, Set to true and hovering over slideshow will pause it
-		'generatePagination' => true, // boolean, Auto generate pagination
-		'generateNextPrev' => true, // boolean, Auto generate next/prev buttons
-		'next' => 'slider-next', // string, Class name for next button
-		'prev' => 'slider-prev', // string, Class name for previous button
-		'autoHeight' => true, // boolean, Set to true to auto adjust height
-		'effect' => 'fade', // string, '[next/prev], [pagination]', e.g. 'slide, fade' or simply 'fade' for both
-		'fadeSpeed' => 50, // number, Set the speed of the fading animation in milliseconds
-		'slideSpeed' => 150, // number, Set the speed of the sliding animation in milliseconds
-		'paginationClass' => 'slidesPagination',
-		'preload' => false, // boolean, Set true to preload images in an image based slideshow
-		'preloadImage' => esc_url( $loading_gif ),
-		'randomize' => false, // boolean, Set to true to randomize slides
-		// 'currentClass' => 'current'
-		// 'container => 'slides_container', // string, Class name for slides container. Default is "slides_container"
-		// 'pagination' => 'true', // boolean, If you're not using pagination you can set to false, but don't have to
-		// 'start' => 1, // number, starting slide
-		// 'crossfade' => 'false', // boolean, Crossfade images in a image based slideshow
-		// 'pause' => 0, // number, Pause slideshow on click of next/prev or pagination. A positive number will set to true and be the time of pause in milliseconds
-		// 'autoHeightSpeed'=> 350, // number, Set auto height animation time in milliseconds
-		// 'bigTarget' => 'false', // boolean, Set to true and the whole slide will link to next slide on click
-		// 'animationStart'=> 'function(){}', // Function called at the start of animation
-		// 'animationComplete'=> 'function(){}' // Function called at the completion of animation
+		'play'                 => '3500', // number, Autoplay slideshow, a positive number will set to true and be the time between slide animation in milliseconds  	
+		'hoverPause'           => true, // boolean, Set to true and hovering over slideshow will pause it
+		'generatePagination'   => true, // boolean, Auto generate pagination
+		'generateNextPrev'     => true, // boolean, Auto generate next/prev buttons
+		'next'                 => 'slider-next', // string, Class name for next button
+		'prev'                 => 'slider-prev', // string, Class name for previous button
+		'autoHeight'           => true, // boolean, Set to true to auto adjust height
+		'effect'               => 'fade', // string, '[next/prev], [pagination]', e.g. 'slide, fade' or simply 'fade' for both
+		'fadeSpeed'            => 50, // number, Set the speed of the fading animation in milliseconds
+		'slideSpeed'           => 150, // number, Set the speed of the sliding animation in milliseconds
+		'paginationClass'      => 'slidesPagination',
+		'preload'              => false, // boolean, Set true to preload images in an image based slideshow
+		'preloadImage'         => esc_url( $loading_gif ),
+		'randomize'            => false, // boolean, Set to true to randomize slides
+		// 'currentClass'      => 'current'
+		// 'container          => 'slides_container', // string, Class name for slides container. Default is "slides_container"
+		// 'pagination'        => 'true', // boolean, If you're not using pagination you can set to false, but don't have to
+		// 'start'             => 1, // number, starting slide
+		// 'crossfade'         => 'false', // boolean, Crossfade images in a image based slideshow
+		// 'pause'             => 0, // number, Pause slideshow on click of next/prev or pagination. A positive number will set to true and be the time of pause in milliseconds
+		// 'autoHeightSpeed'   => 350, // number, Set auto height animation time in milliseconds
+		// 'bigTarget'         => 'false', // boolean, Set to true and the whole slide will link to next slide on click
+		// 'animationStart'    => 'function(){}', // Function called at the start of animation
+		// 'animationComplete' => 'function(){}' // Function called at the completion of animation
 	);
 
 	$args = array();
@@ -503,7 +502,6 @@ function cakifo_link_entry_meta( $meta ) {
 }
 
 /**
-/**
  * Change entry meta for the Image post format.
  *
  * @param	string	$meta	The normal entry meta
@@ -520,8 +518,10 @@ function cakifo_image_entry_meta( $meta ) {
  *
  * No longer showed by default in version 1.3
  * If you still want it, use this in your child theme:
- * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
- * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+ *		<code>
+ * 			remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+ * 			add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+ *		</code>
  *
  * @return	string	The RSS feed and maybe a Twitter link
  * @since	1.0
@@ -578,7 +578,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
 		if ( 'layout-1c' == theme_layouts_get_layout() || is_404() ) {
-			$sidebars_widgets['primary'] = false;
+			$sidebars_widgets['primary']   = false;
 			$sidebars_widgets['secondary'] = false;
 		}
 	}
@@ -747,18 +747,6 @@ function cakifo_admin_header_style() {
 <?php
 
 }
-
-/**
- * Debug function
- */
-if ( ! function_exists( 'debug' ) ) { 
-	function debug( $function, $var_dump = true ) {
-		if ( $var_dump )
-			var_dump( $function );
-		else
-			echo '<pre>' . print_r ( $function, true ) . '</pre>';	
-	}
-}
  
 /**
  * Function to add an author box
@@ -767,24 +755,24 @@ if ( ! function_exists( 'debug' ) ) {
  */
 function cakifo_author_box() { ?>
 
-    <?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
+	<?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
 
-        <div class="author-profile vcard">
+		<div class="author-profile vcard">
 
-            <h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?></h4>
+			<h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?></h4>
 
-            <?php echo get_avatar( get_the_author_meta( 'user_email' ), '48' ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), '48' ); ?>
 
-            <div class="author-description author-bio">
-                <?php the_author_meta( 'description' ); ?>
-            </div>
+			<div class="author-description author-bio">
+				<?php the_author_meta( 'description' ); ?>
+			</div>
 
-            <?php if ( get_the_author_meta( 'twitter' ) ) { ?>
-                <p class="twitter-link clear">
-                    <a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
-                </p>
-            <?php } // End check for twitter ?>
-        </div>  <!-- .author-profile --> <?php
+			<?php if ( get_the_author_meta( 'twitter' ) ) { ?>
+				<p class="twitter-link clear">
+					<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
+				</p>
+			<?php } // End check for twitter ?>
+		</div>  <!-- .author-profile --> <?php
 
 	endif;
 }
@@ -817,9 +805,9 @@ function cakifo_place_author_box() {
 function cakifo_image_info() {
 
 	/* Set up some default variables and get the image metadata. */
-	$meta = wp_get_attachment_metadata( get_the_ID() );
+	$meta  = wp_get_attachment_metadata( get_the_ID() );
 	$items = array();
-	$list = '';
+	$list  = '';
 
 	// If there's no image meta, return
 	if ( empty( $meta ) )
@@ -898,18 +886,18 @@ function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
 
 	$builtin_sizes = array(
-		'large'		=> array(
-			'width' => get_option( 'large_size_w' ),
+		'large'	=> array(
+			'width'  => get_option( 'large_size_w' ),
 			'height' => get_option( 'large_size_h' )
 		),
-		'medium'	=> array(
-			'width' => get_option( 'medium_size_w' ),
+		'medium' => array(
+			'width'  => get_option( 'medium_size_w' ),
 			'height' => get_option( 'medium_size_h' )
 		),
 		'thumbnail'	=> array(
-			'width' => get_option( 'thumbnail_size_w' ),
+			'width'  => get_option( 'thumbnail_size_w' ),
 			'height' => get_option( 'thumbnail_size_h' ),
-			'crop' => (boolean) get_option( 'thumbnail_crop' )
+			'crop'   => (boolean) get_option( 'thumbnail_crop' )
 		)
 	);
 

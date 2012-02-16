@@ -33,31 +33,31 @@
 
 	<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template ?>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-    	<?php do_atomic( 'before_header' ); // cakifo_before_header ?>
+		<?php do_atomic( 'before_header' ); // cakifo_before_header ?>
 
-    	<header id="branding" role="banner" class="clearfix">
+		<header id="branding" role="banner" class="clearfix">
 
-        	<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
+			<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
 				<?php hybrid_site_title(); ?>
 
-                <?php hybrid_site_description(); ?>
+				<?php hybrid_site_description(); ?>
 
 			<?php do_atomic( 'header' ); // cakifo_header ?>
 
-        </header> <!-- #branding -->
+		</header> <!-- #branding -->
 
-        <?php do_atomic( 'after_header' ); // cakifo_after_header ?>
+		<?php do_atomic( 'after_header' ); // cakifo_after_header ?>
 
 	<?php do_atomic( 'before_content' ); // cakifo_before_content ?>
 
 	<div id="content" class="clearfix">
 
-    	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
+		<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
 
-        <?php 
+		<?php 
 			/**
 			 * Include the slider {section-slider.php} template part file
 			 * if it's the front/post page and the setting is activated

@@ -40,13 +40,13 @@ function cakifo_colorbox() {
 	 * See all arguments at http://jacklmoore.com/colorbox/
 	 */
 	$defaults = array(
-		'selector' => '.colorbox',
-		'maxWidth' => '80%',
-		'maxHeight' => '80%',
-		'opacity' => '0.6', // For modern browsers that support CSS3 gradients this will be actually be 1
-		'fixed' => true,
+		'selector'       => '.colorbox',
+		'maxWidth'       => '80%',
+		'maxHeight'      => '80%',
+		'opacity'        => '0.6', // For modern browsers that support CSS3 gradients this will be actually be 1
+		'fixed'          => true,
 		'slideshowStart' => '\u25B6',
-		'slideshowStop' => 'll',
+		'slideshowStop'  => 'll',
 	);
 
 	$args = array();
@@ -57,7 +57,7 @@ function cakifo_colorbox() {
 	 * add_filter( 'cakifo_colorbox_args', 'my_child_colorbox_args' );
 	 * function my_child_colorbox_args( $args ) {
 	 * 		$args['selector'] = '.colorbox, .my-new-awesome-selector';
-     *		return $args;
+	 *		return $args;
 	 *	}
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );

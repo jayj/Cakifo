@@ -16,18 +16,18 @@
 	 */
 	if ( hybrid_get_setting( 'featured_category' ) ) :
 		$feature_query = array( 
-			'cat' => hybrid_get_setting( 'featured_category' ),
-			'showposts' => hybrid_get_setting( 'featured_posts' ),
+			'cat'                 => hybrid_get_setting( 'featured_category' ),
+			'showposts'           => hybrid_get_setting( 'featured_posts' ),
 			'ignore_sticky_posts' => 1,
-			'post_status' => 'publish',
-			'no_found_rows' => true,
+			'post_status'         => 'publish',
+			'no_found_rows'       => true,
 		);
 	// No selected categories, use Sticky Posts
 	else :
 		$feature_query = array(
-			'post__in' => get_option( 'sticky_posts' ),
-			'showposts' => hybrid_get_setting( 'featured_posts' ),
-			'post_status' => 'publish',
+			'post__in'      => get_option( 'sticky_posts' ),
+			'showposts'     => hybrid_get_setting( 'featured_posts' ),
+			'post_status'   => 'publish',
 			'no_found_rows' => true,
 		);
 	endif;
@@ -41,7 +41,7 @@
 
 	<section id="slider">
 
-    	<h3 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h3>
+		<h3 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h3>
 
 		<div class="slides_container">
 
@@ -65,11 +65,11 @@
 							 * or an embed video (video post format only)
 							 */
 							$thumbnail = get_the_image( array(
-								'size' => 'slider',
-								'attachment' => false,
-								'meta_key' => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
+								'size'        => 'slider',
+								'attachment'  => false,
+								'meta_key'    => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
 								'image_class' => 'thumbnail',
-								'echo' => false
+								'echo'        => false
 							) );
 
 							$thumbnail_size = cakifo_get_image_size( 'slider' );
@@ -100,11 +100,11 @@
 									// Get the original width and height
 									preg_match('/width="(\d+)(px)?" height="(\d+)(px)?"/', $video, $matches);
 
-									$width = intval( $matches[1] );
+									$width  = intval( $matches[1] );
 									$height = intval( $matches[3] );
 
 									// Calculate the new height to maintain the right aspect ratio
-									$new_width = $thumbnail_size['width'];
+									$new_width  = $thumbnail_size['width'];
 									$new_height = intval( $new_width * $height / $width );
 
 									// Change the width and height attributes

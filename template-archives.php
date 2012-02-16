@@ -12,26 +12,26 @@ get_header(); // Loads the header.php template ?>
 
 	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
 
-    <div id="main">
+	<div id="main">
 
-        <?php do_atomic( 'open_main' ); // cakifo_open_main ?>
+		<?php do_atomic( 'open_main' ); // cakifo_open_main ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 			<?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
-                <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+				<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
 					<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
 
-                    <?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
-                    <?php
+					<?php
 						// Get the thumbnail
 						if ( current_theme_supports( 'get-the-image' ) )
 							get_the_image( array(
-								'meta_key' => 'Thumbnail',
-								'size' => 'thumbnail',
+								'meta_key'   => 'Thumbnail',
+								'size'       => 'thumbnail',
 								'attachment' => false
 							) );
 					?>
@@ -46,9 +46,9 @@ get_header(); // Loads the header.php template ?>
 						<ul class="xoxo category-archives">
 							<?php
 								wp_list_categories( array(
-									'show_count' => true,
+									'show_count'         => true,
 									'use_desc_for_title' => false,
-									'title_li' => false
+									'title_li'           => false
 								) );
 							?>
 						</ul> <!-- .xoxo .category-archives -->
@@ -59,7 +59,7 @@ get_header(); // Loads the header.php template ?>
 							<?php
 								wp_get_archives( array(
 									'show_post_count' => true,
-									'type' => 'monthly'
+									'type'            => 'monthly'
 								) );
 							?>
 						</ul> <!-- .xoxo .monthly-archives -->
@@ -69,17 +69,17 @@ get_header(); // Loads the header.php template ?>
 						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
 					</div> <!-- .entry-content -->
 
-                    <?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>
+					<?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>
 
-                    <div class="clear"></div>
+					<div class="clear"></div>
 
-                    <?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
+					<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
 
-                </article> <!-- #post-<?php the_ID(); ?> -->
+				</article> <!-- #post-<?php the_ID(); ?> -->
 
-            <?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+			<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
 
-            <?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
+			<?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
 
 			<?php
 				/**
@@ -92,16 +92,16 @@ get_header(); // Loads the header.php template ?>
 
 				if ( $display )
 					comments_template( '/comments.php', true ); // Loads the comments.php template
-            ?>
+			?>
 
-        <?php endwhile; ?>
+		<?php endwhile; ?>
 
-        <?php do_atomic( 'close_main' ); // cakifo_close_main ?>
+		<?php do_atomic( 'close_main' ); // cakifo_close_main ?>
 
-        <?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
+		<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
 
-    </div> <!-- #main -->
+	</div> <!-- #main -->
 
-    <?php do_atomic( 'after_main' ); // cakifo_after_main ?>
+	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
 
 <?php get_footer(); // Loads the footer.php template ?>

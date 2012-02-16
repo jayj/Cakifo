@@ -42,13 +42,13 @@ function cakifo_update_check() {
 	$update = json_decode( $cakifo_update, true );
 
 	return array(
-		'title' => $update['items'][0]['title'],
-		'new_version' => $update['items'][0]['version'],
-		'url' => $update['items'][0]['link'],
-		'message' => $update['items'][0]['message'],
+		'title'        => $update['items'][0]['title'],
+		'new_version'  => $update['items'][0]['version'],
+		'url'          => $update['items'][0]['link'],
+		'message'      => $update['items'][0]['message'],
 		'childmessage' => $update['items'][0]['childmessage'],
-		'requires' => $update['items'][0]['requires'],
-		'package' => $update['items'][0]['zip']
+		'requires'     => $update['items'][0]['requires'],
+		'package'      => $update['items'][0]['zip']
 	);
 }
 
@@ -96,8 +96,8 @@ function cakifo_update_notice() {
 
 		// There's an update available
 		if ( $update_available ) :
-			$update = get_transient( 'cakifo-update-check' );
-			$update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=cakifo', 'upgrade-theme_cakifo' );
+			$update         = get_transient( 'cakifo-update-check' );
+			$update_url     = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=cakifo', 'upgrade-theme_cakifo' );
 			$update_onclick = __( 'Upgrading Cakifo will overwrite the current installed version of Cakifo. Are you sure you want to upgrade?. "Cancel" to stop, "OK" to upgrade.', 'cakifo' );
 
 			// The notice

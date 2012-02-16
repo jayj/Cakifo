@@ -11,41 +11,41 @@
  * @link		http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
  * @version		1.0
  * @since		1.3
- 
-	Copyright 2010-2012 Nicolas Gallagher
-	
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
-	
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-	
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ *	Copyright 2010-2012 Nicolas Gallagher
+ *
+ *	This program is free software; you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation; either version 2 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ *	along with this program; if not, write to the Free Software
+ *	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function cakifo_tweet_button( $args = array() ) {
-    
+
 	// Count how many times the function has been referenced
 	static $i = 0;
-    $i++;
+	$i++;
 
 	/**
 	 * Default values
 	 */
 	$defaults = array(
-		'before' => '',
-		'after' => '',
-		'href' => wp_get_shortlink(),
-		'via' => hybrid_get_setting( 'twitter_username' ),
-		'text' => the_title_attribute( 'echo=0' ),
-		'related' => '',
-		'layout' => 'vertical', // none, horizontal, vertical
+		'before'   => '',
+		'after'    => '',
+		'href'     => wp_get_shortlink(),
+		'via'      => hybrid_get_setting( 'twitter_username' ),
+		'text'     => the_title_attribute( 'echo=0' ),
+		'related'  => '',
+		'layout'   => 'vertical', // none, horizontal, vertical
 		'counturl' => get_permalink(),
 	);
 
@@ -55,22 +55,22 @@ function cakifo_tweet_button( $args = array() ) {
 	/**
 	 * Set up variables
 	 */
-	$post_id = get_queried_object_id();
-	$url = trailingslashit( $args['href'] );
-	$counturl = trailingslashit( $args['counturl'] );
-	$cache_interval = 60;
-    $refresh_interval = 3660;
-    $retweet_count = null;
-    $count = 0;
-	$counter = '';
+	$post_id          = get_queried_object_id();
+	$url              = trailingslashit( $args['href'] );
+	$counturl         = trailingslashit( $args['counturl'] );
+	$cache_interval   = 60;
+	$refresh_interval = 3660;
+	$retweet_count    = null;
+	$count            = 0;
+	$counter          = '';
 	
 	// Retweet data (Twitter API)
 	$retweet_meta = get_post_meta( $post_id, "retweet_{$i}_cache", true );
 
 	if ( $retweet_meta != '' ) {
-		$retweet_pieces = explode( ':', $retweet_meta );
+		$retweet_pieces    = explode( ':', $retweet_meta );
 		$retweet_timestamp = (int) $retweet_pieces[0];
-		$retweet_count = (int) $retweet_pieces[1];
+		$retweet_count     = (int) $retweet_pieces[1];
 	}
 
 	// Expire retweet cache

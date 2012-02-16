@@ -23,7 +23,7 @@ if ( is_active_sidebar( 'subsidiary' ) ) : ?>
 
 		<?php do_atomic( 'close_sidebar_subsidiary' ); // cakifo_close_sidebar_subsidiary ?>
 
-	</div> <!-- #sidebar-subsidiary-->
+	</div> <!-- #sidebar-subsidiary -->
 
 	<?php do_atomic( 'after_sidebar_subsidiary' ); // cakifo_after_sidebar_subsidiary ?>
 
