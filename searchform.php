@@ -23,7 +23,7 @@
 
 <div class="search">
 
-	<form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>">
+	<form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>" role="search">
 		<label>
 			<span class="assistive-text"><?php _e( 'Search', 'cakifo' ); ?></span>
 			<input class="search-text" type="search" name="s" <?php echo $value; ?> />
