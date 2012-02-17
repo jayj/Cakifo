@@ -932,25 +932,27 @@ function cakifo_get_image_size( $name ) {
  * @return	array				Array containing URLs found in the content
  * @since	1.0
  */
-function cakifo_url_grabber( $type = 'http', $content = null ) {
+if ( ! function_exists( 'cakifo_url_grabber' ) ) {
+	function cakifo_url_grabber( $type = 'http', $content = null ) {
 
-	// Set default content to post content
-	if ( ! isset( $content ) )
-		$content = get_the_content();
+		// Set default content to post content
+		if ( ! isset( $content ) )
+			$content = get_the_content();
 
-	/* If 'href' == $type, get all URLs from <a href=""> */
-	if ( 'href' == $type ) {
-		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
+		/* If 'href' == $type, get all URLs from <a href=""> */
+		if ( 'href' == $type ) {
+			if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
+				return false;
+
+			return array_map( 'esc_url_raw', $matches[1] );
+		}
+
+		/* Else, get all http:// URLs (including those in <a href="">) */
+		if ( ! preg_match_all( '/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
 			return false;
 
-		return array_map( 'esc_url_raw', $matches[1] );
+		return array_map( 'esc_url_raw', $matches[0] );
 	}
-
-	/* Else, get all http:// URLs (including those in <a href="">) */
-	if ( ! preg_match_all( '/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
-		return false;
-
-	return array_map( 'esc_url_raw', $matches[0] );
 }
 
 ?>
