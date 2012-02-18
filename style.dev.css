@@ -11,23 +11,23 @@
 **************************************/
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
-    display: block;
+	display: block;
 }
 
 audio, canvas, video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
 }
 
 /* Prevents modern browsers from displaying 'audio' without controls */
 audio:not([controls]) {
-    display: none;
+	display: none;
 }
 
 /* Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4 */
 [hidden] {
-    display: none;
+	display: none;
 }
 
 /**
@@ -35,10 +35,10 @@ audio:not([controls]) {
 **************************************/
 
 html {
-    font-size: 100%;
-    overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
-    -webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
-    -ms-text-size-adjust: 100%;
+	font-size: 100%;
+	overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
+	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+	-ms-text-size-adjust: 100%;
 }
 
 body {
@@ -68,12 +68,12 @@ a:hover {
 }
 
 a:focus {
-    outline: thin dotted; /* Addresses outline displayed oddly in Chrome */
+	outline: thin dotted; /* Addresses outline displayed oddly in Chrome */
 }
 
 a:hover,
 a:active {
-    outline: 0; /* Improves readability when focused and also mouse hovered in all browsers */
+	outline: 0; /* Improves readability when focused and also mouse hovered in all browsers */
 }
 
 /**
@@ -208,8 +208,8 @@ ol {
 
 nav ul,
 nav ol {
-    list-style: none;
-    list-style-image: none;
+	list-style: none;
+	list-style-image: none;
 }
 
 ol ol {
@@ -237,7 +237,7 @@ dl {
 }
 
 dd {
-    margin: 0 0 0 40px;
+	margin: 0 0 0 40px;
 }
 
 dl dt {
@@ -370,8 +370,8 @@ blockquote em, blockquote cite {
  * Code
  */
 pre, code, kbd, samp {
-    font-family: monospace, serif;
-    _font-family: 'courier new', monospace;
+	font-family: monospace, serif;
+	_font-family: 'courier new', monospace;
 }
 
 code {
@@ -404,8 +404,8 @@ pre code {
  * Embedded content
  */
 img {
-    border: 0;
-    -ms-interpolation-mode: bicubic; /* Improves image quality when scaled in IE7 */
+	border: 0;
+	-ms-interpolation-mode: bicubic; /* Improves image quality when scaled in IE7 */
 }
 
 img.alignleft, img.alignright {
@@ -418,11 +418,11 @@ img.wp-smiley {
 }
 
 svg:not(:root) {
-    overflow: hidden; /* Corrects overflow displayed oddly in IE9  */
+	overflow: hidden; /* Corrects overflow displayed oddly in IE9  */
 }
 
 figure {
-    margin: 0; /* Addresses margin not present in IE6/7/8/9, S5, O11 */
+	margin: 0; /* Addresses margin not present in IE6/7/8/9, S5, O11 */
 }
 
 object {
@@ -456,14 +456,14 @@ iframe {
 }
 
 iframe[seamless] {
-    background-color: transparent;
-    border: 0px none transparent;
-    padding: 0px;
-    overflow: hidden;
+	background-color: transparent;
+	border: 0px none transparent;
+	padding: 0px;
+	overflow: hidden;
 }
 
 b, strong {
-    font-weight: bold; /* Addresses style set to 'bolder' in FF3/4, S4/5, Chrome */
+	font-weight: bold; /* Addresses style set to 'bolder' in FF3/4, S4/5, Chrome */
 }
 
 em, cite {
@@ -477,12 +477,12 @@ ins {
 }
 
 mark { /* Addresses styling not present in IE6/7/8/9 */
-    background: #ff0;
-    color: #000;
+	background: #ff0;
+	color: #000;
 }
 
 dfn {
-    font-style: italic;
+	font-style: italic;
 }
 
 del {
@@ -509,10 +509,10 @@ li address, dd address {
 /* Prevents sub and sup affecting line-height in all browsers */
 sub,
 sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
 
 sup { top: -0.5em; }
@@ -1787,18 +1787,18 @@ img.alignright {
 }
 
 .pagination a:hover {
-    background: #d54e21;
+	background: #d54e21;
 	color: #fff;
-    text-shadow: 0 -1px 0 #7b000f;
-    -webkit-box-shadow: 0 2px 0 #9b000f;
+	text-shadow: 0 -1px 0 #7b000f;
+	-webkit-box-shadow: 0 2px 0 #9b000f;
 	box-shadow: 0 2px 0 #9b000f;
 }
 
 .pagination .current {
-    background: #464646;
-    color: #fff;
-    text-shadow: 0 -1px 0 #000;
-    -webkit-box-shadow: 0 2px 0 #3e3e3e;
+	background: #464646;
+	color: #fff;
+	text-shadow: 0 -1px 0 #000;
+	-webkit-box-shadow: 0 2px 0 #3e3e3e;
 	box-shadow: 0 2px 0 #3e3e3e;
 }
 
@@ -2069,44 +2069,44 @@ img.alignright {
 form { margin: 0; }
 
 fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
 }
 
 legend {
-    border: 0;
-    *margin-left: -7px;
+	border: 0;
+	*margin-left: -7px;
 }
 
 button,
 input,
 select,
 textarea {
-    font-size: 100%;
-    margin: 0;
-    vertical-align: baseline;
-    *vertical-align: middle;
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
 }
 
 button,
 input {
-    line-height: normal;
-    *overflow: visible;
+	line-height: normal;
+	*overflow: visible;
 }
 
 button,
 input[type="button"],
 input[type="reset"], 
 input[type="submit"] {
-    cursor: pointer;
-    -webkit-appearance: button;
+	cursor: pointer;
+	-webkit-appearance: button;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
-    box-sizing: border-box;
-    padding: 0;
+	box-sizing: border-box;
+	padding: 0;
 }
 
 
@@ -2118,20 +2118,20 @@ textarea:focus, textarea:hover {
 }
 
 input[type="search"] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
 }
 
 input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
+	border: 0;
+	padding: 0;
 }
 
 /* Submit button */
@@ -2172,8 +2172,8 @@ textarea {
 }
 
 textarea {
-    overflow: auto;
-    vertical-align: top;
+	overflow: auto;
+	vertical-align: top;
 }
 
 /* Labels */
@@ -2370,7 +2370,7 @@ span.required {
 	overflow: hidden;
 	text-align: center;
 	*display: inline; /* trigger inline-block behaviour in IE < 8 */
-    zoom: 1; /* trigger hasLayout in IE < 8 */
+	zoom: 1; /* trigger hasLayout in IE < 8 */
 }
 
 .twitter-button:link,
@@ -2385,11 +2385,11 @@ span.required {
 
 .twitter-button:hover,
 .twitter-button:focus {
-    background-position: 0 -20px;
+	background-position: 0 -20px;
 }
 
 .twitter-button:active {
-    background-position: 0 -40px;
+	background-position: 0 -40px;
 }
 
 /* The count */
@@ -2569,7 +2569,7 @@ span.required {
 	}
 
 	#content, #footer, #footer .wrap {
-	    margin: 0;
+		margin: 0;
 	}
 
 	#content, #footer, .thumbnail, .section-title {
@@ -2581,7 +2581,7 @@ span.required {
 	}
 
 	#content, #footer {
-	    width: auto;
+		width: auto;
 	}
 
 	#content, .thumbnail, #footer, blockquote, .author-profile, table, tr th, thead th, .section-title {
@@ -2640,7 +2640,7 @@ span.required {
 	tr, img { page-break-inside: avoid; }
 	#comments { page-break-before: always; }
 	 p, h2, h3 { orphans: 3; widows: 3; }
-  	h2, h3{ page-break-after: avoid; }
+	h2, h3{ page-break-after: avoid; }
 
 	.comment-list li, .comment-list .bypostauthor {
 		background: #fff !important;

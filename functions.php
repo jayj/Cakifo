@@ -248,7 +248,7 @@ function cakifo_enqueue_script() {
 	 * 	wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
 	 * in your child theme functions.php
 	 */
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', '', '2.5.1' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', '', '2.5.3' );
 
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
