@@ -409,36 +409,6 @@ function cakifo_change_list_comments_args( $args ) {
 }
 
 /**
- * New excerpt function with the length as a parameter
- *
- * The ideal solution would be to change the excerpt_length filter,
- * but we need different excerpt lengths 
- *
- * @param	int		$length		Number of words. Default 55
- * @param	boolean	$echo		Default to echo and not return the form
- * @since	1.0
- */
-function cakifo_the_excerpt( $length = 55, $echo = true ) {
-
-	$text = get_the_excerpt();
-	$words_array = preg_split( "/[\n\r\t ]+/", $text, $length + 1, PREG_SPLIT_NO_EMPTY );
-	$more_link = '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
-
-	if ( count( $words_array ) > $length ) {
-		array_pop( $words_array );
-		$text = implode( ' ', $words_array );
-		$text = $text . apply_filters( 'excerpt_more', '...' );
-	} else {
-		$text = implode( ' ', $words_array ); 
-	}
-
-	if ( $echo )
-		echo $text . $more_link;
-	else
-		return $text . $more_link;
-}
-
-/**
  * Edit the "More link" for archive excerpts.
  *
  * @param	string	$more	The default more link
@@ -953,6 +923,21 @@ if ( ! function_exists( 'cakifo_url_grabber' ) ) {
 
 		return array_map( 'esc_url_raw', $matches[0] );
 	}
+}
+
+/**
+ * @since	1.0
+ * @deprecated 1.3
+ */
+function cakifo_the_excerpt( $length = 55, $echo = true ) {
+	_deprecated_function( __FUNCTION__, '1.3', 'wp_trim_words()' );
+
+	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
+
+	if ( $echo )
+		echo wp_trim_words(get_the_excerpt(), $length, $more_link);
+	else
+		return wp_trim_words(get_the_excerpt(), $length, $more_link);
 }
 
 ?>
