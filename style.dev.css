@@ -937,40 +937,23 @@ table {
 **************************************/
 
 #slider {
-	background: #fffff5;
-	border-bottom: 1px solid #edece6;
+	background: #ffffe9;
+ 	border-bottom: 1px solid #edece6;
 	width: 980px;
 	min-height: 310px;
-	position: relative;
 	margin: -14px 0 0 -20px;
-	padding-top: 60px;
 	position: relative;
 }
 
 .slides_container {
 	width: 880px;
-	min-height: 250px;
-	margin: 0 50px 20px 50px;
-	overflow: hidden;
-	position: relative;
+	margin: 0 auto;
+	padding: 60px 0 20px;
 }
 
-#slider .slide {  	
+#slider .slide {
 	width: 880px;
 	min-height: 250px;
-	display: none;
-}
-
-.no-js #slider .slide {
-	border-top: 1px solid #e7e7e7;
-	display: block;
-	padding: 20px 0;
-	overflow: hidden;
-}
-
-.no-js #slider .slide:first-of-type {
-	border-top: none;
-	padding-top: 0;
 }
 
 	/* Slider content */
@@ -1024,25 +1007,44 @@ table {
 	/* Next/prev button */
 	.slider-prev,
 	.slider-next {
-		background: #fff url(images/colorbox.png) no-repeat;
-		border-radius: 12px;
-		width: 24px;
-		height: 24px;
+		background-color: #fff;
+		border-radius: 50%;
+		width: 42px;
+		height: 42px;
 		margin: 0;
 		position: absolute;
 		top: 45%;
-		opacity: 0.9;
+		opacity: 0.8;
 		text-indent: -9999px;
 		-webkit-box-shadow: 0 0 7px rgba(0,0,0, 0.3);
 		box-shadow: 0 0 7px rgba(0,0,0, 0.3);
 	}
 
 	.slider-prev {
-		background-position: -2px -2px; left: -10px;
+		left: -15px;
 	}
 
 	.slider-next {
-		background-position: -67px -2px; right: -10px;
+		right: -15px;
+	}
+
+	.slider-prev:after,
+	.slider-next:after {
+		background: url(images/colorbox.png) no-repeat;
+		content: "";
+		width: 8px;
+		height: 12px;
+		position: absolute;
+		top: 15px; left: 15px;
+	}
+
+	.slider-prev:after {
+		background-position: -9px -8px;
+	}
+
+	.slider-next:after {
+		background-position: -76px -8px;
+		left: 17px;
 	}
 
 	.slider-prev:hover,
@@ -1064,6 +1066,23 @@ table {
 	.no-boxshadow .slider-prev:hover,
 	.no-boxshadow .slider-next:hover {
 		border: 1px solid #bbb;
+	}
+
+	/* Make the slides useful for users without Javascript */
+	.no-js #slider .slide {
+		border-top: 1px solid #e7e7e7;
+		display: block;
+		padding: 20px 0;
+		overflow: hidden;
+	}
+
+	.no-js #slider .slide:first-of-type {
+		border-top: none;
+		padding-top: 0;
+	}
+
+	.no-js #slider .slide .slider-video {
+		display: none;
 	}
 
 /**
@@ -2280,7 +2299,7 @@ span.required {
 	background-color: #ffffff;
 	color: #404040;
 	outline: 0;
-	text-shadow: 0 1px 0 #ffffff;
+	text-shadow: none;
 	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
@@ -2477,14 +2496,23 @@ span.required {
 
 @media screen and (max-width: 979px) {
 
-	#wrapper, #topbar .wrap { width: 98%; }
+	#wrapper, #topbar .wrap { width: 99%; }
 
 	#slider {
 		width: 100%;
 		margin-left: 0;
+		margin-bottom: 10px;
 	}
 
-	#main { width: 100% !important; float: left !important; margin: 0 !important; }
+	#slider .entry-summary {
+		max-width: 270px;
+	}
+
+	#main {
+		width: 100% !important;
+		float: left !important;
+		margin: 0 !important;
+	}
 
 	#content,
 	#footer {
@@ -2492,8 +2520,14 @@ span.required {
 		box-shadow: none;
 	}
 
-	#recent-posts .recent-post, .headline-list { margin-right: 20px; }
-	#recent-posts .recent-post { margin-right: 1%; }
+	#recent-posts .recent-post,
+	.headline-list {
+		margin-right: 20px;
+	}
+
+	#recent-posts .recent-post {
+		margin-right: 1%;
+	}
 
 	.section-title {
 		margin-left: 0;
@@ -2501,26 +2535,59 @@ span.required {
 		box-shadow: none;
 	}
 
-	#sidebar-primary { float: left; width: 45%; margin: 0 !important; }
-	#sidebar-secondary { width: 45%; margin: 0 !important; }
+	/* Float the sidebars so they are in two columns after the content */
+	#sidebar-primary {
+		float: left;
+		width: 45%;
+		margin: 0 !important;
+	}
+
+	#sidebar-secondary {
+		width: 45%;
+		margin: 0 !important;
+	}
 
 	#rss-subscribe { display: none; }
 }
 
-@media screen and (max-width: 768px) {
-	#slider, #recent-posts img, .headline-list img { display: none; }
-	.headline-list li { padding: 10px; }
-}
 
-@media screen and (max-width: 480px) {
-	#recent-posts .recent-post {
-		float: none;
-		width: 100%;
-		border-bottom: 1px solid #ccc;
-		padding: 10px 0;
+@media screen and (max-width: 768px) {
+
+	/* Hide slider */
+	#slider {
+		display: none;
 	}
 
-	.headline-list { width: 100%; }
+	/* Make the Recent Posts one column */
+	#recent-posts .recent-post {
+		border-bottom: 1px solid #ccc;
+		float: none;
+		width: 100%;
+		min-height: 140px;
+		padding: 20px 0;
+	}
+
+	#recent-posts .recent-post img {
+		float: left;
+		margin-right: 20px;
+	}
+
+	#recent-posts .section-title {
+		margin-top: 20px;
+	}
+
+	/* Make the Category Headlines list two columns */
+	.headline-list {
+		width: 45%;
+	}
+
+	.headline-list:nth-child(2n) {
+		float: right;
+	}
+
+	.headline-list li {
+		padding: 10px;
+	}
 
 	#recent-posts .recent-post:hover,
 	#recent-posts .recent-post:active,
@@ -2529,7 +2596,35 @@ span.required {
 		background: #f7fafc;
 	}
 
-	#sidebar-primary, #sidebar-secondary, #slider, #sidebar-subsidiary .widget { display: none; }
+	/* Make the footer widgets two colums */
+	#sidebar-subsidiary .widget {
+		width: 45%;
+	}
+
+	#sidebar-subsidiary .widget:nth-child(2n) {
+		float: right;
+	}
+
+
+	/* Add a background to the search inputs */
+	#topbar .search-form .search-text,
+	#topbar .search-form .search-submit {
+		background-color: #666;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	/* Hide thumbnails from the Recent Posts and Category headline lists */
+	#recent-posts img,
+	.headline-list img {
+		display: none;
+	}
+
+	/* Remove the sidebar widgets and search form from topbar */
+	#sidebar-primary, #sidebar-secondary, #sidebar-subsidiary,
+	#topbar .search-form {
+		display: none;
+	}
 }
 
 /**
