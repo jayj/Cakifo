@@ -1755,7 +1755,8 @@ img.alignright {
 }
 
 #attachment-gallery {
-	width: 610px;
+	width: 600px;
+	float: right;
 }
 
 /**
@@ -2548,6 +2549,15 @@ span.required {
 	}
 
 	#rss-subscribe { display: none; }
+
+	/* Attachment page */
+	#image-info .image-info {
+		width: 30%;
+	}
+
+	#attachment-gallery {
+		width: 60%;
+	}
 }
 
 
@@ -2610,6 +2620,23 @@ span.required {
 	#topbar .search-form .search-text,
 	#topbar .search-form .search-submit {
 		background-color: #666;
+	}
+
+	/* Attachment page */
+	#image-info .image-info dt {
+		border-bottom: none;
+		float: none;
+		padding: 0;
+	}
+
+	#image-info .image-info dt:hover {
+		background: none;
+	}
+
+	#image-info .image-info dd {
+		float: none;
+		margin: 0 0 0 20px;
+		text-align: left;
 	}
 }
 
