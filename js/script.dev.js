@@ -17,8 +17,6 @@ jQuery(document).ready(function($) {
 			topPosition = 0,
 			currentDiv = 0;
 
-		console.log(selector);
-
 		selector.each(function() {
 			var $el = $(this),
 				topPosition = $el.position().top;
