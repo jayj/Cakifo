@@ -9,44 +9,52 @@ jQuery(document).ready(function($) {
 	 * Equal Heights In Rows
 	 * http://css-tricks.com/equal-height-blocks-in-rows/
 	 */
-	var currentTallest = 0,
-		currentRowStart = 0,
-		rowDivs = [],
-		$el,
-		topPosition = 0,
-		currentDiv = 0;
+	function equal_height_columns(selector) {
+		var currentTallest = 0,
+			currentRowStart = 0,
+			rowDivs = [],
+			$el,
+			topPosition = 0,
+			currentDiv = 0;
 
-	$(window).load(function() { // Make sure everyting is loaded
-	$('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget').each(function() {
+		console.log(selector);
 
-		var $el = $(this),
-		topPosition = $el.position().top;
+		selector.each(function() {
+			var $el = $(this),
+				topPosition = $el.position().top;
 
-		if (currentRowStart !== topPosition) {
-			// We just came to a new row.  Set all the heights on the completed row
-			for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
-				rowDivs[currentDiv].height(currentTallest);
+			if (currentRowStart !== topPosition) {
+				// We just came to a new row.  Set all the heights on the completed row
+				for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
+					rowDivs[currentDiv].height(currentTallest);
+				}
+
+				// Set the variables for the new row
+				rowDivs.length = 0; // empty the array
+				currentRowStart = topPosition;
+				currentTallest = $el.height();
+				rowDivs.push($el);
+			} else {
+				rowDivs.push($el);
+				currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
 			}
 
-			// Set the variables for the new row
-			rowDivs.length = 0; // empty the array
-			currentRowStart = topPosition;
-			currentTallest = $el.height();
-			rowDivs.push($el);
-		} else {
-			rowDivs.push($el);
-			currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
-		}
+			// Do the last row
+			for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+				rowDivs[currentDiv].height(currentTallest);
+			}
+		});
+	}
 
-		// Do the last row
-		for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
-			rowDivs[currentDiv].height(currentTallest);
-		}
-	});	});
+	/* Call the equal_height_columns() function when window has been loaded to make sure the images are loaded */
+	$(window).load(function() {
+		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+	});
 
-	/*$.fn.setAllToMaxHeight = function(){
-		return this.height( Math.max.apply(this, $.map( this , function(e){ return $(e).outerHeight() }) ) );
-	}$('.page-template-template-front-page .headline-list').setAllToMaxHeight(); */
+	/* Call the equal_height_columns() function when window is being resized */
+	$(window).resize(function() {
+ 		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+	});
 
 	/* A little surprise ;-) */ 	
 	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
