@@ -33,7 +33,7 @@ require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
 $theme = new Hybrid();
 
 /* Do theme setup on the 'after_setup_theme' hook */
-add_action( 'after_setup_theme', 'cakifo_theme_setup' );
+add_action( 'after_setup_theme', 'cakifo_theme_setup', 10 );
 
 /**
  * Theme setup function.  This function adds support for theme features and defines the default theme
@@ -57,11 +57,6 @@ function cakifo_theme_setup() {
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
-	/* Load the Cakifo sidebars if supported */
-	//add_theme_support( 'hybrid-core-sidebars', array( 'primary', 'secondary', 'subsidiary' ) );
-	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
-	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
-
 	/* Add theme support for framework extensions */
 	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
 	add_theme_support( 'post-stylesheets' );
@@ -73,22 +68,16 @@ function cakifo_theme_setup() {
 	add_theme_support( 'custom-field-series' );
 	//add_theme_support( 'cleaner-caption' );
 
-	/* Load Cakifo shortcodes if supported */
+	/* Add theme support for theme functions */
+	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
 	add_theme_support( 'cakifo-shortcodes' );
-	require_if_theme_supports( 'cakifo-shortcodes', trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
-
-	/* Load the Colorbox Script extention if supported. */
 	add_theme_support( 'cakifo-colorbox' );
-	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
-	
-	/* Load the Twitter Button extention if supported */
 	add_theme_support( 'cakifo-twitter-button' );
-	require_if_theme_supports( 'cakifo-twitter-button', trailingslashit( THEME_DIR ) . 'functions/tweet_button.php' );
+	add_theme_support( 'cakifo-upgrade' );
 
-	/* Load Theme Settings and upgrade functionality */
+	/* Load Theme Settings */
 	if ( is_admin() ) {
 		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/admin.php' );
-		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/upgrade.php' );
 	}
 
 	/* Add theme support for WordPress features */
@@ -227,6 +216,32 @@ function cakifo_theme_setup() {
 		) );
 	}
 }
+
+/**
+ * Loads the theme functions if the theme/child theme syupports them.
+ *
+ * @since	1.3
+ */
+function cakifo_load_theme_support() {
+
+	/* Load the Cakifo sidebars if supported */
+	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
+
+	/* Load Cakifo shortcodes if supported */
+	require_if_theme_supports( 'cakifo-shortcodes', trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
+
+	/* Load the Colorbox Script extention if supported. */
+	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
+	
+	/* Load the Twitter Button extention if supported */
+	require_if_theme_supports( 'cakifo-twitter-button', trailingslashit( THEME_DIR ) . 'functions/tweet_button.php' );
+
+	/* Load theupgrade functionality if supported */
+	if ( is_admin() )
+		require_if_theme_supports( 'cakifo-upgrade', trailingslashit( TEMPLATEPATH ) . 'functions/upgrade.php' );
+}
+
+add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
 
 /**
  * Loads the theme JavaScript files
