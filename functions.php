@@ -288,7 +288,8 @@ function cakifo_enqueue_script() {
  * @since	1.0
  */
 function cakifo_enqueue_style() {
-	wp_enqueue_style( 'PT-Serif', 'http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
+	$scheme = is_ssl() ? 'https' : 'http';
+	wp_enqueue_style( 'PT-Serif', $scheme . '://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
 
 	// Add a new bbPress stylesheet, if the plugin is active
 	if ( class_exists( 'bbPress' ) ) :
