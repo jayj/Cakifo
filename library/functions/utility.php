@@ -6,7 +6,7 @@
  * @package HybridCore
  * @subpackage Functions
  * @author Justin Tadlock <justin@justintadlock.com>
- * @copyright Copyright (c) 2008 - 2011, Justin Tadlock
+ * @copyright Copyright (c) 2008 - 2012, Justin Tadlock
  * @link http://themehybrid.com/hybrid-core
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -16,9 +16,6 @@ add_action( 'init', 'hybrid_add_post_type_support' );
 
 /* Add extra file headers for themes. */
 add_filter( 'extra_theme_headers', 'hybrid_extra_theme_headers' );
-
-/* Add all image sizes to the image editor to insert into post. */
-add_filter( 'image_size_names_choose', 'hybrid_image_size_names_choose' );
 
 /**
  * This function is for adding extra support for features not default to the core post types.
@@ -74,32 +71,6 @@ function hybrid_extra_theme_headers( $headers ) {
 
 	/* Return the array of custom theme headers. */
 	return $headers;
-}
-
-/**
- * Adds theme/plugin custom images sizes added with add_image_size() to the image uploader/editor.  This 
- * allows users to insert these images within their post content editor.
- *
- * @since 1.3.0
- * @access private
- * @param array $sizes Selectable image sizes.
- * @return array $sizes
- */
-function hybrid_image_size_names_choose( $sizes ) {
-
-	/* Get all intermediate image sizes. */
-	$intermediate_sizes = get_intermediate_image_sizes();
-	$add_sizes = array();
-
-	/* Loop through each of the intermediate sizes, adding them to the $add_sizes array. */
-	foreach ( $intermediate_sizes as $size )
-		$add_sizes[$size] = $size;
-
-	/* Merge the original array, keeping it intact, with the new array of image sizes. */
-	$sizes = array_merge( $add_sizes, $sizes );
-
-	/* Return the new sizes plus the old sizes back. */
-	return $sizes;
 }
 
 /**
@@ -165,7 +136,7 @@ function hybrid_site_title() {
 
 	/* Get the site title.  If it's not empty, wrap it with the appropriate HTML. */
 	if ( $title = get_bloginfo( 'name' ) )
-		$title = sprintf( '<%1$s id="site-title" <a href="%2$s" title="%3$s" rel="home"><span>%4$s</span></a></%1$s>', tag_escape( $tag ), home_url(), esc_attr( $title ), $title );
+		$title = sprintf( '<%1$s id="site-title"><a href="%2$s" title="%3$s" rel="home"><span>%4$s</span></a></%1$s>', tag_escape( $tag ), home_url(), esc_attr( $title ), $title );
 
 	/* Display the site title and apply filters for developers to overwrite. */
 	echo apply_atomic( 'site_title', $title );
