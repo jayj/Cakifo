@@ -743,7 +743,11 @@ function cakifo_author_box() { ?>
 
 	<?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
 
+		<?php do_atomic( 'before_author_box' ); // cakifo_before_author_box ?>
+
 		<div class="author-profile vcard">
+
+			<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
 
 			<h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?></h4>
 
@@ -754,11 +758,16 @@ function cakifo_author_box() { ?>
 			</div>
 
 			<?php if ( get_the_author_meta( 'twitter' ) ) { ?>
-				<p class="twitter-link clear">
+				<p class="twitter-link">
 					<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
 				</p>
 			<?php } // End check for twitter ?>
-		</div>  <!-- .author-profile --> <?php
+
+			<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
+
+		</div> <!-- .author-profile -->
+
+		<?php do_atomic( 'after_author_box' ); // cakifo_after_author_box
 
 	endif;
 }
