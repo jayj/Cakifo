@@ -1867,6 +1867,60 @@ img.alignright {
 		text-align: center;
 	}
 
+	/* Related Posts widget */
+
+	/* Related Posts with thumbnails turned on */
+	.related-posts .with-thumbnails {
+		list-style-type: none;
+		margin: 0 25px;
+	}
+
+	.related-posts .with-thumbnails .related-post {
+		background: #fff;
+		border: 1px solid #e7e7e7;
+		box-shadow: 0 2px 0 #e7e7e7;
+		border-radius: 3px;
+		width: 100px;
+		height: 100px;
+		float: left;
+		margin-right: 15px;	
+	}
+
+	.related-posts .with-thumbnails .related-post:hover {
+		background: #d54e21;
+		border-color: #9b000f;
+		color: #fff;
+		text-shadow: 0 -1px 0 #7b000f;
+		-webkit-box-shadow: 0 2px 0 #9b000f;
+		box-shadow: 0 2px 0 #9b000f;
+	}
+
+	.related-posts .with-thumbnails .related-post:nth-of-type(5n) {
+		margin-right: 0;
+	}
+
+	.related-posts .with-thumbnails .related-post > a {
+		display: block;
+		width: 100%; height: 100%;
+		text-align: center;
+		word-wrap: break-word;
+		overflow: hidden;
+	}
+
+	.related-posts .with-thumbnails .related-post > a:hover {
+		color: #fff;
+	}
+
+	.related-posts .with-thumbnails .related-post img {
+		border: none;
+		padding: 0;
+		max-width: 100%;
+	}
+
+	.related-posts .with-thumbnails .related-post span {
+		font: 13px 'PT Serif', Georgia, serif;
+	}
+
 /**
  * Footer
 **************************************/
@@ -2561,7 +2615,7 @@ span.required {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 
 	/* Hide slider */
 	#slider {

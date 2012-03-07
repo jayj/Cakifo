@@ -15,6 +15,9 @@
 /* Register widget areas */
 add_action( 'widgets_init', 'cakifo_register_sidebars' );
 
+/* Register the widgets */
+add_action( 'widgets_init', 'cakifo_register_widgets' );
+
 /**
  * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support 
  * these sidebars within their themes or add more custom sidebars to the mix.
@@ -166,6 +169,23 @@ function cakifo_register_sidebars() {
 	/* Register the error page sidebar */
 	if ( in_array( 'error-page', $sidebars[0] ) )
 		register_sidebar( $error_page );
+}
+
+/**
+ * Registers the theme widgets.
+ *
+ * @since	1.3
+ * @uses 	register_widget() Registers individual widgets with WordPress
+ * @link 	http://codex.wordpress.org/Function_Reference/register_widget
+ * @return 	void
+ */
+function cakifo_register_widgets() {
+
+	/* Load the Related Posts widget class. */
+	require_once( trailingslashit( TEMPLATEPATH ) . 'functions/widget-related-posts.php' );
+
+	/* Register the Related Posts widget. */
+	register_widget( 'Cakifo_Widget_Related_Posts' );
 }
 
 ?>
