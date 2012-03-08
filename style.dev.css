@@ -678,6 +678,17 @@ table {
 	margin: 0 auto;
 }
 
+#topbar h3 {
+	color: #fff;
+	font: bold 21px 'PT Serif', serif;
+	position: absolute;
+	top: 15px; left: 10px;
+}
+
+a.toogle-navbar {
+	display: none;
+}
+
 #topbar a { color: #c6c6c6; }
 
 /**
@@ -802,6 +813,132 @@ table {
 
 #rss-subscribe a:hover {
 	color: #fff;
+}
+
+/**
+ * Responsive navigation
+ */
+@media (max-width: 979px) {
+
+	#topbar .wrap {
+		clear: left;
+		overflow: hidden;
+		height: 0;
+	}
+
+	#topbar h3 {
+		clip: auto;
+	}
+
+	#topbar .menu {
+		float: none;
+		margin: 40px 0 9px;
+	}
+
+	#topbar .menu-item {
+		float: none;
+		width: 100%;
+	}
+
+	#topbar .menu-item > a {
+		display: block;
+		margin-bottom: 2px;
+	}
+
+	#topbar .menu-item > a:hover,
+	#topbar .menu-item > a:focus,
+	#topbar .current-menu-item > a,
+	#topbar .current-menu-ancestor > a {
+		background: #111;
+		border-radius: 8px;
+		color: #f4fbff;
+	}
+
+	/* Sub-menus */
+	#topbar .sub-menu {
+		background: none;
+		display: block;
+		position: static;
+		margin: 0 0 5px 25px;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+
+	#topbar .sub-menu .menu-item > a {
+		border: none;
+	}
+
+	#topbar .menu-item > .sep {
+		display: none;
+	}
+
+	#topbar div.search {
+		border: 1px solid #222;
+		border-width: 1px 0;
+		float: none;
+		padding: 15px;
+		margin-bottom: 25px;
+		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	/* Toogle button */
+	.toogle-navbar {
+		cursor: pointer;
+	}
+
+	a.toogle-navbar {
+		background-color: #2c2c2c;
+		background-image: -moz-linear-gradient(top, #333333, #222222);
+		background-image: -ms-linear-gradient(top, #333333, #222222);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+		background-image: -webkit-linear-gradient(top, #333333, #222222);
+		background-image: -o-linear-gradient(top, #333333, #222222);
+		background-image: linear-gradient(top, #333333, #222222);
+		border: 1px solid #181818;
+ 		border-bottom-color: #050505;
+ 		border-radius: 4px;
+		display: block;
+		font-size: 13px;
+		line-height: 18px;
+		color: #333333;
+		text-align: center;
+		padding: 7px 10px;
+		position: absolute;
+		top: 15px; right: 40px;
+		z-index: 10;
+		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 rgba(255, 255, 255, 0.1);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	a.toogle-navbar:hover {
+		background: #333;
+	}
+
+	a.toogle-navbar:active {
+		background: #222;
+		-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+		box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+	a.toogle-navbar .icon-bar {
+		background-color: #f5f5f5;
+		border-radius: 1px;
+		color: #333;
+		cursor: pointer;
+		display: block;
+		width: 18px; height: 2px;
+		font-size: 13px;	
+		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+		vertical-align: text-top;
+		-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	a.toogle-navbar .icon-bar + .icon-bar {
+		margin-top: 3px;
+	}
 }
 
 /**
@@ -1799,6 +1936,9 @@ img.alignright {
 	text-shadow: 0 1px 0 #fff;
 	-webkit-box-shadow: 0 2px 0 #ccc;
 	box-shadow: 0 2px 0 #ccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	-webkit-transition: all 150ms ease-in-out;
 	-moz-transition: all 150ms ease-in-out;
 	-o-transition: all 150ms ease-in-out;

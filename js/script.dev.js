@@ -6,6 +6,40 @@
 jQuery(document).ready(function($) {
 
 	/**
+	 * Jquery plugin: Animate Height/Width to "Auto"
+	 * http://css-tricks.com/snippets/jquery/animate-heightwidth-to-auto/
+	 */
+	jQuery.fn.animateAuto = function(prop, speed, callback){
+		var elem, height, width;
+		
+		return this.each(function(i, el) {
+			el = jQuery(el);
+			elem = el.clone().css({ 'height':'auto', 'width': 'auto' }).appendTo(el.parent());
+			height = elem.css('height');
+			width = elem.css('width');
+			elem.remove();
+
+			if(prop === 'height')
+			el.animate({ 'height': height }, speed, callback);
+			else if(prop === 'width')
+			el.animate({ 'width': width }, speed, callback);
+			else if(prop === 'both')
+			el.animate({ 'width': width, 'height': height }, speed, callback);
+		});
+	};
+
+	$('.toogle-navbar').on( 'click', function(e){
+		var nav = $('#topbar .wrap'),
+			height = nav.height();
+
+		if ( height === 0 ) {
+			nav.animateAuto( 'height', 700);
+		} else {
+			nav.animate( { 'height': 0 }, 700);
+		}
+	});
+
+	/**
 	 * Equal Heights In Rows
 	 * http://css-tricks.com/equal-height-blocks-in-rows/
 	 */
@@ -18,7 +52,7 @@ jQuery(document).ready(function($) {
 			currentDiv = 0;
 
 		selector.each(function() {
-			var $el = $(this),
+				$el = $(this);
 				topPosition = $el.position().top;
 
 			if (currentRowStart !== topPosition) {
