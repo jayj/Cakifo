@@ -793,8 +793,8 @@ a.toogle-navbar {
 	z-index: 5;
 }
 
-.ie7 #topbar li { z-index: 10; }
-.ie7 #topbar .sub-menu li a { width: 100%; }
+.ie7 #topbar .menu-item { z-index: 10; }
+.ie7 #topbar .sub-menu .menu-item > a { width: 100%; }
 	
 /**
  * RSS Subscribe link
@@ -1137,7 +1137,7 @@ a.toogle-navbar {
 		margin-left: 45%;
 	}
 
-	.ie7 .slidesPagination li {
+	.ie7 .slidesPagination > li {
 		float: left;
 	}
 
@@ -2406,7 +2406,7 @@ label:hover {
 	color: #444;
 }
 
-#respond p.form-email label {
+#respond p.form-email > label {
 	padding-left: 18px;
 }
 
