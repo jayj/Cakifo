@@ -33,9 +33,9 @@ jQuery(document).ready(function($) {
 			height = nav.height();
 
 		if ( height === 0 ) {
-			nav.animateAuto( 'height', 700);
+			nav.stop().animateAuto( 'height', 700);
 		} else {
-			nav.animate( { 'height': 0 }, 700);
+			nav.stop().animate( { 'height': 0 }, 700);
 		}
 	});
 
