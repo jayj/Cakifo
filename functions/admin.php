@@ -2,14 +2,20 @@
 /**
  * Creates additional theme settings
  *
- * @package		Cakifo
- * @subpackage	Functions
- * @link		http://themehybrid.com/hybrid-core/features/theme-settings
- * @since		1.0
+ * @package Cakifo
+ * @subpackage Functions
+ * @link http://themehybrid.com/hybrid-core/features/theme-settings
+ * @since 1.0
  */
 
 add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
 
+/**
+ * Add the theme options to the Hybrid Core options page
+ *
+ * @since  1.0
+ * @return void
+ */
 function cakifo_theme_admin_setup() {
 
 	/* Get the theme prefix */
@@ -22,7 +28,12 @@ function cakifo_theme_admin_setup() {
 	add_filter( "sanitize_option_{$prefix}_theme_settings", 'cakifo_theme_validate_settings' );
 }
 
-/* Adds custom meta boxes to the theme settings page */
+/**
+ * Adds custom meta boxes to the theme settings page
+ *
+ * @since  1.0
+ * @return void
+ */
 function cakifo_theme_settings_meta_boxes() {
 
 	/* Add a Featured content box */
@@ -34,10 +45,14 @@ function cakifo_theme_settings_meta_boxes() {
 		'normal',
 		'low'
 	);
-	
 }
 
-/* Function for displaying the meta box */
+/**
+ * Function for displaying the meta box
+ *
+ * @since  1.0
+ * @return void
+ */
 function cakifo_theme_meta_box() { ?>
 
 	<table class="form-table">
@@ -59,20 +74,20 @@ function cakifo_theme_meta_box() { ?>
 			</th>
 
 			<td>
-			<?php $categories = get_categories(); ?>
+				<?php $categories = get_categories(); ?>
 
-			<p>
-				<select id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>">
-				<option value="" <?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
+				<p>
+					<select id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>">
+					<option value="" <?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
 
-					<?php foreach ( $categories as $cat ) { ?>
-						<option value="<?php echo $cat->term_id; ?>" <?php selected( hybrid_get_setting( 'featured_category' ), $cat->term_id ); ?>><?php echo esc_attr( $cat->name ); ?></option>
-					<?php } ?>
+						<?php foreach ( $categories as $cat ) { ?>
+							<option value="<?php echo $cat->term_id; ?>" <?php selected( hybrid_get_setting( 'featured_category' ), $cat->term_id ); ?>><?php echo esc_attr( $cat->name ); ?></option>
+						<?php } ?>
 
-				</select>
-			</p>
+					</select>
+				</p>
 
-			<p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
+				<p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
 			</td>
 		</tr>
 
@@ -130,6 +145,10 @@ function cakifo_theme_meta_box() { ?>
 
 /**
  * Validates theme settings
+ *
+ * @since  1.0
+ * @param  array  $input The entered theme options
+ * @return array         The validated theme options
  */
 function cakifo_theme_validate_settings( $input ) {
 

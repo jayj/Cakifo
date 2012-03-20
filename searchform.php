@@ -4,8 +4,8 @@
  *
  * The search form template displays the search form.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 

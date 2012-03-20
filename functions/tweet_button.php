@@ -5,12 +5,13 @@
  * This is my fork of Nicolas Gallagher original "Custom Tweet Button for WordPress"
  * It's a fully customisable HTML and CSS Tweet Button for WordPress built using PHP
  *
- * @package		Cakifo
- * @subpackage	Functions
- * @author		Nicolas Gallagher, fork by Jesper Johansen
- * @link		http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
- * @version		1.0
- * @since		1.3
+ * @package Cakifo
+ * @subpackage Functions
+ * @author Nicolas Gallagher
+ * @author Jesper Johansen <kontakt@jayj.dk>
+ * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
+ * @version 1.1
+ * @since 1.3
  *
  *	Copyright 2010-2012 Nicolas Gallagher
  *
@@ -29,14 +30,25 @@
  *	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/**
+ *  Display the tweet button
+ * @since  1.3
+ * @param  array   $args Array with arguments
+ * @staticvar integer $i Used to count how many times the function has been referenced
+ * @return string         The tweet button
+ */
 function cakifo_tweet_button( $args = array() ) {
 
-	// Count how many times the function has been referenced
+	/**
+	 * Count how many times the function has been referenced
+	 * @var integer
+	 */
 	static $i = 0;
 	$i++;
 
 	/**
-	 * Default values
+	 * Default values for the button
+	 * @var array
 	 */
 	$defaults = array(
 		'before'   => '',

@@ -13,9 +13,9 @@
  * be used if it exists and we ask for the loop with:
  * <code>get_template_part( 'loop', 'index' );</code>
  *
- * @package		Cakifo
- * @subpackage	Template
- * @since		1.1
+ * @package Cakifo
+ * @subpackage Template
+ * @since 1.1
  */
 ?>
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
@@ -34,8 +34,11 @@
 				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 			<?php endif; ?>
 
-			<?php
-				// The default format (i.e., a normal post) returns false
+			<?php 
+				/**
+				 * Get the default post format. Normal posts return false
+				 * @var string|bool
+				 */
 				$format = get_post_format();
 
 				if ( false === $format )

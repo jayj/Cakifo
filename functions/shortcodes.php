@@ -2,14 +2,14 @@
 /**
  * Additional shortcodes for use within the theme.
  *
- * @package		Cakifo
- * @subpackage	Functions
+ * @package Cakifo
+ * @subpackage Functions
  */
 
 /**
  * Registers new shortcodes
  *
- * @since	1.0
+ * @since 1.0
  */
 function cakifo_register_shortcodes() {
 	add_shortcode( 'rss-link', 'cakifo_rss_link_shortcode' );
@@ -38,6 +38,13 @@ function cakifo_register_shortcodes() {
  * @param	array	$atts
  * @since	1.0
  */
+
+/**
+ * RSS link shortcode
+ * @since  1.0
+ * @param  array  $atts
+ * @return string  The RSS link
+ */
 function cakifo_rss_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
 		'before' => '',
@@ -49,13 +56,14 @@ function cakifo_rss_link_shortcode( $atts ) {
 }
 
 /**
- * Twitter username and/or link.
- *
+ * Twitter username and/or link to profile.
+ * 
  * Taken from my Twitter Profile Field plugin
- * @link	http://wordpress.org/extend/plugins/twitter-profile-field/
- *
- * @param	array	$atts
- * @since 1.0
+ * @link  http://wordpress.org/extend/plugins/twitter-profile-field/
+ * 
+ * @since  1.0
+ * @param  array  $atts
+ * @return string  The Twitter username or username with a link to the profile.
  */
 function cakifo_twitter_shortcode( $atts ) {
 	extract( shortcode_atts( array(   
@@ -78,8 +86,8 @@ function cakifo_twitter_shortcode( $atts ) {
 /**
  * Delicious link shortcode
  *
- * @param	array	$atts
- * @since	1.0
+ * @param  array  $atts
+ * @since  1.0
  */
 function cakifo_entry_delicious_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -95,8 +103,8 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
  *
- * @param	array	$atts
- * @since	1.0
+ * @param  array  $atts
+ * @since  1.0
  */
 function cakifo_entry_digg_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -115,8 +123,8 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
  *
- * @param	array	$atts
- * @since	1.0
+ * @param  array  $atts
+ * @since  1.0
  */
 function cakifo_entry_facebook_link_shortcode( $atts ) {
 
@@ -150,8 +158,8 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 /**
  * Twitter link shortcode
  *
- * @param	array	$atts
- * @since	1.0
+ * @param  array  $atts
+ * @since  1.0
  */
 function cakifo_entry_twitter_link_shortcode( $atts ) {
 	extract( shortcode_atts( array(
@@ -206,9 +214,8 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  * Google +1 shortcode
  *
  * @link http://www.google.com/+1/button/
- *
- * @param	array	$atts
- * @since	1.2
+ * @param  array  $atts
+ * @since  1.2
  */
 function cakifo_entry_googleplus_link_shortcode( $atts ) {
 
@@ -238,8 +245,8 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param	array	$atts
- * @since	1.1
+ * @param  array  $atts
+ * @since  1.1
  */
 function cakifo_entry_published_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -262,8 +269,8 @@ function cakifo_entry_published_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param	array	$atts
- * @since	1.1
+ * @param  array  $atts
+ * @since  1.1
  */
 function cakifo_comment_published_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -281,8 +288,8 @@ function cakifo_comment_published_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param	array	$atts
- * @since	1.3
+ * @param  array  $atts
+ * @since  1.3
  */
 function cakifo_entry_author_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -299,8 +306,8 @@ function cakifo_entry_author_shortcode( $atts ) {
 /**
  * Displays the post format of the current post
  *
- * @param	array	$atts
- * @since	1.3
+ * @param  array  $atts
+ * @since  1.3
  */
 function cakifo_entry_format_shortcode( $atts ) {
 	$atts = shortcode_atts( array(

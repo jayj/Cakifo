@@ -7,8 +7,8 @@
  * wrapper, which is opened with the header.php file. It also executes key functions needed
  * by the theme, child themes, and plugins. 
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 

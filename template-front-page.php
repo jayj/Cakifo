@@ -1,11 +1,11 @@
 <?php
 /**
  * Template Name: Front Page
- *
- * This is the frontpage page template
- *
- * @package		Cakifo
- * @subpackage	Template
+ * 
+ * This page template is used to display a custom front page
+ * 
+ * @package Cakifo
+ * @subpackage Template
  */
 
 get_header(); // Loads the header.php template ?>

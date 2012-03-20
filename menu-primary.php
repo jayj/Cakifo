@@ -4,8 +4,8 @@
  *
  * Displays the Topbar and Primary Menu if it has active menu items.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 if ( has_nav_menu( 'primary' ) ) : ?>

@@ -5,8 +5,8 @@
  * This is the default singular template.  It is used when a more specific template can't be found to display
  * singular views of posts (any post type).
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 get_header(); // Loads the header.php template ?>

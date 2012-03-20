@@ -5,8 +5,8 @@
  *
  * Child Themes can replace this template part file via {section-headlines.php}
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 

@@ -1,13 +1,13 @@
 <?php
 /**
- * 404 Template
+ * 404 template
  *
  * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will 
  * display a generic message.
  *
- * @package		Cakifo
- * @subpackage	Template
- * @link		http://codex.wordpress.org/Creating_an_Error_404_Page
+ * @package Cakifo
+ * @subpackage Template
+ * @link http://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
 /**

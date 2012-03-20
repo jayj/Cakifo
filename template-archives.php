@@ -4,8 +4,8 @@
  *
  * A custom page template for displaying blog archives.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 get_header(); // Loads the header.php template ?>

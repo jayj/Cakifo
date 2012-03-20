@@ -4,8 +4,8 @@
  *
  * Child Themes can replace this template part file via {section-recentposts.php}
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 
@@ -16,7 +16,10 @@
 		<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
 
 		<?php
-			// Get the link to the Posts (blog) page
+			/**
+			 * Get the link to the Posts (blog) page
+			 * @var string
+			 */
 			$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
 		?>
 

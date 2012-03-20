@@ -8,8 +8,8 @@
  * Themes may choose to use or not use these sidebars, create new sidebars, or 
  * unregister individual sidebars.  A theme must register support for 'cakifo-sidebars' to use them
  *
- * @package		Cakifo
- * @subpackage	Functions
+ * @package Cakifo
+ * @subpackage Functions
  */
 
 /* Register widget areas */
@@ -22,9 +22,9 @@ add_action( 'widgets_init', 'cakifo_register_widgets' );
  * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support 
  * these sidebars within their themes or add more custom sidebars to the mix.
  *
- * @uses	register_sidebar() Registers a sidebar with WordPress.
- * @link	http://codex.wordpress.org/Function_Reference/register_sidebar
- * @since	1.2
+ * @uses register_sidebar() Registers a sidebar with WordPress.
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ * @since 1.2
  */
 function cakifo_register_sidebars() {
 
@@ -174,10 +174,10 @@ function cakifo_register_sidebars() {
 /**
  * Registers the theme widgets.
  *
- * @since	1.3
- * @uses 	register_widget() Registers individual widgets with WordPress
- * @link 	http://codex.wordpress.org/Function_Reference/register_widget
- * @return 	void
+ * @since  1.3
+ * @uses register_widget() Registers individual widgets with WordPress
+ * @link http://codex.wordpress.org/Function_Reference/register_widget
+ * @return void
  */
 function cakifo_register_widgets() {
 

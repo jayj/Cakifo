@@ -7,10 +7,10 @@
  * Supported by default, remove it in a child theme with
  * remove_theme_support( 'cakifo-colorbox' );
  *
- * @package		Cakifo
- * @subpackage	Functions
- * @version		1.3
- * @link		http://jacklmoore.com/colorbox/
+ * @package Cakifo
+ * @subpackage Functions
+ * @version 1.3
+ * @link http://jacklmoore.com/colorbox/
  */
 
 add_action( 'wp_enqueue_scripts', 'cakifo_colorbox_script' );
@@ -19,10 +19,9 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
 /**
  * Load the Colorbox script and style
  *
- * @uses	wp_enqueue_script()
- * @uses	wp_enqueue_style()
- *
- * @since	1.3
+ * @uses wp_enqueue_script()
+ * @uses wp_enqueue_style()
+ * @since 1.3
  */
 function cakifo_colorbox_script() {
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.18', true );
@@ -32,7 +31,7 @@ function cakifo_colorbox_script() {
 /**
  * Prints the Colorbox script in the footer
  *
- * @since	1.3
+ * @since 1.3
  */
 function cakifo_colorbox() {
 
@@ -59,6 +58,8 @@ function cakifo_colorbox() {
 	 * 		$args['selector'] = '.colorbox, .my-new-awesome-selector';
 	 *		return $args;
 	 *	}
+	 *	
+	 * @var array
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );
 

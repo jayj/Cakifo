@@ -4,8 +4,8 @@
  *
  * Displays any widgets for the After Singular dynamic sidebar if they are available.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 if ( is_active_sidebar( 'after-singular' ) ) : ?>

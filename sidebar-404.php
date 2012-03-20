@@ -4,8 +4,8 @@
  *
  * Displays any widgets for the Error Page dynamic sidebar if they are available.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 if ( is_active_sidebar( 'error-page' ) ) : ?>

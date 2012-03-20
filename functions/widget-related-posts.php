@@ -2,14 +2,14 @@
 /**
  * The related posts widget is created to give users the ability to show related posts after each posts 
  *
- * @package		Cakifo
- * @subpackage	Functions
- * @since		1.3
- * @author		Jesper Johansen <kontakt@jayj.dk>
- * @copyright	Copyright (c) 2011-2012, Jesper Johansen
- * @link		http://wpthemes.jayj.dk/cakifo
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
- */
+ * @package Cakifo
+ * @subpackage Functions
+ * @since 1.3
+ * @author Jesper Johansen <kontakt@jayj.dk>
+ * @copyright Copyright (c) 2011-2012, Jesper Johansen
+ * @link http://wpthemes.jayj.dk/cakifo
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ */		
 
 /**
  * Related Posts widget class.
@@ -136,8 +136,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	* Gets the related posts based on the category and post format
 	* and puts them in a custom field
 	*
-	* @since 	1.3
-	* @access 	private
+	* @since 1.3
+	* @access private
 	*/
 	private function _get_related_posts( $post_id, $args ) {
 

@@ -5,8 +5,8 @@
  * Lists comments and calls the comment form.  Individual comments have their own templates.  The 
  * hierarchy for these templates is $comment_type.php, comment.php.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 /* Kill the page if trying to access this template directly */

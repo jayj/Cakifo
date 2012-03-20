@@ -5,8 +5,8 @@
  * This template file is used for the slider on the home and blog page.
  * Child Themes can replace it via {section-slider.php}
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 
@@ -63,6 +63,8 @@
 							 *
 							 * Either from a custom field, the featured image function,
 							 * or an embed video (video post format only)
+							 * 
+							 * @var string
 							 */
 							$thumbnail = get_the_image( array(
 								'size'        => 'slider',

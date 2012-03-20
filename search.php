@@ -5,8 +5,8 @@
  * The search template is loaded when a visitor uses the search form to search for something
  * on the site.
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 
 get_header(); // Loads the header.php template ?>

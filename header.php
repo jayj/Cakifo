@@ -6,8 +6,8 @@
  * somewhere near the top of the file. It is used mostly as an opening wrapper, which is closed with the 
  * footer.php file. It also executes key functions needed by the theme, child themes, and plugins. 
  *
- * @package		Cakifo
- * @subpackage	Template
+ * @package Cakifo
+ * @subpackage Template
  */
 ?>
 <!doctype html>
