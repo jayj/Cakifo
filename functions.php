@@ -87,7 +87,7 @@ function cakifo_theme_setup() {
 
 	/* Custom background */
 	if ( function_exists( '_custom_header_background_just_in_time' ) ) {
-		add_theme_support( 'custom-background', array( 'callback' => 'cakifo_custom_background_callback', 'default-color' => 'e3ecf2', 'default-image' => '%s/images/bg.png' ) );
+		add_theme_support( 'custom-background', array( 'wp-head-callback' => 'cakifo_custom_background_callback', 'default-color' => 'e3ecf2', 'default-image' => '%s/images/bg.png' ) );
 	} else {
 		add_custom_background( 'cakifo_custom_background_callback' );
 	}
@@ -183,8 +183,8 @@ function cakifo_theme_setup() {
 			'flex-width' => true,
 			'flex-height' => true,
 			'default-text-color' => apply_filters( 'cakifo_header_textcolor', '54a8cf' ), // #54a8cf is the link color from style.css
-			'callback' => 'cakifo_header_style',
-			'admin-header-callback' => 'cakifo_admin_header_style',
+			'wp-head-callback' => 'cakifo_header_style',
+			'admin-head-callback' => 'cakifo_admin_header_style',
 		) );
 
 	// WordPress 3.3 or older
