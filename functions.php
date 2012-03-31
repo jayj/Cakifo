@@ -87,7 +87,7 @@ function cakifo_theme_setup() {
 
 	/* Custom background */
 	if ( function_exists( '_custom_header_background_just_in_time' ) ) {
-		add_theme_support( 'custom-background', array( 'wp-head-callback' => 'cakifo_custom_background_callback', 'default-color' => 'e3ecf2', 'default-image' => '%s/images/bg.png' ) );
+		add_theme_support( 'custom-background', array( 'wp-head-callback' => 'cakifo_custom_background_callback', 'default-color' => 'e3ecf2' ) );
 	} else {
 		add_custom_background( 'cakifo_custom_background_callback' );
 	}
