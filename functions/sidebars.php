@@ -38,7 +38,7 @@ function cakifo_register_sidebars() {
 	/* Set up the primary sidebar arguments */
 	$primary = array(
 		'id'            => 'primary',
-		'name'          => __( 'Primary', 'cakifo' ),
+		'name'          => _x( 'Primary', 'sidebar name', 'cakifo' ),
 		'description'   => __( 'The main (primary) widget area, most often used as a sidebar.', 'cakifo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</aside>',
@@ -49,7 +49,7 @@ function cakifo_register_sidebars() {
 	/* Set up the secondary sidebar arguments */
 	$secondary = array(
 		'id'            => 'secondary',
-		'name'          => __( 'Secondary', 'cakifo' ),
+		'name'          => _x( 'Secondary', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'The second most important widget area, most often used as a secondary sidebar.', 'cakifo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</aside>',
@@ -60,7 +60,7 @@ function cakifo_register_sidebars() {
 	/* Set up the subsidiary sidebar arguments */
 	$subsidiary = array(
 		'id'            => 'subsidiary',
-		'name'          => __( 'Subsidiary', 'cakifo' ),
+		'name'          => _x( 'Subsidiary', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'A widget area loaded in the footer of the site.', 'cakifo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</aside>',
@@ -71,7 +71,7 @@ function cakifo_register_sidebars() {
 	/* Set up the header sidebar arguments */
 	$header = array(
 		'id'            => 'header',
-		'name'          => __( 'Header', 'cakifo' ),
+		'name'          => _x( 'Header', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Displayed within the site\'s header area.', 'cakifo' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget'  => '</div></div>',
@@ -82,7 +82,7 @@ function cakifo_register_sidebars() {
 	/* Set up the before content sidebar arguments */
 	$before_content = array(
 		'id'            => 'before-content',
-		'name'          => __( 'Before Content', 'cakifo' ),
+		'name'          => _x( 'Before Content', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Loaded before the page\'s main content area.', 'cakifo' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget'  => '</div></section>',
@@ -93,7 +93,7 @@ function cakifo_register_sidebars() {
 	/* Set up the after content sidebar arguments */
 	$after_content = array(
 		'id'            => 'after-content',
-		'name'          => __( 'After Content', 'cakifo' ),
+		'name'          => _x( 'After Content', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Loaded after the page\'s main content area.', 'cakifo' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
 		'after_widget'  => '</div></section>',
@@ -104,7 +104,7 @@ function cakifo_register_sidebars() {
 	/* Set up the after singular sidebar arguments */
 	$after_singular = array(
 		'id'            => 'after-singular',
-		'name'          => __( 'After Singular', 'cakifo' ),
+		'name'          => _x( 'After Singular', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Loaded on singular post (page, attachment, etc.) views before the comments area.', 'cakifo' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</div>',
@@ -115,7 +115,7 @@ function cakifo_register_sidebars() {
 	/* Set up the after single sidebar arguments */
 	$after_single = array(
 		'id'            => 'after-single',
-		'name'          => __( 'After Single', 'cakifo' ),
+		'name'          => _x( 'After Single', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Loaded on single post views before the comments area.', 'cakifo' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</div>',
@@ -126,7 +126,7 @@ function cakifo_register_sidebars() {
 	/* Set up the 404 error page arguments */
 	$error_page = array(
 		'id'            => 'error-page',
-		'name'          => __( 'Error Page', 'cakifo' ),
+		'name'          => _x( 'Error Page', 'sidebar name' 'cakifo' ),
 		'description'   => __( 'Loaded on 404 error pages', 'cakifo' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</div>',

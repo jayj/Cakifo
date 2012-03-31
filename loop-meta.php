@@ -108,7 +108,7 @@
 		<?php $results = absint( $wp_query->found_posts ); ?>
 
 		<h1 class="loop-title">
-			<?php printf( _n( "%d Search Result for:", "%d Search Results for:", $results, 'cakifo' ), $results ); ?>
+			<?php printf( _n( '%d Search Result for:', '%d Search Results for:', $results, 'cakifo' ), $results ); ?>
 			<span><?php echo esc_attr( get_search_query() ); ?></span>
 		</h1>
 

@@ -874,11 +874,11 @@ function cakifo_image_info() {
 		return;
 
 	/* Add the width/height to the $items array. */
-	$items['dimensions'] = array(  __( 'Dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( __( '%1$s &#215; %2$s pixels', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
+	$items['dimensions'] = array(  _x( 'Dimensions', 'image dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( _x( '%1$s &#215; %2$s pixels', 'image dimensions', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
 
 	/* If a timestamp exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = array(  __( 'Date', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
+		$items['created_timestamp'] = array(  _x( 'Date', 'image creation', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
 
 	/* If a camera exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['camera'] ) )

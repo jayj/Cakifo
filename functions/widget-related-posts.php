@@ -200,9 +200,9 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		$instance = $new_instance;
 
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['limit'] = intval( $new_instance['limit'] );
-		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
+		$instance['title']          = strip_tags( $new_instance['title'] );
+		$instance['limit']          = intval( $new_instance['limit'] );
+		$instance['orderby']        = strip_tags( $new_instance['orderby'] );
 		$instance['show_thumbnail'] = ( isset( $new_instance['show_thumbnail'] ) ? 1 : 0 );
 
 		$this->flush_widget_cache();
@@ -255,9 +255,9 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title' => esc_attr__( 'Related Posts', 'cakifo' ),
-			'limit' => 5,
-			'orderby' => 'random',
+			'title'          => esc_attr__( 'Related Posts', 'cakifo' ),
+			'limit'          => 5,
+			'orderby'        => 'random',
 			'show_thumbnail' => true
 		);
 
@@ -266,9 +266,9 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		/* Create an array of orderby types. */
 		$orderby = array(
-			'random' => esc_attr__( 'Random', 'cakifo' ),
-			'date' => esc_attr__( 'Date', 'cakifo' ),
-			'comment_count' => esc_attr__( 'Comment count', 'cakifo' ),
+			'random'        => _x( 'Random', 'order by', 'cakifo' ),
+			'date'          => _x( 'Date', 'order by', 'cakifo' ),
+			'comment_count' => _x( 'Comment count', 'order by', 'cakifo' ),
 		);
 	?>
 

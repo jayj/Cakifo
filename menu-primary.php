@@ -14,8 +14,8 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 	<div id="topbar">
 
-		<a class="toogle-navbar" title="<?php esc_attr_e( 'Toogle menu', 'cakifo' ); ?>">
-			<span class="assistive-text"><?php _e( 'Toogle menu', 'cakifo' ); ?></span>
+		<a class="toogle-navbar" title="<?php esc_attr_e( 'Toggle menu', 'cakifo' ); ?>">
+			<span class="assistive-text"><?php _e( 'Toggle menu', 'cakifo' ); ?></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>

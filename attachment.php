@@ -57,7 +57,7 @@ get_header(); // Loads the header.php template ?>
 					<?php hybrid_attachment(); // Function for handling non-image attachments ?>
 
 					<p class="download">
-						<a href="<?php echo wp_get_attachment_url(); ?>" title="<?php the_title_attribute(); ?>" rel="enclosure" type="<?php echo get_post_mime_type(); ?>"><?php printf( __( 'Download &quot;%1$s&quot;', 'cakifo' ), the_title( '<span class="fn">', '</span>', false) ); ?></a>
+						<a href="<?php echo wp_get_attachment_url(); ?>" title="<?php the_title_attribute(); ?>" rel="enclosure" type="<?php echo get_post_mime_type(); ?>"><?php printf( __( 'Download %s', 'cakifo' ), the_title( '<span class="fn">&quot;', '&quot;</span>', false) ); ?></a>
 					</p> <!-- .download -->
 
 				<?php endif; ?>

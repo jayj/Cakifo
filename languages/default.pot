@@ -2,1263 +2,1366 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 02:03+0100\n"
-"PO-Revision-Date: 2011-10-18 02:03+0100\n"
+"POT-Creation-Date: 2012-04-01 01:40+0100\n"
+"PO-Revision-Date: 2012-04-01 01:40+0100\n"
 "Last-Translator: Jesper <kontakt@jayj.dk>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;_ex;esc_attr_x;esc_html_x;_n;_nx;_n_noop;_nx_noop;__\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: _e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;_nx:1,2,3c,4c;_n_noop:1,2;_nx_noop:1,2,3c;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: 404.php:23
+#: ../404.php:29
 msgid "Oops! 404! 404!.. Help!.. We can't find the page!"
 msgstr ""
 
-#: 404.php:26
+#: ../404.php:32
 #, php-format
 msgid "You tried going to %s but it doesn't exist. All is not lost! You can search for what you're looking for."
 msgstr ""
 
-#: attachment.php:31
+#: ../attachment.php:31
 #, php-format
 msgid "Published on [entry-published] in <a href=\"%1$s\" title=\"Return to %2$s\" rel=\"gallery\">%2$s</a> [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: attachment.php:45
+#: ../attachment.php:45
 msgid "View full size"
 msgstr ""
 
-#: attachment.php:60
+#: ../attachment.php:60
 #, php-format
-msgid "Download &quot;%1$s&quot;"
+msgid "Download %s"
 msgstr ""
 
-#: attachment.php:74
+#: ../attachment.php:72
 msgid "Gallery"
 msgstr ""
 
-#: comment.php:34
+#: ../comment.php:34
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: comments.php:14
-msgid "Please do not load this page directly. Thanks!"
-msgstr ""
-
-#: comments.php:25
+#: ../comments.php:24
 msgid "No Responses"
 msgstr ""
 
-#: comments.php:25
+#: ../comments.php:24
 msgid "One Response"
 msgstr ""
 
-#: comments.php:25
+#: ../comments.php:24
 msgid "% Responses"
 msgstr ""
 
-#: comments.php:37
+#: ../comments.php:36
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:47
+#: ../comments.php:46
 #, php-format
 msgid "Comments are closed, but <a href=\"%1$s\" title=\"Trackback URL for this post\">trackbacks</a> and pingbacks are open."
 msgstr ""
 
-#: comments.php:53
+#: ../comments.php:52
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:195
+#: ../functions.php:205
 msgid "Logo.png from the Cakifo images folder"
 msgstr ""
 
-#: functions.php:205
+#: ../functions.php:217
 msgid "Logo.png from the Cakifo child theme images folder"
 msgstr ""
 
-#: functions.php:452
-#: functions.php:472
-#: loop.php:62
-#: loop.php:70
-#: loop.php:77
-#: loop.php:84
+#: ../functions.php:448
+#: ../functions.php:1032
+#: ../loop.php:78
+#: ../loop.php:94
+#: ../loop.php:106
+#: ../loop.php:121
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#: functions.php:483
+#: ../functions.php:461
 msgid "You are here:"
 msgstr ""
 
-#: functions.php:495
+#: ../functions.php:474
 msgid "Posted by [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: functions.php:497
+#: ../functions.php:476
 msgid "[entry-shortlink] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: functions.php:501
+#: ../functions.php:487
 msgid "By [entry-author] on [entry-published] [entry-terms taxonomy=\"category\" before=\"in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: functions.php:505
+#: ../functions.php:498
 msgid "Link recommended by [entry-author] on [entry-published] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: functions.php:509
+#: ../functions.php:509
 msgid "<div>[entry-published] by [entry-author] [entry-edit-link before=\"<br/>\"]</div> <div>[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms before=\"<br />Tagged \"] [entry-comments-link before=\"<br />\"]</div>"
 msgstr ""
 
-#: functions.php:519
+#: ../functions.php:526
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
 msgstr ""
 
-#: functions.php:750
+#: ../functions.php:817
 msgid "Article written by [entry-author]"
 msgstr ""
 
-#: functions.php:760
+#: ../functions.php:827
 #, php-format
 msgid "Follow %1$s on Twitter"
 msgstr ""
 
-#: functions.php:800
-#, php-format
-msgid "<span class=\"prep\">Dimensions:</span> %s"
+#: ../functions.php:877
+msgctxt "image dimensions"
+msgid "Dimensions"
 msgstr ""
 
-#: functions.php:800
+#: ../functions.php:877
 #, php-format
+msgctxt "image dimensions"
 msgid "%1$s &#215; %2$s pixels"
 msgstr ""
 
-#: functions.php:804
-#, php-format
-msgid "<span class=\"prep\">Date:</span> %s"
+#: ../functions.php:881
+msgctxt "image creation"
+msgid "Date"
 msgstr ""
 
-#: functions.php:808
-#, php-format
-msgid "<span class=\"prep\">Camera:</span> %s"
+#: ../functions.php:885
+msgid "Camera"
 msgstr ""
 
-#: functions.php:812
-#, php-format
-msgid "<span class=\"prep\">Aperture:</span> %s"
+#: ../functions.php:889
+msgid "Aperture"
 msgstr ""
 
-#: functions.php:812
+#: ../functions.php:889
 #, php-format
 msgid "f/%s"
 msgstr ""
 
-#: functions.php:816
-#, php-format
-msgid "<span class=\"prep\">Focal Length:</span> %s"
+#: ../functions.php:893
+msgid "Focal Length"
 msgstr ""
 
-#: functions.php:816
+#: ../functions.php:893
 #, php-format
 msgid "%s mm"
 msgstr ""
 
-#: functions.php:820
-#, php-format
-msgid "<span class=\"prep\">ISO:</span> %s"
+#: ../functions.php:897
+msgid "ISO"
 msgstr ""
 
-#: functions.php:836
-#, php-format
-msgid "<span class=\"prep\">Shutter Speed:</span> %s"
+#: ../functions.php:913
+msgid "Shutter Speed"
 msgstr ""
 
-#: functions.php:836
+#: ../functions.php:913
 #, php-format
 msgid "%s sec"
 msgstr ""
 
-#: functions.php:847
+#: ../functions.php:930
 msgid "Image Info"
 msgstr ""
 
-#: loop-meta.php:33
+#: ../loop-meta.php:33
 #, php-format
 msgid "Category Archives: %s"
 msgstr ""
 
-#: loop-meta.php:45
+#: ../loop-meta.php:45
 #, php-format
 msgid "Tag Archives: %s"
 msgstr ""
 
-#: loop-meta.php:58
+#: ../loop-meta.php:58
 #, php-format
 msgid "Post format: %s"
 msgstr ""
 
-#: loop-meta.php:73
+#: ../loop-meta.php:73
 #, php-format
 msgid "Archives: %s"
 msgstr ""
 
-#: loop-meta.php:88
+#: ../loop-meta.php:88
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: loop-meta.php:111
+#: ../loop-meta.php:111
 #, php-format
 msgid "%d Search Result for:"
-msgstr ""
+msgid_plural "%d Search Results for:"
+msgstr[0] ""
+msgstr[1] ""
 
-#: loop-meta.php:117
+#: ../loop-meta.php:117
 #, php-format
 msgid "You are browsing the search results for &quot;%1$s&quot;"
 msgstr ""
 
-#: loop-meta.php:127
+#: ../loop-meta.php:127
 msgid "Archives by date"
 msgstr ""
 
-#: loop-meta.php:131
+#: ../loop-meta.php:131
 msgid "You are browsing the site archives by date."
 msgstr ""
 
-#: loop-meta.php:155
+#: ../loop-meta.php:155
 msgid "Archives"
 msgstr ""
 
-#: loop-meta.php:159
+#: ../loop-meta.php:159
 msgid "You are browsing the site archives."
 msgstr ""
 
-#: loop-nav.php:16
-#: loop-nav.php:25
-#: loop-nav.php:35
+#: ../loop-nav.php:16
+#: ../loop-nav.php:26
+#: ../loop-nav.php:37
 msgid "Post navigation"
 msgstr ""
 
-#: loop-nav.php:28
-#: loop-nav.php:32
+#: ../loop-nav.php:29
+#: ../loop-nav.php:34
 msgid "&larr; Previous"
 msgstr ""
 
-#: loop-nav.php:29
-#: loop-nav.php:32
+#: ../loop-nav.php:30
+#: ../loop-nav.php:34
 msgid "Next &rarr;"
 msgstr ""
 
-#: loop.php:44
+#: ../loop.php:51
 msgid "By [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: loop.php:64
-#: loop.php:71
-#: loop.php:78
-#: loop.php:85
+#: ../loop.php:80
+#: ../loop.php:95
+#: ../loop.php:107
+#: ../loop.php:122
 msgid "Pages:"
 msgstr ""
 
-#: loop.php:93
+#: ../loop.php:132
 msgid "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms before=\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before=\" | \"]"
 msgstr ""
 
-#: menu-primary.php:22
+#: ../menu-primary.php:17
+#: ../menu-primary.php:18
+msgid "Toggle menu"
+msgstr ""
+
+#: ../menu-primary.php:29
 msgid "Main menu"
 msgstr ""
 
-#: searchform.php:19
-#: searchform.php:26
-#: searchform.php:29
+#: ../searchform.php:21
+#: ../searchform.php:28
+#: ../searchform.php:31
 msgid "Search"
 msgstr ""
 
-#: section-headlines.php:70
+#: ../section-headlines.php:86
 msgid "[entry-published pubdate=\"no\"] by [entry-author]"
 msgstr ""
 
-#: section-recentposts.php:18
+#: ../section-recentposts.php:26
 msgid "See more posts"
 msgstr ""
 
-#: section-recentposts.php:18
+#: ../section-recentposts.php:26
 msgid "Recent Posts"
 msgstr ""
 
-#: section-recentposts.php:67
+#: ../section-recentposts.php:81
 msgid "[entry-published] by [entry-author]"
 msgstr ""
 
-#: section-slider.php:43
+#: ../section-slider.php:44
 msgid "Featured Posts"
 msgstr ""
 
-#: singular.php:44
-#: template-archives.php:71
-#: template-bookmarks.php:65
+#: ../singular.php:45
+#: ../template-archives.php:72
+#: ../template-bookmarks.php:66
 msgid "Edit"
 msgstr ""
 
-#: template-archives.php:43
+#: ../template-archives.php:44
 msgid "Archives by category"
 msgstr ""
 
-#: template-archives.php:55
+#: ../template-archives.php:56
 msgid "Archives by month"
 msgstr ""
 
-#: functions/admin.php:30
+#: ../functions/admin.php:42
 msgid "Cakifo settings"
 msgstr ""
 
-#: functions/admin.php:46
+#: ../functions/admin.php:62
 msgid "Show Featured Content slider?"
 msgstr ""
 
-#: functions/admin.php:51
+#: ../functions/admin.php:67
 msgid "Check to display the \"Featured Content\" slider"
 msgstr ""
 
-#: functions/admin.php:57
+#: ../functions/admin.php:73
 msgid "Featured Category:"
 msgstr ""
 
-#: functions/admin.php:74
+#: ../functions/admin.php:90
 msgid "Leave blank to use sticky posts"
 msgstr ""
 
-#: functions/admin.php:80
+#: ../functions/admin.php:96
 msgid "Featured Posts:"
 msgstr ""
 
-#: functions/admin.php:84
+#: ../functions/admin.php:100
 msgid "How many featured posts should be shown? <code>-1</code> will show all posts in the category."
 msgstr ""
 
-#: functions/admin.php:85
-#: functions/admin.php:111
+#: ../functions/admin.php:101
+#: ../functions/admin.php:127
 #, php-format
 msgid "%s is the default"
 msgstr ""
 
-#: functions/admin.php:91
+#: ../functions/admin.php:107
 msgid "Headline Categories:"
 msgstr ""
 
-#: functions/admin.php:95
+#: ../functions/admin.php:111
 msgid "Multiple categories may be chosen by holding the <code>Ctrl</code> key and selecting."
 msgstr ""
 
-#: functions/admin.php:107
+#: ../functions/admin.php:123
 msgid "Headlines Posts:"
 msgstr ""
 
-#: functions/admin.php:111
+#: ../functions/admin.php:127
 msgid "How many posts should be shown per headline category?"
 msgstr ""
 
-#: functions/admin.php:119
+#: ../functions/admin.php:135
 msgid "Twitter username:"
 msgstr ""
 
-#: functions/admin.php:123
+#: ../functions/admin.php:139
 msgid "Your Twitter username (if you have one)"
 msgstr ""
 
-#: functions/shortcodes.php:46
+#: ../functions/shortcodes.php:52
+#: ../library/classes/widget-bookmarks.php:174
 msgid "RSS"
 msgstr ""
 
-#: functions/shortcodes.php:67
+#: ../functions/shortcodes.php:74
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: functions/shortcodes.php:91
+#: ../functions/shortcodes.php:98
 msgid "Delicious"
 msgstr ""
 
-#: functions/shortcodes.php:109
+#: ../functions/shortcodes.php:117
 msgid "Digg this entry"
 msgstr ""
 
-#: functions/shortcodes.php:109
+#: ../functions/shortcodes.php:117
 msgid "Digg"
 msgstr ""
 
-#: functions/sidebars.php:38
+#: ../functions/sidebars.php:41
+msgctxt "sidebar name"
 msgid "Primary"
 msgstr ""
 
-#: functions/sidebars.php:39
+#: ../functions/sidebars.php:42
 msgid "The main (primary) widget area, most often used as a sidebar."
 msgstr ""
 
-#: functions/sidebars.php:49
+#: ../functions/sidebars.php:52
+msgctxt "sidebar name"
 msgid "Secondary"
 msgstr ""
 
-#: functions/sidebars.php:50
+#: ../functions/sidebars.php:53
 msgid "The second most important widget area, most often used as a secondary sidebar."
 msgstr ""
 
-#: functions/sidebars.php:60
+#: ../functions/sidebars.php:63
+msgctxt "sidebar name"
 msgid "Subsidiary"
 msgstr ""
 
-#: functions/sidebars.php:61
+#: ../functions/sidebars.php:64
 msgid "A widget area loaded in the footer of the site."
 msgstr ""
 
-#: functions/sidebars.php:71
+#: ../functions/sidebars.php:74
+msgctxt "sidebar name"
 msgid "Header"
 msgstr ""
 
-#: functions/sidebars.php:72
+#: ../functions/sidebars.php:75
 msgid "Displayed within the site's header area."
 msgstr ""
 
-#: functions/sidebars.php:82
+#: ../functions/sidebars.php:85
+msgctxt "sidebar name"
 msgid "Before Content"
 msgstr ""
 
-#: functions/sidebars.php:83
+#: ../functions/sidebars.php:86
 msgid "Loaded before the page's main content area."
 msgstr ""
 
-#: functions/sidebars.php:93
+#: ../functions/sidebars.php:96
+msgctxt "sidebar name"
 msgid "After Content"
 msgstr ""
 
-#: functions/sidebars.php:94
+#: ../functions/sidebars.php:97
 msgid "Loaded after the page's main content area."
 msgstr ""
 
-#: functions/sidebars.php:104
+#: ../functions/sidebars.php:107
+msgctxt "sidebar name"
 msgid "After Singular"
 msgstr ""
 
-#: functions/sidebars.php:105
+#: ../functions/sidebars.php:108
 msgid "Loaded on singular post (page, attachment, etc.) views before the comments area."
 msgstr ""
 
-#: functions/sidebars.php:115
+#: ../functions/sidebars.php:118
+msgctxt "sidebar name"
 msgid "After Single"
 msgstr ""
 
-#: functions/sidebars.php:116
+#: ../functions/sidebars.php:119
 msgid "Loaded on single post views before the comments area."
 msgstr ""
 
-#: functions/sidebars.php:126
+#: ../functions/sidebars.php:129
+msgctxt "sidebar name"
 msgid "Error Page"
 msgstr ""
 
-#: functions/sidebars.php:127
+#: ../functions/sidebars.php:130
 msgid "Loaded on 404 error pages"
 msgstr ""
 
-#: functions/upgrade.php:99
+#: ../functions/upgrade.php:107
 msgid "Upgrading Cakifo will overwrite the current installed version of Cakifo. Are you sure you want to upgrade?. \"Cancel\" to stop, \"OK\" to upgrade."
 msgstr ""
 
-#: functions/upgrade.php:103
+#: ../functions/upgrade.php:111
 #, php-format
 msgid "Cakifo %s is available. <a href=\"%s\">Check out what's new</a> or <a href=\"%s\" onclick=\"return cakifo_confirm_upgrade('%s');\">update now</a>. "
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:30
+#: ../functions/widget-related-posts.php:31
+msgid "Use this widget to list related posts to the current viewed post based on category and post format."
+msgstr ""
+
+#: ../functions/widget-related-posts.php:37
+msgid "Cakifo: Related Posts"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:99
+#, php-format
+msgid "Read %s"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:107
+msgctxt "untitled post"
+msgid "Untitled"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:127
+msgid "No related posts."
+msgstr ""
+
+#: ../functions/widget-related-posts.php:258
+msgid "Related Posts"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:269
+msgctxt "order by"
+msgid "Random"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:270
+msgctxt "order by"
+msgid "Date"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:271
+msgctxt "order by"
+msgid "Comment count"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:277
+#: ../library/classes/widget-archives.php:162
+#: ../library/classes/widget-authors.php:143
+#: ../library/classes/widget-bookmarks.php:180
+#: ../library/classes/widget-calendar.php:108
+msgid "Title:"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:282
+msgid "Number of posts to show:"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:287
+msgid "Order by:"
+msgstr ""
+
+#: ../functions/widget-related-posts.php:297
+msgid "Show post thumbnails?"
+msgstr ""
+
+#: ../library/admin/meta-box-post-seo.php:37
 msgid "SEO"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:44
+#: ../library/admin/meta-box-post-seo.php:70
 msgid "Document Title:"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:50
+#: ../library/admin/meta-box-post-seo.php:76
 msgid "Meta Description:"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:56
+#: ../library/admin/meta-box-post-seo.php:82
 msgid "Meta Keywords:"
 msgstr ""
 
-#: library/admin/meta-box-post-template.php:31
+#: ../library/admin/meta-box-post-template.php:36
 msgid "Template"
 msgstr ""
 
-#: library/admin/meta-box-post-template.php:59
+#: ../library/admin/meta-box-post-template.php:87
 msgid "No templates exist for this post type."
 msgstr ""
 
-#: library/admin/meta-box-theme-about.php:27
-#: library/admin/meta-box-theme-about.php:32
+#: ../library/admin/meta-box-theme-about.php:31
+#: ../library/admin/meta-box-theme-about.php:36
 #, php-format
 msgid "About %1$s"
 msgstr ""
 
-#: library/admin/meta-box-theme-about.php:57
+#: ../library/admin/meta-box-theme-about.php:61
 msgid "Theme:"
 msgstr ""
 
-#: library/admin/meta-box-theme-about.php:65
+#: ../library/admin/meta-box-theme-about.php:69
 msgid "Version:"
 msgstr ""
 
-#: library/admin/meta-box-theme-about.php:73
+#: ../library/admin/meta-box-theme-about.php:77
 msgid "Author:"
 msgstr ""
 
-#: library/admin/meta-box-theme-about.php:81
+#: ../library/admin/meta-box-theme-about.php:85
 msgid "Description:"
 msgstr ""
 
-#: library/admin/meta-box-theme-footer.php:25
+#: ../library/admin/meta-box-theme-footer.php:29
 msgid "Footer settings"
 msgstr ""
 
-#: library/admin/meta-box-theme-footer.php:47
+#: ../library/admin/meta-box-theme-footer.php:52
 msgid "You can add custom <acronym title=\"Hypertext Markup Language\">HTML</acronym> and/or shortcodes, which will be automatically inserted into your theme."
 msgstr ""
 
-#: library/admin/theme-settings.php:43
-#: library/admin/theme-settings.php:165
+#: ../library/admin/theme-settings.php:47
+#: ../library/admin/theme-settings.php:168
 #, php-format
 msgid "%1$s Theme Settings"
 msgstr ""
 
-#: library/admin/theme-settings.php:44
+#: ../library/admin/theme-settings.php:48
 msgid "Theme Settings"
 msgstr ""
 
-#: library/admin/theme-settings.php:182
+#: ../library/admin/theme-settings.php:185
 msgid "Update Settings"
 msgstr ""
 
-#: library/admin/theme-settings.php:236
+#: ../library/admin/theme-settings.php:236
 msgid "Documentation"
 msgstr ""
 
-#: library/admin/theme-settings.php:240
+#: ../library/admin/theme-settings.php:240
 msgid "Support"
 msgstr ""
 
-#: library/classes/widget-archives.php:29
+#: ../library/classes/widget-archives.php:32
 msgid "An advanced widget that gives you total control over the output of your archives."
 msgstr ""
 
-#: library/classes/widget-archives.php:80
+#: ../library/classes/widget-archives.php:79
 msgid "Select Year"
 msgstr ""
 
-#: library/classes/widget-archives.php:83
+#: ../library/classes/widget-archives.php:82
 msgid "Select Month"
 msgstr ""
 
-#: library/classes/widget-archives.php:86
+#: ../library/classes/widget-archives.php:85
 msgid "Select Week"
 msgstr ""
 
-#: library/classes/widget-archives.php:89
+#: ../library/classes/widget-archives.php:88
 msgid "Select Day"
 msgstr ""
 
-#: library/classes/widget-archives.php:92
+#: ../library/classes/widget-archives.php:91
 msgid "Select Post"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Alphabetical"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Daily"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Monthly"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Post By Post"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Weekly"
 msgstr ""
 
-#: library/classes/widget-archives.php:154
+#: ../library/classes/widget-archives.php:154
 msgid "Yearly"
 msgstr ""
 
-#: library/classes/widget-archives.php:157
+#: ../library/classes/widget-archives.php:157
 msgid "Custom"
 msgstr ""
 
-#: library/classes/widget-archives.php:157
+#: ../library/classes/widget-archives.php:157
 msgid "HTML"
 msgstr ""
 
-#: library/classes/widget-archives.php:157
+#: ../library/classes/widget-archives.php:157
 msgid "Option"
 msgstr ""
 
-#: library/classes/widget-archives.php:162
-#: library/classes/widget-authors.php:147
-#: library/classes/widget-bookmarks.php:179
-#: library/classes/widget-calendar.php:105
-#: library/classes/widget-categories.php:183
-#: library/classes/widget-nav-menu.php:138
-msgid "Title:"
-msgstr ""
-
-#: library/classes/widget-archives.php:198
-#: library/classes/widget-authors.php:195
+#: ../library/classes/widget-archives.php:198
+#: ../library/classes/widget-authors.php:191
 msgid "Show post count?"
 msgstr ""
 
-#: library/classes/widget-authors.php:29
+#: ../library/classes/widget-authors.php:32
 msgid "An advanced widget that gives you total control over the output of your author lists."
 msgstr ""
 
-#: library/classes/widget-authors.php:41
-#: library/classes/widget-authors.php:123
+#: ../library/classes/widget-authors.php:44
+#: ../library/classes/widget-authors.php:119
 msgid "Authors"
 msgstr ""
 
-#: library/classes/widget-authors.php:140
-#: library/classes/widget-bookmarks.php:170
-#: library/classes/widget-bookmarks.php:172
-#: library/classes/widget-categories.php:175
+#: ../library/classes/widget-authors.php:136
+#: ../library/classes/widget-bookmarks.php:171
+#: ../library/classes/widget-bookmarks.php:173
 msgid "Ascending"
 msgstr ""
 
-#: library/classes/widget-authors.php:140
-#: library/classes/widget-bookmarks.php:170
-#: library/classes/widget-bookmarks.php:172
-#: library/classes/widget-categories.php:175
+#: ../library/classes/widget-authors.php:136
+#: ../library/classes/widget-bookmarks.php:171
+#: ../library/classes/widget-bookmarks.php:173
 msgid "Descending"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Display Name"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Email"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
-#: library/classes/widget-bookmarks.php:171
-#: library/classes/widget-bookmarks.php:173
-#: library/classes/widget-categories.php:176
+#: ../library/classes/widget-authors.php:137
+#: ../library/classes/widget-bookmarks.php:172
+#: ../library/classes/widget-bookmarks.php:174
 msgid "ID"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Nice Name"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Post Count"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Registered"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-authors.php:137
+#: ../library/classes/widget-bookmarks.php:174
 msgid "URL"
 msgstr ""
 
-#: library/classes/widget-authors.php:141
+#: ../library/classes/widget-authors.php:137
 msgid "Login"
 msgstr ""
 
-#: library/classes/widget-authors.php:173
-#: library/classes/widget-categories.php:174
+#: ../library/classes/widget-authors.php:169
 msgid "List"
 msgstr ""
 
-#: library/classes/widget-authors.php:173
-#: library/classes/widget-categories.php:174
+#: ../library/classes/widget-authors.php:169
 msgid "None"
 msgstr ""
 
-#: library/classes/widget-authors.php:191
+#: ../library/classes/widget-authors.php:187
 msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
 msgstr ""
 
-#: library/classes/widget-authors.php:199
+#: ../library/classes/widget-authors.php:195
 msgid "Exclude admin?"
 msgstr ""
 
-#: library/classes/widget-authors.php:203
+#: ../library/classes/widget-authors.php:199
 msgid "Show full name?"
 msgstr ""
 
-#: library/classes/widget-authors.php:207
-#: library/classes/widget-categories.php:298
+#: ../library/classes/widget-authors.php:203
 msgid "Hide empty?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:29
+#: ../library/classes/widget-bookmarks.php:32
 msgid "An advanced widget that gives you total control over the output of your bookmarks (links)."
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:41
-#: library/classes/widget-bookmarks.php:140
+#: ../library/classes/widget-bookmarks.php:44
+#: ../library/classes/widget-bookmarks.php:78
+#: ../library/classes/widget-bookmarks.php:141
 msgid "Bookmarks"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:171
-#: library/classes/widget-categories.php:176
+#: ../library/classes/widget-bookmarks.php:172
 msgid "Count"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:171
-#: library/classes/widget-bookmarks.php:173
-#: library/classes/widget-categories.php:176
+#: ../library/classes/widget-bookmarks.php:172
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Name"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:171
-#: library/classes/widget-categories.php:176
+#: ../library/classes/widget-bookmarks.php:172
 msgid "Slug"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Description"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Length"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Notes"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Owner"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Random"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Rating"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Rel"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Target"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:173
+#: ../library/classes/widget-bookmarks.php:174
 msgid "Updated"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:281
+#: ../library/classes/widget-bookmarks.php:282
 msgid "Categorize?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:285
+#: ../library/classes/widget-bookmarks.php:286
 msgid "Show description?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:289
+#: ../library/classes/widget-bookmarks.php:290
 msgid "Hide invisible?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:293
+#: ../library/classes/widget-bookmarks.php:294
 msgid "Show rating?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:297
+#: ../library/classes/widget-bookmarks.php:298
 msgid "Show updated?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:301
+#: ../library/classes/widget-bookmarks.php:302
 msgid "Show images?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:305
+#: ../library/classes/widget-bookmarks.php:306
 msgid "Show name?"
 msgstr ""
 
-#: library/classes/widget-bookmarks.php:309
+#: ../library/classes/widget-bookmarks.php:310
 msgid "Show private?"
 msgstr ""
 
-#: library/classes/widget-calendar.php:29
+#: ../library/classes/widget-calendar.php:32
 msgid "An advanced widget that gives you total control over the output of your calendar."
 msgstr ""
 
-#: library/classes/widget-calendar.php:41
-#: library/classes/widget-calendar.php:96
+#: ../library/classes/widget-calendar.php:44
+#: ../library/classes/widget-calendar.php:99
 msgid "Calendar"
 msgstr ""
 
-#: library/classes/widget-calendar.php:110
+#: ../library/classes/widget-calendar.php:113
 msgid "One-letter abbreviation?"
 msgstr ""
 
-#: library/classes/widget-categories.php:29
+#: ../library/classes/widget-categories.php:32
 msgid "An advanced widget that gives you total control over the output of your category links."
 msgstr ""
 
-#: library/classes/widget-categories.php:41
-#: library/classes/widget-categories.php:145
+#: ../library/classes/widget-categories.php:44
+#: ../library/classes/widget-categories.php:131
 msgid "Categories"
 msgstr ""
 
-#: library/classes/widget-categories.php:176
+#: ../library/classes/widget-categories.php:161
 msgid "Term Group"
 msgstr ""
 
-#: library/classes/widget-categories.php:177
+#: ../library/classes/widget-categories.php:162
 msgid "Atom"
 msgstr ""
 
-#: library/classes/widget-categories.php:177
+#: ../library/classes/widget-categories.php:162
 msgid "RDF"
 msgstr ""
 
-#: library/classes/widget-categories.php:177
+#: ../library/classes/widget-categories.php:162
 msgid "RSS 2.0"
 msgstr ""
 
-#: library/classes/widget-categories.php:282
+#: ../library/classes/widget-categories.php:267
+#: ../library/classes/widget-pages.php:265
 msgid "Hierarchical?"
 msgstr ""
 
-#: library/classes/widget-categories.php:286
+#: ../library/classes/widget-categories.php:271
 msgid "Use description?"
 msgstr ""
 
-#: library/classes/widget-categories.php:290
-msgid "Show last update?"
-msgstr ""
-
-#: library/classes/widget-categories.php:294
+#: ../library/classes/widget-categories.php:275
 msgid "Show count?"
 msgstr ""
 
-#: library/classes/widget-nav-menu.php:28
+#: ../library/classes/widget-nav-menu.php:32
 msgid "An advanced widget that gives you total control over the output of your menus."
 msgstr ""
 
-#: library/classes/widget-nav-menu.php:40
+#: ../library/classes/widget-nav-menu.php:44
 msgid "Navigation Menu"
 msgstr ""
 
-#: library/classes/widget-nav-menu.php:114
+#: ../library/classes/widget-nav-menu.php:109
 msgid "Navigation"
 msgstr ""
 
-#: library/classes/widget-pages.php:29
+#: ../library/classes/widget-pages.php:32
 msgid "An advanced widget that gives you total control over the output of your page links."
 msgstr ""
 
-#: library/classes/widget-pages.php:41
-#: library/classes/widget-pages.php:129
+#: ../library/classes/widget-pages.php:44
+#: ../library/classes/widget-pages.php:125
 msgid "Pages"
 msgstr ""
 
-#: library/classes/widget-pages.php:158
+#: ../library/classes/widget-pages.php:154
 msgid "Author"
 msgstr ""
 
-#: library/classes/widget-pages.php:158
+#: ../library/classes/widget-pages.php:154
 msgid "Date"
 msgstr ""
 
-#: library/classes/widget-pages.php:158
+#: ../library/classes/widget-pages.php:154
 msgid "Menu Order"
 msgstr ""
 
-#: library/classes/widget-pages.php:158
-#: library/classes/widget-pages.php:159
+#: ../library/classes/widget-pages.php:154
+#: ../library/classes/widget-pages.php:155
 msgid "Modified"
 msgstr ""
 
-#: library/classes/widget-pages.php:158
+#: ../library/classes/widget-pages.php:154
 msgid "Title"
 msgstr ""
 
-#: library/classes/widget-pages.php:159
+#: ../library/classes/widget-pages.php:155
 msgid "Created"
 msgstr ""
 
-#: library/classes/widget-search.php:29
+#: ../library/classes/widget-search.php:33
 msgid "An advanced widget that gives you total control over the output of your search form."
 msgstr ""
 
-#: library/classes/widget-search.php:140
+#: ../library/classes/widget-search.php:147
 msgid "Search Label:"
 msgstr ""
 
-#: library/classes/widget-search.php:144
+#: ../library/classes/widget-search.php:151
 msgid "Search Text:"
 msgstr ""
 
-#: library/classes/widget-search.php:151
+#: ../library/classes/widget-search.php:158
 msgid "Search Submit:"
 msgstr ""
 
-#: library/classes/widget-search.php:156
+#: ../library/classes/widget-search.php:163
 msgid "Use theme's <code>searchform.php</code>?"
 msgstr ""
 
-#: library/classes/widget-tags.php:29
+#: ../library/classes/widget-tags.php:32
 msgid "An advanced widget that gives you total control over the output of your tags."
 msgstr ""
 
-#: library/classes/widget-tags.php:41
-#: library/classes/widget-tags.php:143
+#: ../library/classes/widget-tags.php:44
+#: ../library/classes/widget-tags.php:141
 msgid "Tags"
 msgstr ""
 
-#: library/classes/widget-tags.php:170
+#: ../library/classes/widget-tags.php:170
 msgid "View"
 msgstr ""
 
-#: library/classes/widget-tags.php:171
+#: ../library/classes/widget-tags.php:171
 msgid "Flat"
 msgstr ""
 
-#: library/classes/widget-tags.php:287
+#: ../library/classes/widget-tags.php:295
 msgid "Pad counts?"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:42
+#: ../library/extensions/breadcrumb-trail.php:42
 msgid "Browse:"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:45
+#: ../library/extensions/breadcrumb-trail.php:45
 msgid "Home"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:296
-#: library/functions/context.php:402
+#: ../library/extensions/breadcrumb-trail.php:296
+#: ../library/functions/context.php:412
 msgid "g:i a"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:299
+#: ../library/extensions/breadcrumb-trail.php:299
 #, php-format
 msgid "Minute %1$s"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:299
-#: library/functions/context.php:405
+#: ../library/extensions/breadcrumb-trail.php:299
+#: ../library/functions/context.php:415
 msgid "i"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:302
-#: library/functions/context.php:408
+#: ../library/extensions/breadcrumb-trail.php:302
+#: ../library/functions/context.php:418
 msgid "g a"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:313
-#: library/extensions/breadcrumb-trail.php:319
-#: library/extensions/breadcrumb-trail.php:324
-#: library/extensions/breadcrumb-trail.php:329
-#: library/extensions/breadcrumb-trail.php:476
-#: library/functions/context.php:414
-#: library/functions/context.php:420
-#: library/functions/core-seo.php:86
+#: ../library/extensions/breadcrumb-trail.php:313
+#: ../library/extensions/breadcrumb-trail.php:319
+#: ../library/extensions/breadcrumb-trail.php:324
+#: ../library/extensions/breadcrumb-trail.php:329
+#: ../library/extensions/breadcrumb-trail.php:516
+#: ../library/functions/context.php:424
+#: ../library/functions/context.php:430
 msgid "Y"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:314
-#: library/extensions/breadcrumb-trail.php:325
-#: library/extensions/breadcrumb-trail.php:480
+#: ../library/extensions/breadcrumb-trail.php:314
+#: ../library/extensions/breadcrumb-trail.php:325
+#: ../library/extensions/breadcrumb-trail.php:520
 msgid "F"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:315
-#: library/extensions/breadcrumb-trail.php:484
+#: ../library/extensions/breadcrumb-trail.php:315
+#: ../library/extensions/breadcrumb-trail.php:524
 msgid "d"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:320
+#: ../library/extensions/breadcrumb-trail.php:320
 #, php-format
 msgid "Week %1$s"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:320
-#: library/functions/context.php:414
+#: ../library/extensions/breadcrumb-trail.php:320
+#: ../library/functions/context.php:424
 msgid "W"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:336
-#: library/functions/context.php:431
+#: ../library/extensions/breadcrumb-trail.php:336
+#: ../library/functions/context.php:441
 #, php-format
 msgid "Search results for &quot;%1$s&quot;"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:340
-#: library/functions/context.php:435
+#: ../library/extensions/breadcrumb-trail.php:340
+#: ../library/functions/context.php:445
 msgid "404 Not Found"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:387
+#: ../library/extensions/breadcrumb-trail.php:409
 msgid "Split"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:389
+#: ../library/extensions/breadcrumb-trail.php:413
 msgid "Merge"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:480
-#: library/functions/core-seo.php:82
+#: ../library/extensions/breadcrumb-trail.php:520
 msgid "F Y"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:484
+#: ../library/extensions/breadcrumb-trail.php:524
 msgid "F j, Y"
 msgstr ""
 
-#: library/extensions/custom-field-series.php:84
+#: ../library/extensions/custom-field-series.php:86
 msgid "Articles in this series"
 msgstr ""
 
-#: library/extensions/custom-field-series.php:183
+#: ../library/extensions/custom-field-series.php:212
 msgid "Series"
 msgstr ""
 
-#: library/extensions/post-stylesheets.php:194
+#: ../library/extensions/post-stylesheets.php:255
 msgid "Stylesheet"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:259
+#: ../library/extensions/theme-layouts.php:295
 msgid "Default"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:260
+#: ../library/extensions/theme-layouts.php:296
 msgid "One Column"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:261
+#: ../library/extensions/theme-layouts.php:297
 msgid "Two Columns, Left"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:262
+#: ../library/extensions/theme-layouts.php:298
 msgid "Two Columns, Right"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:263
+#: ../library/extensions/theme-layouts.php:299
 msgid "Three Columns, Left"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:264
+#: ../library/extensions/theme-layouts.php:300
 msgid "Three Columns, Right"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:265
+#: ../library/extensions/theme-layouts.php:301
 msgid "Three Columns, Center"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:341
-#: library/extensions/theme-layouts.php:442
+#: ../library/extensions/theme-layouts.php:377
+#: ../library/extensions/theme-layouts.php:485
 msgid "Layout"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:368
+#: ../library/extensions/theme-layouts.php:404
 msgid "Layout is a theme-specific structure for the single view of the post."
 msgstr ""
 
-#: library/functions/comments.php:168
+#: ../library/functions/comments.php:182
 msgid "*"
 msgstr ""
 
-#: library/functions/comments.php:175
+#: ../library/functions/comments.php:189
 msgid "Website"
 msgstr ""
 
-#: library/functions/comments.php:181
+#: ../library/functions/comments.php:195
 msgid "Comment"
 msgstr ""
 
-#: library/functions/comments.php:182
+#: ../library/functions/comments.php:196
 #, php-format
 msgid "You must be <a href=\"%1$s\" title=\"Log in\">logged in</a> to post a comment."
 msgstr ""
 
-#: library/functions/comments.php:183
+#: ../library/functions/comments.php:197
 #, php-format
 msgid "Logged in as <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: library/functions/comments.php:183
+#: ../library/functions/comments.php:197
 msgid "Log out of this account"
 msgstr ""
 
-#: library/functions/comments.php:183
+#: ../library/functions/comments.php:197
 msgid "Log out &raquo;"
 msgstr ""
 
-#: library/functions/comments.php:188
+#: ../library/functions/comments.php:202
 msgid "Leave a Reply"
 msgstr ""
 
-#: library/functions/comments.php:189
+#: ../library/functions/comments.php:203
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: library/functions/comments.php:190
+#: ../library/functions/comments.php:204
 msgid "Click here to cancel reply."
 msgstr ""
 
-#: library/functions/comments.php:191
+#: ../library/functions/comments.php:205
 msgid "Post Comment"
 msgstr ""
 
-#: library/functions/context.php:402
-#: library/functions/context.php:408
-#: library/functions/context.php:411
-#: library/functions/context.php:417
-#: library/functions/context.php:420
+#: ../library/functions/context.php:412
+#: ../library/functions/context.php:418
+#: ../library/functions/context.php:421
+#: ../library/functions/context.php:427
+#: ../library/functions/context.php:430
 #, php-format
 msgid "Archive for %1$s"
 msgstr ""
 
-#: library/functions/context.php:405
+#: ../library/functions/context.php:415
 #, php-format
 msgid "Archive for minute %1$s"
 msgstr ""
 
-#: library/functions/context.php:411
+#: ../library/functions/context.php:421
 msgid "F jS, Y"
 msgstr ""
 
-#: library/functions/context.php:414
+#: ../library/functions/context.php:424
 #, php-format
 msgid "Archive for week %1$s of %2$s"
 msgstr ""
 
-#: library/functions/context.php:439
+#: ../library/functions/context.php:449
 #, php-format
 msgid "%1$s Page %2$s"
 msgstr ""
 
-#: library/functions/core-seo.php:89
+#: ../library/functions/core-seo.php:93
 #, php-format
 msgid "Copyright (c) %1$s"
 msgstr ""
 
-#: library/functions/core-seo.php:108
+#: ../library/functions/core-seo.php:112
+#: ../library/functions/shortcodes.php:218
+#: ../library/functions/shortcodes.php:373
 msgid "l, F jS, Y, g:i a"
 msgstr ""
 
-#: library/functions/deprecated.php:541
+#: ../library/functions/deprecated.php:572
 #, php-format
 msgid "<code>%1$s</code> &mdash; This function has been removed or replaced by another function."
 msgstr ""
 
-#: library/functions/settings.php:72
-#: library/functions/settings.php:76
+#: ../library/functions/menus.php:38
+msgctxt "nav menu location"
+msgid "Primary"
+msgstr ""
+
+#: ../library/functions/menus.php:42
+msgctxt "nav menu location"
+msgid "Secondary"
+msgstr ""
+
+#: ../library/functions/menus.php:46
+msgctxt "nav menu location"
+msgid "Subsidiary"
+msgstr ""
+
+#: ../library/functions/settings.php:76
+#: ../library/functions/settings.php:80
 msgid "Copyright &#169; [the-year] [site-link]."
 msgstr ""
 
-#: library/functions/settings.php:72
+#: ../library/functions/settings.php:76
 msgid "Powered by [wp-link], [theme-link], and [child-link]."
 msgstr ""
 
-#: library/functions/settings.php:76
+#: ../library/functions/settings.php:80
 msgid "Powered by [wp-link] and [theme-link]."
 msgstr ""
 
-#: library/functions/shortcodes.php:87
-msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform"
+#: ../library/functions/shortcodes.php:93
+msgid "State-of-the-art semantic personal publishing platform"
 msgstr ""
 
-#: library/functions/shortcodes.php:87
+#: ../library/functions/shortcodes.php:93
 msgid "WordPress"
 msgstr ""
 
-#: library/functions/shortcodes.php:128
+#: ../library/functions/shortcodes.php:106
+#, php-format
+msgid "%s WordPress Theme"
+msgstr ""
+
+#: ../library/functions/shortcodes.php:134
 msgid "Log out"
 msgstr ""
 
-#: library/functions/shortcodes.php:130
-msgid "Log into this account"
-msgstr ""
-
-#: library/functions/shortcodes.php:130
+#: ../library/functions/shortcodes.php:136
 msgid "Log in"
 msgstr ""
 
-#: library/functions/shortcodes.php:145
+#: ../library/functions/shortcodes.php:151
 #, php-format
 msgid "This page loaded in %1$s seconds with %2$s database queries."
 msgstr ""
 
-#: library/functions/shortcodes.php:199
-#: library/functions/shortcodes.php:413
+#: ../library/functions/shortcodes.php:204
+#: ../library/functions/shortcodes.php:443
 #, php-format
 msgid "Edit %1$s"
 msgstr ""
 
-#: library/functions/shortcodes.php:229
+#: ../library/functions/shortcodes.php:234
 msgid "Leave a response"
 msgstr ""
 
-#: library/functions/shortcodes.php:229
+#: ../library/functions/shortcodes.php:234
 #, php-format
 msgid "%1$s Response"
 msgstr ""
 
-#: library/functions/shortcodes.php:229
+#: ../library/functions/shortcodes.php:234
 #, php-format
 msgid "%1$s Responses"
 msgstr ""
 
-#: library/functions/shortcodes.php:236
-#: library/functions/shortcodes.php:238
-#: library/functions/shortcodes.php:240
+#: ../library/functions/shortcodes.php:241
+#: ../library/functions/shortcodes.php:243
+#: ../library/functions/shortcodes.php:245
 #, php-format
 msgid "Comment on %1$s"
 msgstr ""
 
-#: library/functions/shortcodes.php:305
+#: ../library/functions/shortcodes.php:305
 msgid "(Untitled)"
 msgstr ""
 
-#: library/functions/shortcodes.php:322
+#: ../library/functions/shortcodes.php:321
 msgid "Shortlink"
 msgstr ""
 
-#: library/functions/shortcodes.php:343
+#: ../library/functions/shortcodes.php:345
+#: ../library/functions/shortcodes.php:422
+msgid "Permalink"
+msgstr ""
+
+#: ../library/functions/shortcodes.php:373
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: library/functions/shortcodes.php:392
+#: ../library/functions/shortcodes.php:422
 #, php-format
 msgid "Permalink to comment %1$s"
 msgstr ""
 
-#: library/functions/shortcodes.php:392
-msgid "Permalink"
-msgstr ""
-
-#: library/functions/shortcodes.php:432
+#: ../library/functions/shortcodes.php:462
 msgid "Reply"
 msgstr ""
 
-#: library/functions/shortcodes.php:433
+#: ../library/functions/shortcodes.php:463
 msgid "Log in to reply."
+msgstr ""
+
+#: ../library/functions/sidebars.php:81
+msgctxt "sidebar"
+msgid "Primary"
+msgstr ""
+
+#: ../library/functions/sidebars.php:85
+msgctxt "sidebar"
+msgid "Secondary"
+msgstr ""
+
+#: ../library/functions/sidebars.php:89
+msgctxt "sidebar"
+msgid "Subsidiary"
+msgstr ""
+
+#: ../library/functions/sidebars.php:93
+msgctxt "sidebar"
+msgid "Header"
+msgstr ""
+
+#: ../library/functions/sidebars.php:97
+msgctxt "sidebar"
+msgid "Before Content"
+msgstr ""
+
+#: ../library/functions/sidebars.php:101
+msgctxt "sidebar"
+msgid "After Content"
+msgstr ""
+
+#: ../library/functions/sidebars.php:105
+msgctxt "sidebar"
+msgid "After Singular"
 msgstr ""
 
