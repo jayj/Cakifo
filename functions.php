@@ -473,7 +473,7 @@ function cakifo_quote_entry_meta( $meta ) {
 	if ( is_single() )
 		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 
-	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-shortlink] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-permalink] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
 /**
@@ -484,7 +484,7 @@ function cakifo_quote_entry_meta( $meta ) {
  * @return string        The changed entry meta
  */
 function cakifo_aside_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( 'By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
+	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-permalink after=" | "] By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
 }
 
 /**
