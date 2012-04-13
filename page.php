@@ -1,9 +1,9 @@
 <?php
 /**
- * Singular Template
+ * Page Template
  *
- * This is the default singular template.  It is used when a more specific template can't be found to display
- * singular views of posts (any post type).
+ * This is the default page template.  It is used when a more specific template can't be found to display 
+ * singular views of pages.
  *
  * @package Cakifo
  * @subpackage Template
