@@ -238,10 +238,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		// The widget settings has been updated: delete the post meta for all posts
 		else :
 
-			$allposts = get_posts( array( 'numberposts' => -1, 'post_type' => 'post' ) );
-
-			foreach( $allposts as $postinfo )
-				delete_post_meta( $postinfo->ID, 'related' );
+			 delete_metadata( 'post', null, 'related', '', true );
 
 		endif;
 	}
