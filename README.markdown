@@ -4,8 +4,8 @@
 
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
-* Requires at least WordPress 3.2
-* Tested up to 3.2.x
+* Requires at least WordPress 3.3
+* Tested up to 3.4
 
 ## Demo
 
@@ -17,7 +17,8 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 
 * Child theme friendly - Nearly everything can be customized in a child theme
 * Uses Hybrid Core as framework
-* HTML5
+* HTML5 markup
+* Responsive design
 * Custom front page with slider, recent posts, and posts from categories
 * Per-post layouts that allow you to quickly change the layout of your site
 * Post setting that allows you to add a custom stylesheet for individual posts
@@ -32,11 +33,16 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Small theme settings page (yep, that's a feature)
 * Ability to create custom templates for any post type in multiple ways
 * Highly-configurable widgets that give you full control over their display
+* Update notification when a version is available - You can even update directly from dashboard!
 * And much, much more!
 
-(yes, the features are totally stolen from Justins' themes)
-
 ## Child themes
+
+**Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations.**
+his is even more important from version 1.3 and beyond as you can update Cakifo direcly from the dashboard. If you make changes direcly to Cakifo, you will lose them upon updating.
+
+*Don't know how to make a child theme?* It's relatively simple. Just follow the below steps.
+
 
 Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations. *Don't know how to make a child theme?* It's relatively simple.
 
@@ -52,6 +58,7 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 * [Modernizr](http://modernizr.com)
 * Slides by [Nathan Searles](http://slidesjs.com)
 * Equal Heights In Rows by [Chris Coyier](http://css-tricks.com/equal-height-blocks-in-rows/)
+* Animate Height/Width to "Auto" by [Darcy Clarke](http://darcyclarke.me/development/fix-jquerys-animate-to-allow-auto-values/)
 * [Premium Pixels](http://www.premiumpixels.com/) for the topbar
 * [Wolforg](http://wolforg.eu/) for french translation
 * Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)

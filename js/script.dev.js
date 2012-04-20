@@ -6,8 +6,8 @@
 (function($, window, document) {
 
 	/**
-	 * Jquery plugin: Animate Height/Width to "Auto"
-	 * http://css-tricks.com/snippets/jquery/animate-heightwidth-to-auto/
+	 * jQuery plugin: Animate Height/Width to "Auto"
+	 * http://darcyclarke.me/development/fix-jquerys-animate-to-allow-auto-values/
 	 */
 	jQuery.fn.animateAuto = function(prop, speed, callback){
 		var elem, height, width;
