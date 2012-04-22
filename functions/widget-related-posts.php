@@ -86,6 +86,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 			echo '<ul class="' . esc_attr( $class ) . '">';
 
+			$i = 0;
+
 			// Run through each post
 			foreach( $related_posts as $post ) : ?>
 
@@ -114,6 +116,11 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 				<?php do_atomic( 'after_related_posts_list_item' ); // cakifo_after_related_posts_list_item ?>
 
+				<?php
+					// Stop at the limit. This is used when there's more than one Related Posts widget at a page.
+					$i++;
+					if ( $i == $instance['limit'] ) break;
+				?>
 		<?php
 			endforeach;
 
