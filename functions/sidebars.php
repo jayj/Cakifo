@@ -182,7 +182,7 @@ function cakifo_register_sidebars() {
 function cakifo_register_widgets() {
 
 	/* Load the Related Posts widget class. */
-	require_once( trailingslashit( TEMPLATEPATH ) . 'functions/widget-related-posts.php' );
+	require_once( trailingslashit( get_template_directory() ) . 'functions/widget-related-posts.php' );
 
 	/* Register the Related Posts widget. */
 	register_widget( 'Cakifo_Widget_Related_Posts' );

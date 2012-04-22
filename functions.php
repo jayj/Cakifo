@@ -29,7 +29,7 @@
  */
 
 /* Load the core theme framework */
-require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
+require_once( trailingslashit( get_template_directory() ) . 'library/hybrid.php' );
 $theme = new Hybrid();
 
 /* Do theme setup on the 'after_setup_theme' hook */
@@ -77,7 +77,7 @@ function cakifo_theme_setup() {
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
-		require_once( trailingslashit( TEMPLATEPATH ) . 'functions/admin.php' );
+		require_once( trailingslashit( get_template_directory() ) . 'functions/admin.php' );
 	}
 
 	/* Add theme support for WordPress features */
@@ -227,21 +227,23 @@ function cakifo_theme_setup() {
  */
 function cakifo_load_theme_support() {
 
+	$template_directory = trailingslashit( get_template_directory() );
+
 	/* Load the Cakifo sidebars if supported */
-	require_if_theme_supports( 'cakifo-sidebars', trailingslashit( TEMPLATEPATH ) . 'functions/sidebars.php' );
+	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
 
 	/* Load Cakifo shortcodes if supported */
-	require_if_theme_supports( 'cakifo-shortcodes', trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
+	require_if_theme_supports( 'cakifo-shortcodes', $template_directory . 'functions/shortcodes.php' );
 
 	/* Load the Colorbox Script extention if supported. */
-	require_if_theme_supports( 'cakifo-colorbox', trailingslashit( THEME_DIR ) . 'functions/colorbox.php' );
+	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
 	
 	/* Load the Twitter Button extention if supported */
-	require_if_theme_supports( 'cakifo-twitter-button', trailingslashit( THEME_DIR ) . 'functions/tweet_button.php' );
+	require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
 
 	/* Load theupgrade functionality if supported */
 	if ( is_admin() )
-		require_if_theme_supports( 'cakifo-upgrade', trailingslashit( TEMPLATEPATH ) . 'functions/upgrade.php' );
+		require_if_theme_supports( 'cakifo-upgrade', $template_directory . 'functions/upgrade.php' );
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
