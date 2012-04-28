@@ -230,20 +230,26 @@ function cakifo_load_theme_support() {
 	$template_directory = trailingslashit( get_template_directory() );
 
 	/* Load the Cakifo sidebars if supported */
-	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
+	if ( current_theme_supports( 'cakifo-sidebars' ) ) require(  $template_directory . 'functions/sidebars.php' );
+	//require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
 
 	/* Load Cakifo shortcodes if supported */
-	require_if_theme_supports( 'cakifo-shortcodes', $template_directory . 'functions/shortcodes.php' );
+	if ( current_theme_supports( 'cakifo-shortcodes' ) ) require(  $template_directory . 'functions/shortcodes.php' );
+	//require_if_theme_supports( 'cakifo-shortcodes', $template_directory . 'functions/shortcodes.php' );
 
 	/* Load the Colorbox Script extention if supported. */
-	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
+	if ( current_theme_supports( 'cakifo-colorbox' ) ) require(  $template_directory . 'functions/colorbox.php' );
+	//require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
 	
 	/* Load the Twitter Button extention if supported */
-	require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
+	if ( current_theme_supports( 'cakifo-twitter-button' ) ) require(  $template_directory . 'functions/tweet_button.php' );
+	//require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
 
 	/* Load theupgrade functionality if supported */
-	if ( is_admin() )
-		require_if_theme_supports( 'cakifo-upgrade', $template_directory . 'functions/upgrade.php' );
+	if ( is_admin() ) {
+		if ( current_theme_supports( 'cakifo-upgrade' ) ) require(  $template_directory . 'functions/upgrade.php' );
+	}
+	//require_if_theme_supports( 'cakifo-upgrade', $template_directory . 'functions/upgrade.php' );
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
