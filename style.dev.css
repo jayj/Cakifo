@@ -101,6 +101,11 @@ h3 {
 	font-size: 22px;
 }
 
+.entry-content h3 {
+	background: #f7f7f7;
+	padding: 8px 10px;
+}
+
 h4 {
 	font-size: 20px;
 	font-weight: bold;
