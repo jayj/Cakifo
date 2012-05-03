@@ -1078,151 +1078,181 @@ a.toogle-navbar {
 #slider {
 	background: #ffffe9;
  	border-bottom: 1px solid #edece6;
-	width: 980px;
-	min-height: 310px;
+	width: 920px;
+	padding-left: 60px;
 	margin: -14px 0 0 -20px;
 	position: relative;
+	zoom: 1;
 }
 
-.slides_container {
+.slides-container {
 	width: 880px;
-	margin: 0 auto;
-	padding: 60px 0 20px;
+	padding: 60px 0 0;
+	zoom: 1;
 }
 
 #slider .slide {
-	width: 880px;
-	min-height: 250px;
+	/* Hide the slides before the JS is loaded. Avoids image jumping */
+	display: none;
+	-webkit-backface-visibility: hidden;
 }
 
-	/* Slider content */
-	#slider .entry-summary {
-		font-size: 14px;
-		line-height: 25px;
-		float: left;
-		width: 330px;
-	}
+/* Clearfix for the .slides-container element */
+.slides-container:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; } 
+html[xmlns] .slides-container { display: block; } 
+* html .slides-container { height: 1%; }
 
-	#slider .thumbnail,
-	.slider-video {
-		float: left;
-		margin: 0 40px 0 0;
-	}
+.flex-viewport {
+	max-height: 2000px;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
 
-	/* Slider pagination */
-	.slidesPagination {
-		list-style: none;
-		margin: 20px auto 10px;
-		text-align: center;
-	}
+.loading .flex-viewport { max-height: 300px; }
 
-	.slidesPagination li {
-		display: inline-block;
-		margin: 0 4px;
-	}
+/* Slider content */
+#slider .entry-summary {
+	font-size: 14px;
+	line-height: 25px;
+	float: left;
+	width: 330px;
+}
 
-	.slidesPagination a {
-		background: url(images/slider-dots.png) 0 0;
-		display: block;
-		width: 11px;
-		height: 11px;
-		float: left;
-		overflow: hidden;
-		text-indent: -9999px;
-	}
+#slider .thumbnail,
+.slider-video {
+	float: left;
+	margin: 0 40px 0 0;
+} 
 
-	.slidesPagination .current a {
-		background-position: 0 -14px;
-	}
+/* Control navigation */
+.flex-control-nav {
+	list-style: none;
+	margin: 20px auto 20px -60px;
+	text-align: center;
+}
 
-	.ie7 .slidesPagination {
-		margin-left: 45%;
-	}
+.flex-control-nav li {
+	display: inline-block;
+	margin: 0 0 0 8px;
+	zoom: 1;
+	*display: inline;
+}
 
-	.ie7 .slidesPagination > li {
-		float: left;
-	}
+.flex-control-nav li:first-child { margin: 0; }
 
-	/* Next/prev button */
-	.slider-prev,
-	.slider-next {
-		background-color: #fff;
-		border-radius: 50%;
-		width: 42px;
-		height: 42px;
-		margin: 0;
-		position: absolute;
-		top: 45%;
-		opacity: 0.8;
-		text-indent: -9999px;
-		-webkit-box-shadow: 0 0 7px rgba(0,0,0, 0.3);
-		box-shadow: 0 0 7px rgba(0,0,0, 0.3);
-	}
+/* Slider pagination */
+.flex-control-paging li a {
+	background: #ffc768;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block; 
+	width: 13px; height: 13px;
+	text-indent: -9999px;
+}
 
-	.slider-prev {
-		left: -15px;
-	}
+.flex-control-paging li a:hover { background: #eb724a; }
+.flex-control-paging li a.active { background: #d34d20; cursor: default; }
 
-	.slider-next {
-		right: -15px;
-	}
+.flex-pauseplay a { cursor: pointer; }
 
-	.slider-prev:after,
-	.slider-next:after {
-		background: url(images/colorbox.png) no-repeat;
-		content: "";
-		width: 8px;
-		height: 12px;
-		position: absolute;
-		top: 15px; left: 15px;
-	}
+/* Next/prev buttons */
+.flex-direction-nav {
+	list-style: none;
+	margin: 0; padding: 0;
+}
 
-	.slider-prev:after {
-		background-position: -9px -8px;
-	}
+.flex-direction-nav a {
+	background-color: #fff;
+	border-radius: 50%;
+	width: 42px; height: 42px;
+	margin: 0;
+	position: absolute;
+	top: 200px;
+	opacity: 0.8;
+	text-indent: -9999px;
+	-webkit-box-shadow: 0 0 7px rgba(0,0,0, 0.3);
+	box-shadow: 0 0 7px rgba(0,0,0, 0.3);
+}
 
-	.slider-next:after {
-		background-position: -76px -8px;
-		left: 17px;
-	}
+.flex-direction-nav a:after {
+	background: url(images/colorbox.png) no-repeat;
+	content: "";
+	width: 8px; height: 12px;
+	position: absolute;
+	top: 15px; left: 15px;
+}
 
-	.slider-prev:hover,
-	.slider-next:hover {
-		opacity: 1;
-	}
+.flex-direction-nav .flex-prev {
+	left: -21px;
+}
 
-	.slider-prev:active,
-	.slider-next:active {
-		-webkit-box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
-		box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
-	}
+.flex-direction-nav .flex-next {
+	right: -21px;
+}
 
-	.no-boxshadow .slider-prev,
-	.no-boxshadow .slider-next {
+.flex-direction-nav .flex-prev:after {
+	background-position: -9px -8px;
+}
+
+.flex-direction-nav .flex-next:after {
+	background-position: -76px -8px;
+	left: 17px;
+}
+
+#slider:hover .flex-direction-nav a {
+	opacity: 1;
+}
+
+.flex-direction-nav .disabled {
+	cursor: default;
+	opacity: .3!important;
+	filter:alpha(opacity=30);
+}
+
+.flex-direction-nav .flex-prev:active,
+.flex-direction-nav .flex-next:active {
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
+	box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
+}
+
+	/* No box-shadow */
+	.no-boxshadow .flex-direction-nav .flex-prev,
+	.no-boxshadow .flex-direction-nav .flex-next {
 		border: 1px solid #ccc;
 	}
 
-	.no-boxshadow .slider-prev:hover,
-	.no-boxshadow .slider-next:hover {
+	.no-boxshadow .flex-direction-nav .flex-prev:hover,
+	.no-boxshadow .flex-direction-nav .flex-next:hover {
 		border: 1px solid #bbb;
 	}
 
-	/* Make the slides useful for users without Javascript */
-	.no-js #slider .slide {
-		border-top: 1px solid #e7e7e7;
-		display: block;
-		padding: 20px 0;
-		overflow: hidden;
-	}
+@media screen and (max-width: 860px) {
+	.flex-direction-nav .flex-prev { opacity: 1; left: 0; }
+	.flex-direction-nav .flex-next { opacity: 1; right: 0; }
+}
 
-	.no-js #slider .slide:first-of-type {
-		border-top: none;
-		padding-top: 0;
-	}
+/* Thumbnail nav */
+.flex-control-thumbs img {
+	cursor: pointer;
+	display: block;
+	opacity: .7;
+}
 
-	.no-js #slider .slide .slider-video {
-		display: none;
-	}
+.flex-control-thumbs img:hover {
+	opacity: 1;
+}
+
+.flex-control-thumbs .active {
+	cursor: default;
+	opacity: 1;
+}
+
+/* No-javaScript fallback */
+.no-js .slides-container > .slide:first-child {
+	display: block;
+}
 
 /**
  * Posts
