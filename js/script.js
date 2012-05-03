@@ -1,2 +1,90 @@
-// Uncompressed version is at script.dev.js
-jQuery(document).ready(function(b){jQuery.fn.animateAuto=function(j,h,i){var g,e,f;return this.each(function(k,l){l=jQuery(l);g=l.clone().css({height:"auto",width:"auto"}).appendTo(l.parent());e=g.css("height");f=g.css("width");g.remove();if(j==="height"){l.animate({height:e},h,i)}else{if(j==="width"){l.animate({width:f},h,i)}else{if(j==="both"){l.animate({width:f,height:e},h,i)}}}})};b(".toogle-navbar").on("click",function(g){var h=b("#topbar .wrap"),f=h.height();if(f===0){h.stop().animateAuto("height",700)}else{h.stop().animate({height:0},700)}});function d(e){var f=0,g=0,k=[],j,i=0,h=0;e.each(function(){j=b(this);i=j.position().top;if(g!==i){for(h=0;h<k.length;h++){k[h].height(f)}k.length=0;g=i;f=j.height();k.push(j)}else{k.push(j);f=(f<j.height())?(j.height()):(f)}for(h=0;h<k.length;h++){k[h].height(f)}})}b(window).load(function(){d(b(".page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget"))});b(window).resize(function(){d(b(".page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget"))});var c=[],a="38,38,40,40,37,39,37,39,66,65";b(document).keydown(function(f){c.push(f.keyCode);if(c.toString().indexOf(a)>=0){b(document).unbind("keydown",arguments.callee);b("body").addClass("shake-it-baby")}})});
+(function($, window, document) {
+
+	/**
+	 * jQuery plugin: Animate Height/Width to "Auto"
+	 * http://darcyclarke.me/development/fix-jquerys-animate-to-allow-auto-values/
+	 */
+	jQuery.fn.animateAuto = function(prop, speed, callback){
+		var elem, height, width;
+		
+		return this.each(function(i, el) {
+			el = jQuery(el);
+			elem = el.clone().css({ 'height':'auto', 'width': 'auto' }).appendTo(el.parent());
+			height = elem.css('height');
+			width = elem.css('width');
+			elem.remove();
+
+			if(prop === 'height')
+			el.animate({ 'height': height }, speed, callback);
+			else if(prop === 'width')
+			el.animate({ 'width': width }, speed, callback);
+			else if(prop === 'both')
+			el.animate({ 'width': width, 'height': height }, speed, callback);
+		});
+	};
+
+	$('.toogle-navbar').on( 'click', function(e){
+		var nav = $('#topbar .wrap'),
+			height = nav.height();
+
+		if ( height === 0 ) {
+			nav.stop().animateAuto( 'height', 700);
+		} else {
+			nav.stop().animate( { 'height': 0 }, 700);
+		}
+	});
+
+	/**
+	 * Equal Heights In Rows
+	 * http://css-tricks.com/equal-height-blocks-in-rows/
+	 */
+	function equal_height_columns(selector) {
+		var currentTallest = 0,
+			currentRowStart = 0,
+			rowDivs = [],
+			$el,
+			topPosition = 0,
+			currentDiv = 0;
+
+		selector.each(function() {
+				$el = $(this);
+				topPosition = $el.position().top;
+
+			if (currentRowStart !== topPosition) {
+				// We just came to a new row.  Set all the heights on the completed row
+				for (currentDiv = 0; currentDiv < rowDivs.length ; currentDiv++) {
+					rowDivs[currentDiv].height(currentTallest);
+				}
+
+				// Set the variables for the new row
+				rowDivs.length = 0; // empty the array
+				currentRowStart = topPosition;
+				currentTallest = $el.height();
+				rowDivs.push($el);
+			} else {
+				rowDivs.push($el);
+				currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+			}
+
+			// Do the last row
+			for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+				rowDivs[currentDiv].height(currentTallest);
+			}
+		});
+	}
+
+	/* Call the equal_height_columns() function when window has been loaded to make sure the images are loaded */
+	$(window).load(function() {
+		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+	});
+
+	/* Call the equal_height_columns() function when window is being resized */
+	$(window).resize(function() {
+ 		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+	});
+
+	/* A little surprise ;-) */ 	
+	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
+	$(document).keydown(function(e){kkeys.push(e.keyCode);if( kkeys.toString().indexOf(kkkeys)>= 0){$(document).unbind('keydown',arguments.callee);$('body').addClass('shake-it-baby');}});
+
+})(jQuery, window, document);

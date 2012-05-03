@@ -281,14 +281,9 @@ function cakifo_enqueue_script() {
 	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
 
 	/**
-	 * Loads development script. Use this file for development purposes by adding this to your 'wp-config.php' file:
-	 * define( 'SCRIPT_DEBUG', true );
+	 * Loads the theme javascript
 	 */
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG && current_theme_supports( 'dev-stylesheet' ) )
-		wp_enqueue_script( 'cakifo-theme-dev', THEME_URI . '/js/script.dev.js', array( 'jquery' ), '1.3', true );
-	else
-		wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.3', true );
-
+	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.3', true );
 }
 
 /**
