@@ -303,6 +303,10 @@ blockquote p:first-of-type:after {
 	opacity: 0.25;
 }
 
+blockquote p:only-of-type:after {
+	display: none;
+}
+
 /* The author of the quote */
 blockquote cite,
 blockquote span {
@@ -1266,7 +1270,7 @@ html[xmlns] .slides-container { display: block; }
 }
 
 .sticky {
-	background: #f8f8f8;
+	background: #feffe0;
 	padding: 25px 20px 20px;
 }
 
@@ -1298,6 +1302,10 @@ html[xmlns] .slides-container { display: block; }
 	clear: both;
 	margin-top: 25px;
 	padding: 25px 20px 0;
+}
+
+.page-links {
+	clear: both;
 }
 
 /**
@@ -2355,14 +2363,6 @@ input[type="radio"] {
 	padding: 0;
 }
 
-
-input:focus, input:hover,
-textarea:focus, textarea:hover {
-	background: #fff;
-	border: 1px solid #f0b03c;
-	color: #555;
-}
-
 input[type="search"] {
 	-webkit-appearance: textfield;
 	-moz-box-sizing: content-box;
@@ -2403,7 +2403,8 @@ button:hover {
 
 /* Inputs */
 input,
-textarea {
+textarea,
+select {
 	background: #f9f9f9;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -2417,9 +2418,20 @@ textarea {
 	transition: all 200ms;
 }
 
+input:focus, input:hover,
+textarea:focus, textarea:hover {
+	background: #fff;
+	border: 1px solid #f0b03c;
+	color: #555;
+}
+
 textarea {
 	overflow: auto;
 	vertical-align: top;
+}
+
+select {
+	color: #444;
 }
 
 /* Labels */
@@ -2499,6 +2511,7 @@ span.required {
 
 /* Search form in the topbar */
 #topbar .search {
+	background: #262626 url(images/topbar.png) repeat;
 	float: right;
 	margin-top: 12px;
 }
