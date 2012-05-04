@@ -24,8 +24,8 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
  * @since 1.3
  */
 function cakifo_colorbox_script() {
-	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.18', true );
-	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3', 'screen' );
+	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.19.2', true );
+	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3.19.2', 'screen' );
 }
 
 /**

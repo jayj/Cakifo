@@ -41,7 +41,7 @@
 .cssgradients #cboxOverlay{ opacity: 1 !important }
 
 #cboxContent{
-	background: #fff; background-clip: padding-box; border: 10px solid rgba(0,0,0,0.1); border-radius: 10px; font: 14px 'PT Serif',Georgia,serif; padding: 15px 15px 50px; }
+	background: #fff; background-clip: padding-box; border: 10px solid rgba(0,0,0,0.15); border-radius: 10px; font: 14px 'PT Serif',Georgia,serif; padding: 15px 15px 50px; }
 
 #cboxTitle,
 #cboxCurrent,
