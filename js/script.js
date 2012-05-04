@@ -23,7 +23,15 @@
 		});
 	};
 
-	$('.toogle-navbar').on( 'click', function(e){
+	/**
+	 * Topbar toggle functionality
+	 */
+	$('#topbar').on( 'click', function(e){
+		// We only want the toggle functionality when the toggle button is visible
+		// Or when an anchor link is clicked
+		if ( $('.toggle-navbar').is(':hidden') || 'A' === e.target.tagName )
+			return;
+
 		var nav = $('#topbar .wrap'),
 			height = nav.height();
 
