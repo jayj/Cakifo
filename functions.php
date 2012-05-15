@@ -185,6 +185,7 @@ function cakifo_theme_setup() {
 			'default-text-color' => apply_filters( 'cakifo_header_textcolor', '54a8cf' ), // #54a8cf is the link color from style.css
 			'wp-head-callback' => 'cakifo_header_style',
 			'admin-head-callback' => 'cakifo_admin_header_style',
+			'admin-preview-callback' => 'cakifo_admin_header_image',
 		) );
 
 	// WordPress 3.3 or older
@@ -352,7 +353,7 @@ function cakifo_slider_javascript() {
 		//'animationLoop'     => true,			// Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
 		//'smoothHeight'      => false,			// Boolean: Allow height of the slider to animate smoothly in horizontal mode  
 		//'startAt'           => 0,				// Integer: The slide that the slider should start on. Array notation (0 = first slide)
-		'slideshow'           => true,			// Boolean: Animate slider automatically
+/**/		'slideshow'           => /*true*/false,			// Boolean: Animate slider automatically
 		'slideshowSpeed'      => 4500,			// Integer: Set the speed of the slideshow cycling, in milliseconds
 		//'animationSpeed'    => 600,			// Integer: Set the speed of animations, in milliseconds
 		//'initDelay'         => 0,				// Integer: Set an initialization delay, in milliseconds
@@ -631,7 +632,8 @@ function cakifo_header_style() {
 	<style type="text/css">
 		<?php
 			// Has the text been hidden?
-			if ( ! get_header_image() && ( 'blank' == get_theme_mod( 'header_textcolor', $text_color ) || '' == get_theme_mod( 'header_textcolor', $text_color ) ) ) :
+			if ( ! display_header_text() ) :
+			//if ( ! get_header_image() && ( 'blank' == get_theme_mod( 'header_textcolor', $text_color ) || '' == get_theme_mod( 'header_textcolor', $text_color ) ) ) :
 		?>
 			#site-title,
 			#site-description {
@@ -641,11 +643,11 @@ function cakifo_header_style() {
 			}
 		<?php
 			// If the user has set a custom color for the text use that
-			elseif( ! get_header_image() ) :
+			else :
 		?>
 			#site-title a,
 			#site-description {
-				color: #<?php echo get_theme_mod( 'header_textcolor', $text_color ); ?>;
+				color: #<?php echo get_theme_mod( 'header_textcolor', $text_color ); ?> !important;
 			}
 		<?php endif; ?>
 	</style>
@@ -654,7 +656,37 @@ function cakifo_header_style() {
 }
 
 /**
+ * Custom header image markup displayed on the Appearance > Header admin panel.
+ * 
+ * @since 1.4
+ */
+function cakifo_admin_header_image() { ?>
+	<div id="headimg">
+		<?php
+			if ( ! display_header_text() )
+				$style = ' style="display:none;"';
+			else
+				$style = ' style="color:#' . get_header_textcolor() . ';"';
+
+			$header_image = get_header_image();
+		?>
+
+		<h1>
+			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<?php if ( ! empty( $header_image ) ) : ?>
+					<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
+				<?php endif; ?>
+				<span <?php echo $style; ?>><?php bloginfo( 'name' ); ?></span>
+			</a>
+		</h1>
+
+		<h2 id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></h2>
+	</div>
+<?php }
+
+/**
  * Styles the header image and text on the Header admin screen
+ * 
  * @since 1.0
  */
 function cakifo_admin_header_style() {
@@ -663,7 +695,6 @@ function cakifo_admin_header_style() {
 	if ( function_exists( '_custom_header_background_just_in_time' ) ) : ?>
 
 		<style type="text/css">
-
 			.appearance_page_custom-header #headimg {
 				border: none;
 			}
@@ -684,7 +715,6 @@ function cakifo_admin_header_style() {
 			#desc {
 				display: none;
 			}
-
 		</style>
 
 	<?php
@@ -724,7 +754,6 @@ function cakifo_admin_header_style() {
 		}
 		<?php
 			// If the user has set a custom color for the text use that
-			// //   if ( get_header_textcolor() != get_theme_support( 'custom-header', 'default-text-color' ) ) : 
 			if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
 		?>
 			#site-title a,
@@ -787,16 +816,18 @@ function cakifo_custom_background_callback() {
  * 
  * @since  1.0
  * @param  string  $title
- * @return string         The site title. Either as text or as an image.
+ * @return string         The site title. Either as text, as an image or both.
  */
 function cakifo_logo( $title ) {
 
 	if ( $title = get_bloginfo( 'name' ) ) {
 		// Check if there's a header image, else return the blog name
-		$maybe_image = ( get_header_image() ) ? '<span class="assistive-text">' . $title . '</span><img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />' : '<span>' . $title . '</span>';
+		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" /><span class="assistive-text">' . $title . '</span>' : '<span>' . $title . '</span>';
 
-		//$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></' . $tag . '>';
-		$title = '<h1 id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
+		// If 'Show header text with your image' is checked, add the 'display-header-text' to the heading
+		$heading_class = ( display_header_text() ) ? 'display-header-text' : '';
+
+		$title = '<h1 id="site-title" class="' . esc_attr( $heading_class ) . '"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
 	}
 
 	return $title;
@@ -1035,9 +1066,133 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
 
 	if ( $echo )
-		echo wp_trim_words(get_the_excerpt(), $length, $more_link);
+		echo wp_trim_words( get_the_excerpt(), $length, $more_link );
 	else
-		return wp_trim_words(get_the_excerpt(), $length, $more_link);
+		return wp_trim_words( get_the_excerpt(), $length, $more_link );
+}
+
+/**
+ * [cakifo_customize_register description]
+ * @since  1.4
+ * @param  [type]  $wp_customize [description]
+ * @return [type]                [description]
+ */
+function cakifo_customize_register( $wp_customize ) {
+	if ( ! isset( $wp_customize ) )
+		return;
+	
+	$prefix   = hybrid_get_prefix();
+	$options  = get_option( $prefix . '_theme_settings' );
+	$defaults = hybrid_get_default_theme_settings();
+
+	$wp_customize->get_setting('blogname')->transport = 'postMessage';
+	$wp_customize->get_setting('blogdescription')->transport = 'postMessage';
+	$wp_customize->get_setting('display_header_text')->transport = 'postMessage';
+	$wp_customize->get_setting('header_textcolor')->transport = 'postMessage';
+		
+	$wp_customize->add_section( 'cakifo_customize_settings', array(
+		'title'    => __( 'Cakifo settings', 'cakifo' ),
+		'priority' => 35,
+	) );
+
+	/**
+	 * Show slider?
+	 */
+	$wp_customize->add_setting( $prefix . "_theme_settings[featured_show]", array(
+		'default'    => false,
+		'type'       => 'option',
+		'capability' => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'featured_show', array(
+		'settings' => $prefix . "_theme_settings[featured_show]",
+		'label'    =>  __( 'Show "Featured Content" slider?', 'cakifo' ),
+		'section'  => 'cakifo_customize_settings',
+		'type'     => 'checkbox',
+	) );
+
+	/**
+	 * Slider categories
+	 */
+
+	/* Create category array */
+	foreach ( get_categories() as $cat ) {
+		$categories[$cat->term_id] = $cat->name;
+	}
+
+	/* Add setting and control */
+	$wp_customize->add_setting( $prefix . "_theme_settings[featured_category]", array(
+		'default'    => '',
+		'type'       => 'option',
+		'capability' => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'featured_category', array(
+		'settings' => $prefix . "_theme_settings[featured_category]",
+		'label'    =>  __( 'Featured Category:', 'cakifo' ),
+		'section'  => 'cakifo_customize_settings',
+		'type'     => 'select',
+		'choices'  => $categories
+	) );
+
+	/**
+	 * Number of posts in the slider
+	 */
+	$wp_customize->add_setting( $prefix . "_theme_settings[featured_posts]", array(
+		'default'    => 5,
+		'type'       => 'option',
+		'capability' => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'featured_posts', array(
+		'settings' => $prefix . "_theme_settings[featured_posts]",
+		'label'    =>  __( 'Number of posts', 'cakifo' ),
+		'section'  => 'cakifo_customize_settings',
+		'type'     => 'text',
+	) );
+
+	if ( $wp_customize->is_preview() && ! is_admin() )
+		add_action( 'wp_footer', 'cakifo_customize_preview', 21 );
+}
+
+add_action( 'customize_register', 'cakifo_customize_register' );
+
+/**
+ * [cakifo_customize_preview description]
+ * @since  1.4
+ * @return [type]  [description]
+ */
+function cakifo_customize_preview() {
+	?>
+	<script type="text/javascript">
+		wp.customize('blogname',function( value ) {
+			value.bind(function(to) {
+				jQuery('#site-title span').html(to);
+			});
+		});
+		wp.customize('blogdescription',function( value ) {
+			value.bind(function(to) {
+				jQuery('#site-description').html(to);
+			});
+		});
+		wp.customize( 'header_textcolor', function( value ) {
+			value.bind( function(to) {
+
+				jQuery('#site-title a, #site-description').css('color', to ? '#' + to : '' );
+
+				jQuery('#site-title').toggleClass('display-header-text');
+
+				if ( 'blank' === to ) {
+					jQuery('#site-title span').css({
+						'position': 'absolute',
+						'clip': 'rect(1px 1px 1px 1px)',
+						'clip': 'rect(1px, 1px, 1px, 1px)'
+					});
+				}
+			});
+		});
+	</script>
+	<?php
 }
 
 ?>

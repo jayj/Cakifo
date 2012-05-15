@@ -967,6 +967,11 @@ a.toggle-navbar {
 	text-shadow: 0 1px 0 #fff;
 }
 
+#site-title.display-header-text span {
+	position: relative!important;
+	clip: auto;
+}
+
 #site-title a:hover {
 	color: #d64e20;
 }

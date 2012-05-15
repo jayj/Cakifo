@@ -59,7 +59,7 @@ function cakifo_theme_meta_box() { ?>
 
 		<tr>
 			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show Featured Content slider?', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show "Featured Content" slider?', 'cakifo' ); ?></label>
 			</th>
 
 			<td>
