@@ -970,6 +970,13 @@ a.toggle-navbar {
 #site-title.display-header-text span {
 	position: relative!important;
 	clip: auto;
+	/*position: absolute!important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);*/
+}
+
+#site-title a {
+	color: #3083aa;
 }
 
 #site-title a:hover {

@@ -13,7 +13,7 @@ add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
 /**
  * Add the theme options to the Hybrid Core options page
  *
- * @since  1.0
+ * @since 1.0
  * @return void
  */
 function cakifo_theme_admin_setup() {
@@ -24,14 +24,35 @@ function cakifo_theme_admin_setup() {
 	/* Create a settings meta box only on the theme settings page */
 	add_action( 'load-appearance_page_theme-settings', 'cakifo_theme_settings_meta_boxes' );
 
+	/* Add script and styles */
+	add_action( 'admin_enqueue_scripts', 'cakifo_theme_settings_enqueue_scripts' );
+
 	/* Add a filter to validate/sanitize the settings */
 	add_filter( "sanitize_option_{$prefix}_theme_settings", 'cakifo_theme_validate_settings' );
 }
 
 /**
+ * Loads the JavaScript and CSS files required for using the color picker on the theme settings
+ * page, which allows users to change the link color
+ *
+ * @since 1.4
+ * @param string $hook_suffix The current page being viewed.
+ * @return void
+ */
+function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
+
+	if ( $hook_suffix != hybrid_get_settings_page_name() )
+		return;
+
+	wp_enqueue_style( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.css', false, '1.4' );
+	wp_enqueue_script( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.js', array( 'farbtastic' ), '1.4' );
+	wp_enqueue_style( 'farbtastic' );
+}
+
+/**
  * Adds custom meta boxes to the theme settings page
  *
- * @since  1.0
+ * @since 1.0
  * @return void
  */
 function cakifo_theme_settings_meta_boxes() {
@@ -50,12 +71,30 @@ function cakifo_theme_settings_meta_boxes() {
 /**
  * Function for displaying the meta box
  *
- * @since  1.0
+ * @since 1.0
  * @return void
  */
 function cakifo_theme_meta_box() { ?>
 
 	<table class="form-table">
+
+		<tr>
+			<th><label for="<?php echo hybrid_settings_field_id( 'link_color' ); ?>"><?php _e( 'Link Color', 'cakifo' ); ?></label></th>
+			<td>
+				<fieldset>
+					<legend class="screen-reader-text"><span><?php _e( 'Link Color', 'cakifo' ); ?></span></legend>
+
+					<input type="text" name="<?php echo hybrid_settings_field_name( 'link_color' ); ?>" id="link-color" value="<?php echo esc_attr( hybrid_get_setting( 'link_color' ) ); ?>" />
+
+					<a href="#" class="pickcolor hide-if-no-js" id="link-color-example"></a>
+					<input type="button" class="pickcolor button hide-if-no-js" value="<?php esc_attr_e( 'Select a Color', 'cakifo' ); ?>" />
+
+					<div id="colorPickerDiv" style="z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none;"></div> <br />
+
+					<span><?php printf( __( 'Default color: %s', 'cakifo' ), '<span id="default-color">' . cakifo_get_default_link_color() . '</span>' ); ?></span>
+				</fieldset>
+			</td>
+		</tr>
 
 		<tr>
 			<th>

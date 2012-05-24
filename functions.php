@@ -167,6 +167,9 @@ function cakifo_theme_setup() {
 	/* wp_list_comments() arguments */
 	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
 
+	/* Filter default options */
+	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
+
 	/* Custom logo */
 	add_filter( 'cakifo_site_title', 'cakifo_logo' );
 
@@ -182,7 +185,7 @@ function cakifo_theme_setup() {
 			'height' => 60,
 			'flex-width' => true,
 			'flex-height' => true,
-			'default-text-color' => apply_filters( 'cakifo_header_textcolor', '54a8cf' ), // #54a8cf is the link color from style.css
+			'default-text-color' => apply_filters( 'cakifo_header_textcolor', sanitize_hexcolor( cakifo_get_default_link_color() ) ),
 			'wp-head-callback' => 'cakifo_header_style',
 			'admin-head-callback' => 'cakifo_admin_header_style',
 			'admin-preview-callback' => 'cakifo_admin_header_image',
@@ -192,7 +195,7 @@ function cakifo_theme_setup() {
 	else:
 
 		add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
-		define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', '54a8cf' ) );
+		define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', sanitize_hexcolor( cakifo_get_default_link_color() ) ) );
 		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 150 ) );
 
@@ -632,8 +635,7 @@ function cakifo_header_style() {
 	<style type="text/css">
 		<?php
 			// Has the text been hidden?
-			if ( ! display_header_text() ) :
-			//if ( ! get_header_image() && ( 'blank' == get_theme_mod( 'header_textcolor', $text_color ) || '' == get_theme_mod( 'header_textcolor', $text_color ) ) ) :
+			if ( ! display_header_text() && ! get_header_image() ) :
 		?>
 			#site-title,
 			#site-description {
@@ -643,7 +645,7 @@ function cakifo_header_style() {
 			}
 		<?php
 			// If the user has set a custom color for the text use that
-			else :
+			elseif ( 'blank' != get_header_textcolor() ) :
 		?>
 			#site-title a,
 			#site-description {
@@ -1194,5 +1196,69 @@ function cakifo_customize_preview() {
 	</script>
 	<?php
 }
+
+/**
+ * Returns the default link color for Cakifo
+ *
+ * @since 1.4
+ * @return $string The default color
+ */
+function cakifo_get_default_link_color() {
+	return '#3083aa';
+}
+
+/**
+ * Callback function for sanitizing a hex color
+ */
+if ( ! function_exists('sanitize_hexcolor') ) :
+	function sanitize_hexcolor( $color ) {
+		$color = preg_replace( '/[^0-9a-fA-F]/', '', $color );
+
+		if ( preg_match('|[A-Fa-f0-9]{3,6}|', $color ) )
+			return $color;
+
+		return $color;
+	}
+endif;
+
+/**
+ * Filter the default theme settings
+ * 
+ * @since  1.4
+ * @param  array  $settings Array with default settings
+ * @return array            Array with the filtered default settings
+ */
+function cakifo_filter_default_theme_settings( $settings ) {
+	$settings['link_color'] = cakifo_get_default_link_color();
+
+	return $settings;
+}
+
+/**
+ * Add a style block to the theme for the current link color.
+ *
+ * This function is attached to the wp_head action hook.
+ *
+ * @since 1.4
+ */
+function cakifo_print_link_color_style() {
+	$defaults = hybrid_get_default_theme_settings();
+	$link_color = hybrid_get_setting( 'link_color' );
+
+	// Don't do anything if the current link color is the default color for the current scheme
+	if ( $link_color == $defaults['link_color'] )
+		return;
+?>
+	<style>
+		/* Link color */
+		a,
+		.entry-title a {
+			color: <?php echo esc_attr( $link_color ); ?>;
+		}
+	</style>
+<?php
+}
+
+add_action( 'wp_head', 'cakifo_print_link_color_style' );
 
 ?>
