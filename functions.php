@@ -185,7 +185,7 @@ function cakifo_theme_setup() {
 			'height' => 60,
 			'flex-width' => true,
 			'flex-height' => true,
-			'default-text-color' => apply_filters( 'cakifo_header_textcolor', sanitize_hexcolor( cakifo_get_default_link_color() ) ),
+			'default-text-color' => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
 			'wp-head-callback' => 'cakifo_header_style',
 			'admin-head-callback' => 'cakifo_admin_header_style',
 			'admin-preview-callback' => 'cakifo_admin_header_image',
@@ -195,7 +195,7 @@ function cakifo_theme_setup() {
 	else:
 
 		add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
-		define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', sanitize_hexcolor( cakifo_get_default_link_color() ) ) );
+		define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ) );
 		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 150 ) );
 
@@ -663,26 +663,27 @@ function cakifo_header_style() {
  * @since 1.4
  */
 function cakifo_admin_header_image() { ?>
+
 	<div id="headimg">
 		<?php
-			if ( ! display_header_text() )
-				$style = ' style="display:none;"';
-			else
+			if ( display_header_text() )
 				$style = ' style="color:#' . get_header_textcolor() . ';"';
+			else
+				$style = ' style="display:none;"';
 
 			$header_image = get_header_image();
 		?>
 
 		<h1>
-			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<a id="name" onclick="return false;" href="<?php bloginfo('url'); ?>">
 				<?php if ( ! empty( $header_image ) ) : ?>
 					<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
 				<?php endif; ?>
-				<span <?php echo $style; ?>><?php bloginfo( 'name' ); ?></span>
+				<span class="displaying-header-text" <?php echo $style; ?>><?php bloginfo( 'name' ); ?></span>
 			</a>
 		</h1>
 
-		<h2 id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></h2>
+		<!-- <h2 id="desc" class="displaying-header-text"><?php bloginfo( 'description' ); ?></h2> -->
 	</div>
 <?php }
 
@@ -1074,28 +1075,44 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 }
 
 /**
- * [cakifo_customize_register description]
- * @since  1.4
- * @param  [type]  $wp_customize [description]
- * @return [type]                [description]
+ * Implements some Cakifo theme options into Theme Customizer
+ * 
+ * @since 1.4
+ * @param object  $wp_customize Theme Customizer object
+ * @return void
  */
 function cakifo_customize_register( $wp_customize ) {
 	if ( ! isset( $wp_customize ) )
 		return;
-	
+
 	$prefix   = hybrid_get_prefix();
 	$options  = get_option( $prefix . '_theme_settings' );
 	$defaults = hybrid_get_default_theme_settings();
 
 	$wp_customize->get_setting('blogname')->transport = 'postMessage';
 	$wp_customize->get_setting('blogdescription')->transport = 'postMessage';
-	$wp_customize->get_setting('display_header_text')->transport = 'postMessage';
-	$wp_customize->get_setting('header_textcolor')->transport = 'postMessage';
+	$wp_customize->get_setting('link_color')->transport = 'postMessage';
 		
 	$wp_customize->add_section( 'cakifo_customize_settings', array(
 		'title'    => __( 'Cakifo settings', 'cakifo' ),
 		'priority' => 35,
 	) );
+
+	/**
+	 * Link color
+	 */
+	$wp_customize->add_setting( $prefix . "_theme_settings[link_color]", array(
+		'default'           => cakifo_get_default_link_color(),
+		'type'              => 'option',
+		'sanitize_callback' => 'sanitize_hex_color',
+		'capability'        => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
+		'label'    => __( 'Link Color', 'cakifo' ),
+		'section'  => 'colors',
+		'settings' => $prefix . "_theme_settings[link_color]",
+	) ) );
 
 	/**
 	 * Show slider?
@@ -1116,8 +1133,7 @@ function cakifo_customize_register( $wp_customize ) {
 	/**
 	 * Slider categories
 	 */
-
-	/* Create category array */
+	// Create category array
 	foreach ( get_categories() as $cat ) {
 		$categories[$cat->term_id] = $cat->name;
 	}
@@ -1160,9 +1176,11 @@ function cakifo_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'cakifo_customize_register' );
 
 /**
- * [cakifo_customize_preview description]
- * @since  1.4
- * @return [type]  [description]
+ * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
+ * Used with blogname and blogdescription.
+ * 
+ * @since 1.4
+ * @return void
  */
 function cakifo_customize_preview() {
 	?>
@@ -1177,22 +1195,6 @@ function cakifo_customize_preview() {
 				jQuery('#site-description').html(to);
 			});
 		});
-		wp.customize( 'header_textcolor', function( value ) {
-			value.bind( function(to) {
-
-				jQuery('#site-title a, #site-description').css('color', to ? '#' + to : '' );
-
-				jQuery('#site-title').toggleClass('display-header-text');
-
-				if ( 'blank' === to ) {
-					jQuery('#site-title span').css({
-						'position': 'absolute',
-						'clip': 'rect(1px 1px 1px 1px)',
-						'clip': 'rect(1px, 1px, 1px, 1px)'
-					});
-				}
-			});
-		});
 	</script>
 	<?php
 }
@@ -1201,25 +1203,21 @@ function cakifo_customize_preview() {
  * Returns the default link color for Cakifo
  *
  * @since 1.4
- * @return $string The default color
+ * @return string The default color
  */
 function cakifo_get_default_link_color() {
 	return '#3083aa';
 }
 
 /**
- * Callback function for sanitizing a hex color
+ * Returns the default link color for Cakifo with no hash
+ *
+ * @since 1.4
+ * @return string The default color with no hash
  */
-if ( ! function_exists('sanitize_hexcolor') ) :
-	function sanitize_hexcolor( $color ) {
-		$color = preg_replace( '/[^0-9a-fA-F]/', '', $color );
-
-		if ( preg_match('|[A-Fa-f0-9]{3,6}|', $color ) )
-			return $color;
-
-		return $color;
-	}
-endif;
+function cakifo_get_default_link_color_no_hash() {
+	return '3083aa';
+}
 
 /**
  * Filter the default theme settings

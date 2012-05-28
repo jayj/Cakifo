@@ -197,6 +197,10 @@ function cakifo_theme_validate_settings( $input ) {
 	$input['twitter_username']  = wp_filter_nohtml_kses( $input['twitter_username'] );
 	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : '5' ); // 5 is the default number of featured posts
 
+	// Link color must be 3 or 6 hexadecimal characters
+	if ( isset( $input['link_color'] ) && preg_match( '/^#?([a-f0-9]{3}){1,2}$/i', $input['link_color'] ) )
+		$input['link_color'] = '#' . strtolower( ltrim( $input['link_color'], '#' ) );
+
 	/* Return the array of theme settings */
 	return $input;
 }
