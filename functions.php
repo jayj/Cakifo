@@ -276,7 +276,8 @@ function cakifo_enqueue_script() {
 
 	// Make sure jQuery is loaded after Modernizr
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
+	wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
+	wp_enqueue_script( 'jquery' );
 
 	/**
 	 * Loads the theme javascript
