@@ -113,7 +113,7 @@ function cakifo_theme_setup() {
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
 
 	/* Load JavaScript and CSS styles */
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script' );
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
 
 	/* Topbar search form */
@@ -274,9 +274,7 @@ function cakifo_enqueue_script() {
 	 */
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', '', '2.5.3' );
 
-	// Make sure jQuery is loaded after Modernizr
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array( 'modernizr' ), null, true );
+	/* jQuery */
 	wp_enqueue_script( 'jquery' );
 
 	/**
