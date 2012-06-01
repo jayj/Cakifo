@@ -29,7 +29,7 @@
 				'prev_text' => __( '&larr; Previous', 'cakifo' ),
 				'next_text' => __( 'Next &rarr;', 'cakifo' )
 			) );
-		
+
 		// Normal 'Previous' and 'Next' links
 		elseif ( ! is_singular() && $nav = get_posts_nav_link( array( 'sep' => '', 'prelabel' => '<span class="previous">' . __( '&larr; Previous', 'cakifo' ) . '</span>', 'nxtlabel' => '<span class="next">' . __( 'Next &rarr;', 'cakifo' ) . '</span>' ) ) ) : ?>
 

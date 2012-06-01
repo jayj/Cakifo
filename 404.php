@@ -2,7 +2,7 @@
 /**
  * 404 template
  *
- * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will 
+ * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will
  * display a generic message.
  *
  * @package Cakifo
@@ -12,7 +12,7 @@
 
 /**
  * Include the header template part file
- * 
+ *
  * Child Themes can replace this template part file globally, via {header.php},
  * or in a specific context only, via {header-404.php}
  */
@@ -38,15 +38,15 @@ get_header( '404' ); ?>
 
 			</article> <!-- .hentry -->
 
-			<?php 
+			<?php
 				/**
 				 * Include the Error Page widgets "sidebar" template part file
-				 * 
-				 * Child Themes can replace this template part file globally, 
+				 *
+				 * Child Themes can replace this template part file globally,
 				 * via "sidebar.php", or in the Error 404 Page context only, via
 				 * "sidebar-404.php"
 				 */
-				get_sidebar( '404' ); 
+				get_sidebar( '404' );
 			?>
 
 		<?php do_atomic( 'close_main' ); // cakifo_close_main ?>
@@ -55,12 +55,12 @@ get_header( '404' ); ?>
 
 	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
 
-<?php 
+<?php
 /**
  * Include the footer template part file
- * 
+ *
  * Child Themes can replace this template part file globally, via {footer.php},
  * or in a specific context only, via {footer-404.php}
  */
-get_footer( '404' );  
+get_footer( '404' );
 ?>

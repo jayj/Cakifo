@@ -1,6 +1,6 @@
 <?php
 /**
- * The related posts widget is created to give users the ability to show related posts after each posts 
+ * The related posts widget is created to give users the ability to show related posts after each posts
  *
  * @package Cakifo
  * @subpackage Functions
@@ -9,7 +9,7 @@
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
- */		
+ */
 
 /**
  * Related Posts widget class.
@@ -160,7 +160,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
 
 		// Fire up the query
-		$related_query = array( 
+		$related_query = array(
 			'posts_per_page'      => $args['limit'],
 			'orderby'             => $args['orderby'],
 			'ignore_sticky_posts' => true,
@@ -185,7 +185,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/**
 		 * Find all related posts and put them in a post meta field called 'related'
 		 */
-		if ( $related->have_posts() ) while ( $related->have_posts() ) : $related->the_post(); 
+		if ( $related->have_posts() ) while ( $related->have_posts() ) : $related->the_post();
 
 			add_post_meta( $post_id, 'related', array(
 				'title'     => get_the_title(),
@@ -221,7 +221,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	 * Flush the related posts meta when a post is updated, deleted or the settings has been changed
 	 *
 	 * @since 1.3
-	 */ 
+	 */
 	function flush_widget_cache( $post_ID = null ) {
 
 		$related_meta = get_post_meta( $post_ID, 'related', false );
@@ -241,7 +241,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 				foreach( $get_posts as $postinfo )
 					delete_post_meta( $postinfo->ID, 'related' );
 			endif;
-		
+
 		// The widget settings has been updated: delete the post meta for all posts
 		else :
 
@@ -288,7 +288,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order by:', 'cakifo' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order by:', 'cakifo' ); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 					<?php foreach ( $orderby as $option_value => $option_label ) { ?>
 						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>

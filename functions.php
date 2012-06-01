@@ -1,22 +1,22 @@
 <?php
 /**
- * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and 
- * sets up the supported features, default actions, and default filters.  If making customizations, users 
- * should create a child theme and make changes to its functions.php file (not this one).  Friends don't let 
+ * The functions file is used to initialize everything in the theme.  It controls how the theme is loaded and
+ * sets up the supported features, default actions, and default filters.  If making customizations, users
+ * should create a child theme and make changes to its functions.php file (not this one).  Friends don't let
  * friends modify parent theme files ;)
  *
  * Child themes should do their setup on the 'after_setup_theme' hook with a priority of 11 if they want to
  * override parent theme features.  Use a priority of 9 if wanting to run before the parent theme.
  *
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
  * that you can use any other version of the GPL.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * You should have received a copy of the GNU General Public License along with this program; if not, write 
+ * You should have received a copy of the GNU General Public License along with this program; if not, write
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package Cakifo
@@ -94,12 +94,12 @@ function cakifo_theme_setup() {
 
 	/* Set $content_width */
 	hybrid_set_content_width( 630 );
-	
+
 	/* Set $content_width for other post layouts */
 	add_action( 'init', 'cakifo_content_width' );
 
 	/*
-	 * Set new image sizes 
+	 * Set new image sizes
 	 *
 	 * Small: For use in archives and searches
 	 * Slider: For use in the slider
@@ -116,9 +116,12 @@ function cakifo_theme_setup() {
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
 
+	/* Link color from Theme Options */
+	add_action( 'wp_head', 'cakifo_print_link_color_style' );
+
 	/* Topbar search form */
 	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
-	
+
 	/**
 	 * If you want the old RSS and Twitter link, do this in your child theme:
 	 * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
@@ -176,7 +179,7 @@ function cakifo_theme_setup() {
 	/**
 	 * Custom header for logo upload
 	 */
-	
+
 	// The WordPress 3.4+ way
 	if ( function_exists( '_custom_header_background_just_in_time' ) ) :
 
@@ -200,7 +203,7 @@ function cakifo_theme_setup() {
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 150 ) );
 
 	endif;
-	
+
 	// Register the logo from the parent theme images folder as the default logo
 	register_default_headers( array(
 		'logo' => array(
@@ -241,7 +244,7 @@ function cakifo_load_theme_support() {
 
 	/* Load the Colorbox Script extention if supported. */
 	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
-	
+
 	/* Load the Twitter Button extention if supported */
 	require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
 
@@ -255,7 +258,7 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
 /**
  * Loads the theme JavaScript files
  *
- * It loads jQuery, Modernizr, and the Javascript 
+ * It loads jQuery, Modernizr, and the Javascript
  * needed for this theme
  *
  * @since 1.0
@@ -353,7 +356,7 @@ function cakifo_slider_javascript() {
 		//'direction'         => 'horizontal',	// Select the sliding direction, "horizontal" or "vertical"
 		//'reverse'           => false,			// Boolean Reverse the animation direction
 		//'animationLoop'     => true,			// Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
-		//'smoothHeight'      => false,			// Boolean: Allow height of the slider to animate smoothly in horizontal mode  
+		//'smoothHeight'      => false,			// Boolean: Allow height of the slider to animate smoothly in horizontal mode
 		//'startAt'           => 0,				// Integer: The slide that the slider should start on. Array notation (0 = first slide)
 /**/		'slideshow'           => /*true*/false,			// Boolean: Animate slider automatically
 		'slideshowSpeed'      => 4500,			// Integer: Set the speed of the slideshow cycling, in milliseconds
@@ -419,7 +422,7 @@ function cakifo_slider_javascript() {
  * @return array        The filtered arguments
  */
 function cakifo_get_the_image_arguments( $args ) {
-	
+
 	if ( is_archive() || is_search() ) {
 		$args['size'] = 'small';
 		$args['image_class'] = 'thumbnail';
@@ -442,7 +445,7 @@ function cakifo_change_list_comments_args( $args ) {
 
 /**
  * Edit the "More link" for archive excerpts.
- * 
+ *
  * @since  1.0
  * @param  string  $more The default more link
  * @return string        The changed more link with a more descriptive text
@@ -464,13 +467,13 @@ function cakifo_excerpt_more( $more ) {
  * @return array        The filtered 'Breadcrumb' arguments
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail 
+	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail
 	return $args;
 }
 
 /**
  * Change entry meta for the Quote post format.
- * 
+ *
  * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
@@ -484,7 +487,7 @@ function cakifo_quote_entry_meta( $meta ) {
 
 /**
  * Change entry meta for the Aside post format.
- * 
+ *
  * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
@@ -495,7 +498,7 @@ function cakifo_aside_entry_meta( $meta ) {
 
 /**
  * Change entry meta for the Link post format.
- * 
+ *
  * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
@@ -506,7 +509,7 @@ function cakifo_link_entry_meta( $meta ) {
 
 /**
  * Change entry meta for the Image post format.
- * 
+ *
  * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
@@ -538,7 +541,7 @@ function cakifo_topbar_rss() {
  * @since 1.3
  */
 function cakifo_topbar_search() {
-	get_search_form();	
+	get_search_form();
 }
 
 /**
@@ -567,7 +570,7 @@ function cakifo_one_column() {
 
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
- * 
+ *
  * @since  1.0
  * @param  string  $layout Not used.
  * @return string          Returns 'layout-1c'
@@ -578,7 +581,7 @@ function cakifo_theme_layout_one_column( $layout ) {
 
 /**
  * Disables sidebars if viewing a one-column page.
- * 
+ *
  * @since  1.0
  * @param  array  $sidebars_widgets Array with all the widgets for all the sidebars
  * @return array                    Same array but with the primary and secondary sidebar removed
@@ -604,7 +607,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 function cakifo_content_width() {
 
 	$layout = theme_layouts_get_layout();
-	
+
 	if ( current_theme_supports( 'theme-layouts' ) ) {
 		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout )
 			hybrid_set_content_width( 490 );
@@ -625,8 +628,8 @@ function cakifo_header_style() {
 	$text_color = get_theme_support( 'custom-header', 'default-text-color' );
 
 	// If no custom options for text are set, let's bail
-	// get_header_textcolor() options: get_theme_support( 'custom-header', 'default-text-color' ) is default, hide text (returns 'blank') or any hex value 
-	if ( $text_color == get_header_textcolor() ) 
+	// get_header_textcolor() options: get_theme_support( 'custom-header', 'default-text-color' ) is default, hide text (returns 'blank') or any hex value
+	if ( $text_color == get_header_textcolor() )
 		return;
 
 	// If we get this far, we have custom styles. Let's do this. ?>
@@ -658,7 +661,7 @@ function cakifo_header_style() {
 
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
- * 
+ *
  * @since 1.4
  */
 function cakifo_admin_header_image() { ?>
@@ -674,7 +677,7 @@ function cakifo_admin_header_image() { ?>
 		?>
 
 		<h1>
-			<a id="name" onclick="return false;" href="<?php bloginfo('url'); ?>">
+			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>">
 				<?php if ( ! empty( $header_image ) ) : ?>
 					<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
 				<?php endif; ?>
@@ -688,7 +691,7 @@ function cakifo_admin_header_image() { ?>
 
 /**
  * Styles the header image and text on the Header admin screen
- * 
+ *
  * @since 1.0
  */
 function cakifo_admin_header_style() {
@@ -705,7 +708,7 @@ function cakifo_admin_header_style() {
 				font-family: Georgia, "Times New Roman", Times, serif;
 				margin: 0;
 			}
-		
+
 			#headimg h1 a {
 				font-size: 46px;
 				font-weight: normal;
@@ -804,18 +807,9 @@ function cakifo_custom_background_callback() {
 }
 
 /**
- * Allow the user to upload a new logo or change between image and text 
- * using the WordPress header function 
+ * Allow the user to upload a new logo or change between image and text
+ * using the WordPress header function
  *
- * @param	string	$title
- * @return	string	$title	The title as an image or as text
- * @since	1.0
- */
-
-/**
- * Allow the user to upload a new logo or change between image and text 
- * using the WordPress header function 
- * 
  * @since  1.0
  * @param  string  $title
  * @return string         The site title. Either as text, as an image or both.
@@ -834,7 +828,7 @@ function cakifo_logo( $title ) {
 
 	return $title;
 }
- 
+
 /**
  * Function to add an author box
  *
@@ -860,7 +854,9 @@ function cakifo_author_box() { ?>
 
 			<?php if ( get_the_author_meta( 'twitter' ) ) { ?>
 				<p class="twitter-link">
-					<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
+					<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
+						<?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
+					</a>
 				</p>
 			<?php } // End check for twitter ?>
 
@@ -880,20 +876,20 @@ function cakifo_author_box() { ?>
  */
 function cakifo_place_author_box() {
 	$prefix = hybrid_get_prefix();
-	
+
 	if ( is_active_sidebar( 'after-single' ) )
 		add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
 	else
-		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );	
+		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
 }
 
 /**
  * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
  *
- * Note: This function will most likely be restructured completely in the future.  The eventual plan is to 
- * separate each of the elements into an attachment API that can be used across multiple themes.  Keep 
+ * Note: This function will most likely be restructured completely in the future.  The eventual plan is to
+ * separate each of the elements into an attachment API that can be used across multiple themes.  Keep
  * this in mind if you plan on using the current filter hooks in this function.
- * 
+ *
  * @since  1.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
@@ -951,7 +947,7 @@ function cakifo_image_info() {
 
 	/**
 	 * Allow child themes to overwrite the array of items
-	 * @note Changed name to 'image_meta_items' in Version 1.3 
+	 * @note Changed name to 'image_meta_items' in Version 1.3
 	 */
 	$items = apply_atomic( 'image_meta_items', $items );
 
@@ -973,7 +969,7 @@ function cakifo_image_info() {
 
 /**
  * Get the values of all registered image sizes. Both the custom and the default
- * 
+ *
  * @since  1.3
  * @return array  An array of all the images sizes
  */
@@ -1021,7 +1017,7 @@ function cakifo_get_image_size( $name ) {
 if ( ! function_exists( 'cakifo_url_grabber' ) ) :
 /**
  * Returns URLs found in the content
- * 
+ *
  * It will either match all text containing http:// or https://
  * If the first argument passed gets changed to 'href',
  * it will only match links from anchor links (<code><a href="http://..."></a></code>)
@@ -1054,13 +1050,8 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 endif;
 
 /**
- * @since	1.0
- * @deprecated 1.3
- */
-
-/**
  * @since 1.0
- * @deprecated Use the native WordPress function wp_trim_words() instead.
+ * @deprecated 1.3 Use the native WordPress function wp_trim_words() instead.
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	_deprecated_function( __FUNCTION__, '1.3', 'wp_trim_words()' );
@@ -1075,7 +1066,7 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 
 /**
  * Implements some Cakifo theme options into Theme Customizer
- * 
+ *
  * @since 1.4
  * @param object  $wp_customize Theme Customizer object
  * @return void
@@ -1091,7 +1082,7 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->get_setting('blogname')->transport = 'postMessage';
 	$wp_customize->get_setting('blogdescription')->transport = 'postMessage';
 	$wp_customize->get_setting('link_color')->transport = 'postMessage';
-		
+
 	$wp_customize->add_section( 'cakifo_customize_settings', array(
 		'title'    => __( 'Cakifo settings', 'cakifo' ),
 		'priority' => 35,
@@ -1177,7 +1168,7 @@ add_action( 'customize_register', 'cakifo_customize_register' );
 /**
  * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
  * Used with blogname and blogdescription.
- * 
+ *
  * @since 1.4
  * @return void
  */
@@ -1220,7 +1211,7 @@ function cakifo_get_default_link_color_no_hash() {
 
 /**
  * Filter the default theme settings
- * 
+ *
  * @since  1.4
  * @param  array  $settings Array with default settings
  * @return array            Array with the filtered default settings
@@ -1255,7 +1246,5 @@ function cakifo_print_link_color_style() {
 	</style>
 <?php
 }
-
-add_action( 'wp_head', 'cakifo_print_link_color_style' );
 
 ?>

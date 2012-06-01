@@ -1,11 +1,11 @@
 <?php
 /**
- * Sets up the default theme sidebars if the child theme supports them. 
+ * Sets up the default theme sidebars if the child theme supports them.
  * These are a replacement of the default framework sidebars because
  * we're using HTML5
  *
  * 'Primary', 'secondary', and 'subsidiary' are on by default.
- * Themes may choose to use or not use these sidebars, create new sidebars, or 
+ * Themes may choose to use or not use these sidebars, create new sidebars, or
  * unregister individual sidebars.  A theme must register support for 'cakifo-sidebars' to use them
  *
  * @package Cakifo
@@ -19,7 +19,7 @@ add_action( 'widgets_init', 'cakifo_register_sidebars' );
 add_action( 'widgets_init', 'cakifo_register_widgets' );
 
 /**
- * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support 
+ * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support
  * these sidebars within their themes or add more custom sidebars to the mix.
  *
  * @uses register_sidebar() Registers a sidebar with WordPress.
@@ -122,7 +122,7 @@ function cakifo_register_sidebars() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>'
 	);
-	
+
 	/* Set up the 404 error page arguments */
 	$error_page = array(
 		'id'            => 'error-page',

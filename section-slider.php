@@ -15,7 +15,7 @@
 	 * Select posts from the selected categories
 	 */
 	if ( hybrid_get_setting( 'featured_category' ) ) :
-		$feature_query = array( 
+		$feature_query = array(
 			'cat'                 => hybrid_get_setting( 'featured_category' ),
 			'showposts'           => hybrid_get_setting( 'featured_posts' ),
 			'ignore_sticky_posts' => 1,
@@ -63,7 +63,7 @@
 							 *
 							 * Either from a custom field, the featured image function,
 							 * or an embed video (video post format only)
-							 * 
+							 *
 							 * @var string
 							 */
 							$thumbnail = get_the_image( array(

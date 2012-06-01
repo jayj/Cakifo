@@ -1,7 +1,7 @@
 <?php
 /**
  * Custom Tweet Button for WordPress
- * 
+ *
  * This is my fork of Nicolas Gallagher original "Custom Tweet Button for WordPress"
  * It's a fully customisable HTML and CSS Tweet Button for WordPress built using PHP
  *
@@ -75,7 +75,7 @@ function cakifo_tweet_button( $args = array() ) {
 	$retweet_count    = null;
 	$count            = 0;
 	$counter          = '';
-	
+
 	// Retweet data (Twitter API)
 	$retweet_meta = get_post_meta( $post_id, "retweet_{$i}_cache", true );
 

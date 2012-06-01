@@ -58,7 +58,7 @@ function cakifo_colorbox() {
 	 * 		$args['selector'] = '.colorbox, .my-new-awesome-selector';
 	 *		return $args;
 	 *	}
-	 *	
+	 *
 	 * @var array
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );

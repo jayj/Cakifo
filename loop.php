@@ -34,7 +34,7 @@
 				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 			<?php endif; ?>
 
-			<?php 
+			<?php
 				/**
 				 * Get the default post format. Normal posts return false
 				 * @var string|bool
@@ -71,7 +71,7 @@
 			 */
 			if ( has_post_format( 'status' ) ) :
 		?>
-		
+
 			<div class="entry-content">
 				<div class="note">
 					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">

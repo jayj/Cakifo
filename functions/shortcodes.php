@@ -29,15 +29,8 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
 
 	remove_shortcode( 'entry-author' );
-	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );	
+	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
 }
-
-/** 
- * RSS link shortcode
- *
- * @param	array	$atts
- * @since	1.0
- */
 
 /**
  * RSS link shortcode
@@ -46,7 +39,7 @@ function cakifo_register_shortcodes() {
  * @return string  The RSS link
  */
 function cakifo_rss_link_shortcode( $atts ) {
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'before' => '',
 		'after'  => '',
 		'text'   => __( 'RSS', 'cakifo' ),
@@ -57,16 +50,16 @@ function cakifo_rss_link_shortcode( $atts ) {
 
 /**
  * Twitter username and/or link to profile.
- * 
+ *
  * Taken from my Twitter Profile Field plugin
  * @link  http://wordpress.org/extend/plugins/twitter-profile-field/
- * 
+ *
  * @since  1.0
  * @param  array  $atts
  * @return string  The Twitter username or username with a link to the profile.
  */
 function cakifo_twitter_shortcode( $atts ) {
-	extract( shortcode_atts( array(   
+	extract( shortcode_atts( array(
 		'link'     => true,
 		'before'   => '',
 		'after'    => '',
@@ -113,7 +106,7 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
 	), $atts) );
 
 	$url = 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) );
-	
+
 	return $before . '<a href="' . esc_url( $url ) . '" title="' . __( 'Digg this entry', 'cakifo' ) . '" class="digg-share-button">' . __( 'Digg', 'cakifo' ) . '</a>' . $after;
 }
 
@@ -141,7 +134,7 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 		'colorscheme' => 'light', // light, dark
 		'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR
 	), $atts) );
-	
+
 	// Set default locale
 	$locale = ( isset( $locale ) ) ? $locale : 'en_US';
 
@@ -256,7 +249,7 @@ function cakifo_entry_published_shortcode( $atts ) {
 		'pubdate' => true,
 	), $atts );
 
-	// Pubdate attribute can be removed with [entry-published pubdate="something"] 
+	// Pubdate attribute can be removed with [entry-published pubdate="something"]
 	$pubdate = ( $atts['pubdate'] === true ) ? 'pubdate' : '';
 
 	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $atts['format'] ) . '</time>';

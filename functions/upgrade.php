@@ -54,7 +54,7 @@ function cakifo_update_check() {
 
 /**
  * Checks if there's a new version available
- * 
+ *
  * @since  1.3
  * @return boolean  True if there's an update, false if not
  */
@@ -82,16 +82,16 @@ function cakifo_update_available() {
 
 	return (boolean) $update_available;
 }
-	
+
 /**
  * Display the update notice
- * 
+ *
  * @since	1.2
  */
 
 /**
  * Display the update notice
- * 
+ *
  * @since  1.2
  */
 function cakifo_update_notice() {
@@ -108,11 +108,11 @@ function cakifo_update_notice() {
 
 			// The notice
 			echo '<div class="update-nag">';
-				printf( __( 'Cakifo %s is available. <a href="%s">Check out what\'s new</a> or <a href="%s" onclick="return cakifo_confirm_upgrade(\'%s\');">update now</a>. ', 'cakifo' ), 
+				printf( __( 'Cakifo %s is available. <a href="%s">Check out what\'s new</a> or <a href="%s" onclick="return cakifo_confirm_upgrade(\'%s\');">update now</a>. ', 'cakifo' ),
 					esc_html( $update['new_version'] ),
 					esc_url( $update['url'] ),
 					$update_url,
-					esc_js( $update_onclick ) 
+					esc_js( $update_onclick )
 				);
 				echo $update['message'];
 					if ( is_child_theme() )

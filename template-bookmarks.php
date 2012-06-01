@@ -3,7 +3,7 @@
  * Template Name: Bookmarks
  *
  * A custom page template for displaying the site's bookmarks/links.
- * 
+ *
  * @package Cakifo
  * @subpackage Template
  */

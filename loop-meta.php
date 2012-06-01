@@ -2,7 +2,7 @@
 /**
  * Loop Meta Template
  *
- * Displays information at the top of the page about archive and search results when viewing those pages.  
+ * Displays information at the top of the page about archive and search results when viewing those pages.
  * This is not shown on the front page or singular views.
  *
  * @package Cakifo
@@ -49,7 +49,7 @@
 		</div> <!-- .loop-description -->
 
 	</div> <!-- .loop-meta -->
-	
+
 <?php elseif ( is_tax( 'post_format' ) ) : ?>
 
 	<div class="loop-meta">

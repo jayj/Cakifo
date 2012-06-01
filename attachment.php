@@ -2,7 +2,7 @@
 /**
  * Attachment Template
  *
- * This is the default attachment template.  It is used when visiting the singular view of a post attachment 
+ * This is the default attachment template.  It is used when visiting the singular view of a post attachment
  * page (images, videos, audio, etc.).
  *
  * @package Cakifo
@@ -27,8 +27,8 @@ get_header(); // Loads the header.php template ?>
 
 			<header class="entry-header">
 				<?php
-					echo apply_atomic_shortcode( "attachment_metadeta", '<div class="entry-format">' . sprintf( 
-							__( 'Published on [entry-published] in <a href="%1$s" title="Return to %2$s" rel="gallery">%2$s</a> [entry-edit-link before=" | "]', 'cakifo' ), 
+					echo apply_atomic_shortcode( "attachment_metadeta", '<div class="entry-format">' . sprintf(
+							__( 'Published on [entry-published] in <a href="%1$s" title="Return to %2$s" rel="gallery">%2$s</a> [entry-edit-link before=" | "]', 'cakifo' ),
 							esc_url( get_permalink( $post->post_parent ) ),
 							get_the_title( $post->post_parent )
 					) . '</div>' );
@@ -72,7 +72,7 @@ get_header(); // Loads the header.php template ?>
 						<h4><?php _e( 'Gallery', 'cakifo' ); ?></h4>
 						<?php echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small"]', $post->post_parent, get_the_ID() ) ); ?>
 					</div> <!-- #attachment-gallery -->
-				</div> <!-- #image-info -->	
+				</div> <!-- #image-info -->
 
 			<?php endif; ?>
 

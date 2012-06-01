@@ -18,7 +18,7 @@
 
 		<?php
 			$i = 0;
-			
+
 			// Get the number of posts to show
 			$number = ( hybrid_get_setting( 'headlines_num_posts' ) ) ? hybrid_get_setting( 'headlines_num_posts' ) : 4;
 
@@ -81,7 +81,7 @@
 										<?php
 											/* Entry title */
 											echo apply_atomic( 'headline_entry_title', the_title( '<h3 class="' . esc_attr( $post->post_type ) . '-title entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h3>', false ) );
-											
+
 											/* Entry meta */
 											echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', 'cakifo' ) . '</span>' );
 										?>
