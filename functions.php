@@ -564,13 +564,6 @@ function cakifo_one_column() {
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
  *
- * @return
- * @since	1.0
- */
-
-/**
- * Filters 'get_theme_layout' by returning 'layout-1c'.
- *
  * @since  1.0
  * @param  string  $layout Not used.
  * @return string          Returns 'layout-1c'
@@ -829,6 +822,7 @@ function cakifo_logo( $title ) {
 	return $title;
 }
 
+if ( ! function_exists( 'cakifo_author_box' ) ) :
 /**
  * Function to add an author box
  *
@@ -868,6 +862,7 @@ function cakifo_author_box() { ?>
 
 	endif;
 }
+endif; // cakifo_author_box
 
 /**
  * Place the author box at the end of single posts
@@ -1047,7 +1042,7 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 
 	return array_map( 'esc_url_raw', $matches[0] );
 }
-endif;
+endif; // cakifo_url_grabber
 
 /**
  * @since 1.0
@@ -1189,6 +1184,7 @@ function cakifo_customize_preview() {
 	<?php
 }
 
+if ( ! function_exists( 'cakifo_get_default_link_color' ) ) :
 /**
  * Returns the default link color for Cakifo
  *
@@ -1198,7 +1194,9 @@ function cakifo_customize_preview() {
 function cakifo_get_default_link_color() {
 	return '#3083aa';
 }
+endif; // cakifo_get_default_link_color
 
+if ( ! function_exists( 'cakifo_get_default_link_color_no_hash' ) ) :
 /**
  * Returns the default link color for Cakifo with no hash
  *
@@ -1208,6 +1206,7 @@ function cakifo_get_default_link_color() {
 function cakifo_get_default_link_color_no_hash() {
 	return '3083aa';
 }
+endif; // cakifo_get_default_link_color_no_hash
 
 /**
  * Filter the default theme settings
