@@ -14,19 +14,25 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 	<div id="topbar">
 
-		<a class="toggle-navbar" title="<?php esc_attr_e( 'Toggle menu', 'cakifo' ); ?>">
-			<span class="assistive-text"><?php _e( 'Toggle menu', 'cakifo' ); ?></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</a>
+		<span class="assistive-text toggle-navbar" title="<?php esc_attr_e( 'Toggle menu', 'cakifo' ); ?>">
+			<?php _e( 'Main menu', 'cakifo' ); ?>
+
+			<a>
+				<span class="assistive-text"><?php _e( 'Toggle menu', 'cakifo' ); ?></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		</span>
+
+
 
 		<div class="wrap">
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
 
 			<nav class="menu">
-				<h3 class="assistive-text toggle-navbar"><?php _e( 'Main menu', 'cakifo' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Main menu', 'cakifo' ); ?></h3>
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',

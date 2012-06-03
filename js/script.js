@@ -6,7 +6,7 @@
 	 */
 	jQuery.fn.animateAuto = function(prop, speed, callback){
 		var elem, height, width;
-		
+
 		return this.each(function(i, el) {
 			el = jQuery(el);
 			elem = el.clone().css({ 'height':'auto', 'width': 'auto' }).appendTo(el.parent());
@@ -26,14 +26,9 @@
 	/**
 	 * Topbar toggle functionality
 	 */
-	$('#topbar').on( 'click', function(e){
-		// We only want the toggle functionality when the toggle button is visible
-		// Or when an anchor link is clicked
-		if ( $('.toggle-navbar').is(':hidden') || 'A' === e.target.tagName )
-			return;
-
+	$('#topbar > .toggle-navbar').on( 'click', function(e) {
 		var nav = $('#topbar .wrap'),
-			height = nav.height();
+		height = nav.height();
 
 		if ( height === 0 ) {
 			nav.stop().animateAuto( 'height', 700);
@@ -91,7 +86,7 @@
  		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
 	});
 
-	/* A little surprise ;-) */ 	
+	/* A little surprise ;-) */
 	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
 	$(document).keydown(function(e){kkeys.push(e.keyCode);if( kkeys.toString().indexOf(kkkeys)>= 0){$(document).unbind('keydown',arguments.callee);$('body').addClass('shake-it-baby');}});
 
