@@ -2411,6 +2411,8 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 button:hover {
 	background: #d54e21;
+	border: none;
+	color: #fff;
 	cursor: pointer;
 	text-shadow: 1px 1px 0 #b92b00;
 }
