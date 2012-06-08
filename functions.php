@@ -77,7 +77,7 @@ function cakifo_theme_setup() {
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
-		get_template_part( 'functions/admin' );
+		locate_template( array( 'functions/admin.php' ), true );
 	}
 
 	/* Add theme support for WordPress features */
