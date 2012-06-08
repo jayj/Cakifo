@@ -77,7 +77,7 @@ function cakifo_theme_setup() {
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
-		require_once( trailingslashit( get_template_directory() ) . 'functions/admin.php' );
+		get_template_part( 'functions/admin' );
 	}
 
 	/* Add theme support for WordPress features */
@@ -87,7 +87,10 @@ function cakifo_theme_setup() {
 
 	/* Custom background */
 	if ( function_exists( '_custom_header_background_just_in_time' ) ) {
-		add_theme_support( 'custom-background', array( 'wp-head-callback' => 'cakifo_custom_background_callback', 'default-color' => 'e3ecf2' ) );
+		add_theme_support( 'custom-background', array(
+			'wp-head-callback' => 'cakifo_custom_background_callback',
+			'default-color' => 'e3ecf2'
+		) );
 	} else {
 		add_custom_background( 'cakifo_custom_background_callback' );
 	}
@@ -105,9 +108,9 @@ function cakifo_theme_setup() {
 	 * Slider: For use in the slider
 	 * Recent: For use in the recent posts
 	 */
-	add_image_size( 'small', apply_filters( 'small_thumb_width', '100' ), apply_filters( 'small_thumb_height', '100' ), true );
-	add_image_size( 'slider', apply_filters( 'slider_image_width', '500' ), apply_filters( 'slider_image_height', '230' ), true );
-	add_image_size( 'recent', apply_filters( 'recent_image_width', '190' ), apply_filters( 'recent_image_height', '130' ), true );
+	add_image_size( 'small', apply_filters( 'small_thumb_width', 100 ), apply_filters( 'small_thumb_height', 100 ), true );
+	add_image_size( 'slider', apply_filters( 'slider_image_width', 500 ), apply_filters( 'slider_image_height', 230 ), true );
+	add_image_size( 'recent', apply_filters( 'recent_image_width', 190 ), apply_filters( 'recent_image_height', 130 ), true );
 
 	/* Register shortcodes */
 	add_action( 'init', 'cakifo_register_shortcodes', 15 );
