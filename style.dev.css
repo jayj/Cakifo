@@ -1032,24 +1032,15 @@ a.toggle-navbar {
 	font: 21px 'PT Serif', Georgia, serif;
 	float: right;
 	margin: 15px 20px 0 0;
-	text-shadow: 0 1px 0 #fff;
 }
 
-	/* If you have a background image, you might want to use something like this in a child theme */
-/*	#branding {
-		background: rgba(255, 255, 255, .6);
-	}
-
-	#site-description {
-		background: rgba(255, 255, 255, .6);
-		border-radius: 8px;
-		color: #222;
-		margin-top: 5px;
-		padding: 10px;
-		text-shadow: none;
-		-webkit-box-shadow: 0 0 8px rgba(0,0,0,.3);
-		box-shadow: 0 0 8px rgba(0,0,0,.3);
-	}*/
+.custom-background #site-description {
+	background-color: #568cbb;
+	border-radius: 3px;
+	color: #f4f8fb;
+	padding: 4px 6px;
+	text-shadow: 0 1px 0 #3d719d;
+}
 
 /**
  * Content
