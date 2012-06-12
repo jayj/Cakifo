@@ -86,14 +86,10 @@ function cakifo_theme_setup() {
 	add_editor_style();
 
 	/* Custom background */
-	if ( function_exists( '_custom_header_background_just_in_time' ) ) {
-		add_theme_support( 'custom-background', array(
-			'wp-head-callback' => 'cakifo_custom_background_callback',
-			'default-color' => 'e3ecf2'
-		) );
-	} else {
-		add_custom_background( 'cakifo_custom_background_callback' );
-	}
+	add_theme_support( 'custom-background', array(
+		'default-color' => 'e3ecf2',
+		'default-image' => get_template_directory_uri() . '/images/bg.png'
+	) );
 
 	/* Set $content_width */
 	hybrid_set_content_width( 630 );
@@ -182,36 +178,22 @@ function cakifo_theme_setup() {
 	/**
 	 * Custom header for logo upload
 	 */
-
-	// The WordPress 3.4+ way
-	if ( function_exists( '_custom_header_background_just_in_time' ) ) :
-
-		add_theme_support( 'custom-header', array(
-			'width' => 400,
-			'height' => 60,
-			'flex-width' => true,
-			'flex-height' => true,
-			'default-text-color' => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
-			'wp-head-callback' => 'cakifo_header_style',
-			'admin-head-callback' => 'cakifo_admin_header_style',
-			'admin-preview-callback' => 'cakifo_admin_header_image',
-		) );
-
-	// WordPress 3.3 or older
-	else:
-
-		add_custom_image_header( 'cakifo_header_style', 'cakifo_admin_header_style' );
-		define( 'HEADER_TEXTCOLOR', apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ) );
-		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cakifo_header_image_width', 500 ) );
-		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cakifo_header_image_height', 150 ) );
-
-	endif;
+	add_theme_support( 'custom-header', array(
+		'width' => 400,
+		'height' => 60,
+		'flex-width' => true,
+		'flex-height' => true,
+		'default-text-color' => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
+		'wp-head-callback' => 'cakifo_header_style',
+		'admin-head-callback' => 'cakifo_admin_header_style',
+		'admin-preview-callback' => 'cakifo_admin_header_image',
+	) );
 
 	// Register the logo from the parent theme images folder as the default logo
 	register_default_headers( array(
 		'logo' => array(
-			'url'           => '%s/images/logo.png',
-			'thumbnail_url' => '%s/images/logo.png',
+			'url'           => get_template_directory_uri() . '/images/logo.png',
+			'thumbnail_url' => get_template_directory_uri() . '/images/logo.png',
 			'description'   => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
 			'width'         => 300,
 			'height'        => 59
@@ -219,11 +201,11 @@ function cakifo_theme_setup() {
 	) );
 
 	// If the user is using a child theme, register the logo.png from that as well
-	if ( is_child_theme() && file_exists( CHILD_THEME_DIR . '/images/logo.png' ) ) {
+	if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo.png' ) ) {
 		register_default_headers( array(
 			'childtheme_logo' => array(
-				'url'           => CHILD_THEME_URI . '/images/logo.png',
-				'thumbnail_url' => CHILD_THEME_URI . '/images/logo.png',
+				'url'           => get_stylesheet_directory_uri() . '/images/logo.png',
+				'thumbnail_url' => get_stylesheet_directory_uri() . '/images/logo.png',
 				'description'   => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
 			)
 		) );
@@ -237,23 +219,22 @@ function cakifo_theme_setup() {
  */
 function cakifo_load_theme_support() {
 
-	$template_directory = trailingslashit( get_template_directory() );
-
 	/* Load the Cakifo sidebars if supported */
-	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
+	require_if_theme_supports( 'cakifo-sidebars', locate_template( 'functions/sidebars.php' ) );
 
 	/* Load Cakifo shortcodes if supported */
-	require_if_theme_supports( 'cakifo-shortcodes', $template_directory . 'functions/shortcodes.php' );
+	require_if_theme_supports( 'cakifo-shortcodes', locate_template( 'functions/shortcodes.php' ) );
 
 	/* Load the Colorbox Script extention if supported. */
-	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
+	require_if_theme_supports( 'cakifo-colorbox', locate_template( 'functions/colorbox.php' ) );
 
 	/* Load the Twitter Button extention if supported */
-	require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
+	require_if_theme_supports( 'cakifo-twitter-button', locate_template( 'functions/tweet_button.php' ) );
 
 	/* Load theupgrade functionality if supported */
+	/* @todo Delete this reference and the file */
 	if ( is_admin() )
-		require_if_theme_supports( 'cakifo-upgrade', $template_directory . 'functions/upgrade.php' );
+		require_if_theme_supports( 'cakifo-upgrade', locate_template( 'functions/upgrade.php' ) );
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
@@ -267,7 +248,6 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
  * @since 1.0
  */
 function cakifo_enqueue_script() {
-
 	/**
 	 * Modernizr enables HTML5 elements & feature detects
 	 *
@@ -601,7 +581,6 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * @since 1.3
  */
 function cakifo_content_width() {
-
 	$layout = theme_layouts_get_layout();
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
@@ -610,7 +589,6 @@ function cakifo_content_width() {
 		elseif ( 'layout-3c-c' == $layout )
 			hybrid_set_content_width( 500 );
 	}
-
 }
 
 /**
@@ -619,7 +597,6 @@ function cakifo_content_width() {
  * @since 1.0
  */
 function cakifo_header_style() {
-
 	/* Get default text color */
 	$text_color = get_theme_support( 'custom-header', 'default-text-color' );
 
@@ -647,7 +624,7 @@ function cakifo_header_style() {
 		?>
 			#site-title a,
 			#site-description {
-				color: #<?php echo get_theme_mod( 'header_textcolor', $text_color ); ?> !important;
+				color: #<?php echo get_header_textcolor(); ?> !important;
 			}
 		<?php endif; ?>
 	</style>
@@ -690,56 +667,18 @@ function cakifo_admin_header_image() { ?>
  *
  * @since 1.0
  */
-function cakifo_admin_header_style() {
-
-	// WordPress 3.4+ and newer
-	if ( function_exists( '_custom_header_background_just_in_time' ) ) : ?>
-
-		<style type="text/css">
-			.appearance_page_custom-header #headimg {
-				border: none;
-			}
-
-			#headimg h1 {
-				font-family: Georgia, "Times New Roman", Times, serif;
-				margin: 0;
-			}
-
-			#headimg h1 a {
-				font-size: 46px;
-				font-weight: normal;
-				line-height: 36px;
-				text-decoration: none;
-				letter-spacing: -2px;
-			}
-
-			#desc {
-				display: none;
-			}
-		</style>
-
-	<?php
-		return;
-	endif;
-
-	// Styling for WordPress 3.3 and lower:
-?>
+function cakifo_admin_header_style() { ?>
 
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
-			background-repeat: no-repeat;
 			border: none;
-			width: 100%;
-			max-width: 1000px;
-			height: auto!important;
 		}
-		#headimg h1,
-		#desc {
-			font-family: Georgia, "Times New Roman", Times, serif;
-		}
+
 		#headimg h1 {
+			font-family: Georgia, "Times New Roman", Times, serif;
 			margin: 0;
 		}
+
 		#headimg h1 a {
 			font-size: 46px;
 			font-weight: normal;
@@ -747,59 +686,23 @@ function cakifo_admin_header_style() {
 			text-decoration: none;
 			letter-spacing: -2px;
 		}
-		#desc {
-			font-size: 18px;
-			line-height: 23px;
-			color: #909090;
-			float: right;
-		}
-		<?php
-			// If the user has set a custom color for the text use that
-			if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
-		?>
-			#site-title a,
-			#site-description {
-				color: #<?php echo get_header_textcolor(); ?>!important;
-			}
-		<?php endif; ?>
-	</style>
-<?php
 
+		#desc {
+			display: none;
+		}
+	</style> <?php
 }
 
 /**
  * Custom Background callback
  *
- * Removes the background image from style.css if
- * the user has selected a custom background color
- *
  * @since 1.3
+ * @deprecated 1.4
  */
 function cakifo_custom_background_callback() {
-
-	/* Get the background image */
-	$image = get_background_image();
-
-	/* If there's an image, just call the normal WordPress callback. We won't do anything here */
-	if ( ! empty( $image ) ) {
-		_custom_background_cb();
-		return;
-	}
-
-	/* Get the background color */
-	$color = get_background_color();
-
-	/* If no background color, return */
-	if ( empty( $color ) )
-		return;
-
-	/* Use 'background' instead of 'background-color' */
-	$style = "background: #{$color};";
-
-?>
-	<style type="text/css">body { <?php echo trim( $style ); ?> }</style>
-<?php
-
+	_deprecated_function( __FUNCTION__, '1.4' );
+	_custom_background_cb();
+	return;
 }
 
 /**
