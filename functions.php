@@ -218,7 +218,6 @@ function cakifo_theme_setup() {
  * @since 1.3
  */
 function cakifo_load_theme_support() {
-
 	/* Load the Cakifo sidebars if supported */
 	require_if_theme_supports( 'cakifo-sidebars', locate_template( 'functions/sidebars.php' ) );
 
@@ -230,11 +229,6 @@ function cakifo_load_theme_support() {
 
 	/* Load the Twitter Button extention if supported */
 	require_if_theme_supports( 'cakifo-twitter-button', locate_template( 'functions/tweet_button.php' ) );
-
-	/* Load theupgrade functionality if supported */
-	/* @todo Delete this reference and the file */
-	if ( is_admin() )
-		require_if_theme_supports( 'cakifo-upgrade', locate_template( 'functions/upgrade.php' ) );
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
