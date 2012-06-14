@@ -2934,6 +2934,18 @@ span.required {
 	#attachment-gallery {
 		width: 60%;
 	}
+
+	/* Pagination */
+	.pagination a,
+	.pagination > span {
+		margin-right: 2px;
+		padding: 18px 24px 16px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		-ms-transition: none;
+		transition: none;
+	}
 }
 
 
