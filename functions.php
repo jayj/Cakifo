@@ -658,7 +658,9 @@ function cakifo_admin_header_image() { ?>
 			</a>
 		</h1>
 
-		<!-- <h2 id="desc" class="displaying-header-text"><?php bloginfo( 'description' ); ?></h2> -->
+		<h2 id="desc" class="displaying-header-text"><?php bloginfo( 'description' ); ?></h2>
+
+		<br class="clear" />
 	</div>
 <?php }
 
@@ -672,10 +674,13 @@ function cakifo_admin_header_style() { ?>
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
 			border: none;
+			max-width: 980px;
+			margin-bottom: 25px;
 		}
 
 		#headimg h1 {
 			font-family: Georgia, "Times New Roman", Times, serif;
+			float: left;
 			margin: 0;
 		}
 
@@ -688,7 +693,12 @@ function cakifo_admin_header_style() { ?>
 		}
 
 		#desc {
-			display: none;
+			color: #666;
+			font: 21px 'PT Serif', Georgia, serif;
+			float: right;
+			margin: 15px 0 0 0;
+			color: #7a7a7a;
+			padding: 4px 6px;
 		}
 	</style> <?php
 }

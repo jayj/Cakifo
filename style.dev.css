@@ -1035,11 +1035,11 @@ a.toggle-navbar {
 }
 
 .custom-background #site-description {
-	background-color: #568cbb;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.53);
 	border-radius: 3px;
-	color: #f4f8fb;
+	color: #7a7a7a;
 	padding: 4px 6px;
-	text-shadow: 0 1px 0 #3d719d;
 }
 
 /**
