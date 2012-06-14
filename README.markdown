@@ -1,10 +1,10 @@
 # Cakifo
 
-> Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core") by Justin Tadlock, so it provides a great starting point with many useful features..
+> Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core"), so it provides a great starting point with many useful features..
 
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
-* Requires at least WordPress 3.3
+* Requires at least WordPress 3.4
 * Tested up to 3.4
 
 ## Demo
@@ -31,7 +31,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Context-aware action and filter hooks
 * Many useful shortcodes
 * Small theme settings page (yep, that's a feature)
-* Ability to create custom templates for any post type in multiple ways
+* Custom link color
 * Highly-configurable widgets that give you full control over their display
 * Update notification when a version is available - You can even update directly from dashboard!
 * And much, much more!
@@ -39,7 +39,8 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 ## Child themes
 
 **Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations.**
-his is even more important from version 1.3 and beyond as you can update Cakifo direcly from the dashboard. If you make changes direcly to Cakifo, you will lose them upon updating.
+
+If you don't and make changes direcly to Cakifo, you will lose them upon updating.
 
 *Don't know how to make a child theme?* It's relatively simple. Just follow the below steps.
 
@@ -56,11 +57,9 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 
 * [Hybrid Core](http://themehybrid.com/hybrid-core "Hybrid Core") by Justin Tadlock
 * [Modernizr](http://modernizr.com)
-* Slides by [Nathan Searles](http://slidesjs.com)
-* Equal Heights In Rows by [Chris Coyier](http://css-tricks.com/equal-height-blocks-in-rows/)
-* Animate Height/Width to "Auto" by [Darcy Clarke](http://darcyclarke.me/development/fix-jquerys-animate-to-allow-auto-values/)
-* [Premium Pixels](http://www.premiumpixels.com/) for the topbar
+* Flexslider by [Woothemes](http://www.woothemes.com/flexslider/)
 * [Wolforg](http://wolforg.eu/) for french translation
+* [Equal Heights In Rows](http://css-tricks.com/equal-height-blocks-in-rows/) by Chris Coyier
 * Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)
 * And others! More people are credited in the source
 
@@ -68,7 +67,7 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 
 Wiki: [https://github.com/jayj/Cakifo/wiki](https://github.com/jayj/Cakifo/wiki)
 
-I can help a bit with support for this theme. But Theme Hybrid has a Theme Club where you'll get the benefit of access to all of the tutorials and documentation and complete read/write access to the support forums.
+I can help with support for this theme. But Theme Hybrid has a Theme Club where you'll get the benefit of access to all of the tutorials and documentation and complete read/write access to the support forums.
 The support package exists to get you up and running as quickly as possible, and they have a great community of people willing to help each other out.
 
 [See guides for Hybrid Core](http://themehybrid.com/hybrid-core)
