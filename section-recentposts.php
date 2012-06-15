@@ -65,7 +65,7 @@
 									'meta_key'      => 'Thumbnail',
 									'size'          => 'recent',
 									'image_class'   => 'thumbnail',
-									'height'        => apply_filters( 'recent_image_height', '130' ),
+									'height'        => apply_filters( 'cakifo_recent_image_height', '130' ),
 									'default_image' => THEME_URI . '/images/default-thumb-190-130.gif'
 								) );
 							?>
