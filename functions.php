@@ -132,8 +132,10 @@ function cakifo_theme_setup() {
 	add_action( 'template_redirect', 'cakifo_one_column' );
 
 	/* Add the breadcrumb trail just after the container is open */
-	add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
-	add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
+	if ( current_theme_supports( 'breadcrumb-trail' ) ) {
+		add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
+		add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
+	}
 
 	/* Frontpage javascript loading */
 	add_action( 'template_redirect', 'cakifo_front_page' );
