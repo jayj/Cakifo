@@ -15,7 +15,7 @@
  *
  * @package Cakifo
  * @subpackage Template
- * @since 1.1
+ * @since Cakifo 1.1
  */
 ?>
 <?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>

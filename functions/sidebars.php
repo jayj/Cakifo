@@ -10,6 +10,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
+ * @since Cakifo 1.2
  */
 
 /* Register widget areas */
@@ -24,7 +25,7 @@ add_action( 'widgets_init', 'cakifo_register_widgets' );
  *
  * @uses register_sidebar() Registers a sidebar with WordPress.
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- * @since 1.2
+ * @since Cakifo 1.2
  */
 function cakifo_register_sidebars() {
 
@@ -174,10 +175,10 @@ function cakifo_register_sidebars() {
 /**
  * Registers the theme widgets.
  *
- * @since  1.3
  * @uses register_widget() Registers individual widgets with WordPress
  * @link http://codex.wordpress.org/Function_Reference/register_widget
  * @return void
+ * @since Cakifo 1.3
  */
 function cakifo_register_widgets() {
 
@@ -194,6 +195,7 @@ function cakifo_register_widgets() {
  * deregister default WordPress widgets
  *
  * @link (http://wordpress.org/extend/plugins/monster-widget/, Monster Widgets)
+ * @since Cakifo 1.4
  */
 function cakifo_monster_widgets() {
 

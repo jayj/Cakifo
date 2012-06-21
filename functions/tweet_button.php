@@ -11,7 +11,7 @@
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
  * @version 1.1
- * @since 1.3
+ * @since Cakifo 1.3
  *
  *	Copyright 2010-2012 Nicolas Gallagher
  *
@@ -32,10 +32,11 @@
 
 /**
  *  Display the tweet button
- * @since  1.3
+ *
  * @param  array   $args Array with arguments
  * @staticvar integer $i Used to count how many times the function has been referenced
  * @return string         The tweet button
+ * @since Cakifo 1.3
  */
 function cakifo_tweet_button( $args = array() ) {
 

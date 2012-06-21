@@ -5,7 +5,7 @@
  * @package Cakifo
  * @subpackage Functions
  * @link http://themehybrid.com/hybrid-core/features/theme-settings
- * @since 1.0
+ * @since Cakifo 1.0
  */
 
 add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
@@ -13,8 +13,8 @@ add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
 /**
  * Add the theme options to the Hybrid Core options page
  *
- * @since 1.0
  * @return void
+ * @since Cakifo 1.0
  */
 function cakifo_theme_admin_setup() {
 
@@ -35,12 +35,11 @@ function cakifo_theme_admin_setup() {
  * Loads the JavaScript and CSS files required for using the color picker on the theme settings
  * page, which allows users to change the link color
  *
- * @since 1.4
  * @param string $hook_suffix The current page being viewed.
  * @return void
+ * @since Cakifo 1.4
  */
 function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
-
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
 		return;
 
@@ -52,8 +51,8 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 /**
  * Adds custom meta boxes to the theme settings page
  *
- * @since 1.0
  * @return void
+ * @since Cakifo 1.0
  */
 function cakifo_theme_settings_meta_boxes() {
 
@@ -71,8 +70,8 @@ function cakifo_theme_settings_meta_boxes() {
 /**
  * Function for displaying the meta box
  *
- * @since 1.0
  * @return void
+ * @since Cakifo 1.0
  */
 function cakifo_theme_meta_box() { ?>
 
@@ -185,9 +184,9 @@ function cakifo_theme_meta_box() { ?>
 /**
  * Validates theme settings
  *
- * @since  1.0
  * @param  array  $input The entered theme options
  * @return array         The validated theme options
+ * @since Cakifo 1.0
  */
 function cakifo_theme_validate_settings( $input ) {
 

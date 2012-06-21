@@ -4,7 +4,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @since 1.3
+ * @since Cakifo 1.3
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -14,14 +14,14 @@
 /**
  * Related Posts widget class.
  *
- * @since 1.3
+ * @since Cakifo 1.3
  */
 class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
-	 * @since 1.3
+	 * @since Cakifo 1.3
 	 */
 	function __construct() {
 
@@ -45,7 +45,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
 	 *
-	 * @since 1.3
+	 * @since Cakifo 1.3
 	 */
 	function widget( $sidebar, $instance ) {
 		extract( $sidebar );
@@ -143,7 +143,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	* Gets the related posts based on the category and post format
 	* and puts them in a custom field
 	*
-	* @since 1.3
+	* @since Cakifo 1.3
 	* @access private
 	*/
 	private function _get_related_posts( $post_id, $args ) {
@@ -201,7 +201,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Updates the widget control options for the particular instance of the widget.
 	 *
-	 * @since 1.3
+	 * @since Cakifo 1.3
 	 */
 	function update( $new_instance, $old_instance ) {
 
@@ -220,7 +220,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Flush the related posts meta when a post is updated, deleted or the settings has been changed
 	 *
-	 * @since 1.3
+	 * @since Cakifo 1.3
 	 */
 	function flush_widget_cache( $post_ID = null ) {
 
@@ -253,7 +253,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 1.3
+	 * @since Cakifo 1.3
 	 */
 	function form( $instance ) {
 

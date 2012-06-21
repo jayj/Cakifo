@@ -39,7 +39,7 @@ add_action( 'after_setup_theme', 'cakifo_theme_setup', 10 );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_theme_setup() {
 
@@ -119,11 +119,11 @@ function cakifo_theme_setup() {
 	add_action( 'wp_head', 'cakifo_print_link_color_style' );
 
 	/* Topbar search form */
-	add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
 
 	/**
 	 * If you want the old RSS and Twitter link, do this in your child theme:
-	 * 		remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+	 * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
 	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
 	*/
 
@@ -217,7 +217,7 @@ function cakifo_theme_setup() {
 /**
  * Loads the theme functions if the theme/child theme syupports them.
  *
- * @since 1.3
+ * @since Cakifo 1.3
  */
 function cakifo_load_theme_support() {
 	/* Load the Cakifo sidebars if supported */
@@ -241,7 +241,7 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
  * It loads jQuery, Modernizr, and the Javascript
  * needed for this theme
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_enqueue_script() {
 	/**
@@ -270,7 +270,7 @@ function cakifo_enqueue_script() {
  *
  * Adds a bbPress stylesheet as well if the plugin is active
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_enqueue_style() {
 	$scheme = is_ssl() ? 'https' : 'http';
@@ -290,7 +290,7 @@ function cakifo_enqueue_style() {
  * Adds JavaScript to the frontpage and
  * removes the breadcrumb menu.
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_front_page() {
 	$prefix = hybrid_get_prefix();
@@ -310,8 +310,8 @@ function cakifo_front_page() {
 /**
  * Add the javascript needed for the slider
  *
- * @since  1.0
  * @uses apply_filters( 'cakifo_slider_args', $args ) The filter allows you to change the default values.
+ * @since Cakifo 1.0
  */
 function cakifo_slider_javascript() {
 
@@ -400,9 +400,9 @@ function cakifo_slider_javascript() {
 /**
  * Change the thumbnail size to 'small' for archives and search pages.
  *
- * @since  1.1
  * @param  array  $args The 'Get the Image' arguments
  * @return array        The filtered arguments
+ * @since  Cakifo 1.1
  */
 function cakifo_get_the_image_arguments( $args ) {
 
@@ -417,9 +417,9 @@ function cakifo_get_the_image_arguments( $args ) {
 /**
  * Change the arguments of wp_list_comments()
  *
- * @since  1.3
  * @param  array  $args The wp_list_comments() arguments
  * @return array        The filtered wp_list_comments() arguments
+ * @since  Cakifo 1.3
  */
 function cakifo_change_list_comments_args( $args ) {
 	$args['avatar_size'] = 48;
@@ -429,9 +429,9 @@ function cakifo_change_list_comments_args( $args ) {
 /**
  * Edit the "More link" for archive excerpts.
  *
- * @since  1.0
  * @param  string  $more The default more link
  * @return string        The changed more link with a more descriptive text
+ * @since  Cakifo 1.0
  */
 function cakifo_excerpt_more( $more ) {
 	global $post;
@@ -445,9 +445,9 @@ function cakifo_excerpt_more( $more ) {
 /**
  * Custom breadcrumb trail arguments.
  *
- * @since  1.0
  * @param  array  $args The 'Breadcrumb' arguments
  * @return array        The filtered 'Breadcrumb' arguments
+ * @since  Cakifo 1.0
  */
 function cakifo_breadcrumb_trail_args( $args ) {
 	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail
@@ -457,9 +457,9 @@ function cakifo_breadcrumb_trail_args( $args ) {
 /**
  * Change entry meta for the Quote post format.
  *
- * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
+ * @since  Cakifo 1.1
  */
 function cakifo_quote_entry_meta( $meta ) {
 	if ( is_single() )
@@ -471,9 +471,9 @@ function cakifo_quote_entry_meta( $meta ) {
 /**
  * Change entry meta for the Aside post format.
  *
- * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
+ * @since  Cakifo 1.1
  */
 function cakifo_aside_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-permalink after=" | "] By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
@@ -482,9 +482,9 @@ function cakifo_aside_entry_meta( $meta ) {
 /**
  * Change entry meta for the Link post format.
  *
- * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
+ * @since  Cakifo 1.1
  */
 function cakifo_link_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
@@ -493,9 +493,9 @@ function cakifo_link_entry_meta( $meta ) {
 /**
  * Change entry meta for the Image post format.
  *
- * @since  1.1
  * @param  string  $meta The normal entry meta
  * @return string        The changed entry meta
+ * @since  Cakifo 1.1
  */
 function cakifo_image_entry_meta( $meta ) {
 	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', 'cakifo' ) . '</footer>' );
@@ -507,12 +507,12 @@ function cakifo_image_entry_meta( $meta ) {
  * No longer showed by default in version 1.3
  * If you still want it, use this in your child theme:
  *		<code>
- * 			remove_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_search' );
+ * 			remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
  * 			add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
  *		</code>
  *
  * @return string The RSS feed and maybe a Twitter link
- * @since 1.0
+ * @since  Cakifo 1.0
  */
 function cakifo_topbar_rss() {
 	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) . '</div>' );
@@ -521,16 +521,18 @@ function cakifo_topbar_rss() {
 /**
  * Add a search form to the topbar.
  *
- * @since 1.3
+ * @since Cakifo 1.3
+ * @deprecated 1.4
  */
 function cakifo_topbar_search() {
+	_deprecated_function( __FUNCTION__, '1.4', 'get_search_form()' );
 	get_search_form();
 }
 
 /**
  * Function for deciding which pages should have a one-column layout.
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_one_column() {
 
@@ -547,9 +549,9 @@ function cakifo_one_column() {
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
  *
- * @since  1.0
  * @param  string  $layout Not used.
  * @return string          Returns 'layout-1c'
+ * @since  Cakifo 1.0
  */
 function cakifo_theme_layout_one_column( $layout ) {
 	return 'layout-1c';
@@ -558,9 +560,9 @@ function cakifo_theme_layout_one_column( $layout ) {
 /**
  * Disables sidebars if viewing a one-column page.
  *
- * @since  1.0
  * @param  array  $sidebars_widgets Array with all the widgets for all the sidebars
  * @return array                    Same array but with the primary and secondary sidebar removed
+ * @since Cakifo 1.0
  */
 function cakifo_disable_sidebars( $sidebars_widgets ) {
 	global $wp_query;
@@ -578,7 +580,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 /**
  * Set $content_width based on the current post layout
  *
- * @since 1.3
+ * @since Cakifo 1.3
  */
 function cakifo_content_width() {
 	$layout = theme_layouts_get_layout();
@@ -594,7 +596,7 @@ function cakifo_content_width() {
 /**
  * Styles the header text displayed on the blog
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_header_style() {
 	/* Get default text color */
@@ -635,7 +637,7 @@ function cakifo_header_style() {
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @since 1.4
+ * @since Cakifo 1.4
  */
 function cakifo_admin_header_image() { ?>
 
@@ -667,7 +669,7 @@ function cakifo_admin_header_image() { ?>
 /**
  * Styles the header image and text on the Header admin screen
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_admin_header_style() { ?>
 
@@ -706,8 +708,8 @@ function cakifo_admin_header_style() { ?>
 /**
  * Custom Background callback
  *
- * @since 1.3
- * @deprecated 1.4
+ * @since Cakifo 1.3
+ * @deprecated Cakifo 1.4
  */
 function cakifo_custom_background_callback() {
 	_deprecated_function( __FUNCTION__, '1.4' );
@@ -719,9 +721,9 @@ function cakifo_custom_background_callback() {
  * Allow the user to upload a new logo or change between image and text
  * using the WordPress header function
  *
- * @since  1.0
  * @param  string  $title
  * @return string         The site title. Either as text, as an image or both.
+ * @since  Cakifo 1.0
  */
 function cakifo_logo( $title ) {
 
@@ -742,7 +744,7 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 /**
  * Function to add an author box
  *
- * @since 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_author_box() { ?>
 
@@ -783,7 +785,7 @@ endif; // cakifo_author_box
 /**
  * Place the author box at the end of single posts
  *
- * @since 1.3
+ * @since Cakifo 1.3
  */
 function cakifo_place_author_box() {
 	$prefix = hybrid_get_prefix();
@@ -801,9 +803,9 @@ function cakifo_place_author_box() {
  * separate each of the elements into an attachment API that can be used across multiple themes.  Keep
  * this in mind if you plan on using the current filter hooks in this function.
  *
- * @since  1.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
+ * @since Cakifo 1.0
  */
 function cakifo_image_info() {
 
@@ -881,8 +883,8 @@ function cakifo_image_info() {
 /**
  * Get the values of all registered image sizes. Both the custom and the default
  *
- * @since  1.3
  * @return array  An array of all the images sizes
+ * @since Cakifo 1.3
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
@@ -911,9 +913,10 @@ function cakifo_get_image_sizes() {
 
 /**
  * Get the values of a specific image size
- * @since  1.3
+ *
  * @param  string  $name The unique name for the image size or a WP default
  * @return array       	 Array containing 'width', 'height', 'crop'
+ * @since Cakifo 1.3
  */
 function cakifo_get_image_size( $name ) {
 
@@ -933,10 +936,10 @@ if ( ! function_exists( 'cakifo_url_grabber' ) ) :
  * If the first argument passed gets changed to 'href',
  * it will only match links from anchor links (<code><a href="http://..."></a></code>)
  *
- * @since  1.0
  * @param  string  $type    http or href. Default is http
  * @param  string  $content The content to search for URLs in. Default is the post content.
  * @return array           	Array containing all links found in the content.
+ * @since Cakifo 1.0
  */
 function cakifo_url_grabber( $type = 'http', $content = null ) {
 
@@ -961,8 +964,8 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 endif; // cakifo_url_grabber
 
 /**
- * @since 1.0
- * @deprecated 1.3 Use the native WordPress function wp_trim_words() instead.
+ * @since Cakifo 1.0
+ * @deprecated Cakifo 1.3 Use the native WordPress function wp_trim_words() instead.
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	_deprecated_function( __FUNCTION__, '1.3', 'wp_trim_words()' );
@@ -978,9 +981,9 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 /**
  * Implements some Cakifo theme options into Theme Customizer
  *
- * @since 1.4
  * @param object  $wp_customize Theme Customizer object
  * @return void
+ * @since Cakifo 1.4
  */
 function cakifo_customize_register( $wp_customize ) {
 	if ( ! isset( $wp_customize ) )
@@ -1080,8 +1083,8 @@ add_action( 'customize_register', 'cakifo_customize_register' );
  * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
  * Used with blogname and blogdescription.
  *
- * @since 1.4
  * @return void
+ * @since Cakifo 1.4
  */
 function cakifo_customize_preview() {
 	?>
@@ -1104,8 +1107,8 @@ if ( ! function_exists( 'cakifo_get_default_link_color' ) ) :
 /**
  * Returns the default link color for Cakifo
  *
- * @since 1.4
  * @return string The default color
+ * @since Cakifo 1.4
  */
 function cakifo_get_default_link_color() {
 	return '#3083aa';
@@ -1116,8 +1119,8 @@ if ( ! function_exists( 'cakifo_get_default_link_color_no_hash' ) ) :
 /**
  * Returns the default link color for Cakifo with no hash
  *
- * @since 1.4
  * @return string The default color with no hash
+ * @since Cakifo 1.4
  */
 function cakifo_get_default_link_color_no_hash() {
 	return '3083aa';
@@ -1127,9 +1130,9 @@ endif; // cakifo_get_default_link_color_no_hash
 /**
  * Filter the default theme settings
  *
- * @since  1.4
  * @param  array  $settings Array with default settings
  * @return array            Array with the filtered default settings
+ * @since Cakifo 1.4
  */
 function cakifo_filter_default_theme_settings( $settings ) {
 	$settings['link_color'] = cakifo_get_default_link_color();
@@ -1142,7 +1145,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
  *
  * This function is attached to the wp_head action hook.
  *
- * @since 1.4
+ * @since Cakifo 1.4
  */
 function cakifo_print_link_color_style() {
 	$defaults = hybrid_get_default_theme_settings();
