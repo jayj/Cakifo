@@ -69,7 +69,7 @@ function cakifo_theme_setup() {
 	//add_theme_support( 'cleaner-caption' );
 
 	/* Add theme support for theme functions */
-	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'after-single', 'after-singular', 'error-page' ) );
+	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'subsidiary-two', 'subsidiary-three', 'after-single', 'after-singular', 'error-page' ) );
 	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
 	add_theme_support( 'cakifo-twitter-button' );

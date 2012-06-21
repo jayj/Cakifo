@@ -1919,7 +1919,8 @@ img.alignright {
 }
 
 .recent-posts-meta,
-.headline-meta {
+.headline-meta,
+.rss-date {
 	color: #999;
 	display: block;
 	font-size: 12px;
@@ -2173,6 +2174,12 @@ img.alignright {
 		text-align: center;
 	}
 
+	#sidebar-subsidiary #wp-calendar th,
+	#sidebar-subsidiary #wp-calendar tr td {
+		font-size: 12px;
+		padding: 0px 0px;
+	}
+
 	/**
 	 * Related Posts widget
 	 */
@@ -2259,28 +2266,33 @@ img.alignright {
 	text-align: right;
 }
 
-/* Footer widgets */
+/* Footer sidebar */
 #sidebar-subsidiary {
 	clear: both;
-	margin-top: 20px;
-	overflow: hidden;
+	padding-top: 20px;
 }
 
-#sidebar-subsidiary .widget {
+/* Two Footer Widget Areas */
+#sidebar-subsidiary.two-col .widget-area {
 	float: left;
-	width: 220px;
-	margin-right: 20px;
+	margin-right: 3.7%;
+	width: 48.1%;
 }
 
-#sidebar-subsidiary .widget:nth-child(4n) {
-	margin-right: 0 !important;
+#sidebar-subsidiary.two-col .widget-area + .widget-area {
+	margin-right: 0;
 }
 
-	/* IE fixes */
-	.oldie #sidebar-subsidiary .widget {
-		margin-right: 10px;
-		margin-left: 5px;
-	}
+/* Three Footer Widget Areas */
+#sidebar-subsidiary.three-col .widget-area {
+	float: left;
+	margin-right: 3.7%;
+	width: 30.8%;
+}
+
+#sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
+	margin-right: 0;
+}
 
 /**
  * Comments

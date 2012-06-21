@@ -58,11 +58,33 @@ function cakifo_register_sidebars() {
 		'after_title'   => '</h3>'
 	);
 
-	/* Set up the subsidiary sidebar arguments */
-	$subsidiary = array(
+	/* Set up the first footer sidebar arguments */
+	$subsidiary_one = array(
 		'id'            => 'subsidiary',
-		'name'          => _x( 'Subsidiary', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'A widget area loaded in the footer of the site.', 'cakifo' ),
+		'name'          => _x( 'Footer Area One', 'sidebar name', 'cakifo' ),
+		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>'
+	);
+
+	/* Set up the second footer sidebar arguments */
+	$subsidiary_two = array(
+		'id'            => 'subsidiary-two',
+		'name'          => _x( 'Footer Area Two', 'sidebar name', 'cakifo' ),
+		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>'
+	);
+
+	/* Set up the third footer sidebar arguments */
+	$subsidiary_three = array(
+		'id'            => 'subsidiary-three',
+		'name'          => _x( 'Footer Area Three', 'sidebar name', 'cakifo' ),
+		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -143,9 +165,17 @@ function cakifo_register_sidebars() {
 	if ( in_array( 'secondary', $sidebars[0] ) )
 		register_sidebar( $secondary );
 
-	/* Register the subsidiary sidebar */
-	if ( in_array( 'subsidiary', $sidebars[0] ) )
-		register_sidebar( $subsidiary );
+	/* Register the first footer sidebar */
+	if ( in_array( 'subsidiary', $sidebars[0] ) || in_array( 'footer', $sidebars[0] ) )
+		register_sidebar( $subsidiary_one );
+
+	/* Register the second footer sidebar */
+	if ( in_array( 'subsidiary-two', $sidebars[0] ) || in_array( 'footer-two', $sidebars[0] ) )
+		register_sidebar( $subsidiary_two );
+
+	/* Register the third footer sidebar */
+	if ( in_array( 'subsidiary-three', $sidebars[0] ) || in_array( 'footer-three', $sidebars[0] ) )
+		register_sidebar( $subsidiary_three );
 
 	/* Register the header sidebar */
 	if ( in_array( 'header', $sidebars[0] ) )

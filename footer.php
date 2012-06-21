@@ -36,7 +36,13 @@
 
 			<?php do_atomic( 'footer' ); // cakifo_footer ?>
 
-			<?php get_sidebar( 'subsidiary' ); // Loads the sidebar-subsidiary.php template ?>
+			<?php
+				/* A sidebar in the footer? Yep. You can can customize
+				 * your footer with three columns of widgets.
+				 */
+				if ( ! is_404() )
+					get_sidebar( 'subsidiary' );
+			?>
 
 		</div> <!-- .wrap -->
 
