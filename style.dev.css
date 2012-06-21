@@ -1233,7 +1233,7 @@ html[xmlns] .slides-container { display: block; }
 	background: #eb724a;
 }
 
-.flex-control-paging li a.active {
+.flex-control-paging li .flex-active {
 	background: #d54e21;
 	cursor: default;
 }
