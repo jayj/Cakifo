@@ -78,12 +78,12 @@
 
 	/* Call the equal_height_columns() function when window has been loaded to make sure the images are loaded */
 	$(window).load(function() {
-		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+		equal_height_columns( $('.page-template-template-front-page .headline-list, .not-found-widgets .widget') );
 	});
 
 	/* Call the equal_height_columns() function when window is being resized */
 	$(window).resize(function() {
- 		equal_height_columns( $('.page-template-template-front-page .headline-list, #sidebar-subsidiary .widget, .not-found-widgets .widget') );
+ 		equal_height_columns( $('.page-template-template-front-page .headline-list, .not-found-widgets .widget') );
 	});
 
 	/* A little surprise ;-) */

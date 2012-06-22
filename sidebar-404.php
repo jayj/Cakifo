@@ -10,7 +10,7 @@
 
 if ( is_active_sidebar( 'error-page' ) ) : ?>
 
-	<div class="not-found-widgets clearfix">
+	<div class="not-found-widgets widget-area clearfix">
 
 		<?php dynamic_sidebar( 'error-page' ); ?>
 

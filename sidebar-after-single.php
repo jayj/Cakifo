@@ -12,7 +12,7 @@ if ( is_active_sidebar( 'after-single' ) ) : ?>
 
 	<?php do_atomic( 'before_sidebar_single' ); // cakifo_before_sidebar_single ?>
 
-	<aside id="sidebar-after-single" class="sidebar">
+	<aside id="sidebar-after-single" class="sidebar widget-area">
 
 		<?php dynamic_sidebar( 'after-single' ); ?>
 

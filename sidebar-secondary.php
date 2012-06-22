@@ -13,7 +13,7 @@ if ( is_active_sidebar( 'secondary' ) ) : ?>
 
 	<?php do_atomic( 'before_sidebar_secondary' ); // cakifo_before_sidebar_secondary ?>
 
-	<div id="sidebar-secondary" class="sidebar">
+	<div id="sidebar-secondary" class="sidebar widget-area">
 
 		<?php do_atomic( 'open_sidebar_secondary' ); // cakifo_open_sidebar_secondary ?>
 
