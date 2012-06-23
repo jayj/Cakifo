@@ -32,7 +32,7 @@
 
 		<div class="wrap clearfix">
 
-			<?php echo apply_atomic_shortcode( 'footer_content', hybrid_get_setting( 'footer_insert' ) ); ?>
+			<?php echo apply_atomic_shortcode( 'footer_content', '<div class="footer-content">'. hybrid_get_setting( 'footer_insert' ) . '</div>' ); ?>
 
 			<?php do_atomic( 'footer' ); // cakifo_footer ?>
 
