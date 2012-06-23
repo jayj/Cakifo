@@ -2013,6 +2013,12 @@ img.alignright {
 	margin: 0;
 }
 
+/* IE fixes */
+.headline-list {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
 /**
  * Attachments
 **************************************/
@@ -2243,6 +2249,12 @@ img.alignright {
 
 	.related-posts .with-thumbnails .related-post span {
 		font: 13px 'PT Serif', Georgia, serif;
+	}
+
+	/* IE fixes */
+	.related-posts .with-thumbnails .related-post {
+		margin-right: 7px;
+		margin-left: 7px;
 	}
 
 /**
@@ -2870,7 +2882,7 @@ span.required {
  * These follow after primary styles so they will successfully override.
  */
 
-@media screen and (max-width: 979px) {
+@media screen and (max-width: 980px) {
 
 	#wrapper, #topbar .wrap { width: 99%; }
 
@@ -2951,7 +2963,7 @@ span.required {
 }
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
 
 	/* Hide slider */
 	#slider {
@@ -3045,11 +3057,6 @@ span.required {
 	.headline-list {
 		width: 100% !important;
 		float: none !important;
-	}
-
-	/* Remove the search form from topbar */
-	#topbar .search-form {
-		display: none;
 	}
 
 	/* Make the comment form better */
