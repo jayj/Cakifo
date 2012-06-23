@@ -50,7 +50,7 @@
 
 				<?php if ( ! empty( $headlines ) ) : ?>
 
-					<div class="headline-list <?php echo ( $i++ % 3 == 2 ) ? 'last' : ''; // 'Last' class for every 3rd category ?>">
+					<div class="headline-list">
 
 						<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 

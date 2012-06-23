@@ -1963,9 +1963,18 @@ img.alignright {
 	margin: 0 40px 40px 0;
 }
 
+.headline-list:nth-child(3n) {
+	margin-right: 0;
+}
+
 .headline-list ol {
 	list-style: none;
 	margin: 0;
+}
+
+.headline-list:nth-child(3n+1),
+.not-found-widgets .widget:nth-of-type(3n+1) {
+	clear: left;
 }
 
 .headline-list li {

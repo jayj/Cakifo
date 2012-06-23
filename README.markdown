@@ -59,7 +59,6 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 * [Modernizr](http://modernizr.com)
 * Flexslider by [Woothemes](http://www.woothemes.com/flexslider/)
 * [Wolforg](http://wolforg.eu/) for french translation
-* [Equal Heights In Rows](http://css-tricks.com/equal-height-blocks-in-rows/) by Chris Coyier
 * Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)
 * And others! More people are credited in the source
 
