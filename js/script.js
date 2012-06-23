@@ -81,11 +81,6 @@
 		equal_height_columns( $('.page-template-template-front-page .headline-list, .not-found-widgets .widget') );
 	});
 
-	/* Call the equal_height_columns() function when window is being resized */
-	$(window).resize(function() {
- 		equal_height_columns( $('.page-template-template-front-page .headline-list, .not-found-widgets .widget') );
-	});
-
 	/* A little surprise ;-) */
 	var kkeys=[],kkkeys="38,38,40,40,37,39,37,39,66,65";
 	$(document).keydown(function(e){kkeys.push(e.keyCode);if( kkeys.toString().indexOf(kkkeys)>= 0){$(document).unbind('keydown',arguments.callee);$('body').addClass('shake-it-baby');}});
