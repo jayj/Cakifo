@@ -3,8 +3,9 @@
  * The related posts widget is created to give users the ability to show related posts after each posts
  *
  * @package Cakifo
- * @subpackage Functions
+ * @subpackage Classes
  * @since Cakifo 1.3
+ * @version 1.1
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -52,10 +53,6 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		$post_id = get_the_ID();
 
-		/* Make sure the widget is on a single page */
-		if ( ! is_single() )
-			return;
-
 		/* Get related posts from post meta. */
 		$related_posts = get_post_meta( $post_id, 'related', false );
 
@@ -72,7 +69,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		/* If a title was input by the user, display it. */
 		if ( ! empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
+			echo $before_title . apply_filters( 'widget_title', sprintf( $instance['title'], get_the_title( $post_id ) ), $instance, $this->id_base ) . $after_title;
 
 		/* Are there any related posts? */
 		if ( ! empty( $related_posts ) ) :
@@ -148,38 +145,57 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	*/
 	private function _get_related_posts( $post_id, $args ) {
 
-		// Put the categories in an array for related posts
-		$terms = get_the_terms( $post_id, 'category' );
-		$cat__in = array();
-
-		foreach ( $terms as $term ) {
-			$cat__in[] = $term->slug;
-		}
-
-		// Get the post format
-		$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
-
-		// Fire up the query
+		/* Set up the query */
 		$related_query = array(
 			'posts_per_page'      => $args['limit'],
 			'orderby'             => $args['orderby'],
 			'ignore_sticky_posts' => true,
 			'post__not_in'        => array( $post_id ),
-			'tax_query'           => array(
-			'relation'            => 'OR',
-				array(
-					'taxonomy' => 'post_format',
-					'terms'    => array( $format ),
-					'field'    => 'slug',
-				),
-				array(
-					'taxonomy' => 'category',
-					'terms'    => $cat__in,
-					'field'    => 'slug',
-				),
-			)
+			'tax_query'           => array( 'relation' => 'OR' )
 		);
 
+		/**
+		 * Loop through each selected taxonomy
+		 */
+		foreach ( $args['taxonomies'] as $taxonomy ) :
+
+			// Skip post formats
+			if ( 'post_format' == $taxonomy )
+				continue;
+
+			$terms = get_the_terms( $post_id, $taxonomy );
+
+			// No terms in the current taxonomy
+			if ( ! $terms )
+				continue;
+
+			$term__in = array();
+
+			foreach ( $terms as $term )
+				$term__in[] = $term->slug;
+
+			$related_query['tax_query'][] = array(
+				'taxonomy' => $taxonomy,
+				'terms'    => $term__in,
+				'field'    => 'slug',
+			);
+
+		endforeach;
+
+		/**
+		 * Post formats query
+		 */
+		if ( in_array( 'post_format', $args['taxonomies'] ) ) :
+			$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
+
+			$related_query['tax_query'][] = array(
+				'taxonomy' => 'post_format',
+				'terms'    => array( $format ),
+				'field'    => 'slug',
+			);
+		endif;
+
+		/* Fire up the query */
 		$related = new WP_Query( $related_query );
 
 		/**
@@ -209,6 +225,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		$instance['title']          = strip_tags( $new_instance['title'] );
 		$instance['limit']          = intval( $new_instance['limit'] );
+		$instance['taxonomies']     = (array) $new_instance['taxonomies'];
 		$instance['orderby']        = strip_tags( $new_instance['orderby'] );
 		$instance['show_thumbnail'] = ( isset( $new_instance['show_thumbnail'] ) ? 1 : 0 );
 
@@ -226,7 +243,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		$related_meta = get_post_meta( $post_ID, 'related', false );
 
-		// A post is being updated or deleted
+		/* A post is being updated or deleted */
 		if ( isset( $post_ID ) ) :
 			// Delete the related post meta for all the related posts
 			if ( isset( $related_meta ) ) :
@@ -236,9 +253,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 				foreach ( $related_meta as $related )
 					$related_posts[] = $related['post_id'];
 
-				$get_posts = get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) );
-
-				foreach( $get_posts as $postinfo )
+				foreach( get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) ) as $postinfo )
 					delete_post_meta( $postinfo->ID, 'related' );
 			endif;
 
@@ -261,6 +276,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		$defaults = array(
 			'title'          => esc_attr__( 'Related Posts', 'cakifo' ),
 			'limit'          => 5,
+			'taxonomies'     => array( 'category', 'format' ),
 			'orderby'        => 'random',
 			'show_thumbnail' => true
 		);
@@ -280,11 +296,21 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			<p>
 				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'cakifo' ); ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+				<span class="description"><?php _e( 'Use %s as a placeholder for the title', 'cakifo' ); ?>
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Number of posts to show:', 'cakifo' ); ?></label>
 				<input type="number" min="1" class="smallfat code" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" />
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'taxonomies' ); ?>"><?php _e( 'Taxonomies:', 'cakifo' ); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'taxonomies' ); ?>" name="<?php echo $this->get_field_name( 'taxonomies' ); ?>[]" multiple>
+					<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $option_value => $option_label ) { ?>
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php if ( in_array( $option_value, $instance['taxonomies'] ) ) selected( 1 ); ?>><?php echo esc_html( $option_label->label ); ?></option>
+					<?php } ?>
+				</select>
 			</p>
 
 			<p>
