@@ -276,7 +276,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		$defaults = array(
 			'title'          => esc_attr__( 'Related Posts', 'cakifo' ),
 			'limit'          => 5,
-			'taxonomies'     => array( 'category', 'format' ),
+			'taxonomies'     => array( 'category', 'post_format' ),
 			'orderby'        => 'random',
 			'show_thumbnail' => true
 		);
