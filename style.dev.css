@@ -2268,11 +2268,11 @@ img.alignright {
 	text-shadow: 1px 1px 0 #fff;
 }
 
-#footer .wrap {
-	margin: 10px 0 0;
+/* Footer text */
+#footer .footer-content {
+	margin-top: 10px;
 }
 
-/* Footer text */
 #footer .copyright,
 #footer .credit {
 	width: 50%;
@@ -2291,7 +2291,6 @@ img.alignright {
 /* Footer sidebar */
 #sidebar-subsidiary {
 	clear: both;
-	padding-top: 20px;
 }
 
 /* Two Footer Widget Areas */

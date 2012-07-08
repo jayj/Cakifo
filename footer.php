@@ -30,9 +30,9 @@
 
 		<?php do_atomic( 'open_footer' ); // cakifo_open_footer ?>
 
-		<div class="wrap clearfix">
-
-			<?php echo apply_atomic_shortcode( 'footer_content', '<div class="footer-content">'. hybrid_get_setting( 'footer_insert' ) . '</div>' ); ?>
+			<div class="footer-content">
+				<?php hybrid_footer_content(); ?>
+			</div> <!-- .footer-content -->
 
 			<?php do_atomic( 'footer' ); // cakifo_footer ?>
 
@@ -43,8 +43,6 @@
 				if ( ! is_404() )
 					get_sidebar( 'subsidiary' );
 			?>
-
-		</div> <!-- .wrap -->
 
 		<?php do_atomic( 'close_footer' ); // cakifo_close_footer ?>
 
