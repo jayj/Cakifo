@@ -2899,7 +2899,7 @@ span.required {
 
 	#main {
 		width: 100% !important;
-		float: left !important;
+		float: none !important;
 		margin: 0 !important;
 	}
 

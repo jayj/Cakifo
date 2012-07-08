@@ -313,7 +313,7 @@ function cakifo_front_page() {
 /**
  * Add the javascript needed for the slider
  *
- * @uses apply_filters( 'cakifo_slider_args', $args ) The filter allows you to change the default values.
+ * @uses apply_filters( 'cakifo_flexslider_args', $args ) Allows you to change the default values.
  * @since Cakifo 1.0
  */
 function cakifo_slider_javascript() {
