@@ -30,7 +30,7 @@
 
 		<?php do_atomic( 'open_footer' ); // cakifo_open_footer ?>
 
-			<div class="footer-content">
+			<div class="footer-content clearfix">
 				<?php hybrid_footer_content(); ?>
 			</div> <!-- .footer-content -->
 
