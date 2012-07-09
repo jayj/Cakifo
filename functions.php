@@ -73,7 +73,6 @@ function cakifo_theme_setup() {
 	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
 	add_theme_support( 'cakifo-twitter-button' );
-	add_theme_support( 'cakifo-upgrade' );
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
