@@ -96,8 +96,8 @@ function cakifo_theme_setup() {
 	/* Set $content_width */
 	hybrid_set_content_width( 630 );
 
-	/* Set $content_width for other post layouts */
-	add_action( 'init', 'cakifo_content_width' );
+	/* Set embed width/height defaults and $content_width for non-default layouts */
+	add_filter( 'embed_defaults', 'cakifo_content_width' );
 
 	/*
 	 * Set new image sizes
@@ -577,19 +577,32 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 }
 
 /**
- * Set $content_width based on the current post layout
+ * Overwrites the default widths for embeds.  This is especially useful for making sure videos properly
+ * expand the full width on video pages.  This function overwrites what the $content_width variable handles
+ * with context-based widths.
  *
- * @since Cakifo 1.3
+ * @since 1.3
  */
-function cakifo_content_width() {
-	$layout = theme_layouts_get_layout();
+function cakifo_content_width( $args ) {
+
+	$args['width'] = hybrid_get_content_width();
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
+
+		$layout = theme_layouts_get_layout();
+
 		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout )
-			hybrid_set_content_width( 490 );
+			$args['width'] = 490;
 		elseif ( 'layout-3c-c' == $layout )
-			hybrid_set_content_width( 500 );
+			$args['width'] = 500;
+		elseif ( 'layout-1c' == $layout )
+			$args['width'] = 940;
+
+		/* Set $content_width */
+		hybrid_set_content_width( $args['width'] );
 	}
+
+	return $args;
 }
 
 /**
