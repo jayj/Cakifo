@@ -581,7 +581,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * expand the full width on video pages.  This function overwrites what the $content_width variable handles
  * with context-based widths.
  *
- * @since 1.3
+ * @since Cakifo 1.3
  */
 function cakifo_content_width( $args ) {
 
