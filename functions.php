@@ -541,7 +541,7 @@ function cakifo_one_column() {
 	elseif ( is_front_page() && ! is_home() ) // Static frontpage
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	elseif ( is_attachment() )
+	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 }
 
