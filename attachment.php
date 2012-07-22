@@ -47,7 +47,7 @@ get_header(); // Loads the header.php template ?>
 							</a>
 						</p> <!-- .attachment-image -->
 
-						<?php if ( ! empty( $post->post_excerpt ) ) : ?>
+						<?php if ( has_excerpt() ) : ?>
 							<div class="entry-caption">
 								<?php the_excerpt(); ?>
 							</div>
@@ -61,18 +61,25 @@ get_header(); // Loads the header.php template ?>
 					</p> <!-- .download -->
 
 				<?php endif; ?>
+
+				<?php the_content(); ?>
+				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
 			</div> <!-- .entry-content -->
 
 			<?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>
 
-				<div id="image-info">
+				<aside id="image-info">
 					<?php cakifo_image_info(); // Get image meta data ?>
 
-					<div id="attachment-gallery">
-						<h4><?php _e( 'Gallery', 'cakifo' ); ?></h4>
-						<?php echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20"]', $post->post_parent, get_the_ID() ) ); ?>
-					</div> <!-- #attachment-gallery -->
-				</div> <!-- #image-info -->
+					<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20" orderby="rand"]', $post->post_parent, get_the_ID() ) ); ?>
+
+					<?php if ( ! empty( $gallery ) ) { ?>
+						<div id="attachment-gallery">
+							<h4><?php _e( 'Gallery', 'cakifo' ); ?></h4>
+							<?php echo $gallery; ?>
+						</div> <!-- #attachment-gallery -->
+					<?php } ?>
+				</aside> <!-- #image-info -->
 
 			<?php endif; ?>
 
