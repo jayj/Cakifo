@@ -176,9 +176,6 @@ function cakifo_theme_setup() {
 	/* Filter default options */
 	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
 
-	/* Custom logo */
-	add_filter( 'cakifo_site_title', 'cakifo_logo' );
-
 	/**
 	 * Custom header for logo upload
 	 */
@@ -723,23 +720,25 @@ function cakifo_custom_background_callback() {
  * Allow the user to upload a new logo or change between image and text
  * using the WordPress header function
  *
- * @param  string  $title
- * @return string         The site title. Either as text, as an image or both.
+ * @return string The site title. Either as text, as an image or both.
  * @since  Cakifo 1.0
  */
-function cakifo_logo( $title ) {
+function cakifo_logo() {
 
-	if ( $title = get_bloginfo( 'name' ) ) {
-		// Check if there's a header image, else return the blog name
-		$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" /><span class="assistive-text">' . $title . '</span>' : '<span>' . $title . '</span>';
+	/* Get the site title */
+	$title = get_bloginfo( 'name' );
 
-		// If 'Show header text with your image' is checked, add the 'display-header-text' to the heading
-		$heading_class = ( display_header_text() ) ? 'display-header-text' : '';
+	/* Check if there's a header image, else return the blog name */
+	$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" /><span class="assistive-text">' . $title . '</span>' : '<span>' . $title . '</span>';
 
-		$title = '<h1 id="site-title" class="' . esc_attr( $heading_class ) . '"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
-	}
+	/* If 'Show header text with your image' is checked, add the 'display-header-text' to the heading */
+	$heading_class = ( display_header_text() ) ? 'display-header-text' : '';
 
-	return $title;
+	/* Format the output */
+	$output = '<h1 id="site-title" class="' . esc_attr( $heading_class ) . '"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
+
+	/* Display the site title and allow child themes to overwrite the final output */
+	echo apply_atomic( 'site_title', $output );
 }
 
 if ( ! function_exists( 'cakifo_author_box' ) ) :

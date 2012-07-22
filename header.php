@@ -41,9 +41,10 @@
 
 			<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
-				<?php hybrid_site_title(); ?>
-
-				<?php hybrid_site_description(); ?>
+				<hgroup>
+					<?php cakifo_logo(); ?>
+					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+				</hgroup> <!-- #branding -->
 
 			<?php do_atomic( 'header' ); // cakifo_header ?>
 
