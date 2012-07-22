@@ -70,7 +70,7 @@ get_header(); // Loads the header.php template ?>
 
 					<div id="attachment-gallery">
 						<h4><?php _e( 'Gallery', 'cakifo' ); ?></h4>
-						<?php echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small"]', $post->post_parent, get_the_ID() ) ); ?>
+						<?php echo apply_atomic_shortcode( 'attachment_gallery', sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20"]', $post->post_parent, get_the_ID() ) ); ?>
 					</div> <!-- #attachment-gallery -->
 				</div> <!-- #image-info -->
 
