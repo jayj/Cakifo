@@ -466,9 +466,13 @@ acronym {
  * Other
  */
 hr {
-	background: #eee;
-	height: 1px;
-	margin-bottom:25px;
+	clear: both;
+	display: block;
+	height: 0;
+	border: 0;
+	border-bottom: 4px double #eee;
+	margin: 0 0 24px;
+	padding: 0;
 }
 
 iframe {
