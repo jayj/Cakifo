@@ -154,10 +154,13 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			'tax_query'           => array( 'relation' => 'OR' )
 		);
 
+		// Make sure the taxonomies are set. They won't be if an user updates the theme and doesn't resave the widget settings
+		$taxonomies = ( isset( $args['taxonomies'] ) ) ? $args['taxonomies'] : array();
+
 		/**
 		 * Loop through each selected taxonomy
 		 */
-		foreach ( $args['taxonomies'] as $taxonomy ) :
+		foreach ( $taxonomies as $taxonomy ) :
 
 			// Skip post formats
 			if ( 'post_format' == $taxonomy )
@@ -185,7 +188,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/**
 		 * Post formats query
 		 */
-		if ( in_array( 'post_format', $args['taxonomies'] ) ) :
+		if ( in_array( 'post_format', $taxonomies ) ) :
 			$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
 
 			$related_query['tax_query'][] = array(
