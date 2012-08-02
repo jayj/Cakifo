@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.4-dev
+ * @version 1.4.1
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -309,7 +309,7 @@ function cakifo_front_page() {
 /**
  * Add the javascript needed for the slider
  *
- * @uses apply_filters( 'cakifo_flexslider_args', $args ) Allows you to change the default values.
+ * @uses apply_filters() The cakifo_flexslider_args filter allows you to change the default values.
  * @since Cakifo 1.0
  */
 function cakifo_slider_javascript() {
@@ -505,10 +505,10 @@ function cakifo_image_entry_meta( $meta ) {
  *
  * No longer showed by default in version 1.3
  * If you still want it, use this in your child theme:
- *		<code>
- * 			remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
- * 			add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
- *		</code>
+ *	<code>
+ * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
+ * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+ *	</code>
  *
  * @return string The RSS feed and maybe a Twitter link
  * @since  Cakifo 1.0
@@ -581,6 +581,10 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * expand the full width on video pages.  This function overwrites what the $content_width variable handles
  * with context-based widths.
  *
+ * @uses hybrid_get_content_width()
+ * @uses hybrid_set_content_width()
+ * @uses theme_layouts_get_layout()
+ * @param array $args Array with default embed settings
  * @since Cakifo 1.3
  */
 function cakifo_content_width( $args ) {
@@ -948,7 +952,7 @@ if ( ! function_exists( 'cakifo_url_grabber' ) ) :
  *
  * It will either match all text containing http:// or https://
  * If the first argument passed gets changed to 'href',
- * it will only match links from anchor links (<code><a href="http://..."></a></code>)
+ * it will only match links from anchor links
  *
  * @param  string  $type    http or href. Default is http
  * @param  string  $content The content to search for URLs in. Default is the post content.
@@ -980,6 +984,7 @@ endif; // cakifo_url_grabber
 /**
  * @since Cakifo 1.0
  * @deprecated Cakifo 1.3 Use the native WordPress function wp_trim_words() instead.
+ * @ignore
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	_deprecated_function( __FUNCTION__, '1.3', 'wp_trim_words()' );

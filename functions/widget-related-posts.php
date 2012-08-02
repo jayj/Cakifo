@@ -11,12 +11,6 @@
  * @link http://wpthemes.jayj.dk/cakifo
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
-
-/**
- * Related Posts widget class.
- *
- * @since Cakifo 1.3
- */
 class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 	/**
@@ -46,9 +40,12 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
 	 *
+	 * @param array $sidebar
+	 * @param array $instance
 	 * @since Cakifo 1.3
 	 */
 	function widget( $sidebar, $instance ) {
+
 		extract( $sidebar );
 
 		$post_id = get_the_ID();
@@ -140,8 +137,10 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	* Gets the related posts based on the category and post format
 	* and puts them in a custom field
 	*
-	* @since Cakifo 1.3
 	* @access private
+	* @param int $post_id
+	* @param array $args
+	* @since Cakifo 1.3
 	*/
 	private function _get_related_posts( $post_id, $args ) {
 
@@ -220,6 +219,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Updates the widget control options for the particular instance of the widget.
 	 *
+	 * @param array $new_instance The new setting
+	 * @param array $old_instance The old setting
 	 * @since Cakifo 1.3
 	 */
 	function update( $new_instance, $old_instance ) {
@@ -240,6 +241,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Flush the related posts meta when a post is updated, deleted or the settings has been changed
 	 *
+	 * @param int|null $post_ID
 	 * @since Cakifo 1.3
 	 */
 	function flush_widget_cache( $post_ID = null ) {
@@ -271,6 +273,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
+	 * @param array $instance The widget settings in the database
 	 * @since Cakifo 1.3
 	 */
 	function form( $instance ) {

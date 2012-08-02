@@ -224,7 +224,7 @@ function cakifo_register_widgets() {
  * Otherwise the plugin results in error because Hybrid Core
  * deregister default WordPress widgets
  *
- * @link (http://wordpress.org/extend/plugins/monster-widget/, Monster Widgets)
+ * @link http://wordpress.org/extend/plugins/monster-widget/ Monster Widgets
  * @since Cakifo 1.4
  */
 function cakifo_monster_widgets() {
