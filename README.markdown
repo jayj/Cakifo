@@ -1,4 +1,4 @@
-# Cakifo 1.4
+# Cakifo 1.4.4
 
 > Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core by Justin Tadlock"), so it provides a great starting point with many useful features..
 
@@ -6,6 +6,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 
 * Requires at least WordPress 3.4
 * Tested up to 3.4
+* [Cakifo in the official theme directory](http://wordpress.org/extend/themes/cakifo)
 
 ## Demo
 
@@ -21,7 +22,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Responsive design
 * Theme Customizer – Make changes to the theme and live preview them
 * Custom logo (text, image or both)
-* Custom background</li>
+* Custom background
 * Custom front page with slider, recent posts, and posts from categories
 * Per-post layouts that allow you to quickly change the layout of your site
 * Post setting that allows you to add a custom stylesheet for individual posts

@@ -133,7 +133,7 @@ table caption {
 
 <div id="wrapper">
 
-<h1>Cakifo 1.4 <small>By <a href="http://jayj.dk">Jesper J. - Jayj.dk</a></small></h1>
+<h1>Cakifo 1.4.4 <small>By <a href="http://jayj.dk">Jesper J. / Jayj.dk</a></small></h1>
 
 	<blockquote>
 		<p>Cakifo is a free WordPress theme built with from the rock-solid <a href="http://themehybrid.com/hybrid-core" title="Hybrid Core by Justin Tadlock">Hybrid Core theme framework</a>, so it provides a great starting point with many useful features..</p>
@@ -144,6 +144,8 @@ table caption {
 <ul>
 	<li>Requires at least WordPress 3.4</li>
 	<li>Tested up to 3.4</li>
+	<li><a href="http://wordpress.org/extend/themes/cakifo">Cakifo in the official theme directory</a></li>
+	<li><a href="https://github.com/jayj/Cakifo">Cakifo on Github</a></li>
 </ul>
 
 <h2>Features</h2>
@@ -232,13 +234,11 @@ table caption {
 
 <pre>
 function my_slider_args( $args ) {
-    $args['slideSpeed'] = 500; // Speed of the sliding animation in milliseconds
-    $args['play'] = false; // Disables auto start
-
+	$args['slideshow'] = false; // Disables auto start
     return $args;
 }
 
-add_filter( 'cakifo_slider_args', 'my_slider_args' );
+add_filter( 'cakifo_flexslider_args', 'my_slider_args' );
 </pre>
 
 	<p>Or you want to remove comments from pages. Easy</p>
@@ -281,6 +281,15 @@ add_filter( 'cakifo_slider_args', 'my_slider_args' );
 	<li>And others! More people are credited in the source</li>
 </ul>
 
+<h2>Changelog</h2>
+
+	<h4>Version 1.4.4</h4>
+	<ul>
+		<li>Bug fix: Default background color not showing before background settings were saved</li>
+		<li>Add <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;</code> to <code>&lt;head&gt;</code> to give mobile users a better experience</li>
+		<li>Style.css is no longer compressed into one line but has a linebreak after each selector</li>
+	</ul>
+
 <h2>Support</h2>
 
 	<p class="note">Please read <a href="https://github.com/jayj/Cakifo/wiki">the Wiki on Github</a> before asking for help.</p>
@@ -288,6 +297,7 @@ add_filter( 'cakifo_slider_args', 'my_slider_args' );
 	<p>I can help with support for this theme. <br /> But Theme Hybrid has a Theme Club where you'll get the benefit of access to all of the tutorials and documentation and complete read/write access to the support forums.
 The support package exists to get you up and running as quickly as possible, and they have a great community of people willing to help each other out.</p>
 
+	<p><a href="http://themehybrid.com/support/forum/cakifo">Get help on the Cakifo support forum</a></p>
 	<p><a href="http://themehybrid.com/hybrid-core">See guides for Hybrid Core</a></p>
 
 	<p>Visit my blog on <a href="http://jayj.dk">Jayj.dk</a> to contact me or <a href="http://twitter.com/jayjdk">follow me on Twitter</a></p>
