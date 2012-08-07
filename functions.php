@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.5-dev
+ * @version 1.4.4-dev
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -119,6 +119,9 @@ function cakifo_theme_setup() {
 
 	/* Link color from Theme Options */
 	add_action( 'wp_head', 'cakifo_print_link_color_style' );
+
+	/* Filter the body class */
+	add_filter( 'body_class', 'cakifo_body_class' );
 
 	/* Topbar search form */
 	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
@@ -1057,6 +1060,23 @@ function cakifo_print_link_color_style() {
 		}
 	</style>
 <?php
+}
+
+/**
+ * Extends the default WordPress body class to denote:
+ * 1. White or empty background color to change the layout and spacing.
+ *
+ * @since Cakifo 1.4.4
+ */
+function cakifo_body_class( $classes ) {
+	$background_color = get_background_color();
+
+	if ( empty( $background_color ) )
+		$classes[] = 'custom-background-empty';
+	elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
+		$classes[] = 'custom-background-white';
+
+	return $classes;
 }
 
 ?>

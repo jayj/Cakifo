@@ -42,6 +42,7 @@ html {
 }
 
 body {
+	background-color: #e3ecf2;
 	font: 16px/2 Georgia, Cambria, "Bitstream Charter", serif;
 	color: #606060;
 	margin: 0;
@@ -54,6 +55,17 @@ body {
 
 p {
 	margin: 0 0 25px 0;
+}
+
+/* Remove background color if a user removes the color */
+body.custom-background-empty {
+	background-color: #fff;
+}
+
+body.custom-background-empty #content,
+body.custom-background-empty #footer {
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 /* Links */
