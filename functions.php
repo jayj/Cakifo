@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.4.4
+ * @version 1.5-dev
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -256,7 +256,7 @@ function cakifo_enqueue_script() {
 	 * 	wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
 	 * in your child theme functions.php
 	 */
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', '', '2.5.3' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', array(), '2.5.3' );
 
 	/* jQuery */
 	wp_enqueue_script( 'jquery' );
@@ -970,6 +970,7 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 
 	/* If 'href' == $type, get all URLs from <a href=""> */
 	if ( 'href' == $type ) {
+		// href=["']([^"']+)["']
 		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
 			return false;
 
@@ -977,7 +978,7 @@ function cakifo_url_grabber( $type = 'http', $content = null ) {
 	}
 
 	/* Else, get all http:// URLs (including those in <a href="">) */
-	if ( ! preg_match_all( '/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
+	if ( ! preg_match_all( '/(https?)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
 		return false;
 
 	return array_map( 'esc_url_raw', $matches[0] );
