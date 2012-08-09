@@ -14,39 +14,26 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 	<div id="topbar">
 
-		<span class="assistive-text toggle-navbar" title="<?php esc_attr_e( 'Toggle menu', 'cakifo' ); ?>">
-			<?php _e( 'Main menu', 'cakifo' ); ?>
-
-			<a>
-				<span class="assistive-text"><?php _e( 'Toggle menu', 'cakifo' ); ?></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-		</span>
-
-
-
-		<div class="wrap">
+		<nav class="main-navigation site-navigation" role="navigation">
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
 
-			<nav class="menu">
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'cakifo' ); ?></h3>
+				<h3 class="assistive-text" title="<?php esc_attr_e( 'Show navigation', 'cakifo' ); ?>">
+					<?php _e( 'Show navigation', 'cakifo' ); ?>
+				</h3>
+
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',
-						'container'      => '',
-						'menu_class'     => '',
+						'container_class' => 'menu-list-container',
 						'after'          => '<span class="sep">|</span>',
 						'fallback_cb'    => ''
 					) );
 				?>
-			</nav> <!-- .menu -->
 
 			<?php do_atomic( 'close_menu_primary' ); // cakifo_close_menu_primary ?>
 
-		</div> <!-- .wrap -->
+		</nav> <!-- .main-navigation -->
 
 	</div> <!-- #topbar -->
 

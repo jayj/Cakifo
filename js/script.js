@@ -1,41 +1,44 @@
 (function($, window, document) {
 
 	/**
-	 * jQuery plugin: Animate Height/Width to "Auto"
-	 * http://darcyclarke.me/development/fix-jquerys-animate-to-allow-auto-values/
-	 */
-	jQuery.fn.animateAuto = function(prop, speed, callback){
-		var elem, height, width;
-
-		return this.each(function(i, el) {
-			el = jQuery(el);
-			elem = el.clone().css({ 'height':'auto', 'width': 'auto' }).appendTo(el.parent());
-			height = elem.css('height');
-			width = elem.css('width');
-			elem.remove();
-
-			if(prop === 'height')
-			el.animate({ 'height': height }, speed, callback);
-			else if(prop === 'width')
-			el.animate({ 'width': width }, speed, callback);
-			else if(prop === 'both')
-			el.animate({ 'width': width, 'height': height }, speed, callback);
-		});
-	};
-
-	/**
 	 * Topbar toggle functionality
 	 */
-	$('#topbar > .toggle-navbar').on( 'click', function(e) {
-		var nav = $('#topbar .wrap'),
-		height = nav.height();
+	var topbar = $( '#topbar' ),
+		search = topbar.find( '.search' ),
+		timeout = false;
 
-		if ( height === 0 ) {
-			nav.stop().animateAuto( 'height', 700);
-		} else {
-			nav.stop().animate( { 'height': 0 }, 700);
-		}
-	});
+	$.fn.smallMenu = function() {
+		topbar.find( '.site-navigation' ).removeClass( 'main-navigation' ).addClass( 'main-small-navigation' );
+		topbar.find( '.site-navigation h3' ).removeClass( 'assistive-text' ).addClass( 'menu-toggle' );
+
+		$( '.menu-toggle' ).off( 'click' ).click( function() {
+			topbar.find( '.menu-list-container' ).stop().slideToggle(400);
+			search.toggle();
+			$(this).toggleClass( 'toggled-on' );
+		} );
+	};
+
+	// Check viewport width on first load.
+	if ( Modernizr.mq( 'screen and (max-width: 980px)' ) )
+		$.fn.smallMenu();
+
+	// Check viewport width when user resizes the browser window.
+	$( window ).resize( function() {
+		if ( false !== timeout )
+			clearTimeout( timeout );
+
+		timeout = setTimeout( function() {
+			if ( Modernizr.mq( 'screen and (max-width: 980px)' ) ) {
+				$.fn.smallMenu();
+				search.hide();
+			} else {
+				topbar.find( '.site-navigation' ).removeClass( 'main-small-navigation' ).addClass( 'main-navigation' );
+				topbar.find( '.site-navigation h3' ).removeClass( 'menu-toggle' ).addClass( 'assistive-text' );
+				topbar.find( '.menu-list-container' ).removeAttr( 'style' );
+				search.show();
+			}
+		}, 200 );
+	} );
 
 	function equal_height_columns() {return;}
 
