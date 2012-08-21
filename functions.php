@@ -959,32 +959,39 @@ if ( ! function_exists( 'cakifo_url_grabber' ) ) :
 /**
  * Returns URLs found in the content
  *
- * It will either match all text containing http:// or https://
- * If the first argument passed gets changed to 'href',
- * it will only match links from anchor links
+ * 'href' will look for links inside anchor tags
+ * 'http' will look for all text containing http:// or https:// in the content
+ * 'all' will look for all links
  *
- * @param  string  $type    http or href. Default is http
- * @param  string  $content The content to search for URLs in. Default is the post content.
- * @return array           	Array containing all links found in the content.
+ * @param string $type http, href or all. Default is all
+ * @param string $content The content to search for URLs in. Default is the post content.
+ * @return array Array containing all links found in the content.
  * @since Cakifo 1.0
  */
-function cakifo_url_grabber( $type = 'http', $content = null ) {
+function cakifo_url_grabber( $type = 'all', $content = null ) {
 
-	// Set default content to post content
+	/* Set default content to post content */
 	if ( ! isset( $content ) )
 		$content = get_the_content();
 
-	/* If 'href' == $type, get all URLs from <a href=""> */
+	/* Get all URLs from <a href=""> */
 	if ( 'href' == $type ) {
-		// href=["']([^"']+)["']
 		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
 			return false;
 
 		return array_map( 'esc_url_raw', $matches[1] );
 	}
 
-	/* Else, get all http:// URLs (including those in <a href="">) */
-	if ( ! preg_match_all( '/(https?)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $content, $matches ) )
+	/* Get all http:// URLs (excluding those in <a href="">) */
+	elseif ( 'http' == $type ) {
+		if ( ! preg_match_all( '/([^\"=\'>])((https?):\/\/[^\s<]+[^\s<\.)])/i', $content, $matches ) )
+			return false;
+
+		return array_map( 'esc_url_raw', $matches[0] );
+	}
+
+	/* Else, get all links */
+	if ( ! preg_match_all( '/(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i', $content, $matches ) )
 		return false;
 
 	return array_map( 'esc_url_raw', $matches[0] );
