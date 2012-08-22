@@ -18,16 +18,16 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
 
-				<h3 class="assistive-text" title="<?php esc_attr_e( 'Show navigation', 'cakifo' ); ?>">
-					<?php _e( 'Show navigation', 'cakifo' ); ?>
+				<h3 id="menu-toggle" title="<?php esc_attr_e( 'Show menu', 'cakifo' ); ?>">
+					<?php _e( 'Show menu', 'cakifo' ); ?>
 				</h3>
 
 				<?php
 					wp_nav_menu( array(
-						'theme_location' => 'primary',
+						'theme_location'  => 'primary',
 						'container_class' => 'menu-list-container',
-						'after'          => '<span class="sep">|</span>',
-						'fallback_cb'    => ''
+						'after'           => '<span class="sep">|</span>',
+						'fallback_cb'     => ''
 					) );
 				?>
 

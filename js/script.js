@@ -1,43 +1,20 @@
 (function($, window, document) {
 
 	/**
-	 * Topbar toggle functionality
+	 * Topbar navigation toggle functionality
 	 */
-	var topbar = $( '#topbar' ),
-		search = topbar.find( '.search' ),
-		timeout = false;
+	var topbar = $( document.getElementById( 'topbar' ) ),
+		button = $( document.getElementById( 'menu-toggle' ) ),
+		search = topbar.find( '.search' );
 
-	$.fn.smallMenu = function() {
-		topbar.find( '.site-navigation' ).removeClass( 'main-navigation' ).addClass( 'main-small-navigation' );
-		topbar.find( '.site-navigation h3' ).removeClass( 'assistive-text' ).addClass( 'menu-toggle' );
+	if ( ! topbar.find( '.menu' ).children().length ) {
+		button.hide();
+	}
 
-		$( '.menu-toggle' ).off( 'click' ).click( function() {
-			topbar.find( '.menu-list-container' ).stop().slideToggle(400);
-			search.toggle();
-			$(this).toggleClass( 'toggled-on' );
-		} );
-	};
-
-	// Check viewport width on first load.
-	if ( Modernizr.mq( 'screen and (max-width: 980px)' ) )
-		$.fn.smallMenu();
-
-	// Check viewport width when user resizes the browser window.
-	$( window ).resize( function() {
-		if ( false !== timeout )
-			clearTimeout( timeout );
-
-		timeout = setTimeout( function() {
-			if ( Modernizr.mq( 'screen and (max-width: 980px)' ) ) {
-				$.fn.smallMenu();
-				search.hide();
-			} else {
-				topbar.find( '.site-navigation' ).removeClass( 'main-small-navigation' ).addClass( 'main-navigation' );
-				topbar.find( '.site-navigation h3' ).removeClass( 'menu-toggle' ).addClass( 'assistive-text' );
-				topbar.find( '.menu-list-container' ).removeAttr( 'style' );
-				search.show();
-			}
-		}, 200 );
+	button.off( 'click' ).click( function() {
+		topbar.find( '.menu-list-container' ).stop().slideToggle(400);
+		search.toggle();
+		$( this ).toggleClass( 'toggled-on' );
 	} );
 
 	function equal_height_columns() {return;}
