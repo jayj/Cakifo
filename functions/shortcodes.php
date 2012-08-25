@@ -32,6 +32,8 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
 }
 
+add_action( 'init', 'cakifo_register_shortcodes', 15 );
+
 /**
  * RSS link shortcode
  *

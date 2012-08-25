@@ -861,7 +861,7 @@ msgstr "Skjul tomme?"
 
 #: ../library/classes/widget-bookmarks.php:32
 msgid "An advanced widget that gives you total control over the output of your bookmarks (links)."
-msgstr "Et avanceret widget der giver dig total kontrol over dine bogmærket (links)"
+msgstr "Et avanceret widget der giver dig total kontrol over dine bogmærker (links)"
 
 #: ../library/classes/widget-bookmarks.php:44
 #: ../library/classes/widget-bookmarks.php:85
@@ -1250,7 +1250,7 @@ msgstr "Klik her for at annullere svar."
 
 #: ../library/functions/comments.php:205
 msgid "Post Comment"
-msgstr "Tillføj kommentar"
+msgstr "Tilføj kommentar"
 
 #: ../library/functions/context.php:423
 #: ../library/functions/context.php:429

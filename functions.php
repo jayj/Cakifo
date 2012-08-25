@@ -110,9 +110,6 @@ function cakifo_theme_setup() {
 	add_image_size( 'slider', apply_filters( 'slider_image_width', 500 ), apply_filters( 'slider_image_height', 230 ), true );
 	add_image_size( 'recent', apply_filters( 'recent_image_width', 190 ), apply_filters( 'recent_image_height', 130 ), true );
 
-	/* Register shortcodes */
-	add_action( 'init', 'cakifo_register_shortcodes', 15 );
-
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
