@@ -20,9 +20,7 @@
 
 </div> <!-- #content -->
 
-	<?php do_atomic( 'after_main' ); // cakifoafter_main ?>
-
-	<?php get_template_part( 'menu', 'subsidiary' ); // Loads the menu-subsidiary.php template ?>
+	<?php do_atomic( 'after_content' ); // cakifo_after_content ?>
 
 	<?php do_atomic( 'before_footer' ); // cakifo_before_footer ?>
 
