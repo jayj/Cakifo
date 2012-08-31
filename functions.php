@@ -67,6 +67,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
 	//add_theme_support( 'cleaner-caption' );
+	//add_theme_support( 'featured-header' );
 
 	/* Add theme support for theme functions */
 	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'subsidiary-two', 'subsidiary-three', 'after-single', 'after-singular', 'error-page' ) );
@@ -186,13 +187,13 @@ function cakifo_theme_setup() {
 	 * Custom header for logo upload
 	 */
 	add_theme_support( 'custom-header', array(
-		'width' => 400,
-		'height' => 60,
-		'flex-width' => true,
-		'flex-height' => true,
-		'default-text-color' => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
-		'wp-head-callback' => 'cakifo_header_style',
-		'admin-head-callback' => 'cakifo_admin_header_style',
+		'width'                  => 400,
+		'height'                 => 60,
+		'flex-width'             => true,
+		'flex-height'            => true,
+		'default-text-color'     => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
+		'wp-head-callback'       => 'cakifo_header_style',
+		'admin-head-callback'    => 'cakifo_admin_header_style',
 		'admin-preview-callback' => 'cakifo_admin_header_image',
 	) );
 
@@ -1056,7 +1057,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
  * @since Cakifo 1.4
  */
 function cakifo_print_link_color_style() {
-	$defaults = hybrid_get_default_theme_settings();
+	$defaults   = hybrid_get_default_theme_settings();
 	$link_color = hybrid_get_setting( 'link_color' );
 
 	// Don't do anything if the current link color is the default color for the current scheme
@@ -1113,7 +1114,7 @@ function cakifo_format_chat_content( $content ) {
 	global $_post_format_chat_ids;
 
 	/* If this is not a 'chat' post, return the content. */
-	if ( !has_post_format( 'chat' ) )
+	if ( ! has_post_format( 'chat' ) )
 		return $content;
 
 	/* Set the global variable of speaker IDs to a new, empty array for this chat. */
@@ -1166,7 +1167,7 @@ function cakifo_format_chat_content( $content ) {
 		else {
 
 			/* Make sure we have text. */
-			if ( !empty( $chat_row ) ) {
+			if ( ! empty( $chat_row ) ) {
 
 				/* Open the chat row. */
 				$chat_output .= "\n\t\t\t\t" . '<div class="chat-row ' . sanitize_html_class( "chat-speaker-{$speaker_id}" ) . '">';
