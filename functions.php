@@ -183,6 +183,9 @@ function cakifo_theme_setup() {
 	/* Auto-add paragraphs to the chat text. */
 	add_filter( 'cakifo_post_format_chat_text', 'wpautop' );
 
+	/* Filter the content of status posts */
+	add_filter( 'the_content', 'cakifo_format_status_content' );
+
 	/**
 	 * Custom header for logo upload
 	 */
@@ -1225,5 +1228,38 @@ function cakifo_format_chat_row_id( $chat_author ) {
 	/* Return the array key for the chat author and add "1" to avoid an ID of "0". */
 	return absint( array_search( $chat_author, $_post_format_chat_ids ) ) + 1;
 }
+
+/**
+ * This function filters the post content when viewing a post with the "status" post format.  It formats the
+ * status with a .status-content wrapper and an avatar.  In case the content of the status is a embedded
+ * Twitter status, it does nothing.
+ *
+ * @param string $content The content of the status.
+ * @return string $content The formatted content of the status.
+ * @since Cakifo 1.5
+ */
+function cakifo_format_status_content( $content ) {
+
+	/* Check if we're displaying a 'status' post. */
+	if ( has_post_format( 'status' ) ) :
+
+		/* Match any Twitter embeds (<blockquote class="twitter-tweet") elements. */
+		preg_match( '/<blockquote class=\"twitter.*?>/', $content, $matches );
+
+		/* Store the post content in the $output variable */
+		$output = $content;
+
+		/* If no <blockquote class="twitter-tweet"> elements were found, wrap the entire content in a div and insert an avatar. */
+		if ( empty( $matches ) ) {
+			$content  = "\n\t\t\t\t" . '<div class="note status-content">';
+			$content .= "\n\t\t\t\t\t" . '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '">' . get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ) . '</a>';
+			$content .= "\n\t\t\t\t\t" . $output;
+			$content .= "\n\t\t\t\t" . '</div> <!-- .status-content -->';
+		}
+	endif;
+
+	return $content;
+}
+
 
 ?>
