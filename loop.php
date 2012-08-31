@@ -65,44 +65,10 @@
 
 		<?php
 			/**
-			 * Status format
-			 *
-			 * Can be overwritten in a Child theme via {loop-status.php}
-			 */
-			if ( has_post_format( 'status' ) ) :
-		?>
-
-			<div class="entry-content">
-				<div class="note">
-					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-						<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', '48' ) ); ?>
-					</a>
-
-					<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-				</div>
-				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-			</div> <!-- .entry-content -->
-
-		<?php
-			/**
-			 * Quote, Image or Gallery format
-			 *
-			 * Can be overwritten in a Child theme via
-			 * {loop-quote.php}, {loop-image.php}, or {loop-gallery.php}
-			 */
-			elseif ( has_post_format( 'quote' ) || has_post_format( 'image' ) || has_post_format( 'gallery' )  ) :
-		?>
-
-			<div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
-			</div> <!-- .entry-content -->
-
-		<?php
-			/**
 			 * Only display Excerpts for Archives and Search pages
+			 * Excerpt for post format archives
 			 */
-			elseif ( is_archive() || is_search() ) :
+			if ( ( is_archive() || is_search() ) && ! get_post_format() ) :
 		?>
 
 			<div class="entry-summary">
@@ -112,10 +78,14 @@
 
 		<?php
 			/**
-			 * Any other post format
+			 * Show the normal content
 			 *
-			 * Can be overwritten in a Child theme via
-			 * {loop-link.php}, {loop-aside.php}, {loop-video.php}, {loop-chat.php}, or {loop-audio.php}
+			 * The loop for the different post formats, can be
+			 * overwritten in a Child theme via:
+			 *
+			 * {loop-quote.php}, {loop-image.php}, {loop-gallery.php}
+			 * {loop-link.php}, {loop-aside.php}, {loop-video.php},
+			 * {loop-chat.php}, {loop-status}, or {loop-audio.php}
 			 */
 			else :
 		?>
