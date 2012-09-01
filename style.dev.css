@@ -2414,6 +2414,8 @@ img.alignright {
 
 /* Comment form inputs and textarea elements */
 #respond input[type="text"],
+#respond input[type="email"],
+#respond input[type="url"],
 #respond textarea {
 	display: block;
 	width: 98%;
@@ -2423,7 +2425,7 @@ img.alignright {
 	width: 90%;
 }
 
-#respond p.form-email input[type="text"] {
+#respond p.form-email input[type="email"] {
 	width: 90%;
 	float: right;
 }

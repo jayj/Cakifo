@@ -177,6 +177,9 @@ function cakifo_theme_setup() {
 	/* Filter default options */
 	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
 
+	/* Filter the comment input field types. */
+	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
+
 	/* Filter the content of chat posts. */
 	add_filter( 'the_content', 'cakifo_format_chat_content' );
 
@@ -1092,6 +1095,21 @@ function cakifo_body_class( $classes ) {
 		$classes[] = 'custom-background-white';
 
 	return $classes;
+}
+
+/**
+ * Changes the comment form to use HTML5 input fields for email and url.
+ *
+ * @since Cakifo 1.5
+ */
+function cakifo_html5_comment_fields( $fields ) {
+	if( isset( $fields['email'] ) )
+		$fields['email'] = str_replace( 'type="text"', 'type="email"', $fields['email'] );
+
+	if( isset( $fields['url'] ) )
+		$fields['url'] = str_replace( 'type="text"', 'type="url"', $fields['url'] );
+
+	return $fields;
 }
 
 /**
