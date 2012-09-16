@@ -1130,6 +1130,10 @@ html[xmlns] .slides-container { display: block; }
 	width: 330px;
 }
 
+#slider .entry-summary.no-featured-image {
+	width: 100%;
+}
+
 #slider .thumbnail,
 .slider-video {
 	float: left;
