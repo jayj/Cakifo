@@ -84,7 +84,7 @@ function cakifo_theme_setup() {
 	require( trailingslashit( get_template_directory() ) . 'functions/customize.php' );
 
 	/* Add theme support for WordPress features */
-	add_theme_support( 'post-formats', array( 'aside', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'audio', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
 	add_theme_support( 'automatic-feed-links' );
 	add_editor_style();
 
