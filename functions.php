@@ -961,44 +961,21 @@ function cakifo_get_image_size( $name ) {
 
 if ( ! function_exists( 'cakifo_url_grabber' ) ) :
 /**
- * Returns URLs found in the content
+ * Grabs the first URL from the post content of the current post.
  *
- * 'href' will look for links inside anchor tags
- * 'http' will look for all text containing http:// or https:// in the content
- * 'all' will look for all links
- *
- * @param string $type http, href or all. Default is all
- * @param string $content The content to search for URLs in. Default is the post content.
- * @return array Array containing all links found in the content.
  * @since Cakifo 1.0
+ * @return string|bool URL or false when no link is present.
+ *
+ * @author wordpressdotorg
+ * @copyright Copyright (c) 2012, wordpressdotorg
+ * @link http://wordpress.org/extend/themes/twentyeleven
+ * @license http://wordpress.org/about/license
  */
-function cakifo_url_grabber( $type = 'all', $content = null ) {
+function cakifo_url_grabber() {
+	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+		 return false;
 
-	/* Set default content to post content */
-	if ( ! isset( $content ) )
-		$content = get_the_content();
-
-	/* Get all URLs from <a href=""> */
-	if ( 'href' == $type ) {
-		if ( ! preg_match_all( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content, $matches ) )
-			return false;
-
-		return array_map( 'esc_url_raw', $matches[1] );
-	}
-
-	/* Get all http:// URLs (excluding those in <a href="">) */
-	elseif ( 'http' == $type ) {
-		if ( ! preg_match_all( '/([^\"=\'>])((https?):\/\/[^\s<]+[^\s<\.)])/i', $content, $matches ) )
-			return false;
-
-		return array_map( 'esc_url_raw', $matches[0] );
-	}
-
-	/* Else, get all links */
-	if ( ! preg_match_all( '/(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i', $content, $matches ) )
-		return false;
-
-	return array_map( 'esc_url_raw', $matches[0] );
+	return esc_url_raw( $matches[1] );
 }
 endif; // cakifo_url_grabber
 
