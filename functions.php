@@ -338,7 +338,7 @@ function cakifo_slider_javascript() {
 	$defaults = array(
 		'selector'            => '.slides-container > .slide',	// Selector: Must match a simple pattern. '{container} > {slide}' -- Ignore pattern at your own peril
 		'animation'           => 'slide',		// String: Select your animation type, commonly "fade" or "slide." jQuery easing is supported!
-		'slideshow'           => true,			// Boolean: Animate slider automatically
+		'slideshow'           => /** !!! **/ false /** !!! **/,			// Boolean: Animate slider automatically
 		'slideshowSpeed'      => 4000,			// Integer: Set the speed of the slideshow cycling, in milliseconds
 		'pauseOnHover'        => true,			// Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
 		'video'               => true,			// Boolean: If using video in the slider, will prevent CSS3 3D Transforms to avoid graphical glitches

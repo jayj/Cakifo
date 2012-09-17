@@ -87,25 +87,7 @@
 							 */
 							elseif ( has_post_format( 'video' ) ) :
 
-								// oEmbed stores the video HTML in a custom field that starts with '_oembed_'
-								$post_metas = get_post_custom_keys();
-
-								if ( ! empty( $post_metas ) ) :
-									foreach( $post_metas as $post_meta_key ) :
-
-										if ( '_oembed_' == substr( $post_meta_key, 0, 8 ) ) {
-											$video = get_post_meta( get_the_ID(), $post_meta_key, true );
-
-											// Continue looping if the oEmbed is broken
-											if ( '{{unknown}}' == $video )
-												continue;
-
-											 // We only want the first video
-											break;
-										}
-
-									endforeach;
-								endif;
+								$video = cakifo_get_video_embed();
 
 								// There's a video!
 								if ( isset( $video ) ) {
