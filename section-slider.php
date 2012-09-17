@@ -75,6 +75,7 @@
 							) );
 
 							$thumbnail_size = cakifo_get_image_size( 'slider' );
+							$video = '';
 
 							// There's a thumbnail!
 							if ( $thumbnail ) :
@@ -127,12 +128,10 @@
 
 							endif;
 
-							unset( $video );
-
 						endif;
 					?>
 
-					<div class="entry-summary <?php if ( ! $thumbnail ) echo 'no-featured-image'; ?>">
+					<div class="entry-summary <?php if ( ! $video && ! $thumbnail ) echo 'no-featured-image'; ?>">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title]' ); ?>
 						<?php the_excerpt(); ?>
 						<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ); ?></a>
