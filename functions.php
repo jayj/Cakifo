@@ -135,7 +135,7 @@ function cakifo_theme_setup() {
 
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
-	add_action( 'template_redirect', 'cakifo_one_column' );
+	add_action( 'template_redirect', 'cakifo_theme_layout' );
 
 	/* Add the breadcrumb trail just after the container is open */
 	if ( current_theme_supports( 'breadcrumb-trail' ) ) {
@@ -491,9 +491,10 @@ function cakifo_topbar_search() {
 /**
  * Function for deciding which pages should have a one-column layout.
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.5
+ * @return void
  */
-function cakifo_one_column() {
+function cakifo_theme_layout() {
 
 	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
@@ -503,14 +504,29 @@ function cakifo_one_column() {
 
 	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
+
+	elseif ( 'layout-default' == theme_layouts_get_layout() )
+		add_filter( 'get_theme_layout', 'cakifo_theme_layout_global' );
+}
+
+/**
+ * Returns the global layout selected by the user.
+ *
+ * @since Cakifo 1.5
+ * @param string $layout
+ * @return string
+ */
+function cakifo_theme_layout_global( $layout ) {
+	//return 'layout-' . hybrid_get_setting( 'theme-layout' );
+	return 'layout-' . get_option( 'theme-layout' );
 }
 
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
  *
- * @param  string  $layout Not used.
- * @return string          Returns 'layout-1c'
- * @since  Cakifo 1.0
+ * @param string $layout
+ * @return string Returns 'layout-1c'
+ * @since Cakifo 1.0
  */
 function cakifo_theme_layout_one_column( $layout ) {
 	return 'layout-1c';
