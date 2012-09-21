@@ -1,0 +1,52 @@
+//
+// Helper classes
+// --------------------------------------------------
+
+.alignleft, .left {
+	float: left;
+}
+
+.alignright, .right {
+	float: right;
+}
+
+.aligncenter, .center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignnone,
+.block {
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: block;
+	overflow: hidden;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.last {
+	margin-right: 0!important;
+}
+
+/* This is used to hide content from browsers but allow screen readers to see it */
+.assistive-text {
+	position: absolute!important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+}

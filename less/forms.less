@@ -1,0 +1,320 @@
+//
+// Forms
+// --------------------------------------------------
+
+form { margin: 0; }
+
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+	border: 0;
+	*margin-left: -7px;
+}
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+
+button,
+input {
+	line-height: normal;
+	*overflow: visible;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/* Submit button */
+input[type="submit"],
+input[type="button"],
+button {
+	background: #464646;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font: bold 16px 'PT Serif', Georgia, serif;
+	padding: 11px 15px;
+	text-shadow: 1px 1px 0 #3e3e3e;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover {
+	background: #d54e21;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	text-shadow: 1px 1px 0 #b92b00;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+	background: #f9f9f9;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font: 14px 'PT Serif', Georgia, serif;
+	color: #999;
+	padding: 7px 6px;
+	-webkit-transition: all 200ms;
+	-moz-transition: all 200ms;
+	-o-transition: all 200ms;
+	-ms-transition: all 200ms;
+	transition: all 200ms;
+}
+
+input:focus, input:hover,
+textarea:focus, textarea:hover {
+	background: #fff;
+	border: 1px solid #f0b03c;
+	color: #555;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+select {
+	color: #444;
+}
+
+/* Labels */
+label {
+	color: #606060;
+	cursor: pointer;
+	font: 14px 'PT Serif', Georgia, serif;
+	padding-left: 2px;
+	-webkit-transition: color 150ms;
+	-moz-transition: color 150ms;
+	-o-transition: color 150ms;
+	-ms-transition: color 150ms;
+	transition: color 150ms;
+}
+
+label:hover {
+	color: #444;
+}
+
+#respond p.form-email > label {
+	padding-left: 18px;
+}
+
+span.required {
+	color: #555;
+	font: bold 16px sans-serif;
+	display: none; /* Hides the required * star */
+}
+
+/**
+ * Search form
+ */
+.search-form label {
+	padding-left: 0;
+}
+
+.search-form .search-text {
+	background: #fff url(images/search.png) no-repeat 5px center;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	font-size: 14px;
+	line-height: 1.5;
+	padding: 6px 10px 6px 27px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0, 0.1);
+	-webkit-transition: all 250ms ease-in-out;
+	-moz-transition: all 250ms ease-in-out;
+	-o-transition: all 250ms ease-in-out;
+	-ms-transition: all 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
+}
+
+.search-form .search-text:focus {
+	background-color: #f8f8f8;
+	border-color: #F0B03C;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1), 0 0 1px 1px #F0B03C;
+	outline: 0;
+}
+
+.search-form .search-text::webkit-placeholder { color: #ececec; }
+.search-form .search-text::moz-placeholder { color: #ececec; }
+.search-form .search-text::o-placeholder { color: #ececec; }
+.search-form .search-text::ms-placeholder { color: #ececec; }
+.search-form .search-text::placeholder { color: #ececec; }
+
+.search-form .search-submit {
+	margin-left: 10px;
+}
+
+/* Search form in sidebar */
+.widget-search .search-text {
+	margin-left: 10px;
+	width: 77%;
+}
+
+.widget-search .search-submit {
+	display: none;
+}
+
+/* Search form in the topbar */
+@media screen and (min-width: 980px) {
+	#topbar .search {
+		background: #262626 url(images/topbar.png) repeat;
+		border: none;
+		box-shadow: none;
+		float: right;
+		margin-top: 12px;
+		padding: 0;
+	}
+}
+
+#topbar input {
+	background-color: #666;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: 1px solid #000;
+	border-radius: 4px;
+	color: #ffffff;
+	color: rgba(255, 255, 255, 0.8);
+	line-height: normal;
+	padding: 7px 5px 7px 27px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+#topbar input:hover {
+	background-color: #bfbfbf;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #ffffff;
+}
+
+#topbar input:focus {
+	background-color: #ffffff;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+	color: #404040;
+	outline: 0;
+	text-shadow: none;
+}
+
+#topbar input:-moz-placeholder 			 { color: #e6e6e6; }
+#topbar input::-webkit-input-placeholder { color: #e6e6e6; }
+
+#topbar input:focus::-webkit-input-placeholder { color: #ccc; }
+#topbar input:focus::-moz-placeholder 		   { color: #ccc; }
+
+#topbar input[type="submit"] {
+	font-size: 14px;
+	padding: 7px 12px;
+}
+
+#topbar input[type="submit"]:hover {
+	background: #d54e21;
+}
+
+	/* IE fixes */
+	.oldie #topbar input[type="text"],
+	.oldie #topbar input[type="search"] {
+		width: auto;
+	}
+
+	.oldie #topbar input[type="submit"] {
+		width: auto;
+		margin-left: 5px;
+	}
+
+
+
+/* =============================================================================
+   Layout:  Comment form
+   ========================================================================== */
+
+#respond {
+	background: #f2f7fc url(images/content-orange-line.png) repeat-x;
+	border-radius: 0 0 5px 5px;
+	color: #555;
+	margin: 25px 0 25px 0;
+	padding: 20px 20px 0 20px;
+	overflow: hidden;
+}
+
+	/* Logged-in text */
+	#respond .log-in-out {
+		color: #777;
+		font-size: 14px;
+	}
+
+	/* Cancel reply link */
+	#reply-title small a {
+		font-size: 14px;
+		font-style: italic;
+		padding-left: 10px;
+	}
+
+/* Comment form paragraphs */
+#respond p.form-author {
+	float: left;
+	width: 50%;
+}
+
+#respond p.form-email {
+	float: right;
+	width: 50%;
+}
+
+#respond p.form-url {
+	clear: both;
+}
+
+/* Comment form inputs and textarea elements */
+#respond input[type="text"],
+#respond input[type="email"],
+#respond input[type="url"],
+#respond textarea {
+	display: block;
+	width: 98%;
+}
+
+#respond p.form-author input[type="text"] {
+	width: 90%;
+}
+
+#respond p.form-email input[type="email"] {
+	width: 90%;
+	float: right;
+}
