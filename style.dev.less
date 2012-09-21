@@ -6,9 +6,9 @@
  * @link https://github.com/jayj/Cakifo/wiki/Child-themes
  */
 
-/**
- * HTML5 display definitions
-**************************************/
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
 	display: block;
@@ -30,9 +30,9 @@ audio:not([controls]) {
 	display: none;
 }
 
-/**
- * Base
-**************************************/
+/* =============================================================================
+   Base
+   ========================================================================== */
 
 html {
 	font-size: 100%;
@@ -68,7 +68,10 @@ body.custom-background-empty #footer {
 	box-shadow: none;
 }
 
-/* Links */
+/* =============================================================================
+   Links
+   ========================================================================== */
+
 a {
 	color: #3083aa;
 	text-decoration: none;
@@ -87,13 +90,9 @@ a:active {
 	outline: 0; /* Improves readability when focused and also mouse hovered in all browsers */
 }
 
-/**
- * HTML elements
-**************************************/
-
-/**
- * Headings
- */
+/* =============================================================================
+   Typography:  Headings
+   ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
 	color: #555;
 	font-family: 'PT Serif', Georgia, serif;
@@ -204,9 +203,9 @@ h6 {
 	color: #111;
 }
 
-/**
- * Lists
- */
+/* =============================================================================
+   Typography:  Lists
+   ========================================================================== */
 ul,
 ol {
 	line-height: 32px;
@@ -265,9 +264,9 @@ dl dd {
 	margin: 5px 0 0 25px;
 }
 
-/**
- * Quotes
- */
+/* =============================================================================
+   Typography:  Quotes
+   ========================================================================== */
 blockquote,
 .author-profile {
 	background: #f5f8f9 url(images/quote.png);
@@ -405,9 +404,9 @@ blockquote.pull p:first-of-type:after {
 	opacity: 0.2;
 }
 
-/**
- * Code
- */
+/* =============================================================================
+   Typography:  Code
+   ========================================================================== */
 pre, code, kbd, samp {
 	font-family: monospace, serif;
 	_font-family: 'courier new', monospace;
@@ -436,9 +435,9 @@ pre code {
 	padding: 0;
 }
 
-/**
- * Embedded content
- */
+/* =============================================================================
+   Media
+   ========================================================================== */
 img {
 	border: 0;
 	-ms-interpolation-mode: bicubic; /* Improves image quality when scaled in IE7 */
@@ -466,9 +465,9 @@ object {
 	margin-bottom: 25px;
 }
 
-/**
- * Acronyms and abbreviations
- */
+/* =============================================================================
+   Typography:  HTML elements
+   ========================================================================== */
 abbr[title] {
 	border-bottom: 1px dotted; /* Addresses styling not present in IE7/8/9, S5, Chrome */
 }
@@ -479,9 +478,6 @@ acronym {
 	cursor: help;
 }
 
-/**
- * Other
- */
 hr {
 	clear: both;
 	display: block;
@@ -565,9 +561,9 @@ sub {
 	bottom: -0.25em;
 }
 
-/**
- * Tables
- */
+/* =============================================================================
+   Typography:  Tables
+   ========================================================================== */
 table {
 	border: 1px solid #e7e7e7;
 	border-collapse: collapse;
@@ -637,9 +633,9 @@ table {
 		padding: 10px;
 	}
 
-/**
- * Change color of selections
- */
+/* =============================================================================
+   Typography:  Selections
+   ========================================================================== */
 ::-moz-selection {
 	background: #568cbb;
 	color: #f4f8fb;
@@ -652,9 +648,9 @@ table {
 	text-shadow: 0 1px 0 #3d719d;
 }
 
-/**
- * Helper classes
- */
+/* =============================================================================
+   Misc:  Helper classes
+   ========================================================================== */
 .alignleft, .left {
 	float: left;
 }
@@ -704,9 +700,9 @@ table {
 	clip: rect(1px, 1px, 1px, 1px);
 }
 
-/**
- * Topbar
-**************************************/
+/* =============================================================================
+   Layout:  Topbar
+   ========================================================================== */
 
 #topbar {
 	background: #262626 url(images/topbar.png) repeat; /* The noise image is transparent */
@@ -729,10 +725,9 @@ table {
 	left: 0;
 }
 
-/**
- * Main navigation
- * Mobile-first approach
- */
+/* =============================================================================
+   Layout:  Main navigation
+   ========================================================================== */
 #topbar .main-navigation {
 	width: 100%;
 	margin: 0 auto;
@@ -922,9 +917,9 @@ table {
 	visibility: hidden;
 }
 
-/**
- * Header
-**************************************/
+/* =============================================================================
+   Layout:  Header
+   ========================================================================== */
 
 #branding {
 	padding: 80px 0 50px;
@@ -973,9 +968,9 @@ table {
 	padding: 4px 6px;
 }
 
-/**
- * Content
-**************************************/
+/* =============================================================================
+   Layout:  Content
+   ========================================================================== */
 
 #content,
 #footer {
@@ -1002,9 +997,9 @@ table {
 	float: right;
 }
 
-/**
- * Layouts
-**************************************/
+/* =============================================================================
+   Layout:  Theme Layouts
+   ========================================================================== */
 
 /**
  * Widths
@@ -1086,9 +1081,9 @@ table {
 	clear: none;
 }
 
-/**
- * Slider
-**************************************/
+/* =============================================================================
+   Layout:  Slider
+   ========================================================================== */
 
 #slider {
 	background: #ffffe9;
@@ -1284,9 +1279,9 @@ html[xmlns] .slides-container { display: block; }
 	display: block;
 }
 
-/**
- * Posts
-**************************************/
+/* =============================================================================
+   Layout:  Posts
+   ========================================================================== */
 
 .hentry {
 	border-bottom: 1px solid #eee;
@@ -1336,9 +1331,9 @@ html[xmlns] .slides-container { display: block; }
 	clear: both;
 }
 
-/**
- * Breadrumbs
- */
+/* =============================================================================
+   Components:  Breadcrumbs
+   ========================================================================== */
 .breadcrumbs {
 	background: #f8f8f7;
 	border-bottom: 1px solid #eee;
@@ -1365,15 +1360,17 @@ html[xmlns] .slides-container { display: block; }
 	font-style: italic;
 }
 
-/**
- * Share buttons
- */
+/* =============================================================================
+   Components:  Share buttons
+   ========================================================================== */
 .facebook-share-button,
 .twitter-share-button {
 	border: none;
 }
 
-/* Post formats */
+/* =============================================================================
+   Layout:  Post formats
+   ========================================================================== */
 
 .entry-header .post-format-link {
 	background-color: #ebebeb;
@@ -1500,9 +1497,9 @@ html[xmlns] .slides-container { display: block; }
 /* Format: image */
 /* This style is further down, after the image and caption styling */
 
-/**
- * Images
-*************************************/
+/* =============================================================================
+   Components:  Images
+   ========================================================================== */
 
 .thumbnail {
 	background: #fff;
@@ -1748,7 +1745,9 @@ img.alignright {
 	opacity: 0.8;
 }
 
-/* Author profile box */
+/* =============================================================================
+   Components:  Author box
+   ========================================================================== */
 .author-profile {
 	/* The other styles are other 'Quotes' */
 	padding: 25px 20px;
@@ -1774,7 +1773,9 @@ img.alignright {
 	margin-bottom: 0;
 }
 
-/* Loop meta */
+/* =============================================================================
+   Components:  Loop meta
+   ========================================================================== */
 .loop-meta {
 	background: #F8F8F8;
 	border-top: 1px solid #f0f0f0;
@@ -1835,9 +1836,9 @@ img.alignright {
 		color: #555;
 	}
 
-/**
- * Recent Posts (on frontpage)
-**************************************/
+/* =============================================================================
+   Components:  Recent Posts
+   ========================================================================== */
 
 #recent-posts .recent-post {
 	float: left;
@@ -1904,9 +1905,9 @@ img.alignright {
 		margin-left: 15px;
 	}
 
-/**
- * Headlines (category lists on frontpage)
-**************************************/
+/* =============================================================================
+   Components:  Headlines - Category lists
+   ========================================================================== */
 
 #headlines {
 	margin: 40px 0;
@@ -1978,9 +1979,9 @@ img.alignright {
 	margin-left: 10px;
 }
 
-/**
- * Attachments
-**************************************/
+/* =============================================================================
+   Components:  Attachment pages
+   ========================================================================== */
 
 #image-info {
 	overflow: hidden;
@@ -2037,9 +2038,9 @@ img.alignright {
 	float: right;
 }
 
-/**
- * 404 Error page
-**************************************/
+/* =============================================================================
+   Layout:  404 Error Page
+   ========================================================================== */
 
 .not-found-widgets {
 	margin-top: 40px;
@@ -2056,9 +2057,9 @@ img.alignright {
 	margin-right: 0;
 }
 
-/**
- * Pagination (.pagination .loop-pagination)
-**************************************/
+/* =============================================================================
+   Components:  Pagination
+   ========================================================================== */
 
 .pagination {
 	clear: both;
@@ -2114,9 +2115,9 @@ img.alignright {
 		float: right;
 	}
 
-/**
- * Sidebar
-**************************************/
+/* =============================================================================
+   Layout:  Sidebar
+   ========================================================================== */
 
 #sidebar-primary,
 #sidebar-secondary {
@@ -2127,9 +2128,9 @@ img.alignright {
 	clear: right;
 }
 
-/**
- * Widgets
- */
+/* =============================================================================
+   Layout:  Widgets
+   ========================================================================== */
 .widget {
 	margin-bottom: 25px;
 }
@@ -2216,9 +2217,9 @@ img.alignright {
 		margin-left: 7px;
 	}
 
-/**
- * Footer
-**************************************/
+/* =============================================================================
+   Layout:  Footer
+   ========================================================================== */
 
 #footer {
 	background-color: #f8fafb;
@@ -2274,9 +2275,9 @@ img.alignright {
 	margin-right: 0;
 }
 
-/**
- * Comments
-**************************************/
+/* =============================================================================
+   Layout:  Comments
+   ========================================================================== */
 
 .comment-list,
 .comment-list ol {
@@ -2373,9 +2374,9 @@ img.alignright {
 		clear: left;
 	}
 
-/**
- * Comment form
-**************************************/
+/* =============================================================================
+   Layout:  Comment form
+   ========================================================================== */
 
 #respond {
 	background: #f2f7fc url(images/content-orange-line.png) repeat-x;
@@ -2432,9 +2433,9 @@ img.alignright {
 	float: right;
 }
 
-/**
- * Forms
-**************************************/
+/* =============================================================================
+   Layout:  Forms
+   ========================================================================== */
 
 form { margin: 0; }
 
@@ -2692,9 +2693,9 @@ span.required {
 		margin-left: 5px;
 	}
 
-/**
- * Boxes
-**************************************/
+/* =============================================================================
+   Components:  Message boxes
+   ========================================================================== */
 
 .note,
 .warning,
@@ -2738,9 +2739,9 @@ span.required {
 	box-shadow: 0 0 5px #6c3;
 }
 
-/**
- * Twitter share button
-**************************************/
+/* =============================================================================
+   Components:  Twitter share button
+   ========================================================================== */
 
 .twitter-share {
 	display: inline-block;
@@ -2840,18 +2841,18 @@ span.required {
 	background-position: -10px -65px;
 }
 
-/**
- * Surprise!
-**************************************/
+/* =============================================================================
+   Components:  Surprise!
+   ========================================================================== */
 .shake-it-baby{-webkit-animation:shake-it-baby 1s infinite;-webkit-transition:all 1s ease;-moz-animation:shake-it-baby 1s infinite;-moz-transition:all 1s ease;animation:shake-it-baby 1s infinite;transition:all 1s ease}
 @-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
 @-moz-keyframes shake-it-baby{0%{-moz-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-moz-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-moz-transform:scale(1.0) skew(0);background-color:#fff}}
 @keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
 
-/**
- * Media queries for smaller screen sizes
- * These follow after primary styles so they will successfully override.
- */
+
+/* =============================================================================
+   Media Queries:  Max-width 980px
+   ========================================================================== */
 
 @media screen and (max-width: 980px) {
 
@@ -2933,6 +2934,9 @@ span.required {
 	}
 }
 
+/* =============================================================================
+   Media Queries:  Max-width 768px
+   ========================================================================== */
 
 @media screen and (max-width: 768px) {
 
@@ -3003,6 +3007,10 @@ span.required {
 	}
 }
 
+/* =============================================================================
+   Media Queries:  Max-width 480px
+   ========================================================================== */
+
 @media screen and (max-width: 480px) {
 
 	#branding {
@@ -3061,9 +3069,9 @@ span.required {
 	}
 }
 
-/**
- * Print styles
- */
+/* =============================================================================
+   Print styles
+   ========================================================================== */
 
 @media print {
 
