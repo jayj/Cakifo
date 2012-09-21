@@ -958,12 +958,14 @@ endif; // cakifo_get_default_link_color_no_hash
 /**
  * Filter the default theme settings
  *
- * @param  array  $settings Array with default settings
- * @return array            Array with the filtered default settings
+ * @param array $settings The default theme settings.
+ * @return array
  * @since Cakifo 1.4
  */
 function cakifo_filter_default_theme_settings( $settings ) {
-	$settings['link_color'] = cakifo_get_default_link_color();
+	$settings['link_color']          = cakifo_get_default_link_color();
+	$settings['featured_posts']      = 5;
+	$settings['headlines_num_posts'] = 4;
 
 	return $settings;
 }

@@ -167,13 +167,26 @@ function cakifo_theme_meta_box() { ?>
 		</tr>
 
 		<tr>
-			<?php $current_user = wp_get_current_user(); ?>
+			<?php
+				/**
+				 * Get Twitter username
+				 */
+				$current_user         = wp_get_current_user();
+				$twitter_current_user = $current_user->twitter;
+				$twitter_setting      = hybrid_get_setting( 'twitter_username' );
+				$twitter_username     = '';
+
+				if ( ! empty( $twitter_setting ) )
+					$twitter_username = $twitter_setting;
+				elseif( isset( $twitter_current_user ) )
+					$twitter_username = $current_user->twitter;
+			?>
 
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>"><?php _e( 'Twitter username:', 'cakifo' ); ?></label>
 			</th>
 			<td>
-				<p><input type="text" id="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>" name="<?php echo hybrid_settings_field_name( 'twitter_username' ); ?>" value="<?php if ( hybrid_get_setting( 'twitter_username' ) != '' ) echo esc_attr( hybrid_get_setting( 'twitter_username' ) ); elseif( isset( $current_user->twitter ) ) echo esc_attr( $current_user->twitter ); ?>" /></p>
+				<p><input type="text" id="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>" name="<?php echo hybrid_settings_field_name( 'twitter_username' ); ?>" value="<?php echo esc_attr( $twitter_username ); ?>" /></p>
 				<p><?php _e( 'Your Twitter username (if you have one)', 'cakifo' ); ?>
 			</td>
 		</tr>
