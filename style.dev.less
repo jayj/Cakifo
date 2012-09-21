@@ -45,14 +45,18 @@ html {
 }
 
 body {
-	background-color: #e3ecf2;
-	font: 16px/2 Georgia, Cambria, "Bitstream Charter", serif;
-	color: #606060;
+	background-color: @bodyBackground;
+	color: @textColor;
+	font-family: @baseFontFamily;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
 	margin: 0;
 }
 
 #wrapper {
-	width: 980px;
+	width: 100%;
+	max-width: @siteWidth;
+	min-width: 755px;
 	margin: 0 auto;
 }
 
@@ -76,12 +80,12 @@ body.custom-background-empty #footer {
    ========================================================================== */
 
 a {
-	color: #3083aa;
+	color: @linkColor;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #d64e20;
+	color: @linkColorHover;
 }
 
 a:focus {

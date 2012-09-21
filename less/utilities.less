@@ -2,22 +2,21 @@
 // Helper classes
 // --------------------------------------------------
 
-.alignleft, .left {
+.alignleft {
 	float: left;
 }
 
-.alignright, .right {
+.alignright {
 	float: right;
 }
 
-.aligncenter, .center {
+.aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.alignnone,
-.block {
+.alignnone {
 	clear: both;
 }
 
@@ -25,28 +24,30 @@
 	clear: both;
 }
 
-.clearfix:before,
-.clearfix:after {
-	content: "";
-	display: block;
-	overflow: hidden;
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-.clearfix {
-	zoom: 1;
-}
-
 .last {
-	margin-right: 0!important;
+	margin-right: 0 !important;
 }
 
 /* This is used to hide content from browsers but allow screen readers to see it */
 .assistive-text {
-	position: absolute!important;
-	clip: rect(1px 1px 1px 1px);
+	position: absolute !important;
+	height: 1px; width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px); // IE6, IE7
 	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
 }

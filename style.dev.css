@@ -8,6 +8,17 @@
  * You shouldn't make changes to this file. Use a child theme instead
  * @link https://github.com/jayj/Cakifo/wiki/Child-themes
  */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
 /* =============================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -54,12 +65,16 @@ html {
 }
 body {
   background-color: #e3ecf2;
-  font: 16px/2 Georgia, Cambria, "Bitstream Charter", serif;
-  color: #606060;
+  color: #555555;
+  font-family: Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 16px;
+  line-height: 1.8;
   margin: 0;
 }
 #wrapper {
-  width: 980px;
+  width: 100%;
+  max-width: 1080px;
+  min-width: 755px;
   margin: 0 auto;
 }
 p {
@@ -82,7 +97,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #d64e20;
+  color: #d54e21;
 }
 a:focus {
   outline: thin dotted;
@@ -849,47 +864,47 @@ table caption {
 /* =============================================================================
    Misc:  Helper classes
    ========================================================================== */
-.alignleft,
-.left {
+.alignleft {
   float: left;
 }
-.alignright,
-.right {
+.alignright {
   float: right;
 }
-.aligncenter,
-.center {
+.aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.alignnone,
-.block {
+.alignnone {
   clear: both;
 }
 .clear {
   clear: both;
 }
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: block;
-  overflow: hidden;
-}
-.clearfix:after {
-  clear: both;
-}
-.clearfix {
-  zoom: 1;
-}
 .last {
-  margin-right: 0!important;
+  margin-right: 0 !important;
 }
 /* This is used to hide content from browsers but allow screen readers to see it */
 .assistive-text {
-  position: absolute!important;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
+}
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
 }
 /* =============================================================================
    Layout:  Topbar
