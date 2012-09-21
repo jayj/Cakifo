@@ -37,10 +37,15 @@ audio:not([controls]) {
    Base
    ========================================================================== */
 
+// Apply a natural box layout model to all elements
+// http://paulirish.com/2012/box-sizing-border-box-ftw/
+* {
+	.box-sizing(border-box);
+}
+
 html {
 	font-size: 100%;
-	overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
-	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
 
@@ -51,6 +56,17 @@ body {
 	font-size: @baseFontSize;
 	line-height: @baseLineHeight;
 	margin: 0;
+
+	// Remove background color if a user removes the color
+	&.custom-background-empty {
+		background-color: @white;
+	}
+
+	&.custom-background-empty #content,
+	&.custom-background-empty #footer {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
 }
 
 #wrapper {
@@ -60,21 +76,6 @@ body {
 	margin: 0 auto;
 }
 
-p {
-	margin: 0 0 25px 0;
-}
-
-/* Remove background color if a user removes the color */
-body.custom-background-empty {
-	background-color: #fff;
-}
-
-body.custom-background-empty #content,
-body.custom-background-empty #footer {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
 /* =============================================================================
    Links
    ========================================================================== */
@@ -82,132 +83,95 @@ body.custom-background-empty #footer {
 a {
 	color: @linkColor;
 	text-decoration: none;
-}
 
-a:hover {
-	color: @linkColorHover;
-}
+	&:hover {
+		color: @linkColorHover;
+	}
 
-a:focus {
-	outline: thin dotted; /* Addresses outline displayed oddly in Chrome */
-}
+	&:focus {
+		.tab-focus();
+	}
 
-a:hover,
-a:active {
-	outline: 0; /* Improves readability when focused and also mouse hovered in all browsers */
+	&:hover,
+	&:active {
+		outline: 0; // Improves readability when focused and also mouse hovered in all browser
+	}
 }
 
 /* =============================================================================
    Typography:  Headings
    ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
-	color: #555;
-	font-family: 'PT Serif', Georgia, serif;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1.5;
-	margin: 0 0 25px 0;
+	color: @headingsColor;
+	font-family: @headingsFontFamily;
+	font-weight: @headingsFontWeight;
+	text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
 
 h1, h2 {
-	font-size: 24px;
+	font-size: @headingsFontSize;
+	letter-spacing: -1px;
+}
+
+.entry-title {
+	font-size: (@headingsFontSize + 4px);
+	margin-bottom: 5px;
 }
 
 h3 {
-	color: #d54e21;
-	font-size: 22px;
+	color: @orangeDark;
+	font-size: (@headingsFontSize - 4px);
 }
 
 .entry-content h3 {
-	background: #f7f7f7;
+	background: lighten(@grayLighter, 2.5%);
 	padding: 8px 10px;
 }
 
 h4 {
-	font-size: 20px;
-	font-weight: bold;
+	#font > .sans-serif(@headingsFontSize - 4px, bold);
 }
 
 h5 {
-	font-size: 18px;
+	font-size: (@headingsFontSize - 6px);
 }
 
 h6 {
-	font-size: 16px;
-	font-weight: bold;
+	#font > .shorthand(@headingsFontSize - 8px, normal);
 }
 
 /* Widget titles */
 .widget-title {
-	background: #f4f4f4;
-	background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: linear-gradient(top, #f9f9f9, #ececec);
-	border: 1px solid #e9e9e9;
-	border-bottom-color: #dfdfdf;
-	border-radius: 50px 30px;
-	color: #333;
-	font-size: 16px;
-	font-weight: bold;
-	margin-bottom: 15px;
-	padding: 8px 20px;
-	text-shadow: 0 1px 0 #fff;
+	.widget-title-bar;
 }
 
 /* Section titles */
 .section-title {
-	background: #d54e21;
-	background-image: -webkit-linear-gradient(top, #d54e21, #c8471b);
-	background-image: -moz-linear-gradient(top, #d54e21, #c8471b);
-	background-image: -o-linear-gradient(top, #d54e21, #c8471b);
-	background-image: -ms-linear-gradient(top, #d54e21, #c8471b);
-	background-image: linear-gradient(top, #d54e21, #c8471b);
-	border-radius: 30px;
-	color: #fff;
-	font: 18px 'PT Serif', Georgia, serif;
-	padding: 14px 50px;
-	margin: 0 0 30px -50px;
-	text-shadow: 1px 1px 0 #9c3412;
-	box-shadow: 0 0 0 3px rgba(255,255,255, 0.9), -4px 0 3px rgba(0,0,0, 0.3), inset 0 1px 3px #ac3d18;
-}
+	.section-title-bar;
+	box-shadow:
+		0 0 0 3px fade(@white, 90%),
+		-4px 0 3px fade(@black, 30%),
+		inset 0 1px 3px #ac3d18;
 
-.section-title a {
-	color: #fff;
-	display: block;
-}
+	a {
+		color: @white;
+		display: block;
 
-.section-title a:hover {
-	color: #f0efd1;
+		&:hover { color: @grayLighter; }
+	}
 }
 
 /* Grey section titles */
 .section-title.alternative-section-title {
-	background: #f4f4f4;
-	background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
-	background-image: linear-gradient(top, #f9f9f9, #ececec);
-	border: 1px solid #e9e9e9;
-	border-bottom-color: #dfdfdf;
-	color: #333;
-	font-size: 16px;
+	.widget-title-bar(30px);
 	margin-left: 0;
-	padding: 12px 25px;
-	text-shadow: 0 1px 0 #fff;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
 	box-shadow: none;
-}
 
-.section-title.alternative-section-title a {
-	color: #333;
-}
+	a {
+		color: @grayDark;
 
-.section-title.alternative-section-title a:hover {
-	color: #111;
+		&:hover { color: @black; }
+	}
 }
 
 /* =============================================================================
@@ -731,11 +695,6 @@ sub {
 .sticky {
 	background: #feffe0;
 	padding: 25px 20px 20px;
-}
-
-/*Post title */
-.entry-title {
-	margin: 0 0 10px 0;
 }
 
 /**

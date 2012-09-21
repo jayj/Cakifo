@@ -23,9 +23,9 @@
 @green:                 #093;
 @red:                   #9d261d;
 @yellow:                #ffc40d;
-@lightOrange:           #ffc768;
+@orangeLight:           #ffc768;
 @orange:                #f89406;
-@darkOrange:            #d54e21;
+@orangeDark:            #d54e21;
 @pink:                  #f71570;
 @purple:                #7a43b6;
 
@@ -41,7 +41,7 @@
 // Links
 // -------------------------
 @linkColor:             #3083aa;
-@linkColorHover:        @darkOrange;
+@linkColorHover:        @orangeDark;
 
 // Typography
 // -------------------------
@@ -52,9 +52,9 @@
 @baseFontSize:          16px;
 @baseFontFamily:        @serifFontFamily;
 @baseLineHeight:        1.8;
-@altFontFamily:         @sansFontFamily;
+@altFontFamily:         'PT Serif', @sansFontFamily;
 
-@headingsFontSize:              28px;
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    bold;    // instead of browser default, bold
-@headingsColor:         inherit; // empty to use BS default, @textColor
+@headingsFontSize:      26px;
+@headingsFontFamily:    @altFontFamily;
+@headingsFontWeight:    bold;
+@headingsColor:         inherit; // empty to use @textColor

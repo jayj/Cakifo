@@ -18,6 +18,33 @@
 	}
 }
 
+// Widget title bar
+// -------------------------
+.widget-title-bar(@radius: 50px 30px) {
+	#gradient > .vertical(#f9f9f9, #ececec);
+	border: 1px solid #e9e9e9;
+	border-bottom-color: #dfdfdf;
+	border-radius: @radius;
+	color: #333;
+	font-size: 18px;
+	padding: 8px 20px;
+	margin-bottom: @smallGutterWidth;
+	text-shadow: 0 1px 0 #fff;
+
+}
+
+// Section title bar
+// -------------------------
+.section-title-bar(@radius: 30px, @space: 60px) {
+	#gradient > .vertical(#d54e21, #c8471b);
+	border-radius: @radius;
+	color: #fff;
+	font-size: 24px;
+	padding: 10px @space;
+	margin: 0 0 @gutterWidth -(@space);
+	text-shadow: 1px 1px 0 #9c3412;
+}
+
 // Sizing shortcuts
 // -------------------------
 .size(@width, @height) {
@@ -27,6 +54,16 @@
 
 .square(@size) {
 	.size(@size, @size);
+}
+
+// Webkit-style focus
+// ------------------
+.tab-focus() {
+	// Default
+	outline: thin dotted #333;
+	// Webkit
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
 }
 
 // Fonts

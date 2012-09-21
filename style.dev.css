@@ -53,14 +53,14 @@ audio:not([controls]) {
 /* =============================================================================
    Base
    ========================================================================== */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   font-size: 100%;
-  overflow-y: scroll;
-  /* Keeps page centred in all browsers regardless of content height */
-
   -webkit-text-size-adjust: 100%;
-  /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
-
   -ms-text-size-adjust: 100%;
 }
 body {
@@ -71,23 +71,19 @@ body {
   line-height: 1.8;
   margin: 0;
 }
-#wrapper {
-  width: 100%;
-  max-width: 1080px;
-  min-width: 755px;
-  margin: 0 auto;
-}
-p {
-  margin: 0 0 25px 0;
-}
-/* Remove background color if a user removes the color */
 body.custom-background-empty {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 body.custom-background-empty #content,
 body.custom-background-empty #footer {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+#wrapper {
+  width: 100%;
+  max-width: 1080px;
+  min-width: 755px;
+  margin: 0 auto;
 }
 /* =============================================================================
    Links
@@ -100,15 +96,13 @@ a:hover {
   color: #d54e21;
 }
 a:focus {
-  outline: thin dotted;
-  /* Addresses outline displayed oddly in Chrome */
-
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 a:hover,
 a:active {
   outline: 0;
-  /* Improves readability when focused and also mouse hovered in all browsers */
-
 }
 /* =============================================================================
    Typography:  Headings
@@ -119,101 +113,103 @@ h3,
 h4,
 h5,
 h6 {
-  color: #555;
-  font-family: 'PT Serif', Georgia, serif;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1.5;
-  margin: 0 0 25px 0;
+  color: inherit;
+  font-family: 'PT Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-rendering: optimizelegibility;
 }
 h1,
 h2 {
-  font-size: 24px;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+.entry-title {
+  font-size: 30px;
+  margin-bottom: 5px;
 }
 h3 {
   color: #d54e21;
   font-size: 22px;
 }
 .entry-content h3 {
-  background: #f7f7f7;
+  background: #f4f4f4;
   padding: 8px 10px;
 }
 h4 {
-  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
   font-weight: bold;
+  line-height: 1.8;
 }
 h5 {
-  font-size: 18px;
+  font-size: 20px;
 }
 h6 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.8;
 }
 /* Widget titles */
 .widget-title {
-  background: #f4f4f4;
-  background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: linear-gradient(top, #f9f9f9, #ececec);
+  background-color: #f4f4f4;
+  background-image: -moz-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: -o-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: linear-gradient(top, #f9f9f9, #ececec 100%);
   border: 1px solid #e9e9e9;
   border-bottom-color: #dfdfdf;
   border-radius: 50px 30px;
   color: #333;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 18px;
   padding: 8px 20px;
+  margin-bottom: 25px;
   text-shadow: 0 1px 0 #fff;
 }
 /* Section titles */
 .section-title {
-  background: #d54e21;
-  background-image: -webkit-linear-gradient(top, #d54e21, #c8471b);
-  background-image: -moz-linear-gradient(top, #d54e21, #c8471b);
-  background-image: -o-linear-gradient(top, #d54e21, #c8471b);
-  background-image: -ms-linear-gradient(top, #d54e21, #c8471b);
-  background-image: linear-gradient(top, #d54e21, #c8471b);
+  background-color: #d04b1f;
+  background-image: -moz-linear-gradient(top, #d54e21, #c8471b 100%);
+  background-image: -webkit-linear-gradient(top, #d54e21, #c8471b 100%);
+  background-image: -o-linear-gradient(top, #d54e21, #c8471b 100%);
+  background-image: linear-gradient(top, #d54e21, #c8471b 100%);
   border-radius: 30px;
   color: #fff;
-  font: 18px 'PT Serif', Georgia, serif;
-  padding: 14px 50px;
-  margin: 0 0 30px -50px;
+  font-size: 24px;
+  padding: 10px 60px;
+  margin: 0 0 40px -60px;
   text-shadow: 1px 1px 0 #9c3412;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), -4px 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 3px #ac3d18;
 }
 .section-title a {
-  color: #fff;
+  color: #ffffff;
   display: block;
 }
 .section-title a:hover {
-  color: #f0efd1;
+  color: #eeeeee;
 }
 /* Grey section titles */
 .section-title.alternative-section-title {
-  background: #f4f4f4;
-  background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
-  background-image: linear-gradient(top, #f9f9f9, #ececec);
+  background-color: #f4f4f4;
+  background-image: -moz-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: -o-linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: linear-gradient(top, #f9f9f9, #ececec 100%);
   border: 1px solid #e9e9e9;
   border-bottom-color: #dfdfdf;
+  border-radius: 30px;
   color: #333;
-  font-size: 16px;
-  margin-left: 0;
-  padding: 12px 25px;
+  font-size: 18px;
+  padding: 8px 20px;
+  margin-bottom: 25px;
   text-shadow: 0 1px 0 #fff;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
+  margin-left: 0;
   box-shadow: none;
 }
 .section-title.alternative-section-title a {
-  color: #333;
+  color: #333333;
 }
 .section-title.alternative-section-title a:hover {
-  color: #111;
+  color: #000000;
 }
 /* =============================================================================
    Typography:  Lists
@@ -1146,7 +1142,7 @@ table caption {
 #footer {
   background: #ffffff url(less/less/images/content-orange-line.png) repeat-x;
   border-radius: 0 0 5px 5px;
-  padding: 20px;
+  padding: 40px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
 #main,
@@ -1225,7 +1221,7 @@ table caption {
  */
 /* One column layout */
 .layout-1c #main {
-  width: 940px;
+  width: 100%;
 }
 /* Three columns */
 .layout-3c-l #main,
@@ -1488,10 +1484,6 @@ html[xmlns] .slides-container {
 .sticky {
   background: #feffe0;
   padding: 25px 20px 20px;
-}
-/*Post title */
-.entry-title {
-  margin: 0 0 10px 0;
 }
 /**
  * Byline and entry meta
