@@ -46,12 +46,16 @@ function cakifo_theme_setup() {
 	/* Get action/filter hook prefix */
 	$prefix = hybrid_get_prefix();
 
+	/* Load Cakifo theme includes */
+	require_once( trailingslashit( THEME_DIR ) . 'functions/customize.php' );
+	require_once( trailingslashit( THEME_DIR ) . 'functions/post-formats.php' );
+	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
+
 	/* Add theme support for core framework features */
 	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
-	//add_theme_support( 'hybrid-core-template-hierarchy' );
 
 	// Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated (WordPress SEO is checked for in Hybrid Core)
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
@@ -77,17 +81,11 @@ function cakifo_theme_setup() {
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
-		require( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
+		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
 
-	/* Load the customizer functions */
-	require( trailingslashit( THEME_DIR ) . 'functions/customize.php' );
-
-	/* Load Post Format function */
-	require_once( trailingslashit( THEME_DIR ) . 'functions/post-formats.php' );
-
 	/* Add theme support for WordPress features */
-	add_theme_support( 'post-formats', array( 'aside', 'audio', 'video', 'gallery', 'quote', 'link', 'image', 'status', 'chat' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) );
 	add_theme_support( 'automatic-feed-links' );
 	add_editor_style();
 
@@ -228,9 +226,6 @@ function cakifo_load_theme_support() {
 
 	/* Load the Cakifo sidebars if supported */
 	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
-
-	/* Load Cakifo shortcodes if supported */
-	require_if_theme_supports( 'cakifo-shortcodes', $template_directory . 'functions/shortcodes.php' );
 
 	/* Load the Colorbox Script extention if supported. */
 	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
