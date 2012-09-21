@@ -157,8 +157,6 @@ function cakifo_theme_setup() {
 	add_filter( "{$prefix}_byline_quote", '__return_false' );
 	add_filter( "{$prefix}_byline_aside", '__return_false' );
 	add_filter( "{$prefix}_byline_link", '__return_false' );
-	add_filter( "{$prefix}_byline_status", '__return_false' );
-	add_filter( "{$prefix}_entry_meta_status", '__return_false' );
 	add_filter( "{$prefix}_byline_image", '__return_false' );
 
 	/* Excerpt read more link */

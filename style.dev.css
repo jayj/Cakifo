@@ -310,6 +310,11 @@ blockquote:before {
 	opacity: 0.35;
 }
 
+/* Hide the quote for embedded tweets */
+.twt-tweet:before {
+	display: none;
+}
+
 /* The quote after the blockquote */
 blockquote p:first-of-type:after {
 	content: "\201E";
@@ -1306,7 +1311,7 @@ html[xmlns] .slides-container { display: block; }
 .byline,
 .entry-meta {
 	color: #777;
-	font: 14px sans-serif;
+	font: 14px/2 sans-serif;
 	margin: 0 0 15px 0;
 }
 
@@ -1324,7 +1329,7 @@ html[xmlns] .slides-container { display: block; }
 	border-top: 1px solid #eee;
 	clear: both;
 	margin-top: 25px;
-	padding: 25px 20px 0;
+	padding: 25px 0 0;
 }
 
 .page-links {
@@ -1369,43 +1374,25 @@ html[xmlns] .slides-container { display: block; }
 }
 
 /* Post formats */
-.entry-header .entry-format {
-	background: none;
-	border-bottom: none;
-	border-radius: 0;
-	color: #777;
-	font-size: 10px;
-	letter-spacing: 0.1em;
-	line-height: 2.6em;
-	padding: 0;
-	position: absolute;
+
+.entry-header .post-format-link {
+	background-color: #ebebeb;
+	border-radius: 3px;
+	color: #848484;
+	font-size: 12px;
+	float: right;
+	padding: 3px 10px;
 	text-transform: uppercase;
-	text-shadow: none;
-	top: -5px;
+	position: absolute;
+	top: 5px;
+	right: 0;
 }
 
-.entry-format a {
-	color: #777;
+/* Hide titles */
+.format-aside .entry-title,
+.format-quote .entry-title {
+	display: none;
 }
-
-.entry-format a:hover {
-	color: #444;
-}
-
-.attachment .entry-format {
-	position: relative;
-}
-
-.entry-header hgroup .entry-title {
-	padding-top: 25px;
-}
-
-	/* Hide titles */
-	.format-aside .entry-title,
-	.format-quote .entry-title,
-	.format-status .entry-title {
-		display: none;
-	}
 
 /* Format: aside */
 .format-aside {
@@ -1457,24 +1444,37 @@ html[xmlns] .slides-container { display: block; }
 .chat-speaker-4 .chat-author { color: #127c10; }
 .chat-speaker-5 .chat-author { color: #1a1eb6; }
 
-/* Format: status */
-.format-status .note {
-	min-height: 40px;
+/**
+ * Format: status
+ */
+.format-status .entry-header {
+	margin-bottom: 5px;
 	position: relative;
 }
 
-.format-status .note p:last-of-type {
-	margin-bottom: 0;
+.format-status .entry-header h1 {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
 }
 
-.format-status .entry-header hgroup {
-	padding-top: 35px;
+.format-status .entry-header h2 {
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
 }
 
-.format-status .avatar {
-	position: relative;
-	top: -10px;
-	left: -10px;
+.format-status .entry-header a {
+	color: #666;
+}
+
+.format-status .entry-header a:hover {
+	color: #3083aa;
+}
+
+.format-status .entry-header .avatar {
+	margin-right: 18px;
 }
 
 /* Format: quote */
