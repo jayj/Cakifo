@@ -269,20 +269,12 @@ function cakifo_enqueue_script() {
 /**
  * Loads fonts from the Google Font API
  *
- * Adds a bbPress stylesheet as well if the plugin is active
- *
  * @since Cakifo 1.0
  */
 function cakifo_enqueue_style() {
 	$scheme = is_ssl() ? 'https' : 'http';
 
 	wp_enqueue_style( 'PT-Serif', $scheme . '://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
-
-	// Add a new bbPress stylesheet, if the plugin is active
-	if ( class_exists( 'bbPress' ) ) :
-		wp_dequeue_style( 'bbpress-style' );
-		wp_enqueue_style( 'bbp-cakifo-bbpress', THEME_URI . '/css/bbpress.css', array(), '1.3', 'screen' );
-	endif;
 }
 
 /**
