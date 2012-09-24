@@ -27,9 +27,6 @@ function cakifo_register_shortcodes() {
 
 	remove_shortcode( 'comment-published' );
 	add_shortcode( 'comment-published', 'cakifo_comment_published_shortcode' );
-
-	remove_shortcode( 'entry-author' );
-	add_shortcode( 'entry-author', 'cakifo_entry_author_shortcode' );
 }
 
 add_action( 'init', 'cakifo_register_shortcodes', 15 );
@@ -277,26 +274,6 @@ function cakifo_comment_published_shortcode( $atts ) {
 	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
 
 	return $atts['before'] . $published . $atts['after'];
-}
-
-/**
- * Displays an individual post's author with a link to his or her archive.
- *
- * It replaces the default Hybrid Core shortcode. The name is still the the same
- *
- * @param array  $atts
- * @since Cakifo 1.3
- */
-function cakifo_entry_author_shortcode( $atts ) {
-	$atts = shortcode_atts( array(
-		'rel'    => 'author',
-		'before' => '',
-		'after'  => '',
-	), $atts );
-
-	$author = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author_meta( 'display_name' ) ) . '">' . get_the_author_meta( 'display_name' ) . '</a></span>';
-
-	return $atts['before'] . $author . $atts['after'];
 }
 
 /**
