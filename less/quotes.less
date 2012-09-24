@@ -2,46 +2,100 @@
 // Quotes
 // --------------------------------------------------
 
-blockquote,
-.author-profile {
-	background: #f5f8f9 url(images/quote.png);
-	border: 1px solid #dde5e8; border-top: none;
-	border-radius: 5px;
-	color: #56717d;
-	font: normal 16px/32px 'PT Serif', Georgia, Palatino, serif;
-	margin: 25px auto;
-	padding: 30px 50px;
-	position: relative;
-	text-shadow: 0 1px 0 #fff;
-	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px rgba(0, 0, 0, .05);
-}
-
-blockquote blockquote {
-	background: #eef7f9;
-	color: #33505c;
-}
-
-blockquote,
+/*
+ * Sets consistent quote types
+ */
 q {
-	quotes: none;
+	quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
-q:before,
-q:after {
-	content: '';
-	content: none;
-}
+/**
+ * Blockquotes
+ */
+blockquote {
+	.blue-box(30px 50px);
+	clear: both;
 
-/* The quote before the blockquote */
-blockquote:before {
-	content: "\201C";
-	color: #bed1e1;
-	color: rgb(94, 141, 181);
-	font: 170px 'PT Serif', Georgia, serif;
-	position: absolute;
-	top: -45px;
-	left: -25px;
-	opacity: 0.35;
+	// Blockquotes within blockquotes
+	blockquote {
+		background: #eef7f9;
+		color: #33505c;
+	}
+
+	// Quote content
+	p {
+		margin-top: 5px;
+		position: relative;
+	}
+
+	em, cite {
+		font-style: italic;
+	}
+
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+
+	// The author of the quote
+	cite, span {
+		color: #91acbe;
+		display: block;
+		font-size: 14px;
+		margin-top: 20px;
+	}
+
+	span cite {
+		display: inline;
+		margin-top: 0;
+	}
+
+	// Aligned quotes
+	&.alignleft,
+	&.alignright {
+		clear: none;
+		width: 33%;
+		padding: 30px @smallGutterWidth;
+	}
+
+	&.aligncenter {
+		width: 66%;
+		text-align: center;
+	}
+
+	&.alignleft {
+		margin-right: @smallGutterWidth;
+	}
+
+	&.alignright {
+		margin-left: @smallGutterWidth;
+	}
+
+	// The quote before the blockquote
+	&:before {
+		content: "\201C";
+		color: rgb(94, 141, 181);
+		font: 170px @altFontFamily;
+		position: absolute;
+		top: -45px;
+		left: -25px;
+		opacity: 0.35;
+	}
+
+	// The quote after the blockquote
+	p:first-of-type:after {
+		content: "\201E";
+		color: rgb(94, 141, 181);
+		font: 70px @altFontFamily;
+		margin-left: 10px;
+		position: absolute;
+		bottom: -10px;
+		opacity: 0.25;
+	}
+
+	// Hide the quote if there's only one <p>
+	p:only-of-type:after {
+		display: none;
+	}
 }
 
 /* Hide the quote for embedded tweets */
@@ -49,92 +103,40 @@ blockquote:before {
 	display: none;
 }
 
-/* The quote after the blockquote */
-blockquote p:first-of-type:after {
-	content: "\201E";
-	color: #bed1e1;
-	color: rgb(94, 141, 181);
-	font: 70px  'PT Serif', Georgia, serif;
-	margin-left: 10px;
-	position: absolute;
-	bottom: -10px;
-	opacity: 0.25;
-}
-
-blockquote p:only-of-type:after {
-	display: none;
-}
-
-/* The author of the quote */
-blockquote cite,
-blockquote span {
-	color: #91acbe;
-	display: block;
-	font-size: 14px;
-	margin-top: 20px;
-}
-
-blockquote span cite {
-	display: inline;
-	margin-top: 0;
-}
-
-/* Other blockquote styles */
-blockquote p {
-	position: relative;
-	margin-top: 5px;
-}
-
-blockquote p:last-of-type {
-	margin-bottom: 0;
-}
-
-blockquote.alignleft,
-blockquote.alignright {
-	width: 33%;
-}
-
-blockquote em, blockquote cite {
-	font-style: italic;
-}
-
 /* Pull quotes */
 blockquote.pull {
 	font-size: 19px;
-	margin: 45px 10px 0;
 	/* Reset styles inherited from 'blockquote' */
 	background: none;
 	border: none;
 	text-shadow: none;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
 	box-shadow: none;
+
+	// Aligned pull quotes
+	&.alignleft {
+		margin: 0 @smallGutterWidth 0 0;
+		padding-right: 0;
+	}
+
+	&.alignright {
+		margin: 0 0 0 @smallGutterWidth;
+	}
+
+	// The pullquote quotes
+	&:before {
+		font-size: 120px;
+		opacity: 0.25;
+		top: -22px;
+		left: -12px;
+	}
+
+	&:after,
+	p:first-of-type:after {
+		font-size: 56px;
+		opacity: 0.2;
+	}
 }
 
-blockquote.pull.alignleft {
-	padding-right: 0;
-	margin: 45px 25px 0 0;
-}
 
-blockquote.pull.alignright {
-	margin: 45px 0 0 25px;
-}
 
-blockquote.pull.alignleft,
-blockquote.pull.alignright {
-	width: 33%;
-}
 
-/* The pullquote quotes */
-blockquote.pull:before {
-	font-size: 120px;
-	opacity: 0.25;
-	top: -22px;
-	left: -12px;
-}
-
-blockquote.pull:after,
-blockquote.pull p:first-of-type:after {
-	font-size: 56px;
-	opacity: 0.2;
-}

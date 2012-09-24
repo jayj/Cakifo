@@ -13,22 +13,32 @@
    HTML5 display definitions
    ========================================================================== */
 
+/*
+ * Corrects `block` display not defined in IE 8/9.
+ */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
 	display: block;
 }
 
+/*
+ * Corrects `inline-block` display not defined in IE 8/9
+ */
 audio, canvas, video {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
 }
 
-/* Prevents modern browsers from displaying 'audio' without controls */
+/*
+ * Prevents modern browsers from displaying `audio` without controls
+ * Remove excess height in iOS 5 devices.
+ */
 audio:not([controls]) {
-	display: none;
+    display: none;
+    height: 0;
 }
 
-/* Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4 */
+/* Addresses styling for `hidden` attribute not present in IE 8/9 */
 [hidden] {
 	display: none;
 }
@@ -37,12 +47,13 @@ audio:not([controls]) {
    Base
    ========================================================================== */
 
-// Apply a natural box layout model to all elements
+/* Apply a natural box layout model to all elements */
 // http://paulirish.com/2012/box-sizing-border-box-ftw/
 * {
 	.box-sizing(border-box);
 }
 
+/* Prevents iOS text size adjust after orientation change, without disabling user zoom */
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -52,9 +63,7 @@ html {
 body {
 	background-color: @bodyBackground;
 	color: @textColor;
-	font-family: @baseFontFamily;
-	font-size: @baseFontSize;
-	line-height: @baseLineHeight;
+	#font > .serif;
 	margin: 0;
 
 	// Remove background color if a user removes the color
@@ -69,6 +78,10 @@ body {
 	}
 }
 
+/**
+ * Set site width and center the site.
+ * @siteWidth is defined in less/variables.less
+ */
 #wrapper {
 	width: 100%;
 	max-width: @siteWidth;
@@ -88,24 +101,29 @@ a {
 		color: @linkColorHover;
 	}
 
+	// Addresses `outline` inconsistency between Chrome and other browsers
 	&:focus {
 		.tab-focus();
 	}
 
+	// Improves readability when focused and also mouse hovered in all browsers
 	&:hover,
 	&:active {
-		outline: 0; // Improves readability when focused and also mouse hovered in all browser
+		outline: 0;
 	}
 }
 
 /* =============================================================================
    Typography:  Headings
    ========================================================================== */
+
 h1, h2, h3, h4, h5, h6 {
 	color: @headingsColor;
 	font-family: @headingsFontFamily;
 	font-weight: @headingsFontWeight;
-	text-rendering: optimizelegibility; // Fix the character spacing for headings
+
+	// Fix the character spacing for headings
+	text-rendering: optimizelegibility;
 }
 
 h1, h2 {
@@ -113,19 +131,9 @@ h1, h2 {
 	letter-spacing: -1px;
 }
 
-.entry-title {
-	font-size: (@headingsFontSize + 4px);
-	margin-bottom: 5px;
-}
-
 h3 {
 	color: @orangeDark;
 	font-size: (@headingsFontSize - 4px);
-}
-
-.entry-content h3 {
-	background: lighten(@grayLighter, 2.5%);
-	padding: 8px 10px;
 }
 
 h4 {
@@ -140,9 +148,28 @@ h6 {
 	#font > .shorthand(@headingsFontSize - 8px, normal);
 }
 
+/* Entry titles */
+.entry-title {
+	font-size: (@headingsFontSize + 4px);
+	margin-bottom: 5px;
+}
+
+/* h3 headings in post content */
+.entry-content h3 {
+	background: lighten(@grayLighter, 2.5%);
+	padding: 8px 10px;
+}
+
 /* Widget titles */
 .widget-title {
 	.widget-title-bar;
+
+	// Links
+	a {
+		color: @grayDark;
+
+		&:hover { color: @linkColorHover; }
+	}
 }
 
 /* Section titles */
@@ -153,6 +180,7 @@ h6 {
 		-4px 0 3px fade(@black, 30%),
 		inset 0 1px 3px #ac3d18;
 
+	// Links
 	a {
 		color: @white;
 		display: block;
@@ -161,78 +189,16 @@ h6 {
 	}
 }
 
-/* Grey section titles */
-.section-title.alternative-section-title {
-	.widget-title-bar(30px);
-	margin-left: 0;
-	box-shadow: none;
-
-	a {
-		color: @grayDark;
-
-		&:hover { color: @black; }
-	}
-}
-
 /* =============================================================================
    Typography:  Lists
    ========================================================================== */
-ul,
-ol {
-	line-height: 32px;
-	margin: 0 0 25px 40px;
-	padding: 0;
+
+li {
+	line-height: @baseLineHeight + 0.4;
 }
 
-ul {
-	list-style: square;
-}
-
-ol {
-	list-style-type: decimal;
-}
-
-nav ul,
-nav ol {
-	list-style: none;
-	list-style-image: none;
-}
-
-ol ol {
-	list-style: upper-roman;
-}
-
-ol ol ol {
-	list-style: lower-roman;
-}
-
-ol ol ol ol {
-	list-style: upper-alpha;
-}
-
-ol ol ol ol ol {
-	list-style: lower-alpha;
-}
-
-ul ul, ol ol, ul ol, ol ul {
-	margin-bottom: 0;
-}
-
-dl {
-	margin: 0 0 25px 5px;
-}
-
-dd {
-	margin: 0 0 0 40px;
-}
-
-dl dt {
+dt {
 	font-weight: bold;
-	margin: 10px 0 0 0;
-}
-
-dl dd {
-	margin: 5px 0 0 25px;
 }
 
 /* =============================================================================
@@ -244,32 +210,39 @@ dl dd {
 /* =============================================================================
    Typography:  Code
    ========================================================================== */
-pre, code, kbd, samp {
-	font-family: monospace, serif;
-	_font-family: 'courier new', monospace;
-	font-size: 14px;
+
+/*
+ * Corrects font family set oddly in Safari 5 and Chrome.
+ */
+code, kbd, pre, samp {
+	#font > .monospace(inherit, normal);
 }
 
+/**
+ * Inline code
+ */
 code {
-	color: #093;
+	color: @green;
 }
 
+/**
+ * Blocks of code
+ */
 pre {
-	background: #464646;
-	border: solid #333;
-	border-width: 2px 0;
+	background: lighten(@grayDark, 6%);
 	border-radius: 5px;
-	color: #fff;
-	padding: 25px;
+	color: @white;
+	padding: @smallGutterWidth;
 	overflow: auto;
-	text-shadow: 0 1px 0 #222;
-	white-space: pre; white-space: pre-wrap; word-wrap: break-word;
-}
 
-pre code {
-	background: none;
-	color: #fff;
-	padding: 0;
+	/* Improves readability of pre-formatted text in all browsers */
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+
+	code {
+		color: @white;
+	}
 }
 
 /* =============================================================================
@@ -281,66 +254,64 @@ pre code {
 /* =============================================================================
    Typography:  HTML elements
    ========================================================================== */
+
+/* Addresses styling not present in IE 8/9, Safari 5, and Chrome */
 abbr[title] {
-	border-bottom: 1px dotted; /* Addresses styling not present in IE7/8/9, S5, Chrome */
+	border-bottom: 1px dotted;
+	cursor: help;
 }
 
 acronym {
 	text-transform: uppercase;
-	border-bottom: 1px dashed #666;
+	border-bottom: 1px dashed @gray;
 	cursor: help;
 }
 
-hr {
-	clear: both;
-	display: block;
-	height: 0;
-	border: 0;
-	border-bottom: 4px double #eee;
-	margin: 0 0 24px;
-	padding: 0;
-}
-
-iframe {
-	border: none;
-}
-
-iframe[seamless] {
-	background-color: transparent;
-	border: 0px none transparent;
-	padding: 0px;
-	overflow: hidden;
-}
-
-b, strong {
-	font-weight: bold; /* Addresses style set to 'bolder' in FF3/4, S4/5, Chrome */
+/*
+ * Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome
+ */
+b,
+strong {
+	font-weight: bold;
 }
 
 em, cite {
 	font-style: italic;
 }
 
-ins {
-	border-bottom: 1px solid #666;
-	font-style: italic;
-	text-decoration: none;
+/*
+ * Horizontal rule
+ */
+hr {
+	border: 0;
+	border-bottom: 4px double @grayLighter;
+	margin: @smallGutterWidth 0;
+	clear: both;
+	display: block;
+	height: 0;
+	padding: 0;
 }
 
-mark { /* Addresses styling not present in IE6/7/8/9 */
+/*
+ * Addresses styling not present in IE 8/9.
+ */
+mark {
 	background: #ff0;
-	color: #000;
+	color: @black;
 }
 
+/*
+ * Addresses styling not present in Safari 5 and Chrome.
+ */
 dfn {
-	font-style: italic;
+    font-style: italic;
 }
 
-del {
-	text-decoration: line-through;
-}
-
+/*
+ * Addresses inconsistent and variable font size in all browsers.
+ */
 small {
-	font-size: 75%;
+    font-size: 80%;
 }
 
 big {
@@ -357,7 +328,9 @@ dd address {
 	margin: 0;
 }
 
-/* Prevents sub and sup affecting line-height in all browsers */
+/*
+ * Prevents `sub` and `sup` affecting `line-height` in all browsers.
+ */
 sub,
 sup {
 	font-size: 75%;
@@ -383,16 +356,21 @@ sub {
 /* =============================================================================
    Typography:  Selections
    ========================================================================== */
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate
+ */
 ::-moz-selection {
-	background: #568cbb;
-	color: #f4f8fb;
-	text-shadow: 0 1px 0 #3d719d;
+	background: @selectionColor;
+	color: @selectionTextColor;
+	text-shadow: none;
 }
 
 ::selection {
-	background: #568cbb;
-	color: #f4f8fb;
-	text-shadow: 0 1px 0 #3d719d;
+	background: @selectionColor;
+	color: @selectionTextColor;
+	text-shadow: none;
 }
 
 /* =============================================================================

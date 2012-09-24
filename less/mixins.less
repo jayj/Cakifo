@@ -5,8 +5,6 @@
 // Clearfix
 // -------------------------
 .clearfix {
-	*zoom: 1;
-
 	&:before,
 	&:after {
 		content: "";
@@ -45,6 +43,23 @@
 	text-shadow: 1px 1px 0 #9c3412;
 }
 
+// Blue box
+// -------------------------
+.blue-box(@padding: @gutterWidth) {
+	background: #f5f8f9 ~"url(images/quote.png)"; // Escaped because of bug in SimpLESS: https://github.com/Paratron/SimpLESS/issues/74
+	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px fade(@black, 5%);
+	border: 1px solid #dde5e8;
+	border-top: none;
+	border-radius: 5px;
+	color: #56717d;
+	text-shadow: 0 1px 0 @white;
+	#font > .alternative(16px, normal, 32px);
+	margin: @smallGutterWidth auto;
+	padding: @padding;
+	position: relative;
+}
+
+
 // Sizing shortcuts
 // -------------------------
 .size(@width, @height) {
@@ -81,6 +96,10 @@
 		.monospace() {
 			font-family: @monoFontFamily;
 		}
+
+		.alternative() {
+			font-family: @altFontFamily;
+		}
 	}
 
 	.shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
@@ -101,6 +120,11 @@
 
 	.monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
 		#font > #family > .monospace;
+		#font > .shorthand(@size, @weight, @lineHeight);
+	}
+
+	.alternative(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+		#font > #family > .alternative;
 		#font > .shorthand(@size, @weight, @lineHeight);
 	}
 }
