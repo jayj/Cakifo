@@ -56,17 +56,6 @@ function cakifo_link_entry_meta( $meta ) {
 }
 
 /**
- * Change entry meta for the Image post format.
- *
- * @param string $meta The normal entry meta
- * @return string The changed entry meta
- * @since Cakifo 1.1
- */
-function cakifo_image_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( '<div>[entry-published] by [entry-author] [entry-edit-link before="<br/>"]</div> <div>[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="<br />Tagged "] [entry-comments-link before="<br />"]</div>', 'cakifo' ) . '</footer>' );
-}
-
-/**
  * Filters the content of the link format posts.  Wraps the content in the make_clickable() function
  * so that users can enter just a URL into the post content editor.
  *

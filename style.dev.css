@@ -1539,7 +1539,7 @@ html[xmlns] .slides-container {
   color: #1a1eb6;
 }
 /**
- * Format: status
+ * Format: Status
  */
 .format-status .entry-header {
   margin-bottom: 5px;
@@ -1569,7 +1569,33 @@ html[xmlns] .slides-container {
 /* Format: link */
 /* Format: video */
 /* Format: gallery */
-/* Image post format */
+/**
+ * Format: Image
+ */
+.format-image .entry-meta {
+  background: #e0e6e8;
+  border-radius: 3px;
+  color: #555555;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2;
+  padding: 25px;
+}
+.format-image .entry-meta .entry-meta-col {
+  display: inline-block;
+  float: left;
+  width: 40%;
+}
+.format-image .entry-meta .entry-meta-col + .entry-meta-col {
+  float: none;
+  width: 60%;
+}
+.format-image .entry-meta .comments-link,
+.format-image .entry-meta .edit,
+.format-image .entry-meta .category {
+  display: block;
+}
 /* =============================================================================
    Components:  Author box
    ========================================================================== */
