@@ -22,6 +22,9 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-format', 'cakifo_entry_format_shortcode' );
 
 	/* Replace some Hybrid Core shortcodes */
+	remove_shortcode( 'entry-title' );
+	add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
+
 	remove_shortcode( 'entry-published' );
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
 
@@ -34,16 +37,16 @@ add_action( 'init', 'cakifo_register_shortcodes', 15 );
 /**
  * RSS link shortcode
  *
- * @param  array  $atts
+ * @param  array  $attr
  * @return string  The RSS link
  * @since Cakifo 1.0
  */
-function cakifo_rss_link_shortcode( $atts ) {
+function cakifo_rss_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after'  => '',
 		'text'   => __( 'RSS', 'cakifo' ),
-	), $atts ) );
+	), $attr ) );
 
 	return $before . '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' .  $text . '</a>' . $after;
 }
@@ -54,18 +57,18 @@ function cakifo_rss_link_shortcode( $atts ) {
  * Taken from my Twitter Profile Field plugin
  *
  * @link (http://wordpress.org/extend/plugins/twitter-profile-field/, Twitter Profile Field)
- * @param  array  $atts
+ * @param  array  $attr
  * @return string  The Twitter username or username with a link to the profile.
  * @since Cakifo 1.0
  */
-function cakifo_twitter_shortcode( $atts ) {
+function cakifo_twitter_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'link'     => true,
 		'before'   => '',
 		'after'    => '',
 		'username' => hybrid_get_setting( 'twitter_username' ),
 		'text'     => __( 'Follow me on Twitter', 'cakifo' )
-	), $atts ) );
+	), $attr ) );
 
 	if ( empty( $username ) )
 		return;
@@ -79,14 +82,14 @@ function cakifo_twitter_shortcode( $atts ) {
 /**
  * Delicious link shortcode
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.0
  */
-function cakifo_entry_delicious_link_shortcode( $atts ) {
+function cakifo_entry_delicious_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after'  => '',
-	), $atts) );
+	), $attr) );
 
 	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Delicious', 'cakifo' ) . '</a>' . $after;
 }
@@ -96,14 +99,14 @@ function cakifo_entry_delicious_link_shortcode( $atts ) {
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.0
  */
-function cakifo_entry_digg_link_shortcode( $atts ) {
+function cakifo_entry_digg_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after'  => '',
-	), $atts) );
+	), $attr) );
 
 	$url = 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) );
 
@@ -116,10 +119,10 @@ function cakifo_entry_digg_link_shortcode( $atts ) {
  * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.0
  */
-function cakifo_entry_facebook_link_shortcode( $atts ) {
+function cakifo_entry_facebook_link_shortcode( $attr ) {
 
 	static $first = true;
 
@@ -133,7 +136,7 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 		'faces'       => 'false', // true, false
 		'colorscheme' => 'light', // light, dark
 		'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR
-	), $atts) );
+	), $attr) );
 
 	// Set default locale
 	$locale = ( isset( $locale ) ) ? $locale : 'en_US';
@@ -151,10 +154,10 @@ function cakifo_entry_facebook_link_shortcode( $atts ) {
 /**
  * Twitter link shortcode
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.0
  */
-function cakifo_entry_twitter_link_shortcode( $atts ) {
+function cakifo_entry_twitter_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'before' => '',
 		'after'  => '',
@@ -164,7 +167,7 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
 		'via'    => hybrid_get_setting( 'twitter_username' ),
 		'width'  => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
 		'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
-	), $atts) );
+	), $attr) );
 
 	// Load the PHP tweet button script if the theme supports it
 	if ( current_theme_supports( 'cakifo-twitter-button' ) ) :
@@ -207,10 +210,10 @@ function cakifo_entry_twitter_link_shortcode( $atts ) {
  * Google +1 shortcode
  *
  * @link (http://www.google.com/+1/button/, Google+ button)
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.2
  */
-function cakifo_entry_googleplus_link_shortcode( $atts ) {
+function cakifo_entry_googleplus_link_shortcode( $attr ) {
 
 	static $first = true;
 
@@ -221,7 +224,7 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
 		'layout'   => 'standard', // small, medium, standard, tall
 		'callback' => '',
 		'count'    => 'true' // true, false
-	), $atts) );
+	), $attr) );
 
 	// Only add the script once
 	$script = ( $first == true ) ? "<script>(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>" : "";
@@ -234,27 +237,56 @@ function cakifo_entry_googleplus_link_shortcode( $atts ) {
 }
 
 /**
+ * Displays a post's title with a link to the post.
+ * This version allows you to overwrite the tag.
+ *
+ * It replaces the default Hybrid Core shortcode. The name is still the the same
+ *
+ * @param array $attr
+ * @since Cakifo 1.5
+ */
+function cakifo_entry_title_shortcode( $attr ) {
+	$attr = shortcode_atts( array(
+		'permalink' => true,
+		'tag'       => 'h1'
+	), $attr );
+
+	$tag = $attr['tag'];
+	$class = sanitize_html_class( get_post_type() ) . '-title entry-title';
+
+	if ( false == (bool) $attr['permalink'] )
+		$title = the_title( "<{$tag} class='{$class}'>", "</{$tag}>", false );
+	else
+		$title = the_title( "<{$tag} class='{$class}'><a href='" . get_permalink() . "'>", "</a></{$tag}>", false );
+
+	if ( empty( $title ) && ! is_singular() )
+		$title = "<{$tag} class='{$class}'><a href='" . get_permalink() . "'>" . __( '(Untitled)', 'cakifo' ) . "</a></{$tag}>";
+
+	return $title;
+}
+
+/**
  * Displays the published date of an individual post in HTML5 format.
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param array  $atts
+ * @param array $attr
  * @since Cakifo 1.1
  */
-function cakifo_entry_published_shortcode( $atts ) {
-	$atts = shortcode_atts( array(
+function cakifo_entry_published_shortcode( $attr ) {
+	$attr = shortcode_atts( array(
 		'before'  => '',
 		'after'   => '',
 		'format'  => get_option( 'date_format' ),
 		'pubdate' => true,
-	), $atts );
+	), $attr );
 
 	// Pubdate attribute can be removed with [entry-published pubdate="something"]
-	$pubdate = ( $atts['pubdate'] === true ) ? 'pubdate' : '';
+	$pubdate = ( $attr['pubdate'] === true ) ? 'pubdate' : '';
 
-	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $atts['format'] ) . '</time>';
+	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $attr['format'] ) . '</time>';
 
-	return $atts['before'] . $published . $atts['after'];
+	return $attr['before'] . $published . $attr['after'];
 }
 
 /**
@@ -262,33 +294,33 @@ function cakifo_entry_published_shortcode( $atts ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.1
  */
-function cakifo_comment_published_shortcode( $atts ) {
-	$atts = shortcode_atts( array(
+function cakifo_comment_published_shortcode( $attr ) {
+	$attr = shortcode_atts( array(
 		'before' => '',
 		'after'  => ''
-	), $atts );
+	), $attr );
 
 	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
 
-	return $atts['before'] . $published . $atts['after'];
+	return $attr['before'] . $published . $attr['after'];
 }
 
 /**
  * Displays the post format of the current post
  *
- * @param array  $atts
+ * @param array  $attr
  * @since Cakifo 1.3
  */
-function cakifo_entry_format_shortcode( $atts ) {
-	$atts = shortcode_atts( array(
+function cakifo_entry_format_shortcode( $attr ) {
+	$attr = shortcode_atts( array(
 		'before' => '',
 		'after'  => ''
-	), $atts );
+	), $attr );
 
-	return $atts['before'] . get_post_format() . $atts['after'];
+	return $attr['before'] . get_post_format() . $attr['after'];
 }
 
 ?>
