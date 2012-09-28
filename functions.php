@@ -149,13 +149,11 @@ function cakifo_theme_setup() {
 	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_aside", 'cakifo_aside_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_link", 'cakifo_link_entry_meta' );
-	add_filter( "{$prefix}_entry_meta_image", 'cakifo_image_entry_meta' );
 
 	/* Hide byline and/or entry meta for certain post formats */
 	add_filter( "{$prefix}_byline_quote", '__return_false' );
 	add_filter( "{$prefix}_byline_aside", '__return_false' );
 	add_filter( "{$prefix}_byline_link", '__return_false' );
-	add_filter( "{$prefix}_byline_image", '__return_false' );
 
 	/* Excerpt read more link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
@@ -178,6 +176,9 @@ function cakifo_theme_setup() {
 
 	/* Filter the comment input field types. */
 	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
+
+	/* {@internal Needs description} */
+	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
 
 	/**
 	 * Custom header for logo upload
@@ -1017,6 +1018,28 @@ function cakifo_html5_comment_fields( $fields ) {
 		$fields['url'] = str_replace( 'type="text"', 'type="url"', $fields['url'] );
 
 	return $fields;
+}
+
+/**
+ * {@internal Needs description}
+ *
+ * @since Cakifo 1.5
+ */
+function cakifo_load_in_singular() {
+	// Loads the sidebar-after-single.php template'
+	if ( is_single() )
+		get_sidebar( 'after-single' );
+
+	// Loads the sidebar-after-singular.php template
+	get_sidebar( 'after-singular' );
+
+	do_atomic( 'after_singular' ); // cakifo_after_singular
+
+	// Loads the loop-nav.php template
+	get_template_part( 'loop-nav' );
+
+	// Loads the comments.php template
+	comments_template( '/comments.php', true );
 }
 
 ?>
