@@ -31,21 +31,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 			<?php echo apply_atomic_shortcode( 'entry_meta_status', '<footer class="entry-meta">' . __( '[post-format-link] published on [entry-published] [entry-edit-link before="| "]<br />[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged "]', 'cakifo' ) . '</footer>' ); ?>
 
-			<?php
-				// Loads the sidebar-after-single.php template
-				get_sidebar( 'after-single' );
-
-				// Loads the sidebar-after-singular.php template
-				get_sidebar( 'after-singular' );
-
-				do_atomic( 'after_singular' ); // cakifo_after_singular
-
-				// Loads the loop-nav.php template
-				get_template_part( 'loop-nav' );
-
- 				// Loads the comments.php template
-				comments_template( '/comments.php', true );
-			?>
+			<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
 		<?php else: ?>
 
