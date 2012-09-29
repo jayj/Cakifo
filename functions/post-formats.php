@@ -19,16 +19,6 @@ add_filter( 'the_content', 'cakifo_format_chat_content' );
 /* Auto-add paragraphs to the chat text. */
 add_filter( 'post_format_chat_text', 'wpautop' );
 
-/**
- * Change entry meta for the Aside post format.
- *
- * @param string $meta The normal entry meta
- * @return string The changed entry meta
- * @since Cakifo 1.1
- */
-function cakifo_aside_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-permalink after=" | "] By [entry-author] on [entry-published] [entry-terms taxonomy="category" before="in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
-}
 
 /**
  * Change entry meta for the Link post format.
