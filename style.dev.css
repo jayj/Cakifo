@@ -1483,11 +1483,6 @@ html[xmlns] .slides-container {
   top: 5px;
   right: 0;
 }
-/* Hide titles */
-.format-aside .entry-title,
-.format-quote .entry-title {
-  display: none;
-}
 /* Format: aside */
 .format-aside {
   border-top: 5px solid #eee;
@@ -1565,7 +1560,11 @@ html[xmlns] .slides-container {
 .format-status .entry-header .avatar {
   margin-right: 18px;
 }
-/* Format: quote */
+/* Format: Quote */
+.format-quote .entry-meta {
+  position: relative;
+  z-index: 10;
+}
 /* Format: link */
 /* Format: video */
 /* Format: Gallery */

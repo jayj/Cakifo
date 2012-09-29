@@ -15,12 +15,6 @@
 	right: 0;
 }
 
-/* Hide titles */
-.format-aside .entry-title,
-.format-quote .entry-title {
-	display: none;
-}
-
 /* Format: aside */
 .format-aside {
 	border-top: 5px solid #eee;
@@ -104,9 +98,11 @@
 	margin-right: 18px;
 }
 
-/* Format: quote */
-.format-quote {
-
+/* Format: Quote */
+.format-quote .entry-meta {
+	// Set z-index higher than the Quotes on <blockquote>
+	position: relative;
+	z-index: 10;
 }
 
 /* Format: link */

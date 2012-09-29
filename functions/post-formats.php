@@ -20,20 +20,6 @@ add_filter( 'the_content', 'cakifo_format_chat_content' );
 add_filter( 'post_format_chat_text', 'wpautop' );
 
 /**
- * Change entry meta for the Quote post format.
- *
- * @param string $meta The normal entry meta
- * @return string The changed entry meta
- * @since Cakifo 1.1
- */
-function cakifo_quote_entry_meta( $meta ) {
-	if ( is_single() )
-		return do_shortcode( '<footer class="entry-meta">' . __( 'Posted by [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
-
-	return do_shortcode( '<footer class="entry-meta">' . __( '[entry-permalink] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
-}
-
-/**
  * Change entry meta for the Aside post format.
  *
  * @param string $meta The normal entry meta

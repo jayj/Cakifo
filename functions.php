@@ -146,12 +146,10 @@ function cakifo_theme_setup() {
 	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
 
 	/* Change entry meta for certain post formats */
-	add_filter( "{$prefix}_entry_meta_quote", 'cakifo_quote_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_aside", 'cakifo_aside_entry_meta' );
 	add_filter( "{$prefix}_entry_meta_link", 'cakifo_link_entry_meta' );
 
 	/* Hide byline and/or entry meta for certain post formats */
-	add_filter( "{$prefix}_byline_quote", '__return_false' );
 	add_filter( "{$prefix}_byline_aside", '__return_false' );
 	add_filter( "{$prefix}_byline_link", '__return_false' );
 
