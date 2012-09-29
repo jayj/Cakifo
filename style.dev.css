@@ -1568,7 +1568,12 @@ html[xmlns] .slides-container {
 /* Format: quote */
 /* Format: link */
 /* Format: video */
-/* Format: gallery */
+/* Format: Gallery */
+.image-count {
+  color: #999999;
+  font-size: 15px;
+  font-style: italic;
+}
 /**
  * Format: Image
  */
