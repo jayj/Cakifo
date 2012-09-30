@@ -439,6 +439,10 @@ img.alignleft {
 img.alignright {
   margin: 0 0 12px 25px;
 }
+/* Avatars */
+.avatar {
+  float: left;
+}
 /* Remove borders from some images */
 .wp-smiley,
 .no-image-border,
@@ -1073,7 +1077,7 @@ table caption {
    ========================================================================== */
 #content,
 #footer {
-  background: #ffffff url(less/less/images/content-orange-line.png) repeat-x;
+  background: #ffffff url(images/content-orange-line.png) repeat-x;
   border-radius: 0 0 5px 5px;
   padding: 40px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
@@ -1532,11 +1536,9 @@ html[xmlns] .slides-container {
 .chat-speaker-5 .chat-author {
   color: #1a1eb6;
 }
-/**
- * Format: Status
- */
+/* Format: Status */
 .format-status .entry-header {
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   position: relative;
 }
 .format-status .entry-header h1 {

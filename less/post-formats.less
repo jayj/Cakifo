@@ -63,42 +63,37 @@
 .chat-speaker-4 .chat-author { color: #127c10; }
 .chat-speaker-5 .chat-author { color: #1a1eb6; }
 
-/**
- * Format: Status
- */
+/* Format: Status */
 .format-status .entry-header {
-	margin-bottom: 5px;
+	margin-bottom: @smallGutterWidth;
 	position: relative;
-}
 
-.format-status .entry-header h1 {
-	display: inline-block;
-	font-size: 16px;
-	font-weight: normal;
-	margin: 0;
-}
+	h1 {
+		display: inline-block;
+		font-size: 16px;
+		font-weight: normal;
+		margin: 0;
+	}
 
-.format-status .entry-header h2 {
-	font-size: 13px;
-	font-weight: normal;
-	margin: 0;
-}
+	h2 {
+		font-size: 13px;
+		font-weight: normal;
+		margin: 0;
+	}
 
-.format-status .entry-header a {
-	color: #666;
-}
+	a {
+		color: #666;
+		&:hover { color: #3083aa; }
+	}
 
-.format-status .entry-header a:hover {
-	color: #3083aa;
-}
-
-.format-status .entry-header .avatar {
-	margin-right: 18px;
+	.avatar {
+		margin-right: 18px;
+	}
 }
 
 /* Format: Quote */
 .format-quote .entry-meta {
-	// Set z-index higher than the Quotes on <blockquote>
+	// Set z-index higher than the quotes on <blockquote>
 	position: relative;
 	z-index: 10;
 }
