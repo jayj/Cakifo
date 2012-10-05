@@ -22,7 +22,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_aside', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' ); ?>
+			<?php echo apply_atomic_shortcode( 'byline_audio', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 		</header> <!-- .entry-header -->
 
 		<div class="entry-content">
@@ -31,7 +31,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 		</div> <!-- .entry-content -->
 
 		<?php
-			echo apply_atomic_shortcode( 'entry_meta_aside',
+			echo apply_atomic_shortcode( 'entry_meta_audio',
 				'<footer class="entry-meta">' . __(
 					'[entry-terms taxonomy="category" before="Posted in "]
 					 [entry-terms before="| Tagged "]', 'cakifo' ) .
@@ -63,7 +63,17 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 		<?php } ?>
 
-		<?php echo apply_atomic_shortcode( 'byline_aside', '<footer class="entry-meta">' . __( 'Published on [entry-published] by [entry-author] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' ); ?>
+		<?php
+			echo apply_atomic_shortcode( 'byline_audio',
+				'<footer class="entry-meta">' . __(
+					'Published on [entry-published]
+					 by [entry-author]
+					 [entry-permalink before="| "]
+					 [entry-comments-link before="| "]
+					 [entry-edit-link before=" | "]', 'cakifo' ) .
+				'</footer> <!-- .entry-meta -->'
+			);
+		?>
 
 	<?php endif; ?>
 
