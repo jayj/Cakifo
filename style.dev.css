@@ -1567,6 +1567,13 @@ html[xmlns] .slides-container {
   z-index: 10;
 }
 /* Format: link */
+.format-link .entry-title:hover .meta-nav {
+  margin-left: 5px;
+  -webkit-transition: margin-left 200ms ease-in-out;
+  -moz-transition: margin-left 200ms ease-in-out;
+  -o-transition: margin-left 200ms ease-in-out;
+  transition: margin-left 200ms ease-in-out;
+}
 /* Format: video */
 /* Format: Gallery */
 .image-count {

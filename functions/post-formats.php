@@ -19,18 +19,6 @@ add_filter( 'the_content', 'cakifo_format_chat_content' );
 /* Auto-add paragraphs to the chat text. */
 add_filter( 'post_format_chat_text', 'wpautop' );
 
-
-/**
- * Change entry meta for the Link post format.
- *
- * @param string $meta The normal entry meta
- * @return string The changed entry meta
- * @since Cakifo 1.1
- */
-function cakifo_link_entry_meta( $meta ) {
-	return do_shortcode( '<footer class="entry-meta">' . __( 'Link recommended by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' );
-}
-
 /**
  * Filters the content of the link format posts.  Wraps the content in the make_clickable() function
  * so that users can enter just a URL into the post content editor.
