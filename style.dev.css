@@ -178,7 +178,7 @@ h6 {
   color: #333;
   font-size: 18px;
   padding: 8px 20px;
-  margin-bottom: 25px;
+  margin: 0 0 25px;
   text-shadow: 0 1px 0 #fff;
 }
 .widget-title a {
@@ -1079,26 +1079,18 @@ table caption {
 #footer {
   background: #ffffff url(images/content-orange-line.png) repeat-x;
   border-radius: 0 0 5px 5px;
-  padding: 40px;
+  padding: 60px 40px 40px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
-#main,
-.widget-area {
-  margin-top: 40px;
-}
 #main {
-  width: 630px;
+  width: 650px;
   float: left;
   position: relative;
 }
 #sidebar-primary,
 #sidebar-secondary {
-  width: 280px;
+  width: 310px;
   float: right;
-}
-#sidebar-primary,
-#sidebar-secondary {
-  word-wrap: break-word;
 }
 #sidebar-secondary {
   clear: right;
@@ -1108,18 +1100,18 @@ table caption {
    ========================================================================== */
 #footer {
   background-color: #f8fafb;
+  text-shadow: 1px 1px 0 #fff;
+  padding-top: 40px;
   margin: 40px 0;
   position: relative;
-  text-shadow: 1px 1px 0 #fff;
 }
-/* Footer text */
 #footer .footer-content {
   margin-top: 10px;
 }
 #footer .copyright,
 #footer .credit {
   width: 50%;
-  margin-bottom: 0;
+  margin: 0;
 }
 #footer .copyright {
   float: left;
@@ -1128,24 +1120,29 @@ table caption {
   float: right;
   text-align: right;
 }
-/* Footer sidebar */
+/**
+ * Footer Widget Area
+ */
 #sidebar-subsidiary {
   clear: both;
+  margin-top: 20px;
+  /* Two columns */
+
+  /* Three columns */
+
 }
-/* Two Footer Widget Areas */
 #sidebar-subsidiary.two-col .widget-area {
   float: left;
-  margin-right: 3.7%;
-  width: 48.1%;
+  margin-right: 4%;
+  width: 48%;
 }
 #sidebar-subsidiary.two-col .widget-area + .widget-area {
   margin-right: 0;
 }
-/* Three Footer Widget Areas */
 #sidebar-subsidiary.three-col .widget-area {
   float: left;
-  margin-right: 3.7%;
-  width: 30.8%;
+  margin-right: 3.5%;
+  width: 31%;
 }
 #sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
   margin-right: 0;
@@ -1154,70 +1151,79 @@ table caption {
    Layout:  Theme Layouts
    ========================================================================== */
 /**
- * Widths
+ * One column
  */
-/* One column layout */
 .layout-1c #main {
   width: 100%;
 }
-/* Three columns */
+/**
+ * Two columns
+ */
+.layout-2c-r #main {
+  float: right;
+}
+.layout-2c-r #sidebar-primary,
+.layout-2c-r #sidebar-secondary {
+  float: left;
+  clear: left;
+  margin-left: -15px;
+}
+/**
+ * Three columns
+ */
+.layout-3c-c #sidebar-primary,
+.layout-3c-r #sidebar-primary,
+.layout-3c-l #sidebar-primary,
+.layout-3c-c #sidebar-secondary,
+.layout-3c-r #sidebar-secondary,
+.layout-3c-l #sidebar-secondary {
+  clear: none;
+  width: 225px;
+}
 .layout-3c-l #main,
 .layout-3c-r #main {
-  width: 490px;
-}
-.layout-3c-c #main {
   width: 500px;
-  margin-left: 220px;
 }
-.layout-3c-c #sidebar-primary,
-.layout-3c-l #sidebar-primary,
-.layout-3c-r #sidebar-primary,
-.layout-3c-c #sidebar-secondary,
-.layout-3c-l #sidebar-secondary,
-.layout-3c-r #sidebar-secondary {
-  width: 200px;
+/* Three columns, center */
+.layout-3c-c #main {
+  float: left;
+  width: 500px;
+  margin-left: 250px;
+}
+.layout-3c-c #sidebar-primary {
+  float: left;
+  margin-left: -765px;
+}
+.layout-3c-c #sidebar-secondary {
+  float: right;
+  margin-right: -15px;
+}
+/* Three columns, left */
+.layout-3c-l #main {
+  float: left;
 }
 .layout-3c-l #sidebar-primary,
 .layout-3c-l #sidebar-secondary {
+  float: left;
   margin-left: 25px;
 }
-.layout-3c-r #sidebar-primary,
-.layout-3c-r #sidebar-secondary {
-  margin-right: 25px;
+.layout-3c-l #sidebar-primary {
+  margin-left: 40px;
 }
-.layout-3c-c #sidebar-primary {
-  margin-left: -720px;
+.layout-3c-l #sidebar-secondary {
+  margin-right: -15px;
 }
-/**
- * Floating
- */
-.layout-2c-r #main,
-.layout-3c-r #main,
-.layout-3c-c #sidebar-secondary {
+/* Three columns, right */
+.layout-3c-r #main {
   float: right;
 }
-.layout-3c-c #sidebar-primary,
-.layout-2c-r #sidebar-primary,
-.layout-3c-l #sidebar-primary,
 .layout-3c-r #sidebar-primary,
-.layout-2c-r #sidebar-secondary,
-.layout-3c-l #sidebar-secondary,
-.layout-3c-r #sidebar-secondary,
-.layout-3c-l #main,
-.layout-3c-c #main {
-  float: left;
-}
-/**
- * Clearing
- */
-.layout-2c-r #sidebar-secondary {
-  clear: left;
-}
-.layout-3c-l #sidebar-primary,
-.layout-3c-r #sidebar-primary,
-.layout-3c-l #sidebar-secondary,
 .layout-3c-r #sidebar-secondary {
-  clear: none;
+  float: left;
+  margin-right: 25px;
+}
+.layout-3c-r #sidebar-primary {
+  margin-left: -15px;
 }
 /* =============================================================================
    Layout:  Slider
@@ -1938,6 +1944,10 @@ html[xmlns] .slides-container {
    ========================================================================== */
 .widget {
   margin-bottom: 25px;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 #sidebar-after-singular .widget .textwidget,
 #sidebar-after-single .widget .textwidget {
