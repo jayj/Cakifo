@@ -382,9 +382,9 @@ function cakifo_slider_javascript() {
 /**
  * Change the thumbnail size to 'small' for archives and search pages.
  *
- * @param  array  $args The 'Get the Image' arguments
- * @return array        The filtered arguments
- * @since  Cakifo 1.1
+ * @param array $args The 'Get the Image' arguments
+ * @return array      The filtered arguments
+ * @since Cakifo 1.1
  */
 function cakifo_get_the_image_arguments( $args ) {
 
