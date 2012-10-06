@@ -1498,7 +1498,7 @@ html[xmlns] .slides-container {
   margin-top: 0;
   padding-top: 0;
 }
-/* Format: chat */
+/* Format: Chat */
 .chat-transcript {
   margin: 25px 0;
 }
@@ -1518,23 +1518,38 @@ html[xmlns] .slides-container {
 .chat-text {
   padding-left: 25px;
 }
-.chat-text p:last-of-type {
+.chat-text p {
+  margin-top: 10px;
   margin-bottom: 0;
 }
+/* Treat <em> tags as a seperator between two persons
+   unless there's a .chat-author before the .chat-text */
+.chat-text em {
+  display: inline-block;
+  margin-left: -25px;
+}
+.chat-author + .chat-text em {
+  display: inline;
+  margin-left: 0;
+}
+/* Give the chat person different colors */
 .chat-speaker-1 .chat-author {
   color: #d54e21;
 }
 .chat-speaker-2 .chat-author {
-  color: #11739d;
+  color: #0058b4;
 }
 .chat-speaker-3 .chat-author {
-  color: #8b0f9d;
+  color: #7a43b6;
 }
 .chat-speaker-4 .chat-author {
-  color: #127c10;
+  color: #00802b;
 }
 .chat-speaker-5 .chat-author {
-  color: #1a1eb6;
+  color: #ea0863;
+}
+.chat-speaker-6 .chat-author {
+  color: #9d261d;
 }
 /* Format: Status */
 .format-status .entry-header {

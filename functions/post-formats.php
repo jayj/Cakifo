@@ -81,7 +81,7 @@ function cakifo_format_chat_content( $content ) {
 	global $_post_format_chat_ids;
 
 	/* If this is not a 'chat' post, return the content. */
-	if ( !has_post_format( 'chat' ) )
+	if ( ! has_post_format( 'chat' ) )
 		return $content;
 
 	/* Set the global variable of speaker IDs to a new, empty array for this chat. */
