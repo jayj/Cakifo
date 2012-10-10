@@ -493,7 +493,6 @@ function cakifo_theme_layout() {
  * @return string
  */
 function cakifo_theme_layout_global( $layout ) {
-	//return 'layout-' . hybrid_get_setting( 'theme-layout' );
 	return 'layout-' . get_option( 'theme-layout' );
 }
 
