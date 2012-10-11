@@ -203,7 +203,7 @@ function cakifo_format_chat_row_id( $chat_author ) {
  * @global object $wp_embed The global WP_Embed object.
  * @return string
  */
-function cakifo_get_video_embed() {
+function cakifo_get_video_embed( $width = null ) {
 	global $wp_embed;
 
 	/* If this is not a 'video' post, return. */
@@ -215,6 +215,10 @@ function cakifo_get_video_embed() {
 
 	/* Set the default $embed variable to false. */
 	$embed = false;
+
+	/* Set the default $width variable to the content width. */
+	if ( ! isset( $width ) )
+		$width = hybrid_get_content_width();
 
 	/* Use WP's built in WP_Embed class methods to handle the dirty work. */
 	add_filter( 'cakifo_video_shortcode_embed', array( $wp_embed, 'run_shortcode' ) );
@@ -231,7 +235,7 @@ function cakifo_get_video_embed() {
 		foreach ( $matches  as $value ) {
 
 			/* Apply filters (let WP handle this) to get an embedded video. */
-			$embed = apply_filters( 'cakifo_video_shortcode_embed', '[embed]' . $value[1]. '[/embed]' );
+			$embed = apply_filters( 'cakifo_video_shortcode_embed', "[embed width='{$width}']" . $value[1]. '[/embed]' );
 
 			/* If no embed, continue looping through the array of matches. */
 			if ( empty( $embed ) )
