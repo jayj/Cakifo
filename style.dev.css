@@ -1034,40 +1034,37 @@ table caption {
 }
 #site-title {
   float: left;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 40px;
 }
 #site-title span {
   font-size: 46px;
   font-weight: normal;
+  line-height: 1.8;
   letter-spacing: -2px;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
 }
 #site-title.display-header-text span {
-  position: relative!important;
+  position: relative !important;
   clip: auto;
-  /*position: absolute!important;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);*/
-
 }
 #site-title a {
   color: #3083aa;
 }
 #site-title a:hover {
-  color: #d64e20;
+  color: #d54e21;
 }
 #site-description {
-  color: #666;
-  font: 21px 'PT Serif', Georgia, serif;
-  float: right;
-  margin: 15px 20px 0 0;
-}
-.custom-background #site-description {
-  background-color: #fff;
+  background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.53);
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 21px;
+  font-weight: normal;
+  line-height: 1.8;
   border-radius: 3px;
-  color: #7a7a7a;
-  padding: 4px 6px;
+  color: #555555;
+  float: right;
+  margin: 10px 40px 0 0;
+  padding: 2px 8px;
 }
 /* =============================================================================
    Layout:  Content

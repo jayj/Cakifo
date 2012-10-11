@@ -414,50 +414,40 @@ sub {
    ========================================================================== */
 
 #branding {
-	padding: 80px 0 50px;
+	padding: (@gutterWidth * 2) 0 (@gutterWidth + 10px);
 }
 
 #site-title {
 	float: left;
-	margin: 0 0 0 20px;
-}
+	margin: 0 0 0 @gutterWidth;
 
-#site-title span {
-	font-size: 46px;
-	font-weight: normal;
-	letter-spacing: -2px;
-	text-shadow: 0 1px 0 #fff;
-}
+	span {
+		#font > .shorthand(46px, normal);
+		letter-spacing: -2px;
+		text-shadow: 0 1px 0 @white;
+	}
 
-#site-title.display-header-text span {
-	position: relative!important;
-	clip: auto;
-	/*position: absolute!important;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);*/
-}
+	&.display-header-text span {
+		position: relative !important;
+		clip: auto;
+	}
 
-#site-title a {
-	color: #3083aa;
-}
+	a {
+		color: @linkColor;
 
-#site-title a:hover {
-	color: #d64e20;
+		&:hover { color: @linkColorHover; }
+	}
 }
 
 #site-description {
-	color: #666;
-	font: 21px 'PT Serif', Georgia, serif;
-	float: right;
-	margin: 15px 20px 0 0;
-}
-
-.custom-background #site-description {
-	background-color: #fff;
-	background-color: rgba(255, 255, 255, 0.53);
+	background-color: @white;
+	background-color: fade(@white, 53%);
+	#font > .alternative(21px);
 	border-radius: 3px;
-	color: #7a7a7a;
-	padding: 4px 6px;
+	color: @gray;
+	float: right;
+	margin: 10px @gutterWidth 0 0;
+	padding: 2px 8px;
 }
 
 /* =============================================================================

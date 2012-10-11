@@ -685,11 +685,11 @@ function cakifo_custom_background_callback() {
 }
 
 /**
- * Allow the user to upload a new logo or change between image and text
- * using the WordPress header function
+ * Display the site title as logo and/or name.	What this function
+ * returns depends on what the user has choosen in `Apperance > Header`.
  *
  * @return string The site title. Either as text, as an image or both.
- * @since  Cakifo 1.0
+ * @since Cakifo 1.0
  */
 function cakifo_logo() {
 
