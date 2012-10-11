@@ -12,28 +12,42 @@
 
 <?php
 	/**
-	 * Select posts from the selected categories
+	 * Set up the slider query
 	 */
-	if ( hybrid_get_setting( 'featured_category' ) ) :
-		$feature_query = array(
-			'cat'                 => hybrid_get_setting( 'featured_category' ),
-			'showposts'           => hybrid_get_setting( 'featured_posts' ),
-			'ignore_sticky_posts' => 1,
-			'post_status'         => 'publish',
-			'no_found_rows'       => true,
-		);
-	// No selected categories, use Sticky Posts
-	else :
-		$feature_query = array(
-			'post__in'      => get_option( 'sticky_posts' ),
-			'showposts'     => hybrid_get_setting( 'featured_posts' ),
-			'post_status'   => 'publish',
-			'no_found_rows' => true,
-		);
-	endif;
-?>
+	$feature_query = array(
+		'showposts'     => (int) hybrid_get_setting( 'featured_posts' ),
+		'post_status'   => 'publish',
+		'no_found_rows' => true,
+		'tax_query' => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => array(
+						'post-format-aside',
+						'post-format-audio',
+						'post-format-chat',
+						'post-format-quote',
+						'post-format-status'
+					),
+					'operator' => 'NOT IN'
+				)
+			)
+	);
 
-<?php $loop = new WP_Query( $feature_query ); ?>
+	/**
+	 * Select posts from the selected categories
+	 * or use Sticky Posts
+	 */
+	if ( hybrid_get_setting( 'featured_category' ) ) {
+		$feature_query['cat'] = hybrid_get_setting( 'featured_category' );
+		$feature_query['ignore_sticky_posts'] = 1;
+	} else {
+		$feature_query['post__in'] = get_option( 'sticky_posts' );
+	}
+
+	/* Fire the query */
+	$loop = new WP_Query( $feature_query );
+?>
 
 <?php if ( $loop->have_posts() ) : ?>
 
@@ -41,7 +55,7 @@
 
 	<section id="slider">
 
-		<h3 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h3>
+		<h2 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h2>
 
 		<div class="slides-container">
 
@@ -51,7 +65,7 @@
 
 				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
 
-				<article class="slide" data-thumb="">
+				<article class="slide">
 
 					<?php do_atomic( 'open_slide' ); // cakifo_open_slide ?>
 
@@ -60,11 +74,6 @@
 
 							/**
 							 * Get the post thumbnail with the slider image size
-							 *
-							 * Either from a custom field, the featured image function,
-							 * or an embed video (video post format only)
-							 *
-							 * @var string
 							 */
 							$thumbnail = get_the_image( array(
 								'size'        => 'slider',
@@ -74,47 +83,24 @@
 								'echo'        => false
 							) );
 
+							/* Get the size for the 'slider' image size */
 							$thumbnail_size = cakifo_get_image_size( 'slider' );
-							$video = '';
 
-							// There's a thumbnail!
-							if ( $thumbnail ) :
+							/* There's a thumbnail! */
+							if ( $thumbnail ) {
 
 								echo $thumbnail;
 
-							/**
-							 * Try to embed a video from the post content
-							 */
-							elseif ( has_post_format( 'video' ) ) :
-
-								$video = cakifo_get_video_embed();
-
-								// There's a video!
-								if ( isset( $video ) ) {
-
-									// Get the original width and height
-									preg_match('/width="(\d+)(px)?" height="(\d+)(px)?"/', $video, $matches);
-
-									$width  = intval( $matches[1] );
-									$height = intval( $matches[3] );
-
-									// Calculate the new height to maintain the right aspect ratio
-									$new_width  = $thumbnail_size['width'];
-									$new_height = intval( $new_width * $height / $width );
-
-									// Change the width and height attributes
-									$video = preg_replace('/width="(\d+)(px)?" height="(\d+)(px)?"/', 'width="' . $new_width . '" height="' . $new_height . '"', $video);
-
-									echo '<div class="slider-video">' . $video . '</div>';
-								}
-
-							endif;
+							/* Try to embed a video from the post content */
+							} elseif ( has_post_format( 'video' ) ) {
+								echo '<div class="slider-video">' . cakifo_get_video_embed( $thumbnail_size['width'] ) . '</div>';
+							}
 
 						endif;
 					?>
 
-					<div class="entry-summary <?php if ( ! $video && ! $thumbnail ) echo 'no-featured-image'; ?>">
-						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title]' ); ?>
+					<div class="entry-summary">
+						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
 						<?php the_excerpt(); ?>
 						<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ); ?></a>
 					</div> <!-- .entry-summary -->
