@@ -3,93 +3,78 @@
 // --------------------------------------------------
 
 #slider {
-	background: #ffffe9;
- 	border-bottom: 1px solid #edece6;
-	width: 920px;
-	padding-left: 60px;
-	margin: -14px 0 0 -20px;
+	background: darken(#ffffe9, 2%);
+	border-bottom: 4px double #eedbbb;
+	margin: -(@gutterWidth + 20px - 6px) -(@gutterWidth) @gutterWidth -(@gutterWidth);
+	padding: @gutterWidth @gutterWidth @smallGutterWidth;
 	position: relative;
-	zoom: 1;
 }
 
 .slides-container {
-	width: 880px;
-	padding: 60px 0 0;
-	zoom: 1;
+	.clearfix;
 }
-
-#slider .slide {
-	/* Hide the slides before the JS is loaded. Avoids image jumping */
-	display: none;
-	-webkit-backface-visibility: hidden;
-}
-
-/* Clearfix for the .slides-container element */
-.slides-container:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-html[xmlns] .slides-container { display: block; }
-* html .slides-container { height: 1%; }
 
 .flex-viewport {
 	max-height: 2000px;
-	-webkit-transition: all 1s ease;
-	-moz-transition: all 1s ease;
-	-o-transition: all 1s ease;
-	transition: all 1s ease;
+	.transition(all 1s ease);
 }
 
-.loading .flex-viewport { max-height: 300px; }
+.loading .flex-viewport {
+	max-height: 300px;
+}
 
 /* Slider content */
-#slider .entry-summary {
-	font-size: 14px;
-	line-height: 25px;
-	float: left;
-	width: 330px;
+.slide {
+	.thumbnail,
+	.slider-video {
+		float: left;
+		max-width: 100%;
+		margin: 0 @gutterWidth 2px 2px;
+	}
+
+	.entry-title {
+		margin-top: 0;
+	}
 }
 
-#slider .entry-summary.no-featured-image {
-	width: 100%;
-}
-
-#slider .thumbnail,
-.slider-video {
-	float: left;
-	margin: 0 40px 0 0;
-}
-
-/* Control navigation */
+// /* Control navigation */
 .flex-control-nav {
 	list-style: none;
-	margin: 20px auto 20px -60px;
+	margin: 20px auto 0 -60px;
 	text-align: center;
-}
 
-.flex-control-nav li {
-	display: inline-block;
-	margin: 0 0 0 8px;
-	zoom: 1;
-	*display: inline;
-}
+	li {
+		display: inline-block;
+		margin: 0 0 0 7px;
 
-.flex-control-nav li:first-child { margin: 0; }
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}
 
 /* Slider pagination */
-.flex-control-paging li a {
-	background: #ffc768;
-	border-radius: 50%;
-	cursor: pointer;
-	display: block;
-	width: 13px; height: 13px;
-	text-indent: -9999px;
-}
+.flex-control-paging li {
+	a {
+		background: @orangeLight;
+		text-indent: -9999px;
+		border-radius: 50%;
+		cursor: pointer;
+		display: block;
+		.square(16px);
+		.transition(all 150ms ease);
 
-.flex-control-paging li a:hover {
-	background: #eb724a;
-}
+		&:hover {
+			background: @orange;
+		}
+	}
 
-.flex-control-paging li .flex-active {
-	background: #d54e21;
-	cursor: default;
+	.flex-active,
+	.flex-active:hover {
+		background: @orangeDark;
+		cursor: default;
+		.scale(1.07);
+	}
 }
 
 .flex-pauseplay a {
@@ -100,98 +85,92 @@ html[xmlns] .slides-container { display: block; }
 .flex-direction-nav {
 	list-style: none;
 	margin: 0; padding: 0;
-}
 
-.flex-direction-nav a {
-	background-color: #fff;
-	border-radius: 50%;
-	width: 42px; height: 42px;
-	margin: 0;
-	position: absolute;
-	top: 200px;
-	opacity: 0.8;
-	text-indent: -9999px;
-	box-shadow: 0 0 7px rgba(0,0,0, 0.3);
-}
+	a {
+		background-color: @white;
+		box-shadow: 0 0 7px fade(@black, 30%);
+		border-radius: 50%;
+		.square(42px);
+		margin: 0;
+		opacity: 0.6;
+		position: absolute;
+		top: 200px;
+		text-indent: -9999px;
+		.transition(opacity 150ms ease);
 
-.flex-direction-nav a:focus {
-	outline: 0;
-}
+		&:focus {
+			background: @orangeLight;
+		}
 
-.flex-direction-nav a:after {
-	background: url(images/colorbox.png) no-repeat;
-	content: "";
-	width: 8px; height: 12px;
-	position: absolute;
-	z-index: 10;
-	top: 15px; left: 15px;
-}
+		&:after {
+			#font > .alternative(36px, bold);
+			text-indent: 0;
+			color: @gray;
+			position: absolute;
+			top: -14px;
+			left: 11px;
+			z-index: 10;
+		}
 
-.flex-direction-nav .flex-prev {
-	left: -21px;
-}
-
-.flex-direction-nav .flex-next {
-	right: -21px;
-}
-
-.flex-direction-nav .flex-prev:after {
-	background-position: -9px -8px;
-}
-
-.flex-direction-nav .flex-next:after {
-	background-position: -76px -8px;
-	left: 17px;
-}
-
-#slider:hover .flex-direction-nav a {
-	opacity: 1;
-}
-
-.flex-direction-nav .disabled {
-	cursor: default;
-	opacity: .3!important;
-	filter: alpha(opacity=30);
-}
-
-.flex-direction-nav .flex-prev:active,
-.flex-direction-nav .flex-next:active {
-	box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
-}
-
-	/* No box-shadow */
-	.no-boxshadow .flex-direction-nav .flex-prev,
-	.no-boxshadow .flex-direction-nav .flex-next {
-		border: 1px solid #ccc;
+		#slider:hover & {
+			opacity: 1;
+		}
 	}
 
-	.no-boxshadow .flex-direction-nav .flex-prev:hover,
-	.no-boxshadow .flex-direction-nav .flex-next:hover {
-		border: 1px solid #bbb;
+	.flex-prev {
+		left: -21px;
+
+		&:after {
+			content: "\00AB";
+		}
 	}
 
-@media screen and (max-width: 1024px) {
+	.flex-next {
+		right: -21px;
+
+		&:after {
+			content: "\00BB";
+			left: 13px;
+		}
+	}
+
+	.flex-direction-nav .disabled {
+		cursor: default;
+		opacity: 0.3 !important;
+		filter: alpha(opacity=30);
+	}
+
+	.flex-prev:active,
+	.flex-next:active {
+		box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
+	}
+}
+
+/* Move the navigation arrows when the screen is smaller */
+@media screen and (max-width: 1130px) {
 	.flex-direction-nav .flex-prev { opacity: 1; left: 10px; }
 	.flex-direction-nav .flex-next { opacity: 1; right: 10px; }
 }
 
-/* Thumbnail nav */
-.flex-control-thumbs img {
-	cursor: pointer;
-	display: block;
-	opacity: .7;
-}
+/* Fallback to a border for browsers without box-shadow support */
+.no-boxshadow .flex-direction-nav .flex-prev,
+.no-boxshadow .flex-direction-nav .flex-next {
+	border: 2px solid @orangeLight;
 
-.flex-control-thumbs img:hover {
-	opacity: 1;
-}
-
-.flex-control-thumbs .active {
-	cursor: default;
-	opacity: 1;
+	&:hover {
+		border-color: @orangeDark;
+	}
 }
 
 /* No-javaScript fallback */
+.no-js .slides-container > .slide {
+	display: none;
+
+	&:first-child {
+		display: block;
+	}
+}
+
 .no-js .slides-container > .slide:first-child {
 	display: block;
 }
