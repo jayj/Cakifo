@@ -1736,60 +1736,58 @@ table caption {
 #headlines {
   margin: 40px 0;
 }
-#headlines .section-title {
+#headlines .widget-title {
   margin-bottom: 15px;
 }
 .headline-list {
-  width: 286px;
+  width: 470px;
   float: left;
-  margin: 0 40px 40px 0;
+  margin: 0 60px 40px 0;
 }
-.headline-list:nth-child(3n) {
+.headline-list:nth-child(2n) {
   margin-right: 0;
+}
+.headline-list:nth-child(2n+1) {
+  clear: left;
 }
 .headline-list ol {
   list-style: none;
   margin: 0;
-}
-.headline-list:nth-child(3n+1),
-.not-found-widgets .widget:nth-of-type(3n+1) {
-  clear: left;
+  padding: 0;
 }
 .headline-list li {
-  border-bottom: 1px solid #dfdfdf;
-  padding: 20px 10px;
-  overflow: hidden;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 25px 20px;
+}
+.headline-list li:before,
+.headline-list li:after {
+  content: "";
+  display: table;
+}
+.headline-list li:after {
+  clear: both;
 }
 .headline-list li:hover,
 .headline-list li:active {
-  background: #f7fafc;
-  background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
+  background-color: #f2f7fc;
   background-image: -moz-linear-gradient(left, #f7fafc 50%, #f2f7fc);
+  background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
   background-image: -o-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-  background-image: -ms-linear-gradient(left, #f7fafc 50%, #f2f7fc);
   background-image: linear-gradient(left, #f7fafc 50%, #f2f7fc);
+  background-repeat: repeat-x;
 }
-/* Headlines entry info */
 .headline-list .entry-title {
-  font-size: 16px;
-  margin: 0 0 5px;
-  word-wrap: break-word;
-}
-.headline-list .image {
-  float: left;
-  width: 70px;
-  margin-right: 7px;
-}
-.headline-list .thumbnail {
-  float: none;
-  max-width: 50px;
-  max-height: 50px;
+  font-size: 18px;
   margin: 0;
 }
-/* IE fixes */
-.headline-list {
-  margin-right: 10px;
-  margin-left: 10px;
+.headline-list .headline-meta {
+  color: #8c8c8c;
+  font-size: 14px;
+  font-style: italic;
+}
+.headline-list .thumbnail {
+  float: left;
+  margin: 0 25px 0 0;
 }
 /* =============================================================================
    Components:  Attachment pages

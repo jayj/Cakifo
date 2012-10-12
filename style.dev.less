@@ -650,7 +650,6 @@ sub {
 		margin-right: 0;
 	}
 
-
 	.entry-title {
 		font-size: 16px;
 		letter-spacing: 0;
@@ -693,73 +692,58 @@ sub {
    ========================================================================== */
 
 #headlines {
-	margin: 40px 0;
-}
+	margin: @gutterWidth 0;
 
-#headlines .section-title {
-	margin-bottom: 15px;
+	.widget-title {
+		margin-bottom: 15px;
+	}
 }
 
 .headline-list {
-	width: 286px;
+	width: 470px;
 	float: left;
-	margin: 0 40px 40px 0;
-}
+	margin: 0 (@gutterWidth + 20px) @gutterWidth 0;
 
-.headline-list:nth-child(3n) {
-	margin-right: 0;
-}
+	&:nth-child(2n) {
+		margin-right: 0;
+	}
 
-.headline-list ol {
-	list-style: none;
-	margin: 0;
-}
+	&:nth-child(2n+1) {
+		clear: left;
+	}
 
-.headline-list:nth-child(3n+1),
-.not-found-widgets .widget:nth-of-type(3n+1) {
-	clear: left;
-}
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
-.headline-list li {
-	border-bottom: 1px solid #dfdfdf;
-	padding: 20px 10px;
-	overflow: hidden;
-}
+	li {
+		border-bottom: 1px solid darken(@grayLighter, 5%);
+		padding: @smallGutterWidth 20px;
+		.clearfix;
 
-.headline-list li:hover,
-.headline-list li:active {
-	background: #f7fafc;
-	background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -moz-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -o-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -ms-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: linear-gradient(left, #f7fafc 50%, #f2f7fc);
-}
+		&:hover,
+		&:active {
+			#gradient > .horizontal(#f7fafc, #f2f7fc, 50%);
+		}
+	}
 
-/* Headlines entry info */
-.headline-list .entry-title {
-	font-size: 16px;
-	margin: 0 0 5px;
-	word-wrap: break-word;
-}
+	.entry-title {
+		font-size: 18px;
+		margin: 0;
+	}
 
-.headline-list .image {
-	float: left;
-	width: 70px;
-	margin-right: 7px;
-}
+	.headline-meta {
+		color: darken(@grayLight, 5%);
+		font-size: 14px;
+		font-style: italic;
+	}
 
-.headline-list .thumbnail {
-	float: none;
-	max-width: 50px;
-	max-height: 50px;
-	margin: 0;
-}
-
-/* IE fixes */
-.headline-list {
-	margin-right: 10px;
-	margin-left: 10px;
+	.thumbnail {
+		float: left;
+		margin: 0 @smallGutterWidth 0 0;
+	}
 }
 
 /* =============================================================================
