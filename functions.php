@@ -702,21 +702,21 @@ function cakifo_author_box() { ?>
 
 			<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
 
-			<h4 class="author-name fn n"><?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?></h4>
+			<h4 class="author-name fn n">
+				<?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?>
+			</h4>
 
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), '48' ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), 96 ); ?>
 
 			<div class="author-description author-bio">
-				<?php the_author_meta( 'description' ); ?>
+				<?php echo wpautop( get_the_author_meta( 'description' ) ); ?>
 			</div>
 
-			<?php if ( get_the_author_meta( 'twitter' ) ) { ?>
+			<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) { ?>
 				<p class="twitter-link">
-					<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php printf( esc_attr__( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
-						<?php printf( __( 'Follow %1$s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
-					</a>
+					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
 				</p>
-			<?php } // End check for twitter ?>
+			<?php } // Twitter ?>
 
 			<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
 

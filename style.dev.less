@@ -550,29 +550,26 @@ sub {
 /* =============================================================================
    Components:  Author box
    ========================================================================== */
+
 .author-profile {
-	/* The other styles are other 'Quotes' */
-	padding: 25px 20px;
-}
+	.blue-box(@smallGutterWidth);
+	box-shadow: inset 0 0 20px #e8f0f4;
 
-.author-profile .author-name {
-	font-size: 18px;
-	margin: 0 0 15px 0;
-}
+	.author-name {
+		font-size: 18px;
+		margin-top: 0;
+	}
 
-.author-profile .avatar {
-	padding: 4px;
-}
+	.twitter-link {
+		text-align: right;
+		margin-bottom: 0;
 
-.twitter-link a {
-	background: url(images/twitter.png) no-repeat left bottom;
-	font: italic 14px Georgia, serif;
-	padding-left: 25px;
-}
-
-.author-profile .twitter-link {
-	text-align: right;
-	margin-bottom: 0;
+		a {
+			background: url(images/twitter.png) no-repeat left bottom;
+			font-size: 14px;
+			padding-left: (@smallGutterWidth - 2px);
+		}
+	}
 }
 
 /* =============================================================================
