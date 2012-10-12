@@ -1256,6 +1256,7 @@ table caption {
 .slide .entry-title {
   margin-top: 0;
 }
+/* Control navigation */
 .flex-control-nav {
   list-style: none;
   margin: 20px auto 0 -60px;
@@ -1683,60 +1684,51 @@ table caption {
 /* =============================================================================
    Components:  Recent Posts
    ========================================================================== */
-#recent-posts .recent-post {
+.recent-post {
   float: left;
+  width: 220px;
   margin-right: 40px;
-  width: 205px;
-  -webkit-transition: opacity 300ms;
-  -moz-transition: opacity 300ms;
-  -o-transition: opacity 300ms;
-  -ms-transition: opacity 300ms;
-  transition: opacity 300ms;
+  -webkit-transition: opacity 250ms;
+  -moz-transition: opacity 250ms;
+  -o-transition: opacity 250ms;
+  transition: opacity 250ms;
+  /* Lower opacity on every column except the hovered */
+
 }
-#recent-posts .recent-post:last-of-type {
+.recent-post:last-of-type {
   margin-right: 0;
 }
-/* Lower opacity on every col except the hovered */
-#recent-posts:hover .recent-post {
-  opacity: 0.75;
-}
-#recent-posts:hover .recent-post:hover {
-  opacity: 1;
-}
-/* Recent Posts entry info */
-#recent-posts .entry-title {
+.recent-post .entry-title {
   font-size: 16px;
-  margin: 5px 0 10px;
+  letter-spacing: 0;
+  margin: 0;
   word-wrap: break-word;
 }
-#recent-posts .thumbnail {
-  float: none;
-  margin: 0;
+.recent-post .entry-header {
+  margin: 7px 0;
 }
-#recent-posts .details {
-  padding: 0 5px;
-}
-.recent-posts-meta,
-.headline-meta,
-.rss-date {
-  color: #999;
-  display: block;
+.recent-post .recent-posts-meta {
+  color: #8c8c8c;
   font-size: 12px;
   font-style: italic;
-  margin-bottom: 5px;
 }
-.recent-posts-meta a,
-.headline-meta a {
-  color: #707070;
+.recent-post .thumbnail {
+  float: none;
+  margin: 0;
+  max-height: 150px;
 }
-.recent-posts-meta a:hover,
-.headline-meta a:hover {
-  color: #d64e20;
+.recent-post .entry-summary {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
 }
-/* IE fixes */
-.oldie #recent-posts .recent-post {
-  margin-right: 15px;
-  margin-left: 15px;
+.recent-posts:hover .recent-post {
+  opacity: 0.75;
+}
+.recent-posts:hover .recent-post:hover {
+  opacity: 1;
 }
 /* =============================================================================
    Components:  Headlines - Category lists
@@ -2604,13 +2596,6 @@ span.required {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  #recent-posts .recent-post,
-  .headline-list {
-    margin-right: 20px;
-  }
-  #recent-posts .recent-post {
-    margin-right: 1%;
-  }
   .section-title {
     margin-left: 0;
     -moz-box-shadow: none;
@@ -2655,36 +2640,7 @@ span.required {
 @media screen and (max-width: 768px) {
   /* Hide slider */
   /* Make the Recent Posts one column */
-  #recent-posts .recent-post {
-    border-bottom: 1px solid #ccc;
-    float: none;
-    width: 100%;
-    min-height: 140px;
-    padding: 20px 0;
-  }
-  #recent-posts .recent-post img {
-    float: left;
-    margin-right: 20px;
-  }
-  #recent-posts .section-title {
-    margin-top: 20px;
-  }
   /* Make the Category Headlines list two columns */
-  .headline-list {
-    width: 45%;
-  }
-  .headline-list:nth-child(2n) {
-    float: right;
-  }
-  .headline-list li {
-    padding: 10px;
-  }
-  #recent-posts .recent-post:hover,
-  #recent-posts .recent-post:active,
-  .headline-list li:hover,
-  .headline-list li:active {
-    background: #f7fafc;
-  }
   /* Add a background to the search inputs */
   #topbar .search-form .search-text,
   #topbar .search-form .search-submit {
@@ -2720,9 +2676,6 @@ span.required {
     margin: 20px 0 0;
   }
   /* Hide thumbnails from the Recent Posts */
-  #recent-posts img {
-    display: none;
-  }
   /* Make the widget areas full width */
   .widget-area,
   .headline-list {

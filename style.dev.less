@@ -640,70 +640,53 @@ sub {
    Components:  Recent Posts
    ========================================================================== */
 
-#recent-posts .recent-post {
+.recent-post {
 	float: left;
-	margin-right: 40px;
-	width: 205px;
-	-webkit-transition: opacity 300ms;
-	-moz-transition: opacity 300ms;
-	-o-transition: opacity 300ms;
-	-ms-transition: opacity 300ms;
-	transition: opacity 300ms;
-}
+	width: 220px;
+	margin-right: @gutterWidth;
+	.transition(opacity 250ms);
 
-#recent-posts .recent-post:last-of-type {
-	margin-right: 0;
-}
-
-/* Lower opacity on every col except the hovered */
-#recent-posts:hover .recent-post {
-	opacity: 0.75;
-}
-#recent-posts:hover .recent-post:hover {
-	opacity: 1;
-}
-
-/* Recent Posts entry info */
-#recent-posts .entry-title {
-	font-size: 16px;
-	margin: 5px 0 10px;
-	word-wrap: break-word;
-}
-
-#recent-posts .thumbnail {
-	float: none;
-	margin: 0;
-}
-
-#recent-posts .details {
-	padding: 0 5px;
-}
-
-.recent-posts-meta,
-.headline-meta,
-.rss-date {
-	color: #999;
-	display: block;
-	font-size: 12px;
-	font-style: italic;
-	margin-bottom: 5px;
-}
-
-.recent-posts-meta a,
-.headline-meta a {
-	color: #707070;
-}
-
-.recent-posts-meta a:hover,
-.headline-meta a:hover {
-	color: #d64e20;
-}
-
-	/* IE fixes */
-	.oldie #recent-posts .recent-post {
-		margin-right: 15px;
-		margin-left: 15px;
+	&:last-of-type {
+		margin-right: 0;
 	}
+
+
+	.entry-title {
+		font-size: 16px;
+		letter-spacing: 0;
+		margin: 0;
+		word-wrap: break-word;
+	}
+
+	.entry-header {
+		margin: 7px 0;
+	}
+
+	.recent-posts-meta {
+		color: darken(@grayLight, 5%);
+		font-size: 12px;
+		font-style: italic;
+	}
+
+	.thumbnail {
+		float: none;
+		margin: 0;
+		max-height: 150px;
+	}
+
+	.entry-summary {
+		.hyphens;
+	}
+
+	/* Lower opacity on every column except the hovered */
+	.recent-posts:hover &{
+		opacity: 0.75;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
 
 /* =============================================================================
    Components:  Headlines - Category lists
@@ -1309,14 +1292,14 @@ sub {
 		box-shadow: none;
 	}
 
-	#recent-posts .recent-post,
-	.headline-list {
-		margin-right: 20px;
-	}
+	// #recent-posts .recent-post,
+	// .headline-list {
+	// 	margin-right: 20px;
+	// }
 
-	#recent-posts .recent-post {
-		margin-right: 1%;
-	}
+	// #recent-posts .recent-post {
+	// 	margin-right: 1%;
+	// }
 
 	.section-title {
 		margin-left: 0;
@@ -1373,42 +1356,42 @@ sub {
 	// }
 
 	/* Make the Recent Posts one column */
-	#recent-posts .recent-post {
-		border-bottom: 1px solid #ccc;
-		float: none;
-		width: 100%;
-		min-height: 140px;
-		padding: 20px 0;
-	}
+	// #recent-posts .recent-post {
+	// 	border-bottom: 1px solid #ccc;
+	// 	float: none;
+	// 	width: 100%;
+	// 	min-height: 140px;
+	// 	padding: 20px 0;
+	// }
 
-	#recent-posts .recent-post img {
-		float: left;
-		margin-right: 20px;
-	}
+	// #recent-posts .recent-post img {
+	// 	float: left;
+	// 	margin-right: 20px;
+	// }
 
-	#recent-posts .section-title {
-		margin-top: 20px;
-	}
+	// #recent-posts .section-title {
+	// 	margin-top: 20px;
+	// }
 
 	/* Make the Category Headlines list two columns */
-	.headline-list {
-		width: 45%;
-	}
+	// .headline-list {
+	// 	width: 45%;
+	// }
 
-	.headline-list:nth-child(2n) {
-		float: right;
-	}
+	// .headline-list:nth-child(2n) {
+	// 	float: right;
+	// }
 
-	.headline-list li {
-		padding: 10px;
-	}
+	// .headline-list li {
+	// 	padding: 10px;
+	// }
 
-	#recent-posts .recent-post:hover,
-	#recent-posts .recent-post:active,
-	.headline-list li:hover,
-	.headline-list li:active {
-		background: #f7fafc;
-	}
+	// #recent-posts .recent-post:hover,
+	// #recent-posts .recent-post:active,
+	// .headline-list li:hover,
+	// .headline-list li:active {
+	// 	background: #f7fafc;
+	// }
 
 	/* Add a background to the search inputs */
 	#topbar .search-form .search-text,
@@ -1454,9 +1437,9 @@ sub {
 	}
 
 	/* Hide thumbnails from the Recent Posts */
-	#recent-posts img {
-		display: none;
-	}
+	// #recent-posts img {
+	// 	display: none;
+	// }
 
 	/* Make the widget areas full width */
 	.widget-area,

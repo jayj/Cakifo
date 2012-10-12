@@ -18,14 +18,14 @@ get_header(); // Loads the header.php template ?>
 
 			<?php
 				/**
-				 * Get the [section-recentposts.php} template file
+				 * Get the section-recentposts.php template file
 				 */
 				get_template_part( 'section', 'recentposts' );
 			?>
 
 			<?php
 				/**
-				 * Get the [section-headlines.php} template file
+				 * Get the section-headlines.php template file
 				 */
 				if ( hybrid_get_setting( 'headlines_category' ) )
 					get_template_part( 'section', 'headlines' );
