@@ -10,7 +10,7 @@
 
 do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 
-<section class="recent-posts clearfix">
+<section id="recent-posts" class="clearfix">
 
 	<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
 
@@ -97,6 +97,6 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 
 	<?php do_atomic( 'close_recent_posts' ); // cakifo_close_recent_posts ?>
 
-</section> <!-- .recent-posts -->
+</section> <!-- #recent-posts -->
 
 <?php do_atomic( 'after_recent_posts' ); // cakifo_after_recent_posts ?>

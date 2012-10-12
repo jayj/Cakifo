@@ -1724,10 +1724,10 @@ table caption {
   -o-hyphens: auto;
   hyphens: auto;
 }
-.recent-posts:hover .recent-post {
+#recent-posts:hover .recent-post {
   opacity: 0.75;
 }
-.recent-posts:hover .recent-post:hover {
+#recent-posts:hover .recent-post:hover {
   opacity: 1;
 }
 /* =============================================================================
