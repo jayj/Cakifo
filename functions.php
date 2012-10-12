@@ -110,7 +110,7 @@ function cakifo_theme_setup() {
 	 */
 	add_image_size( 'small', apply_filters( 'small_thumb_width', 100 ), apply_filters( 'small_thumb_height', 100 ), true );
 	add_image_size( 'slider', apply_filters( 'slider_image_width', 500 ), apply_filters( 'slider_image_height', 230 ), true );
-	add_image_size( 'recent', apply_filters( 'recent_image_width', 190 ), apply_filters( 'recent_image_height', 130 ), true );
+	add_image_size( 'recent', apply_filters( 'recent_image_width', 220 ), apply_filters( 'recent_image_height', 150 ), true );
 
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
