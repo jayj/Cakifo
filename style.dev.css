@@ -1394,37 +1394,37 @@ table caption {
    Layout:  Posts
    ========================================================================== */
 .hentry {
-  border-bottom: 1px solid #eee;
+  border-bottom: 4px double #eeeeee;
   margin-bottom: 25px;
   padding-bottom: 25px;
   position: relative;
 }
 .sticky {
-  background: #feffe0;
-  padding: 25px 20px 20px;
+  background: #ffffdf;
+  padding: 25px;
+}
+.sticky .entry-title {
+  margin-top: 0;
 }
 /**
  * Byline and entry meta
  */
 .byline,
 .entry-meta {
-  color: #777;
-  font: 14px/2 sans-serif;
-  margin: 0 0 15px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2;
+  color: #808080;
+  clear: both;
 }
-.entry-meta {
-  margin-bottom: 0;
-}
-.byline a:hover {
-  background: #f2ede2;
-  border-bottom: 1px solid #ccc;
-  text-decoration: none;
+.byline {
+  margin-bottom: 15px;
 }
 .singular .entry-meta {
-  border-top: 1px solid #eee;
-  clear: both;
+  border-top: 1px solid #eeeeee;
   margin-top: 25px;
-  padding: 25px 0 0;
+  padding: 15px 0 0;
 }
 .page-links {
   clear: both;
@@ -1434,15 +1434,21 @@ table caption {
    ========================================================================== */
 .breadcrumbs {
   background: #f8f8f7;
-  border-bottom: 1px solid #eee;
-  border-radius: 7px;
-  color: #666;
-  font: 14px/2 'PT Serif', Georgia, serif;
+  border-bottom: 1px solid #eeeeee;
+  border-radius: 5px;
+  color: #555555;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2;
   margin-bottom: 25px;
   padding: 12px 20px;
 }
 .breadcrumbs a {
   color: #333;
+}
+.breadcrumbs a:hover {
+  color: #d54e21;
 }
 .breadcrumbs .trail-before {
   margin-right: 3px;
@@ -1457,27 +1463,21 @@ table caption {
    Layout:  Post formats
    ========================================================================== */
 .entry-header .post-format-link {
-  background-color: #ebebeb;
+  background-color: #eeeeee;
   border-radius: 3px;
-  color: #848484;
+  color: #7b7b7b;
   font-size: 12px;
   float: right;
   padding: 3px 10px;
   text-transform: uppercase;
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 0;
 }
-/* Format: Aside */
-.format-aside {
-  border-top: 5px solid #eeeeee;
-  margin-top: -26px;
-  padding-top: 10px;
-}
-.singular .format-aside {
-  border-top-width: 0;
-  margin-top: 0;
-  padding-top: 0;
+.entry-header .post-format-link:hover,
+.format-status .entry-header .post-format-link:hover {
+  background-color: #d54e21;
+  color: #ffffff;
 }
 /* Format: Chat */
 .chat-transcript {
@@ -1496,24 +1496,6 @@ table caption {
   text-transform: uppercase;
   text-decoration: underline;
 }
-.chat-text {
-  padding-left: 25px;
-}
-.chat-text p {
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-/* Treat <em> tags as a seperator between two persons
-   unless there's a .chat-author before the .chat-text */
-.chat-text em {
-  display: inline-block;
-  margin-left: -25px;
-}
-.chat-author + .chat-text em {
-  display: inline;
-  margin-left: 0;
-}
-/* Give the chat person different colors */
 .chat-speaker-1 .chat-author {
   color: #d54e21;
 }
@@ -1532,6 +1514,23 @@ table caption {
 .chat-speaker-6 .chat-author {
   color: #9d261d;
 }
+.chat-text {
+  padding-left: 25px;
+}
+.chat-text p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+/* Treat <em> tags as a seperator between two persons
+   unless there's a .chat-author before the .chat-text */
+.chat-text em {
+  display: inline-block;
+  margin-left: -25px;
+}
+.chat-author + .chat-text em {
+  display: inline;
+  margin-left: 0;
+}
 /* Format: Status */
 .format-status .entry-header {
   margin-bottom: 25px;
@@ -1549,10 +1548,10 @@ table caption {
   margin: 0;
 }
 .format-status .entry-header a {
-  color: #666;
+  color: #555555;
 }
 .format-status .entry-header a:hover {
-  color: #3083aa;
+  color: #d54e21;
 }
 .format-status .entry-header .avatar {
   margin-right: 18px;
@@ -1562,7 +1561,7 @@ table caption {
   position: relative;
   z-index: 10;
 }
-/* Format: link */
+/* Format: Link */
 .format-link .entry-title:hover .meta-nav {
   margin-left: 5px;
   -webkit-transition: margin-left 200ms ease-in-out;
@@ -1571,6 +1570,9 @@ table caption {
   transition: margin-left 200ms ease-in-out;
 }
 /* Format: video */
+.format-video .entry-header {
+  margin-bottom: 15px;
+}
 /* Format: Gallery */
 .image-count {
   color: #999999;

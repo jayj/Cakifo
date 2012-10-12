@@ -467,15 +467,19 @@ sub {
    ========================================================================== */
 
 .hentry {
-	border-bottom: 1px solid #eee;
-	margin-bottom: 25px;
-	padding-bottom: 25px;
+	border-bottom: 4px double @grayLighter;
+	margin-bottom: @smallGutterWidth;
+	padding-bottom: @smallGutterWidth;
 	position: relative;
 }
 
 .sticky {
-	background: #feffe0;
-	padding: 25px 20px 20px;
+	background: darken(#ffffe9, 2%);
+	padding: @smallGutterWidth;
+
+	.entry-title {
+		margin-top: 0;
+	}
 }
 
 /**
@@ -483,26 +487,20 @@ sub {
  */
 .byline,
 .entry-meta {
-	color: #777;
-	font: 14px/2 sans-serif;
-	margin: 0 0 15px 0;
+	#font > .sans-serif(14px, normal, 2);
+	color: darken(@grayLight, 10%);
+	clear: both;
 }
 
-.entry-meta {
-	margin-bottom: 0;
+.byline {
+	margin-bottom: 15px;
 }
 
-.byline a:hover {
-	background: #f2ede2;
-	border-bottom: 1px solid #ccc;
-	text-decoration: none;
-}
 
 .singular .entry-meta {
-	border-top: 1px solid #eee;
-	clear: both;
-	margin-top: 25px;
-	padding: 25px 0 0;
+	border-top: 1px solid @grayLighter;
+	margin-top: @smallGutterWidth;
+	padding: 15px 0 0;
 }
 
 .page-links {
@@ -512,32 +510,36 @@ sub {
 /* =============================================================================
    Components:  Breadcrumbs
    ========================================================================== */
+
 .breadcrumbs {
 	background: #f8f8f7;
-	border-bottom: 1px solid #eee;
-	border-radius: 7px;
-	color: #666;
-	font: 14px/2 'PT Serif', Georgia, serif;
-	margin-bottom: 25px;
+	border-bottom: 1px solid @grayLighter;
+	border-radius: 5px;
+	color: @gray;
+	#font > .alternative(14px, normal, 2);
+	margin-bottom: @smallGutterWidth;
 	padding: 12px 20px;
-}
 
-.breadcrumbs a {
-	color: #333;
-}
+	a {
+		color: #333;
 
-.breadcrumbs .trail-before {
-	margin-right: 3px;
-}
+		&:hover {
+			color: @linkColorHover;
+		}
+	}
 
-.breadcrumbs .sep {
-	margin: 0 3px;
-}
+	.trail-before {
+		margin-right: 3px;
+	}
 
-.breadcrumbs .trail-end {
-	font-style: italic;
-}
+	.sep {
+		margin: 0 3px;
+	}
 
+	.trail-end {
+		font-style: italic;
+	}
+}
 
 /* =============================================================================
    Layout:  Post formats

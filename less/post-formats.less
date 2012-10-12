@@ -3,28 +3,21 @@
 // --------------------------------------------------
 
 .entry-header .post-format-link {
-	background-color: #ebebeb;
+	background-color: @grayLighter;
 	border-radius: 3px;
-	color: #848484;
+	color: lighten(@gray, 15%);
 	font-size: 12px;
 	float: right;
 	padding: 3px 10px;
 	text-transform: uppercase;
 	position: absolute;
-	top: 5px;
+	top: 10px;
 	right: 0;
-}
 
-/* Format: Aside */
-.format-aside {
-	border-top: 5px solid @grayLighter;
-	margin-top: -26px;
-	padding-top: 10px;
-
-	.singular & {
-		border-top-width: 0;
-		margin-top: 0;
-		padding-top: 0;
+	&:hover,
+	.format-status &:hover {
+		background-color: @orangeDark;
+		color: @white;
 	}
 }
 
@@ -48,6 +41,14 @@
 		text-transform: uppercase;
 		text-decoration: underline;
 	}
+
+	// Give the chat person different colors
+	.chat-speaker-1 & { color: @orangeDark; }
+	.chat-speaker-2 & { color: darken(@blueDark, 5%); }
+	.chat-speaker-3 & { color: @purple; }
+	.chat-speaker-4 & { color: darken(@green, 5%); }
+	.chat-speaker-5 & { color: darken(@pink, 5%); }
+	.chat-speaker-6 & { color: @red; }
 }
 
 // The text
@@ -72,15 +73,6 @@
 	margin-left: 0;
 }
 
-/* Give the chat person different colors */
-.chat-speaker-1 .chat-author { color: @orangeDark; }
-.chat-speaker-2 .chat-author { color: darken(@blueDark, 5%); }
-.chat-speaker-3 .chat-author { color: @purple; }
-.chat-speaker-4 .chat-author { color: darken(@green, 5%); }
-.chat-speaker-5 .chat-author { color: darken(@pink, 5%); }
-.chat-speaker-6 .chat-author { color: @red; }
-
-
 /* Format: Status */
 .format-status .entry-header {
 	margin-bottom: @smallGutterWidth;
@@ -100,8 +92,8 @@
 	}
 
 	a {
-		color: #666;
-		&:hover { color: #3083aa; }
+		color: @gray;
+		&:hover { color: @linkColorHover; }
 	}
 
 	.avatar {
@@ -116,15 +108,15 @@
 	z-index: 10;
 }
 
-/* Format: link */
+/* Format: Link */
 .format-link .entry-title:hover .meta-nav {
 	margin-left: 5px;
 	.transition(margin-left 200ms ease-in-out);
 }
 
 /* Format: video */
-.format-video {
-
+.format-video .entry-header {
+	margin-bottom: @smallGutterWidth - 10px;
 }
 
 /* Format: Gallery */
