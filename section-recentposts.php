@@ -71,7 +71,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 							'meta_key'      => 'Thumbnail',
 							'size'          => 'recent',
 							'image_class'   => 'thumbnail',
-							'default_image' => THEME_URI . '/images/default-thumb-190-130.gif',
+							'default_image' => THEME_URI . '/images/default-thumb-220-150.gif',
 						) );
 				?>
 
