@@ -1248,6 +1248,12 @@ table caption {
   max-height: 300px;
 }
 /* Slider content */
+.slide {
+  /* Hide the slides before the JS is loaded to avoid page jumping */
+
+  display: none;
+  -webkit-backface-visibility: hidden;
+}
 .slide .thumbnail,
 .slide .slider-video {
   float: left;

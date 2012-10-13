@@ -25,6 +25,10 @@
 
 /* Slider content */
 .slide {
+	/* Hide the slides before the JS is loaded to avoid page jumping */
+	display: none;
+	-webkit-backface-visibility: hidden;
+
 	.thumbnail,
 	.slider-video {
 		float: left;
