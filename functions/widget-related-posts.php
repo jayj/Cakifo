@@ -185,7 +185,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/**
 		 * Post formats query
 		 */
-		if ( in_array( 'post_format', $taxonomies ) )
+		if ( in_array( 'post_format', $taxonomies ) ) :
 			$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
 
 			$related_query['tax_query'][] = array(
