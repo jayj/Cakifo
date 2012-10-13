@@ -11,6 +11,7 @@
  * @link http://wpthemes.jayj.dk/cakifo
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
+
 class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 	/**
@@ -23,16 +24,13 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname' => 'related-posts',
-			'description' => esc_html__( 'Use this widget to list related posts to the current viewed post based on category and post format.', 'cakifo' )
+			'description' => esc_html__( 'Use this widget to list related posts to the current viewed post, based on taxonomies.', 'cakifo' )
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'cakifo-related-posts',	// $this->id_base
-			__( 'Cakifo: Related Posts', 'cakifo' ),	// $this->name
-			$widget_options			// $this->widget_options
-		);
+		$this->WP_Widget( 'cakifo-related-posts', __( 'Cakifo: Related Posts', 'cakifo' ), $widget_options );
 
+		/* Flush the cache when a post is updated or deleted */
 		add_action( 'save_post', array( &$this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( &$this, 'flush_widget_cache' ) );
 	}
@@ -122,7 +120,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 			do_atomic( 'after_related_posts_list' ); // cakifo_after_related_posts_list
 
-		// Nope, no related posts
+		/* Nope, no related posts */
 		else :
 
 			_e( 'No related posts.', 'cakifo' );
@@ -134,8 +132,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	}
 
 	/**
-	* Gets the related posts based on the category and post format
-	* and puts them in a custom field
+	* Gets the related posts based on the choosen taxonomies
+	* and puts them in the post meta
 	*
 	* @access private
 	* @param int $post_id
@@ -187,7 +185,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/**
 		 * Post formats query
 		 */
-		if ( in_array( 'post_format', $taxonomies ) ) :
+		if ( in_array( 'post_format', $taxonomies ) )
 			$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
 
 			$related_query['tax_query'][] = array(
@@ -251,7 +249,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/* A post is being updated or deleted */
 		if ( isset( $post_ID ) ) :
 			// Delete the related post meta for all the related posts
-			if ( isset( $related_meta ) ) :
+			if ( isset( $related_meta ) ) {
 
 				$related_posts = array( $post_ID );
 
@@ -260,7 +258,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 				foreach( get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) ) as $postinfo )
 					delete_post_meta( $postinfo->ID, 'related' );
-			endif;
+			}
 
 		// The widget settings has been updated: delete the post meta for all posts
 		else :
