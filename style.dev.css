@@ -1619,17 +1619,17 @@ table caption {
   border: double #c5d2d8;
   border-width: 4px 0;
   margin: 25px 0;
-  padding: 25px;
+  padding: 10px 25px;
 }
 .author-profile .author-name {
   font-size: 18px;
-  margin-top: 0;
 }
-.author-profile .twitter-link {
+.author-profile .twitter-link,
+.loop-meta .twitter-link {
   text-align: right;
-  margin-bottom: 0;
 }
-.author-profile .twitter-link a {
+.author-profile .twitter-link a,
+.loop-meta .twitter-link a {
   background: url(images/twitter.png) no-repeat left bottom;
   font-size: 14px;
   padding-left: 23px;

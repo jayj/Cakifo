@@ -552,16 +552,17 @@ sub {
    ========================================================================== */
 
 .author-profile {
-	.blue-box(@smallGutterWidth, @smallGutterWidth 0);
+	.blue-box(10px @smallGutterWidth, @smallGutterWidth 0);
 
 	.author-name {
 		font-size: 18px;
-		margin-top: 0;
 	}
+}
 
+.author-profile,
+.loop-meta {
 	.twitter-link {
 		text-align: right;
-		margin-bottom: 0;
 
 		a {
 			background: url(images/twitter.png) no-repeat left bottom;
