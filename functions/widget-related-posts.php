@@ -249,7 +249,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		/* A post is being updated or deleted */
 		if ( isset( $post_ID ) ) :
 			// Delete the related post meta for all the related posts
-			if ( isset( $related_meta ) ) {
+			if ( isset( $related_meta ) ) :
 
 				$related_posts = array( $post_ID );
 
@@ -258,7 +258,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 				foreach( get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) ) as $postinfo )
 					delete_post_meta( $postinfo->ID, 'related' );
-			}
+			endif;
 
 		// The widget settings has been updated: delete the post meta for all posts
 		else :
