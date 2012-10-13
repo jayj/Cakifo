@@ -10,6 +10,8 @@
  * @link http://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
+@header( 'HTTP/1.1 404 Not found', true, 404 );
+
 /**
  * Include the header template part file
  *
@@ -26,10 +28,14 @@ get_header( '404' ); ?>
 
 			<article id="post-0" class="<?php hybrid_entry_class(); ?>">
 
-				<h1 class="error-404-title entry-title"><?php _e( "Oops! 404! 404!.. Help!.. We can't find the page!", 'cakifo' ); ?></h1>
+				<header class="entry-header">
+					<h1 class="error-404-title entry-title"><?php _e( "Whoah! 404 error! We can't find the page!", 'cakifo' ); ?></h1>
+				</header> <!-- .entry-header -->
 
 				<div class="entry-content">
-					<p><?php printf( __( "You tried going to %s but it doesn't exist. All is not lost! You can search for what you're looking for.", 'cakifo' ), '<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?></p>
+					<p>
+						<?php printf( __( "You tried going to %s but the page no longer exists. All is not lost!  Perhaps searching, or one of the links below, can help.", 'cakifo' ), '<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?>
+					</p>
 
 					<?php get_search_form(); // Loads the searchform.php template ?>
 

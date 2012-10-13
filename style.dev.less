@@ -755,19 +755,26 @@ sub {
    Layout:  404 Error Page
    ========================================================================== */
 
+.error-404 .hentry {
+	font-size: 18px;
+
+	.entry-title {
+		margin-bottom: @smallGutterWidth;
+	}
+}
+
 .not-found-widgets {
-	margin-top: 40px;
-	padding-left: 5px;
-}
+	margin-top: @gutterWidth;
 
-.not-found-widgets .widget {
-	width: 270px;
-	float: left;
-	margin: 0 20px 20px;
-}
+	.widget {
+		float: left;
+		width: 306px;
+		margin: 0 @gutterWidth @smallGutterWidth 0;
 
-.not-found-widgets .widget:nth-of-type(3n) {
-	margin-right: 0;
+		&:nth-of-type(3n) {
+			margin-right: 0;
+		}
+	}
 }
 
 /* =============================================================================
