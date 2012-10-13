@@ -714,59 +714,41 @@ sub {
    Components:  Attachment pages
    ========================================================================== */
 
-#image-info {
-	overflow: hidden;
-}
-
-#image-info h4 {
-	margin-bottom: 20px;
-}
-
-#image-info .image-info {
-	width: 286px;
+.image-info {
 	float: left;
-	margin: 0 40px 0 0;
+	width: 35%;
+
+	dl {
+		line-height: 40px;
+	}
+
+	dt {
+		border-bottom: 1px solid @grayLighter;
+		font-size: 16px;
+		text-align: left;
+		clear: left;
+		float: left;
+		width: 100%;
+		padding: 5px;
+
+		&:hover,
+		&:active {
+			#gradient > .horizontal(#f7fafc, #f2f7fc, 40%);
+		}
+	}
+
+	dd {
+		#font > .alternative(14px);
+		float: right;
+		margin-top: -38px;
+		padding-right: 5px;
+		text-align: right;
+	}
 }
 
-.image-info dl,
-.image-info dt,
-.image-info dd {
-	margin: 0;
-}
-
-.image-info dl {
-	line-height: 50px;
-}
-
-.image-info dt {
-	border-bottom: 1px solid #dfdfdf;
-	font-size: 16px;
-	float: left;
-	width: 100%;
-	padding: 5px 10px;
-	text-align: left;
-	clear: left;
-}
-
-.image-info dd {
-	font: 14px 'PT Serif', Georgia, serif;
+.image-gallery {
 	float: right;
-	margin-top: -40px;
-	text-align: right;
-}
-
-.image-info dt:hover {
-	background: #f7fafc;
-	background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -moz-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -o-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: -ms-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-	background-image: linear-gradient(to left, #f7fafc 50%, #f2f7fc);
-}
-
-#attachment-gallery {
-	width: 600px;
-	float: right;
+	width: 60%;
 }
 
 /* =============================================================================
