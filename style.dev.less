@@ -714,6 +714,10 @@ sub {
    Components:  Attachment pages
    ========================================================================== */
 
+.attachment-title {
+	margin-top: 0;
+}
+
 .image-info {
 	float: left;
 	width: 35%;
@@ -782,59 +786,54 @@ sub {
    ========================================================================== */
 
 .pagination {
-	clear: both;
-	font: bold 14px sans-serif;
-	margin: 40px 0 30px;
-}
+	margin: @gutterWidth 0;
+	.clearfix;
 
-.pagination a,
-.pagination > span {
-	background: #e3e3e3;
-	border-radius: 3px;
-	color: #464646;
-	display: inline-block;
-	margin: 0 2px 8px 0;
-	padding: 10px 14px 9px;
-	text-shadow: 0 1px 0 #fff;
-	box-shadow: 0 2px 0 #ccc;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 150ms ease-in-out;
-	-moz-transition: all 150ms ease-in-out;
-	-o-transition: all 150ms ease-in-out;
-	-ms-transition: all 150ms ease-in-out;
-	transition: all 150ms ease-in-out;
-}
-
-.pagination a:hover {
-	background: #d54e21;
-	color: #fff;
-	text-shadow: 0 -1px 0 #7b000f;
-	box-shadow: 0 2px 0 #9b000f;
-}
-
-.pagination .current {
-	background: #464646;
-	color: #fff;
-	text-shadow: 0 -1px 0 #000;
-	box-shadow: 0 2px 0 #3e3e3e;
-}
-
-	/* Prev and next post pagination */
-	.post-pagination a {
-		max-width: 49%;
-		line-height: 1.6;
+	a, > span {
+		background-color: @grayLighter;
+		box-shadow: 0 2px 0 darken(@grayLighter, 15%);
+		border-radius: 3px;
+		color: darken(@gray, 5%);
+		display: inline-block;
+		line-height: normal;
+		margin-right: 2px;
+		padding: 13px 14px 12px;
+		text-shadow: 0 1px 0 @white;
+		.transition(all 150ms ease-in-out);
 	}
 
-	.post-pagination a[rel=prev] {
+	a:hover {
+		background-color: @orangeLight;
+		box-shadow: 0 2px 0 @orange;
+		color: darken(@orangeDark, 30%);
+		text-shadow: 0 1px 0 lighten(@orangeLight, 20%);
+
+	}
+
+	a:active {
+		box-shadow: 0 2px 0 @orange, inset 2px 2px 8px fade(@black, 30%);
+	}
+
+	.current {
+		background-color: lighten(@grayDark, 10%);
+		box-shadow: 0 2px 0 @black;
+		color: @white;
+		text-shadow: 0 -1px 0 @black;
+	}
+}
+
+/* Prev and next post pagination */
+.post-pagination a {
+	max-width: 49%;
+
+	&[rel="prev"] {
 		float: left;
 	}
 
-	.post-pagination a[rel=next] {
+	&[rel="next"] {
 		float: right;
 	}
-
+}
 
 /* =============================================================================
    Components:  Widgets

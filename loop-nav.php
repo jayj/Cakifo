@@ -10,9 +10,15 @@
  */
 ?>
 
-	<?php if ( is_singular( 'post' ) ) : ?>
+	<?php if ( is_attachment() ) : ?>
 
-		<nav class="pagination post-pagination clearfix">
+		<div class="loop-nav">
+			<?php previous_post_link( '%link', '<span class="previous">' . __( '<span class="meta-nav">&larr;</span> Return to entry', 'cakifo' ) . '</span>' ); ?>
+		</div> <!-- .loop-nav -->
+
+	<?php elseif ( is_singular( 'post' ) ) : ?>
+
+		<nav class="pagination post-pagination">
 			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php previous_post_link( '%link', '<span class="previous">&larr; %title</span>' ); ?>
 			<?php next_post_link( '%link', '<span class="next">%title &rarr;</span>' ); ?>
@@ -36,6 +42,6 @@
 		<nav class="pagination">
 			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php echo $nav; ?>
-		</nav> <!-- .pagination.loop-pagination -->
+		</nav> <!-- .pagination -->
 
 	<?php endif; ?>

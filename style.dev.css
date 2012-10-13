@@ -1771,6 +1771,9 @@ table caption {
 /* =============================================================================
    Components:  Attachment pages
    ========================================================================== */
+.attachment-title {
+  margin-top: 0;
+}
 .image-info {
   float: left;
   width: 35%;
@@ -1834,50 +1837,55 @@ table caption {
    Components:  Pagination
    ========================================================================== */
 .pagination {
+  margin: 40px 0;
+}
+.pagination:before,
+.pagination:after {
+  content: "";
+  display: table;
+}
+.pagination:after {
   clear: both;
-  font: bold 14px sans-serif;
-  margin: 40px 0 30px;
 }
 .pagination a,
 .pagination > span {
-  background: #e3e3e3;
+  background-color: #eeeeee;
+  box-shadow: 0 2px 0 #c8c8c8;
   border-radius: 3px;
-  color: #464646;
+  color: #484848;
   display: inline-block;
-  margin: 0 2px 8px 0;
-  padding: 10px 14px 9px;
-  text-shadow: 0 1px 0 #fff;
-  box-shadow: 0 2px 0 #ccc;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  line-height: normal;
+  margin-right: 2px;
+  padding: 13px 14px 12px;
+  text-shadow: 0 1px 0 #ffffff;
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
 }
 .pagination a:hover {
-  background: #d54e21;
-  color: #fff;
-  text-shadow: 0 -1px 0 #7b000f;
-  box-shadow: 0 2px 0 #9b000f;
+  background-color: #ffc768;
+  box-shadow: 0 2px 0 #f89406;
+  color: #511d0c;
+  text-shadow: 0 1px 0 #ffedce;
+}
+.pagination a:active {
+  box-shadow: 0 2px 0 #f89406, inset 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 .pagination .current {
-  background: #464646;
-  color: #fff;
+  background-color: #4d4d4d;
+  box-shadow: 0 2px 0 #000000;
+  color: #ffffff;
   text-shadow: 0 -1px 0 #000000;
-  box-shadow: 0 2px 0 #3e3e3e;
 }
 /* Prev and next post pagination */
 .post-pagination a {
   max-width: 49%;
-  line-height: 1.6;
 }
-.post-pagination a[rel=prev] {
+.post-pagination a[rel="prev"] {
   float: left;
 }
-.post-pagination a[rel=next] {
+.post-pagination a[rel="next"] {
   float: right;
 }
 /* =============================================================================
