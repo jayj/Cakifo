@@ -43,9 +43,9 @@
 	text-shadow: 1px 1px 0 #9c3412;
 }
 
-// Blue box
+// Quote box
 // -------------------------
-.blue-box(@padding: @gutterWidth) {
+.quote-box(@padding: @gutterWidth) {
 	background: #f5f8f9 ~"url(images/quote.png)"; // Escaped because of bug in SimpLESS: https://github.com/Paratron/SimpLESS/issues/74
 	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px fade(@black, 5%);
 	border: 1px solid #dde5e8;
@@ -59,6 +59,26 @@
 	position: relative;
 }
 
+
+// Blue box
+// -------------------------
+.blue-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
+	background-color: #f2f7fc;
+	border: double darken(#dde5e8, 8%);
+	border-width: @borderWidth;
+	margin: @margin;
+	padding: @padding;
+}
+
+// Orange box
+// -------------------------
+.orange-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
+	background-color: darken(#ffffe9, 2%);
+	border: double #eedbbb;
+	border-width: @borderWidth;
+	margin: @margin;
+	padding: @padding;
+}
 
 // Sizing shortcuts
 // -------------------------

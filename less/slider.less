@@ -3,11 +3,14 @@
 // --------------------------------------------------
 
 #slider {
-	background: darken(#ffffe9, 2%);
-	border-bottom: 4px double #eedbbb;
-	margin: -(@gutterWidth + 20px - 6px) -(@gutterWidth) @gutterWidth -(@gutterWidth);
-	padding: @gutterWidth @gutterWidth @smallGutterWidth;
 	position: relative;
+
+	// Padding, margin, border width
+	.orange-box(
+		@gutterWidth @gutterWidth @smallGutterWidth,
+		-(@gutterWidth + 20px - 6px) -(@gutterWidth) @gutterWidth -(@gutterWidth),
+		0 0 4px
+	);
 }
 
 .slides-container {
