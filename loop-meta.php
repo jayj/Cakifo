@@ -18,7 +18,9 @@
 
 	<div class="loop-meta loop-meta-home">
 
-		<h1 class="loop-title"><span><?php echo get_post_field( 'post_title', $wp_query->get_queried_object_id() ); ?></span></h1>
+		<h1 class="loop-title">
+			<?php echo get_post_field( 'post_title', $wp_query->get_queried_object_id() ); ?>
+		</h1>
 
 		<div class="loop-description">
 			<?php echo apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $wp_query->get_queried_object_id() ) ); ?>
@@ -30,7 +32,9 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php printf( __( 'Category Archives: %s', 'cakifo' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+		<h1 class="loop-title">
+			<?php printf( __( 'Category Archives: %s', 'cakifo' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
+		</h1>
 
 		<div class="loop-description">
 			<?php echo category_description(); ?>
@@ -42,7 +46,9 @@
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php printf( __( 'Tag Archives: %s', 'cakifo' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+		<h1 class="loop-title">
+			<?php printf( __( 'Tag Archives: %s', 'cakifo' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?>
+		</h1>
 
 		<div class="loop-description">
 			<?php echo tag_description(); ?>
@@ -69,8 +75,7 @@
 	<div class="loop-meta">
 
 		<h1 class="loop-title">
-			<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-			<?php printf( __( 'Archives: %s', 'cakifo' ), '<span>' . $term->name . '</span>' ); ?>
+			<?php printf( __( 'Archives: %s', 'cakifo' ), '<span>' . single_term_title( '', false ) . '</span>' ); ?>
 		</h1>
 
 		<div class="loop-description">
@@ -81,22 +86,29 @@
 
 <?php elseif ( is_author() ) : ?>
 
-	<?php $user_id = get_query_var( 'author' ); ?>
+	<?php
+		$user_id = get_query_var( 'author' );
+		$name = get_the_author_meta( 'display_name', $user_id );
+	?>
 
 	<div id="hcard-<?php the_author_meta( 'user_nicename', $user_id ); ?>" class="loop-meta vcard">
 
-		<h1 class="loop-title"><?php printf( __( 'Author: %s', 'cakifo' ), '<span class="fn n">' . get_the_author_meta( 'display_name', $user_id ) . '</span>' ); ?></h1>
+		<h1 class="loop-title">
+			<?php printf( __( 'Author: %s', 'cakifo' ), '<span class="fn n">' . $name . '</span>' ); ?>
+		</h1>
 
 		<div class="loop-description">
-			<?php $desc = get_the_author_meta( 'description', $user_id ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email', $user_id ), 96, '', $name ); ?>
 
-			<?php if ( !empty( $desc ) ) { ?>
-				<?php echo get_avatar( get_the_author_meta( 'user_email', $user_id ), '100', '', get_the_author_meta( 'display_name', $user_id ) ); ?>
+			<?php echo wpautop( get_the_author_meta( 'description', $user_id ) ); ?>
 
-				<p class="user-bio">
-					<?php echo $desc; ?>
-				</p> <!-- .user-bio -->
-			<?php } ?>
+			<?php if ( $twitter = get_the_author_meta( 'twitter', $user_id ) ) { ?>
+				<p class="twitter-link">
+					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), $name ); ?>">
+						<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), $name ); ?>
+					</a>
+				</p>
+			<?php } // Twitter ?>
 		</div> <!-- .loop-description -->
 
 	</div> <!-- .loop-meta -->
@@ -108,13 +120,12 @@
 		<?php $results = absint( $wp_query->found_posts ); ?>
 
 		<h1 class="loop-title">
-			<?php printf( _n( '%d Search Result for:', '%d Search Results for:', $results, 'cakifo' ), $results ); ?>
-			<span><?php echo esc_attr( get_search_query() ); ?></span>
+			<?php printf( _n( '%1$d Search Result for: %2$s', '%1$d Search Results for: %2$s', $results, 'cakifo' ), $results, '<span>' . esc_attr( get_search_query() ) . '</span>' ); ?>
 		</h1>
 
 		<div class="loop-description">
 			<p>
-			<?php printf( __( 'You are browsing the search results for &quot;%1$s&quot;', 'cakifo' ), esc_attr( get_search_query() ) ); ?>
+				<?php printf( __( 'You are browsing the search results for &quot;%1$s&quot;', 'cakifo' ), esc_attr( get_search_query() ) ); ?>
 			</p>
 		</div> <!-- .loop-description -->
 
@@ -128,13 +139,13 @@
 
 		<div class="loop-description">
 			<p>
-			<?php _e( 'You are browsing the site archives by date.', 'cakifo' ); ?>
+				<?php _e( 'You are browsing the site archives by date.', 'cakifo' ); ?>
 			</p>
 		</div> <!-- .loop-description -->
 
 	</div> <!-- .loop-meta -->
 
-<?php elseif ( is_post_type_archive() && ! is_post_type_archive( 'forum' ) ) : ?>
+<?php elseif ( is_post_type_archive() ) : ?>
 
 	<?php $post_type = get_post_type_object( get_query_var( 'post_type' ) ); ?>
 
@@ -143,7 +154,10 @@
 		<h1 class="loop-title"><?php post_type_archive_title(); ?></h1>
 
 		<div class="loop-description">
-			<?php if ( !empty( $post_type->description ) ) echo "<p>{$post_type->description}</p>"; ?>
+			<?php
+				if ( ! empty( $post_type->description ) )
+					echo wpautop( $post_type->description );
+			?>
 		</div> <!-- .loop-description -->
 
 	</div> <!-- .loop-meta -->
