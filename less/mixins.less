@@ -135,6 +135,19 @@
 	outline-offset: -2px;
 }
 
+// Placeholder text
+// -------------------------
+.placeholder(@color: @placeholderText, @textShadow: none) {
+	&:-moz-placeholder {
+		color: @color;
+		text-shadow: @textShadow;
+	}
+	&::-webkit-input-placeholder {
+		color: @color;
+		text-shadow: @textShadow;
+	}
+}
+
 // Fonts
 // --------------------------------------------------
 #font {
@@ -299,7 +312,7 @@
 // Gradients
 // --------------------------------------------------
 #gradient {
-	.horizontal(@startColor: #555, @endColor: #333, @colorStop: 100%) {
+	.horizontal(@startColor: #555, @endColor: #333, @colorStop: 0%) {
 		background-color: @endColor;
 		background-image: -moz-linear-gradient(left, @startColor @colorStop, @endColor); // FF 3.6+
 		background-image: -webkit-linear-gradient(left, @startColor @colorStop, @endColor); // Safari 5.1+, Chrome 10+
