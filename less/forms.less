@@ -281,15 +281,67 @@ html {
 	}
 }
 
-// #respond p.form-email > label {
-// 	padding-left: 18px;
-// }
+/* =============================================================================
+   Layout:  Comment form
+   ========================================================================== */
 
-// span.required {
-// 	color: #555;
-// 	font: bold 16px sans-serif;
-// 	display: none; /* Hides the required * star */
-// }
+#respond {
+	background: #f2f7fc ~"url(images/content-orange-line.png)" repeat-x;
+	color: @gray;
+	margin: (@gutterWidth + 20px) 0 0;
+	padding: @smallGutterWidth;
+
+	// Logged-in text
+	.log-in-out {
+		font-size: 18px;
+		text-align: center;
+	}
+}
+
+#reply-title {
+	.orange-box;
+	font-size: 26px;
+	letter-spacing: -1px;
+	text-align: center;
+	margin: -40px 0 @smallGutterWidth;
+}
+
+#cancel-comment-reply-link {
+	font-size: 18px;
+	font-style: italic;
+	font-weight: normal;
+	padding-left: 10px;
+}
+
+/* Comment form fields */
+#commentform {
+	.form-author {
+		float: left;
+		width: 48%;
+	}
+
+	.form-email {
+		float: right;
+		width: 48%;
+	}
+
+	.form-url {
+		clear: both;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	textarea {
+		display: block;
+		width: 100%;
+	}
+}
+
+#submit {
+	.buttonBackground(#08c, spin(#08c, 20%), @white, fade(@black, 40%));
+}
+
 
 // /**
 //  * Search form
@@ -407,63 +459,3 @@ html {
 // 		margin-left: 5px;
 // 	}
 
-
-
-/* =============================================================================
-   Layout:  Comment form
-   ========================================================================== */
-
-#respond {
-	background: #f2f7fc url(images/content-orange-line.png) repeat-x;
-	border-radius: 0 0 5px 5px;
-	color: #555;
-	margin: 25px 0 25px 0;
-	padding: 20px 20px 0 20px;
-	overflow: hidden;
-}
-
-	/* Logged-in text */
-	#respond .log-in-out {
-		color: #777;
-		font-size: 14px;
-	}
-
-	/* Cancel reply link */
-	#reply-title small a {
-		font-size: 14px;
-		font-style: italic;
-		padding-left: 10px;
-	}
-
-/* Comment form paragraphs */
-#respond p.form-author {
-	float: left;
-	width: 50%;
-}
-
-#respond p.form-email {
-	float: right;
-	width: 50%;
-}
-
-#respond p.form-url {
-	clear: both;
-}
-
-/* Comment form inputs and textarea elements */
-#respond input[type="text"],
-#respond input[type="email"],
-#respond input[type="url"],
-#respond textarea {
-	display: block;
-	width: 98%;
-}
-
-#respond p.form-author input[type="text"] {
-	width: 90%;
-}
-
-#respond p.form-email input[type="email"] {
-	width: 90%;
-	float: right;
-}

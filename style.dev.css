@@ -1408,6 +1408,10 @@ table caption {
   padding-bottom: 25px;
   position: relative;
 }
+.singular .hentry {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 .sticky {
   background: #ffffdf;
   padding: 25px;
@@ -2516,6 +2520,82 @@ html .btn-inverse:hover {
   background: #d54e21;
   border-color: #a93e1a;
 }
+/* =============================================================================
+   Layout:  Comment form
+   ========================================================================== */
+#respond {
+  background: #f2f7fc url(images/content-orange-line.png) repeat-x;
+  color: #555555;
+  margin: 60px 0 0;
+  padding: 25px;
+}
+#respond .log-in-out {
+  font-size: 18px;
+  text-align: center;
+}
+#reply-title {
+  background-color: #ffffdf;
+  border: double #eedbbb;
+  border-width: 4px 0;
+  margin: 0 0 40px;
+  padding: 10px 25px;
+  font-size: 26px;
+  letter-spacing: -1px;
+  text-align: center;
+  margin: -40px 0 25px;
+}
+#cancel-comment-reply-link {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: normal;
+  padding-left: 10px;
+}
+/* Comment form fields */
+#commentform .form-author {
+  float: left;
+  width: 48%;
+}
+#commentform .form-email {
+  float: right;
+  width: 48%;
+}
+#commentform .form-url {
+  clear: both;
+}
+#commentform input[type="text"],
+#commentform input[type="email"],
+#commentform input[type="url"],
+#commentform textarea {
+  display: block;
+  width: 100%;
+}
+#submit {
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: linear-gradient(top, #0088cc, #0044cc 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #0044cc #0044cc #002a80;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+#submit:hover {
+  background-color: #0063b9;
+  background-image: -moz-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
+}
+#submit:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
 @media screen and (min-width: 980px) {
   #topbar .search {
     background: #262626 url(less/less/images/topbar.png) repeat;
@@ -2525,55 +2605,6 @@ html .btn-inverse:hover {
     margin-top: 12px;
     padding: 0;
   }
-}
-/* =============================================================================
-   Layout:  Comment form
-   ========================================================================== */
-#respond {
-  background: #f2f7fc url(less/less/images/content-orange-line.png) repeat-x;
-  border-radius: 0 0 5px 5px;
-  color: #555;
-  margin: 25px 0 25px 0;
-  padding: 20px 20px 0 20px;
-  overflow: hidden;
-}
-/* Logged-in text */
-#respond .log-in-out {
-  color: #777;
-  font-size: 14px;
-}
-/* Cancel reply link */
-#reply-title small a {
-  font-size: 14px;
-  font-style: italic;
-  padding-left: 10px;
-}
-/* Comment form paragraphs */
-#respond p.form-author {
-  float: left;
-  width: 50%;
-}
-#respond p.form-email {
-  float: right;
-  width: 50%;
-}
-#respond p.form-url {
-  clear: both;
-}
-/* Comment form inputs and textarea elements */
-#respond input[type="text"],
-#respond input[type="email"],
-#respond input[type="url"],
-#respond textarea {
-  display: block;
-  width: 98%;
-}
-#respond p.form-author input[type="text"] {
-  width: 90%;
-}
-#respond p.form-email input[type="email"] {
-  width: 90%;
-  float: right;
 }
 /* =============================================================================
    Components:  Message boxes
@@ -2947,30 +2978,6 @@ html .btn-inverse:hover {
   .headline-list {
     width: 100% !important;
     float: none !important;
-  }
-  /* Make the comment form better */
-  #respond p.form-email,
-  #respond p.form-author {
-    float: none;
-    width: 100%;
-  }
-  #respond p.form-author input[type="text"],
-  #respond p.form-email input[type="text"] {
-    width: 98%;
-  }
-  #respond p.form-email input[type="text"] {
-    float: none;
-  }
-  #respond label {
-    font-size: 16px;
-  }
-  #respond p.form-email > label {
-    padding-left: 0;
-  }
-  #respond #submit {
-    font-size: 18px;
-    width: 100%;
-    padding: 25px;
   }
 }
 /* =============================================================================
