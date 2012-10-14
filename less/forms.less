@@ -1,203 +1,349 @@
 //
-// Forms
+// Normalize form
+// normalize.css
 // --------------------------------------------------
 
-form { margin: 0; }
-
+/*
+ * Define consistent border, margin, and padding.
+ */
 fieldset {
 	border: 1px solid #c0c0c0;
 	margin: 0 2px;
 	padding: 0.35em 0.625em 0.75em;
 }
 
+/*
+ * 1. Corrects color not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
 legend {
-	border: 0;
-	*margin-left: -7px;
+	border: 0; /* 1 */
+	padding: 0; /* 2 */
 }
 
+/*
+ * 1. Corrects font family not being inherited in all browsers.
+ * 2. Corrects font size not being inherited in all browsers.
+ * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
+ */
 button,
 input,
 select,
 textarea {
-	font-size: 100%;
-	margin: 0;
-	vertical-align: baseline;
-	*vertical-align: middle;
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 2 */
+	margin: 0; /* 3 */
 }
 
+/*
+ * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
 button,
 input {
 	line-height: normal;
-	*overflow: visible;
 }
 
+/*
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Corrects inability to style clickable `input` types in iOS.
+ * 3. Improves usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
 button,
-input[type="button"],
+html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
-	cursor: pointer;
-	-webkit-appearance: button;
+	-webkit-appearance: button; /* 2 */
+	cursor: pointer; /* 3 */
 }
 
+/*
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+input[disabled] {
+	cursor: default;
+}
+
+/*
+ * 1. Addresses box sizing set to `content-box` in IE 8/9.
+ * 2. Removes excess padding in IE 8/9.
+ */
 input[type="checkbox"],
 input[type="radio"] {
-	box-sizing: border-box;
-	padding: 0;
+	.box-sizing(border-box); /* 1 */
+	padding: 0; /* 2 */
 }
 
+/*
+ * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
+ */
 input[type="search"] {
-	-webkit-appearance: textfield;
-	-moz-box-sizing: content-box;
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box;
+	-webkit-appearance: textfield; /* 1 */
 }
 
+input[type="search"],
+input[type="color"] {
+	.box-sizing(content-box);
+}
+
+/*
+ * Removes inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none;
 }
 
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
 
-/* Submit button */
-input[type="submit"],
-input[type="button"],
-button {
-	background: #464646;
-	border: none;
-	border-radius: 5px;
-	color: #fff;
-	font: bold 16px 'PT Serif', Georgia, serif;
-	padding: 11px 15px;
-	text-shadow: 1px 1px 0 #3e3e3e;
+/*
+ * 1. Removes default vertical scrollbar in IE 8/9.
+ * 2. Improves readability and alignment in all browsers.
+ */
+textarea {
+	overflow: auto; /* 1 */
+	vertical-align: top; /* 2 */
 }
 
-input[type="submit"]:hover,
-input[type="button"]:hover,
-button:hover {
-	background: #d54e21;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	text-shadow: 1px 1px 0 #b92b00;
+//
+// Cakifo form styles
+// --------------------------------------------------
+
+/* Set font for forms */
+label,
+input,
+button,
+select,
+textarea {
+	#font > .shorthand(@baseFontSize - 1px, normal, normal); // Set size, weight, line-height here
+}
+
+input,
+button,
+select,
+textarea {
+	font-family: @sansFontFamily; // And only set font-family here for those that need it (note the missing label element)
 }
 
 /* Inputs */
 input,
-textarea,
-select {
-	background: #f9f9f9;
+select,
+textarea {
 	border: 1px solid #ccc;
 	border-radius: 3px;
-	font: 14px 'PT Serif', Georgia, serif;
-	color: #999;
-	padding: 7px 6px;
-	-webkit-transition: all 200ms;
-	-moz-transition: all 200ms;
-	-o-transition: all 200ms;
-	-ms-transition: all 200ms;
-	transition: all 200ms;
+	box-shadow: inset 0 1px 1px fade(@black, 7.5%);
+	display: inline-block;
+	color: @gray;
+	padding: 8px 6px;
+	margin-bottom: 10px;
+	.transition(all 150ms ease);
+
+	&:hover {
+		border-color: @grayLight;
+	}
+
+	&:focus {
+		box-shadow: inset 0 1px 1px fade(@black, 7.5%), 0 0 6px fade(rgb(82, 168, 236), 50%);
+		border-color: rgba(82,168,236, .8);
+		outline: 0;
+		outline: thin dotted \9; // IE6-9
+	}
 }
 
-input:focus, input:hover,
-textarea:focus, textarea:hover {
-	background: #fff;
-	border: 1px solid #f0b03c;
-	color: #555;
+// Focus for select, file, radio, and checkbox
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+	.tab-focus();
 }
 
-textarea {
-	overflow: auto;
-	vertical-align: top;
+// Input sizes
+.input-mini       { width: 60px; }
+.input-small      { width: 90px; }
+.input-medium     { width: 150px; }
+.input-large      { width: 210px; }
+.input-xlarge     { width: 270px; }
+.input-xxlarge    { width: 100%; }
+
+/* Disabled and read-only inputs */
+input[disabled],
+button[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+button[readonly],
+select[readonly],
+textarea[readonly] {
+	background: @grayLighter;
+	cursor: not-allowed;
 }
 
+// Explicitly reset the colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+	background-color: transparent;
+}
+
+/* Selects */
 select {
-	color: #444;
+	min-width: 180px;
 }
 
 /* Labels */
 label {
-	color: #606060;
+	#font > .alternative(16px);
 	cursor: pointer;
-	font: 14px 'PT Serif', Georgia, serif;
-	padding-left: 2px;
-	-webkit-transition: color 150ms;
-	-moz-transition: color 150ms;
-	-o-transition: color 150ms;
-	-ms-transition: color 150ms;
-	transition: color 150ms;
-}
-
-label:hover {
-	color: #444;
-}
-
-#respond p.form-email > label {
-	padding-left: 18px;
-}
-
-span.required {
-	color: #555;
-	font: bold 16px sans-serif;
-	display: none; /* Hides the required * star */
+	display: block;
+	margin-bottom: 5px;
 }
 
 /**
- * Search form
+ * Buttons
  */
-.search-form label {
-	padding-left: 0;
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	.button(@white, darken(@white, 10%));
 }
 
-.search-form .search-text {
-	background: #fff url(images/search.png) no-repeat 5px center;
-	border: 1px solid #ddd;
-	border-radius: 2px;
-	font-size: 14px;
-	line-height: 1.5;
-	padding: 6px 10px 6px 27px;
-	box-shadow: inset 0 1px 1px rgba(0,0,0, 0.1);
-	-webkit-transition: all 250ms ease-in-out;
-	-moz-transition: all 250ms ease-in-out;
-	-o-transition: all 250ms ease-in-out;
-	-ms-transition: all 250ms ease-in-out;
-	transition: all 250ms ease-in-out;
+// Large button
+.btn-large {
+	border-radius: 5px;
+	padding: 9px 16px;
+	font-size: @baseFontSize + 2px;
+	line-height: normal;
 }
 
-.search-form .search-text:focus {
-	background-color: #f8f8f8;
-	border-color: #F0B03C;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1), 0 0 1px 1px #F0B03C;
-	outline: 0;
+// Small button
+.btn-small {
+	padding: 4px 9px;
+	font-size: @baseFontSize - 2px;
 }
 
-.search-form .search-text::webkit-placeholder { color: #ececec; }
-.search-form .search-text::moz-placeholder { color: #ececec; }
-.search-form .search-text::o-placeholder { color: #ececec; }
-.search-form .search-text::ms-placeholder { color: #ececec; }
-.search-form .search-text::placeholder { color: #ececec; }
-
-.search-form .search-submit {
-	margin-left: 10px;
+// Mini button
+.btn-mini {
+	padding: 3px 7px;
+	font-size: @baseFontSize - 3px;
+	font-weight: normal;
 }
 
-/* Search form in sidebar */
-.widget-search .search-text {
-	margin-left: 10px;
-	width: 77%;
+/* Button colours */
+html {
+	// Primary button
+	.btn-primary {
+		.buttonBackground(#08c, spin(#08c, 20%), @white, fade(@black, 40%));
+	}
+
+	// Warning appears are orange
+	.btn-warning {
+		.buttonBackground(#faa51a, #f47a20, @white, fade(@black, 40%));
+	}
+
+	// Danger and error appear as red
+	.btn-danger {
+		.buttonBackground(#ee5f5b, #bd362f, @white, fade(@black, 40%));
+	}
+
+	// Success appears as green
+	.btn-success {
+		.buttonBackground(#62c462, #51a351, @white, fade(@black, 40%));
+	}
+
+	// Info appears as a neutral blue
+	.btn-info {
+		.buttonBackground(#5bc0de, #2f96b4, @white, fade(@black, 40%));
+	}
+
+	// Inverse appears as dark gray
+	.btn-inverse {
+		.buttonBackground(#444, @grayDarker, @white, fade(@black, 40%));
+
+		&:hover {
+			background: @orangeDark;
+			border-color: darken(@orangeDark, 10%);
+		}
+	}
 }
 
-.widget-search .search-submit {
-	display: none;
-}
+// #respond p.form-email > label {
+// 	padding-left: 18px;
+// }
+
+// span.required {
+// 	color: #555;
+// 	font: bold 16px sans-serif;
+// 	display: none; /* Hides the required * star */
+// }
+
+// /**
+//  * Search form
+//  */
+// .search-form label {
+// 	padding-left: 0;
+// }
+
+// .search-form .search-text {
+// 	background: #fff url(images/search.png) no-repeat 5px center;
+// 	border: 1px solid #ddd;
+// 	border-radius: 2px;
+// 	font-size: 14px;
+// 	line-height: 1.5;
+// 	padding: 6px 10px 6px 27px;
+// 	box-shadow: inset 0 1px 1px rgba(0,0,0, 0.1);
+// 	-webkit-transition: all 250ms ease-in-out;
+// 	-moz-transition: all 250ms ease-in-out;
+// 	-o-transition: all 250ms ease-in-out;
+// 	-ms-transition: all 250ms ease-in-out;
+// 	transition: all 250ms ease-in-out;
+// }
+
+// .search-form .search-text:focus {
+// 	background-color: #f8f8f8;
+// 	border-color: #F0B03C;
+// 	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1), 0 0 1px 1px #F0B03C;
+// 	outline: 0;
+// }
+
+// .search-form .search-text::webkit-placeholder { color: #ececec; }
+// .search-form .search-text::moz-placeholder { color: #ececec; }
+// .search-form .search-text::o-placeholder { color: #ececec; }
+// .search-form .search-text::ms-placeholder { color: #ececec; }
+// .search-form .search-text::placeholder { color: #ececec; }
+
+// .search-form .search-submit {
+// 	margin-left: 10px;
+// }
+
+// /* Search form in sidebar */
+// .widget-search .search-text {
+// 	margin-left: 10px;
+// 	width: 77%;
+// }
+
+// .widget-search .search-submit {
+// 	display: none;
+// }
 
 
 
-/* Search form in the topbar */
-// @TODO: Change styling to reflect changes;
+// /* Search form in the topbar */
+// // @TODO: Change styling to reflect changes;
 @media screen and (min-width: 980px) {
 	#topbar .search {
 		background: #262626 url(images/topbar.png) repeat;

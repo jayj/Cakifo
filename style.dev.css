@@ -2044,188 +2044,478 @@ table caption {
 /* =============================================================================
    Layout:  Forms
    ========================================================================== */
-form {
-  margin: 0;
-}
+/*
+ * Define consistent border, margin, and padding.
+ */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
+/*
+ * 1. Corrects color not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
 legend {
   border: 0;
-  *margin-left: -7px;
+  /* 1 */
+
+  padding: 0;
+  /* 2 */
+
 }
+/*
+ * 1. Corrects font family not being inherited in all browsers.
+ * 2. Corrects font size not being inherited in all browsers.
+ * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
+ */
 button,
 input,
 select,
 textarea {
+  font-family: inherit;
+  /* 1 */
+
   font-size: 100%;
+  /* 2 */
+
   margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
+  /* 3 */
+
 }
+/*
+ * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
 button,
 input {
   line-height: normal;
-  *overflow: visible;
 }
+/*
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Corrects inability to style clickable `input` types in iOS.
+ * 3. Improves usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
 button,
-input[type="button"],
+html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  cursor: pointer;
   -webkit-appearance: button;
+  /* 2 */
+
+  cursor: pointer;
+  /* 3 */
+
 }
+/*
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+/*
+ * 1. Addresses box sizing set to `content-box` in IE 8/9.
+ * 2. Removes excess padding in IE 8/9.
+ */
 input[type="checkbox"],
 input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  /* 1 */
+
   padding: 0;
+  /* 2 */
+
 }
+/*
+ * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
+ */
 input[type="search"] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
+  /* 1 */
+
+}
+input[type="search"],
+input[type="color"] {
   -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
+/*
+ * Removes inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-/* Submit button */
-input[type="submit"],
-input[type="button"],
-button {
-  background: #464646;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font: bold 16px 'PT Serif', Georgia, serif;
-  padding: 11px 15px;
-  text-shadow: 1px 1px 0 #3e3e3e;
+/*
+ * 1. Removes default vertical scrollbar in IE 8/9.
+ * 2. Improves readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+
+  vertical-align: top;
+  /* 2 */
+
 }
-input[type="submit"]:hover,
-input[type="button"]:hover,
-button:hover {
-  background: #d54e21;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  text-shadow: 1px 1px 0 #b92b00;
+/* Set font for forms */
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+}
+input,
+button,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* Inputs */
 input,
-textarea,
-select {
-  background: #f9f9f9;
+select,
+textarea {
   border: 1px solid #ccc;
   border-radius: 3px;
-  font: 14px 'PT Serif', Georgia, serif;
-  color: #999;
-  padding: 7px 6px;
-  -webkit-transition: all 200ms;
-  -moz-transition: all 200ms;
-  -o-transition: all 200ms;
-  -ms-transition: all 200ms;
-  transition: all 200ms;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  display: inline-block;
+  color: #555555;
+  padding: 8px 6px;
+  margin-bottom: 10px;
+  -webkit-transition: all 150ms ease;
+  -moz-transition: all 150ms ease;
+  -o-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #999999;
 }
 input:focus,
-input:hover,
-textarea:focus,
-textarea:hover {
-  background: #fff;
-  border: 1px solid #f0b03c;
-  color: #555;
+select:focus,
+textarea:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(82, 168, 236, 0.5);
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
 }
-textarea {
-  overflow: auto;
-  vertical-align: top;
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
+.input-mini {
+  width: 60px;
+}
+.input-small {
+  width: 90px;
+}
+.input-medium {
+  width: 150px;
+}
+.input-large {
+  width: 210px;
+}
+.input-xlarge {
+  width: 270px;
+}
+.input-xxlarge {
+  width: 100%;
+}
+/* Disabled and read-only inputs */
+input[disabled],
+button[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+button[readonly],
+select[readonly],
+textarea[readonly] {
+  background: #eeeeee;
+  cursor: not-allowed;
+}
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+/* Selects */
 select {
-  color: #444;
+  min-width: 180px;
 }
 /* Labels */
 label {
-  color: #606060;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.8;
   cursor: pointer;
-  font: 14px 'PT Serif', Georgia, serif;
-  padding-left: 2px;
-  -webkit-transition: color 150ms;
-  -moz-transition: color 150ms;
-  -o-transition: color 150ms;
-  -ms-transition: color 150ms;
-  transition: color 150ms;
-}
-label:hover {
-  color: #444;
-}
-#respond p.form-email > label {
-  padding-left: 18px;
-}
-span.required {
-  color: #555;
-  font: bold 16px sans-serif;
-  display: none;
-  /* Hides the required * star */
-
+  display: block;
+  margin-bottom: 5px;
 }
 /**
- * Search form
+ * Buttons
  */
-.search-form label {
-  padding-left: 0;
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6 100%);
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6 100%);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6 100%);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  color: #333333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.8;
+  padding: 4px 14px;
 }
-.search-form .search-text {
-  background: #ffffff url(less/less/images/search.png) no-repeat 5px center;
-  border: 1px solid #ddd;
-  border-radius: 2px;
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+  background-color: #ebebeb;
+  background-image: -moz-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
+  background-image: -o-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
+  background-image: linear-gradient(top, #f7f7f7, #d9d9d9 100%);
+  color: #333333;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
+}
+.btn:active,
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn-large {
+  border-radius: 5px;
+  padding: 9px 16px;
+  font-size: 18px;
+  line-height: normal;
+}
+.btn-small {
+  padding: 4px 9px;
   font-size: 14px;
-  line-height: 1.5;
-  padding: 6px 10px 6px 27px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 250ms ease-in-out;
-  -moz-transition: all 250ms ease-in-out;
-  -o-transition: all 250ms ease-in-out;
-  -ms-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out;
 }
-.search-form .search-text:focus {
-  background-color: #f8f8f8;
-  border-color: #F0B03C;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px #f0b03c;
-  outline: 0;
+.btn-mini {
+  padding: 3px 7px;
+  font-size: 13px;
+  font-weight: normal;
 }
-.search-form .search-text::webkit-placeholder {
-  color: #ececec;
+/* Button colours */
+html .btn-primary {
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: linear-gradient(top, #0088cc, #0044cc 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #0044cc #0044cc #002a80;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
-.search-form .search-text::moz-placeholder {
-  color: #ececec;
+html .btn-primary:hover {
+  background-color: #0063b9;
+  background-image: -moz-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
 }
-.search-form .search-text::o-placeholder {
-  color: #ececec;
+html .btn-primary:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.search-form .search-text::ms-placeholder {
-  color: #ececec;
+html .btn-warning {
+  background-color: #f8941c;
+  background-image: -moz-linear-gradient(top, #faa51a, #f47a20 100%);
+  background-image: -webkit-linear-gradient(top, #faa51a, #f47a20 100%);
+  background-image: -o-linear-gradient(top, #faa51a, #f47a20 100%);
+  background-image: linear-gradient(top, #faa51a, #f47a20 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #f47a20 #f47a20 #be5609;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
-.search-form .search-text::placeholder {
-  color: #ececec;
+html .btn-warning:hover {
+  background-color: #f58b0b;
+  background-image: -moz-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  background-image: -webkit-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  background-image: -o-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  background-image: linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
 }
-.search-form .search-submit {
-  margin-left: 10px;
+html .btn-warning:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-/* Search form in sidebar */
-.widget-search .search-text {
-  margin-left: 10px;
-  width: 77%;
+html .btn-danger {
+  background-color: #da4f49;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f 100%);
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f 100%);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f 100%);
+  background-image: linear-gradient(top, #ee5f5b, #bd362f 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #bd362f #bd362f #802420;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
-.widget-search .search-submit {
-  display: none;
+html .btn-danger:hover {
+  background-color: #d1443f;
+  background-image: -moz-linear-gradient(top, #ed514d, #a9302a 100%);
+  background-image: -webkit-linear-gradient(top, #ed514d, #a9302a 100%);
+  background-image: -o-linear-gradient(top, #ed514d, #a9302a 100%);
+  background-image: linear-gradient(top, #ed514d, #a9302a 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
 }
-/* Search form in the topbar */
+html .btn-danger:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+html .btn-success {
+  background-color: #5bb75b;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351 100%);
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351 100%);
+  background-image: -o-linear-gradient(top, #62c462, #51a351 100%);
+  background-image: linear-gradient(top, #62c462, #51a351 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #51a351 #51a351 #387038;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+html .btn-success:hover {
+  background-color: #51ad51;
+  background-image: -moz-linear-gradient(top, #57c057, #499249 100%);
+  background-image: -webkit-linear-gradient(top, #57c057, #499249 100%);
+  background-image: -o-linear-gradient(top, #57c057, #499249 100%);
+  background-image: linear-gradient(top, #57c057, #499249 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
+}
+html .btn-success:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+html .btn-info {
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4 100%);
+  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4 100%);
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4 100%);
+  background-image: linear-gradient(top, #5bc0de, #2f96b4 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+html .btn-info:hover {
+  background-color: #40a6c4;
+  background-image: -moz-linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  background-image: -webkit-linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  background-image: -o-linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  background-image: linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
+}
+html .btn-info:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+html .btn-inverse {
+  background-color: #363636;
+  background-image: -moz-linear-gradient(top, #444444, #222222 100%);
+  background-image: -webkit-linear-gradient(top, #444444, #222222 100%);
+  background-image: -o-linear-gradient(top, #444444, #222222 100%);
+  background-image: linear-gradient(top, #444444, #222222 100%);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-color: #222222 #222222 #000000;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+html .btn-inverse:hover {
+  background-color: #2d2d2d;
+  background-image: -moz-linear-gradient(top, #3c3c3c, #151515 100%);
+  background-image: -webkit-linear-gradient(top, #3c3c3c, #151515 100%);
+  background-image: -o-linear-gradient(top, #3c3c3c, #151515 100%);
+  background-image: linear-gradient(top, #3c3c3c, #151515 100%);
+  color: #ffffff;
+  -webkit-transition: background-position 100ms linear;
+  -moz-transition: background-position 100ms linear;
+  -o-transition: background-position 100ms linear;
+  transition: background-position 100ms linear;
+}
+html .btn-inverse:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+html .btn-inverse:hover {
+  background: #d54e21;
+  border-color: #a93e1a;
+}
 @media screen and (min-width: 980px) {
   #topbar .search {
     background: #262626 url(less/less/images/topbar.png) repeat;
