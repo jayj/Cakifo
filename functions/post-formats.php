@@ -99,10 +99,8 @@ function cakifo_format_chat_content( $content ) {
 	/* Loop through each row and format the output. */
 	foreach ( $chat_rows as $chat_row ) {
 
-		$clean_chat_row = strip_tags( $chat_row );
-
 		/* If a speaker is found, create a new chat row with speaker and text. */
-		if ( strpos( $clean_chat_row, $separator ) ) {
+		if ( preg_match( '/(?<!http|https)' . $separator . '/', $chat_row ) ) {
 
 			/* Split the chat row into author/text. */
 			$chat_row_split = explode( ':', trim( $chat_row ), 2 );
@@ -136,7 +134,7 @@ function cakifo_format_chat_content( $content ) {
 		else {
 
 			/* Make sure we have text. */
-			if ( ! empty( $clean_chat_row ) ) {
+			if ( ! empty( $chat_row ) ) {
 
 				/* Open the chat row. */
 				$chat_output .= "\n\t\t\t\t" . '<div class="chat-row no-speaker">';
