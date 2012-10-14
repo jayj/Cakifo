@@ -1013,10 +1013,10 @@ function cakifo_body_class( $classes ) {
  * @since Cakifo 1.5
  */
 function cakifo_html5_comment_fields( $fields ) {
-	if( isset( $fields['email'] ) )
+	if ( isset( $fields['email'] ) )
 		$fields['email'] = str_replace( 'type="text"', 'type="email"', $fields['email'] );
 
-	if( isset( $fields['url'] ) )
+	if ( isset( $fields['url'] ) )
 		$fields['url'] = str_replace( 'type="text"', 'type="url"', $fields['url'] );
 
 	return $fields;

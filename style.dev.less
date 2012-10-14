@@ -472,6 +472,11 @@ sub {
 	position: relative;
 }
 
+.singular .hentry {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
 .sticky {
 	background: darken(#ffffe9, 2%);
 	padding: @smallGutterWidth;
@@ -1357,36 +1362,6 @@ sub {
 	.headline-list {
 		width: 100% !important;
 		float: none !important;
-	}
-
-	/* Make the comment form better */
-	#respond p.form-email,
-	#respond p.form-author {
-		float: none;
-		width: 100%;
-	}
-
-	#respond p.form-author input[type="text"],
-	#respond p.form-email input[type="text"] {
-		width: 98%;
-	}
-
-	#respond p.form-email input[type="text"] {
-		float: none;
-	}
-
-	#respond label {
-		font-size: 16px;
-	}
-
-	#respond p.form-email > label {
-		padding-left: 0;
-	}
-
-	#respond #submit {
-		font-size: 18px;
-		width: 100%;
-		padding: 25px;
 	}
 }
 
