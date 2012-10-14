@@ -912,100 +912,98 @@ sub {
    Layout:  Comments
    ========================================================================== */
 
+#comments {
+	margin-top: @gutterWidth;
+}
+
+#comments-number {
+	.orange-box;
+}
+
 .comment-list,
-.comment-list ol {
+.comment-list .children {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 }
 
-.comment-list li.comment {
-	border-bottom: 1px solid #eee;
-	padding: 20px 20px 0 20px;
-	overflow: hidden;
+.comment {
+	border-bottom: 4px double @grayLighter;
+
+	.comment-wrapper {
+		padding: @smallGutterWidth;
+	}
+
+	// Comment meta
+	.comment-meta {
+		#font > .alternative(13px, normal, 25px);
+		color: @grayLight;
+
+		a {
+			color: @gray;
+
+			&:hover {
+				color: @linkColorHover;
+			}
+		}
+
+		.comment-reply-link {
+			font-weight: bold;
+		}
+	}
+
+	.comment-author {
+		#font > .alternative(16px, bold, 25px);
+		color: @gray;
+		display: block;
+
+		cite {
+			font-style: normal;
+		}
+	}
 }
 
-	/* Replies */
-	.comment-list .children li.comment {
-		background: #fff;
-		border-top: 1px solid #eee;
+/* Comment background colours */
+.comment {
+	.even {
+		background-color: #fff;
+	}
+
+	.odd {
+		background-color: #ffffe9;
+	}
+
+	.bypostauthor {
+		background-color: #f2f7fc;
+	}
+}
+
+/* Child comments */
+.comment-list .children {
+	margin-left: @gutterWidth;
+
+	.comment {
+		border-top: 1px solid @grayLighter;
 		border-bottom: none;
 	}
 
-	.comment-list .depth-2 {
+	// Border colors
+	.depth-2 {
 		border-left: 3px solid #04648d;
 	}
 
-	.comment-list .depth-3 {
+	.depth-3 {
 		border-left: 3px solid #ce3000;
 	}
 
-	.comment-list .depth-4 {
-		border-left: 3px solid #849219;
+	.depth-4 {
+		border-left: 3px solid darken(@green, 3%);
 	}
 
-	.comment-list .depth-5,
-	.comment-list .depth-5 li {
-		border-left: 3px solid #E1C40F;
+	.depth-5 {
+		border-left: 3px solid darken(@pink, 5%);
 	}
-
-.comment-list .odd,
-.comment-list .children .odd {
-	background: #ffffee;
 }
-
-.comment-list .bypostauthor {
-	background: #f2f7fc!important;
-}
-
-/* Comment metadata */
-.comment-meta {
-	color: #999;
-	font: normal normal normal 12px/25px sans-serif;
-	margin: 0 0 10px 0;
-}
-
-.comment-meta a {
-	color: #666;
-}
-
-.comment-meta a:hover {
-	color: #d64e20;
-	text-decoration: none;
-}
-
-	/* Comment author */
-	.comment-author {
-		color: #555;
-		display: block;
-		font: bold 16px 'PT Serif', Georgia, serif;
-	}
-
-	.comment-author cite {
-		font-style: normal;
-	}
-
-	/* Comment reply link */
-	.comment-reply-link {
-		border-bottom: none;
-		color: #04648d;
-		font-weight: bold;
-	}
-
-	a.comment-reply-link:hover,
-	.comment-author cite a:hover {
-		background: #568cbb;
-		color: #fff;
-	}
-
-	/* Comment published date/time */
-	.comment-meta abbr {
-		border: none;
-	}
-
-	/* Comment text */
-	.comment-text {
-		clear: left;
-	}
 
 /* =============================================================================
    Layout:  Forms

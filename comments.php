@@ -9,9 +9,6 @@
  * @subpackage Template
  */
 
-/* Kill the page if trying to access this template directly */
-if ( !defined('ABSPATH') ) die;
-
 /* If a post password is required or no comments are given and comments/pings are closed, return */
 if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! pings_open() ) )
 	return;
@@ -21,13 +18,15 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
 	<?php if ( have_comments() ) : ?>
 
-		<h2 id="comments-number" class="comments-header"><?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?></h2>
+		<h2 id="comments-number" class="comments-header">
+			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?>
+		</h2>
 
 		<?php do_atomic( 'before_comment_list' ); // cakifo_before_comment_list ?>
 
-			<ol class="comment-list">
-				<?php wp_list_comments( hybrid_list_comments_args() ); ?>
-			</ol> <!-- .comment-list -->
+		<ol class="comment-list">
+			<?php wp_list_comments( hybrid_list_comments_args() ); ?>
+		</ol> <!-- .comment-list -->
 
 		<?php do_atomic( 'after_comment_list' ); // cakifo_after_comment_list ?>
 

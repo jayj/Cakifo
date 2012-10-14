@@ -1962,82 +1962,84 @@ table caption {
 /* =============================================================================
    Layout:  Comments
    ========================================================================== */
+#comments {
+  margin-top: 40px;
+}
+#comments-number {
+  background-color: #ffffdf;
+  border: double #eedbbb;
+  border-width: 4px 0;
+  margin: 0 0 40px;
+  padding: 10px 25px;
+}
 .comment-list,
-.comment-list ol {
+.comment-list .children {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
-.comment-list li.comment {
-  border-bottom: 1px solid #eee;
-  padding: 20px 20px 0 20px;
-  overflow: hidden;
+.comment {
+  border-bottom: 4px double #eeeeee;
 }
-/* Replies */
-.comment-list .children li.comment {
-  background: #fff;
-  border-top: 1px solid #eee;
-  border-bottom: none;
+.comment .comment-wrapper {
+  padding: 25px;
 }
-.comment-list .depth-2 {
-  border-left: 3px solid #04648d;
+.comment .comment-meta {
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 25px;
+  color: #999999;
 }
-.comment-list .depth-3 {
-  border-left: 3px solid #ce3000;
+.comment .comment-meta a {
+  color: #555555;
 }
-.comment-list .depth-4 {
-  border-left: 3px solid #849219;
+.comment .comment-meta a:hover {
+  color: #d54e21;
 }
-.comment-list .depth-5,
-.comment-list .depth-5 li {
-  border-left: 3px solid #E1C40F;
-}
-.comment-list .odd,
-.comment-list .children .odd {
-  background: #ffffee;
-}
-.comment-list .bypostauthor {
-  background: #f2f7fc!important;
-}
-/* Comment metadata */
-.comment-meta {
-  color: #999;
-  font: normal normal normal 12px/25px sans-serif;
-  margin: 0 0 10px 0;
-}
-.comment-meta a {
-  color: #666;
-}
-.comment-meta a:hover {
-  color: #d64e20;
-  text-decoration: none;
-}
-/* Comment author */
-.comment-author {
-  color: #555;
-  display: block;
-  font: bold 16px 'PT Serif', Georgia, serif;
-}
-.comment-author cite {
-  font-style: normal;
-}
-/* Comment reply link */
-.comment-reply-link {
-  border-bottom: none;
-  color: #04648d;
+.comment .comment-meta .comment-reply-link {
   font-weight: bold;
 }
-a.comment-reply-link:hover,
-.comment-author cite a:hover {
-  background: #568cbb;
-  color: #fff;
+.comment .comment-author {
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 25px;
+  color: #555555;
+  display: block;
 }
-/* Comment published date/time */
-.comment-meta abbr {
-  border: none;
+.comment .comment-author cite {
+  font-style: normal;
 }
-/* Comment text */
-.comment-text {
-  clear: left;
+/* Comment background colours */
+.comment .even {
+  background-color: #fff;
+}
+.comment .odd {
+  background-color: #ffffe9;
+}
+.comment .bypostauthor {
+  background-color: #f2f7fc;
+}
+/* Child comments */
+.comment-list .children {
+  margin-left: 40px;
+}
+.comment-list .children .comment {
+  border-top: 1px solid #eeeeee;
+  border-bottom: none;
+}
+.comment-list .children .depth-2 {
+  border-left: 3px solid #04648d;
+}
+.comment-list .children .depth-3 {
+  border-left: 3px solid #ce3000;
+}
+.comment-list .children .depth-4 {
+  border-left: 3px solid #008a2e;
+}
+.comment-list .children .depth-5 {
+  border-left: 3px solid #ea0863;
 }
 /* =============================================================================
    Layout:  Forms
