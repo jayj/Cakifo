@@ -44,30 +44,13 @@ get_header(); // Loads the header.php template ?>
 
 					<?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>
 
-					<div class="clear"></div>
+					<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
 					<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
 
 				</article> <!-- #post-<?php the_ID(); ?> -->
 
 			<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
-
-			<?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template ?>
-
-			<?php do_atomic( 'after_singular' ); // cakifo_after_singular ?>
-
-			<?php
-				/**
-				 * Show comments on singular pages? (not single posts)
-				 *
-				 * On by default. Disable in child theme with
-				 * add_filter( 'show_singular_comments', '__return_false' );
-				 */
-				$display = apply_filters( 'show_singular_comments', true );
-
-				if ( $display )
-					comments_template( '/comments.php', true ); // Loads the comments.php template
-			?>
 
 		<?php endwhile; ?>
 

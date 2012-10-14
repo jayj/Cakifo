@@ -1041,7 +1041,8 @@ function cakifo_load_in_singular() {
 	get_template_part( 'loop-nav' );
 
 	// Loads the comments.php template
-	comments_template( '/comments.php', true );
+	if ( post_type_supports( get_post_type(), 'comments' ) )
+		comments_template( '/comments.php', true );
 }
 
 ?>
