@@ -861,6 +861,14 @@ table caption {
   width: 100%;
   margin: 0 auto;
 }
+.main-navigation:before,
+.main-navigation:after {
+  content: "";
+  display: table;
+}
+.main-navigation:after {
+  clear: both;
+}
 .main-navigation .menu {
   list-style: none;
   margin: 0;
@@ -883,16 +891,9 @@ table caption {
   color: #ececec;
 }
 .main-navigation .menu-list-container,
-.main-navigation .search,
+.main-navigation .search-form,
 .main-navigation .sep {
   display: none;
-}
-#topbar .search {
-  border: 1px solid #222222;
-  border-width: 1px 0;
-  float: none;
-  padding: 20px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 /* Toggle button */
 #menu-toggle {
@@ -926,7 +927,8 @@ table caption {
   .main-navigation {
     width: 1080px;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0 40px 0 25px;
+    position: relative;
     /* Separator */
   
   }
@@ -936,7 +938,7 @@ table caption {
     padding: 0;
   }
   .main-navigation .menu-list-container,
-  .main-navigation .search {
+  .main-navigation .search-form {
     display: block !important;
   }
   .main-navigation .menu-item {
@@ -953,7 +955,7 @@ table caption {
     font-size: 15px;
     font-weight: bold;
     line-height: normal;
-    padding: 20px 15px;
+    padding: 21px 15px;
     text-shadow: 1px 1px 0 #222222;
     -webkit-transition: all 150ms;
     -moz-transition: all 150ms;
@@ -1021,7 +1023,7 @@ table caption {
 }
 /* No JS; show the menu */
 .no-js .main-navigation .menu-list-container,
-.no-js .main-navigation .search {
+.no-js .main-navigation .search-form {
   display: block !important;
 }
 .no-js #menu-toggle {
@@ -2596,14 +2598,65 @@ html .btn-inverse:hover {
 #submit:active {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
+/* =============================================================================
+   Layout:  Search form
+   ========================================================================== */
+.search-form label {
+  display: inline-block;
+  margin-right: 5px;
+}
+.search-form .search-text {
+  background: #ffffff url(images/search.png) no-repeat 5px center;
+  padding-left: 27px;
+}
+.search-form .search-text[results] {
+  background-image: none;
+  padding-left: 6px;
+}
+/* Search form in the topbar */
+.main-navigation .search-form {
+  padding: 0;
+}
+.main-navigation .search-form label {
+  margin-right: 0;
+}
+.main-navigation .search-form .search-text {
+  background-color: #555555;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.3);
+  border: 1px solid #000000;
+  color: #ffffff;
+  color: rgba(255, 255, 255, 0.8);
+}
+.main-navigation .search-form .search-text:-moz-placeholder {
+  color: #b3b3b3;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.main-navigation .search-form .search-text::-webkit-input-placeholder {
+  color: #b3b3b3;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.main-navigation .search-form .search-submit {
+  padding: 3px 14px;
+  margin-left: 5px;
+}
+@media screen and (max-width: 980px) {
+  .main-navigation .search-form {
+    border: 1px solid #222222;
+    border-width: 1px 0;
+    float: none;
+    padding: 20px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
 @media screen and (min-width: 980px) {
-  #topbar .search {
-    background: #262626 url(less/less/images/topbar.png) repeat;
-    border: none;
-    box-shadow: none;
-    float: right;
-    margin-top: 12px;
-    padding: 0;
+  .main-navigation .search-form {
+    position: absolute;
+    top: 13px;
+    right: 40px;
+  }
+  .main-navigation .search-form .search-submit {
+    display: none;
   }
 }
 /* =============================================================================
@@ -2939,10 +2992,6 @@ html .btn-inverse:hover {
   /* Make the Recent Posts one column */
   /* Make the Category Headlines list two columns */
   /* Add a background to the search inputs */
-  #topbar .search-form .search-text,
-  #topbar .search-form .search-submit {
-    background-color: #666;
-  }
   /* Attachment page */
   #image-info .image-info dt {
     border-bottom: none;

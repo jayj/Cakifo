@@ -5,7 +5,7 @@
 	 */
 	var topbar = $( document.getElementById( 'topbar' ) ),
 		button = $( document.getElementById( 'menu-toggle' ) ),
-		search = topbar.find( '.search' );
+		search = topbar.find( '.search-form' );
 
 	if ( ! topbar.find( '.menu' ).children().length ) {
 		button.hide();
