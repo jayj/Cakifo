@@ -23,6 +23,8 @@
 
 /* Format: Chat */
 .chat-transcript {
+	// Give the chat transcripts a monospace font - this may be removed
+	#font > .monospace(14px);
 	margin: @smallGutterWidth 0;
 }
 
@@ -59,18 +61,11 @@
 		margin-top: 10px;
 		margin-bottom: 0;
 	}
-}
 
-/* Treat <em> tags as a seperator between two persons
-   unless there's a .chat-author before the .chat-text */
-.chat-text em {
-	display: inline-block;
-	margin-left: -(@smallGutterWidth);
-}
-
-.chat-author + .chat-text em {
-	display: inline;
-	margin-left: 0;
+	.no-speaker & {
+		color: lighten(@gray, 8%);
+		padding-left: 0;
+	}
 }
 
 /* Format: Status */

@@ -90,17 +90,19 @@ function cakifo_format_chat_content( $content ) {
 	/* Allow the separator (separator for speaker/text) to be filtered. */
 	$separator = apply_filters( 'post_format_chat_separator', ':' );
 
-	/* Open the chat transcript div and give it a cakifo ID based on the post ID. */
+	/* Open the chat transcript div and give it a unique ID based on the post ID. */
 	$chat_output = "\n\t\t\t" . '<div id="chat-transcript-' . esc_attr( get_the_ID() ) . '" class="chat-transcript">';
 
 	/* Split the content to get individual chat rows. */
-	$chat_rows = preg_split( "/(\r?\n)+|(<br\s*\/?>\s*)+/", $content );
+	$chat_rows = preg_split( "/(\r?\n)+/", $content );
 
 	/* Loop through each row and format the output. */
 	foreach ( $chat_rows as $chat_row ) {
 
+		$clean_chat_row = strip_tags( $chat_row );
+
 		/* If a speaker is found, create a new chat row with speaker and text. */
-		if ( strpos( $chat_row, $separator ) ) {
+		if ( strpos( $clean_chat_row, $separator ) ) {
 
 			/* Split the chat row into author/text. */
 			$chat_row_split = explode( ':', trim( $chat_row ), 2 );
@@ -128,21 +130,21 @@ function cakifo_format_chat_content( $content ) {
 		}
 
 		/**
-		 * If no author is found, assume this is a separate paragraph of text that belongs to the
-		 * previous speaker and label it as such, but let's still create a new row.
+		 * If no author is found, assume this is a new paragraph of text that belongs to no
+		 * speaker and label it as such, but let's still create a new row.
 		 */
 		else {
 
 			/* Make sure we have text. */
-			if ( !empty( $chat_row ) ) {
+			if ( ! empty( $clean_chat_row ) ) {
 
 				/* Open the chat row. */
-				$chat_output .= "\n\t\t\t\t" . '<div class="chat-row ' . sanitize_html_class( "chat-speaker-{$speaker_id}" ) . '">';
+				$chat_output .= "\n\t\t\t\t" . '<div class="chat-row no-speaker">';
 
-				/* Don't add a chat row author.  The label for the previous row should suffice. */
+				/* Don't add a chat row author. */
 
 				/* Add the chat row text. */
-				$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-text">' . str_replace( array( "\r", "\n", "\t" ), '', apply_filters( 'post_format_chat_text', $chat_row, $chat_author, $speaker_id ) ) . '</div>';
+				$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-text">' . str_replace( array( "\r", "\n", "\t" ), '', $chat_row ) . '</div>';
 
 				/* Close the chat row. */
 				$chat_output .= "\n\t\t\t</div><!-- .chat-row -->";
