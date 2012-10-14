@@ -80,6 +80,40 @@
 	padding: @padding;
 }
 
+// Buttons
+// -------------------------
+.button(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%) ) {
+	.buttonBackground(@startColor, @endColor, @textColor, @shadowColor);
+	box-shadow: inset 0 1px 0 fade(@white, 20%), 0 1px 2px fade(@black, 5%);
+	border-radius: 3px;
+	#font > .alternative(16px, bold);
+	padding: 4px 14px;
+
+	&:focus {
+		.tab-focus;
+	}
+}
+
+
+.buttonBackground(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%)) {
+	#gradient > .vertical(@startColor, @endColor);
+	background-repeat: repeat-x;
+	border: 1px solid;
+	border-color: @endColor @endColor darken(@endColor, 15%);
+	color: @textColor;
+	text-shadow: 0 1px 0 @shadowColor;
+
+	&:hover {
+		#gradient > .vertical(darken(@startColor, 3%), darken(@endColor, 5%));
+		color: @textColor;
+		.transition(background-position 100ms linear);
+	}
+
+	&:active {
+		box-shadow: inset 0 2px 4px fade(@black, 15%), 0 1px 2px fade(@black, 5%);
+	}
+}
+
 // Sizing shortcuts
 // -------------------------
 .size(@width, @height) {
