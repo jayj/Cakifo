@@ -73,7 +73,7 @@ function cakifo_twitter_shortcode( $attr ) {
 	if ( empty( $username ) )
 		return;
 
-	if ( ! $link )
+	if ( $link !== true )
 		return $username;
 	else
 		return $before . '<a href="http://twitter.com/' . esc_attr( $username ) . '" class="twitter-profile">' . $text . '</a>' . $after;
