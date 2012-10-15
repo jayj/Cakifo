@@ -10,7 +10,7 @@
  * @author Nicolas Gallagher
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
- * @version 1.1
+ * @version 1.2
  * @since Cakifo 1.3
  *
  *	Copyright 2010-2012 Nicolas Gallagher
@@ -31,11 +31,11 @@
 */
 
 /**
- *  Display the tweet button
+ * Display the tweet button
  *
- * @param  array   $args Array with arguments
+ * @param array $args    Array with arguments
  * @staticvar integer $i Used to count how many times the function has been referenced
- * @return string         The tweet button
+ * @return string        The tweet button
  * @since Cakifo 1.3
  */
 function cakifo_tweet_button( $args = array() ) {
@@ -80,7 +80,7 @@ function cakifo_tweet_button( $args = array() ) {
 	// Retweet data (Twitter API)
 	$retweet_meta = get_post_meta( $post_id, "retweet_{$i}_cache", true );
 
-	if ( $retweet_meta != '' ) {
+	if ( ! empty( $retweet_meta ) ) {
 		$retweet_pieces    = explode( ':', $retweet_meta );
 		$retweet_timestamp = (int) $retweet_pieces[0];
 		$retweet_count     = (int) $retweet_pieces[1];
@@ -101,7 +101,7 @@ function cakifo_tweet_button( $args = array() ) {
 
 					$retweet_count = $retweet_data['count'];
 
-					if ( $retweet_meta == '' )
+					if ( empty( $retweet_meta ) )
 						add_post_meta( $post_id, "retweet_{$i}_cache", time() . ':' . $retweet_count );
 					else
 						update_post_meta( $post_id, "retweet_{$i}_cache", time() . ':' . $retweet_count );
@@ -136,11 +136,13 @@ function cakifo_tweet_button( $args = array() ) {
 	/**
 	 * Construct the tweet button query string
 	 */
-	$twitter_params = '?text=' . urlencode( $args['text'] ) . '+-';
-	$twitter_params .= '&amp;url=' . urlencode( $url );
-	$twitter_params .= '&amp;counturl=' . urlencode( $args['counturl'] );
-	$twitter_params .= ( $args['via'] ) ? '&amp;via=' . $args['via'] : '';
-	$twitter_params .= ( $args['related'] ) ? '&amp;related=' . $args['related'] : '';
+	$query = http_build_query( array(
+		'text'     => $args['text'],
+		'url'      => $url,
+		'counturl' => $args['counturl'],
+		'via'      => ( $args['via'] ) ? $args['via'] : '',
+		'related'  => ( $args['related'] ) ? $args['related'] : '',
+	));
 
 	if ( $args['layout'] != 'none' )
 		$counter = '<a class="twitter-count" href="http://twitter.com/search?q=' . urlencode( $url ) . '" target="_blank">' . $count . '</a>';
@@ -148,7 +150,7 @@ function cakifo_tweet_button( $args = array() ) {
 	// HTML for the tweet button
 	$twitter_share = '
 		<div class="twitter-share twitter-button-size-' . sanitize_html_class( $args['layout'] ) . '">
-			<a class="twitter-button" rel="external nofollow" title="Share this on Twitter" href="http://twitter.com/share' . $twitter_params . '" target="_blank">Tweet</a>' . $counter . '
+			<a class="twitter-button" rel="external nofollow" title="Share this on Twitter" href="http://twitter.com/share?' . $query . '" target="_blank">Tweet</a>' . $counter . '
 		</div>
 	';
 
