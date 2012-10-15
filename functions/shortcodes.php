@@ -1,6 +1,8 @@
 <?php
 /**
- * Additional shortcodes for use within the theme.
+ * Shortcodes bundled for use within the theme.  These shortcodes are not meant to be used with the post content
+ * editor.  Their purpose is to make it easier for users to filter hooks without having to know too much PHP code
+ * and to provide access to specific functionality in other (non-post content) shortcode-aware areas.
  *
  * @package Cakifo
  * @subpackage Functions
@@ -37,15 +39,15 @@ add_action( 'init', 'cakifo_register_shortcodes', 15 );
 /**
  * RSS link shortcode
  *
- * @param  array  $attr
- * @return string  The RSS link
+ * @param array $attr
+ * @return string The RSS link
  * @since Cakifo 1.0
  */
 function cakifo_rss_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
+		'text'   => __( 'RSS', 'cakifo' ),
 		'before' => '',
 		'after'  => '',
-		'text'   => __( 'RSS', 'cakifo' ),
 	), $attr ) );
 
 	return $before . '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' .  $text . '</a>' . $after;
@@ -56,18 +58,18 @@ function cakifo_rss_link_shortcode( $attr ) {
  *
  * Taken from my Twitter Profile Field plugin
  *
- * @link (http://wordpress.org/extend/plugins/twitter-profile-field/, Twitter Profile Field)
- * @param  array  $attr
- * @return string  The Twitter username or username with a link to the profile.
+ * @link http://wordpress.org/extend/plugins/twitter-profile-field/ Twitter Profile Field
+ * @param array $attr
+ * @return string The Twitter username or username with a link to the profile.
  * @since Cakifo 1.0
  */
 function cakifo_twitter_shortcode( $attr ) {
 	extract( shortcode_atts( array(
+		'username' => hybrid_get_setting( 'twitter_username' ),
+		'text'     => __( 'Follow me on Twitter', 'cakifo' ),
 		'link'     => true,
 		'before'   => '',
 		'after'    => '',
-		'username' => hybrid_get_setting( 'twitter_username' ),
-		'text'     => __( 'Follow me on Twitter', 'cakifo' )
 	), $attr ) );
 
 	if ( empty( $username ) )
@@ -82,7 +84,7 @@ function cakifo_twitter_shortcode( $attr ) {
 /**
  * Delicious link shortcode
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.0
  */
 function cakifo_entry_delicious_link_shortcode( $attr ) {
@@ -91,7 +93,7 @@ function cakifo_entry_delicious_link_shortcode( $attr ) {
 		'after'  => '',
 	), $attr) );
 
-	return $before . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Delicious', 'cakifo' ) . '</a>' . $after;
+	return $before . "<a href='https://www.delicious.com/save' onclick='window.open('https://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;' class='delicious-share-button'>Save on Delicious</a>" . $after;
 }
 
 /**
@@ -99,7 +101,7 @@ function cakifo_entry_delicious_link_shortcode( $attr ) {
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.0
  */
 function cakifo_entry_digg_link_shortcode( $attr ) {
@@ -108,9 +110,9 @@ function cakifo_entry_digg_link_shortcode( $attr ) {
 		'after'  => '',
 	), $attr) );
 
-	$url = 'http://digg.com/submit?phase=2&amp;url=' . urlencode( get_permalink( get_the_ID() ) ) . '&amp;title="' . urlencode( the_title_attribute( 'echo=0' ) );
+	$url = 'http://digg.com/submit?url=' . urlencode( get_permalink( get_the_ID() ) );
 
-	return $before . '<a href="' . esc_url( $url ) . '" title="' . __( 'Digg this entry', 'cakifo' ) . '" class="digg-share-button">' . __( 'Digg', 'cakifo' ) . '</a>' . $after;
+	return $before . '<a href="' . esc_url( $url ) . '" title="' . esc_attr__( 'Digg this entry', 'cakifo' ) . '" class="digg-share-button">' . __( 'Digg', 'cakifo' ) . '</a>' . $after;
 }
 
 /**
@@ -119,7 +121,7 @@ function cakifo_entry_digg_link_shortcode( $attr ) {
  * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.0
  */
 function cakifo_entry_facebook_link_shortcode( $attr ) {
@@ -127,70 +129,80 @@ function cakifo_entry_facebook_link_shortcode( $attr ) {
 	static $first = true;
 
 	extract( shortcode_atts( array(
-		'before'      => '',
-		'after'       => '',
 		'href'        => get_permalink(),
 		'layout'      => 'standard', // standard, button_count, box_count
 		'action'      => 'like', // like, recommend
-		'width'       => 450,
+		'send'        => 'false', // true, false
 		'faces'       => 'false', // true, false
 		'colorscheme' => 'light', // light, dark
-		'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR
+		'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR. This does only work for the first button at the page
+		'width'       => '',
+		'before'      => '',
+		'after'       => '',
 	), $attr) );
 
 	// Set default locale
 	$locale = ( isset( $locale ) ) ? $locale : 'en_US';
 
 	// Only add the script once
-	$script = ( $first == true ) ? "<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/$locale/all.js#xfbml=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>" : "";
+	$script = ( $first == true ) ? "<div id='fb-root'></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/$locale/all.js#xfbml=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>" : '';
 
 	$first = false;
 
-	$text = '<div class="fb-like" data-href="' . esc_url( $href ) . '" data-send="false" data-layout="' . esc_attr( $layout ) . '" data-width="' . intval( $width ) . '" data-show-faces="' . esc_attr( $faces ) . '" data-action="' . esc_attr( $action ) . '" data-colorscheme="' . esc_attr( $colorscheme ) . '"></div>';
+	$text = '<div class="fb-like"
+				data-href="' . esc_url( $href ) . '"
+				data-send="' . esc_attr( $send ) . '"
+				data-layout="' . esc_attr( $layout ) . '"
+				data-width="' . intval( $width ) . '"
+				data-show-faces="' . esc_attr( $faces ) . '"
+				data-action="' . esc_attr( $action ) . '"
+				data-colorscheme="' . esc_attr( $colorscheme ) . '">
+			</div>';
 
 	return $before . $text . $after . $script;
 }
 
 /**
- * Twitter link shortcode
+ * Twitter share shortcode
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.0
  */
 function cakifo_entry_twitter_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
-		'before' => '',
-		'after'  => '',
 		'href'   => get_permalink(),
 		'text'   => the_title_attribute( 'echo=0' ),
 		'layout' => 'horizontal', // horizontal, vertical, none
 		'via'    => hybrid_get_setting( 'twitter_username' ),
 		'width'  => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
 		'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
+		'before' => '',
+		'after'  => '',
 	), $attr) );
 
-	// Load the PHP tweet button script if the theme supports it
+	/* Load the PHP tweet button script if the theme supports it */
 	if ( current_theme_supports( 'cakifo-twitter-button' ) ) :
 
 		return cakifo_tweet_button( array(
-			'before' => $before,
-			'after'  => $after,
-			'layout' => $layout,
-			'href'   => $href,
-			'text'   => $text,
-			'layout' => $layout,
-			'via'    => $via,
+			'before'   => $before,
+			'after'    => $after,
+			'layout'   => $layout,
+			'href'     => $href,
+			'counturl' => $href,
+			'text'     => $text,
+			'layout'   => $layout,
+			'via'      => $via
 		) );
 
-	// Else, load the Twitter iframe
+	/* Else, load the Twitter iframe */
 	else :
 
 		// Set the height to 62px if the layout is vertical and the height is the default value
-		if ( $layout == 'vertical' && $height == 20 )
+		if ( 'vertical' == $layout && 20 == $height )
 			$height = 62;
 
 		// Set width to 110px if the layout is horizontal and the width is the default value
-		if ( $layout == 'horizontal' && $width == 55 )
+		if ( 'horizontal' == $layout && 55 == $width )
 			$width = 110;
 
 		// Build the query
@@ -209,8 +221,8 @@ function cakifo_entry_twitter_link_shortcode( $attr ) {
 /**
  * Google +1 shortcode
  *
- * @link (http://www.google.com/+1/button/, Google+ button)
- * @param array  $attr
+ * @link https://developers.google.com/+/plugins/+1button/ Google+ button
+ * @param array $attr
  * @since Cakifo 1.2
  */
 function cakifo_entry_googleplus_link_shortcode( $attr ) {
@@ -218,20 +230,33 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
 	static $first = true;
 
 	extract( shortcode_atts( array(
-		'before'   => '',
-		'after'    => '',
-		'href'     => get_permalink(),
-		'layout'   => 'standard', // small, medium, standard, tall
-		'callback' => '',
-		'count'    => 'true' // true, false
-	), $attr) );
+		'href'       => get_permalink(),
+		'layout'     => 'standard', // small, medium, standard, tall
+		'annotation' => 'bubble',
+		'count'      => 'true', // @deprecated Use annotation instead
+		'align'      => 'left', // left, right
+		'callback'   => '',
+		'before'     => '',
+		'after'      => '',
+	), $attr ) );
+
+	if ( $count !== 'true' ) {
+		$annotation = 'none';
+		//_deprecated_argument( __FUNCTION__, 'Cakifo 1.5', 'The count argument is deprecated. Use annotation="none" instead' );
+	}
 
 	// Only add the script once
 	$script = ( $first == true ) ? "<script>(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>" : "";
 
 	$first = false;
 
-	$text = '<div class="g-plusone" data-size="' . $layout . '" data-count="' . $count . '" data-href="' . $href . '" data-callback="' . $callback . '"></div>';
+	$text = '<div class="g-plusone"
+				data-size="' . esc_attr( $layout ) . '"
+				data-annotation="' . esc_attr( $annotation ) . '"
+				data-align="' . esc_attr( $align ) . '"
+				data-href="' . esc_url( $href ) . '"
+				data-callback="' . $callback . '">
+			</div>';
 
 	return $before . $text . $after . $script;
 }
@@ -294,7 +319,7 @@ function cakifo_entry_published_shortcode( $attr ) {
  *
  * It replaces the default Hybrid Core shortcode. The name is still the the same
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.1
  */
 function cakifo_comment_published_shortcode( $attr ) {
@@ -311,7 +336,7 @@ function cakifo_comment_published_shortcode( $attr ) {
 /**
  * Displays the post format of the current post
  *
- * @param array  $attr
+ * @param array $attr
  * @since Cakifo 1.3
  */
 function cakifo_entry_format_shortcode( $attr ) {
