@@ -2663,44 +2663,57 @@ html .btn-inverse:hover {
    Components:  Message boxes
    ========================================================================== */
 .note,
-.warning,
 .alert,
-.error,
+.warning,
+.success,
 .download,
-.success {
-  border-radius: 5px;
-  color: #444;
-  font: 14px/25px 'PT Serif', Georgia, serif;
+.danger,
+.error,
+.info {
+  background-color: #eeeeee;
+  border: double #dadada;
+  border-width: 4px 0;
+  color: #222222;
   padding: 25px;
-  margin: 0 0 25px 0;
+  margin-bottom: 25px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-/* Notes */
-.note {
-  background: #eee;
-  border: 1px solid #e2e2e2;
-}
-/* Warnings/Alerts */
 .warning,
 .alert {
-  background: #fffbbc;
-  /*border: 1px solid #e6db55;*/
-
-  box-shadow: 0 0 10px #e6db55;
+  background-color: #fef9c7;
+  border-color: #fcdd4a;
+  color: #3b3601;
 }
-/* Errors */
+.success,
+.download {
+  background-color: #dff0d8;
+  border-color: #54b646;
+  color: #0d370d;
+}
+.danger,
 .error {
-  background: #ffebe8;
-  /*border: 1px solid #c00;*/
-
-  box-shadow: 0 0 4px #c00;
+  background-color: #f2dede;
+  border-color: #ce838f;
+  color: #7a0b0a;
 }
-/* Downloads/Success */
-.download,
-.success {
-  background: #e7f7d3;
-  /*border: 1px solid #6c3;*/
-
-  box-shadow: 0 0 5px #6c3;
+.info {
+  background-color: #d9edf7;
+  border-color: #049cdb;
+  color: #0c3346;
+}
+.box-blue {
+  background-color: #f2f7fc;
+  border: double #c5d2d8;
+  border-width: 4px 0;
+  margin: 0 0 40px;
+  padding: 25px;
+}
+.box-orange {
+  background-color: #ffffdf;
+  border: double #eedbbb;
+  border-width: 4px 0;
+  margin: 0 0 40px;
+  padding: 25px;
 }
 /* =============================================================================
    Components:  Twitter share button

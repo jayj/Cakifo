@@ -1019,45 +1019,55 @@ sub {
    ========================================================================== */
 
 .note,
-.warning,
 .alert,
-.error,
+.warning,
+.success,
 .download,
-.success {
-	border-radius: 5px;
-	color: #444;
-	font: 14px/25px 'PT Serif', Georgia, serif;
-	padding: 25px;
-	margin: 0 0 25px 0;
+.danger,
+.error,
+.info {
+	background-color: @alertBackground;
+	border: double @alertBorder;
+	border-width: 4px 0;
+	color: @alertText;
+	padding: @smallGutterWidth;
+	margin-bottom: @smallGutterWidth;
+	text-shadow: 0 1px 0 fade(@white, 50%);
 }
 
-/* Notes */
-.note {
-	background: #eee;
-	border: 1px solid #e2e2e2;
-}
-
-/* Warnings/Alerts */
 .warning,
 .alert {
-	background: #fffbbc;
-	/*border: 1px solid #e6db55;*/
-	box-shadow: 0 0 10px #e6db55;
+	background-color: @warningBackground;
+	border-color: @warningBorder;
+	color: @warningText;
 }
 
-/* Errors */
+.success,
+.download {
+	background-color: @successBackground;
+	border-color: @successBorder;
+	color: @successText;
+}
+
+.danger,
 .error {
-	background: #ffebe8;
-	/*border: 1px solid #c00;*/
-	box-shadow: 0 0 4px #c00;
+	background-color: @errorBackground;
+	border-color: @errorBorder;
+	color: @errorText;
 }
 
-/* Downloads/Success */
-.download,
-.success {
-	background: #e7f7d3;
-	/*border: 1px solid #6c3;*/
-	box-shadow: 0 0 5px #6c3;
+.info {
+	background-color: @infoBackground;
+	border-color: @infoBorder;
+	color: @infoText;
+}
+
+.box-blue {
+	.blue-box(@smallGutterWidth);
+}
+
+.box-orange {
+	.orange-box(@smallGutterWidth);
 }
 
 /* =============================================================================

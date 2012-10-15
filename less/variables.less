@@ -2,8 +2,9 @@
 // Variables
 // --------------------------------------------------
 
+// ====================
 // Colour definitions
-// --------------------------------------------------
+// ====================
 
 // Grays
 // -------------------------
@@ -14,7 +15,6 @@
 @grayLight:             #999;
 @grayLighter:           #eee;
 @white:                 #fff;
-
 
 // Accent colors
 // -------------------------
@@ -29,8 +29,9 @@
 @pink:                  #f71570;
 @purple:                #7a43b6;
 
+// ====================
 // Scaffolding
-// -------------------------
+// ====================
 @bodyBackground:        #e3ecf2;
 @topbarBackground:      #262626;
 @textColor:             @gray;
@@ -42,18 +43,21 @@
 @gutterWidth:           40px;
 @smallGutterWidth:      25px;
 
+// ====================
 // Links
-// -------------------------
+// ====================
 @linkColor:             #3083aa;
 @linkColorHover:        @orangeDark;
 
+// ====================
 // Selections
-// -------------------------
+// ====================
 @selectionColor:		#568cbb;
 @selectionTextColor:	@white;
 
+// ====================
 // Typography
-// -------------------------
+// ====================
 @sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 @serifFontFamily:       Georgia, Cambria, "Bitstream Charter", serif;
 @monoFontFamily:        Monaco, Consolas, "Courier New", monospace;
@@ -67,3 +71,27 @@
 @headingsFontFamily:    @altFontFamily;
 @headingsFontWeight:    bold;
 @headingsColor:         inherit; // empty to use @textColor
+
+// ====================
+// Alert messages
+// ====================
+
+@alertText:             @grayDarker;
+@alertBackground:       @grayLighter;
+@alertBorder:           darken(@grayLighter, 8%);
+
+@warningText:           #3b3601;
+@warningBackground:     #fef9c7;
+@warningBorder:         darken(spin(@warningBackground, -5), 25%);
+
+@errorText:             #7a0b0a;
+@errorBackground:       #f2dede;
+@errorBorder:           darken(spin(@errorBackground, -10), 25%);
+
+@successText:           #0d370d;
+@successBackground:     #dff0d8;
+@successBorder:         darken(spin(@successBackground, 10), 40%);
+
+@infoText:              #0c3346;
+@infoBackground:        #d9edf7;
+@infoBorder:            @blue;
