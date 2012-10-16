@@ -232,7 +232,7 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
 	extract( shortcode_atts( array(
 		'href'       => get_permalink(),
 		'layout'     => 'standard', // small, medium, standard, tall
-		'annotation' => 'bubble',
+		'annotation' => 'bubble', // Bubble, inline, none
 		'count'      => 'true', // @deprecated Use annotation instead
 		'align'      => 'left', // left, right
 		'callback'   => '',

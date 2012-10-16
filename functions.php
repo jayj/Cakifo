@@ -266,6 +266,8 @@ function cakifo_enqueue_style() {
 	$scheme = is_ssl() ? 'https' : 'http';
 
 	wp_enqueue_style( 'PT-Serif', $scheme . '://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
+
+	//wp_enqueue_style( 'buttons' );
 }
 
 /**

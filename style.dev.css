@@ -2290,17 +2290,17 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6 100%);
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6 100%);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6 100%);
-  background-image: linear-gradient(top, #ffffff, #e6e6e6 100%);
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4 100%);
+  background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4 100%);
+  background-image: -o-linear-gradient(top, #fefefe, #f4f4f4 100%);
+  background-image: linear-gradient(top, #fefefe, #f4f4f4 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: #e0e0e0 #e0e0e0 #c1c1c1;
   color: #333333;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
@@ -2313,11 +2313,12 @@ button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
-  background-color: #ebebeb;
-  background-image: -moz-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
-  background-image: -webkit-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
-  background-image: -o-linear-gradient(top, #f7f7f7, #d9d9d9 100%);
-  background-image: linear-gradient(top, #f7f7f7, #d9d9d9 100%);
+  background-color: #f0f0f0;
+  background-image: -moz-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
+  background-image: -webkit-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
+  background-image: -o-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
+  background-image: linear-gradient(top, #f6f6f6, #e7e7e7 100%);
+  border-color: #c1c1c1 #c1c1c1 #a8a8a8;
   color: #333333;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2364,7 +2365,7 @@ html .btn-primary {
   background-image: linear-gradient(top, #0088cc, #0044cc 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #0044cc #0044cc #002a80;
+  border-color: #0036a3 #0036a3 #002266;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2374,6 +2375,7 @@ html .btn-primary:hover {
   background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
   background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
   background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  border-color: #002266 #002266 #001133;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2391,7 +2393,7 @@ html .btn-warning {
   background-image: linear-gradient(top, #faa51a, #f47a20 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #f47a20 #f47a20 #be5609;
+  border-color: #e0660b #e0660b #a64b08;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2401,6 +2403,7 @@ html .btn-warning:hover {
   background-image: -webkit-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
   background-image: -o-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
   background-image: linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  border-color: #a64b08 #a64b08 #753506;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2418,7 +2421,7 @@ html .btn-danger {
   background-image: linear-gradient(top, #ee5f5b, #bd362f 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #bd362f #bd362f #802420;
+  border-color: #9c2d27 #9c2d27 #6b1f1b;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2428,6 +2431,7 @@ html .btn-danger:hover {
   background-image: -webkit-linear-gradient(top, #ed514d, #a9302a 100%);
   background-image: -o-linear-gradient(top, #ed514d, #a9302a 100%);
   background-image: linear-gradient(top, #ed514d, #a9302a 100%);
+  border-color: #6b1f1b #6b1f1b #421311;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2445,7 +2449,7 @@ html .btn-success {
   background-image: linear-gradient(top, #62c462, #51a351 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #51a351 #51a351 #387038;
+  border-color: #438843 #438843 #2f5f2f;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2455,6 +2459,7 @@ html .btn-success:hover {
   background-image: -webkit-linear-gradient(top, #57c057, #499249 100%);
   background-image: -o-linear-gradient(top, #57c057, #499249 100%);
   background-image: linear-gradient(top, #57c057, #499249 100%);
+  border-color: #2f5f2f #2f5f2f #1e3d1e;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2472,7 +2477,7 @@ html .btn-info {
   background-image: linear-gradient(top, #5bc0de, #2f96b4 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: #277b94 #277b94 #1a5363;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2482,6 +2487,7 @@ html .btn-info:hover {
   background-image: -webkit-linear-gradient(top, #4ebbdb, #2a85a0 100%);
   background-image: -o-linear-gradient(top, #4ebbdb, #2a85a0 100%);
   background-image: linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  border-color: #1a5363 #1a5363 #0f313b;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2499,7 +2505,7 @@ html .btn-inverse {
   background-image: linear-gradient(top, #444444, #222222 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #222222 #222222 #000000;
+  border-color: #0e0e0e #0e0e0e #000000;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2509,6 +2515,7 @@ html .btn-inverse:hover {
   background-image: -webkit-linear-gradient(top, #3c3c3c, #151515 100%);
   background-image: -o-linear-gradient(top, #3c3c3c, #151515 100%);
   background-image: linear-gradient(top, #3c3c3c, #151515 100%);
+  border-color: #000000 #000000 #000000;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
@@ -2579,7 +2586,7 @@ html .btn-inverse:hover {
   background-image: linear-gradient(top, #0088cc, #0044cc 100%);
   background-repeat: repeat-x;
   border: 1px solid;
-  border-color: #0044cc #0044cc #002a80;
+  border-color: #0036a3 #0036a3 #002266;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -2589,6 +2596,7 @@ html .btn-inverse:hover {
   background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
   background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
   background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  border-color: #002266 #002266 #001133;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
   -moz-transition: background-position 100ms linear;
