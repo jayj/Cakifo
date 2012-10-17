@@ -85,7 +85,6 @@ body {
 #wrapper {
 	width: 100%;
 	max-width: @siteWidth;
-	// min-width: 755px;
 	margin: 0 auto;
 }
 
@@ -1187,88 +1186,197 @@ sub {
 @keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
 
 /* =============================================================================
+   Media Queries:  Max-width 1130px
+   ========================================================================== */
+
+/* Move the navigation arrows when the screen is smaller */
+@media screen and (max-width: 1130px) {
+	.flex-direction-nav .flex-prev,
+	.flex-direction-nav .flex-next {
+		.square(58px);
+		top: auto;
+		bottom: 15px;
+
+		&:after {
+			font-size: 48px;
+			line-height: 48px;
+		}
+	}
+
+	.flex-direction-nav .flex-prev {
+		opacity: 1;
+		left: @smallGutterWidth;
+	}
+
+	.flex-direction-nav .flex-next {
+		opacity: 1;
+		right: @smallGutterWidth;
+	}
+}
+
+/* =============================================================================
+   Media Queries:  Max-width 1080px
+   ========================================================================== */
+
+@media screen and (max-width: 1080px) {
+
+	#main {
+		width: 65%;
+	}
+
+	#sidebar-primary,
+	#sidebar-secondary {
+		width: 32%;
+	}
+
+	.main-navigation {
+		width: 100%;
+	}
+
+	/* Remove box-shadow and border-radius */
+	#content,
+	#footer {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	/* Remove the negative margin and box-shadow */
+	.section-title {
+		box-shadow: none;
+		margin-left: 0;
+	}
+
+	/* Fluid width on the Recent Posts and Headlines lists */
+	.recent-post {
+		width: 23%;
+		margin-right: 2%;
+	}
+
+	.headline-list {
+		width: 48%;
+		margin-right: 2%;
+	}
+
+	/* Prevent the sidebars on 3 column layouts from moving underneath the content */
+	.layout-3c-c,
+	.layout-3c-r,
+	.layout-3c-l {
+		#main {
+			width: 50%;
+		}
+
+		#sidebar-primary,
+		#sidebar-secondary {
+			width: 20%;
+		}
+	}
+
+	.layout-3c-c #sidebar-primary {
+		margin-left: -740px;
+	}
+
+	.layout-3c-l {
+		#sidebar-primary,
+		#sidebar-secondary {
+			margin-right: 1%;
+		}
+
+		#sidebar-secondary {
+			float: right;
+		}
+	}
+
+	.layout-3c-r #sidebar-secondary {
+		margin-left: 2%;
+	}
+} // 1080px
+
+/* =============================================================================
    Media Queries:  Max-width 980px
    ========================================================================== */
 
 @media screen and (max-width: 980px) {
 
-	#wrapper, #topbar .wrap { width: 99%; }
-
-	// #slider {
-	// 	width: 100%;
-	// 	margin-left: 0;
-	// 	margin-bottom: 10px;
-	// 	padding: 0;
-	// }
-
-	// #slider .entry-summary {
-	// 	max-width: 270px;
-	// }
-
-	#main {
-		width: 100% !important;
-		float: none !important;
-		margin: 0 !important;
-	}
-
+	/* Switch padding from 40px to 25px */
 	#content,
 	#footer {
-		-moz-box-shadow: none;
-		-webkit-box-shadow: none;
-		box-shadow: none;
+		padding: @gutterWidth @smallGutterWidth @smallGutterWidth;
 	}
 
-	// #recent-posts .recent-post,
-	// .headline-list {
-	// 	margin-right: 20px;
-	// }
+	#slider {
+		margin: -(@gutterWidth - 6px) -(@smallGutterWidth) @gutterWidth -(@smallGutterWidth);
+		padding: @gutterWidth @smallGutterWidth @smallGutterWidth;
+	}
 
-	// #recent-posts .recent-post {
-	// 	margin-right: 1%;
-	// }
+	#site-title {
+		margin-left: @smallGutterWidth;
+	}
+
+	#site-description {
+		margin-right: @smallGutterWidth;
+	}
+
+	/* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
+	.layout-3c-c,
+	.layout-3c-r,
+	.layout-3c-l {
+		#main {
+			clear: both;
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		#sidebar-primary,
+		#sidebar-secondary {
+			clear: none;
+			width: 48%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		#sidebar-secondary {
+			float: right;
+		}
+	}
+
+	/* Show Recent Posts in one column */
+	.recent-post {
+		border-bottom: 1px solid darken(@grayLighter, 5%);
+		padding: @smallGutterWidth 0;
+		margin-right: 0;
+		float: none;
+		width: 100%;
+		opacity: 1 !important;
+		.clearfix;
+
+		&:hover,
+		&:active {
+			#gradient > .horizontal(#f2f7fc, #f7fafc, 50%);
+		}
+
+		.entry-title {
+			font-size: 21px;
+			margin: 0;
+		}
+
+		.recent-posts-meta {
+			font-size: 14px;
+		}
+
+		.thumbnail {
+			float: left;
+			margin: 0 @smallGutterWidth 0 0;
+		}
+	}
 
 	.section-title {
-		margin-left: 0;
-		-moz-box-shadow: none;
-		-webkit-box-shadow: none;
-		box-shadow: none;
+		margin-bottom: @smallGutterWidth;
 	}
 
-	/* Float the sidebars so they are in two columns after the content */
-	#sidebar-primary {
-		float: left;
-		width: 45%;
-		margin: 0 !important;
-	}
+	/* @todo: Search form in sidebar */
 
-	#sidebar-secondary {
-		width: 45%;
-		margin: 0 !important;
-	}
-
-	#rss-subscribe { display: none; }
-
-	/* Attachment page */
-	#image-info .image-info {
-		width: 30%;
-	}
-
-	#attachment-gallery {
-		width: 60%;
-	}
-
-	/* Pagination */
-	.pagination a,
-	.pagination > span {
-		margin-right: 2px;
-		padding: 18px 24px 16px;
-		-webkit-transition: none;
-		-moz-transition: none;
-		-o-transition: none;
-		-ms-transition: none;
-		transition: none;
-	}
-}
+} // 980px
 
 /* =============================================================================
    Media Queries:  Max-width 768px
@@ -1276,78 +1384,85 @@ sub {
 
 @media screen and (max-width: 768px) {
 
-	/* Hide slider */
-	// #slider {
-	// 	display: none;
-	// }
-
-	/* Make the Recent Posts one column */
-	// #recent-posts .recent-post {
-	// 	border-bottom: 1px solid #ccc;
-	// 	float: none;
-	// 	width: 100%;
-	// 	min-height: 140px;
-	// 	padding: 20px 0;
-	// }
-
-	// #recent-posts .recent-post img {
-	// 	float: left;
-	// 	margin-right: 20px;
-	// }
-
-	// #recent-posts .section-title {
-	// 	margin-top: 20px;
-	// }
-
-	/* Make the Category Headlines list two columns */
-	// .headline-list {
-	// 	width: 45%;
-	// }
-
-	// .headline-list:nth-child(2n) {
-	// 	float: right;
-	// }
-
-	// .headline-list li {
-	// 	padding: 10px;
-	// }
-
-	// #recent-posts .recent-post:hover,
-	// #recent-posts .recent-post:active,
-	// .headline-list li:hover,
-	// .headline-list li:active {
-	// 	background: #f7fafc;
-	// }
-
-	/* Add a background to the search inputs */
-	// #topbar .search-form .search-text,
-	// #topbar .search-form .search-submit {
-	// 	background-color: #666;
-	// }
-
-	/* Attachment page */
-	#image-info .image-info dt {
-		border-bottom: none;
-		float: none;
-		padding: 0;
+	/* Make the main content full width and move the sidebars underneath it */
+	/* @todo: Consider if this should be moved up to 980px */
+	#main {
+		width: 100%;
 	}
 
-	#image-info .image-info dt:hover {
-		background: none;
+	#sidebar-primary {
+		float: left;
+		width: 48%;
 	}
 
-	#image-info .image-info dd {
-		float: none;
-		margin: 0 0 0 20px;
-		text-align: left;
+	#sidebar-secondary {
+		width: 48%;
+		float: right;
+	}
+
+	/* Make the slider smaller */
+	.slide {
+		.thumbnail {
+			max-width: 55%;
+			margin-right: @smallGutterWidth;
+		}
+
+		// Remove the video
+		.slider-video {
+			display: none;
+		}
+
+		.entry-title {
+			font-size: 24px;
+		}
+
+		.entry-summary {
+			font-size: 14px;
+		}
+	}
+
+	.flex-control-nav {
+		margin-top: @gutterWidth;
+	}
+
+	/* Make the pagination bigger */
+	.pagination a,
+	.pagination > span {
+		padding: 18px 22px 17px;
+		margin-bottom: 10px;
+	}
+
+	/* If there's 3 columns of footer widgets, turn them into 2 columns */
+	#sidebar-subsidiary.three-col .widget-area {
+		margin-right: 4%;
+		width: 48%;
+
+		+ .widget-area {
+			margin-right: 0;
+		}
+	}
+
+	/* Make the Category Headlines list smaller */
+	.headline-list {
+		.entry-title {
+			font-size: 16px;
+		}
+
+		.headline-meta {
+			font-size: 14px;
+		}
+
+		.thumbnail {
+			max-width: 50px;
+		}
 	}
 }
 
 /* =============================================================================
-   Media Queries:  Max-width 480px
+   Media Queries:  Max-width 620px
    ========================================================================== */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 620px) {
 
 	#branding {
 		text-align: center;
@@ -1362,16 +1477,53 @@ sub {
 		margin: 20px 0 0;
 	}
 
-	/* Hide thumbnails from the Recent Posts */
-	// #recent-posts img {
-	// 	display: none;
-	// }
+	/* Hide the slider */
+	#slider {
+		display: none;
+	}
+
+	/* Make the Recent Posts list smaller */
+	.recent-post {
+		.entry-title {
+			font-size: 18px;
+		}
+
+		.recent-posts-meta {
+			font-size: 13px;
+		}
+
+		.thumbnail {
+			max-width: 150px;
+			margin-bottom: 10px;
+		}
+	}
+
+	/* Make the Category Headlines list two columns */
+	.headline-list {
+		width: 100%;
+		margin-right: 0;
+	}
 
 	/* Make the widget areas full width */
-	.widget-area,
-	.headline-list {
+	.widget-area {
 		width: 100% !important;
 		float: none !important;
+	}
+}
+
+/* =============================================================================
+   Media Queries:  Max-width 480px
+   ========================================================================== */
+
+@media screen and (max-width: 480px) {
+
+	.entry-header .post-format-link {
+		top: -20px;
+	}
+
+	/* Hide the Recent Posts thumbnails */
+	.recent-post .thumbnail {
+		display: none;
 	}
 }
 

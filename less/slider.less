@@ -97,7 +97,7 @@
 		background-color: @white;
 		box-shadow: 0 0 7px fade(@black, 30%);
 		border-radius: 50%;
-		.square(42px);
+		.square(48px);
 		margin: 0;
 		opacity: 0.6;
 		position: absolute;
@@ -110,12 +110,14 @@
 		}
 
 		&:after {
-			#font > .alternative(36px, bold);
+			#font > .alternative(38px, bold, 41px);
 			text-indent: 0;
 			color: @gray;
+			.square(100%);
+			text-align: center;
 			position: absolute;
-			top: -14px;
-			left: 11px;
+			top: 0;
+			left: -2px;
 			z-index: 10;
 		}
 
@@ -137,7 +139,7 @@
 
 		&:after {
 			content: "\00BB";
-			left: 13px;
+			left: 1px;
 		}
 	}
 
@@ -151,12 +153,6 @@
 	.flex-next:active {
 		box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
 	}
-}
-
-/* Move the navigation arrows when the screen is smaller */
-@media screen and (max-width: 1130px) {
-	.flex-direction-nav .flex-prev { opacity: 1; left: 10px; }
-	.flex-direction-nav .flex-next { opacity: 1; right: 10px; }
 }
 
 /* Fallback to a border for browsers without box-shadow support */

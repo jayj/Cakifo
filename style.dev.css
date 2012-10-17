@@ -1319,8 +1319,8 @@ table caption {
   background-color: #ffffff;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   margin: 0;
   opacity: 0.6;
   position: absolute;
@@ -1336,14 +1336,17 @@ table caption {
 }
 .flex-direction-nav a:after {
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: bold;
-  line-height: 1.8;
+  line-height: 41px;
   text-indent: 0;
   color: #555555;
+  width: 100%;
+  height: 100%;
+  text-align: center;
   position: absolute;
-  top: -14px;
-  left: 11px;
+  top: 0;
+  left: -2px;
   z-index: 10;
 }
 #slider:hover .flex-direction-nav a {
@@ -1360,7 +1363,7 @@ table caption {
 }
 .flex-direction-nav .flex-next:after {
   content: "\00BB";
-  left: 13px;
+  left: 1px;
 }
 .flex-direction-nav .flex-direction-nav .disabled {
   cursor: default;
@@ -1370,17 +1373,6 @@ table caption {
 .flex-direction-nav .flex-prev:active,
 .flex-direction-nav .flex-next:active {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 0 7px rgba(0, 0, 0, 0.3);
-}
-/* Move the navigation arrows when the screen is smaller */
-@media screen and (max-width: 1130px) {
-  .flex-direction-nav .flex-prev {
-    opacity: 1;
-    left: 10px;
-  }
-  .flex-direction-nav .flex-next {
-    opacity: 1;
-    right: 10px;
-  }
 }
 /* Fallback to a border for browsers without box-shadow support */
 .no-boxshadow .flex-direction-nav .flex-prev,
@@ -2648,7 +2640,7 @@ html .btn-inverse:hover {
   padding: 3px 14px;
   margin-left: 5px;
 }
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 979px) {
   .main-navigation .search-form {
     border: 1px solid #222222;
     border-width: 1px 0;
@@ -2948,89 +2940,242 @@ html .btn-inverse:hover {
   }
 }
 /* =============================================================================
+   Media Queries:  Max-width 1130px
+   ========================================================================== */
+/* Move the navigation arrows when the screen is smaller */
+@media screen and (max-width: 1130px) {
+  .flex-direction-nav .flex-prev,
+  .flex-direction-nav .flex-next {
+    width: 58px;
+    height: 58px;
+    top: auto;
+    bottom: 15px;
+  }
+  .flex-direction-nav .flex-prev:after,
+  .flex-direction-nav .flex-next:after {
+    font-size: 48px;
+    line-height: 48px;
+  }
+  .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: 25px;
+  }
+  .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: 25px;
+  }
+}
+/* =============================================================================
+   Media Queries:  Max-width 1080px
+   ========================================================================== */
+@media screen and (max-width: 1080px) {
+  #main {
+    width: 65%;
+  }
+  #sidebar-primary,
+  #sidebar-secondary {
+    width: 32%;
+  }
+  .main-navigation {
+    width: 100%;
+  }
+  /* Remove box-shadow and border-radius */
+  #content,
+  #footer {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  /* Remove the negative margin and box-shadow */
+  .section-title {
+    box-shadow: none;
+    margin-left: 0;
+  }
+  /* Fluid width on the Recent Posts and Headlines lists */
+  .recent-post {
+    width: 23%;
+    margin-right: 2%;
+  }
+  .headline-list {
+    width: 48%;
+    margin-right: 2%;
+  }
+  /* Prevent the sidebars on 3 column layouts from moving underneath the content */
+  .layout-3c-c #main,
+  .layout-3c-r #main,
+  .layout-3c-l #main {
+    width: 50%;
+  }
+  .layout-3c-c #sidebar-primary,
+  .layout-3c-r #sidebar-primary,
+  .layout-3c-l #sidebar-primary,
+  .layout-3c-c #sidebar-secondary,
+  .layout-3c-r #sidebar-secondary,
+  .layout-3c-l #sidebar-secondary {
+    width: 20%;
+  }
+  .layout-3c-c #sidebar-primary {
+    margin-left: -740px;
+  }
+  .layout-3c-l #sidebar-primary,
+  .layout-3c-l #sidebar-secondary {
+    margin-right: 1%;
+  }
+  .layout-3c-l #sidebar-secondary {
+    float: right;
+  }
+  .layout-3c-r #sidebar-secondary {
+    margin-left: 2%;
+  }
+}
+/* =============================================================================
    Media Queries:  Max-width 980px
    ========================================================================== */
 @media screen and (max-width: 980px) {
-  #wrapper,
-  #topbar .wrap {
-    width: 99%;
-  }
-  #main {
-    width: 100% !important;
-    float: none !important;
-    margin: 0 !important;
-  }
+  /* Switch padding from 40px to 25px */
   #content,
   #footer {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    padding: 40px 25px 25px;
+  }
+  #slider {
+    margin: -34px -25px 40px -25px;
+    padding: 40px 25px 25px;
+  }
+  #site-title {
+    margin-left: 25px;
+  }
+  #site-description {
+    margin-right: 25px;
+  }
+  /* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
+  .layout-3c-c #main,
+  .layout-3c-r #main,
+  .layout-3c-l #main {
+    clear: both;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .layout-3c-c #sidebar-primary,
+  .layout-3c-r #sidebar-primary,
+  .layout-3c-l #sidebar-primary,
+  .layout-3c-c #sidebar-secondary,
+  .layout-3c-r #sidebar-secondary,
+  .layout-3c-l #sidebar-secondary {
+    clear: none;
+    width: 48%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .layout-3c-c #sidebar-secondary,
+  .layout-3c-r #sidebar-secondary,
+  .layout-3c-l #sidebar-secondary {
+    float: right;
+  }
+  /* Show Recent Posts in one column */
+  .recent-post {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 25px 0;
+    margin-right: 0;
+    float: none;
+    width: 100%;
+    opacity: 1 !important;
+  }
+  .recent-post:before,
+  .recent-post:after {
+    content: "";
+    display: table;
+  }
+  .recent-post:after {
+    clear: both;
+  }
+  .recent-post:hover,
+  .recent-post:active {
+    background-color: #f7fafc;
+    background-image: -moz-linear-gradient(left, #f2f7fc 50%, #f7fafc);
+    background-image: -webkit-linear-gradient(left, #f2f7fc 50%, #f7fafc);
+    background-image: -o-linear-gradient(left, #f2f7fc 50%, #f7fafc);
+    background-image: linear-gradient(left, #f2f7fc 50%, #f7fafc);
+    background-repeat: repeat-x;
+  }
+  .recent-post .entry-title {
+    font-size: 21px;
+    margin: 0;
+  }
+  .recent-post .recent-posts-meta {
+    font-size: 14px;
+  }
+  .recent-post .thumbnail {
+    float: left;
+    margin: 0 25px 0 0;
   }
   .section-title {
-    margin-left: 0;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    margin-bottom: 25px;
   }
-  /* Float the sidebars so they are in two columns after the content */
-  #sidebar-primary {
-    float: left;
-    width: 45%;
-    margin: 0 !important;
-  }
-  #sidebar-secondary {
-    width: 45%;
-    margin: 0 !important;
-  }
-  #rss-subscribe {
-    display: none;
-  }
-  /* Attachment page */
-  #image-info .image-info {
-    width: 30%;
-  }
-  #attachment-gallery {
-    width: 60%;
-  }
-  /* Pagination */
-  .pagination a,
-  .pagination > span {
-    margin-right: 2px;
-    padding: 18px 24px 16px;
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    -ms-transition: none;
-    transition: none;
-  }
+  /* @todo: Search form in sidebar */
 }
 /* =============================================================================
    Media Queries:  Max-width 768px
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  /* Hide slider */
-  /* Make the Recent Posts one column */
-  /* Make the Category Headlines list two columns */
-  /* Add a background to the search inputs */
-  /* Attachment page */
-  #image-info .image-info dt {
-    border-bottom: none;
-    float: none;
-    padding: 0;
+  /* Make the main content full width and move the sidebars underneath it */
+  /* @todo: Consider if this should be moved up to 980px */
+  #main {
+    width: 100%;
   }
-  #image-info .image-info dt:hover {
-    background: none;
+  #sidebar-primary {
+    float: left;
+    width: 48%;
   }
-  #image-info .image-info dd {
-    float: none;
-    margin: 0 0 0 20px;
-    text-align: left;
+  #sidebar-secondary {
+    width: 48%;
+    float: right;
+  }
+  /* Make the slider smaller */
+  .slide .thumbnail {
+    max-width: 55%;
+    margin-right: 25px;
+  }
+  .slide .slider-video {
+    display: none;
+  }
+  .slide .entry-title {
+    font-size: 24px;
+  }
+  .slide .entry-summary {
+    font-size: 14px;
+  }
+  .flex-control-nav {
+    margin-top: 40px;
+  }
+  /* Make the pagination bigger */
+  .pagination a,
+  .pagination > span {
+    padding: 18px 22px 17px;
+    margin-bottom: 10px;
+  }
+  /* If there's 3 columns of footer widgets, turn them into 2 columns */
+  #sidebar-subsidiary.three-col .widget-area {
+    margin-right: 4%;
+    width: 48%;
+  }
+  #sidebar-subsidiary.three-col .widget-area + .widget-area {
+    margin-right: 0;
+  }
+  /* Make the Category Headlines list smaller */
+  .headline-list .entry-title {
+    font-size: 16px;
+  }
+  .headline-list .headline-meta {
+    font-size: 14px;
+  }
+  .headline-list .thumbnail {
+    max-width: 50px;
   }
 }
 /* =============================================================================
-   Media Queries:  Max-width 480px
+   Media Queries:  Max-width 620px
    ========================================================================== */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 620px) {
   #branding {
     text-align: center;
   }
@@ -3041,12 +3186,42 @@ html .btn-inverse:hover {
   #site-description {
     margin: 20px 0 0;
   }
-  /* Hide thumbnails from the Recent Posts */
-  /* Make the widget areas full width */
-  .widget-area,
+  /* Hide the slider */
+  #slider {
+    display: none;
+  }
+  /* Make the Recent Posts list smaller */
+  .recent-post .entry-title {
+    font-size: 18px;
+  }
+  .recent-post .recent-posts-meta {
+    font-size: 13px;
+  }
+  .recent-post .thumbnail {
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+  /* Make the Category Headlines list two columns */
   .headline-list {
+    width: 100%;
+    margin-right: 0;
+  }
+  /* Make the widget areas full width */
+  .widget-area {
     width: 100% !important;
     float: none !important;
+  }
+}
+/* =============================================================================
+   Media Queries:  Max-width 480px
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+  .entry-header .post-format-link {
+    top: -20px;
+  }
+  /* Hide the Recent Posts thumbnails */
+  .recent-post .thumbnail {
+    display: none;
   }
 }
 /* =============================================================================
