@@ -2730,20 +2730,17 @@ html .btn-inverse:hover {
 .twitter-share-button {
   border: none;
 }
+/* Twitter button */
 .twitter-share {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.5;
   display: inline-block;
-  font: bold 12px/1.5 Arial, sans-serif;
   overflow: hidden;
   text-align: center;
-  *display: inline;
-  /* trigger inline-block behaviour in IE < 8 */
-
-  zoom: 1;
-  /* trigger hasLayout in IE < 8 */
-
 }
-.twitter-button:link,
-.twitter-button:visited {
+.twitter-button {
   background: url(images/tweet.png) no-repeat;
   width: 55px;
   height: 20px;
@@ -2759,20 +2756,19 @@ html .btn-inverse:hover {
 .twitter-button:active {
   background-position: 0 -40px;
 }
-/* The count */
-.twitter-count:link,
-.twitter-count:visited {
+/* The Twitter button count */
+.twitter-count {
   border: 1px solid #cee3f0;
   border-radius: 2px;
   color: #2a7090;
   min-width: 20px;
-  height: 18px;
-  line-height: 18px;
   float: left;
   margin: 0 0 0 7px;
   padding: 0 4px;
   position: relative;
   text-decoration: none;
+  /* The count tooltip. Not displayed in IE < 8 */
+
 }
 .twitter-count:hover,
 .twitter-count:focus,
@@ -2780,9 +2776,8 @@ html .btn-inverse:hover {
   background: #e8f3f9;
   border: 1px solid #9dc6e1;
   color: #30566D;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
 }
-/* The count tooltip. Not displayed in IE < 8 */
 .twitter-count:before {
   background: url(images/tweet.png) no-repeat 0 -60px;
   content: "";
@@ -2798,20 +2793,23 @@ html .btn-inverse:hover {
 .twitter-count:active:before {
   background-position: -5px -60px;
 }
-/* Vertical variant */
+/* Vertical Twitter button */
 .twitter-button-size-vertical {
   padding-top: 42px;
   position: relative;
 }
 .twitter-button-size-vertical .twitter-count {
-  font: bold 16px/34px Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 34px;
   width: 45px;
   height: 34px;
-  margin: 0;
   text-align: center;
   position: absolute;
+  margin: 0;
   top: 0;
-  left: 0;
+  left: 9%;
 }
 .twitter-button-size-vertical .twitter-count:before {
   background-position: -10px -60px;
@@ -2819,7 +2817,7 @@ html .btn-inverse:hover {
   height: 5px;
   margin: 0 0 0 -4px;
   top: 100%;
-  left: 50%;
+  left: 48%;
 }
 .twitter-button-size-vertical .twitter-count:hover:before,
 .twitter-button-size-vertical .twitter-count:focus:before,
@@ -2831,10 +2829,11 @@ html .btn-inverse:hover {
    ========================================================================== */
 .shake-it-baby {
   -webkit-animation: shake-it-baby 1s infinite;
-  -webkit-transition: all 1s ease;
   -moz-animation: shake-it-baby 1s infinite;
-  -moz-transition: all 1s ease;
   animation: shake-it-baby 1s infinite;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
   transition: all 1s ease;
 }
 @-webkit-keyframes shake-it-baby {
