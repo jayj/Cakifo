@@ -147,10 +147,11 @@ function cakifo_tweet_button( $args = array() ) {
 	if ( $args['layout'] != 'none' )
 		$counter = '<a class="twitter-count" href="http://twitter.com/search?q=' . urlencode( $url ) . '" target="_blank">' . $count . '</a>';
 
-	// HTML for the tweet button
+	/* HTML for the tweet button */
 	$twitter_share = '
 		<div class="twitter-share twitter-button-size-' . sanitize_html_class( $args['layout'] ) . '">
-			<a class="twitter-button" rel="external nofollow" title="Share this on Twitter" href="http://twitter.com/share?' . $query . '" target="_blank">Tweet</a>' . $counter . '
+			<a class="twitter-button" rel="external nofollow" title="' . esc_attr__( 'Share this on Twitter', 'cakifo' ) . '" href="http://twitter.com/share?' . $query . '" target="_blank">' . __( 'Tweet',
+			'cakifo' ) . '</a>' . $counter . '
 		</div>
 	';
 
