@@ -2986,11 +2986,11 @@ html .btn-inverse:hover {
   }
   .flex-direction-nav .flex-prev {
     opacity: 1;
-    left: 25px;
+    left: 40px;
   }
   .flex-direction-nav .flex-next {
     opacity: 1;
-    right: 25px;
+    right: 40px;
   }
 }
 /* =============================================================================
@@ -3017,6 +3017,7 @@ html .btn-inverse:hover {
   .section-title {
     box-shadow: none;
     margin-left: 0;
+    padding-left: 25px;
   }
   /* Fluid width on the Recent Posts and Headlines lists */
   .recent-post {
@@ -3124,11 +3125,12 @@ html .btn-inverse:hover {
     background-repeat: repeat-x;
   }
   .recent-post .entry-title {
-    font-size: 21px;
+    font-size: 16px;
     margin: 0;
   }
-  .recent-post .recent-posts-meta {
-    font-size: 14px;
+  .recent-post .recent-posts-meta,
+  .recent-post .entry-summary {
+    font-size: 13px;
   }
   .recent-post .thumbnail {
     float: left;

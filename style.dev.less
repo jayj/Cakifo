@@ -1218,12 +1218,12 @@ sub {
 
 	.flex-direction-nav .flex-prev {
 		opacity: 1;
-		left: @smallGutterWidth;
+		left: @gutterWidth;
 	}
 
 	.flex-direction-nav .flex-next {
 		opacity: 1;
-		right: @smallGutterWidth;
+		right: @gutterWidth;
 	}
 }
 
@@ -1257,6 +1257,7 @@ sub {
 	.section-title {
 		box-shadow: none;
 		margin-left: 0;
+		padding-left: @smallGutterWidth;
 	}
 
 	/* Fluid width on the Recent Posts and Headlines lists */
@@ -1366,12 +1367,13 @@ sub {
 		}
 
 		.entry-title {
-			font-size: 21px;
+			font-size: 16px;
 			margin: 0;
 		}
 
-		.recent-posts-meta {
-			font-size: 14px;
+		.recent-posts-meta,
+		.entry-summary {
+			font-size: 13px;
 		}
 
 		.thumbnail {
