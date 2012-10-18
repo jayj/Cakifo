@@ -700,7 +700,7 @@ function cakifo_author_box() { ?>
 
 		<?php do_atomic( 'before_author_box' ); // cakifo_before_author_box ?>
 
-		<div class="author-profile vcard">
+		<div class="author-profile clearfix vcard">
 
 			<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
 
