@@ -60,7 +60,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_status', '<footer class="entry-meta">' . __( '[entry-edit-link]', 'cakifo' ) . '</footer>' ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_meta_status', __( '[entry-edit-link]', 'cakifo' ) ); ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
