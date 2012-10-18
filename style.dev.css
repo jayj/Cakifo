@@ -2120,9 +2120,9 @@ input {
  *    `input` and others.
  */
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
 
@@ -2141,8 +2141,8 @@ input[disabled] {
  * 1. Addresses box sizing set to `content-box` in IE 8/9.
  * 2. Removes excess padding in IE 8/9.
  */
-input[type="checkbox"],
-input[type="radio"] {
+[type="checkbox"],
+[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2155,13 +2155,13 @@ input[type="radio"] {
 /**
  * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
  */
-input[type="search"] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
 
 }
-input[type="search"],
-input[type="color"] {
+[type="search"],
+[type="color"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -2170,8 +2170,8 @@ input[type="color"] {
  * Removes inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 /**
@@ -2244,9 +2244,9 @@ textarea:focus {
   outline: thin dotted \9;
 }
 select:focus,
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+[type="file"]:focus,
+[type="radio"]:focus,
+[type="checkbox"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -2280,8 +2280,18 @@ input[readonly],
 button[readonly],
 select[readonly],
 textarea[readonly] {
-  background: #eeeeee;
+  background: #eeeeee !important;
   cursor: not-allowed;
+}
+input[disabled]:active,
+button[disabled]:active,
+select[disabled]:active,
+textarea[disabled]:active,
+input[readonly]:active,
+button[readonly]:active,
+select[readonly]:active,
+textarea[readonly]:active {
+  box-shadow: none;
 }
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
@@ -2312,9 +2322,9 @@ label {
  */
 .btn,
 button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
+[type="submit"],
+[type="reset"],
+[type="button"] {
   background-color: #fafafa;
   background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4 100%);
   background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4 100%);
@@ -2335,9 +2345,9 @@ input[type="button"] {
 }
 .btn:hover,
 button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover {
+[type="submit"]:hover,
+[type="reset"]:hover,
+[type="button"]:hover {
   background-color: #f0f0f0;
   background-image: -moz-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
   background-image: -webkit-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
@@ -2352,16 +2362,16 @@ input[type="button"]:hover {
 }
 .btn:active,
 button:active,
-input[type="submit"]:active,
-input[type="reset"]:active,
-input[type="button"]:active {
+[type="submit"]:active,
+[type="reset"]:active,
+[type="button"]:active {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .btn:focus,
 button:focus,
-input[type="submit"]:focus,
-input[type="reset"]:focus,
-input[type="button"]:focus {
+[type="submit"]:focus,
+[type="reset"]:focus,
+[type="button"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -2596,9 +2606,9 @@ html .btn-inverse:hover {
 #commentform .form-url {
   clear: both;
 }
-#commentform input[type="text"],
-#commentform input[type="email"],
-#commentform input[type="url"],
+#commentform [type="text"],
+#commentform [type="email"],
+#commentform [type="url"],
 #commentform textarea {
   display: block;
   width: 100%;
