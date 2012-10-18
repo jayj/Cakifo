@@ -215,6 +215,18 @@ h6 {
 li {
   line-height: 2.2;
 }
+ol ol {
+  list-style: upper-roman;
+}
+ol ol ol {
+  list-style: lower-roman;
+}
+ol ol ol ol {
+  list-style: upper-alpha;
+}
+ol ol ol ol ol {
+  list-style: lower-alpha;
+}
 dt {
   font-weight: bold;
 }
