@@ -3221,11 +3221,14 @@ html .btn-inverse:hover {
     font-size: 18px;
   }
   .recent-post .recent-posts-meta {
-    font-size: 13px;
+    font-size: 12px;
   }
   .recent-post .thumbnail {
     max-width: 150px;
     margin-bottom: 10px;
+  }
+  .recent-post .entry-summary {
+    font-size: 14px;
   }
   /* Make the Category Headlines list two columns */
   .headline-list {
