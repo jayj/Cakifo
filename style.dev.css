@@ -1661,6 +1661,14 @@ table caption {
   margin: 0 0 40px;
   padding: 10px 25px;
 }
+.loop-meta:before,
+.loop-meta:after {
+  content: "";
+  display: table;
+}
+.loop-meta:after {
+  clear: both;
+}
 .loop-meta-home {
   background: url(images/content-orange-line.png) repeat-x left bottom;
   border: none;
