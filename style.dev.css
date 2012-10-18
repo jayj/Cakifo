@@ -1085,8 +1085,9 @@ table caption {
 #footer {
   background: #ffffff url(images/content-orange-line.png) repeat-x;
   border-radius: 0 0 5px 5px;
-  padding: 60px 40px 40px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 40px 40px;
+  position: relative;
 }
 #main {
   width: 650px;
@@ -1106,7 +1107,7 @@ table caption {
    ========================================================================== */
 #footer {
   background-color: #f8fafb;
-  text-shadow: 1px 1px 0 #fff;
+  text-shadow: 1px 1px 0 #ffffff;
   padding-top: 40px;
   margin: 40px 0;
   position: relative;
@@ -1240,8 +1241,17 @@ table caption {
   background-color: #ffffdf;
   border: double #eedbbb;
   border-width: 0 0 4px;
-  margin: -54px -40px 40px -40px;
-  padding: 40px 40px 25px;
+  margin: 0 -40px 40px -40px;
+  padding: 0 40px 25px;
+}
+#slider:before {
+  background-color: #ffffdf;
+  content: " ";
+  width: 100%;
+  height: 34px;
+  position: absolute;
+  top: -34px;
+  left: 0;
 }
 .slides-container:before,
 .slides-container:after {
@@ -3045,11 +3055,8 @@ html .btn-inverse:hover {
   /* Switch padding from 40px to 25px */
   #content,
   #footer {
-    padding: 40px 25px 25px;
-  }
-  #slider {
-    margin: -34px -25px 40px -25px;
-    padding: 40px 25px 25px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
   #site-title {
     margin-left: 25px;

@@ -1313,12 +1313,8 @@ sub {
 	/* Switch padding from 40px to 25px */
 	#content,
 	#footer {
-		padding: @gutterWidth @smallGutterWidth @smallGutterWidth;
-	}
-
-	#slider {
-		margin: -(@gutterWidth - 6px) -(@smallGutterWidth) @gutterWidth -(@smallGutterWidth);
-		padding: @gutterWidth @smallGutterWidth @smallGutterWidth;
+		padding-left: @smallGutterWidth;
+		padding-right: @smallGutterWidth;
 	}
 
 	#site-title {

@@ -5,12 +5,23 @@
 #slider {
 	position: relative;
 
-	// Padding, margin, border width
 	.orange-box(
-		@gutterWidth @gutterWidth @smallGutterWidth,
-		-(@gutterWidth + 20px - 6px) -(@gutterWidth) @gutterWidth -(@gutterWidth),
+		0 @gutterWidth @smallGutterWidth,
+		0 -(@gutterWidth) @gutterWidth -(@gutterWidth),
 		0 0 4px
 	);
+
+	// Use a pseudo-element to give the illusion of the slider goes all the way to the top
+	// The optimal solution should be use to use negative margin-top on #slider but some mobile
+	// devices don't like that
+	&:before {
+		background-color: darken(#ffffe9, 2%);
+		content: " ";
+		.size(100%, 34px);
+		position: absolute;
+		top: -34px;
+		left: 0;
+	}
 }
 
 .slides-container {
