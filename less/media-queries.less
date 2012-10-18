@@ -1,0 +1,344 @@
+
+/* =============================================================================
+   Media Queries:  Max-width 1130px
+   ========================================================================== */
+
+@media screen and (max-width: 1130px) {
+	/* Move the navigation arrows when the screen is smaller */
+	.flex-direction-nav .flex-prev,
+	.flex-direction-nav .flex-next {
+		.square(58px);
+		top: auto;
+		bottom: 15px;
+
+		&:after {
+			font-size: 48px;
+			line-height: 48px;
+		}
+	}
+
+	.flex-direction-nav .flex-prev {
+		opacity: 1;
+		left: @gutterWidth;
+	}
+
+	.flex-direction-nav .flex-next {
+		opacity: 1;
+		right: @gutterWidth;
+	}
+}
+
+/* =============================================================================
+   Media Queries:  Max-width 1080px
+   ========================================================================== */
+
+@media screen and (max-width: 1080px) {
+
+	#main {
+		width: 65%;
+	}
+
+	#sidebar-primary,
+	#sidebar-secondary {
+		width: 32%;
+	}
+
+	.main-navigation {
+		width: 100%;
+	}
+
+	/* Remove box-shadow and border-radius */
+	#content,
+	#footer {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	/* Remove the negative margin and box-shadow */
+	.section-title {
+		box-shadow: none;
+		margin-left: 0;
+		padding-left: @smallGutterWidth;
+	}
+
+	/* Fluid width on the Recent Posts and Headlines lists */
+	.recent-post {
+		width: 23%;
+		margin-right: 2%;
+	}
+
+	.headline-list {
+		width: 48%;
+		margin-right: 2%;
+	}
+
+	/* Prevent the sidebars on 3 column layouts from moving underneath the content */
+	.layout-3c-c,
+	.layout-3c-r,
+	.layout-3c-l {
+		#main {
+			float: none;
+			width: 50%;
+		}
+
+		#sidebar-primary,
+		#sidebar-secondary {
+			width: 20%;
+		}
+	}
+
+	.layout-3c-c #sidebar-primary {
+		margin-left: -740px;
+	}
+
+	.layout-3c-l {
+		#sidebar-primary,
+		#sidebar-secondary {
+			margin-right: 1%;
+		}
+
+		#sidebar-secondary {
+			float: right;
+		}
+	}
+
+	.layout-3c-r #sidebar-secondary {
+		margin-left: 2%;
+	}
+} // 1080px
+
+/* =============================================================================
+   Media Queries:  Max-width 980px
+   ========================================================================== */
+
+@media screen and (max-width: 980px) {
+
+	/* Switch padding from 40px to 25px */
+	#content,
+	#footer {
+		padding-left: @smallGutterWidth;
+		padding-right: @smallGutterWidth;
+	}
+
+	#site-title {
+		margin-left: @smallGutterWidth;
+	}
+
+	#site-description {
+		margin-right: @smallGutterWidth;
+	}
+
+	/* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
+	.layout-3c-c,
+	.layout-3c-r,
+	.layout-3c-l {
+		#main {
+			clear: both;
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		#sidebar-primary,
+		#sidebar-secondary {
+			clear: none;
+			width: 48%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		#sidebar-secondary {
+			float: right;
+		}
+	}
+
+	/* Show Recent Posts in one column */
+	.recent-post {
+		border-bottom: 1px solid darken(@grayLighter, 5%);
+		padding: @smallGutterWidth 0;
+		margin-right: 0;
+		float: none;
+		width: 100%;
+		opacity: 1 !important;
+		.clearfix;
+
+		&:hover,
+		&:active {
+			#gradient > .horizontal(@highlightBlue, #f7fafc, 50%);
+		}
+
+		.entry-title {
+			font-size: 16px;
+			margin: 0;
+		}
+
+		.recent-posts-meta,
+		.entry-summary {
+			font-size: 13px;
+		}
+
+		.thumbnail {
+			float: left;
+			margin: 0 @smallGutterWidth 0 0;
+		}
+	}
+
+	.section-title {
+		margin-bottom: @smallGutterWidth;
+	}
+
+} // 980px
+
+/* =============================================================================
+   Media Queries:  Max-width 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+
+	/* Make the main content full width and move the sidebars underneath it */
+	#main {
+		float: none;
+		width: 100%;
+	}
+
+	#sidebar-primary {
+		float: left;
+		width: 48%;
+	}
+
+	#sidebar-secondary {
+		width: 48%;
+		float: right;
+	}
+
+	/* Make the slider smaller */
+	.slide {
+		.thumbnail {
+			max-width: 55%;
+			margin-right: @smallGutterWidth;
+		}
+
+		// Remove the video
+		.slider-video {
+			display: none;
+		}
+
+		.entry-title {
+			font-size: 24px;
+		}
+
+		.entry-summary {
+			font-size: 14px;
+		}
+	}
+
+	.flex-control-nav {
+		margin-top: @gutterWidth;
+	}
+
+	/* Make the pagination bigger */
+	.pagination a,
+	.pagination > span {
+		padding: 18px 22px 17px;
+		margin-bottom: 10px;
+	}
+
+	/* If there's 3 columns of footer widgets, turn them into 2 columns */
+	#sidebar-subsidiary.three-col .widget-area {
+		margin-right: 4%;
+		width: 48%;
+
+		+ .widget-area {
+			margin-right: 0;
+		}
+	}
+
+	/* Make the Category Headlines list smaller */
+	.headline-list {
+		.entry-title {
+			font-size: 16px;
+		}
+
+		.headline-meta {
+			font-size: 14px;
+		}
+
+		.thumbnail {
+			max-width: 50px;
+		}
+	}
+}
+
+/* =============================================================================
+   Media Queries:  Max-width 620px
+   ========================================================================== */
+
+@media screen and (max-width: 620px) {
+
+	#branding {
+		text-align: center;
+	}
+
+	#site-title,
+	#site-description {
+		float: none;
+	}
+
+	#site-description {
+		margin: 20px 0 0;
+	}
+
+	/* Hide the slider */
+	#slider {
+		display: none;
+	}
+
+	/* Make the Recent Posts list smaller */
+	.recent-post {
+		.entry-title {
+			font-size: 18px;
+		}
+
+		.recent-posts-meta {
+			font-size: 12px;
+		}
+
+		.thumbnail {
+			max-width: 150px;
+			margin-bottom: 10px;
+		}
+
+		.entry-summary {
+			font-size: 14px;
+		}
+	}
+
+	/* Make the Category Headlines list two columns */
+	.headline-list {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	/* Make the widget areas full width */
+	.widget-area {
+		width: 100% !important;
+		float: none !important;
+	}
+}
+
+/* =============================================================================
+   Media Queries:  Max-width 480px
+   ========================================================================== */
+
+@media screen and (max-width: 480px) {
+
+	/* Make sure the post format label and post title don't collide */
+	.entry-header .post-format-link {
+		top: -20px;
+	}
+
+	/* Hide the Recent Posts thumbnails */
+	.recent-post .thumbnail {
+		display: none;
+	}
+}
