@@ -1,6 +1,6 @@
-//
+// =============================================================================
 // Mixins
-// --------------------------------------------------
+// =============================================================================
 
 // Clearfix
 // -------------------------
@@ -23,11 +23,11 @@
 	border: 1px solid #e9e9e9;
 	border-bottom-color: #dfdfdf;
 	border-radius: @radius;
-	color: #333;
+	color: @grayDark;
 	font-size: 18px;
 	padding: 8px 20px;
 	margin: 0 0 @smallGutterWidth;
-	text-shadow: 0 1px 0 #fff;
+	text-shadow: 0 1px 0 @white;
 
 }
 
@@ -36,7 +36,7 @@
 .section-title-bar(@radius: 30px, @space: 60px) {
 	#gradient > .vertical(#d54e21, #c8471b);
 	border-radius: @radius;
-	color: #fff;
+	color: @white;
 	font-size: 24px;
 	padding: 10px @space;
 	margin: 0 0 @gutterWidth -(@space);
@@ -51,14 +51,13 @@
 	border: 1px solid #dde5e8;
 	border-top: none;
 	border-radius: 5px;
-	color: #56717d;
+	color: darken(#56717d, 5%);
 	text-shadow: 0 1px 0 @white;
 	#font > .alternative(16px, normal, 32px);
 	margin: @smallGutterWidth auto;
 	padding: @padding;
 	position: relative;
 }
-
 
 // Blue box
 // -------------------------
@@ -70,49 +69,14 @@
 	padding: @padding;
 }
 
-// Orange box
+// Highlight box
 // -------------------------
-.orange-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
-	background-color: darken(#ffffe9, 2%);
+.highlight-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
+	background-color: @highlightBackground;
 	border: double #eedbbb;
 	border-width: @borderWidth;
 	margin: @margin;
 	padding: @padding;
-}
-
-// Buttons
-// -------------------------
-.button(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%) ) {
-	.buttonBackground(@startColor, @endColor, @textColor, @shadowColor);
-	box-shadow: inset 0 1px 0 fade(@white, 22%), 0 1px 2px fade(@black, 5%);
-	border-radius: 3px;
-	#font > .alternative(16px, bold);
-	padding: 4px 14px;
-
-	&:focus {
-		.tab-focus;
-	}
-}
-
-
-.buttonBackground(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%)) {
-	#gradient > .vertical(@startColor, @endColor);
-	background-repeat: repeat-x;
-	border: 1px solid;
-	border-color: darken(@endColor, 8%) darken(@endColor, 8%) darken(@endColor, 20%);
-	color: @textColor;
-	text-shadow: 0 1px 0 @shadowColor;
-
-	&:hover {
-		#gradient > .vertical(darken(@startColor, 3%), darken(@endColor, 5%));
-		border-color: darken(@endColor, 20%) darken(@endColor, 20%) darken(@endColor, 30%);
-		color: @textColor;
-		.transition(background-position 100ms linear);
-	}
-
-	&:active {
-		box-shadow: inset 0 2px 4px fade(@black, 15%), 0 1px 2px fade(@black, 5%);
-	}
 }
 
 // Sizing shortcuts
@@ -136,6 +100,14 @@
 	outline-offset: -2px;
 }
 
+// Remove margin, padding and list styles
+// ------------------
+.no-list-style() {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
 // Placeholder text
 // -------------------------
 .placeholder(@color: @placeholderText, @textShadow: none) {
@@ -146,6 +118,40 @@
 	&::-webkit-input-placeholder {
 		color: @color;
 		text-shadow: @textShadow;
+	}
+}
+
+// Buttons
+// -------------------------
+.button(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%) ) {
+	.buttonBackground(@startColor, @endColor, @textColor, @shadowColor);
+	box-shadow: inset 0 1px 0 fade(@white, 22%), 0 1px 2px fade(@black, 5%);
+	border-radius: 3px;
+	#font > .alternative(16px, bold);
+	padding: 4px 14px;
+
+	&:focus {
+		.tab-focus;
+	}
+}
+
+.buttonBackground(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%)) {
+	#gradient > .vertical(@startColor, @endColor);
+	background-repeat: repeat-x;
+	border: 1px solid;
+	border-color: darken(@endColor, 8%) darken(@endColor, 8%) darken(@endColor, 20%);
+	color: @textColor;
+	text-shadow: 0 1px 0 @shadowColor;
+
+	&:hover {
+		#gradient > .vertical(darken(@startColor, 3%), darken(@endColor, 5%));
+		border-color: darken(@endColor, 20%) darken(@endColor, 20%) darken(@endColor, 30%);
+		color: @textColor;
+		.transition(background-position 100ms linear);
+	}
+
+	&:active {
+		box-shadow: inset 0 2px 4px fade(@black, 15%), 0 1px 2px fade(@black, 5%);
 	}
 }
 
@@ -253,7 +259,7 @@
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden
+// Default value is `visible`, but can be changed to `hidden`
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
 	-webkit-backface-visibility: @visibility;

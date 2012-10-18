@@ -338,12 +338,12 @@ big {
 
 address {
 	font-style: italic;
-	margin: 0 0 25px 0;
-}
+	margin: 0 0 @smallGutterWidth 0;
 
-li address,
-dd address {
-	margin: 0;
+	li &,
+	dd & {
+		margin: 0;
+	}
 }
 
 /*
@@ -507,7 +507,7 @@ sub {
 }
 
 .sticky {
-	background: darken(#ffffe9, 2%);
+	background: @highlightBackground;
 	padding: @smallGutterWidth;
 
 	.entry-title {
@@ -528,7 +528,6 @@ sub {
 .byline {
 	margin-bottom: 15px;
 }
-
 
 .singular .entry-meta {
 	border-top: 1px solid @grayLighter;
@@ -554,7 +553,7 @@ sub {
 	padding: 12px @smallGutterWidth;
 
 	a {
-		color: #333;
+		color: @grayDark;
 
 		&:hover {
 			color: @linkColorHover;
@@ -585,6 +584,7 @@ sub {
    ========================================================================== */
 
 .author-profile {
+	// padding, margin
 	.blue-box(10px @smallGutterWidth, @smallGutterWidth 0);
 
 	.author-name {
@@ -610,7 +610,7 @@ sub {
    ========================================================================== */
 
 .loop-meta {
-	.orange-box;
+	.highlight-box;
 	.clearfix;
 }
 
@@ -630,7 +630,7 @@ sub {
 
 	span {
 		font-weight: normal;
-		color: #d54e21;
+		color: @orangeDark;
 	}
 }
 
@@ -711,9 +711,7 @@ sub {
 	}
 
 	ol {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+		.no-list-style();
 	}
 
 	li {
@@ -723,7 +721,7 @@ sub {
 
 		&:hover,
 		&:active {
-			#gradient > .horizontal(#f7fafc, #f2f7fc, 50%);
+			#gradient > .horizontal(#f7fafc, @highlightBlue, 50%);
 		}
 	}
 
@@ -771,7 +769,7 @@ sub {
 
 		&:hover,
 		&:active {
-			#gradient > .horizontal(#f7fafc, #f2f7fc, 40%);
+			#gradient > .horizontal(#f7fafc, @highlightBlue, 40%);
 		}
 	}
 
@@ -841,7 +839,6 @@ sub {
 		box-shadow: 0 2px 0 @orange;
 		color: darken(@orangeDark, 30%);
 		text-shadow: 0 1px 0 lighten(@orangeLight, 20%);
-
 	}
 
 	a:active {
@@ -894,9 +891,7 @@ sub {
 
 /* Related Posts with thumbnails turned on */
 .related-posts .with-thumbnails {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
+	.no-list-style();
 
 	.related-post {
 		background: @white;
@@ -950,14 +945,12 @@ sub {
 }
 
 #comments-number {
-	.orange-box;
+	.highlight-box;
 }
 
 .comment-list,
 .comment-list .children {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+	.no-list-style();
 }
 
 .comment {
@@ -999,15 +992,15 @@ sub {
 /* Comment background colours */
 .comment {
 	.even {
-		background-color: #fff;
+		background-color: @white;
 	}
 
 	.odd {
-		background-color: #ffffe9;
+		background-color: lighten(@highlightBackground, 2%);
 	}
 
 	.bypostauthor {
-		background-color: #f2f7fc;
+		background-color: @highlightBlue;
 	}
 }
 
@@ -1097,7 +1090,7 @@ sub {
 }
 
 .box-orange {
-	.orange-box(@smallGutterWidth);
+	.highlight-box(@smallGutterWidth);
 }
 
 /* =============================================================================
@@ -1217,350 +1210,10 @@ sub {
 @keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
 
 /* =============================================================================
-   Media Queries:  Max-width 1130px
+   Media Queries for smaller screens
    ========================================================================== */
 
-/* Move the navigation arrows when the screen is smaller */
-@media screen and (max-width: 1130px) {
-	.flex-direction-nav .flex-prev,
-	.flex-direction-nav .flex-next {
-		.square(58px);
-		top: auto;
-		bottom: 15px;
-
-		&:after {
-			font-size: 48px;
-			line-height: 48px;
-		}
-	}
-
-	.flex-direction-nav .flex-prev {
-		opacity: 1;
-		left: @gutterWidth;
-	}
-
-	.flex-direction-nav .flex-next {
-		opacity: 1;
-		right: @gutterWidth;
-	}
-}
-
-/* =============================================================================
-   Media Queries:  Max-width 1080px
-   ========================================================================== */
-
-@media screen and (max-width: 1080px) {
-
-	#main {
-		width: 65%;
-	}
-
-	#sidebar-primary,
-	#sidebar-secondary {
-		width: 32%;
-	}
-
-	.main-navigation {
-		width: 100%;
-	}
-
-	/* Remove box-shadow and border-radius */
-	#content,
-	#footer {
-		border-radius: 0;
-		box-shadow: none;
-	}
-
-	/* Remove the negative margin and box-shadow */
-	.section-title {
-		box-shadow: none;
-		margin-left: 0;
-		padding-left: @smallGutterWidth;
-	}
-
-	/* Fluid width on the Recent Posts and Headlines lists */
-	.recent-post {
-		width: 23%;
-		margin-right: 2%;
-	}
-
-	.headline-list {
-		width: 48%;
-		margin-right: 2%;
-	}
-
-	/* Prevent the sidebars on 3 column layouts from moving underneath the content */
-	.layout-3c-c,
-	.layout-3c-r,
-	.layout-3c-l {
-		#main {
-			float: none;
-			width: 50%;
-		}
-
-		#sidebar-primary,
-		#sidebar-secondary {
-			width: 20%;
-		}
-	}
-
-	.layout-3c-c #sidebar-primary {
-		margin-left: -740px;
-	}
-
-	.layout-3c-l {
-		#sidebar-primary,
-		#sidebar-secondary {
-			margin-right: 1%;
-		}
-
-		#sidebar-secondary {
-			float: right;
-		}
-	}
-
-	.layout-3c-r #sidebar-secondary {
-		margin-left: 2%;
-	}
-} // 1080px
-
-/* =============================================================================
-   Media Queries:  Max-width 980px
-   ========================================================================== */
-
-@media screen and (max-width: 980px) {
-
-	/* Switch padding from 40px to 25px */
-	#content,
-	#footer {
-		padding-left: @smallGutterWidth;
-		padding-right: @smallGutterWidth;
-	}
-
-	#site-title {
-		margin-left: @smallGutterWidth;
-	}
-
-	#site-description {
-		margin-right: @smallGutterWidth;
-	}
-
-	/* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
-	.layout-3c-c,
-	.layout-3c-r,
-	.layout-3c-l {
-		#main {
-			clear: both;
-			width: 100%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		#sidebar-primary,
-		#sidebar-secondary {
-			clear: none;
-			width: 48%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		#sidebar-secondary {
-			float: right;
-		}
-	}
-
-	/* Show Recent Posts in one column */
-	.recent-post {
-		border-bottom: 1px solid darken(@grayLighter, 5%);
-		padding: @smallGutterWidth 0;
-		margin-right: 0;
-		float: none;
-		width: 100%;
-		opacity: 1 !important;
-		.clearfix;
-
-		&:hover,
-		&:active {
-			#gradient > .horizontal(#f2f7fc, #f7fafc, 50%);
-		}
-
-		.entry-title {
-			font-size: 16px;
-			margin: 0;
-		}
-
-		.recent-posts-meta,
-		.entry-summary {
-			font-size: 13px;
-		}
-
-		.thumbnail {
-			float: left;
-			margin: 0 @smallGutterWidth 0 0;
-		}
-	}
-
-	.section-title {
-		margin-bottom: @smallGutterWidth;
-	}
-
-	/* @todo: Search form in sidebar */
-
-} // 980px
-
-/* =============================================================================
-   Media Queries:  Max-width 768px
-   ========================================================================== */
-
-@media screen and (max-width: 768px) {
-
-	/* Make the main content full width and move the sidebars underneath it */
-	#main {
-		float: none;
-		width: 100%;
-	}
-
-	#sidebar-primary {
-		float: left;
-		width: 48%;
-	}
-
-	#sidebar-secondary {
-		width: 48%;
-		float: right;
-	}
-
-	/* Make the slider smaller */
-	.slide {
-		.thumbnail {
-			max-width: 55%;
-			margin-right: @smallGutterWidth;
-		}
-
-		// Remove the video
-		.slider-video {
-			display: none;
-		}
-
-		.entry-title {
-			font-size: 24px;
-		}
-
-		.entry-summary {
-			font-size: 14px;
-		}
-	}
-
-	.flex-control-nav {
-		margin-top: @gutterWidth;
-	}
-
-	/* Make the pagination bigger */
-	.pagination a,
-	.pagination > span {
-		padding: 18px 22px 17px;
-		margin-bottom: 10px;
-	}
-
-	/* If there's 3 columns of footer widgets, turn them into 2 columns */
-	#sidebar-subsidiary.three-col .widget-area {
-		margin-right: 4%;
-		width: 48%;
-
-		+ .widget-area {
-			margin-right: 0;
-		}
-	}
-
-	/* Make the Category Headlines list smaller */
-	.headline-list {
-		.entry-title {
-			font-size: 16px;
-		}
-
-		.headline-meta {
-			font-size: 14px;
-		}
-
-		.thumbnail {
-			max-width: 50px;
-		}
-	}
-}
-
-/* =============================================================================
-   Media Queries:  Max-width 620px
-   ========================================================================== */
-
-@media screen and (max-width: 620px) {
-
-	#branding {
-		text-align: center;
-	}
-
-	#site-title,
-	#site-description {
-		float: none;
-	}
-
-	#site-description {
-		margin: 20px 0 0;
-	}
-
-	/* Hide the slider */
-	#slider {
-		display: none;
-	}
-
-	/* Make the Recent Posts list smaller */
-	.recent-post {
-		.entry-title {
-			font-size: 18px;
-		}
-
-		.recent-posts-meta {
-			font-size: 12px;
-		}
-
-		.thumbnail {
-			max-width: 150px;
-			margin-bottom: 10px;
-		}
-
-		.entry-summary {
-			font-size: 14px;
-		}
-	}
-
-	/* Make the Category Headlines list two columns */
-	.headline-list {
-		width: 100%;
-		margin-right: 0;
-	}
-
-	/* Make the widget areas full width */
-	.widget-area {
-		width: 100% !important;
-		float: none !important;
-	}
-}
-
-/* =============================================================================
-   Media Queries:  Max-width 480px
-   ========================================================================== */
-
-@media screen and (max-width: 480px) {
-
-	/* Make sure the post format label and post title don't collide */
-	.entry-header .post-format-link {
-		top: -20px;
-	}
-
-	/* Hide the Recent Posts thumbnails */
-	.recent-post .thumbnail {
-		display: none;
-	}
-}
+@import "less/media-queries.less";
 
 /* =============================================================================
    Print styles
@@ -1568,120 +1221,119 @@ sub {
 
 @media print {
 
-	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+	// * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
 
-	body {
-		background: none !important;
-		font-size: 16px;
-	}
+	// body {
+	// 	background: none !important;
+	// 	font-size: 16px;
+	// }
 
-	/* Show the link address after each link in the entry content */
-	.entry-content a:after {
-		font-size: 12px;
-		content:" [" attr(href) "] ";
-	}
+	// /* Show the link address after each link in the entry content */
+	// .entry-content a:after {
+	// 	font-size: 12px;
+	// 	content:" [" attr(href) "] ";
+	// }
 
-	#wrapper {
-		clear: both !important;
-		display: block !important;
-		float: none !important;
-		max-width: 100%;
-		position: relative !important;
-	}
+	// #wrapper {
+	// 	clear: both !important;
+	// 	display: block !important;
+	// 	float: none !important;
+	// 	max-width: 100%;
+	// 	position: relative !important;
+	// }
 
-	#topbar, #site-title img, .sidebar, #sidebar-subsidiary, #respond, .pagination, object, embed, video, audio, iframe[src*=youtube], #slider, .format-quote .entry-format,
-	blockquote:before, blockquote p:after, .twitter-share, .fb-like, .delicious-share-button, .digg-share-button, #___plusone_0, .author-profile .twitter-link, .avatar,
-	.comment-meta .permalink, .comment-reply-link, .more-link, .comments-link {
-		display: none !important;
-	}
+	// #topbar, #site-title img, .sidebar, #sidebar-subsidiary, #respond, .pagination, object, embed, video, audio, iframe[src*=youtube], #slider, .format-quote .entry-format,
+	// blockquote:before, blockquote p:after, .twitter-share, .fb-like, .delicious-share-button, .digg-share-button, #___plusone_0, .author-profile .twitter-link, .avatar,
+	// .comment-meta .permalink, .comment-reply-link, .more-link, .comments-link {
+	// 	display: none !important;
+	// }
 
-	#content, #footer, .loop-meta, blockquote, .author-profile, code, pre, table, tr th, thead th, tr td, tr:nth-child(2n) td, table caption {
-		background: none;
-	}
+	// #content, #footer, .loop-meta, blockquote, .author-profile, code, pre, table, tr th, thead th, tr td, tr:nth-child(2n) td, table caption {
+	// 	background: none;
+	// }
 
-	#content, #footer, #footer .wrap {
-		margin: 0;
-	}
+	// #content, #footer, #footer .wrap {
+	// 	margin: 0;
+	// }
 
-	#content, #footer, .thumbnail, .section-title {
-		padding: 0;
-	}
+	// #content, #footer, .thumbnail, .section-title {
+	// 	padding: 0;
+	// }
 
-	.thumbnail, blockquote, .author-profile, pre {
-		border: none;
-	}
+	// .thumbnail, blockquote, .author-profile, pre {
+	// 	border: none;
+	// }
 
-	#content, #footer {
-		width: auto;
-	}
+	// #content, #footer {
+	// 	width: auto;
+	// }
 
-	#content, .thumbnail, #footer, blockquote, .author-profile, table, tr th, thead th, .section-title {
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		box-shadow: none;
-	}
+	// #content, .thumbnail, #footer, blockquote, .author-profile, table, tr th, thead th, .section-title {
+	// 	-webkit-box-shadow: none;
+	// 	-moz-box-shadow: none;
+	// 	box-shadow: none;
+	// }
 
-	h3,
-	table caption,
-	.breadcrumbs,
-	.section-title,
-	.section-title.alternative-section-title {
-		background: none;
-		color: #333;
-		border: none;
-	}
+	// h3,
+	// table caption,
+	// .breadcrumbs,
+	// .section-title,
+	// .section-title.alternative-section-title {
+	// 	background: none;
+	// 	color: #333;
+	// 	border: none;
+	// }
 
-	#main {
-		width: 100%;
-		margin-top: 0;
-	}
+	// #main {
+	// 	width: 100%;
+	// 	margin-top: 0;
+	// }
 
-	#branding {
-		padding: 20px 0 0;
-	}
+	// #branding {
+	// 	padding: 20px 0 0;
+	// }
 
-	#site-title a:after {
-		content: attr(title);
-		color: #000;
-		font-size: 46px;
-		letter-spacing: -2px;
-	}
+	// #site-title a:after {
+	// 	content: attr(title);
+	// 	color: #000;
+	// 	font-size: 46px;
+	// 	letter-spacing: -2px;
+	// }
 
-	#footer  {
-		font-size: 14px;
-		margin-bottom: 10px;
-	}
+	// #footer  {
+	// 	font-size: 14px;
+	// 	margin-bottom: 10px;
+	// }
 
-	#headlines { margin: 10px 0; }
-	#headlines h2, .breadcrumb { margin-bottom: 0; }
-	.headline-list  { margin-bottom: 5px; }
+	// #headlines { margin: 10px 0; }
+	// #headlines h2, .breadcrumb { margin-bottom: 0; }
+	// .headline-list  { margin-bottom: 5px; }
 
-	#sidebar-after-singular .widget,
-	#sidebar-after-single .widget {
-		margin-bottom: 5px;
-	}
+	// #sidebar-after-singular .widget,
+	// #sidebar-after-single .widget {
+	// 	margin-bottom: 5px;
+	// }
 
-	.section-title {
-		margin-left: 0;
-	}
+	// .section-title {
+	// 	margin-left: 0;
+	// }
 
-	.author-profile {
-		margin: 10px 0 0;
-		padding: 0 25px;
-	}
+	// .author-profile {
+	// 	margin: 10px 0 0;
+	// 	padding: 0 25px;
+	// }
 
-	blockquote {
-		font-style: italic;
-	}
+	// blockquote {
+	// 	font-style: italic;
+	// }
 
-	tr, img { page-break-inside: avoid; }
-	#comments { page-break-before: always; }
-	 p, h2, h3 { orphans: 3; widows: 3; }
-	h2, h3{ page-break-after: avoid; }
+	// tr, img { page-break-inside: avoid; }
+	// #comments { page-break-before: always; }
+	//  p, h2, h3 { orphans: 3; widows: 3; }
+	// h2, h3{ page-break-after: avoid; }
 
-	.comment-list li, .comment-list .bypostauthor {
-		background: #fff !important;
-		border-left: none !important;
-	}
-
+	// .comment-list li, .comment-list .bypostauthor {
+	// 	background: #fff !important;
+	// 	border-left: none !important;
+	// }
 }

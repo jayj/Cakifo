@@ -1,10 +1,10 @@
-//
+// =============================================================================
 // Layouts
-// --------------------------------------------------
+// =============================================================================
 
 #content,
 #footer {
-	background: #fff ~"url(images/content-orange-line.png)" repeat-x;
+	background: @white ~"url(images/content-orange-line.png)" repeat-x;
 	border-radius: 0 0 5px 5px;
 	box-shadow: 1px 1px 10px fade(@black, 10%);
 	padding: @gutterWidth @gutterWidth @gutterWidth;
@@ -62,8 +62,8 @@
  * Footer Widget Area
  */
 #sidebar-subsidiary {
+	margin-top: @smallGutterWidth;
 	clear: both;
-	margin-top: 20px;
 
 	/* Two columns */
 	&.two-col .widget-area {
@@ -99,11 +99,9 @@
 /**
  * One column
  */
-.layout-1c {
-	#main {
-		float: none;
-		width: 100%;
-	}
+.layout-1c #main {
+	float: none;
+	width: 100%;
 }
 
 /**

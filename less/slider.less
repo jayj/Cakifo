@@ -1,11 +1,11 @@
-//
+// =============================================================================
 // Slider
-// --------------------------------------------------
+// =============================================================================
 
 #slider {
 	position: relative;
 
-	.orange-box(
+	.highlight-box(
 		0 @gutterWidth @smallGutterWidth,
 		0 -(@gutterWidth) @gutterWidth -(@gutterWidth),
 		0 0 4px
@@ -41,7 +41,7 @@
 .slide {
 	/* Hide the slides before the JS is loaded to avoid page jumping */
 	display: none;
-	-webkit-backface-visibility: hidden;
+	.backface-visibility(hidden);
 
 	.thumbnail,
 	.slider-video {

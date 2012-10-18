@@ -174,11 +174,11 @@ h6 {
   border: 1px solid #e9e9e9;
   border-bottom-color: #dfdfdf;
   border-radius: 50px 30px;
-  color: #333;
+  color: #333333;
   font-size: 18px;
   padding: 8px 20px;
   margin: 0 0 25px;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
   letter-spacing: -1px;
 }
 .widget-title a {
@@ -195,7 +195,7 @@ h6 {
   background-image: -o-linear-gradient(top, #d54e21, #c8471b 100%);
   background-image: linear-gradient(top, #d54e21, #c8471b 100%);
   border-radius: 30px;
-  color: #fff;
+  color: #ffffff;
   font-size: 24px;
   padding: 10px 60px;
   margin: 0 0 40px -60px;
@@ -248,7 +248,7 @@ blockquote {
   border: 1px solid #dde5e8;
   border-top: none;
   border-radius: 5px;
-  color: #56717d;
+  color: #4c636e;
   text-shadow: 0 1px 0 #ffffff;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
@@ -473,7 +473,7 @@ video {
 iframe {
   border: none;
 }
-/* Style seamless iframes */
+/* Style `seamless` iframes */
 iframe[seamless] {
   background-color: transparent;
   border: 0px none transparent;
@@ -727,63 +727,44 @@ sub {
    Typography:  Tables
    ========================================================================== */
 table {
-  border: 1px solid #e7e7e7;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 14px;
   width: 100%;
-  margin-bottom: 25px;
+  margin: 0 0 25px 0;
+}
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
   text-align: left;
 }
-/* th */
-tr th,
-thead th {
-  background: #f3f9fc;
-  border-left: 1px solid #e9f2f7;
-  color: #444;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 9px 24px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.04);
-}
-/* td */
-tr td {
-  background: #fafafa;
-  border: 1px solid #e7e7e7;
-  padding: 6px 24px;
-}
-td {
-  vertical-align: top;
-}
-tr:nth-child(even) td {
-  background: #f7f7f7;
-}
 tr:hover td {
-  background: #fff;
+  background: #f9f9f9;
 }
-td,
-td img {
-  vertical-align: top;
+thead th {
+  background: #f7fafd;
+  border-left: 1px solid #e9f2f7;
 }
-/* tfoot */
+th {
+  font-weight: bold;
+}
 tfoot td {
-  color: #777;
+  background: #f5f5f5;
+  box-shadow: inset 0 1px 1px 0 #eeeeee;
+  color: #666666;
   font-size: 11px;
   text-transform: uppercase;
 }
-tfoot th {
-  color: #444;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-/* Table caption */
-table caption {
-  background: #ffffdb;
-  border: 1px solid #f7f7ab;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 5px;
-  padding: 10px;
+caption {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.8;
+  margin-bottom: 10px;
 }
 /* =============================================================================
    Typography:  Selections
@@ -805,6 +786,9 @@ table caption {
 /* =============================================================================
    Misc:  Helper classes
    ========================================================================== */
+/**
+ * Alignments
+ */
 .alignleft {
   float: left;
 }
@@ -825,7 +809,11 @@ table caption {
 .last {
   margin-right: 0 !important;
 }
-/* This is used to hide content from browsers but allow screen readers to see it */
+/**
+ * Screen reader text
+ *
+ * This is used to hide content from browsers but allow screen readers to see it
+ */
 .assistive-text {
   position: absolute !important;
   height: 1px;
@@ -834,14 +822,14 @@ table caption {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
-/*
+/**
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 .hidden {
   display: none !important;
   visibility: hidden;
 }
-/*
+/**
  * Hide visually and from screenreaders, but maintain layout
  */
 .invisible {
@@ -945,9 +933,9 @@ table caption {
   
   }
   .main-navigation ul {
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
     padding: 0;
+    margin: 0;
   }
   .main-navigation .menu-list-container,
   .main-navigation .search-form {
@@ -1033,7 +1021,7 @@ table caption {
     display: none;
   }
 }
-/* No JS; show the menu */
+/* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
 .no-js .main-navigation .search-form {
   display: block !important;
@@ -1143,8 +1131,8 @@ table caption {
  * Footer Widget Area
  */
 #sidebar-subsidiary {
+  margin-top: 25px;
   clear: both;
-  margin-top: 20px;
   /* Two columns */
 
   /* Three columns */
@@ -1289,6 +1277,8 @@ table caption {
 
   display: none;
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .slide .thumbnail,
 .slide .slider-video {
@@ -1484,7 +1474,7 @@ table caption {
   padding: 12px 25px;
 }
 .breadcrumbs a {
-  color: #333;
+  color: #333333;
 }
 .breadcrumbs a:hover {
   color: #d54e21;
@@ -1501,6 +1491,9 @@ table caption {
 /* =============================================================================
    Layout:  Post formats
    ========================================================================== */
+/**
+ * Post format link
+ */
 .entry-header .post-format-link {
   background-color: #eeeeee;
   border-radius: 3px;
@@ -1518,7 +1511,9 @@ table caption {
   background-color: #d54e21;
   color: #ffffff;
 }
-/* Format: Chat */
+/**
+ * Format: Chat
+ */
 .chat-transcript {
   font-family: Monaco, Consolas, "Courier New", monospace;
   font-size: 14px;
@@ -1529,6 +1524,7 @@ table caption {
 .chat-row {
   margin-bottom: 10px;
 }
+/* The name of the soeaker */
 .chat-author {
   color: #000;
 }
@@ -1557,6 +1553,7 @@ table caption {
 .chat-speaker-6 .chat-author {
   color: #9d261d;
 }
+/* The speaker text */
 .chat-text {
   padding-left: 25px;
 }
@@ -1568,7 +1565,9 @@ table caption {
   color: #696969;
   padding-left: 0;
 }
-/* Format: Status */
+/**
+ * Format: Status
+ */
 .format-status .entry-header {
   margin-bottom: 25px;
   position: relative;
@@ -1590,12 +1589,16 @@ table caption {
 .format-status .entry-header a:hover {
   color: #d54e21;
 }
-/* Format: Quote */
+/**
+ * Format: Quote
+ */
 .format-quote .entry-meta {
   position: relative;
   z-index: 10;
 }
-/* Format: Link */
+/**
+ * Format: Link
+ */
 .format-link .entry-title:hover .meta-nav {
   margin-left: 5px;
   -webkit-transition: margin-left 200ms ease-in-out;
@@ -1603,11 +1606,15 @@ table caption {
   -o-transition: margin-left 200ms ease-in-out;
   transition: margin-left 200ms ease-in-out;
 }
-/* Format: video */
+/**
+ * Format: video
+ */
 .format-video .entry-header {
   margin-bottom: 15px;
 }
-/* Format: Gallery */
+/**
+ * Format: Gallery
+ */
 .image-count {
   color: #999999;
   font-size: 15px;
@@ -1767,9 +1774,9 @@ table caption {
   clear: left;
 }
 .headline-list ol {
-  list-style: none;
-  margin: 0;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 .headline-list li {
   border-bottom: 1px solid #e1e1e1;
@@ -2012,9 +2019,9 @@ table caption {
 }
 .comment-list,
 .comment-list .children {
-  list-style: none;
-  margin: 0;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 .comment {
   border-bottom: 4px double #eeeeee;
@@ -2051,7 +2058,7 @@ table caption {
 }
 /* Comment background colours */
 .comment .even {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .comment .odd {
   background-color: #ffffe9;
@@ -2082,7 +2089,7 @@ table caption {
 /* =============================================================================
    Layout:  Forms
    ========================================================================== */
-/*
+/**
  * Define consistent border, margin, and padding.
  */
 fieldset {
@@ -2090,7 +2097,7 @@ fieldset {
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
-/*
+/**
  * 1. Corrects color not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
@@ -2102,7 +2109,7 @@ legend {
   /* 2 */
 
 }
-/*
+/**
  * 1. Corrects font family not being inherited in all browsers.
  * 2. Corrects font size not being inherited in all browsers.
  * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
@@ -2121,7 +2128,7 @@ textarea {
   /* 3 */
 
 }
-/*
+/**
  * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
@@ -2129,7 +2136,7 @@ button,
 input {
   line-height: normal;
 }
-/*
+/**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  *    and `video` controls.
  * 2. Corrects inability to style clickable `input` types in iOS.
@@ -2147,14 +2154,14 @@ input[type="submit"] {
   /* 3 */
 
 }
-/*
+/**
  * Re-set default cursor for disabled elements.
  */
 button[disabled],
 input[disabled] {
   cursor: default;
 }
-/*
+/**
  * 1. Addresses box sizing set to `content-box` in IE 8/9.
  * 2. Removes excess padding in IE 8/9.
  */
@@ -2169,7 +2176,7 @@ input[type="radio"] {
   /* 2 */
 
 }
-/*
+/**
  * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
  */
 input[type="search"] {
@@ -2183,7 +2190,7 @@ input[type="color"] {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-/*
+/**
  * Removes inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
@@ -2191,7 +2198,7 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-/*
+/**
  * Removes inner padding and border in Firefox 4+.
  */
 button::-moz-focus-inner,
@@ -2199,7 +2206,7 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-/*
+/**
  * 1. Removes default vertical scrollbar in IE 8/9.
  * 2. Improves readability and alignment in all browsers.
  */
@@ -2211,7 +2218,9 @@ textarea {
   /* 2 */
 
 }
-/* Set font for forms */
+/**
+ * Set the font for the form fields
+ */
 label,
 input,
 button,
@@ -2227,7 +2236,9 @@ select,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* Inputs */
+/**
+ * Inputs
+ */
 input,
 select,
 textarea {
@@ -2282,7 +2293,9 @@ input[type="checkbox"]:focus {
 .input-xxlarge {
   width: 100%;
 }
-/* Disabled and read-only inputs */
+/**
+ * Disabled and read-only inputs
+ */
 input[disabled],
 button[disabled],
 select[disabled],
@@ -2300,11 +2313,15 @@ input[type="radio"][readonly],
 input[type="checkbox"][readonly] {
   background-color: transparent;
 }
-/* Selects */
+/**
+ * Select fields
+ */
 select {
   min-width: 180px;
 }
-/* Labels */
+/**
+ * Labels
+ */
 label {
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
@@ -2734,7 +2751,7 @@ html .btn-inverse:hover {
 .error {
   background-color: #f2dede;
   border-color: #ce838f;
-  color: #7a0b0a;
+  color: #4b0706;
 }
 .info {
   background-color: #d9edf7;
@@ -2980,10 +2997,13 @@ html .btn-inverse:hover {
   }
 }
 /* =============================================================================
+   Media Queries for smaller screens
+   ========================================================================== */
+/* =============================================================================
    Media Queries:  Max-width 1130px
    ========================================================================== */
-/* Move the navigation arrows when the screen is smaller */
 @media screen and (max-width: 1130px) {
+  /* Move the navigation arrows when the screen is smaller */
   .flex-direction-nav .flex-prev,
   .flex-direction-nav .flex-next {
     width: 58px;
@@ -3151,7 +3171,6 @@ html .btn-inverse:hover {
   .section-title {
     margin-bottom: 25px;
   }
-  /* @todo: Search form in sidebar */
 }
 /* =============================================================================
    Media Queries:  Max-width 768px
@@ -3272,176 +3291,5 @@ html .btn-inverse:hover {
    Print styles
    ========================================================================== */
 @media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    text-shadow: none !important;
-    filter: none !important;
-    -ms-filter: none !important;
-  }
-  body {
-    background: none !important;
-    font-size: 16px;
-  }
-  /* Show the link address after each link in the entry content */
-  .entry-content a:after {
-    font-size: 12px;
-    content: " [" attr(href) "] ";
-  }
-  #wrapper {
-    clear: both !important;
-    display: block !important;
-    float: none !important;
-    max-width: 100%;
-    position: relative !important;
-  }
-  #topbar,
-  #site-title img,
-  .sidebar,
-  #sidebar-subsidiary,
-  #respond,
-  .pagination,
-  object,
-  embed,
-  video,
-  audio,
-  iframe[src*=youtube],
-  #slider,
-  .format-quote .entry-format,
-  blockquote:before,
-  blockquote p:after,
-  .twitter-share,
-  .fb-like,
-  .delicious-share-button,
-  .digg-share-button,
-  #___plusone_0,
-  .author-profile .twitter-link,
-  .avatar,
-  .comment-meta .permalink,
-  .comment-reply-link,
-  .more-link,
-  .comments-link {
-    display: none !important;
-  }
-  #content,
-  #footer,
-  .loop-meta,
-  blockquote,
-  .author-profile,
-  code,
-  pre,
-  table,
-  tr th,
-  thead th,
-  tr td,
-  tr:nth-child(2n) td,
-  table caption {
-    background: none;
-  }
-  #content,
-  #footer,
-  #footer .wrap {
-    margin: 0;
-  }
-  #content,
-  #footer,
-  .thumbnail,
-  .section-title {
-    padding: 0;
-  }
-  .thumbnail,
-  blockquote,
-  .author-profile,
-  pre {
-    border: none;
-  }
-  #content,
-  #footer {
-    width: auto;
-  }
-  #content,
-  .thumbnail,
-  #footer,
-  blockquote,
-  .author-profile,
-  table,
-  tr th,
-  thead th,
-  .section-title {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-  }
-  h3,
-  table caption,
-  .breadcrumbs,
-  .section-title,
-  .section-title.alternative-section-title {
-    background: none;
-    color: #333;
-    border: none;
-  }
-  #main {
-    width: 100%;
-    margin-top: 0;
-  }
-  #branding {
-    padding: 20px 0 0;
-  }
-  #site-title a:after {
-    content: attr(title);
-    color: #000;
-    font-size: 46px;
-    letter-spacing: -2px;
-  }
-  #footer {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  #headlines {
-    margin: 10px 0;
-  }
-  #headlines h2,
-  .breadcrumb {
-    margin-bottom: 0;
-  }
-  .headline-list {
-    margin-bottom: 5px;
-  }
-  #sidebar-after-singular .widget,
-  #sidebar-after-single .widget {
-    margin-bottom: 5px;
-  }
-  .section-title {
-    margin-left: 0;
-  }
-  .author-profile {
-    margin: 10px 0 0;
-    padding: 0 25px;
-  }
-  blockquote {
-    font-style: italic;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  #comments {
-    page-break-before: always;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-  .comment-list li,
-  .comment-list .bypostauthor {
-    background: #fff !important;
-    border-left: none !important;
-  }
+  
 }

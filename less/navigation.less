@@ -1,6 +1,6 @@
-//
+// =============================================================================
 // Navigation for screens < 980px
-// --------------------------------------------------
+// =============================================================================
 
 .main-navigation {
 	.clearfix;
@@ -63,9 +63,9 @@
 	}
 }
 
-//
+// =============================================================================
 // Navigation for screens > 980px
-// --------------------------------------------------
+// =============================================================================
 
 @media screen and (min-width: 980px) {
 	.main-navigation {
@@ -75,9 +75,7 @@
 		position: relative;
 
 		ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
+			.no-list-style();
 		}
 
 		.menu-list-container,
@@ -174,7 +172,7 @@
 	}
 } // Media query: min-width 980px;
 
-/* No JS; show the menu */
+/* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
 .no-js .main-navigation .search-form {
 	display: block !important;

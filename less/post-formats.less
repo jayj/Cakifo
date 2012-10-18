@@ -1,7 +1,10 @@
-//
+// =============================================================================
 // Post formats
-// --------------------------------------------------
+// =============================================================================
 
+/**
+ * Post format link
+ */
 .entry-header .post-format-link {
 	background-color: @grayLighter;
 	border-radius: 3px;
@@ -21,9 +24,11 @@
 	}
 }
 
-/* Format: Chat */
+/**
+ * Format: Chat
+ */
 .chat-transcript {
-	// Give the chat transcripts a monospace font - this may be removed
+	// Give the chat transcripts a monospace font
 	#font > .monospace(14px);
 	margin: @smallGutterWidth 0;
 }
@@ -32,7 +37,7 @@
 	margin-bottom: 10px;
 }
 
-// The name of the person
+/* The name of the soeaker */
 .chat-author {
 	color: #000;
 
@@ -53,7 +58,7 @@
 	.chat-speaker-6 & { color: @red; }
 }
 
-// The text
+/* The speaker text */
 .chat-text {
 	padding-left: @smallGutterWidth;
 
@@ -68,7 +73,9 @@
 	}
 }
 
-/* Format: Status */
+/**
+ * Format: Status
+ */
 .format-status .entry-header {
 	margin-bottom: @smallGutterWidth;
 	position: relative;
@@ -92,25 +99,33 @@
 	}
 }
 
-/* Format: Quote */
+/**
+ * Format: Quote
+ */
 .format-quote .entry-meta {
 	// Set z-index higher than the quotes on <blockquote>
 	position: relative;
 	z-index: 10;
 }
 
-/* Format: Link */
+/**
+ * Format: Link
+ */
 .format-link .entry-title:hover .meta-nav {
 	margin-left: 5px;
 	.transition(margin-left 200ms ease-in-out);
 }
 
-/* Format: video */
+/**
+ * Format: video
+ */
 .format-video .entry-header {
 	margin-bottom: @smallGutterWidth - 10px;
 }
 
-/* Format: Gallery */
+/**
+ * Format: Gallery
+ */
 .image-count {
 	color: @grayLight;
 	font-size: @baseFontSize - 1px;

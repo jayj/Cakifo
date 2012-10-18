@@ -1,6 +1,6 @@
-//
+// =============================================================================
 // Variables
-// --------------------------------------------------
+// =============================================================================
 
 // ====================
 // Colour definitions
@@ -35,6 +35,9 @@
 @bodyBackground:        #e3ecf2;
 @topbarBackground:      #262626;
 @textColor:             @gray;
+
+@highlightBackground:   #ffffdf; // Used for slider, sticky posts...
+@highlightBlue:         #f2f7fc; // Used for author boxes, author replies...
 
 // Widths
 @siteWidth:             1080px;
@@ -84,7 +87,7 @@
 @warningBackground:     #fef9c7;
 @warningBorder:         darken(spin(@warningBackground, -5), 25%);
 
-@errorText:             #7a0b0a;
+@errorText:             darken(#7a0b0a, 10%);
 @errorBackground:       #f2dede;
 @errorBorder:           darken(spin(@errorBackground, -10), 25%);
 
