@@ -1160,6 +1160,7 @@ table caption {
  * One column
  */
 .layout-1c #main {
+  float: none;
   width: 100%;
 }
 /**
@@ -3012,6 +3013,7 @@ html .btn-inverse:hover {
   .layout-3c-c #main,
   .layout-3c-r #main,
   .layout-3c-l #main {
+    float: none;
     width: 50%;
   }
   .layout-3c-c #sidebar-primary,
@@ -3127,8 +3129,8 @@ html .btn-inverse:hover {
    ========================================================================== */
 @media screen and (max-width: 768px) {
   /* Make the main content full width and move the sidebars underneath it */
-  /* @todo: Consider if this should be moved up to 980px */
   #main {
+    float: none;
     width: 100%;
   }
   #sidebar-primary {
