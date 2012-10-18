@@ -72,7 +72,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 						<?php
 							echo apply_atomic_shortcode( 'headline_entry_title', '[entry-title tag="h3"]' );
-							echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published pubdate="no"] by [entry-author]', 'cakifo' ) . '</span>' );
+							echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' );
 						?>
 
 						<?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>

@@ -302,14 +302,10 @@ function cakifo_entry_published_shortcode( $attr ) {
 	$attr = shortcode_atts( array(
 		'before'  => '',
 		'after'   => '',
-		'format'  => get_option( 'date_format' ),
-		'pubdate' => true,
+		'format'  => get_option( 'date_format' )
 	), $attr );
 
-	// Pubdate attribute can be removed with [entry-published pubdate="something"]
-	$pubdate = ( $attr['pubdate'] === true ) ? 'pubdate' : '';
-
-	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '" ' . $pubdate . '>' . get_the_date( $attr['format'] ) . '</time>';
+	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '">' . get_the_date( $attr['format'] ) . '</time>';
 
 	return $attr['before'] . $published . $attr['after'];
 }
@@ -328,7 +324,7 @@ function cakifo_comment_published_shortcode( $attr ) {
 		'after'  => ''
 	), $attr );
 
-	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '" pubdate>' . get_comment_date() . '</time>';
+	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>';
 
 	return $attr['before'] . $published . $attr['after'];
 }
