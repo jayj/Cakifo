@@ -1033,11 +1033,14 @@ table caption {
    Layout:  Header
    ========================================================================== */
 #branding {
-  padding: 80px 0 50px;
+  padding: 60px 0 50px;
 }
 #site-title {
   float: left;
   margin: 0 0 0 40px;
+}
+#site-title img {
+  margin-top: 20px;
 }
 #site-title span {
   font-size: 46px;
@@ -1045,6 +1048,12 @@ table caption {
   line-height: 1.8;
   letter-spacing: -2px;
   text-shadow: 0 1px 0 #ffffff;
+}
+#site-title.display-header-text {
+  margin-top: 0;
+}
+#site-title.display-header-text img {
+  vertical-align: text-bottom;
 }
 #site-title.display-header-text span {
   position: relative !important;
@@ -1066,7 +1075,7 @@ table caption {
   border-radius: 3px;
   color: #555555;
   float: right;
-  margin: 10px 40px 0 0;
+  margin: 25px 40px 0 0;
   padding: 2px 8px;
 }
 /* =============================================================================
@@ -3216,6 +3225,7 @@ html .btn-inverse:hover {
    Media Queries:  Max-width 480px
    ========================================================================== */
 @media screen and (max-width: 480px) {
+  /* Make sure the post format label and post title don't collide */
   .entry-header .post-format-link {
     top: -20px;
   }

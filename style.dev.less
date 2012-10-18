@@ -412,12 +412,16 @@ sub {
    ========================================================================== */
 
 #branding {
-	padding: (@gutterWidth * 2) 0 (@gutterWidth + 10px);
+	padding: (@gutterWidth + 20px) 0 (@gutterWidth + 10px);
 }
 
 #site-title {
 	float: left;
 	margin: 0 0 0 @gutterWidth;
+
+	img {
+		margin-top: 20px;
+	}
 
 	span {
 		#font > .shorthand(46px, normal);
@@ -425,9 +429,17 @@ sub {
 		text-shadow: 0 1px 0 @white;
 	}
 
-	&.display-header-text span {
-		position: relative !important;
-		clip: auto;
+	&.display-header-text {
+		margin-top: 0;
+
+		img {
+			vertical-align: text-bottom;
+		}
+
+		span {
+			position: relative !important;
+			clip: auto;
+		}
 	}
 
 	a {
@@ -444,7 +456,7 @@ sub {
 	border-radius: 3px;
 	color: @gray;
 	float: right;
-	margin: 10px @gutterWidth 0 0;
+	margin: @smallGutterWidth @gutterWidth 0 0;
 	padding: 2px 8px;
 }
 
@@ -1517,6 +1529,7 @@ sub {
 
 @media screen and (max-width: 480px) {
 
+	/* Make sure the post format label and post title don't collide */
 	.entry-header .post-format-link {
 		top: -20px;
 	}
