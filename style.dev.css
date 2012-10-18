@@ -1253,14 +1253,6 @@ caption {
   top: -34px;
   left: 0;
 }
-.slides-container:before,
-.slides-container:after {
-  content: "";
-  display: table;
-}
-.slides-container:after {
-  clear: both;
-}
 .flex-viewport {
   max-height: 2000px;
   -webkit-transition: all 1s ease;
@@ -1782,14 +1774,6 @@ caption {
   border-bottom: 1px solid #e1e1e1;
   padding: 25px 20px;
 }
-.headline-list li:before,
-.headline-list li:after {
-  content: "";
-  display: table;
-}
-.headline-list li:after {
-  clear: both;
-}
 .headline-list li:hover,
 .headline-list li:active {
   background-color: #f2f7fc;
@@ -1882,14 +1866,6 @@ caption {
    ========================================================================== */
 .pagination {
   margin: 40px 0;
-}
-.pagination:before,
-.pagination:after {
-  content: "";
-  display: table;
-}
-.pagination:after {
-  clear: both;
 }
 .pagination a,
 .pagination > span {

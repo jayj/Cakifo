@@ -57,7 +57,7 @@
 
 		<h2 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h2>
 
-		<div class="slides-container">
+		<div class="slides-container clearfix">
 
 		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
 

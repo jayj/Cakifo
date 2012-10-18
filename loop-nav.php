@@ -18,7 +18,7 @@
 
 	<?php elseif ( is_singular( 'post' ) ) : ?>
 
-		<nav class="pagination post-pagination">
+		<nav class="pagination post-pagination clearfix">
 			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php previous_post_link( '%link', '<span class="previous">&larr; %title</span>' ); ?>
 			<?php next_post_link( '%link', '<span class="next">%title &rarr;</span>' ); ?>
@@ -29,7 +29,7 @@
 		elseif ( ! is_singular() && current_theme_supports( 'loop-pagination' ) ) :
 
 			loop_pagination( array(
-				'before'    => '<nav class="pagination loop-pagination"><h3 class="assistive-text">' . __( 'Post navigation', 'cakifo' ) . '</h3>',
+				'before'    => '<nav class="pagination loop-pagination clearfix"><h3 class="assistive-text">' . __( 'Post navigation', 'cakifo' ) . '</h3>',
 				'after'     => '</nav>',
 				'mid_size'  => 2,
 				'prev_text' => __( '&larr; Previous', 'cakifo' ),
@@ -39,7 +39,7 @@
 		// Normal 'Previous' and 'Next' links
 		elseif ( ! is_singular() && $nav = get_posts_nav_link( array( 'sep' => '', 'prelabel' => '<span class="previous">' . __( '&larr; Previous', 'cakifo' ) . '</span>', 'nxtlabel' => '<span class="next">' . __( 'Next &rarr;', 'cakifo' ) . '</span>' ) ) ) : ?>
 
-		<nav class="pagination">
+		<nav class="pagination clearfix">
 			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php echo $nav; ?>
 		</nav> <!-- .pagination -->

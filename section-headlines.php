@@ -56,7 +56,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 			<ol>
 				<?php foreach ( $headlines as $post ) : $GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID(); ?>
-					<li>
+					<li class="clearfix">
 						<?php do_atomic( 'open_headline_list_item' ); // cakifo_open_headline_list_item ?>
 
 						<?php
