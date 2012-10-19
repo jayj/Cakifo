@@ -459,20 +459,6 @@ function cakifo_theme_layout() {
 
 	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
-
-	elseif ( 'layout-default' == theme_layouts_get_layout() )
-		add_filter( 'get_theme_layout', 'cakifo_theme_layout_global' );
-}
-
-/**
- * Returns the global layout selected by the user.
- *
- * @since Cakifo 1.5
- * @param string $layout
- * @return string
- */
-function cakifo_theme_layout_global( $layout ) {
-	return 'layout-' . get_option( 'theme-layout' );
 }
 
 /**

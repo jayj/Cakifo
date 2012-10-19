@@ -97,8 +97,12 @@
 @three-col-sidebar-width: @three-col-main-width / 2 - @smallGutterWidth; // 225px
 
 /**
- * One column
+ * One column layout
+ *
+ * The first selector makes sure that the theme layout on the front page
+ * don't get overwritten in the Theme Customizer preview
  */
+body.page-template-template-front-page #main,
 .layout-1c #main {
 	float: none;
 	width: 100%;
