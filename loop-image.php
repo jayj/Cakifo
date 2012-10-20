@@ -39,8 +39,8 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'byline_image', '<div class="entry-meta-col">' . __( '[entry-published] by [entry-author] [entry-edit-link]', 'cakifo' ) . '</div>' ); ?>
-			<?php echo apply_atomic_shortcode( 'entry_meta_image', '<div class="entry-meta-col">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged: "]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'byline_image', '<div class="entry-meta-col">' . __( '[entry-published] by [entry-author] [entry-comments-link]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_meta_image', '<div class="entry-meta-col">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged: "] [entry-edit-link]', 'cakifo' ) . '</div>' ); ?>
 		</footer> <!-- .entry-meta -->
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>

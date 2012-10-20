@@ -21,7 +21,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_gallery', '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'byline_gallery', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
@@ -46,7 +46,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_gallery', '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'byline_gallery', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
@@ -78,7 +78,6 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 				'<footer class="entry-meta">' . __(
 					'[entry-terms taxonomy="category" before="Posted in "]
 					 [entry-terms before="| Tagged "]
-					 [entry-comments-link before=" | "]
 					 [entry-edit-link before=" | "]', 'cakifo' ) .
 				'</footer> <!-- .entry-meta -->'
 			);
