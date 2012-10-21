@@ -805,7 +805,7 @@ function cakifo_image_info() {
 	}
 
 	/* Format the HTML output of the function */
-	$output = '<div class="image-info">
+	$output = '<div class="image-info clearfix">
 					<h3>' . __( 'Image Info', 'cakifo' ) . '</h3>
 					<dl>' . $list . '</dl>
 				</div> <!-- .image-info -->';

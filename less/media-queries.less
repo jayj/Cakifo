@@ -187,6 +187,17 @@
 		margin-bottom: @smallGutterWidth;
 	}
 
+	/* Attachment meta */
+	.image-info,
+	.image-gallery {
+		float: none;
+		width: 100%;
+	}
+
+	.image-info {
+		margin-bottom: @smallGutterWidth;
+	}
+
 } // 980px
 
 /* =============================================================================
@@ -324,6 +335,11 @@
 		width: 100% !important;
 		float: none !important;
 	}
+
+	/* Gallery on attachment pages */
+	.image-gallery .gallery-item {
+		width: 25%;
+	}
 }
 
 /* =============================================================================
@@ -340,5 +356,10 @@
 	/* Hide the Recent Posts thumbnails */
 	.recent-post .thumbnail {
 		display: none;
+	}
+
+	/* Gallery on attachment pages */
+	.image-gallery .gallery-item {
+		width: 33%;
 	}
 }

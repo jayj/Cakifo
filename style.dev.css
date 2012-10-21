@@ -1806,6 +1806,9 @@ body.page-template-template-front-page #main,
 .attachment-title {
   margin-top: 0;
 }
+.attachment-meta {
+  margin-bottom: 25px;
+}
 .image-info {
   float: left;
   width: 35%;
@@ -3161,6 +3164,15 @@ html .btn-inverse:hover {
   .section-title {
     margin-bottom: 25px;
   }
+  /* Attachment meta */
+  .image-info,
+  .image-gallery {
+    float: none;
+    width: 100%;
+  }
+  .image-info {
+    margin-bottom: 25px;
+  }
 }
 /* =============================================================================
    Media Queries:  Max-width 768px
@@ -3263,6 +3275,10 @@ html .btn-inverse:hover {
     width: 100% !important;
     float: none !important;
   }
+  /* Gallery on attachment pages */
+  .image-gallery .gallery-item {
+    width: 25%;
+  }
 }
 /* =============================================================================
    Media Queries:  Max-width 480px
@@ -3275,6 +3291,10 @@ html .btn-inverse:hover {
   /* Hide the Recent Posts thumbnails */
   .recent-post .thumbnail {
     display: none;
+  }
+  /* Gallery on attachment pages */
+  .image-gallery .gallery-item {
+    width: 33%;
   }
 }
 /* =============================================================================
