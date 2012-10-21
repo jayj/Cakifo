@@ -1,6 +1,8 @@
 /**
- * Development stylesheet.  Use this file for development purposes by adding this to your 'wp-config.php' file:
- * define( 'SCRIPT_DEBUG', true );
+ * Development stylesheet.  Use this file for development purposes by adding
+ * this to your 'wp-config.php' file:
+ *
+ *   define( 'SCRIPT_DEBUG', true );
  *
  * You shouldn't make changes to this file. Use a child theme instead
  * @link https://github.com/jayj/Cakifo/wiki/Child-themes
@@ -11,16 +13,26 @@
 
 /* =============================================================================
    HTML5 display definitions
-   ========================================================================== */
+   ========================================================================= */
 
-/*
+/**
  * Corrects `block` display not defined in IE 8/9.
  */
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+    display: block;
 }
 
-/*
+/**
  * Corrects `inline-block` display not defined in IE 8/9
  */
 audio, canvas, video {
@@ -29,7 +41,7 @@ audio, canvas, video {
 	*zoom: 1;
 }
 
-/*
+/**
  * Prevents modern browsers from displaying `audio` without controls
  * Remove excess height in iOS 5 devices.
  */
@@ -38,7 +50,10 @@ audio:not([controls]) {
     height: 0;
 }
 
-/* Addresses styling for `hidden` attribute not present in IE 8/9 */
+/**
+ * Addresses styling for `hidden` attribute not present in IE 7/8/9, Firefox 3,
+ * and Safari 4.
+ */
 [hidden] {
 	display: none;
 }
@@ -47,13 +62,20 @@ audio:not([controls]) {
    Base
    ========================================================================== */
 
-/* Apply a natural box layout model to all elements */
-// http://paulirish.com/2012/box-sizing-border-box-ftw/
+/**
+ * Apply a natural box layout model to all elements
+ * @link http://paulirish.com/2012/box-sizing-border-box-ftw/
+ */
 * {
 	.box-sizing(border-box);
 }
 
-/* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+/*
+ * Corrects text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * Prevents iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -65,14 +87,16 @@ body {
 	background-color: @bodyBackground;
 	color: @textColor;
 	#font > .serif;
+}
 
-	// Remove background color if a user removes the color
-	&.custom-background-empty {
-		background-color: @white;
-	}
+/**
+ * Remove background color if a user removes the color
+ */
+.custom-background-empty {
+	background-color: @white;
 
-	&.custom-background-empty #content,
-	&.custom-background-empty #footer {
+	#content,
+	#footer {
 		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
