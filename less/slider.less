@@ -108,7 +108,7 @@
 		margin: 0;
 		opacity: 0.6;
 		position: absolute;
-		top: 200px;
+		top: 40%;
 		text-indent: -9999px;
 		.transition(opacity 150ms ease);
 
@@ -134,7 +134,7 @@
 	}
 
 	.flex-prev {
-		left: -21px;
+		left: -(@smallGutterWidth);
 
 		&:after {
 			content: "\00AB";
@@ -142,7 +142,7 @@
 	}
 
 	.flex-next {
-		right: -21px;
+		right: -(@smallGutterWidth);
 
 		&:after {
 			content: "\00BB";

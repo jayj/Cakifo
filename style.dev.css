@@ -1342,7 +1342,7 @@ body.page-template-template-front-page #main,
   margin: 0;
   opacity: 0.6;
   position: absolute;
-  top: 200px;
+  top: 40%;
   text-indent: -9999px;
   -webkit-transition: opacity 150ms ease;
   -moz-transition: opacity 150ms ease;
@@ -1371,13 +1371,13 @@ body.page-template-template-front-page #main,
   opacity: 1;
 }
 .flex-direction-nav .flex-prev {
-  left: -21px;
+  left: -25px;
 }
 .flex-direction-nav .flex-prev:after {
   content: "\00AB";
 }
 .flex-direction-nav .flex-next {
-  right: -21px;
+  right: -25px;
 }
 .flex-direction-nav .flex-next:after {
   content: "\00BB";
