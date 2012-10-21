@@ -10,8 +10,8 @@
  * @author Nicolas Gallagher
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @link http://nicolasgallagher.com/custom-tweet-button-for-wordpress/
- * @version 1.2
- * @since Cakifo 1.3
+ * @version 1.2.1
+ * @since Cakifo 1.3.0
  *
  *	Copyright 2010-2012 Nicolas Gallagher
  *
@@ -33,10 +33,10 @@
 /**
  * Display the tweet button
  *
+ * @since Cakifo 1.3.0
  * @param array $args    Array with arguments
  * @staticvar integer $i Used to count how many times the function has been referenced
  * @return string        The tweet button
- * @since Cakifo 1.3
  */
 function cakifo_tweet_button( $args = array() ) {
 
@@ -136,13 +136,16 @@ function cakifo_tweet_button( $args = array() ) {
 	/**
 	 * Construct the tweet button query string
 	 */
-	$query = http_build_query( array(
-		'text'     => $args['text'],
-		'url'      => $url,
-		'counturl' => $args['counturl'],
-		'via'      => ( $args['via'] ) ? $args['via'] : '',
-		'related'  => ( $args['related'] ) ? $args['related'] : '',
-	));
+	$query = http_build_query(
+		array(
+			'text'     => $args['text'],
+			'url'      => $url,
+			'counturl' => $args['counturl'],
+			'via'      => ( $args['via'] ) ? $args['via'] : '',
+			'related'  => ( $args['related'] ) ? $args['related'] : '',
+		),
+		'', '&amp;' // Make sure that the ampersands are encoded
+	);
 
 	if ( $args['layout'] != 'none' )
 		$counter = '<a class="twitter-count" href="http://twitter.com/search?q=' . urlencode( $url ) . '" target="_blank">' . $count . '</a>';

@@ -12,7 +12,7 @@
  *
  * @package Cakifo
  * @subpackage Template
- * @since Cakifo 1.1
+ * @since Cakifo 1.1.0
  */
 
 do_atomic( 'before_entry' ); //cakifo_before_entry ?>

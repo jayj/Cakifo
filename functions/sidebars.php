@@ -8,9 +8,9 @@
  * Themes may choose to use or not use these sidebars, create new sidebars, or
  * unregister individual sidebars.  A theme must register support for 'cakifo-sidebars' to use them
  *
+ * @since Cakifo 1.2.0
  * @package Cakifo
  * @subpackage Functions
- * @since Cakifo 1.2
  */
 
 /* Register widget areas */
@@ -23,9 +23,9 @@ add_action( 'widgets_init', 'cakifo_register_widgets' );
  * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support
  * these sidebars within their themes or add more custom sidebars to the mix.
  *
+ * @since Cakifo 1.2.0
  * @uses register_sidebar() Registers a sidebar with WordPress.
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- * @since Cakifo 1.2
  */
 function cakifo_register_sidebars() {
 
@@ -205,10 +205,10 @@ function cakifo_register_sidebars() {
 /**
  * Registers the theme widgets.
  *
+ * @since Cakifo 1.3.0
  * @uses register_widget() Registers individual widgets with WordPress
  * @link http://codex.wordpress.org/Function_Reference/register_widget
  * @return void
- * @since Cakifo 1.3
  */
 function cakifo_register_widgets() {
 
@@ -224,8 +224,8 @@ function cakifo_register_widgets() {
  * Otherwise the plugin results in error because Hybrid Core
  * deregister default WordPress widgets
  *
+ * @since Cakifo 1.4.0
  * @link http://wordpress.org/extend/plugins/monster-widget/ Monster Widgets
- * @since Cakifo 1.4
  */
 function cakifo_monster_widgets() {
 

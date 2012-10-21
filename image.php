@@ -7,7 +7,7 @@
  *
  * @package Cakifo
  * @subpackage Template
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  */
 
 get_header(); // Loads the header.php template ?>

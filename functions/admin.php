@@ -2,10 +2,10 @@
 /**
  * Creates additional theme settings
  *
+ * @since Cakifo 1.0.0
  * @package Cakifo
  * @subpackage Functions
  * @link http://themehybrid.com/hybrid-core/features/theme-settings
- * @since Cakifo 1.0
  */
 
 add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
@@ -13,8 +13,8 @@ add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
 /**
  * Add the theme options to the Hybrid Core options page
  *
+ * @since Cakifo 1.0.0
  * @return void
- * @since Cakifo 1.0
  */
 function cakifo_theme_admin_setup() {
 
@@ -35,9 +35,9 @@ function cakifo_theme_admin_setup() {
  * Loads the JavaScript and CSS files required for using the color picker on the theme settings
  * page, which allows users to change the link color
  *
+ * @since Cakifo 1.4.0
  * @param string $hook_suffix The current page being viewed.
  * @return void
- * @since Cakifo 1.4
  */
 function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
@@ -51,8 +51,8 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 /**
  * Adds custom meta boxes to the theme settings page
  *
+ * @since Cakifo 1.0.0
  * @return void
- * @since Cakifo 1.0
  */
 function cakifo_theme_settings_meta_boxes() {
 
@@ -70,8 +70,8 @@ function cakifo_theme_settings_meta_boxes() {
 /**
  * Function for displaying the meta box
  *
+ * @since Cakifo 1.0.0
  * @return void
- * @since Cakifo 1.0
  */
 function cakifo_theme_meta_box() { ?>
 
@@ -108,7 +108,7 @@ function cakifo_theme_meta_box() { ?>
 
 		<tr>
 			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category:', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category', 'cakifo' ); ?></label>
 			</th>
 
 			<td>
@@ -131,7 +131,7 @@ function cakifo_theme_meta_box() { ?>
 
 		<tr>
 			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts:', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts', 'cakifo' ); ?></label>
 			</th>
 			<td>
 				<p><input type="number" min="-1" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
@@ -142,7 +142,7 @@ function cakifo_theme_meta_box() { ?>
 
 		<tr>
 			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Categories:', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Categories', 'cakifo' ); ?></label>
 			</th>
 			<td>
 				<p>
@@ -158,7 +158,7 @@ function cakifo_theme_meta_box() { ?>
 			</td>
 		</tr>
 		<tr>
-			<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts:', 'cakifo' ); ?></label></th>
+			<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts', 'cakifo' ); ?></label></th>
 			<td>
 				<p><input type="number" min="1" id="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_num_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'headlines_num_posts' ) ); ?>" class="small-text" /></p>
 
@@ -176,14 +176,14 @@ function cakifo_theme_meta_box() { ?>
 				$twitter_setting      = hybrid_get_setting( 'twitter_username' );
 				$twitter_username     = '';
 
-				if ( ! empty( $twitter_setting ) )
+				if ( isset( $twitter_setting ) )
 					$twitter_username = $twitter_setting;
 				elseif( isset( $twitter_current_user ) )
 					$twitter_username = $current_user->twitter;
 			?>
 
 			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>"><?php _e( 'Twitter username:', 'cakifo' ); ?></label>
+				<label for="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>"><?php _e( 'Twitter username', 'cakifo' ); ?></label>
 			</th>
 			<td>
 				<p><input type="text" id="<?php echo hybrid_settings_field_id( 'twitter_username' ); ?>" name="<?php echo hybrid_settings_field_name( 'twitter_username' ); ?>" value="<?php echo esc_attr( $twitter_username ); ?>" /></p>
@@ -197,9 +197,9 @@ function cakifo_theme_meta_box() { ?>
 /**
  * Validates theme settings
  *
- * @param  array  $input The entered theme options
- * @return array         The validated theme options
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
+ * @param array $input The entered theme options
+ * @return array       The validated theme options
  */
 function cakifo_theme_validate_settings( $input ) {
 
@@ -207,7 +207,7 @@ function cakifo_theme_validate_settings( $input ) {
 	$input['featured_show']     = ( isset( $input['featured_show'] ) ? 1 : 0 );
 	$input['featured_category'] = absint( $input['featured_category'] );
 	$input['twitter_username']  = wp_filter_nohtml_kses( $input['twitter_username'] );
-	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : '5' ); // 5 is the default number of featured posts
+	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : 5 ); // 5 is the default number of featured posts
 
 	// Link color must be 3 or 6 hexadecimal characters
 	if ( isset( $input['link_color'] ) && preg_match( '/^#?([a-f0-9]{3}){1,2}$/i', $input['link_color'] ) )

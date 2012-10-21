@@ -4,8 +4,8 @@
  *
  * @package Cakifo
  * @subpackage Classes
- * @since Cakifo 1.3
- * @version 1.1
+ * @since Cakifo 1.3.0
+ * @version 1.1.0
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -17,7 +17,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
-	 * @since Cakifo 1.3
+	 * @since Cakifo 1.3.0
 	 */
 	function __construct() {
 
@@ -38,9 +38,9 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
 	 *
+	 * @since Cakifo 1.3.0
 	 * @param array $sidebar
 	 * @param array $instance
-	 * @since Cakifo 1.3
 	 */
 	function widget( $sidebar, $instance ) {
 
@@ -135,10 +135,10 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	* Gets the related posts based on the choosen taxonomies
 	* and puts them in the post meta
 	*
+	* @since Cakifo 1.3.0
 	* @access private
 	* @param int $post_id
 	* @param array $args
-	* @since Cakifo 1.3
 	*/
 	private function _get_related_posts( $post_id, $args ) {
 
@@ -217,9 +217,9 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Updates the widget control options for the particular instance of the widget.
 	 *
+	 * @since Cakifo 1.3.0
 	 * @param array $new_instance The new setting
 	 * @param array $old_instance The old setting
-	 * @since Cakifo 1.3
 	 */
 	function update( $new_instance, $old_instance ) {
 
@@ -239,8 +239,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Flush the related posts meta when a post is updated, deleted or the settings has been changed
 	 *
+	 * @since Cakifo 1.3.0
 	 * @param int|null $post_ID
-	 * @since Cakifo 1.3
 	 */
 	function flush_widget_cache( $post_ID = null ) {
 
@@ -271,8 +271,8 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
+	 * @since Cakifo 1.3.0
 	 * @param array $instance The widget settings in the database
-	 * @since Cakifo 1.3
 	 */
 	function form( $instance ) {
 

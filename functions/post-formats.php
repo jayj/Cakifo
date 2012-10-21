@@ -4,7 +4,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  */
 
 /* Makes URLs in link posts clickable. */
@@ -23,7 +23,7 @@ add_filter( 'post_format_chat_text', 'wpautop' );
  * Filters the content of the link format posts.  Wraps the content in the make_clickable() function
  * so that users can enter just a URL into the post content editor.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @param string $content The post content.
  * @return string $content
  */
@@ -39,7 +39,7 @@ function cakifo_link_content( $content ) {
  * Wraps the output of the quote post format content in a <blockquote> element if the user hasn't added a
  * <blockquote> in the post editor.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
  *
@@ -65,7 +65,7 @@ function cakifo_quote_content( $content ) {
  * advantage of this solution is that it allows for more than two speakers (like most solutions).  You can
  * have 100s of speakers in your chat post, each with their own, cakifo classes for styling.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @author David Chandra
  * @link http://www.turtlepod.org
  * @author Justin Tadlock
@@ -164,7 +164,7 @@ function cakifo_format_chat_content( $content ) {
  * will always have the same class each time he speaks.  And, speaker "Mary" will have a different class
  * from "John" but will have the same class each time she speaks.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @author David Chandra
  * @link http://www.turtlepod.org
  * @author Justin Tadlock
@@ -196,7 +196,7 @@ function cakifo_format_chat_row_id( $chat_author ) {
  * Retrieves embedded videos from the post content.  This script only searches for embeds used by
  * the WordPress embed functionality.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
  *
@@ -272,7 +272,7 @@ function cakifo_get_video_embed( $width = null ) {
  * Grabs the first URL from the post content of the current post.  This is meant to be used with the link post
  * format to easily find the link for the post.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @return string The link if found.  Otherwise, the permalink to the post.
  *
  * @note This is a modified version of the twentyeleven_url_grabber() function in the TwentyEleven theme.
@@ -291,7 +291,7 @@ function cakifo_url_grabber() {
 /**
  * Returns the number of images attached to the current post in the loop.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @return int
  */
 function cakifo_get_image_attachment_count() {
@@ -302,13 +302,13 @@ function cakifo_get_image_attachment_count() {
 /**
  * Checks if a post has any content.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @param int $id The ID of the post.
  * @return bool Whether the post has content.
  */
 function cakifo_post_has_content( $id = 0 ) {
 	$post = get_post( $id );
-	return ( !empty( $post->post_content ) ? true : false );
+	return ( ! empty( $post->post_content ) ? true : false );
 }
 
 ?>

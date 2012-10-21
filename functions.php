@@ -21,7 +21,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version 1.5-dev
+ * @version 1.5.0-dev
  * @author Jesper Johansen <kontakt@jayj.dk>
  * @copyright Copyright (c) 2011-2012, Jesper Johansen
  * @link http://wpthemes.jayj.dk/cakifo
@@ -39,7 +39,7 @@ add_action( 'after_setup_theme', 'cakifo_theme_setup', 10 );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_theme_setup() {
 
@@ -57,7 +57,10 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 
-	// Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated (WordPress SEO is checked for in Hybrid Core)
+	/**
+	 * Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated
+	 * WordPress SEO is already checked for in Hybrid Core
+	 */
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
@@ -74,7 +77,19 @@ function cakifo_theme_setup() {
 	//add_theme_support( 'featured-header' );
 
 	/* Add theme support for theme functions */
-	add_theme_support( 'cakifo-sidebars', array( 'primary', 'secondary', 'subsidiary', 'subsidiary-two', 'subsidiary-three', 'after-single', 'after-singular', 'error-page' ) );
+	add_theme_support( 'cakifo-sidebars',
+		array(
+			'primary',
+			'secondary',
+			'subsidiary',
+			'subsidiary-two',
+			'subsidiary-three',
+			'after-single',
+			'after-singular',
+			'error-page'
+		)
+	);
+
 	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
 	add_theme_support( 'cakifo-twitter-button' );
@@ -85,7 +100,20 @@ function cakifo_theme_setup() {
 	}
 
 	/* Add theme support for WordPress features */
-	add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) );
+	add_theme_support( 'post-formats',
+		array(
+			'aside',
+			'audio',
+			'chat',
+			'image',
+			'gallery',
+			'link',
+			'quote',
+			'status',
+			'video'
+		)
+	);
+
 	add_theme_support( 'automatic-feed-links' );
 	add_editor_style();
 
@@ -108,9 +136,23 @@ function cakifo_theme_setup() {
 	 * Slider: For use in the slider
 	 * Recent: For use in the recent posts
 	 */
-	add_image_size( 'small', apply_filters( 'small_thumb_width', 100 ), apply_filters( 'small_thumb_height', 100 ), true );
-	add_image_size( 'slider', apply_filters( 'slider_image_width', 500 ), apply_filters( 'slider_image_height', 230 ), true );
-	add_image_size( 'recent', apply_filters( 'recent_image_width', 220 ), apply_filters( 'recent_image_height', 150 ), true );
+	add_image_size( 'small',
+		apply_filters( 'small_thumb_width', 100 ),
+		apply_filters( 'small_thumb_height', 100 ),
+		true
+	);
+
+	add_image_size( 'slider',
+		apply_filters( 'slider_image_width', 500 ),
+		apply_filters( 'slider_image_height', 230 ),
+		true
+	);
+
+	add_image_size( 'recent',
+		apply_filters( 'recent_image_width', 220 ),
+		apply_filters( 'recent_image_height', 150 ),
+		true
+	);
 
 	/* Load JavaScript and CSS styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
@@ -173,44 +215,50 @@ function cakifo_theme_setup() {
 	/**
 	 * Custom header for logo upload
 	 */
-	add_theme_support( 'custom-header', array(
-		'width'                  => 400,
-		'height'                 => 60,
-		'flex-width'             => true,
-		'flex-height'            => true,
-		'default-text-color'     => apply_filters( 'cakifo_header_textcolor', cakifo_get_default_link_color_no_hash() ),
-		'wp-head-callback'       => 'cakifo_header_style',
-		'admin-head-callback'    => 'cakifo_admin_header_style',
-		'admin-preview-callback' => 'cakifo_admin_header_image',
-	) );
+	add_theme_support( 'custom-header',
+		array(
+			'width'                  => 400,
+			'height'                 => 60,
+			'flex-width'             => true,
+			'flex-height'            => true,
+			'default-text-color'     => cakifo_get_default_link_color_no_hash(),
+			'wp-head-callback'       => 'cakifo_header_style',
+			'admin-head-callback'    => 'cakifo_admin_header_style',
+			'admin-preview-callback' => 'cakifo_admin_header_image',
+		)
+	);
 
 	// Register the logo from the parent theme images folder as the default logo
 	register_default_headers( array(
-		'logo' => array(
-			'url'           => get_template_directory_uri() . '/images/logo.png',
-			'thumbnail_url' => get_template_directory_uri() . '/images/logo.png',
-			'description'   => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
-			'width'         => 300,
-			'height'        => 59
+		'logo' =>
+			array(
+				'description'   => __( 'Logo.png from the Cakifo images folder', 'cakifo' ),
+				'url'           => get_template_directory_uri() . '/images/logo.png',
+				'thumbnail_url' => get_template_directory_uri() . '/images/logo.png',
+				'width'         => 300,
+				'height'        => 59
+			)
 		)
-	) );
+	);
 
 	// If the user is using a child theme, register the logo.png from that as well
 	if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo.png' ) ) {
 		register_default_headers( array(
-			'childtheme_logo' => array(
-				'url'           => get_stylesheet_directory_uri() . '/images/logo.png',
-				'thumbnail_url' => get_stylesheet_directory_uri() . '/images/logo.png',
-				'description'   => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
+			'childtheme_logo' =>
+				array(
+					'description'   => __( 'Logo.png from the Cakifo child theme images folder', 'cakifo' ),
+					'url'           => get_stylesheet_directory_uri() . '/images/logo.png',
+					'thumbnail_url' => get_stylesheet_directory_uri() . '/images/logo.png',
+				)
 			)
-		) );
-	}
+		);
+	} //  is_child_theme() && file_exists()
 }
 
 /**
  * Loads the theme functions if the theme/child theme syupports them.
  *
- * @since Cakifo 1.3
+ * @since Cakifo 1.3.0
  */
 function cakifo_load_theme_support() {
 	$template_directory = trailingslashit( get_template_directory() );
@@ -233,7 +281,7 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
  * It loads jQuery, Modernizr, and the Javascript
  * needed for this theme
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_enqueue_script() {
 	/**
@@ -260,7 +308,7 @@ function cakifo_enqueue_script() {
 /**
  * Loads fonts from the Google Font API
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_enqueue_style() {
 	$scheme = is_ssl() ? 'https' : 'http';
@@ -273,10 +321,9 @@ function cakifo_enqueue_style() {
 /**
  * Front Page stuff
  *
- * Adds JavaScript to the frontpage and
- * removes the breadcrumb menu.
+ * Adds JavaScript to the frontpage and removes the breadcrumb menu.
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_front_page() {
 	$prefix = hybrid_get_prefix();
@@ -296,8 +343,8 @@ function cakifo_front_page() {
 /**
  * Add the javascript needed for the slider
  *
+ * @since Cakifo 1.0.0
  * @uses apply_filters() The cakifo_flexslider_args filter allows you to change the default values.
- * @since Cakifo 1.0
  */
 function cakifo_slider_javascript() {
 
@@ -311,22 +358,22 @@ function cakifo_slider_javascript() {
 
 	/**
 	 * Default arguments
-	 * @link http://www.woothemes.com/flexslider/ All available arguments
+	 * @link http://www.woothemes.com/flexslider/ All available arguments and descriptions
 	 */
 	$defaults = array(
-		'selector'       => '.slides-container > .slide',	// Selector: Must match a simple pattern. '{container} > {slide}' -- Ignore pattern at your own peril
-		'animation'      => 'slide',	    // String: Select your animation type, commonly "fade" or "slide."
-		'slideshow'      => true,			// Boolean: Animate slider automatically
-		'slideshowSpeed' => 7000,			// Integer: Set the speed of the slideshow cycling, in milliseconds
-		'animationSpeed' => 450,            // Integer: Set the speed of animations, in milliseconds
-		'pauseOnHover'   => true,			// Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
-		'video'          => true,			// Boolean: If using video in the slider, will prevent CSS3 3D Transforms to avoid graphical glitches
-		'prevText'       => esc_js( _x( 'Previous', 'slide', 'cakifo' ) ), 	// String: Set the text for the "previous" directionNav item
-		'nextText'       => esc_js( _x( 'Next',     'slide', 'cakifo' ) ),		// String: Set the text for the "next" directionNav item
-		'pauseText'      => esc_js( _x( 'Pause',    'slide', 'cakifo' ) ),		// String: Set the text for the "pause" pausePlay item
-		'playText'       => esc_js( _x( 'Play',     'slide', 'cakifo' ) ),		// String: Set the text for the "play" pausePlay item
+		'selector'       => '.slides-container > .slide',
+		'animation'      => 'slide',
+		'slideshow'      => true,
+		'slideshowSpeed' => 7000,
+		'animationSpeed' => 450,
+		'pauseOnHover'   => true,
+		'video'          => true,
+		'prevText'       => esc_js( _x( 'Previous', 'slide', 'cakifo' ) ),
+		'nextText'       => esc_js( _x( 'Next',     'slide', 'cakifo' ) ),
+		'pauseText'      => esc_js( _x( 'Pause',    'slide', 'cakifo' ) ),
+		'playText'       => esc_js( _x( 'Play',     'slide', 'cakifo' ) ),
 
-		// REMOVE BEFORE RELEASE
+		// REMOVE BEFORE RELEASE?
 		'slideshow'      => false,
 	);
 
@@ -361,9 +408,9 @@ function cakifo_slider_javascript() {
 /**
  * Change the thumbnail size to 'small' for archives and search pages.
  *
+ * @since Cakifo 1.1.0
  * @param array $args The 'Get the Image' arguments
  * @return array      The filtered arguments
- * @since Cakifo 1.1
  */
 function cakifo_get_the_image_arguments( $args ) {
 
@@ -378,9 +425,9 @@ function cakifo_get_the_image_arguments( $args ) {
 /**
  * Change the arguments of wp_list_comments()
  *
- * @param  array  $args The wp_list_comments() arguments
- * @return array        The filtered wp_list_comments() arguments
- * @since  Cakifo 1.3
+ * @since Cakifo 1.3.0
+ * @param array $args The wp_list_comments() arguments
+ * @return array      The filtered wp_list_comments() arguments
  */
 function cakifo_change_list_comments_args( $args ) {
 	$args['avatar_size'] = 48;
@@ -390,15 +437,17 @@ function cakifo_change_list_comments_args( $args ) {
 /**
  * Edit the "More link" for archive excerpts.
  *
- * @param  string  $more The default more link
- * @return string        The changed more link with a more descriptive text
- * @since  Cakifo 1.0
+ * @since Cakifo 1.0.0
+ * @param string $more The default more link
+ * @return string      The changed more link with a more descriptive text
  */
 function cakifo_excerpt_more( $more ) {
 	global $post;
 
 	if ( is_archive() )
-		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .  __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a></p>';
+		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .
+					__( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) .
+				'</a></p>';
 
 	return $more;
 }
@@ -406,12 +455,13 @@ function cakifo_excerpt_more( $more ) {
 /**
  * Custom breadcrumb trail arguments.
  *
- * @param  array  $args The 'Breadcrumb' arguments
- * @return array        The filtered 'Breadcrumb' arguments
- * @since  Cakifo 1.0
+ * @since Cakifo 1.0.0
+ * @param array $args The 'Breadcrumb' arguments
+ * @return array      The filtered 'Breadcrumb' arguments
  */
 function cakifo_breadcrumb_trail_args( $args ) {
 	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail
+
 	return $args;
 }
 
@@ -425,28 +475,31 @@ function cakifo_breadcrumb_trail_args( $args ) {
  * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
  *	</code>
  *
+ * @since Cakifo 1.0.0
  * @return string The RSS feed and maybe a Twitter link
- * @since  Cakifo 1.0
  */
 function cakifo_topbar_rss() {
-	echo apply_atomic_shortcode( 'rss_subscribe', '<div id="rss-subscribe">' . __( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) . '</div>' );
+	echo apply_atomic_shortcode( 'rss_subscribe',
+		'<div id="rss-subscribe">' .
+			__( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) .
+		'</div>' );
 }
 
 /**
  * Add a search form to the topbar.
  *
- * @since Cakifo 1.3
- * @deprecated 1.4
+ * @since Cakifo 1.3.0
+ * @deprecated 1.4.0
  */
 function cakifo_topbar_search() {
-	_deprecated_function( __FUNCTION__, '1.4', 'get_search_form()' );
+	_deprecated_function( __FUNCTION__, '1.4.0', 'get_search_form()' );
 	get_search_form();
 }
 
 /**
  * Function for deciding which pages should have a one-column layout.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  * @return void
  */
 function cakifo_theme_layout() {
@@ -464,9 +517,9 @@ function cakifo_theme_layout() {
 /**
  * Filters 'get_theme_layout' by returning 'layout-1c'.
  *
+ * @since Cakifo 1.0.0
  * @param string $layout
  * @return string Returns 'layout-1c'
- * @since Cakifo 1.0
  */
 function cakifo_theme_layout_one_column( $layout ) {
 	return 'layout-1c';
@@ -475,14 +528,14 @@ function cakifo_theme_layout_one_column( $layout ) {
 /**
  * Disables sidebars if viewing a one-column page.
  *
- * @param  array  $sidebars_widgets Array with all the widgets for all the sidebars
- * @return array                    Same array but with the primary and secondary sidebar removed
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
+ * @param array $sidebars_widgets Array with all the widgets for all the sidebars
+ * @return array                  Same array but with the primary and secondary sidebar removed
  */
 function cakifo_disable_sidebars( $sidebars_widgets ) {
-	global $wp_query;
 
-	if ( current_theme_supports( 'theme-layouts' ) ) {
+	if ( current_theme_supports( 'theme-layouts' ) && ! is_admin() ) {
+
 		if ( 'layout-1c' == theme_layouts_get_layout() || is_404() ) {
 			$sidebars_widgets['primary']   = false;
 			$sidebars_widgets['secondary'] = false;
@@ -497,11 +550,11 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
  * expand the full width on video pages.  This function overwrites what the $content_width variable handles
  * with context-based widths.
  *
+ * @since Cakifo 1.3.0
  * @uses hybrid_get_content_width()
  * @uses hybrid_set_content_width()
  * @uses theme_layouts_get_layout()
  * @param array $args Array with default embed settings
- * @since Cakifo 1.3
  */
 function cakifo_content_width( $args ) {
 
@@ -528,14 +581,13 @@ function cakifo_content_width( $args ) {
 /**
  * Styles the header text displayed on the blog
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_header_style() {
 	/* Get default text color */
 	$text_color = get_theme_support( 'custom-header', 'default-text-color' );
 
 	// If no custom options for text are set, let's bail
-	// get_header_textcolor() options: get_theme_support( 'custom-header', 'default-text-color' ) is default, hide text (returns 'blank') or any hex value
 	if ( $text_color == get_header_textcolor() )
 		return;
 
@@ -569,7 +621,7 @@ function cakifo_header_style() {
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @since Cakifo 1.4
+ * @since Cakifo 1.4.0
  */
 function cakifo_admin_header_image() { ?>
 
@@ -588,7 +640,10 @@ function cakifo_admin_header_image() { ?>
 				<?php if ( ! empty( $header_image ) ) : ?>
 					<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
 				<?php endif; ?>
-				<span class="displaying-header-text" <?php echo $style; ?>><?php bloginfo( 'name' ); ?></span>
+
+				<span class="displaying-header-text" <?php echo $style; ?>>
+					<?php bloginfo( 'name' ); ?>
+				</span>
 			</a>
 		</h1>
 
@@ -601,7 +656,7 @@ function cakifo_admin_header_image() { ?>
 /**
  * Styles the header image and text on the Header admin screen
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_admin_header_style() { ?>
 
@@ -640,11 +695,11 @@ function cakifo_admin_header_style() { ?>
 /**
  * Custom Background callback
  *
- * @since Cakifo 1.3
- * @deprecated Cakifo 1.4
+ * @since Cakifo 1.3.0
+ * @deprecated Cakifo 1.4.0
  */
 function cakifo_custom_background_callback() {
-	_deprecated_function( __FUNCTION__, '1.4' );
+	_deprecated_function( __FUNCTION__, '1.4.0' );
 	_custom_background_cb();
 	return;
 }
@@ -653,8 +708,8 @@ function cakifo_custom_background_callback() {
  * Display the site title as logo and/or name.	What this function
  * returns depends on what the user has choosen in `Apperance > Header`.
  *
- * @return string The site title. Either as text, as an image or both.
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
+ * @return string The .0ite title. Either as text, as an image or both.
  */
 function cakifo_logo() {
 
@@ -662,13 +717,23 @@ function cakifo_logo() {
 	$title = get_bloginfo( 'name' );
 
 	/* Check if there's a header image, else return the blog name */
-	$maybe_image = ( get_header_image() ) ? '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" /><span class="assistive-text">' . $title . '</span>' : '<span>' . $title . '</span>';
+	if ( get_header_image() ) {
+		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
+		$maybe_image .= '<span class="assistive-text">' . $title . '</span>';
+	} else {
+		$maybe_image = '<span>' . $title . '</span>';
+	}
 
 	/* If 'Show header text with your image' is checked, add the 'display-header-text' to the heading */
 	$heading_class = ( display_header_text() ) ? 'display-header-text' : '';
 
 	/* Format the output */
-	$output = '<h1 id="site-title" class="' . esc_attr( $heading_class ) . '"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $maybe_image . '</a></h1>';
+	$output =
+		'<h1 id="site-title" class="' . esc_attr( $heading_class ) . '">
+			<a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' .
+				$maybe_image . '
+			</a>
+		</h1>';
 
 	/* Display the site title and allow child themes to overwrite the final output */
 	echo apply_atomic( 'site_title', $output );
@@ -678,7 +743,7 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 /**
  * Function to add an author box
  *
- * @since Cakifo 1.0
+ * @since Cakifo 1.0.0
  */
 function cakifo_author_box() { ?>
 
@@ -702,7 +767,9 @@ function cakifo_author_box() { ?>
 
 			<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) { ?>
 				<p class="twitter-link">
-					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>"><?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?></a>
+					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
+						<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
+					</a>
 				</p>
 			<?php } // Twitter ?>
 
@@ -719,7 +786,7 @@ endif; // cakifo_author_box
 /**
  * Place the author box at the end of single posts
  *
- * @since Cakifo 1.3
+ * @since Cakifo 1.3.0
  */
 function cakifo_place_author_box() {
 	$prefix = hybrid_get_prefix();
@@ -737,9 +804,9 @@ function cakifo_place_author_box() {
  * separate each of the elements into an attachment API that can be used across multiple themes.  Keep
  * this in mind if you plan on using the current filter hooks in this function.
  *
+ * @since Cakifo 1.0.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
- * @since Cakifo 1.0
  */
 function cakifo_image_info() {
 
@@ -753,27 +820,27 @@ function cakifo_image_info() {
 		return;
 
 	/* Add the width/height to the $items array. */
-	$items['dimensions'] = array(  _x( 'Dimensions', 'image dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( _x( '%1$s &#215; %2$s pixels', 'image dimensions', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
+	$items['dimensions'] = array( _x( 'Dimensions', 'image dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( _x( '%1$s &#215; %2$s pixels', 'image dimensions', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
 
 	/* If a timestamp exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = array(  _x( 'Date', 'image creation', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
+		$items['created_timestamp'] = array( _x( 'Date', 'image creation', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
 
 	/* If a camera exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['camera'] ) )
-		$items['camera'] = array(  __( 'Camera', 'cakifo' ), $meta['image_meta']['camera'] );
+		$items['camera'] = array( __( 'Camera', 'cakifo' ), $meta['image_meta']['camera'] );
 
 	/* If an aperture exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['aperture'] ) )
-		$items['aperture'] = array(  __( 'Aperture', 'cakifo' ), sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) );
+		$items['aperture'] = array( __( 'Aperture', 'cakifo' ), sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) );
 
 	/* If a focal length is set, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['focal_length'] ) )
-		$items['focal_length'] = array(  __( 'Focal Length', 'cakifo' ), sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
+		$items['focal_length'] = array( __( 'Focal Length', 'cakifo' ), sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
 
 	/* If an ISO is set, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['iso'] ) )
-		$items['iso'] = array(  __( 'ISO', 'cakifo' ), $meta['image_meta']['iso'] );
+		$items['iso'] = array( __( 'ISO', 'cakifo' ), $meta['image_meta']['iso'] );
 
 	/* If a shutter speed is given, format the float into a fraction and add it to the $items array */
 	if ( ! empty( $meta['image_meta']['shutter_speed'] ) ) {
@@ -789,7 +856,7 @@ function cakifo_image_info() {
 			$shutter_speed = $meta['image_meta']['shutter_speed'];
 		}
 
-		$items['shutter_speed'] = array(  __( 'Shutter Speed', 'cakifo' ), sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) );
+		$items['shutter_speed'] = array( __( 'Shutter Speed', 'cakifo' ), sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) );
 	}
 
 	/**
@@ -817,13 +884,13 @@ function cakifo_image_info() {
 /**
  * Get the values of all registered image sizes. Both the custom and the default
  *
- * @return array  An array of all the images sizes
- * @since Cakifo 1.3
+ * @since Cakifo 1.3.0
+ * @return array An array of all the images sizes
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
 
-	$builtin_sizes = array(
+	$builtin_sizes =array(
 		'large'	=> array(
 			'width'  => get_option( 'large_size_w' ),
 			'height' => get_option( 'large_size_h' )
@@ -848,9 +915,9 @@ function cakifo_get_image_sizes() {
 /**
  * Get the values of a specific image size
  *
- * @param  string  $name The unique name for the image size or a WP default
- * @return array       	 Array containing 'width', 'height', 'crop'
- * @since Cakifo 1.3
+ * @since Cakifo 1.3.0
+ * @param string $name The unique name for the image size or a WP default
+ * @return array       Array containing 'width', 'height', 'crop'
  */
 function cakifo_get_image_size( $name ) {
 
@@ -865,10 +932,10 @@ function cakifo_get_image_size( $name ) {
 /**
  * Returns a set of image attachment links based on size.
  *
+ * @since Cakifo 1.5.0
  * @author Justin Tadlock
  * @link http://justintadlock.com
  * @return string Links to various image sizes for the image attachment.
- * @since Cakifo 1.5
  */
 function cakifo_get_image_size_links() {
 
@@ -890,7 +957,7 @@ function cakifo_get_image_size_links() {
 		$image = wp_get_attachment_image_src( get_the_ID(), $size );
 
 		/* Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size. */
-		if ( !empty( $image ) && ( true === $image[3] || 'full' == $size ) )
+		if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) )
 			$links[] = "<a class='image-size-link' href='" . esc_url( $image[0] ) . "'>{$image[1]} &times; {$image[2]}</a>";
 	}
 
@@ -899,12 +966,11 @@ function cakifo_get_image_size_links() {
 }
 
 /**
- * @since Cakifo 1.0
- * @deprecated Cakifo 1.3 Use the native WordPress function wp_trim_words() instead.
- * @ignore
+ * @since Cakifo 1.0.0
+ * @deprecated Cakifo 1.3.0 Use wp_trim_words() instead.
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
-	_deprecated_function( __FUNCTION__, '1.3', 'wp_trim_words()' );
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.3.0', 'wp_trim_words()' );
 
 	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
 
@@ -914,36 +980,32 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 		return wp_trim_words( get_the_excerpt(), $length, $more_link );
 }
 
-if ( ! function_exists( 'cakifo_get_default_link_color' ) ) :
-/**
- * Returns the default link color for Cakifo
- *
- * @return string The default color
- * @since Cakifo 1.4
- */
-function cakifo_get_default_link_color() {
-	return '#3083aa';
-}
-endif; // cakifo_get_default_link_color
-
-if ( ! function_exists( 'cakifo_get_default_link_color_no_hash' ) ) :
 /**
  * Returns the default link color for Cakifo with no hash
  *
+ * @since Cakifo 1.4.0
  * @return string The default color with no hash
- * @since Cakifo 1.4
  */
 function cakifo_get_default_link_color_no_hash() {
-	return '3083aa';
+	return apply_filters( 'cakifo_default_link_color_no_hash', '3083aa' );
 }
-endif; // cakifo_get_default_link_color_no_hash
+
+/**
+ * Returns the default link color for Cakifo
+ *
+ * @since Cakifo 1.4.0
+ * @return string The default color
+ */
+function cakifo_get_default_link_color() {
+	return '#' . cakifo_get_default_link_color_no_hash();
+}
 
 /**
  * Filter the default theme settings
  *
+ * @since Cakifo 1.4.0
  * @param array $settings The default theme settings.
  * @return array
- * @since Cakifo 1.4
  */
 function cakifo_filter_default_theme_settings( $settings ) {
 	$settings['link_color']          = cakifo_get_default_link_color();
@@ -958,7 +1020,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
  *
  * This function is attached to the wp_head action hook.
  *
- * @since Cakifo 1.4
+ * @since Cakifo 1.4.0
  */
 function cakifo_print_link_color_style() {
 	$defaults   = hybrid_get_default_theme_settings();
@@ -970,9 +1032,12 @@ function cakifo_print_link_color_style() {
 ?>
 	<style>
 		/* Link color */
-		a,
-		.entry-title a {
+		a {
 			color: <?php echo esc_attr( $link_color ); ?>;
+		}
+
+		a:hover {
+			color: #111;
 		}
 	</style>
 <?php
@@ -980,7 +1045,7 @@ function cakifo_print_link_color_style() {
 
 /**
  * Extends the default WordPress body class to denote:
- * 1. White or empty background color to change the layout and spacing.
+ *   1. White or empty background color to change the layout and spacing.
  *
  * @since Cakifo 1.4.4
  */
@@ -998,7 +1063,7 @@ function cakifo_body_class( $classes ) {
 /**
  * Changes the comment form to use HTML5 input fields for email and url.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  */
 function cakifo_html5_comment_fields( $fields ) {
 	if ( isset( $fields['email'] ) )
@@ -1011,12 +1076,13 @@ function cakifo_html5_comment_fields( $fields ) {
 }
 
 /**
- * {@internal Needs description}
+ * Load all files files and hooks for singular pages.  This includes the sidebars, the loop-nav.php
+ * template, comments template and the `after_singular` atomic hook.
  *
- * @since Cakifo 1.5
+ * @since Cakifo 1.5.0
  */
 function cakifo_load_in_singular() {
-	// Loads the sidebar-after-single.php template'
+	// Load the sidebar-after-single.php template'
 	if ( is_single() )
 		get_sidebar( 'after-single' );
 

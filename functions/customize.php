@@ -4,7 +4,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @since Cakifo 1.4
+ * @since Cakifo 1.4.0
  */
 
 /* Register custom sections, settings, and controls. */
@@ -220,7 +220,7 @@ function cakifo_customize_register( $wp_customize ) {
  * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
  * Used with blogname and blogdescription.
  *
- * @since Cakifo 1.4
+ * @since Cakifo 1.4.0
  */
 function cakifo_customize_preview() {
 	?>

@@ -9,7 +9,8 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @version Cakifo 1.3
+ * @since Cakifo 1.3.0
+ * @version 1.3.0
  * @link http://jacklmoore.com/colorbox/
  */
 
@@ -19,9 +20,9 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
 /**
  * Load the Colorbox script and style
  *
+ * @since Cakifo 1.3.0
  * @uses wp_enqueue_script()
  * @uses wp_enqueue_style()
- * @since Cakifo 1.3
  */
 function cakifo_colorbox_script() {
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.19.2', true );
@@ -31,7 +32,7 @@ function cakifo_colorbox_script() {
 /**
  * Prints the Colorbox script in the footer
  *
- * @since Cakifo 1.3
+ * @since Cakifo 1.3.0
  */
 function cakifo_colorbox() {
 
