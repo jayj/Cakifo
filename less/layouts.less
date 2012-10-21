@@ -4,17 +4,17 @@
 
 #content,
 #footer {
+	position: relative;
+	padding: @gutterWidth @gutterWidth @gutterWidth;
 	background: @white ~"url(images/content-orange-line.png)" repeat-x;
 	border-radius: 0 0 5px 5px;
 	box-shadow: 1px 1px 10px fade(@black, 10%);
-	padding: @gutterWidth @gutterWidth @gutterWidth;
-	position: relative;
 }
 
 #main {
+	position: relative;
 	width: @mainWidth;
 	float: left;
-	position: relative;
 }
 
 #sidebar-primary,
@@ -32,11 +32,11 @@
    ========================================================================== */
 
 #footer {
-	background-color: #f8fafb;
-	text-shadow: 1px 1px 0 @white;
+	position: relative;
 	padding-top: @gutterWidth;
 	margin: @gutterWidth 0;
-	position: relative;
+	background-color: #f8fafb;
+	text-shadow: 1px 1px 0 @white;
 
 	.footer-content {
 		margin-top: 10px;
@@ -62,14 +62,14 @@
  * Footer Widget Area
  */
 #sidebar-subsidiary {
-	margin-top: @smallGutterWidth;
 	clear: both;
+	margin-top: @smallGutterWidth;
 
 	/* Two columns */
 	&.two-col .widget-area {
 		float: left;
-		margin-right: 4%;
 		width: 48%;
+		margin-right: 4%;
 	}
 
 	&.two-col .widget-area + .widget-area {
@@ -79,8 +79,8 @@
 	/* Three columns */
 	&.three-col .widget-area {
 		float: left;
-		margin-right: 3.5%;
 		width: 31%;
+		margin-right: 3.5%;
 	}
 
 	&.three-col .widget-area + .widget-area + .widget-area {

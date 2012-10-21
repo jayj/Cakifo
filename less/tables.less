@@ -5,20 +5,20 @@
 @tableBorder: #ddd;
 
 table {
+	width: 100%;
+	margin: 0 0 @smallGutterWidth 0;
 	background-color: @white;
 	box-shadow: 0 1px 2px fade(@black, 7%);
 	border-left: 1px solid @tableBorder;
 	border-right: 1px solid @tableBorder;
 	border-collapse: collapse;
 	border-spacing: 0;
-	width: 100%;
-	margin: 0 0 @smallGutterWidth 0;
 }
 
 th,
 td {
-	border: 1px solid @tableBorder;
 	padding: 8px;
+	border: 1px solid @tableBorder;
 	text-align: left;
 }
 
@@ -46,6 +46,6 @@ tfoot td {
 
 // Table caption
 caption {
-	#font > .sans-serif(18px, bold);
 	margin-bottom: 10px;
+	#font > .sans-serif(18px, bold);
 }

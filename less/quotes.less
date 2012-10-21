@@ -24,8 +24,8 @@ blockquote {
 
 	// Quote content
 	p {
-		margin-top: 5px;
 		position: relative;
+		margin-top: 5px;
 	}
 
 	em, cite {
@@ -38,10 +38,10 @@ blockquote {
 
 	// The author of the quote
 	cite, span {
-		color: #91acbe;
 		display: block;
-		font-size: 14px;
 		margin-top: 20px;
+		font-size: 14px;
+		color: #91acbe;
 	}
 
 	span cite {
@@ -73,22 +73,22 @@ blockquote {
 	// The quote before the blockquote
 	&:before {
 		content: "\201C";
-		color: rgb(94, 141, 181);
-		font: 170px @altFontFamily;
 		position: absolute;
 		top: -45px;
 		left: -25px;
+		font: 170px @altFontFamily;
+		color: rgb(94, 141, 181);
 		opacity: 0.35;
 	}
 
 	// The quote after the blockquote
 	p:first-of-type:after {
 		content: "\201E";
-		color: rgb(94, 141, 181);
-		font: 70px @altFontFamily;
-		margin-left: 10px;
 		position: absolute;
 		bottom: -10px;
+		margin-left: 10px;
+		font: 70px @altFontFamily;
+		color: rgb(94, 141, 181);
 		opacity: 0.25;
 	}
 
@@ -114,8 +114,8 @@ blockquote.pull {
 
 	// Aligned pull quotes
 	&.alignleft {
-		margin: 0 @smallGutterWidth 0 0;
 		padding-right: 0;
+		margin: 0 @smallGutterWidth 0 0;
 	}
 
 	&.alignright {
@@ -124,10 +124,10 @@ blockquote.pull {
 
 	// The pullquote quotes
 	&:before {
-		font-size: 120px;
-		opacity: 0.25;
 		top: -22px;
 		left: -12px;
+		font-size: 120px;
+		opacity: 0.25;
 	}
 
 	&:after,

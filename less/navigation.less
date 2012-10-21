@@ -19,9 +19,9 @@
 	}
 
 	.menu-item > a {
-		color: #c6c6c6;
 		display: block;
 		padding: 14px 20px;
+		color: #c6c6c6;
 	}
 
 	.menu-item > a:hover,
@@ -41,16 +41,16 @@
 
 /* Toggle button */
 #menu-toggle {
-	#gradient > .vertical(#555, #444);
-	#font > .alternative(21px, bold, 1.5);
-	box-shadow: 0 1px 0 fade(@white, 10%);
-	border-bottom: 1px solid #050505;
-	color: @white;
-	cursor: pointer;
 	display: block;
 	width: 100%;
 	padding: 15px 0;
 	margin: 0;
+	#font > .alternative(21px, bold, 1.5);
+	#gradient > .vertical(#555, #444);
+	box-shadow: 0 1px 0 fade(@white, 10%);
+	border-bottom: 1px solid #050505;
+	color: @white;
+	cursor: pointer;
 	text-align: center;
 
 	&:hover {
@@ -69,10 +69,10 @@
 
 @media screen and (min-width: 980px) {
 	.main-navigation {
+		position: relative;
 		width: @siteWidth;
 		margin: 0 auto;
 		padding: 0 @gutterWidth 0 (@gutterWidth - 15px); // 15px is the padding-left on .menu-item a {}
-		position: relative;
 
 		ul {
 			.no-list-style();
@@ -85,18 +85,18 @@
 
 		// Each item in the navigation
 		.menu-item {
-			background: @topbarBackground ~"url(images/topbar.png)" repeat;
+			position: relative;
 			float: left;
 			width: auto;
 			margin: 0;
-			position: relative;
+			background: @topbarBackground ~"url(images/topbar.png)" repeat;
 
 			> a {
-				color: #ccc;
 				display: inline-block;
-				#font > .alternative(15px, bold, normal);
 				padding: 21px 15px;
+				#font > .alternative(15px, bold, normal);
 				text-shadow: 1px 1px 0 @grayDarker;
+				color: #ccc;
 				.transition(all 150ms);
 			}
 		}
@@ -111,27 +111,27 @@
 
 		// Level two */
 		.sub-menu {
+			display: none;
+			position: absolute;
+			z-index: 500;
+			top: 100%;
+			left: 0;
 			background: @topbarBackground ~"url(images/topbar.png)" repeat;
 			box-shadow: 1px 2px 2px fade(@black, 30%);
 			border-radius: 0 0 5px 5px;
-			display: none;
-			position: absolute;
-			top: 100%;
-			left: 0;
-			z-index: 500;
 
 			.menu-item {
-				background: none;
 				float: none;
+				background: none;
 			}
 
 			.menu-item > a {
-				border-top: 1px solid #3a3a3a;
-				border-bottom: 1px solid #262627;
-				font-size: 14px;
 				display: block;
 				width: 180px;
 				padding: 18px 14px;
+				border-top: 1px solid #3a3a3a;
+				border-bottom: 1px solid #262627;
+				font-size: 14px;
 			}
 
 			.menu-item:first-of-type > a {

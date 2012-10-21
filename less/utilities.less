@@ -37,9 +37,9 @@
  * This is used to hide content from browsers but allow screen readers to see it
  */
 .assistive-text {
-	position: absolute !important;
-	height: 1px; width: 1px;
 	overflow: hidden;
+	position: absolute !important;
+	.square(1px);
 	clip: rect(1px 1px 1px 1px); // IE6, IE7
 	clip: rect(1px, 1px, 1px, 1px);
 }

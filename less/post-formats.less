@@ -6,16 +6,16 @@
  * Post format link
  */
 .entry-header .post-format-link {
-	background-color: @grayLighter;
-	border-radius: 3px;
-	color: lighten(@gray, 15%);
-	font-size: 12px;
-	float: right;
-	padding: 3px 10px;
-	text-transform: uppercase;
 	position: absolute;
 	top: 10px;
 	right: 0;
+	float: right;
+	padding: 3px 10px;
+	font-size: 12px;
+	background-color: @grayLighter;
+	border-radius: 3px;
+	color: lighten(@gray, 15%);
+	text-transform: uppercase;
 
 	&:hover,
 	.format-status &:hover {
@@ -28,9 +28,9 @@
  * Format: Chat
  */
 .chat-transcript {
+	margin: @smallGutterWidth 0;
 	// Give the chat transcripts a monospace font
 	#font > .monospace(14px);
-	margin: @smallGutterWidth 0;
 }
 
 .chat-row {
@@ -68,8 +68,8 @@
 	}
 
 	.no-speaker & {
-		color: lighten(@gray, 8%);
 		padding-left: 0;
+		color: lighten(@gray, 8%);
 	}
 }
 
@@ -77,24 +77,25 @@
  * Format: Status
  */
 .format-status .entry-header {
-	margin-bottom: @smallGutterWidth;
 	position: relative;
+	margin-bottom: @smallGutterWidth;
 
 	h1 {
 		display: inline-block;
+		margin: 0;
 		font-size: 16px;
 		font-weight: normal;
-		margin: 0;
 	}
 
 	h2 {
+		margin: 0;
 		font-size: 13px;
 		font-weight: normal;
-		margin: 0;
 	}
 
 	a {
 		color: @gray;
+
 		&:hover { color: @linkColorHover; }
 	}
 }
@@ -127,20 +128,20 @@
  * Format: Gallery
  */
 .image-count {
-	color: @grayLight;
 	font-size: @baseFontSize - 1px;
 	font-style: italic;
+	color: @grayLight;
 }
 
 /**
  * Format: Image
  */
 .format-image .entry-meta {
+	padding: @smallGutterWidth;
+	#font > .alternative(14px, normal, 2);
 	background: #e0e6e8;
 	border-radius: 3px;
 	color: @gray;
-	#font > .alternative(14px, normal, 2);
-	padding: @smallGutterWidth;
 
 	// Entry meta columns
 	.entry-meta-col {

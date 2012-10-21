@@ -7,9 +7,9 @@
 	/* Move the navigation arrows when the screen is smaller */
 	.flex-direction-nav .flex-prev,
 	.flex-direction-nav .flex-next {
-		.square(58px);
 		top: auto;
 		bottom: 15px;
+		.square(58px);
 
 		&:after {
 			font-size: 48px;
@@ -18,13 +18,13 @@
 	}
 
 	.flex-direction-nav .flex-prev {
-		opacity: 1;
 		left: @gutterWidth;
+		opacity: 1;
 	}
 
 	.flex-direction-nav .flex-next {
-		opacity: 1;
 		right: @gutterWidth;
+		opacity: 1;
 	}
 }
 
@@ -56,9 +56,9 @@
 
 	/* Remove the negative margin and box-shadow */
 	.section-title {
-		box-shadow: none;
-		margin-left: 0;
 		padding-left: @smallGutterWidth;
+		margin-left: 0;
+		box-shadow: none;
 	}
 
 	/* Fluid width on the Recent Posts and Headlines lists */
@@ -154,13 +154,13 @@
 
 	/* Show Recent Posts in one column */
 	.recent-post {
-		border-bottom: 1px solid darken(@grayLighter, 5%);
-		padding: @smallGutterWidth 0;
-		margin-right: 0;
+		.clearfix;
 		float: none;
 		width: 100%;
+		padding: @smallGutterWidth 0;
+		border-bottom: 1px solid darken(@grayLighter, 5%);
+		margin-right: 0;
 		opacity: 1 !important;
-		.clearfix;
 
 		&:hover,
 		&:active {
@@ -168,8 +168,8 @@
 		}
 
 		.entry-title {
-			font-size: 16px;
 			margin: 0;
+			font-size: 16px;
 		}
 
 		.recent-posts-meta,
@@ -256,8 +256,8 @@
 
 	/* If there's 3 columns of footer widgets, turn them into 2 columns */
 	#sidebar-subsidiary.three-col .widget-area {
-		margin-right: 4%;
 		width: 48%;
+		margin-right: 4%;
 
 		+ .widget-area {
 			margin-right: 0;

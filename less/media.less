@@ -96,10 +96,10 @@ iframe {
 
 /* Style `seamless` iframes */
 iframe[seamless] {
-	background-color: transparent;
-	border: 0px none transparent;
-	padding: 0px;
 	overflow: hidden;
+	padding: 0;
+	border: 0 none transparent;
+	background-color: transparent;
 }
 
 /* Override the Twitter embed fixed width */
@@ -111,12 +111,12 @@ iframe[seamless] {
  * Captions [caption]
  */
 .wp-caption {
-	background: @grayDarker;
-	border-radius: 0 0 3px 3px;
 	clear: both;
 	max-width: 100%;
-	margin: @smallGutterWidth 0;
 	padding-top: 5px;
+	margin: @smallGutterWidth 0;
+	background: @grayDarker;
+	border-radius: 0 0 3px 3px;
 	text-align: center;
 
 	img {
@@ -140,37 +140,36 @@ iframe[seamless] {
 
 /* Caption text */
 .wp-caption-text {
-	color: darken(#eee, 6.5%);
-	#font > .alternative(14px);
 	padding: 10px 20px 20px;
 	margin: 0;
+	#font > .alternative(14px);
+	color: darken(#eee, 6.5%);
 }
 
 /**
  * Galleries
  */
-.gallery {
+.gallery,
+.gallery-row {
 	display: block;
-	clear: both;
 	overflow: hidden;
+	clear: both;
+}
+
+.gallery {
 	margin: @smallGutterWidth auto;
 	text-align: center;
 }
 
 .gallery-row {
-	display: block;
-	clear: both;
-	overflow: hidden;
 	margin: 0;
 }
 
 .gallery-item {
 	overflow: hidden;
 	float: left;
+	.no-list-style();
 	text-align: center;
-	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 .gallery-caption {

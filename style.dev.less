@@ -61,10 +61,10 @@ html {
 }
 
 body {
+	margin: 0;
 	background-color: @bodyBackground;
 	color: @textColor;
 	#font > .serif;
-	margin: 0;
 
 	// Remove background color if a user removes the color
 	&.custom-background-empty {
@@ -117,9 +117,9 @@ a {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-	color: @headingsColor;
 	font-family: @headingsFontFamily;
 	font-weight: @headingsFontWeight;
+	color: @headingsColor;
 
 	// Fix the character spacing for headings
 	text-rendering: optimizelegibility;
@@ -131,8 +131,8 @@ h1, h2 {
 }
 
 h3 {
-	color: @orangeDark;
 	font-size: (@headingsFontSize - 4px);
+	color: @orangeDark;
 }
 
 h4 {
@@ -149,8 +149,8 @@ h6 {
 
 /* Entry titles */
 .entry-title {
-	font-size: (@headingsFontSize + 4px);
 	margin-bottom: 5px;
+	font-size: (@headingsFontSize + 4px);
 }
 
 /* h3 headings in post content */
@@ -182,8 +182,8 @@ h6 {
 
 	// Links
 	a {
-		color: @white;
 		display: block;
+		color: @white;
 
 		&:hover { color: @grayLighter; }
 	}
@@ -247,11 +247,11 @@ code {
  * Blocks of code
  */
 pre {
+	overflow: auto;
+	padding: @smallGutterWidth;
 	background: lighten(@grayDark, 6%);
 	border-radius: 5px;
 	color: @white;
-	padding: @smallGutterWidth;
-	overflow: auto;
 
 	/* Improves readability of pre-formatted text in all browsers */
 	white-space: pre;
@@ -280,8 +280,8 @@ abbr[title] {
 }
 
 acronym {
-	text-transform: uppercase;
 	border-bottom: 1px dashed @gray;
+	text-transform: uppercase;
 	cursor: help;
 }
 
@@ -301,13 +301,13 @@ em, cite {
  * Horizontal rule
  */
 hr {
-	border: 0;
-	border-bottom: 4px double @grayLighter;
-	margin: @smallGutterWidth 0;
-	clear: both;
 	display: block;
+	clear: both;
+	border: 0;
 	height: 0;
 	padding: 0;
+	margin: @smallGutterWidth 0;
+	border-bottom: 4px double @grayLighter;
 }
 
 /*
@@ -337,8 +337,8 @@ big {
 }
 
 address {
-	font-style: italic;
 	margin: 0 0 @smallGutterWidth 0;
+	font-style: italic;
 
 	li &,
 	dd & {
@@ -402,21 +402,20 @@ sub {
    ========================================================================== */
 
 #topbar {
+	position: relative;
+	width: 100%;
+	min-height: 60px;
 	background: @topbarBackground url(images/topbar.png) repeat; // The noise image is transparent
 	color: #ccc;
-	width: 100%;
-	min-height: 60px; // If you change the height in a child theme, you should set padding-top as well
-	position: relative;
 
 	&:after {
-		background: url(images/topbar-bottom.png) repeat-x;
-		content: "";
-		.size(100%, 10px);
 		position: absolute;
 		bottom: -11px;
 		left: 0;
+		.size(100%, 10px);
+		background: url(images/topbar-bottom.png) repeat-x;
+		content: "";
 	}
-
 }
 
 /* =============================================================================
@@ -443,8 +442,8 @@ sub {
 
 	span {
 		#font > .shorthand(46px, normal);
-		letter-spacing: -2px;
 		text-shadow: 0 1px 0 @white;
+		letter-spacing: -2px;
 	}
 
 	&.display-header-text {
@@ -468,14 +467,14 @@ sub {
 }
 
 #site-description {
+	float: right;
+	padding: 2px 8px;
+	margin: @smallGutterWidth @gutterWidth 0 0;
+	#font > .alternative(21px);
 	background-color: @white;
 	background-color: fade(@white, 53%);
-	#font > .alternative(21px);
 	border-radius: 3px;
 	color: @gray;
-	float: right;
-	margin: @smallGutterWidth @gutterWidth 0 0;
-	padding: 2px 8px;
 }
 
 /* =============================================================================
@@ -495,20 +494,20 @@ sub {
    ========================================================================== */
 
 .hentry {
+	position: relative;
+	padding-bottom: @smallGutterWidth;
 	border-bottom: 4px double @grayLighter;
 	margin-bottom: @smallGutterWidth;
-	padding-bottom: @smallGutterWidth;
-	position: relative;
 }
 
 .singular .hentry {
-	border-bottom: none;
 	padding-bottom: 0;
+	border-bottom: none;
 }
 
 .sticky {
-	background: @highlightBackground;
 	padding: @smallGutterWidth;
+	background: @highlightBackground;
 
 	.entry-title {
 		margin-top: 0;
@@ -530,9 +529,9 @@ sub {
 }
 
 .singular .entry-meta {
+	padding: 15px 0 0;
 	border-top: 1px solid @grayLighter;
 	margin-top: @smallGutterWidth;
-	padding: 15px 0 0;
 }
 
 .page-links {
@@ -544,13 +543,13 @@ sub {
    ========================================================================== */
 
 .breadcrumbs {
-	background: #f8f8f7;
+	padding: 12px @smallGutterWidth;
 	border-bottom: 1px solid @grayLighter;
+	margin-bottom: @smallGutterWidth;
+	#font > .alternative(14px, normal, 2);
+	background: #f8f8f7;
 	border-radius: 5px;
 	color: @gray;
-	#font > .alternative(14px, normal, 2);
-	margin-bottom: @smallGutterWidth;
-	padding: 12px @smallGutterWidth;
 
 	a {
 		color: @grayDark;
@@ -598,9 +597,9 @@ sub {
 		text-align: right;
 
 		a {
-			background: url(images/twitter.png) no-repeat left bottom;
-			font-size: 14px;
 			padding-left: (@smallGutterWidth - 2px);
+			font-size: 14px;
+			background: url(images/twitter.png) no-repeat left bottom;
 		}
 	}
 }
@@ -615,10 +614,10 @@ sub {
 }
 
 .loop-meta-home {
-	background: url(images/content-orange-line.png) repeat-x left bottom;
+	padding: 0 0 4px;
 	border: none;
 	margin: 0;
-	padding: 0 0 4px;
+	background: url(images/content-orange-line.png) repeat-x left bottom;
 
 	.paged & {
 		margin-bottom: @smallGutterWidth;
@@ -649,9 +648,9 @@ sub {
 	}
 
 	.entry-title {
+		margin: 0;
 		font-size: 16px;
 		letter-spacing: 0;
-		margin: 0;
 		word-wrap: break-word;
 	}
 
@@ -660,15 +659,15 @@ sub {
 	}
 
 	.recent-posts-meta {
-		color: darken(@grayLight, 5%);
 		font-size: 12px;
 		font-style: italic;
+		color: darken(@grayLight, 5%);
 	}
 
 	.thumbnail {
 		float: none;
-		margin: 0;
 		max-height: 150px;
+		margin: 0;
 	}
 
 	.entry-summary {
@@ -698,8 +697,8 @@ sub {
 }
 
 .headline-list {
-	width: 470px;
 	float: left;
+	width: 470px;
 	margin: 0 (@gutterWidth + 20px) @gutterWidth 0;
 
 	&:nth-child(2n) {
@@ -715,8 +714,8 @@ sub {
 	}
 
 	li {
-		border-bottom: 1px solid darken(@grayLighter, 5%);
 		padding: @smallGutterWidth 20px;
+		border-bottom: 1px solid darken(@grayLighter, 5%);
 
 		&:hover,
 		&:active {
@@ -725,14 +724,14 @@ sub {
 	}
 
 	.entry-title {
-		font-size: 18px;
 		margin: 0;
+		font-size: 18px;
 	}
 
 	.headline-meta {
-		color: darken(@grayLight, 5%);
 		font-size: 14px;
 		font-style: italic;
+		color: darken(@grayLight, 5%);
 	}
 
 	.thumbnail {
@@ -762,13 +761,13 @@ sub {
 	}
 
 	dt {
+		float: left;
+		clear: left;
+		width: 100%;
+		padding: 5px;
 		border-bottom: 1px solid @grayLighter;
 		font-size: 16px;
 		text-align: left;
-		clear: left;
-		float: left;
-		width: 100%;
-		padding: 5px;
 
 		&:hover,
 		&:active {
@@ -777,10 +776,10 @@ sub {
 	}
 
 	dd {
-		#font > .alternative(14px);
 		float: right;
-		margin-top: -38px;
 		padding-right: 5px;
+		margin-top: -38px;
+		#font > .alternative(14px);
 		text-align: right;
 	}
 }
@@ -824,14 +823,14 @@ sub {
 	margin: @gutterWidth 0;
 
 	a, > span {
+		display: inline-block;
+		padding: 13px 14px 12px;
+		margin-right: 2px;
+		line-height: normal;
 		background-color: @grayLighter;
 		box-shadow: 0 2px 0 darken(@grayLighter, 15%);
 		border-radius: 3px;
 		color: darken(@gray, 5%);
-		display: inline-block;
-		line-height: normal;
-		margin-right: 2px;
-		padding: 13px 14px 12px;
 		text-shadow: 0 1px 0 @white;
 		.transition(all 150ms ease);
 	}
@@ -844,7 +843,9 @@ sub {
 	}
 
 	a:active {
-		box-shadow: 0 2px 0 @orange, inset 2px 2px 8px fade(@black, 30%);
+		box-shadow:
+			0 2px 0 @orange,
+			inset 2px 2px 8px fade(@black, 30%);
 	}
 
 	.current {
@@ -896,12 +897,12 @@ sub {
 	.no-list-style();
 
 	.related-post {
+		float: left;
+		.square(110px);
+		border: 1px solid darken(@grayLighter, 3%);
+		margin-right: @smallGutterWidth;
 		background: @white;
 		border-radius: 3px;
-		border: 1px solid darken(@grayLighter, 3%);
-		.square(110px);
-		float: left;
-		margin-right: @smallGutterWidth;
 
 		&:hover {
 			background: @orangeLight;
@@ -917,10 +918,10 @@ sub {
 
 		> a {
 			display: block;
+			overflow: hidden;
 			.square(100%);
 			padding-top: 4px;
 			text-align: center;
-			overflow: hidden;
 			.hyphens;
 
 			&:hover {
@@ -981,9 +982,9 @@ sub {
 	}
 
 	.comment-author {
+		display: block;
 		#font > .alternative(16px, bold, 25px);
 		color: @gray;
-		display: block;
 
 		cite {
 			font-style: normal;
@@ -1051,13 +1052,13 @@ sub {
 .danger,
 .error,
 .info {
-	background-color: @alertBackground;
+	padding: @smallGutterWidth;
 	border: double @alertBorder;
 	border-width: 4px 0;
-	color: @alertText;
-	padding: @smallGutterWidth;
 	margin-bottom: @smallGutterWidth;
 	text-shadow: 0 1px 0 fade(@white, 50%);
+	background-color: @alertBackground;
+	color: @alertText;
 }
 
 .warning,
@@ -1109,18 +1110,18 @@ sub {
 
 /* Twitter button */
 .twitter-share {
-	#font > .sans-serif(12px, bold, 1.5);
 	display: inline-block;
 	overflow: hidden;
+	#font > .sans-serif(12px, bold, 1.5);
 	text-align: center;
 }
 
 .twitter-button {
-	background: url(images/tweet.png) no-repeat;
-	.size(55px, @tweetHeight);
-	float: left;
-	position: relative;
 	overflow: hidden;
+	position: relative;
+	float: left;
+	.size(55px, @tweetHeight);
+	background: url(images/tweet.png) no-repeat;
 	text-indent: -999em;
 
 	&:hover,
@@ -1135,34 +1136,34 @@ sub {
 
 /* The Twitter button count */
 .twitter-count {
+	position: relative;
+	float: left;
+	min-width: @tweetHeight;
+	padding: 0 4px;
 	border: 1px solid #cee3f0;
+	margin: 0 0 0 7px;
 	border-radius: 2px;
 	color: #2a7090;
-	min-width: @tweetHeight;
-	float: left;
-	margin: 0 0 0 7px;
-	padding: 0 4px;
-	position: relative;
 	text-decoration: none;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background: #e8f3f9;
 		border: 1px solid #9dc6e1;
-		color: #30566D;
+		background: #e8f3f9;
+		color: #30566d;
 		text-shadow: 0 1px 0 @white;
 	}
 
 	/* The count tooltip. Not displayed in IE < 8 */
 	&:before {
-		background: url(images/tweet.png) no-repeat 0 -(@tweetHeight * 3);
 		content: "";
-		.size(@tweetArrow, 9px);
-		margin: -4px 0 0;
 		position: absolute;
 		top: 50%;
 		left: -(@tweetArrow);
+		.size(@tweetArrow, 9px);
+		margin: -4px 0 0;
+		background: url(images/tweet.png) no-repeat 0 -(@tweetHeight * 3);
 	}
 
 	&:hover:before,
@@ -1174,24 +1175,24 @@ sub {
 
 /* Vertical Twitter button */
 .twitter-button-size-vertical {
-	padding-top: 42px;
 	position: relative;
+	padding-top: 42px;
 
 	.twitter-count {
-		#font > .sans-serif(16px, bold, 34px);
-		.size(45px, 34px);
-		text-align: center;
 		position: absolute;
-		margin: 0;
 		top: 0;
 		left: 9%;
+		margin: 0;
+		.size(45px, 34px);
+		#font > .sans-serif(16px, bold, 34px);
+		text-align: center;
 
 		&:before {
-			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3);
-			.size(9px, @tweetArrow);
-			margin: 0 0 0 -4px;
 			top: 100%;
 			left: 48%;
+			.size(9px, @tweetArrow);
+			margin: 0 0 0 -4px;
+			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3);
 		}
 
 		&:hover:before,

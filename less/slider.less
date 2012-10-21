@@ -15,12 +15,12 @@
 	// The optimal solution should be use to use negative margin-top on #slider but some mobile
 	// devices don't like that
 	&:before {
-		background-color: darken(#ffffe9, 2%);
 		content: " ";
-		.size(100%, 34px);
 		position: absolute;
 		top: -34px;
 		left: 0;
+		.size(100%, 34px);
+		background-color: darken(#ffffe9, 2%);
 	}
 }
 
@@ -70,12 +70,12 @@
 /* Slider pagination */
 .flex-control-paging li {
 	a {
-		background: @orangeLight;
-		text-indent: -9999px;
-		border-radius: 50%;
-		cursor: pointer;
 		display: block;
 		.square(16px);
+		background: @orangeLight;
+		border-radius: 50%;
+		text-indent: -9999px;
+		cursor: pointer;
 		.transition(all 150ms ease);
 
 		&:hover {
@@ -97,19 +97,18 @@
 
 /* Next/prev buttons */
 .flex-direction-nav {
-	list-style: none;
-	margin: 0; padding: 0;
+	.no-list-style();
 
 	a {
-		background-color: @white;
-		box-shadow: 0 0 7px fade(@black, 30%);
-		border-radius: 50%;
-		.square(48px);
-		margin: 0;
-		opacity: 0.6;
 		position: absolute;
 		top: 40%;
+		.square(48px);
+		margin: 0;
+		background-color: @white;
+		border-radius: 50%;
+		box-shadow: 0 0 7px fade(@black, 30%);
 		text-indent: -9999px;
+		opacity: 0.6;
 		.transition(opacity 150ms ease);
 
 		&:focus {
@@ -117,15 +116,15 @@
 		}
 
 		&:after {
-			#font > .alternative(38px, bold, 41px);
-			text-indent: 0;
-			color: @gray;
-			.square(100%);
-			text-align: center;
 			position: absolute;
+			z-index: 10;
 			top: 0;
 			left: -2px;
-			z-index: 10;
+			.square(100%);
+			#font > .alternative(38px, bold, 41px);
+			color: @gray;
+			text-align: center;
+			text-indent: 0;
 		}
 
 		#slider:hover & {
@@ -158,7 +157,9 @@
 
 	.flex-prev:active,
 	.flex-next:active {
-		box-shadow: inset 0 0 5px rgba(0,0,0, 0.3), 0 0 7px rgba(0,0,0, 0.3);
+		box-shadow:
+			inset 0 0 5px fade(@black, 30%),
+			0 0 7px fade(@black, 30%);
 	}
 }
 
