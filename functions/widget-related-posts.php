@@ -23,7 +23,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		/* Set up the widget options. */
 		$widget_options = array(
-			'classname' => 'related-posts',
+			'classname'   => 'related-posts',
 			'description' => esc_html__( 'Use this widget to list related posts to the current viewed post, based on taxonomies.', 'cakifo' )
 		);
 
@@ -203,11 +203,14 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		 */
 		if ( $related->have_posts() ) while ( $related->have_posts() ) : $related->the_post();
 
-			add_post_meta( $post_id, 'related', array(
-				'title'     => get_the_title(),
-				'post_id'   => get_the_ID(),
-				'thumbnail' => get_post_thumbnail_id()
-			), false );
+			add_post_meta( $post_id, 'related',
+				array(
+					'title'     => get_the_title(),
+					'post_id'   => get_the_ID(),
+					'thumbnail' => get_post_thumbnail_id()
+				),
+				false
+			);
 
 		endwhile;
 
@@ -327,10 +330,13 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			</p>
 
 			<p>
-			<label for="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_thumbnail'], true ); ?> id="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'show_thumbnail' ); ?>" /> <?php _e( 'Show post thumbnails?', 'cakifo' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>">
+					<input class="checkbox" type="checkbox" <?php checked( $instance['show_thumbnail'], true ); ?> id="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'show_thumbnail' ); ?>" />
+					<?php _e( 'Show post thumbnails?', 'cakifo' ); ?>
+				</label>
 			</p>
 		</div>
+
 	<?php
 	}
 }

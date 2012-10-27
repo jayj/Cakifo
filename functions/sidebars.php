@@ -4,7 +4,9 @@
  * These are a replacement of the default framework sidebars because
  * we're using HTML5
  *
- * 'Primary', 'secondary', and 'subsidiary' are on by default.
+ * Default sidebars: 'Primary', 'secondary', 'subsidiary', 'subsidiary-two',
+ * 'subsidiary-three', 'after-single', 'after-singular', 'error-page'
+ *
  * Themes may choose to use or not use these sidebars, create new sidebars, or
  * unregister individual sidebars.  A theme must register support for 'cakifo-sidebars' to use them
  *
@@ -232,81 +234,123 @@ function cakifo_monster_widgets() {
 	$monster = new Monster_Widget();
 
 	$widgets = array(
-		array( 'Hybrid_Widget_Archives', array(
-			'title'    => __( 'Archives List', 'monster-widget' ),
-			'limit'    => 5,
-			'dropdown' => 0,
-			'format'   => 'html',
-		) ),
-		array( 'Hybrid_Widget_Archives', array(
-			'title'  => __( 'Archives Dropdown', 'monster-widget' ),
-			'type'   => 'monthly',
-			'format' => 'option',
-		) ),
-		array( 'Hybrid_Widget_Calendar', array(
-			'title' => __( 'Calendar', 'monster-widget' ),
-		) ),
-		array( 'Hybrid_Widget_Categories', array(
-			'title'        => __( 'Categories List', 'monster-widget' ),
-			'number'       => 5,
-			'hierarchical' => 1,
-			'style'        => 'list'
-		) ),
-		array( 'Hybrid_Widget_Pages', array(
-			'title'   => __( 'Pages', 'monster-widget' ),
-			'sortby'  => 'menu_order',
-			'exclude' => '',
-		) ),
-		array( 'Hybrid_Widget_Bookmarks', array(
-			'title'            => __( 'Links', 'monster-widget' ),
-			'show_description' => 1,
-			'show_name'        => 1,
-			'show_rating'      => 1,
-			'show_images'      => 1,
-		) ),
-		array( 'WP_Widget_Meta', array(
-			'title'   => __( 'Meta', 'monster-widget' ),
-		) ),
-		array( 'WP_Widget_Recent_Comments', array(
-			'title'  => __( 'Recent Comments', 'monster-widget' ),
-			'number' => 7,
-		) ),
-		array( 'Hybrid_Widget_Archives', array(
-			'title'  => __( 'Recent Posts', 'monster-widget' ),
-			'limit'  => 5,
-			'type'   => 'postbypost',
-			'format' => 'html',
-		) ),
-		array( 'WP_Widget_RSS', array(
-			'title'        => __( 'RSS', 'monster-widget' ),
-			'url'          => 'http://jayj.dk/feed',
-			'items'        => 5,
-			'show_author'  => true,
-			'show_date'    => true,
-			'show_summary' => true,
-		) ),
-		array( 'Hybrid_Widget_Search', array(
-			'title'         => __( 'Search', 'monster-widget' ),
-			'theme_search'  => 1,
-			'search_submit' => esc_attr__( 'Search', 'cakifo' ),
-		) ),
-		array( 'WP_Widget_Text', array(
-			'title'  => __( 'Text', 'monster-widget' ),
-			'text'   => $monster->get_text(),
-			'filter' => true,
-		) ),
-		array( 'Hybrid_Widget_Tags', array(
-			'title'    => __( 'Tag Cloud', 'monster-widget' ),
-			'taxonomy' => array( 'post_tag' ),
-			'format' => 'flat'
-		) ),
+		array(
+			'Hybrid_Widget_Archives',
+			array(
+				'title'    => __( 'Archives List', 'monster-widget' ),
+				'limit'    => 5,
+				'dropdown' => 0,
+				'format'   => 'html',
+			)
+		),
+		array(
+			'Hybrid_Widget_Archives',
+			array(
+				'title'  => __( 'Archives Dropdown', 'monster-widget' ),
+				'type'   => 'monthly',
+				'format' => 'option',
+			)
+		),
+		array(
+			'Hybrid_Widget_Calendar',
+			array(
+				'title' => __( 'Calendar', 'monster-widget' ),
+			)
+		),
+		array(
+			'Hybrid_Widget_Categories',
+			array(
+				'title'        => __( 'Categories List', 'monster-widget' ),
+				'number'       => 5,
+				'hierarchical' => 1,
+				'style'        => 'list'
+			)
+		),
+		array(
+			'Hybrid_Widget_Pages',
+			array(
+				'title'   => __( 'Pages', 'monster-widget' ),
+				'sortby'  => 'menu_order',
+				'exclude' => '',
+			)
+		),
+		array(
+			'Hybrid_Widget_Bookmarks',
+			array(
+				'title'            => __( 'Links', 'monster-widget' ),
+				'show_description' => 1,
+				'show_name'        => 1,
+				'show_rating'      => 1,
+				'show_images'      => 1,
+			)
+		),
+		array(
+			'WP_Widget_Meta',
+			array(
+				'title'   => __( 'Meta', 'monster-widget' ),
+			)
+		),
+		array(
+			'WP_Widget_Recent_Comments',
+			array(
+				'title'  => __( 'Recent Comments', 'monster-widget' ),
+				'number' => 7,
+			)
+		),
+		array(
+			'Hybrid_Widget_Archives',
+			array(
+				'title'  => __( 'Recent Posts', 'monster-widget' ),
+				'limit'  => 5,
+				'type'   => 'postbypost',
+				'format' => 'html',
+			)
+		),
+		array(
+			'WP_Widget_RSS',
+			array(
+				'title'        => __( 'RSS', 'monster-widget' ),
+				'url'          => 'http://jayj.dk/feed',
+				'items'        => 5,
+				'show_author'  => true,
+				'show_date'    => true,
+				'show_summary' => true,
+			)
+		),
+		array(
+			'Hybrid_Widget_Search',
+			array(
+				'title'         => __( 'Search', 'monster-widget' ),
+				'theme_search'  => 1,
+				'search_submit' => esc_attr__( 'Search', 'cakifo' ),
+			)
+		),
+		array(
+			'WP_Widget_Text',
+			array(
+				'title'  => __( 'Text', 'monster-widget' ),
+				'text'   => $monster->get_text(),
+				'filter' => true,
+			)
+		),
+		array(
+			'Hybrid_Widget_Tags',
+			array(
+				'title'    => __( 'Tag Cloud', 'monster-widget' ),
+				'taxonomy' => array( 'post_tag' ),
+				'format' => 'flat'
+			)
+		),
 	);
 
 	if ( $menu = $monster->get_nav_menu() ) {
-		$widgets[] = array( 'Hybrid_Widget_Nav_Menu', array(
-			'title'    => __( 'Nav Menu', 'monster-widget' ),
-			'nav_menu' => $menu,
-		) );
+		$widgets[] = array(
+			'Hybrid_Widget_Nav_Menu',
+			array(
+				'title'    => __( 'Nav Menu', 'monster-widget' ),
+				'nav_menu' => $menu,
+			)
+		);
 	}
 
 	return $widgets;
