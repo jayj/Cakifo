@@ -3323,5 +3323,235 @@ html .btn-inverse:hover {
    Print styles
    ========================================================================== */
 @media print {
+  * {
+    background: transparent !important;
+    border-color: #000 !important;
+    border-radius: 0 !important;
+    color: #000 !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .entry-title {
+    font-size: 18pt;
+    margin: 0;
+  }
+  /**
+  	 * Insert page breaks before the sidebar and comments
+  	 */
+  #sidebar-primary,
+  #comments {
+    page-break-before: always;
+  }
+  /**
+  	 * Show links
+  	 */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  .entry-content a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /**
+  	 * Don't show links for javascript/internal links
+  	 */
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  /**
+  	 * Code and quotes
+  	 */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  blockquote {
+    font-style: italic;
+    padding: 5px;
+  }
+  blockquote blockquote {
+    margin: 5px;
+  }
+  /**
+  	 * Tables, images and lists
+  	 */
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
   
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  li {
+    line-height: 1.3;
+  }
+  /**
+  	 * Hide elements
+  	 */
+  object,
+  embed,
+  video,
+  audio,
+  iframe[src*="youtube"],
+  blockquote:before,
+  blockquote p:first-of-type:after,
+  #topbar,
+  #slider,
+  #respond,
+  #wpadminbar,
+  #site-title img,
+  .pagination,
+  .search,
+  .loop-meta-home,
+  .post-format-link,
+  .twitter-link,
+  .comment .permalink,
+  .comment-edit-link,
+  .comment-reply-link,
+  .twitter-share,
+  .fb-like,
+  .delicious-share-button,
+  .digg-share-button,
+  [id*="___plusone_"],
+  .more-link,
+  .comments-link,
+  .post-edit-link {
+    display: none !important;
+  }
+  .singular-attachment .loop-nav,
+  .singular-attachment .byline,
+  .singular-attachment .image-gallery,
+  .singular-attachment .related-posts {
+    display: none;
+  }
+  .singular-attachment .image-info {
+    width: 100%;
+    float: none;
+  }
+  .singular-attachment .image-info h3 {
+    margin: 0;
+  }
+  /**
+  	 * Change layout
+  	 */
+  #wrapper {
+    clear: both !important;
+    display: block !important;
+    float: none !important;
+    max-width: 100%;
+    position: relative !important;
+  }
+  #main,
+  #sidebar-primary,
+  #sidebar-secondary {
+    float: none;
+    width: 100%;
+  }
+  .layout-3c-c #main,
+  .layout-3c-r #main,
+  .layout-3c-l #main {
+    clear: both;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .layout-3c-c #sidebar-primary,
+  .layout-3c-r #sidebar-primary,
+  .layout-3c-l #sidebar-primary,
+  .layout-3c-c #sidebar-secondary,
+  .layout-3c-r #sidebar-secondary,
+  .layout-3c-l #sidebar-secondary {
+    clear: none;
+    width: 48%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .layout-3c-c #sidebar-secondary,
+  .layout-3c-r #sidebar-secondary,
+  .layout-3c-l #sidebar-secondary {
+    float: right;
+  }
+  /**
+  	 * Remove margins, paddings and borders
+  	 */
+  #content,
+  #footer,
+  #headlines,
+  .author-profile,
+  .singular .hentry,
+  .widget-title,
+  .section-title,
+  .breadcrumbs,
+  blockquote cite,
+  blockquote span {
+    margin: 0;
+  }
+  #branding,
+  #content,
+  #footer,
+  .widget-title,
+  .section-title,
+  .hentry,
+  .breadcrumbs,
+  .author-profile {
+    padding: 0;
+  }
+  .note,
+  .alert,
+  .warning,
+  .success,
+  .download,
+  .danger,
+  .error,
+  .info,
+  .hentry,
+  .widget-title,
+  .breadcrumbs,
+  .pull {
+    border: 0;
+  }
+  .note,
+  .alert,
+  .warning,
+  .success,
+  .download,
+  .danger,
+  .error,
+  .info {
+    padding: 5px 20px;
+  }
+  /**
+  	 * Site title
+  	 */
+  #site-title a:after {
+    content: attr(title);
+    color: #000;
+    font-size: 46px;
+    letter-spacing: -2px;
+  }
 }

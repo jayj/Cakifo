@@ -1082,7 +1082,7 @@ function cakifo_html5_comment_fields( $fields ) {
  * @since Cakifo 1.5.0
  */
 function cakifo_load_in_singular() {
-	// Load the sidebar-after-single.php template'
+	// Load the sidebar-after-single.php template
 	if ( is_single() )
 		get_sidebar( 'after-single' );
 
