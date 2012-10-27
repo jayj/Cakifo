@@ -96,7 +96,7 @@ function cakifo_customize_register( $wp_customize ) {
 		'featured_show',
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_show]",
-			'label'    =>  esc_html__( 'Show "Featured Content" slider?', 'cakifo' ),
+			'label'    => esc_html__( 'Show "Featured Content" slider?', 'cakifo' ),
 			'section'  => 'cakifo_customize_settings',
 			'type'     => 'checkbox',
 		)
@@ -117,7 +117,7 @@ function cakifo_customize_register( $wp_customize ) {
 		'featured_category',
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_category]",
-			'label'    =>  esc_html__( 'Featured Category', 'cakifo' ),
+			'label'    => esc_html__( 'Featured Category', 'cakifo' ),
 			'section'  => 'cakifo_customize_settings',
 			'type'     => 'select',
 			'choices'  => $categories
@@ -225,16 +225,19 @@ function cakifo_customize_register( $wp_customize ) {
 function cakifo_customize_preview() {
 	?>
 	<script type="text/javascript">
-		wp.customize('blogname',function( value ) {
-			value.bind(function(to) {
-				jQuery('#site-title span').html(to);
+		( function( $ ){
+			wp.customize( 'blogname', function( value ) {
+				value.bind(function(to) {
+					$('#site-title span').html(to);
+				});
 			});
-		});
-		wp.customize('blogdescription',function( value ) {
-			value.bind(function(to) {
-				jQuery('#site-description').html(to);
+
+			wp.customize( 'blogdescription', function( value ) {
+				value.bind(function(to) {
+					$('#site-description').html(to);
+				});
 			});
-		});
+		} )( jQuery )
 	</script>
 	<?php
 }
