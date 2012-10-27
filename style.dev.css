@@ -1953,8 +1953,17 @@ body.page-template-template-front-page #main,
  */
 #wp-calendar th,
 #wp-calendar td {
-  padding: 5px;
+  font-size: 14px;
+  padding: 4px;
   text-align: center;
+}
+.layout-3c-c #wp-calendar th,
+.layout-3c-c #wp-calendar td,
+.layout-3c-l #wp-calendar th,
+.layout-3c-l #wp-calendar td,
+.layout-3c-r #wp-calendar th,
+.layout-3c-r #wp-calendar td {
+  padding: 2px;
 }
 /**
  * Related Posts widget
