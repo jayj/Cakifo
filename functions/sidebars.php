@@ -20,7 +20,7 @@ add_action( 'widgets_init', 'cakifo_register_sidebars' );
 add_action( 'widgets_init', 'cakifo_register_widgets' );
 
 /**
- * Registers the default framework dynamic sidebars.  Theme developers may optionally choose to support
+ * Registers the default theme sidebars.  Child theme developers may optionally choose to support
  * these sidebars within their themes or add more custom sidebars to the mix.
  *
  * @since Cakifo 1.2.0
@@ -222,7 +222,7 @@ function cakifo_register_widgets() {
 /**
  * Change the default widgets in the Monster Widgets plugin
  * Otherwise the plugin results in error because Hybrid Core
- * deregister default WordPress widgets
+ * deregisters the default WordPress widgets.
  *
  * @since Cakifo 1.4.0
  * @link http://wordpress.org/extend/plugins/monster-widget/ Monster Widgets

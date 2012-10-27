@@ -256,7 +256,7 @@ function cakifo_theme_setup() {
 }
 
 /**
- * Loads the theme functions if the theme/child theme syupports them.
+ * Loads the theme functions if the theme/child theme supports them.
  *
  * @since Cakifo 1.3.0
  */
@@ -709,7 +709,7 @@ function cakifo_custom_background_callback() {
  * returns depends on what the user has choosen in `Apperance > Header`.
  *
  * @since Cakifo 1.0.0
- * @return string The .0ite title. Either as text, as an image or both.
+ * @return string The site title. Either as text, as an image or both.
  */
 function cakifo_logo() {
 
