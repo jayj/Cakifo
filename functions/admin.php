@@ -75,6 +75,8 @@ function cakifo_theme_settings_meta_boxes() {
  */
 function cakifo_theme_meta_box() { ?>
 
+	<?php submit_button( esc_attr__( 'Update Settings', 'cakifo' ) ); ?>
+
 	<table class="form-table">
 
 		<tr>
