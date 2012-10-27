@@ -57,24 +57,28 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 
+	/* Add theme support for framework extensions */
+	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
+	add_theme_support( 'post-stylesheets' );
+	add_theme_support( 'loop-pagination' );
+	add_theme_support( 'get-the-image' );
+	add_theme_support( 'breadcrumb-trail' );
+	add_theme_support( 'cleaner-gallery' );
+	add_theme_support( 'custom-field-series' );
+
+	/* Add support for the .dev stylesheet */
+	add_theme_support( 'hybrid-core-styles' );
+	add_theme_support( 'dev-stylesheet' );
+
+	/* Add support for the comment reply script */
+	add_theme_support( 'hybrid-core-scripts' );
+
 	/**
 	 * Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated
 	 * WordPress SEO is already checked for in Hybrid Core
 	 */
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
-
-	/* Add theme support for framework extensions */
-	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
-	add_theme_support( 'post-stylesheets' );
-	add_theme_support( 'dev-stylesheet' );
-	add_theme_support( 'loop-pagination' );
-	add_theme_support( 'get-the-image' );
-	add_theme_support( 'breadcrumb-trail' );
-	add_theme_support( 'cleaner-gallery' );
-	add_theme_support( 'custom-field-series' );
-	//add_theme_support( 'cleaner-caption' );
-	//add_theme_support( 'featured-header' );
 
 	/* Add theme support for theme functions */
 	add_theme_support( 'cakifo-sidebars',
