@@ -555,7 +555,7 @@ sub {
 .singular .entry-meta {
 	padding: 15px 0 0;
 	border-top: 1px solid @grayLighter;
-	margin-top: @smallGutterWidth;
+	margin: @smallGutterWidth 0;
 }
 
 .page-links {
@@ -1235,6 +1235,27 @@ sub {
 @-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
 @-moz-keyframes shake-it-baby{0%{-moz-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-moz-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-moz-transform:scale(1.0) skew(0);background-color:#fff}}
 @keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
+
+/* =============================================================================
+   Misc:  Internet Explorer styles
+   ========================================================================== */
+
+.oldie {
+	.recent-post {
+		margin-right: @gutterWidth / 2 - 5px;
+		margin-left:  @gutterWidth / 2 - 5px;
+	}
+
+	.headline-list {
+		margin-right: @gutterWidth / 2 - 5px;
+		margin-left:  @gutterWidth / 2 - 5px;
+	}
+}
+
+/**
+ * IE7 fixes
+ */
+// Silence is golden
 
 /* =============================================================================
    Media Queries for smaller screens

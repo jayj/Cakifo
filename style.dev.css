@@ -10,6 +10,9 @@
  * You shouldn't make changes to this file. Use a child theme instead
  * @link https://github.com/jayj/Cakifo/wiki/Child-themes
  */
+.clearfix {
+  *zoom: 1;
+}
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -874,6 +877,7 @@ caption {
    Layout:  Main navigation
    ========================================================================== */
 .main-navigation {
+  *zoom: 1;
   width: 100%;
   margin: 0 auto;
 }
@@ -1296,7 +1300,7 @@ body.page-template-template-front-page #main,
 .slide .slider-video {
   float: left;
   max-width: 100%;
-  margin: 0 40px 2px 2px;
+  margin: 0 40px 3px 3px;
 }
 .slide .entry-title {
   margin-top: 0;
@@ -1367,6 +1371,7 @@ body.page-template-template-front-page #main,
 }
 .flex-direction-nav a:focus {
   background: #ffc768;
+  outline: 0;
 }
 .flex-direction-nav a:after {
   position: absolute;
@@ -1465,7 +1470,7 @@ body.page-template-template-front-page #main,
 .singular .entry-meta {
   padding: 15px 0 0;
   border-top: 1px solid #eeeeee;
-  margin-top: 25px;
+  margin: 25px 0;
 }
 .page-links {
   clear: both;
@@ -1691,6 +1696,7 @@ body.page-template-template-front-page #main,
   border-width: 4px 0;
   margin: 0 0 40px;
   padding: 10px 25px;
+  *zoom: 1;
 }
 .loop-meta:before,
 .loop-meta:after {
@@ -3006,6 +3012,20 @@ html .btn-inverse:hover {
   }
 }
 /* =============================================================================
+   Misc:  Internet Explorer styles
+   ========================================================================== */
+.oldie .recent-post {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.oldie .headline-list {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+/**
+ * IE7 fixes
+ */
+/* =============================================================================
    Media Queries for smaller screens
    ========================================================================== */
 /* =============================================================================
@@ -3141,6 +3161,7 @@ html .btn-inverse:hover {
   }
   /* Show Recent Posts in one column */
   .recent-post {
+    *zoom: 1;
     float: none;
     width: 100%;
     padding: 25px 0;
