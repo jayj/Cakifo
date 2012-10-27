@@ -297,7 +297,7 @@ function cakifo_monster_widgets() {
 		) ),
 		array( 'Hybrid_Widget_Tags', array(
 			'title'    => __( 'Tag Cloud', 'monster-widget' ),
-			'taxonomy' => 'post_tag',
+			'taxonomy' => array( 'post_tag' ),
 			'format' => 'flat'
 		) ),
 	);
