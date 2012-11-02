@@ -1,5 +1,5 @@
 // =============================================================================
-// Navigation for screens < 980px
+// Primary Navigation for screens < 980px
 // =============================================================================
 
 .main-navigation {
@@ -63,8 +63,19 @@
 	}
 }
 
+/* Separator */
+.site-navigation .sep {
+	display: inline;
+	color: #808080;
+}
+
+.sub-menu .sep,
+.menu-item:last-of-type .sep {
+	display: none;
+}
+
 // =============================================================================
-// Navigation for screens > 980px
+// Primary Navigation for screens > 980px
 // =============================================================================
 
 @media screen and (min-width: 980px) {
@@ -109,7 +120,7 @@
 			color: #ececec;
 		}
 
-		// Level two */
+		// Level two
 		.sub-menu {
 			display: none;
 			position: absolute;
@@ -153,17 +164,6 @@
 		.menu-item:hover > ul {
 			display: block;
 		}
-
-		/* Separator */
-		.sep {
-			display: inline;
-			color: #808080;
-		}
-
-		.sub-menu .sep,
-		.menu-item:last-of-type .sep {
-			display: none;
-		}
 	}
 
 	/* Hide toggle button */
@@ -180,4 +180,96 @@
 
 .no-js #menu-toggle {
 	visibility: hidden;
+}
+
+// =============================================================================
+// Secondary Navigation
+// =============================================================================
+
+.secondary-navigation {
+	#gradient > .vertical(fade(@white, 20%), fade(@white, 53%));
+	border-radius: 5px 5px 0 0;
+
+	ul {
+		.no-list-style();
+	}
+
+	.menu {
+		.clearfix();
+		margin-left: @smallGutterWidth;
+	}
+
+	.menu-item {
+		position: relative;
+		float: left;
+		font-size: 14px;
+	}
+
+	a {
+		display: inline-block;
+		padding: 4px 20px;
+		line-height: 3.5;
+		color: darken(@gray, 5%);
+		text-transform: uppercase;
+
+		&:hover {
+			background-color: fade(@white, 53%);
+			color: @grayDarker;
+		}
+	}
+
+	.current-menu-item > a,
+	.current-menu-ancestor > a {
+		font-weight: bold;
+		color: @grayDarker;
+	}
+
+	.sep {
+		color: @grayLight;
+	}
+
+	// Level two
+	.sub-menu {
+		display: none;
+		position: absolute;
+		z-index: 500;
+		top: 100%;
+		left: 0;
+		box-shadow: 1px 1px 2px fade(@black, 15%);
+
+		a {
+			display: block;
+			width: 180px;
+			padding: 8px 10px;
+			border-bottom: 1px solid darken(@grayLighter, 6%);
+			font-size: 14px;
+			line-height: 2.2;
+			background: @grayLighter;
+			text-transform: none;
+			white-space: normal;
+
+			&:hover {
+				background: darken(@grayLighter, 5%);
+			}
+		}
+
+		.menu-item:last-of-type > a {
+			border-bottom: none;
+		}
+	}
+
+	// Display the sub menu on hover
+	.menu-item:hover > ul {
+		display: block;
+	}
+
+	// Level n
+	.sub-menu .sub-menu {
+		top: 0;
+		left: 100%;
+	}
+}
+
+.no-rgba .secondary-navigation {
+	background-color: #f8fafb;
 }

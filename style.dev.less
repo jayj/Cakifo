@@ -1248,6 +1248,11 @@ sub {
    ========================================================================== */
 
 .oldie {
+	.main-navigation .sep,
+	.sub-menu .sep {
+		display: none !important;
+	}
+
 	.recent-post {
 		margin-right: @gutterWidth / 2 - 5px;
 		margin-left:  @gutterWidth / 2 - 5px;
@@ -1262,7 +1267,10 @@ sub {
 /**
  * IE7 fixes
  */
-// Silence is golden
+.ie7 .secondary-navigation {
+	position: relative;
+	z-index: 100;
+}
 
 /* =============================================================================
    Media Queries for smaller screens

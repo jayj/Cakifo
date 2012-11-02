@@ -943,14 +943,21 @@ caption {
 #menu-toggle:focus {
   background: #222222;
 }
+/* Separator */
+.site-navigation .sep {
+  display: inline;
+  color: #808080;
+}
+.sub-menu .sep,
+.menu-item:last-of-type .sep {
+  display: none;
+}
 @media screen and (min-width: 980px) {
   .main-navigation {
     position: relative;
     width: 1080px;
     margin: 0 auto;
     padding: 0 40px 0 25px;
-    /* Separator */
-  
   }
   .main-navigation ul {
     list-style-type: none;
@@ -1028,14 +1035,6 @@ caption {
   .main-navigation .menu-item:hover > ul {
     display: block;
   }
-  .main-navigation .sep {
-    display: inline;
-    color: #808080;
-  }
-  .main-navigation .sub-menu .sep,
-  .main-navigation .menu-item:last-of-type .sep {
-    display: none;
-  }
   /* Hide toggle button */
   #menu-toggle {
     display: none;
@@ -1048,6 +1047,90 @@ caption {
 }
 .no-js #menu-toggle {
   visibility: hidden;
+}
+.secondary-navigation {
+  background-color: rgba(255, 255, 255, 0.332);
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
+  border-radius: 5px 5px 0 0;
+}
+.secondary-navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.secondary-navigation .menu {
+  *zoom: 1;
+  margin-left: 25px;
+}
+.secondary-navigation .menu:before,
+.secondary-navigation .menu:after {
+  content: "";
+  display: table;
+}
+.secondary-navigation .menu:after {
+  clear: both;
+}
+.secondary-navigation .menu-item {
+  position: relative;
+  float: left;
+  font-size: 14px;
+}
+.secondary-navigation a {
+  display: inline-block;
+  padding: 4px 20px;
+  line-height: 3.5;
+  color: #484848;
+  text-transform: uppercase;
+}
+.secondary-navigation a:hover {
+  background-color: rgba(255, 255, 255, 0.53);
+  color: #222222;
+}
+.secondary-navigation .current-menu-item > a,
+.secondary-navigation .current-menu-ancestor > a {
+  font-weight: bold;
+  color: #222222;
+}
+.secondary-navigation .sep {
+  color: #999999;
+}
+.secondary-navigation .sub-menu {
+  display: none;
+  position: absolute;
+  z-index: 500;
+  top: 100%;
+  left: 0;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+.secondary-navigation .sub-menu a {
+  display: block;
+  width: 180px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 14px;
+  line-height: 2.2;
+  background: #eeeeee;
+  text-transform: none;
+  white-space: normal;
+}
+.secondary-navigation .sub-menu a:hover {
+  background: #e1e1e1;
+}
+.secondary-navigation .sub-menu .menu-item:last-of-type > a {
+  border-bottom: none;
+}
+.secondary-navigation .menu-item:hover > ul {
+  display: block;
+}
+.secondary-navigation .sub-menu .sub-menu {
+  top: 0;
+  left: 100%;
+}
+.no-rgba .secondary-navigation {
+  background-color: #f8fafb;
 }
 /* =============================================================================
    Layout:  Header
@@ -3023,6 +3106,10 @@ html .btn-inverse:hover {
 /* =============================================================================
    Misc:  Internet Explorer styles
    ========================================================================== */
+.oldie .main-navigation .sep,
+.oldie .sub-menu .sep {
+  display: none !important;
+}
 .oldie .recent-post {
   margin-right: 15px;
   margin-left: 15px;
@@ -3034,6 +3121,10 @@ html .btn-inverse:hover {
 /**
  * IE7 fixes
  */
+.ie7 .secondary-navigation {
+  position: relative;
+  z-index: 100;
+}
 /* =============================================================================
    Media Queries for smaller screens
    ========================================================================== */

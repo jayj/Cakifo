@@ -52,6 +52,8 @@
 
 	<?php do_atomic( 'after_header' ); // cakifo_after_header ?>
 
+	<?php get_template_part( 'menu', 'secondary' ); // Loads the menu-secondary.php template ?>
+
 <?php do_atomic( 'before_content' ); // cakifo_before_content ?>
 
 <div id="content" class="clearfix">
