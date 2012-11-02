@@ -5,9 +5,8 @@
  * should create a child theme and make changes to its functions.php file (not this one).  Friends don't let
  * friends modify parent theme files ;)
  *
- * Child themes should do their setup on the 'after_setup_theme' hook with a priority of 11 if they want to
+ * Child themes should do their setup on the `after_setup_theme` hook with a priority of 11 if they want to
  * override parent theme features.  Use a priority of 9 if wanting to run before the parent theme.
- *
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
@@ -32,7 +31,7 @@
 require_once( trailingslashit( get_template_directory() ) . 'library/hybrid.php' );
 new Hybrid();
 
-/* Do theme setup on the 'after_setup_theme' hook */
+/* Do theme setup on the `after_setup_theme` hook */
 add_action( 'after_setup_theme', 'cakifo_theme_setup', 10 );
 
 /**
@@ -175,7 +174,7 @@ function cakifo_theme_setup() {
 	 * If you want the old RSS and Twitter link, do this in your child theme:
 	 * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
 	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
-	*/
+	 */
 
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
@@ -204,7 +203,7 @@ function cakifo_theme_setup() {
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
 
-	/* wp_list_comments() arguments */
+	/* `wp_list_comments()` arguments */
 	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
 
 	/* Filter default options */
@@ -256,7 +255,7 @@ function cakifo_theme_setup() {
 				)
 			)
 		);
-	} //  is_child_theme() && file_exists()
+	} // is_child_theme() && file_exists()
 }
 
 /**
@@ -282,8 +281,7 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
 /**
  * Loads the theme JavaScript files
  *
- * It loads jQuery, Modernizr, and the Javascript
- * needed for this theme
+ * It loads jQuery, Modernizr, and the Javascript needed for this theme
  *
  * @since Cakifo 1.0.0
  */
@@ -348,7 +346,7 @@ function cakifo_front_page() {
  * Add the javascript needed for the slider
  *
  * @since Cakifo 1.0.0
- * @uses apply_filters() The cakifo_flexslider_args filter allows you to change the default values.
+ * @uses apply_filters() The `cakifo_flexslider_args` filter allows you to change the default values.
  */
 function cakifo_slider_javascript() {
 
@@ -384,7 +382,7 @@ function cakifo_slider_javascript() {
 	$args = array();
 
 	/**
-	 * Use the cakifo_flexslider_args filter to filter the defaults
+	 * Use the `cakifo_flexslider_args` filter to filter the defaults
 	 * You can't change the Flexslider callbacks
 	 *
 	 * For more information about the arguments, see:
@@ -519,7 +517,7 @@ function cakifo_theme_layout() {
 }
 
 /**
- * Filters 'get_theme_layout' by returning 'layout-1c'.
+ * Filters `get_theme_layout` by returning `layout-1c`.
  *
  * @since Cakifo 1.0.0
  * @param string $layout
@@ -551,7 +549,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 
 /**
  * Overwrites the default widths for embeds.  This is especially useful for making sure videos properly
- * expand the full width on video pages.  This function overwrites what the $content_width variable handles
+ * expand the full width on video pages.  This function overwrites what the `$content_width` variable handles
  * with context-based widths.
  *
  * @since Cakifo 1.3.0
@@ -623,7 +621,7 @@ function cakifo_header_style() {
 }
 
 /**
- * Custom header image markup displayed on the Appearance > Header admin panel.
+ * Custom header image markup displayed on the `Appearance > Header` admin panel.
  *
  * @since Cakifo 1.4.0
  */
@@ -1022,7 +1020,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
 /**
  * Add a style block to the theme for the current link color.
  *
- * This function is attached to the wp_head action hook.
+ * This function is attached to the `wp_head` action hook.
  *
  * @since Cakifo 1.4.0
  */

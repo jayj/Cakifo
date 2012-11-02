@@ -60,10 +60,10 @@
 
 	<?php
 		/**
-		 * Include the slider {section-slider.php} template part file
+		 * Include the slider `section-slider.php` template part file
 		 * if it's the front/post page and the setting is activated
 		 *
-		 * Child Themes can replace this template part file via {section-slider.php}
+		 * Child Themes can replace this template part file via `section-slider.php`
 		 */
 		if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
 			get_template_part( 'section', 'slider' );

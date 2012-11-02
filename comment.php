@@ -3,8 +3,8 @@
  * Comment Template
  *
  * The comment template displays an individual comment. This can be overwritten by templates specific
- * to the comment type (comment.php, comment-{$comment_type}.php, comment-pingback.php,
- * comment-trackback.php) in a child theme.
+ * to the comment type (`comment.php, comment-{$comment_type}.php, comment-pingback.php,
+ * comment-trackback.php`) in a child theme.
  *
  * @package Cakifo
  * @subpackage Template

@@ -64,7 +64,7 @@ get_header(); // Loads the header.php template ?>
 
 					<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
-				<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
+				<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
 			</article> <!-- #post-<?php the_ID(); ?> -->
 
 		<?php endwhile; ?>

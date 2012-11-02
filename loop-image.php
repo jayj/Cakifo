@@ -4,18 +4,18 @@
  *
  * Template used to show posts with the 'image' post format.
  *
- * This can be overridden in child themes with loop-image.php
+ * This can be overridden in child themes with `loop-image.php`
  *
  * @package Cakifo
  * @subpackage Template
  * @since Cakifo 1.5.0
  */
 
-do_atomic( 'before_entry' ); //cakifo_before_entry ?>
+do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
-	<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
+	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
 	<?php if ( is_singular() && is_main_query() ) : ?>
 
@@ -72,6 +72,8 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
+
+	<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 

@@ -4,7 +4,7 @@
  *
  * Template used to show posts with the 'status' post format.
  *
- * This can be overridden in child themes with loop-status.php
+ * This can be overridden in child themes with `loop-status.php`
  *
  * @package Cakifo
  * @subpackage Template
@@ -38,7 +38,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
-	<?php else: ?>
+	<?php else : ?>
 
 		<header class="entry-header clearfix">
 			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', 48 ) ); ?>
@@ -64,6 +64,8 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
+
+	<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 

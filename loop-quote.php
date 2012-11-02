@@ -4,18 +4,18 @@
  *
  * Template used to show posts with the 'quote' post format.
  *
- * This can be overridden in child themes with loop-quote.php
+ * This can be overridden in child themes with `loop-quote.php`
  *
  * @package Cakifo
  * @subpackage Template
  * @since Cakifo 1.5.0
  */
 
-do_atomic( 'before_entry' ); //cakifo_before_entry ?>
+do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
-	<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
+	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
 	<?php if ( is_singular() && is_main_query() ) : ?>
 
@@ -35,7 +35,7 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
-	<?php else: ?>
+	<?php else : ?>
 
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
@@ -46,6 +46,8 @@ do_atomic( 'before_entry' ); //cakifo_before_entry ?>
 
 	<?php endif; ?>
 
+	<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
+
 </article> <!-- #post-<?php the_ID(); ?> -->
 
-<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>

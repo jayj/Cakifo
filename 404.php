@@ -15,8 +15,8 @@
 /**
  * Include the header template part file
  *
- * Child Themes can replace this template part file globally, via {header.php},
- * or in a specific context only, via {header-404.php}
+ * Child Themes can replace this template part file globally, via `header.php`,
+ * or in a specific context only, via `header-404.php`
  */
 get_header( '404' ); ?>
 
@@ -39,7 +39,7 @@ get_header( '404' ); ?>
 
 					<?php get_search_form(); // Loads the searchform.php template ?>
 
-					<?php do_atomic( '404_content' ); // You can add more content here by using the 'cakifo_404_content' action ?>
+					<?php do_atomic( '404_content' ); // You can add more content here by using the `cakifo_404_content` action ?>
 				</div> <!-- .entry-content -->
 
 			</article> <!-- .hentry -->
@@ -49,8 +49,8 @@ get_header( '404' ); ?>
 				 * Include the Error Page widgets "sidebar" template part file
 				 *
 				 * Child Themes can replace this template part file globally,
-				 * via "sidebar.php", or in the Error 404 Page context only, via
-				 * "sidebar-404.php"
+				 * via `sidebar.php`, or in the Error 404 Page context only, via
+				 * `sidebar-404.php`
 				 */
 				get_sidebar( '404' );
 			?>
@@ -62,11 +62,11 @@ get_header( '404' ); ?>
 	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
 
 <?php
-/**
- * Include the footer template part file
- *
- * Child Themes can replace this template part file globally, via {footer.php},
- * or in a specific context only, via {footer-404.php}
- */
-get_footer( '404' );
+	/**
+	 * Include the footer template part file
+	 *
+	 * Child Themes can replace this template part file globally, via `footer.php`,
+	 * or in a specific context only, via `footer-404.php`
+	 */
+	get_footer( '404' );
 ?>

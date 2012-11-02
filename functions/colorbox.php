@@ -5,7 +5,7 @@
  * Adds the Colorbox jQuery lightbox script to the theme if supported.
  *
  * Supported by default, remove it in a child theme with
- * remove_theme_support( 'cakifo-colorbox' );
+ * `remove_theme_support( 'cakifo-colorbox' );`
  *
  * @package Cakifo
  * @subpackage Functions
@@ -54,11 +54,13 @@ function cakifo_colorbox() {
 	/**
 	 * Allow child themes to filter the arguments. Use it like this:
 	 *
-	 * add_filter( 'cakifo_colorbox_args', 'my_child_colorbox_args' );
-	 * function my_child_colorbox_args( $args ) {
+	 * <code>
+	 * 	add_filter( 'cakifo_colorbox_args', 'my_child_colorbox_args' );
+	 *  function my_child_colorbox_args( $args ) {
 	 * 		$args['selector'] = '.colorbox, .my-new-awesome-selector';
 	 *		return $args;
-	 *	}
+	 *	 }
+	 * </code>
 	 *
 	 * @var array
 	 */
