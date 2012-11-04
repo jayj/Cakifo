@@ -1090,7 +1090,7 @@ caption {
 }
 .secondary-navigation a:hover {
   background-color: rgba(255, 255, 255, 0.53);
-  color: #222222;
+  color: #d54e21;
 }
 .secondary-navigation .current-menu-item > a,
 .secondary-navigation .current-menu-ancestor > a {
