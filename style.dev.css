@@ -1163,6 +1163,7 @@ caption {
   margin-top: 0;
 }
 #site-title.display-header-text img {
+  margin-right: 10px;
   vertical-align: text-bottom;
 }
 #site-title.display-header-text span {
