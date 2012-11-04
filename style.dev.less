@@ -471,8 +471,6 @@ sub {
 	}
 
 	&.display-header-text {
-		margin-top: 0;
-
 		img {
 			margin-right: 10px;
 			vertical-align: text-bottom;
@@ -493,13 +491,32 @@ sub {
 
 #site-description {
 	float: right;
-	padding: 2px 8px;
 	margin: @smallGutterWidth @gutterWidth 0 0;
+	padding: 2px 8px;
 	#font > .alternative(21px);
 	background-color: @white;
 	background-color: fade(@white, 53%);
 	border-radius: 3px;
 	color: @gray;
+}
+
+/**
+ * Use Flexbox to vertical center the site title and description
+ */
+.flexbox {
+	#branding hgroup {
+		.flex-display();
+	}
+
+	#site-title {
+		float: none;
+		margin: auto auto auto @gutterWidth;
+	}
+
+	#site-description {
+		float: none;
+		margin: auto @gutterWidth auto auto;
+	}
 }
 
 /* =============================================================================
