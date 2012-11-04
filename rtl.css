@@ -146,6 +146,23 @@ thead th {
 }
 
 /**
+ * Secondary navigation
+ */
+.secondary-navigation .menu-item {
+	float: right;
+}
+
+.secondary-navigation .sub-menu {
+	right: 0;
+	left: auto;
+}
+
+.secondary-navigation .sub-menu .sub-menu {
+	right: 100%;
+	left: auto;
+}
+
+/**
  * Layout: Header
  */
 #site-title {
