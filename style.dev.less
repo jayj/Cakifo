@@ -926,12 +926,18 @@ sub {
 /* Related Posts with thumbnails turned on */
 .related-posts .with-thumbnails {
 	.no-list-style();
+	margin-left: 20px;
+
+	#sidebar-after-singular &,
+	#sidebar-after-single & {
+		margin-left: 0;
+	}
 
 	.related-post {
 		float: left;
 		.square(110px);
 		border: 1px solid darken(@grayLighter, 3%);
-		margin-right: @smallGutterWidth;
+		margin: 0 @smallGutterWidth @smallGutterWidth 0;
 		background: @white;
 		border-radius: 3px;
 
