@@ -47,8 +47,6 @@ audio,
 canvas,
 video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
 }
 /**
  * Prevents modern browsers from displaying `audio` without controls
@@ -59,8 +57,7 @@ audio:not([controls]) {
   height: 0;
 }
 /**
- * Addresses styling for `hidden` attribute not present in IE 7/8/9, Firefox 3,
- * and Safari 4.
+ * Addresses styling for `hidden` attribute not present in IE 8/9.
  */
 [hidden] {
   display: none;
@@ -78,13 +75,10 @@ audio:not([controls]) {
   box-sizing: border-box;
 }
 /*
- * Corrects text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
  * Prevents iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
-  font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -302,7 +296,6 @@ blockquote span {
 }
 blockquote span cite {
   display: inline;
-  margin-top: 0;
 }
 blockquote.alignleft,
 blockquote.alignright {
@@ -346,7 +339,7 @@ blockquote p:only-of-type:after {
   display: none;
 }
 /* Pull quotes */
-blockquote.pull {
+.pull {
   font-size: 19px;
   /* Reset styles inherited from 'blockquote' */
 
@@ -355,21 +348,21 @@ blockquote.pull {
   text-shadow: none;
   box-shadow: none;
 }
-blockquote.pull.alignleft {
+.pull.alignleft {
   padding-right: 0;
   margin: 0 25px 0 0;
 }
-blockquote.pull.alignright {
+.pull.alignright {
   margin: 0 0 0 25px;
 }
-blockquote.pull:before {
+.pull:before {
   top: -22px;
   left: -12px;
   font-size: 120px;
   opacity: 0.25;
 }
-blockquote.pull:after,
-blockquote.pull p:first-of-type:after {
+.pull:after,
+.pull p:first-of-type:after {
   font-size: 56px;
   opacity: 0.2;
 }
@@ -436,7 +429,6 @@ figure {
 .comment-content img,
 .widget img {
   max-width: 100%;
-  width: auto\9;
   height: auto;
 }
 .size-full,
@@ -673,9 +665,7 @@ acronym {
   text-transform: uppercase;
   cursor: help;
 }
-/*
- * Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome
- */
+/* Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome */
 b,
 strong {
   font-weight: bold;
@@ -684,7 +674,7 @@ em,
 cite {
   font-style: italic;
 }
-/*
+/**
  * Horizontal rule
  */
 hr {
@@ -696,22 +686,16 @@ hr {
   margin: 25px 0;
   border-bottom: 4px double #eeeeee;
 }
-/*
- * Addresses styling not present in IE 8/9.
- */
+/* Addresses styling not present in IE 8/9 */
 mark {
   background: #ff0;
   color: #000000;
 }
-/*
- * Addresses styling not present in Safari 5 and Chrome.
- */
+/* Addresses styling not present in Safari 5 and Chrome */
 dfn {
   font-style: italic;
 }
-/*
- * Addresses inconsistent and variable font size in all browsers.
- */
+/* Addresses inconsistent and variable font size in all browsers */
 small {
   font-size: 80%;
 }
@@ -726,7 +710,7 @@ li address,
 dd address {
   margin: 0;
 }
-/*
+/**
  * Prevents `sub` and `sup` affecting `line-height` in all browsers.
  */
 sub,
@@ -1059,6 +1043,9 @@ caption {
   background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
   border-radius: 5px 5px 0 0;
 }
+.no-rgba .secondary-navigation {
+  background-color: #f8fafb;
+}
 .secondary-navigation ul {
   list-style-type: none;
   padding: 0;
@@ -1089,6 +1076,7 @@ caption {
   text-transform: uppercase;
 }
 .secondary-navigation a:hover {
+  background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.53);
   color: #d54e21;
 }
@@ -1135,9 +1123,6 @@ caption {
 .secondary-navigation .sub-menu .sub-menu {
   top: 0;
   left: 100%;
-}
-.no-rgba .secondary-navigation {
-  background-color: #f8fafb;
 }
 /* =============================================================================
    Layout:  Header
@@ -2274,8 +2259,8 @@ input {
  */
 button,
 html [type="button"],
-[type="reset"],
-[type="submit"] {
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
 
@@ -2294,8 +2279,8 @@ input[disabled] {
  * 1. Addresses box sizing set to `content-box` in IE 8/9.
  * 2. Removes excess padding in IE 8/9.
  */
-[type="checkbox"],
-[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2308,13 +2293,13 @@ input[disabled] {
 /**
  * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
  */
-[type="search"] {
+input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
 
 }
-[type="search"],
-[type="color"] {
+input[type="search"],
+input[type="color"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -2323,8 +2308,8 @@ input[disabled] {
  * Removes inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 /**
@@ -2397,9 +2382,9 @@ textarea:focus {
   outline: thin dotted \9;
 }
 select:focus,
-[type="file"]:focus,
-[type="radio"]:focus,
-[type="checkbox"]:focus {
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -2475,9 +2460,9 @@ label {
  */
 .btn,
 button,
-[type="submit"],
-[type="reset"],
-[type="button"] {
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
   background-color: #fafafa;
   background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4 100%);
   background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4 100%);
@@ -2498,9 +2483,9 @@ button,
 }
 .btn:hover,
 button:hover,
-[type="submit"]:hover,
-[type="reset"]:hover,
-[type="button"]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
   background-color: #f0f0f0;
   background-image: -webkit-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
   background-image: -moz-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
@@ -2515,16 +2500,16 @@ button:hover,
 }
 .btn:active,
 button:active,
-[type="submit"]:active,
-[type="reset"]:active,
-[type="button"]:active {
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .btn:focus,
 button:focus,
-[type="submit"]:focus,
-[type="reset"]:focus,
-[type="button"]:focus {
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -2759,9 +2744,9 @@ html .btn-inverse:hover {
 #commentform .form-url {
   clear: both;
 }
-#commentform [type="text"],
-#commentform [type="email"],
-#commentform [type="url"],
+#commentform input[type="text"],
+#commentform input[type="email"],
+#commentform input[type="url"],
 #commentform textarea {
   display: block;
   width: 100%;

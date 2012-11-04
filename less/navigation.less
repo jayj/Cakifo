@@ -198,6 +198,10 @@
 	#gradient > .vertical(fade(@white, 20%), fade(@white, 53%));
 	border-radius: 5px 5px 0 0;
 
+	.no-rgba & {
+		background-color: #f8fafb;
+	}
+
 	ul {
 		.no-list-style();
 	}
@@ -221,6 +225,7 @@
 		text-transform: uppercase;
 
 		&:hover {
+			background-color: @white;
 			background-color: fade(@white, 53%);
 			color: @linkColorHover;
 		}
@@ -282,8 +287,4 @@
 		top: 0;
 		left: 100%;
 	}
-}
-
-.no-rgba .secondary-navigation {
-	background-color: #f8fafb;
 }
