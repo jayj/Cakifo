@@ -63,17 +63,6 @@
 	}
 }
 
-/* Separator */
-.site-navigation .sep {
-	display: inline;
-	color: #808080;
-}
-
-.sub-menu .sep,
-.menu-item:last-of-type .sep {
-	display: none;
-}
-
 // =============================================================================
 // Primary Navigation for screens > 980px
 // =============================================================================
@@ -92,6 +81,14 @@
 		.menu-list-container,
 		.search-form {
 			display: block !important;
+		}
+
+		// Reset the styling created by the small navigation
+		// If the viewport is made bigger while the small navigation was open,
+		// the container would still the same size without this
+		.menu-list-container {
+			overflow: visible !important;
+			height: auto;
 		}
 
 		// Each item in the navigation
@@ -164,6 +161,17 @@
 		.menu-item:hover > ul {
 			display: block;
 		}
+
+		// Separator
+		.sep {
+			display: inline;
+			color: #808080;
+		}
+
+		.sub-menu .sep,
+		.menu-item:last-of-type .sep {
+			display: none;
+		}
 	}
 
 	/* Hide toggle button */
@@ -224,8 +232,14 @@
 		color: @grayDarker;
 	}
 
+	// Separator
 	.sep {
 		color: @grayLight;
+	}
+
+	.sub-menu .sep,
+	.menu-item:last-of-type .sep {
+		display: none;
 	}
 
 	// Level two

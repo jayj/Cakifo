@@ -943,15 +943,6 @@ caption {
 #menu-toggle:focus {
   background: #222222;
 }
-/* Separator */
-.site-navigation .sep {
-  display: inline;
-  color: #808080;
-}
-.sub-menu .sep,
-.menu-item:last-of-type .sep {
-  display: none;
-}
 @media screen and (min-width: 980px) {
   .main-navigation {
     position: relative;
@@ -967,6 +958,10 @@ caption {
   .main-navigation .menu-list-container,
   .main-navigation .search-form {
     display: block !important;
+  }
+  .main-navigation .menu-list-container {
+    overflow: visible !important;
+    height: auto;
   }
   .main-navigation .menu-item {
     position: relative;
@@ -1035,6 +1030,14 @@ caption {
   .main-navigation .menu-item:hover > ul {
     display: block;
   }
+  .main-navigation .sep {
+    display: inline;
+    color: #808080;
+  }
+  .main-navigation .sub-menu .sep,
+  .main-navigation .menu-item:last-of-type .sep {
+    display: none;
+  }
   /* Hide toggle button */
   #menu-toggle {
     display: none;
@@ -1096,6 +1099,10 @@ caption {
 }
 .secondary-navigation .sep {
   color: #999999;
+}
+.secondary-navigation .sub-menu .sep,
+.secondary-navigation .menu-item:last-of-type .sep {
+  display: none;
 }
 .secondary-navigation .sub-menu {
   display: none;
@@ -3523,7 +3530,7 @@ html .btn-inverse:hover {
   thead {
     display: table-header-group;
     /* h5bp.com/t */
-
+  
   }
   tr,
   img {
