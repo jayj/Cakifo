@@ -68,10 +68,12 @@ audio:not([controls]) {
 }
 
 /*
- * Prevents iOS text size adjust after orientation change, without disabling
+ * 1. Sets 1 rem = 10px
+ * 2. Prevents iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
+	font-size: 62.5%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
@@ -144,31 +146,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2 {
-	font-size: @headingsFontSize;
+	.font-size(@headingsFontSize);
 	letter-spacing: -1px;
 }
 
 h3 {
-	font-size: (@headingsFontSize - 4px);
+	.font-size(@headingsFontSize - 4);
 	color: @orangeDark;
 }
 
 h4 {
-	#font > .sans-serif(@headingsFontSize - 4px, bold);
+	#font > .sans-serif(@headingsFontSize - 4, bold);
 }
 
 h5 {
-	font-size: (@headingsFontSize - 6px);
+	.font-size(@headingsFontSize - 6);
 }
 
 h6 {
-	#font > .shorthand(@headingsFontSize - 8px, normal);
+	#font > .shorthand(@headingsFontSize - 8, normal);
 }
 
 /* Entry titles */
 .entry-title {
 	margin-bottom: 5px;
-	font-size: (@headingsFontSize + 4px);
+	.font-size(@headingsFontSize + 4);
 }
 
 /* h3 headings in post content */
@@ -251,7 +253,7 @@ dt {
  * Corrects font family set oddly in Safari 5 and Chrome.
  */
 code, kbd, pre, samp {
-	#font > .monospace(inherit, normal);
+	#font > .monospace(@baseFontSize, normal);
 }
 
 /**
@@ -451,7 +453,7 @@ sub {
 	}
 
 	span {
-		#font > .shorthand(46px, normal);
+		#font > .shorthand(46, normal);
 		text-shadow: 0 1px 0 @white;
 		letter-spacing: -2px;
 	}
@@ -479,7 +481,7 @@ sub {
 	float: right;
 	margin: @smallGutterWidth @gutterWidth 0 0;
 	padding: 2px 8px;
-	#font > .alternative(21px);
+	#font > .alternative(21);
 	background-color: @white;
 	background-color: fade(@white, 53%);
 	border-radius: 3px;
@@ -547,7 +549,7 @@ sub {
  */
 .byline,
 .entry-meta {
-	#font > .sans-serif(14px, normal, 2);
+	#font > .sans-serif(14, normal, 2);
 	color: darken(@grayLight, 10%);
 	clear: both;
 }
@@ -574,7 +576,7 @@ sub {
 	padding: 12px @smallGutterWidth;
 	border-bottom: 1px solid @grayLighter;
 	margin-bottom: @smallGutterWidth;
-	#font > .alternative(14px, normal, 2);
+	#font > .alternative(14, normal, 2);
 	background: #f8f8f7;
 	border-radius: 5px;
 	color: @gray;
@@ -615,7 +617,7 @@ sub {
 	.blue-box(10px @smallGutterWidth, @smallGutterWidth 0);
 
 	.author-name {
-		font-size: 18px;
+		.font-size(18);
 	}
 }
 
@@ -626,7 +628,7 @@ sub {
 
 		a {
 			padding-left: (@smallGutterWidth - 2px);
-			font-size: 14px;
+			.font-size(14);
 			background: url(images/twitter.png) no-repeat left bottom;
 		}
 	}
@@ -653,7 +655,7 @@ sub {
 }
 
 .loop-title {
-	font-size: 22px;
+	.font-size(22);
 
 	span {
 		font-weight: normal;
@@ -677,7 +679,7 @@ sub {
 
 	.entry-title {
 		margin: 0;
-		font-size: 16px;
+		.font-size(16);
 		letter-spacing: 0;
 		word-wrap: break-word;
 	}
@@ -687,7 +689,7 @@ sub {
 	}
 
 	.recent-posts-meta {
-		font-size: 12px;
+		.font-size(12);
 		font-style: italic;
 		color: darken(@grayLight, 5%);
 	}
@@ -753,11 +755,11 @@ sub {
 
 	.entry-title {
 		margin: 0;
-		font-size: 18px;
+		.font-size(18);
 	}
 
 	.headline-meta {
-		font-size: 14px;
+		.font-size(14);
 		font-style: italic;
 		color: darken(@grayLight, 5%);
 	}
@@ -794,7 +796,7 @@ sub {
 		width: 100%;
 		padding: 5px;
 		border-bottom: 1px solid @grayLighter;
-		font-size: 16px;
+		.font-size(@baseFontSize);
 		text-align: left;
 
 		&:hover,
@@ -807,7 +809,7 @@ sub {
 		float: right;
 		padding-right: 5px;
 		margin-top: -38px;
-		#font > .alternative(14px);
+		#font > .alternative(14);
 		text-align: right;
 	}
 }
@@ -822,7 +824,7 @@ sub {
    ========================================================================== */
 
 .error-404 .hentry {
-	font-size: 18px;
+	.font-size(18);
 
 	.entry-title {
 		margin-bottom: @smallGutterWidth;
@@ -911,7 +913,7 @@ sub {
  */
 #wp-calendar {
 	th, td {
-		font-size: 14px;
+		.font-size(14);
 		padding: 4px;
 		text-align: center;
 
@@ -975,7 +977,7 @@ sub {
 		}
 
 		span {
-			#font > .alternative(13px);
+			#font > .alternative(13);
 		}
 	}
 }
@@ -1006,7 +1008,7 @@ sub {
 
 	// Comment meta
 	.comment-meta {
-		#font > .alternative(13px, normal, 25px);
+		#font > .alternative(13, normal, 25px);
 		color: @grayLight;
 
 		a {
@@ -1024,7 +1026,7 @@ sub {
 
 	.comment-author {
 		display: block;
-		#font > .alternative(16px, bold, 25px);
+		#font > .alternative(16, bold, 25px);
 		color: @gray;
 
 		cite {
@@ -1153,7 +1155,7 @@ sub {
 .twitter-share {
 	display: inline-block;
 	overflow: hidden;
-	#font > .sans-serif(12px, bold, 1.5);
+	#font > .sans-serif(12, bold, 1.5);
 	text-align: center;
 }
 
@@ -1225,7 +1227,7 @@ sub {
 		left: 9%;
 		margin: 0;
 		.size(45px, 34px);
-		#font > .sans-serif(16px, bold, 34px);
+		#font > .sans-serif(16, bold, 34px);
 		text-align: center;
 
 		&:before {

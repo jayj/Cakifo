@@ -45,7 +45,7 @@
 	width: 100%;
 	padding: 15px 0;
 	margin: 0;
-	#font > .alternative(21px, bold, 1.5);
+	#font > .alternative(21, bold, 1.5);
 	#gradient > .vertical(#555, #444);
 	box-shadow: 0 1px 0 fade(@white, 10%);
 	border-bottom: 1px solid #050505;
@@ -102,7 +102,7 @@
 			> a {
 				display: inline-block;
 				padding: 21px 15px;
-				#font > .alternative(15px, bold, normal);
+				#font > .alternative(15, bold, normal);
 				text-shadow: 1px 1px 0 @grayDarker;
 				color: #ccc;
 				.transition(all 150ms);
@@ -139,7 +139,7 @@
 				padding: 18px 14px;
 				border-top: 1px solid #3a3a3a;
 				border-bottom: 1px solid #262627;
-				font-size: 14px;
+				.font-size(14);
 			}
 
 			.menu-item:first-of-type > a {
@@ -214,7 +214,7 @@
 	.menu-item {
 		position: relative;
 		float: left;
-		font-size: 14px;
+		.font-size(14);
 	}
 
 	a {
@@ -261,7 +261,7 @@
 			width: 180px;
 			padding: 8px 10px;
 			border-bottom: 1px solid darken(@grayLighter, 6%);
-			font-size: 14px;
+			.font-size(14);
 			line-height: 2.2;
 			background: @grayLighter;
 			text-transform: none;

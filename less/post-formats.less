@@ -11,7 +11,7 @@
 	right: 0;
 	float: right;
 	padding: 3px 10px;
-	font-size: 12px;
+	.font-size(12);
 	background-color: @grayLighter;
 	border-radius: 3px;
 	color: lighten(@gray, 15%);
@@ -30,7 +30,7 @@
 .chat-transcript {
 	margin: @smallGutterWidth 0;
 	// Give the chat transcripts a monospace font
-	#font > .monospace(14px);
+	#font > .monospace(14);
 }
 
 .chat-row {
@@ -42,7 +42,7 @@
 	color: #000;
 
 	cite {
-		font-size: 12px;
+		.font-size(12);
 		font-style: normal;
 		font-weight: bold;
 		text-transform: uppercase;
@@ -83,13 +83,13 @@
 	h1 {
 		display: inline-block;
 		margin: 0;
-		font-size: 16px;
+		.font-size(16);
 		font-weight: normal;
 	}
 
 	h2 {
 		margin: 0;
-		font-size: 13px;
+		.font-size(13);
 		font-weight: normal;
 	}
 
@@ -128,7 +128,7 @@
  * Format: Gallery
  */
 .image-count {
-	font-size: @baseFontSize - 1px;
+	.font-size(@baseFontSize - 1);
 	font-style: italic;
 	color: @grayLight;
 }
@@ -138,7 +138,7 @@
  */
 .format-image .entry-meta {
 	padding: @smallGutterWidth;
-	#font > .alternative(14px, normal, 2);
+	#font > .alternative(14, normal, 2);
 	background: #e0e6e8;
 	border-radius: 3px;
 	color: @gray;

@@ -40,7 +40,7 @@ blockquote {
 	cite, span {
 		display: block;
 		margin-top: 20px;
-		font-size: 14px;
+		.font-size(@baseFontSize - 1);
 		color: #91acbe;
 	}
 
@@ -75,7 +75,7 @@ blockquote {
 		position: absolute;
 		top: -45px;
 		left: -25px;
-		font: 170px @altFontFamily;
+		#font > .alternative(170);
 		color: rgb(94, 141, 181);
 		opacity: 0.35;
 	}
@@ -86,7 +86,7 @@ blockquote {
 		position: absolute;
 		bottom: -10px;
 		margin-left: 10px;
-		font: 70px @altFontFamily;
+		#font > .alternative(70);
 		color: rgb(94, 141, 181);
 		opacity: 0.25;
 	}
@@ -104,7 +104,7 @@ blockquote {
 
 /* Pull quotes */
 .pull {
-	font-size: 19px;
+	.font-size(19);
 	/* Reset styles inherited from 'blockquote' */
 	background: none;
 	border: none;
@@ -125,13 +125,13 @@ blockquote {
 	&:before {
 		top: -22px;
 		left: -12px;
-		font-size: 120px;
+		.font-size(120);
 		opacity: 0.25;
 	}
 
 	&:after,
 	p:first-of-type:after {
-		font-size: 56px;
+		.font-size(56);
 		opacity: 0.2;
 	}
 }

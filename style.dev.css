@@ -75,10 +75,12 @@ audio:not([controls]) {
   box-sizing: border-box;
 }
 /*
- * Prevents iOS text size adjust after orientation change, without disabling
+ * 1. Sets 1 rem = 10px
+ * 2. Prevents iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
+  font-size: 62.5%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -88,6 +90,7 @@ body {
   color: #555555;
   font-family: Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.8;
 }
@@ -147,23 +150,28 @@ h6 {
 h1,
 h2 {
   font-size: 26px;
+  font-size: 2.6rem;
   letter-spacing: -1px;
 }
 h3 {
   font-size: 22px;
+  font-size: 2.2rem;
   color: #d54e21;
 }
 h4 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
+  font-size: 2.2rem;
   font-weight: bold;
   line-height: 1.8;
 }
 h5 {
   font-size: 20px;
+  font-size: 2rem;
 }
 h6 {
   font-size: 18px;
+  font-size: 1.8rem;
   font-weight: normal;
   line-height: 1.8;
 }
@@ -171,6 +179,7 @@ h6 {
 .entry-title {
   margin-bottom: 5px;
   font-size: 30px;
+  font-size: 3rem;
 }
 /* h3 headings in post content */
 .entry-content h3 {
@@ -189,6 +198,7 @@ h6 {
   border-radius: 50px 30px;
   color: #333333;
   font-size: 18px;
+  font-size: 1.8rem;
   padding: 8px 20px;
   margin: 0 0 25px;
   text-shadow: 0 1px 0 #ffffff;
@@ -210,6 +220,7 @@ h6 {
   border-radius: 30px;
   color: #ffffff;
   font-size: 24px;
+  font-size: 2.4rem;
   padding: 10px 60px;
   margin: 0 0 40px -60px;
   text-shadow: 1px 1px 0 #9c3412;
@@ -265,6 +276,7 @@ blockquote {
   text-shadow: 0 1px 0 #ffffff;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
   line-height: 32px;
   margin: 25px auto;
@@ -291,7 +303,8 @@ blockquote cite,
 blockquote span {
   display: block;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 15px;
+  font-size: 1.5rem;
   color: #91acbe;
 }
 blockquote span cite {
@@ -318,7 +331,11 @@ blockquote:before {
   position: absolute;
   top: -45px;
   left: -25px;
-  font: 170px 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 170px;
+  font-size: 17rem;
+  font-weight: normal;
+  line-height: 1.8;
   color: #5e8db5;
   opacity: 0.35;
 }
@@ -327,7 +344,11 @@ blockquote p:first-of-type:after {
   position: absolute;
   bottom: -10px;
   margin-left: 10px;
-  font: 70px 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 70px;
+  font-size: 7rem;
+  font-weight: normal;
+  line-height: 1.8;
   color: #5e8db5;
   opacity: 0.25;
 }
@@ -341,6 +362,7 @@ blockquote p:only-of-type:after {
 /* Pull quotes */
 .pull {
   font-size: 19px;
+  font-size: 1.9rem;
   /* Reset styles inherited from 'blockquote' */
 
   background: none;
@@ -359,11 +381,13 @@ blockquote p:only-of-type:after {
   top: -22px;
   left: -12px;
   font-size: 120px;
+  font-size: 12rem;
   opacity: 0.25;
 }
 .pull:after,
 .pull p:first-of-type:after {
   font-size: 56px;
+  font-size: 5.6rem;
   opacity: 0.2;
 }
 /* =============================================================================
@@ -377,7 +401,8 @@ kbd,
 pre,
 samp {
   font-family: Monaco, Consolas, "Courier New", monospace;
-  font-size: inherit;
+  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.8;
 }
@@ -526,6 +551,7 @@ iframe[seamless] {
   margin: 0;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.8;
   color: #dddddd;
@@ -557,6 +583,7 @@ iframe[seamless] {
 .gallery-caption {
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.8;
   margin: 0 0 15px 0;
@@ -760,12 +787,14 @@ tfoot td {
   box-shadow: inset 0 1px 1px 0 #eeeeee;
   color: #666666;
   font-size: 11px;
+  font-size: 1.1rem;
   text-transform: uppercase;
 }
 caption {
   margin-bottom: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   line-height: 1.8;
 }
@@ -907,6 +936,7 @@ caption {
   margin: 0;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 21px;
+  font-size: 2.1rem;
   font-weight: bold;
   line-height: 1.5;
   background-color: #4e4e4e;
@@ -959,6 +989,7 @@ caption {
     padding: 21px 15px;
     font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
     font-size: 15px;
+    font-size: 1.5rem;
     font-weight: bold;
     line-height: normal;
     text-shadow: 1px 1px 0 #222222;
@@ -1000,6 +1031,7 @@ caption {
     border-top: 1px solid #3a3a3a;
     border-bottom: 1px solid #262627;
     font-size: 14px;
+    font-size: 1.4rem;
   }
   .main-navigation .sub-menu .menu-item:first-of-type > a {
     border-top: none;
@@ -1067,6 +1099,7 @@ caption {
   position: relative;
   float: left;
   font-size: 14px;
+  font-size: 1.4rem;
 }
 .secondary-navigation a {
   display: inline-block;
@@ -1106,6 +1139,7 @@ caption {
   padding: 8px 10px;
   border-bottom: 1px solid #dfdfdf;
   font-size: 14px;
+  font-size: 1.4rem;
   line-height: 2.2;
   background: #eeeeee;
   text-transform: none;
@@ -1139,6 +1173,7 @@ caption {
 }
 #site-title span {
   font-size: 46px;
+  font-size: 4.6rem;
   font-weight: normal;
   line-height: 1.8;
   text-shadow: 0 1px 0 #ffffff;
@@ -1164,6 +1199,7 @@ caption {
   padding: 2px 8px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 21px;
+  font-size: 2.1rem;
   font-weight: normal;
   line-height: 1.8;
   background-color: #ffffff;
@@ -1474,6 +1510,7 @@ body.page-template-template-front-page #main,
   height: 100%;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 38px;
+  font-size: 3.8rem;
   font-weight: bold;
   line-height: 41px;
   color: #555555;
@@ -1551,6 +1588,7 @@ body.page-template-template-front-page #main,
 .entry-meta {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 2;
   color: #808080;
@@ -1576,6 +1614,7 @@ body.page-template-template-front-page #main,
   margin-bottom: 25px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 2;
   background: #f8f8f7;
@@ -1610,6 +1649,7 @@ body.page-template-template-front-page #main,
   float: right;
   padding: 3px 10px;
   font-size: 12px;
+  font-size: 1.2rem;
   background-color: #eeeeee;
   border-radius: 3px;
   color: #7b7b7b;
@@ -1627,6 +1667,7 @@ body.page-template-template-front-page #main,
   margin: 25px 0;
   font-family: Monaco, Consolas, "Courier New", monospace;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.8;
 }
@@ -1639,6 +1680,7 @@ body.page-template-template-front-page #main,
 }
 .chat-author cite {
   font-size: 12px;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: bold;
   text-transform: uppercase;
@@ -1685,11 +1727,13 @@ body.page-template-template-front-page #main,
   display: inline-block;
   margin: 0;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
 }
 .format-status .entry-header h2 {
   margin: 0;
   font-size: 13px;
+  font-size: 1.3rem;
   font-weight: normal;
 }
 .format-status .entry-header a {
@@ -1726,6 +1770,7 @@ body.page-template-template-front-page #main,
  */
 .image-count {
   font-size: 15px;
+  font-size: 1.5rem;
   font-style: italic;
   color: #999999;
 }
@@ -1736,6 +1781,7 @@ body.page-template-template-front-page #main,
   padding: 25px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 2;
   background: #e0e6e8;
@@ -1768,6 +1814,7 @@ body.page-template-template-front-page #main,
 }
 .author-profile .author-name {
   font-size: 18px;
+  font-size: 1.8rem;
 }
 .author-profile .twitter-link,
 .loop-meta .twitter-link {
@@ -1777,6 +1824,7 @@ body.page-template-template-front-page #main,
 .loop-meta .twitter-link a {
   padding-left: 23px;
   font-size: 14px;
+  font-size: 1.4rem;
   background: url(images/twitter.png) no-repeat left bottom;
 }
 /* =============================================================================
@@ -1809,6 +1857,7 @@ body.page-template-template-front-page #main,
 }
 .loop-title {
   font-size: 22px;
+  font-size: 2.2rem;
 }
 .loop-title span {
   font-weight: normal;
@@ -1834,6 +1883,7 @@ body.page-template-template-front-page #main,
 .recent-post .entry-title {
   margin: 0;
   font-size: 16px;
+  font-size: 1.6rem;
   letter-spacing: 0;
   word-wrap: break-word;
 }
@@ -1842,6 +1892,7 @@ body.page-template-template-front-page #main,
 }
 .recent-post .recent-posts-meta {
   font-size: 12px;
+  font-size: 1.2rem;
   font-style: italic;
   color: #8c8c8c;
 }
@@ -1905,9 +1956,11 @@ body.page-template-template-front-page #main,
 .headline-list .entry-title {
   margin: 0;
   font-size: 18px;
+  font-size: 1.8rem;
 }
 .headline-list .headline-meta {
   font-size: 14px;
+  font-size: 1.4rem;
   font-style: italic;
   color: #8c8c8c;
 }
@@ -1938,6 +1991,7 @@ body.page-template-template-front-page #main,
   padding: 5px;
   border-bottom: 1px solid #eeeeee;
   font-size: 16px;
+  font-size: 1.6rem;
   text-align: left;
 }
 .image-info dt:hover,
@@ -1955,6 +2009,7 @@ body.page-template-template-front-page #main,
   margin-top: -38px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.8;
   text-align: right;
@@ -1968,6 +2023,7 @@ body.page-template-template-front-page #main,
    ========================================================================== */
 .error-404 .hentry {
   font-size: 18px;
+  font-size: 1.8rem;
 }
 .error-404 .hentry .entry-title {
   margin-bottom: 25px;
@@ -2048,6 +2104,7 @@ body.page-template-template-front-page #main,
 #wp-calendar th,
 #wp-calendar td {
   font-size: 14px;
+  font-size: 1.4rem;
   padding: 4px;
   text-align: center;
 }
@@ -2115,6 +2172,7 @@ body.page-template-template-front-page #main,
 .related-posts .with-thumbnails .related-post span {
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 13px;
+  font-size: 1.3rem;
   font-weight: normal;
   line-height: 1.8;
 }
@@ -2146,6 +2204,7 @@ body.page-template-template-front-page #main,
 .comment .comment-meta {
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 13px;
+  font-size: 1.3rem;
   font-weight: normal;
   line-height: 25px;
   color: #999999;
@@ -2163,6 +2222,7 @@ body.page-template-template-front-page #main,
   display: block;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   line-height: 25px;
   color: #555555;
@@ -2341,6 +2401,7 @@ button,
 select,
 textarea {
   font-size: 15px;
+  font-size: 1.5rem;
   font-weight: normal;
   line-height: normal;
 }
@@ -2358,8 +2419,8 @@ select,
 textarea {
   display: inline-block;
   padding: 8px 6px;
-  border: 1px solid #ccc;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
   border-radius: 3px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   color: #555555;
@@ -2451,6 +2512,7 @@ label {
   margin-bottom: 5px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.8;
   cursor: pointer;
@@ -2477,6 +2539,7 @@ input[type="button"] {
   border-radius: 3px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   line-height: 1.8;
   padding: 4px 14px;
@@ -2517,16 +2580,19 @@ input[type="button"]:focus {
 .btn-large {
   padding: 9px 16px;
   font-size: 18px;
+  font-size: 1.8rem;
   line-height: normal;
   border-radius: 5px;
 }
 .btn-small {
   padding: 4px 9px;
   font-size: 14px;
+  font-size: 1.4rem;
 }
 .btn-mini {
   padding: 3px 7px;
   font-size: 13px;
+  font-size: 1.3rem;
   font-weight: normal;
 }
 /* Button colours */
@@ -2713,6 +2779,7 @@ html .btn-inverse:hover {
 }
 #respond .log-in-out {
   font-size: 18px;
+  font-size: 1.8rem;
   text-align: center;
 }
 #reply-title {
@@ -2723,12 +2790,14 @@ html .btn-inverse:hover {
   padding: 10px 25px;
   margin: -40px 0 25px;
   font-size: 26px;
+  font-size: 2.6rem;
   letter-spacing: -1px;
   text-align: center;
 }
 #cancel-comment-reply-link {
   padding-left: 10px;
   font-size: 18px;
+  font-size: 1.8rem;
   font-style: italic;
   font-weight: normal;
 }
@@ -2909,6 +2978,7 @@ html .btn-inverse:hover {
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.5;
   text-align: center;
@@ -2980,6 +3050,7 @@ html .btn-inverse:hover {
   height: 34px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   line-height: 34px;
   text-align: center;
@@ -3305,11 +3376,6 @@ html .btn-inverse:hover {
   }
   .recent-post .entry-title {
     margin: 0;
-    font-size: 16px;
-  }
-  .recent-post .recent-posts-meta,
-  .recent-post .entry-summary {
-    font-size: 13px;
   }
   .recent-post .thumbnail {
     float: left;
@@ -3353,12 +3419,6 @@ html .btn-inverse:hover {
   .slide .slider-video {
     display: none;
   }
-  .slide .entry-title {
-    font-size: 24px;
-  }
-  .slide .entry-summary {
-    font-size: 14px;
-  }
   .flex-control-nav {
     margin-top: 40px;
   }
@@ -3379,9 +3439,11 @@ html .btn-inverse:hover {
   /* Make the Category Headlines list smaller */
   .headline-list .entry-title {
     font-size: 16px;
+    font-size: 1.6rem;
   }
   .headline-list .headline-meta {
     font-size: 14px;
+    font-size: 1.4rem;
   }
   .headline-list .thumbnail {
     max-width: 50px;
@@ -3408,9 +3470,11 @@ html .btn-inverse:hover {
   /* Make the Recent Posts list smaller */
   .recent-post .entry-title {
     font-size: 18px;
+    font-size: 1.8rem;
   }
   .recent-post .recent-posts-meta {
     font-size: 12px;
+    font-size: 1.2rem;
   }
   .recent-post .thumbnail {
     max-width: 150px;
@@ -3418,6 +3482,7 @@ html .btn-inverse:hover {
   }
   .recent-post .entry-summary {
     font-size: 14px;
+    font-size: 1.4rem;
   }
   /* Make the Category Headlines list two columns */
   .headline-list {
