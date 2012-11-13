@@ -272,6 +272,7 @@
 
 @media screen and (max-width: 620px) {
 
+	/* Turn the header and description into a single column */
 	#branding {
 		text-align: center;
 	}
@@ -283,6 +284,17 @@
 
 	#site-description {
 		margin: 20px 0 0;
+	}
+
+	.flexbox {
+		#branding hgroup {
+			.flex-direction(column);
+		}
+
+		#site-title,
+		#site-description {
+			margin: 0 auto 20px;
+		}
 	}
 
 	/* Hide the slider */
