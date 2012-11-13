@@ -22,6 +22,8 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 					<?php _e( 'Show menu', 'cakifo' ); ?>
 				</h3>
 
+				<a class="assistive-text" href="#main" title="<?php esc_attr_e( 'Skip to content', 'cakifo' ); ?>"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
+
 				<?php
 					wp_nav_menu( array(
 						'theme_location'  => 'primary',

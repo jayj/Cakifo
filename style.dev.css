@@ -454,6 +454,7 @@ figure {
 .comment-content img,
 .widget img {
   max-width: 100%;
+  width: auto\9;
   height: auto;
 }
 .size-full,
@@ -854,6 +855,26 @@ caption {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
+.site-navigation .assistive-text:hover,
+.site-navigation .assistive-text:active,
+.site-navigation .assistive-text:focus {
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 100000;
+  /* Above WP toolbar */
+
+  width: auto;
+  height: auto;
+  padding: 12px;
+  border: 2px solid #333;
+  background: #fff;
+  border-radius: 3px;
+  color: #000;
+  clip: auto !important;
+  font-size: 12px;
+}
 /**
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
@@ -1169,6 +1190,9 @@ caption {
   margin: 0 0 0 40px;
 }
 #site-title img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
   margin-top: 20px;
 }
 #site-title span {
@@ -3453,6 +3477,7 @@ html .btn-inverse:hover {
    Media Queries:  Max-width 620px
    ========================================================================== */
 @media screen and (max-width: 620px) {
+  /* Turn the header and description into a single column */
   #branding {
     text-align: center;
   }
@@ -3462,6 +3487,17 @@ html .btn-inverse:hover {
   }
   #site-description {
     margin: 20px 0 0;
+  }
+  .flexbox #branding hgroup {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+  }
+  .flexbox #site-title,
+  .flexbox #site-description {
+    margin: 0 auto 20px;
   }
   /* Hide the slider */
   #slider {

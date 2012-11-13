@@ -17,6 +17,8 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 
 		<?php do_atomic( 'open_menu_secondary' ); // cakifo_open_menu_secondary ?>
 
+			<a class="assistive-text" href="#main" title="<?php esc_attr_e( 'Skip to content', 'cakifo' ); ?>"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
+
 			<?php
 				wp_nav_menu( array(
 					'theme_location' => 'secondary',

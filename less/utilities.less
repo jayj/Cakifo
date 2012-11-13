@@ -44,6 +44,24 @@
 	clip: rect(1px, 1px, 1px, 1px);
 }
 
+.site-navigation .assistive-text:hover,
+.site-navigation .assistive-text:active,
+.site-navigation .assistive-text:focus {
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 100000; /* Above WP toolbar */
+	.square(auto);
+	padding: 12px;
+	border: 2px solid #333;
+	background: #fff;
+	border-radius: 3px;
+	color: #000;
+	clip: auto !important;
+	font-size: 12px;
+}
+
 /**
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
