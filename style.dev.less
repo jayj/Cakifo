@@ -571,6 +571,39 @@ sub {
 	clear: both;
 }
 
+/**
+ * Intro
+ */
+.singular .intro {
+	.blue-box;
+
+	.entry-title {
+		display: none;
+	}
+
+	.entry-content {
+		.font-size(@baseFontSize + 2);
+	}
+
+	.post-edit-link {
+		position: absolute;
+		top: 35px;
+		right: @smallGutterWidth;
+		padding: 0 8px;
+		.font-size(12);
+		background: @grayLight;
+		border-radius: 3px;
+		color: @white;
+		text-decoration: none;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: #777;
+		}
+	}
+}
+
 /* =============================================================================
    Components:  Breadcrumbs
    ========================================================================== */

@@ -1629,6 +1629,40 @@ body.page-template-template-front-page #main,
 .page-links {
   clear: both;
 }
+/**
+ * Intro
+ */
+.singular .intro {
+  background-color: #f2f7fc;
+  border: double #c5d2d8;
+  border-width: 4px 0;
+  margin: 0 0 40px;
+  padding: 10px 25px;
+}
+.singular .intro .entry-title {
+  display: none;
+}
+.singular .intro .entry-content {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.singular .intro .post-edit-link {
+  position: absolute;
+  top: 35px;
+  right: 25px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  background: #999999;
+  border-radius: 3px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.singular .intro .post-edit-link:hover,
+.singular .intro .post-edit-link:focus,
+.singular .intro .post-edit-link:active {
+  background: #777;
+}
 /* =============================================================================
    Components:  Breadcrumbs
    ========================================================================== */

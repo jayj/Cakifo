@@ -18,6 +18,14 @@ get_header(); // Loads the header.php template ?>
 
 			<?php
 				/**
+				 * If we have content for this page, let's display it.
+				 */
+				if ( cakifo_post_has_content() )
+					get_template_part( 'loop', 'intro' );
+			?>
+
+			<?php
+				/**
 				 * Get the section-recentposts.php template file
 				 */
 				get_template_part( 'section', 'recentposts' );
