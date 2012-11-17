@@ -9,7 +9,7 @@
 
 do_atomic( 'before_intro' ); // cakifo_before_intro ?>
 
-<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class( 'intro' ); ?>">
+<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class( 'intro-post' ); ?>">
 
 	<?php do_atomic( 'open_intro' ); // cakifo_open_intro ?>
 

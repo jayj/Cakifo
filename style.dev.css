@@ -1632,23 +1632,19 @@ body.page-template-template-front-page #main,
 /**
  * Intro
  */
-.singular .intro {
-  background-color: #f2f7fc;
-  border: double #c5d2d8;
-  border-width: 4px 0;
-  margin: 0 0 40px;
-  padding: 10px 25px;
+.singular .intro-post {
+  margin-bottom: 40px;
 }
-.singular .intro .entry-title {
+.singular .intro-post .entry-title {
   display: none;
 }
-.singular .intro .entry-content {
-  font-size: 18px;
-  font-size: 1.8rem;
+.singular .intro-post .entry-content {
+  font-size: 21px;
+  font-size: 2.1rem;
 }
-.singular .intro .post-edit-link {
+.singular .intro-post .post-edit-link {
   position: absolute;
-  top: 35px;
+  top: 40%;
   right: 25px;
   padding: 0 8px;
   font-size: 12px;
@@ -1658,9 +1654,9 @@ body.page-template-template-front-page #main,
   color: #ffffff;
   text-decoration: none;
 }
-.singular .intro .post-edit-link:hover,
-.singular .intro .post-edit-link:focus,
-.singular .intro .post-edit-link:active {
+.singular .intro-post .post-edit-link:hover,
+.singular .intro-post .post-edit-link:focus,
+.singular .intro-post .post-edit-link:active {
   background: #777;
 }
 /* =============================================================================
