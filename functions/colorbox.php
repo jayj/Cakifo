@@ -10,7 +10,7 @@
  * @package Cakifo
  * @subpackage Functions
  * @since Cakifo 1.3.0
- * @version 1.3.0
+ * @version 1.5.0
  * @link http://jacklmoore.com/colorbox/
  */
 
@@ -25,8 +25,8 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
  * @uses wp_enqueue_style()
  */
 function cakifo_colorbox_script() {
-	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.19.2', true );
-	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3.19.2', 'screen' );
+	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.3.20.1', true );
+	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.3.20.1', 'screen' );
 }
 
 /**
@@ -43,10 +43,16 @@ function cakifo_colorbox() {
 		'selector'       => '.colorbox',
 		'maxWidth'       => '80%',
 		'maxHeight'      => '80%',
-		'opacity'        => '0.6', // For modern browsers that support CSS3 gradients this will be actually be 1
+		'opacity'        => '0.6',
 		'fixed'          => true,
-		'slideshowStart' => '\u25B6',
-		'slideshowStop'  => 'll',
+		'slideshowStart' => '&#9654;', // Play symbol
+		'slideshowStop'  => 'll', // Stop symbol
+		'current'        => esc_js( sprintf( _x( 'Image %1$s of %2$s',  'colorbox', 'cakifo' ), '{current}', '{total}' ) ),
+		'previous'       => esc_js( _x( 'Previous',                     'colorbox', 'cakifo' ) ),
+		'next'           => esc_js( _x( 'Next',                         'colorbox', 'cakifo' ) ),
+		'close'          => esc_js( _x( 'Close Lightbox',               'colorbox', 'cakifo' ) ),
+		'xhrError'       => esc_js( _x( 'This content failed to load.', 'colorbox', 'cakifo' ) ),
+		'imgError'       => esc_js( _x( 'This image failed to load.',   'colorbox', 'cakifo' ) ),
 	);
 
 	$args = array();

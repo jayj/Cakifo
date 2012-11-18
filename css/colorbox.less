@@ -1,0 +1,197 @@
+
+// Import LESS variables and mixins
+@import "../less/variables.less";
+@import "../less/mixins.less";
+
+/* =============================================================================
+   ColorBox Core Style
+   ========================================================================= */
+
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	overflow: hidden;
+}
+
+#cboxOverlay {
+	position: fixed;
+	.square(100%);
+}
+
+#cboxMiddleLeft,
+#cboxBottomLeft {
+	clear: left;
+}
+
+#cboxContent {
+	position: relative;
+}
+
+#cboxLoadedContent {
+	overflow: auto;
+}
+
+#cboxTitle {
+	margin: 0;
+}
+
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	.square(100%);
+}
+
+#cboxPrevious,
+#cboxNext,
+#cboxClose,
+#cboxSlideshow {
+	cursor: pointer;
+}
+
+.cboxPhoto {
+	display: block;
+	float: left;
+	max-width: none;
+	margin: auto;
+	border: 0;
+}
+
+.cboxIframe {
+	display: block;
+	.square(100%);
+	border: 0;
+}
+
+#colorbox,
+#cboxContent,
+#cboxLoadedContent {
+	.box-sizing(content-box);
+}
+
+/* =============================================================================
+   Colorbox theme for Cakifo
+   ========================================================================= */
+
+#cboxOverlay {
+	background: @black;
+	#gradient > .radial(fade(@black, 5%), fade(@black, 90%), ellipse);
+}
+
+#cboxContent {
+	padding: 15px 15px 55px;
+	border: 10px solid fade(@black, 15%);
+	#font > .alternative(14);
+	background: @white;
+	background-clip: padding-box; // Needed to make the border transparent
+	border-radius: 8px;
+}
+
+#cboxTitle,
+#cboxCurrent,
+#cboxSlideshow,
+#cboxPrevious,
+#cboxNext,
+#cboxClose {
+	margin: 14px 15px 5px 0;
+}
+
+#cboxTitle {
+	font-weight: bold;
+	text-align: center;
+
+	&:empty {
+		margin-right: 0;
+	}
+}
+
+/**
+ * Colorbox buttons
+ */
+#cboxSlideshow,
+#cboxPrevious,
+#cboxNext,
+#cboxClose {
+	.square(24px);
+	border-radius: 50%; // Makes the buttons round
+	text-indent: -9999px;
+}
+
+/* Next and prev buttons */
+#cboxPrevious,
+#cboxNext {
+	position: absolute;
+	top: 45%;
+	margin: 0;
+	opacity: 0.4;
+	background: @white url(../images/colorbox.png) no-repeat;
+	box-shadow: 0 0 10px fade(@black, 30%);
+	.transition(opacity 150ms ease);
+
+	#cboxContent:hover & {
+		opacity: 0.8;
+	}
+
+	#cboxContent &:hover {
+		opacity: 1;
+	}
+
+	&:active {
+		box-shadow:
+			inset 0 0 5px fade(@black, 30%),
+			0 0 10px fade(@black, 30%);
+	}
+}
+
+#cboxPrevious {
+	background-position: -2px -2px;
+	left: 4%;
+}
+
+#cboxNext {
+	background-position: -67px -2px;
+	right: 4%;
+}
+
+/* Close and slideshow buttons */
+#cboxClose,
+#cboxSlideshow {
+	#gradient > .vertical(#f9f9f9, #e0e0e0);
+	border: 1px solid #cfcfcf;
+
+	&:hover {
+		border-color: darken(#cfcfcf, 15%);
+		box-shadow: 0 0 7px fade(@black, 20%);
+	}
+}
+
+#cboxSlideshow {
+	position: relative;
+	#font > .sans-serif(14, bold, 1.6);
+	text-shadow: 1px 1px 0 fade(@white, 80%);
+	text-align: center;
+	text-indent: 0;
+}
+
+/* Move the close button to the right and add a × symbol */
+#cboxClose {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+
+	&:after {
+		content: '\00D7'; // × symbol
+		position: absolute;
+		top: -8px;
+		left: 5px;
+		font-size: 21px;
+		font-weight: bold;
+		color: darken(#717171, 15%);
+		text-indent: 0;
+	}
+}
