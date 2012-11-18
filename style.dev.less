@@ -11,6 +11,22 @@
 @import "less/variables.less";
 @import "less/mixins.less";
 
+// Clearfix
+// -------------------------
+.clearfix {
+	*zoom: 1;
+
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
 /* =============================================================================
    HTML5 display definitions
    ========================================================================= */
