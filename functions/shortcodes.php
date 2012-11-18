@@ -24,9 +24,6 @@ function cakifo_register_shortcodes() {
 	add_shortcode( 'entry-format', 'cakifo_entry_format_shortcode' );
 
 	/* Replace some Hybrid Core shortcodes */
-	remove_shortcode( 'entry-title' );
-	add_shortcode( 'entry-title', 'cakifo_entry_title_shortcode' );
-
 	remove_shortcode( 'entry-published' );
 	add_shortcode( 'entry-published', 'cakifo_entry_published_shortcode' );
 
@@ -268,38 +265,6 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
 			</div>';
 
 	return $attr['before'] . $output . $attr['after'] . $script;
-}
-
-/**
- * Displays a post's title with a link to the post.
- * This version allows you to overwrite the tag.
- *
- * It replaces the default Hybrid Core shortcode. The name is still the the same
- *
- * @param array $attr
- * @since Cakifo 1.5.0
- */
-function cakifo_entry_title_shortcode( $attr ) {
-	$attr = shortcode_atts(
-		array(
-			'permalink' => true,
-			'tag'       => 'h1'
-		),
-		$attr
-	);
-
-	$tag = $attr['tag'];
-	$class = sanitize_html_class( get_post_type() ) . '-title entry-title';
-
-	if ( false == (bool) $attr['permalink'] )
-		$title = the_title( "<{$tag} class='{$class}'>", "</{$tag}>", false );
-	else
-		$title = the_title( "<{$tag} class='{$class}'><a href='" . get_permalink() . "'>", "</a></{$tag}>", false );
-
-	if ( empty( $title ) && ! is_singular() )
-		$title = "<{$tag} class='{$class}'><a href='" . get_permalink() . "'>" . __( '(Untitled)', 'cakifo' ) . "</a></{$tag}>";
-
-	return $title;
 }
 
 /**
