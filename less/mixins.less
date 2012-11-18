@@ -2,22 +2,6 @@
 // Mixins
 // =============================================================================
 
-// Clearfix
-// -------------------------
-.clearfix {
-	*zoom: 1;
-
-	&:before,
-	&:after {
-		content: "";
-		display: table;
-	}
-
-	&:after {
-		clear: both;
-	}
-}
-
 // Calculate font size in rems
 .font-size(@font-size: 16) {
 	@rem: (@font-size / 10);
@@ -508,12 +492,12 @@
 		background-repeat: no-repeat;
 	}
 
-	.radial(@innerColor: #555, @outerColor: #333)  {
+        .radial(@innerColor: #555, @outerColor: #333, @shape: circle)  {
 		background-color: @outerColor;
-		background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
-		background-image:    -moz-radial-gradient(circle, @innerColor, @outerColor);
-		background-image:      -o-radial-gradient(circle, @innerColor, @outerColor);
-		background-image:         radial-gradient(circle, @innerColor, @outerColor);
+                background-image: -webkit-radial-gradient(@shape, @innerColor, @outerColor);
+                background-image:    -moz-radial-gradient(@shape, @innerColor, @outerColor);
+                background-image:      -o-radial-gradient(@shape, @innerColor, @outerColor);
+                background-image:         radial-gradient(@shape, @innerColor, @outerColor);
 		background-repeat: no-repeat;
 	}
 
