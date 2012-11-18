@@ -662,34 +662,36 @@ function cakifo_admin_header_image() { ?>
  */
 function cakifo_admin_header_style() { ?>
 
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' type='text/css' media='all' />
+
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
-			border: none;
-			max-width: 980px;
+			max-width: 1000px;
 			margin-bottom: 25px;
+			border: none;
 		}
 
 		#headimg h1 {
-			font-family: Georgia, "Times New Roman", Times, serif;
 			float: left;
-			margin: 0;
+			margin: 10px 0 0;
+			font-family: 'PT Serif', Georgia, serif;
 		}
 
 		#headimg h1 a {
 			font-size: 46px;
 			font-weight: normal;
-			line-height: 36px;
-			text-decoration: none;
+			line-height: 1.8;
 			letter-spacing: -2px;
+			text-decoration: none;
 		}
 
 		#desc {
-			color: #666;
-			font: 21px 'PT Serif', Georgia, serif;
 			float: right;
-			margin: 15px 0 0 0;
-			color: #7a7a7a;
 			padding: 4px 6px;
+			margin: 20px 0 0 0;
+			font: 21px 'PT Serif', Georgia, serif;
+			color: #555;
+			letter-spacing: -1px;
 		}
 	</style> <?php
 }
