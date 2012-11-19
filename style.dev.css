@@ -335,7 +335,7 @@ blockquote:before {
   font-size: 170px;
   font-size: 17rem;
   font-weight: normal;
-  line-height: 1.8;
+  line-height: normal;
   color: #5e8db5;
   opacity: 0.35;
 }
@@ -348,7 +348,7 @@ blockquote p:first-of-type:after {
   font-size: 70px;
   font-size: 7rem;
   font-weight: normal;
-  line-height: 1.8;
+  line-height: normal;
   color: #5e8db5;
   opacity: 0.25;
 }
