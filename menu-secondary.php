@@ -20,12 +20,14 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 			<a class="assistive-text" href="#main" title="<?php esc_attr_e( 'Skip to content', 'cakifo' ); ?>"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
 
 			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'secondary',
-					'after'          => '<span class="sep">|</span>',
-					'container'      => '',
-					'fallback_cb'    => ''
-				) );
+				wp_nav_menu(
+					array(
+						'theme_location' => 'secondary',
+						'after'          => '<span class="sep">|</span>',
+						'container'      => '',
+						'fallback_cb'    => ''
+					)
+				);
 			?>
 
 		<?php do_atomic( 'close_menu_secondary' ); // cakifo_close_menu_secondary ?>

@@ -24,8 +24,17 @@
 			<header class="comment-meta">
 				<?php echo hybrid_avatar(); ?>
 
-				<?php echo apply_atomic_shortcode( 'comment_meta', '<div class="comment-meta">[comment-author] [comment-published] [comment-permalink before="| "] [comment-edit-link before="| "] [comment-reply-link before="| "]</div>' ); ?>
-			</header> <!-- .comment-meta -->
+				<?php
+					echo apply_atomic_shortcode( 'comment_meta',
+						'<div class="comment-meta">
+							[comment-author]
+							[comment-published]
+							[comment-permalink before="| "]
+							[comment-edit-link before="| "]
+							[comment-reply-link before="| "]
+						</div> <!-- div.comment-meta -->' );
+				?>
+			</header> <!-- header.comment-meta -->
 
 			<section class="comment-content comment-text">
 				<?php
@@ -36,7 +45,7 @@
 				<?php comment_text( $comment->comment_ID ); ?>
 			</section> <!-- .comment-content .comment-text -->
 
-			<?php //echo do_shortcode( '[comment-reply-link]' ); ?>
+			<?php // echo do_shortcode( '[comment-reply-link]' ); ?>
 
 			<?php do_atomic( 'close_comment' ); // cakifo_close_comment ?>
 
@@ -44,4 +53,4 @@
 
 		<?php do_atomic( 'after_comment' ); // cakifo_after_comment ?>
 
-	<?php /* No closing </li> is needed.  WordPress will know where to add it. */ ?>
+	<?php /* No closing </li> is needed. WordPress will know where to add it. */ ?>

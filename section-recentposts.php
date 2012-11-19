@@ -67,12 +67,14 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 				<?php
 					/* Get the thumbnail */
 					if ( current_theme_supports( 'get-the-image' ) )
-						get_the_image( array(
+						get_the_image(
+							array(
 							'meta_key'      => 'Thumbnail',
 							'size'          => 'recent',
 							'image_class'   => 'thumbnail',
 							'default_image' => THEME_URI . '/images/default-thumb-220-150.gif',
-						) );
+							)
+						);
 				?>
 
 				<header class="entry-header">

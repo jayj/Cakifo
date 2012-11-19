@@ -72,7 +72,10 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			?>
 
 			<?php $count = cakifo_get_image_attachment_count(); ?>
-			<p class="image-count"><?php printf( _n( 'This gallery contains %s image.', 'This gallery contains %s images.', $count, 'cakifo' ), $count ); ?></p>
+
+			<p class="image-count">
+				<?php printf( _n( 'This gallery contains %s image.', 'This gallery contains %s images.', $count, 'cakifo' ), $count ); ?>
+			</p>
 		</div> <!-- .entry-summary -->
 
 		<?php
@@ -91,4 +94,4 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 
-<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>

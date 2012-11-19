@@ -31,7 +31,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 					the_content();
 				} else {
 					/* Get full size version of the "Featured Image" */
-					get_the_image( array( 'image_class' => 'aligncenter', 'size' => 'full', 'meta_key' => false, 'link_to_post' => false ) );
+					get_the_image(
+						array(
+							'image_class' => 'aligncenter',
+							'size' => 'full',
+							'meta_key' => false,
+							'link_to_post' => false
+						)
+					);
 				}
 			 ?>
 
@@ -59,7 +66,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 					the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) );
 				} else {
 					/* Get full size version of the "Featured Image" */
-					get_the_image( array( 'image_class' => 'aligncenter', 'size' => 'full', 'meta_key' => false, 'link_to_post' => false ) );
+					get_the_image(
+						array(
+							'image_class' => 'aligncenter',
+							'size' => 'full',
+							'meta_key' => false,
+							'link_to_post' => false
+						)
+					);
 				}
 			 ?>
 
@@ -77,4 +91,4 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 
-<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>

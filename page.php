@@ -19,26 +19,28 @@ get_header(); // Loads the header.php template ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-			<?php do_atomic( 'before_entry' ); //cakifo_before_entry ?>
+			<?php do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 				<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
-					<?php do_atomic( 'open_entry' ); //cakifo_open_entry ?>
+					<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
 					<?php
 						// Get the thumbnail
 						if ( current_theme_supports( 'get-the-image' ) )
-							get_the_image( array(
-								'meta_key'   => 'Thumbnail',
-								'size'       => 'thumbnail',
-								'attachment' => false
-							) );
+							get_the_image(
+								array(
+									'meta_key'   => 'Thumbnail',
+									'size'       => 'thumbnail',
+									'attachment' => false
+								)
+							);
 					?>
 
 					<div class="entry-content">
-						<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
 					</div> <!-- .entry-content -->
 
@@ -46,11 +48,11 @@ get_header(); // Loads the header.php template ?>
 
 					<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
-					<?php do_atomic( 'close_entry' ); //cakifo_close_entry ?>
+					<?php do_atomic( 'close_entry' ); //´cakifo_close_entry ?>
 
 				</article> <!-- #post-<?php the_ID(); ?> -->
 
-			<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+			<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>
 
 		<?php endwhile; ?>
 

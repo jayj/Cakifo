@@ -20,7 +20,7 @@ get_header(); // Loads the header.php template ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'loop', get_post_format() ); // Could be awesome to use `hybrid_get_context()` but `get_template_part()` doesn't accept arrays ?>
+			<?php get_template_part( 'loop', get_post_format() ); ?>
 
 		<?php endwhile; ?>
 

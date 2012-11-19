@@ -69,4 +69,4 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 
-<?php do_atomic( 'after_entry' ); //cakifo_after_entry ?>
+<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>

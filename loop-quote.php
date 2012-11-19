@@ -42,7 +42,16 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
 		</div> <!-- .entry-content -->
 
-		<?php echo apply_atomic_shortcode( 'entry_meta_quote', '<footer class="entry-meta">' . __( '[post-format-link] published on [entry-published] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' ); ?>
+		<?php
+			echo apply_atomic_shortcode( 'entry_meta_quote',
+				'<footer class="entry-meta">' . __(
+					'[post-format-link] published on [entry-published]
+					 [entry-permalink before="| "]
+					 [entry-comments-link before="| "]
+					 [entry-edit-link before=" | "]', 'cakifo' ) .
+				'</footer>'
+			);
+		?>
 
 	<?php endif; ?>
 

@@ -75,13 +75,15 @@
 							/**
 							 * Get the post thumbnail with the slider image size
 							 */
-							$thumbnail = get_the_image( array(
-								'size'        => 'slider',
-								'attachment'  => false,
-								'meta_key'    => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
-								'image_class' => 'thumbnail',
-								'echo'        => false
-							) );
+							$thumbnail = get_the_image(
+								array(
+									'size'        => 'slider',
+									'attachment'  => false,
+									'meta_key'    => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
+									'image_class' => 'thumbnail',
+									'echo'        => false
+								)
+							);
 
 							/* Get the size for the 'slider' image size */
 							$thumbnail_size = cakifo_get_image_size( 'slider' );

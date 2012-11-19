@@ -1,9 +1,9 @@
 <?php
 /**
  * The template for displaying headlines from categories
- * in the template-front-page.php page template
+ * in the `template-front-page.php` page template
  *
- * Child Themes can replace this template part file via {section-headlines.php}
+ * Child Themes can replace this template part file via `section-headlines.php`
  *
  * @package Cakifo
  * @subpackage Template
@@ -60,14 +60,17 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 						<?php do_atomic( 'open_headline_list_item' ); // cakifo_open_headline_list_item ?>
 
 						<?php
-							/* Get the thumbnail */
+							/**
+							 * Get the thumbnail
+							 */
 							if ( current_theme_supports( 'get-the-image' ) )
-								get_the_image( array(
-									'meta_key'      => 'Thumbnail',
-									'size'          => 'small',
-									'image_class'   => 'thumbnail',
-									'default_image' => THEME_URI . '/images/default-thumb-mini.gif'
-								) );
+								get_the_image(
+									array(
+										'size'          => 'small',
+										'image_class'   => 'thumbnail',
+										'default_image' => THEME_URI . '/images/default-thumb-mini.gif'
+									)
+								);
 						?>
 
 						<?php
