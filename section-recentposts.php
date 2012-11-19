@@ -50,7 +50,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 		);
 
 		// Fire the Recent Posts query
-		$recent = new WP_Query( apply_filter( 'cakifo_recent_posts_query', $recent_args ) );
+		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
 
 		while ( $recent->have_posts() ) : $recent->the_post();
 
