@@ -43,9 +43,9 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
 		return;
 
-	wp_enqueue_style( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.css', false, '1.4' );
-	wp_enqueue_script( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.js', array( 'farbtastic' ), '1.4' );
-	wp_enqueue_style( 'farbtastic' );
+	wp_enqueue_script( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.js', array( 'wp-color-picker' ), '1.5' );
+	wp_enqueue_script( 'wp-color-picker' );
+	wp_enqueue_style( 'wp-color-picker' );
 }
 
 /**
@@ -79,20 +79,16 @@ function cakifo_theme_meta_box() { ?>
 
 	<table class="form-table">
 
+		<?php
+			$default_color = 'data-default-color="' . esc_attr( cakifo_get_default_link_color() ) . '"';
+		?>
 		<tr>
 			<th><label for="<?php echo hybrid_settings_field_id( 'link_color' ); ?>"><?php _e( 'Link Color', 'cakifo' ); ?></label></th>
 			<td>
 				<fieldset>
 					<legend class="screen-reader-text"><span><?php _e( 'Link Color', 'cakifo' ); ?></span></legend>
 
-					<input type="text" name="<?php echo hybrid_settings_field_name( 'link_color' ); ?>" id="link-color" value="<?php echo esc_attr( hybrid_get_setting( 'link_color' ) ); ?>" />
-
-					<a href="#" class="pickcolor hide-if-no-js" id="link-color-example"></a>
-					<input type="button" class="pickcolor button hide-if-no-js" value="<?php esc_attr_e( 'Select a Color', 'cakifo' ); ?>" />
-
-					<div id="colorPickerDiv" style="z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none;"></div> <br />
-
-					<span><?php printf( __( 'Default color: %s', 'cakifo' ), '<span id="default-color">' . cakifo_get_default_link_color() . '</span>' ); ?></span>
+					<input type="text" name="<?php echo hybrid_settings_field_name( 'link_color' ); ?>" id="link-color" value="<?php echo esc_attr( hybrid_get_setting( 'link_color' ) ); ?>" <?php echo $default_color ?> />
 				</fieldset>
 			</td>
 		</tr>
