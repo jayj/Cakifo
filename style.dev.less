@@ -505,6 +505,10 @@ sub {
 	background-color: fade(@white, 53%);
 	border-radius: 3px;
 	color: @gray;
+
+	&:empty {
+		background: none;
+	}
 }
 
 /**
