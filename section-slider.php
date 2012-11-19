@@ -46,7 +46,7 @@
 	}
 
 	/* Fire the query */
-	$loop = new WP_Query( $feature_query );
+	$loop = new WP_Query( apply_filters( 'cakifo_slider_query', $feature_query ) ); // Filter the query with the `cakifo_slider_query` filter
 ?>
 
 <?php if ( $loop->have_posts() ) : ?>
