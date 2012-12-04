@@ -1,26 +1,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo 1.5\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-05 00:31+0100\n"
-"PO-Revision-Date: 2012-12-05 00:32+0100\n"
+"PO-Revision-Date: \n"
 "Last-Translator: Jesper J <kontakt@jayj.dk>\n"
 "Language-Team: \n"
-"Language: Danish\n"
+"Language: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;"
-"_x:1,2c;_ex:1,2c;esc_attr_x:1,2c;esc_html_x:1,2c;_n:1,2;_nx:1,2,3c,4c;"
-"_n_noop:1,2;_nx_noop:1,2,3c;__\n"
-"X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:32
 msgid "Whoah! 404 error! We can't find the page!"
-msgstr "Whoah! 404! 404!.. Hjælp!.. Vi kan ikke finde siden!"
+msgstr ""
 
 #: 404.php:37
 #, php-format
@@ -28,29 +27,26 @@ msgid ""
 "You tried going to %s but the page no longer exists. All is not lost!  "
 "Perhaps searching, or one of the links below, can help."
 msgstr ""
-"Du leder efter %s, men den findes slet ikke! Bare rolig, alt er ikke "
-"fortabt! Du kan søge, eller bruge linksne nedenfor, og du vil finde."
 
 #: comment.php:42
 msgid "Your comment is awaiting moderation."
-msgstr "Din kommentar afventer bedømmelse."
+msgstr ""
 
 #: comments.php:22
 msgid "No Responses"
-msgstr "Ingen kommentarer"
+msgstr ""
 
 #: comments.php:22
-#, fuzzy
 msgid "One Response"
-msgstr "1 kommentar"
+msgstr ""
 
 #: comments.php:22
 msgid "% Responses"
-msgstr "% kommentarer"
+msgstr ""
 
 #: comments.php:35
 msgid "Comment navigation"
-msgstr "Kommentarnavigation"
+msgstr ""
 
 #: comments.php:45
 #, php-format
@@ -58,124 +54,122 @@ msgid ""
 "Comments are closed, but <a href=\"%1$s\" title=\"Trackback URL for this post"
 "\">trackbacks</a> and pingbacks are open."
 msgstr ""
-"Kommentarer er lukket, men <a href=\"%1$s\" title=\"Trackback URL for this "
-"post\">trackbacks</a> og pingbacks er åbne."
 
 #: comments.php:51
 msgid "Comments are closed."
-msgstr "Der er lukket for muligheden for at kommenterer."
+msgstr ""
 
 #: functions.php:238
 msgid "Logo.png from the Cakifo images folder"
-msgstr "Logo.png fra Cakifo billedemappen"
+msgstr ""
 
 #: functions.php:252
 msgid "Logo.png from the Cakifo child theme images folder"
-msgstr "Logo.png fra Cakifo child-tema billedemappen"
+msgstr ""
 
 #: functions.php:373
 msgctxt "slide"
 msgid "Previous"
-msgstr "Forrige"
+msgstr ""
 
 #: functions.php:374
 msgctxt "slide"
 msgid "Next"
-msgstr "Næste"
+msgstr ""
 
 #: functions.php:375
 msgctxt "slide"
 msgid "Pause"
-msgstr "Pause"
+msgstr ""
 
 #: functions.php:376
 msgctxt "slide"
 msgid "Play"
-msgstr "Start"
+msgstr ""
 
 #: functions.php:451 functions.php:979 loop-aside.php:47 loop-audio.php:60
 #: loop-chat.php:60 loop-image.php:66 loop-link.php:78 loop-quote.php:41
 #: loop-video.php:62 loop.php:90 section-recentposts.php:89
 #: section-slider.php:107
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
-msgstr "Læs mere <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
 
 #: functions.php:465
 msgid "You are here:"
-msgstr "Du er her:"
+msgstr ""
 
 #: functions.php:486
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
-msgstr "Abonnér på [rss-link] [twitter-username before=\"eller \"]"
+msgstr ""
 
 #: functions.php:763
 msgid "Article written by [entry-author]"
-msgstr "Indlæg skrevet af  [entry-author]"
+msgstr ""
 
 #: functions.php:774 functions.php:775 loop-meta.php:107 loop-meta.php:108
 #, php-format
 msgid "Follow %s on Twitter"
-msgstr "Følg %s på Twitter"
+msgstr ""
 
 #: functions.php:827
 msgctxt "image dimensions"
 msgid "Dimensions"
-msgstr "Dimensioner"
+msgstr ""
 
 #: functions.php:827
 #, php-format
 msgctxt "image dimensions"
 msgid "%1$s &#215; %2$s pixels"
-msgstr "%1$s &#215; %2$s pixels"
+msgstr ""
 
 #: functions.php:831
 msgctxt "image creation"
 msgid "Date"
-msgstr "Dato"
+msgstr ""
 
 #: functions.php:835
 msgid "Camera"
-msgstr "Kamera"
+msgstr ""
 
 #: functions.php:839
 msgid "Aperture"
-msgstr "Blænde"
+msgstr ""
 
 #: functions.php:839
 #, php-format
 msgid "f/%s"
-msgstr "f/%s"
+msgstr ""
 
 #: functions.php:843
 msgid "Focal Length"
-msgstr "Brændvidde"
+msgstr ""
 
 #: functions.php:843
 #, php-format
 msgid "%s mm"
-msgstr "%s mm"
+msgstr ""
 
 #: functions.php:847
 msgid "ISO"
-msgstr "ISO"
+msgstr ""
 
 #: functions.php:863
 msgid "Shutter Speed"
-msgstr "Lukkertid"
+msgstr ""
 
 #: functions.php:863
 #, php-format
 msgid "%s sec"
-msgstr "%s sek"
+msgstr ""
 
 #: functions.php:880
 msgid "Image Info"
-msgstr "Billede info"
+msgstr ""
 
 #: image.php:35
 #, php-format
 msgid "Sizes: %s"
-msgstr "Størrelser: %s"
+msgstr ""
 
 #: image.php:49 loop-aside.php:30 loop-aside.php:48 loop-attachment.php:49
 #: loop-attachment.php:77 loop-audio.php:30 loop-audio.php:61 loop-chat.php:30
@@ -185,11 +179,11 @@ msgstr "Størrelser: %s"
 #: loop-video.php:30 loop-video.php:63 loop.php:46 loop.php:84 loop.php:91
 #: page.php:44 template-archives.php:71 template-bookmarks.php:65
 msgid "Pages:"
-msgstr "Sider:"
+msgstr ""
 
 #: image.php:59
 msgid "Gallery"
-msgstr "Galleri"
+msgstr ""
 
 #: loop-aside.php:25 loop-audio.php:25 loop-chat.php:25 loop-gallery.php:24
 #: loop-gallery.php:49 loop-link.php:25 loop-video.php:25 loop.php:28
@@ -198,8 +192,6 @@ msgid ""
 "Published on [entry-published] by [entry-author] [entry-comments-link before="
 "\"| \"] [entry-edit-link before=\" | \"]"
 msgstr ""
-"Udgivet [entry-published] af [entry-author] [entry-comments-link before=\"| "
-"\"] [entry-edit-link before=\" | \"]"
 
 #: loop-aside.php:36 loop-audio.php:36 loop-chat.php:36 loop-link.php:49
 #: loop-video.php:36 loop.php:52 loop.php:99
@@ -207,25 +199,21 @@ msgid ""
 "[entry-terms taxonomy=\"category\" before=\"Posted in \"]\n"
 "\t\t\t\t\t [entry-terms before=\"| Tagged \"]"
 msgstr ""
-"[entry-terms taxonomy=\"category\" before=\"Skrevet i \"]\n"
-"\t\t\t\t\t [entry-terms before=\"| Tagget med: \"]"
 
 #: loop-aside.php:51
 msgid ""
 "[post-format-link] published on [entry-published] [entry-permalink before="
 "\"| \"] [entry-comments-link before=\"| \"] [entry-edit-link before=\" | \"]"
 msgstr ""
-"[post-format-link] udgivet [entry-published] [entry-permalink before=\"| \"] "
-"[entry-comments-link before=\"| \"] [entry-edit-link before=\" | \"]"
 
 #: loop-attachment.php:44
 #, php-format
 msgid "Download %s"
-msgstr "Download %s"
+msgstr ""
 
 #: loop-attachment.php:52
 msgid "Published on [entry-published] [entry-edit-link before=\"| \"]"
-msgstr "Udgivet [entry-published] [entry-edit-link before=\"| \"]"
+msgstr ""
 
 #: loop-audio.php:69 loop-chat.php:69 loop-video.php:71
 msgid ""
@@ -235,11 +223,6 @@ msgid ""
 "\t\t\t\t\t [entry-comments-link before=\"| \"]\n"
 "\t\t\t\t\t [entry-edit-link before=\" | \"]"
 msgstr ""
-"Udgivet [entry-published]\n"
-"\t\t\t\t\t by [entry-author]\n"
-"\t\t\t\t\t [entry-permalink before=\"| \"]\n"
-"\t\t\t\t\t [entry-comments-link before=\"| \"]\n"
-"\t\t\t\t\t [entry-edit-link before=\" | \"]"
 
 #: loop-gallery.php:36 loop-gallery.php:84
 msgid ""
@@ -247,144 +230,133 @@ msgid ""
 "\t\t\t\t\t [entry-terms before=\"| Tagged \"]\n"
 "\t\t\t\t\t [entry-edit-link before=\" | \"]"
 msgstr ""
-"[entry-terms taxonomy=\"category\" before=\"Skrevet i\"]\n"
-"\t\t\t\t\t [entry-terms before=\"| Tagget med: \"]\n"
-"\t\t\t\t\t [entry-edit-link before=\" | \"]"
 
 #: loop-gallery.php:77
 #, php-format
 msgid "This gallery contains %s image."
 msgid_plural "This gallery contains %s images."
-msgstr[0] "Dette gallery indeholder %s billede."
-msgstr[1] "Dette gallery indeholder %s billeder."
+msgstr[0] ""
+msgstr[1] ""
 
 #: loop-image.php:49
 msgid "[entry-published] by [entry-author] [entry-comments-link]"
-msgstr "[entry-published] af [entry-author] [entry-comments-link]"
+msgstr ""
 
 #: loop-image.php:50 loop-image.php:85
 msgid ""
 "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms "
 "before=\"Tagged: \"] [entry-edit-link]"
 msgstr ""
-"[entry-terms taxonomy=\"category\" before=\"Skrevet i \"] [entry-terms "
-"before=\"Tagget med: \"] [entry-edit-link]"
 
 #: loop-image.php:84
 msgid "[entry-published] by [entry-author] [entry-comments-link] "
-msgstr "[entry-published] af [entry-author] [entry-comments-link] "
+msgstr ""
 
 #: loop-link.php:82
 msgid ""
 "Published on [entry-published] by [entry-author] [entry-permalink before=\"| "
 "\"] [entry-comments-link before=\"| \"] [entry-edit-link before=\" | \"]"
 msgstr ""
-"Udgivet [entry-published] af [entry-author] [entry-permalink before=\"| \"] "
-"[entry-comments-link before=\"| \"] [entry-edit-link before=\" | \"]"
 
 #: loop-meta.php:36
 #, php-format
 msgid "Category Archives: %s"
-msgstr "Kategori arkiv: %s"
+msgstr ""
 
 #: loop-meta.php:50
 #, php-format
 msgid "Tag Archives: %s"
-msgstr "Tag arkiv: %s"
+msgstr ""
 
 #: loop-meta.php:64
 #, php-format
 msgid "Post format: %s"
-msgstr "Post format: %s"
+msgstr ""
 
 #: loop-meta.php:78
 #, php-format
 msgid "Archives: %s"
-msgstr "Arkiv: %s"
+msgstr ""
 
 #: loop-meta.php:97
 #, php-format
 msgid "Author: %s"
-msgstr "Forfatter: %s"
+msgstr ""
 
 #: loop-meta.php:123
 #, php-format
 msgid "%1$d Search Result for: %2$s"
 msgid_plural "%1$d Search Results for: %2$s"
-msgstr[0] "%1$d søgeresultat for: %2$s"
-msgstr[1] "%1$d søgeresultater for: %2$s"
+msgstr[0] ""
+msgstr[1] ""
 
 #: loop-meta.php:128
 #, php-format
 msgid "You are browsing the search results for &quot;%1$s&quot;"
-msgstr "Du kigger på søgeresultaterne for &quot;%1$s&quot;"
+msgstr ""
 
 #: loop-meta.php:138
 msgid "Archives by date"
-msgstr "Arkiv efter dato"
+msgstr ""
 
 #: loop-meta.php:142
 msgid "You are browsing the site archives by date."
-msgstr "Du kigger på arkiverne efter dato"
+msgstr ""
 
 #: loop-meta.php:169 library/classes/widget-archives.php:44
 #: library/classes/widget-archives.php:142 library/functions/context.php:452
 msgid "Archives"
-msgstr "Arkiv"
+msgstr ""
 
 #: loop-meta.php:173
 msgid "You are browsing the site archives."
-msgstr "Du kigger på sidens arkiv"
+msgstr ""
 
 #: loop-nav.php:16
 msgid "<span class=\"meta-nav\">&larr;</span> Return to entry"
-msgstr "<span class=\"meta-nav\">&larr;</span> Tilbage til indlæg"
+msgstr ""
 
 #: loop-nav.php:22 loop-nav.php:32 loop-nav.php:43
 msgid "Post navigation"
-msgstr "Indlægsnavigation"
+msgstr ""
 
 #: loop-nav.php:23
 #, php-format
 msgid "<span class=\"meta-nav\">&larr;</span> %s"
-msgstr "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr ""
 
 #: loop-nav.php:24
 #, php-format
 msgid "%s <span class=\"meta-nav\">&rarr;</span>"
-msgstr "%s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
 
 #: loop-nav.php:35
 msgid "&larr; Previous"
-msgstr "&larr; Forrige"
+msgstr ""
 
 #: loop-nav.php:36
 msgid "Next &rarr;"
-msgstr "Næste &rarr;"
+msgstr ""
 
 #: loop-nav.php:40
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
-msgstr "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
 
 #: loop-nav.php:40
 msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Næste <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
 
 #: loop-quote.php:32
 msgid ""
 "[post-format-link] published on [entry-published] by [entry-author] [entry-"
 "comments-link before=\"| \"] [entry-edit-link before=\"| \"]"
 msgstr ""
-"[post-format-link] udgivet [entry-published] af [entry-author] [entry-"
-"comments-link before=\"| \"] [entry-edit-link before=\"| \"]"
 
 #: loop-quote.php:33
 msgid ""
 "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms "
 "before=\"Tagged: \"]"
 msgstr ""
-"[entry-terms taxonomy=\"category\" before=\"Skrevet i \"] [entry-terms "
-"before=\"Tagget med: \"]"
 
 #: loop-quote.php:48
 msgid ""
@@ -393,29 +365,24 @@ msgid ""
 "\t\t\t\t\t [entry-comments-link before=\"| \"]\n"
 "\t\t\t\t\t [entry-edit-link before=\" | \"]"
 msgstr ""
-"[post-format-link] udgivet [entry-published]\n"
-"\t\t\t\t\t [entry-permalink before=\"| \"]\n"
-"\t\t\t\t\t [entry-comments-link before=\"| \"]\n"
-"\t\t\t\t\t [entry-edit-link before=\" | \"]"
 
 #: loop-status.php:34
 msgid ""
 "[post-format-link] published on [entry-published] [entry-edit-link before="
 "\"| \"]"
 msgstr ""
-"[post-format-link] udgivet [entry-published] [entry-edit-link before=\"| \"]"
 
 #: loop-status.php:63
 msgid "[entry-edit-link]"
-msgstr "[entry-edit-link]"
+msgstr ""
 
 #: menu-primary.php:21 menu-primary.php:22
 msgid "Show menu"
-msgstr "Vis menu"
+msgstr ""
 
 #: menu-primary.php:25 menu-secondary.php:20
 msgid "Skip to content"
-msgstr "Fortsæt til indhold"
+msgstr ""
 
 #: page.php:47 template-archives.php:74 template-bookmarks.php:68
 #: library/classes/widget-tags.php:177
@@ -425,366 +392,360 @@ msgstr "Fortsæt til indhold"
 #: library/extensions/breadcrumb-trail.php:581
 #: library/functions/shortcodes.php:204 library/functions/shortcodes.php:448
 msgid "Edit"
-msgstr "Rediger"
+msgstr ""
 
 #: searchform.php:21 searchform.php:26 searchform.php:29
 #: functions/sidebars.php:323 functions/sidebars.php:325
 #: library/classes/widget-search.php:45 library/classes/widget-search.php:132
 msgid "Search"
-msgstr "Søg"
+msgstr ""
 
 #: section-headlines.php:78 section-recentposts.php:83
 msgid "[entry-published] by [entry-author]"
-msgstr "[entry-published] af [entry-author]"
+msgstr ""
 
 #: section-recentposts.php:23
 msgid "See more posts"
-msgstr "Se flere indlæg"
+msgstr ""
 
 #: section-recentposts.php:23 functions/sidebars.php:303
 msgid "Recent Posts"
-msgstr "Seneste indlæg"
+msgstr ""
 
 #: section-slider.php:58 functions/admin.php:132
 msgid "Featured Posts"
-msgstr "Fremhævede indlæg"
+msgstr ""
 
 #: template-archives.php:46
 msgid "Archives by category"
-msgstr "Kategori arkiv"
+msgstr ""
 
 #: template-archives.php:58
 msgid "Archives by month"
-msgstr "Måned arkiv"
+msgstr ""
 
 #: functions/admin.php:62 functions/customize.php:54
 msgid "Cakifo settings"
-msgstr "Cakifo indstillinger"
+msgstr ""
 
 #: functions/admin.php:78 library/admin/theme-settings.php:198
 msgid "Update Settings"
-msgstr "Opdater indstillinger"
+msgstr ""
 
 #: functions/admin.php:86 functions/admin.php:89 functions/customize.php:77
 msgid "Link Color"
-msgstr "Linkfarve"
+msgstr ""
 
 #: functions/admin.php:98 functions/customize.php:99
 msgid "Show \"Featured Content\" slider?"
-msgstr "Vis \"Fremhævet Indhold\" slider?"
+msgstr ""
 
 #: functions/admin.php:103
 msgid "Check to display the \"Featured Content\" slider"
-msgstr "Check for at vise slideren med fremhævet indlæg"
+msgstr ""
 
 #: functions/admin.php:109 functions/customize.php:120
 msgid "Featured Category"
-msgstr "Fremhævet kategori"
+msgstr ""
 
 #: functions/admin.php:126
 msgid "Leave blank to use sticky posts"
-msgstr "Efterlad tom for at bruge indlæg der er klistret til forsiden (sticky)"
+msgstr ""
 
 #: functions/admin.php:136
 msgid ""
 "How many featured posts should be shown? <code>-1</code> will show all posts "
 "in the category."
 msgstr ""
-"Hvor mange indlæg skal der vises? <code>-1</code> vil vise alle indlæg i "
-"kategorien"
 
 #: functions/admin.php:137 functions/admin.php:163
 #, php-format
 msgid "%s is the default"
-msgstr "%s er standard"
+msgstr ""
 
 #: functions/admin.php:143 functions/customize.php:186
 msgid "Headline Categories"
-msgstr "Overskriftskategorier"
+msgstr ""
 
 #: functions/admin.php:147
 msgid ""
 "Multiple categories may be chosen by holding the <code>Ctrl</code> key and "
 "selecting."
 msgstr ""
-"Du kan vælge flere kategori ved at holde <code>Ctrl</code> ind og vælge"
 
 #: functions/admin.php:159
 msgid "Headlines Posts"
-msgstr "Antal overskriftsindlæg"
+msgstr ""
 
 #: functions/admin.php:163
 msgid "How many posts should be shown per headline category?"
-msgstr "Hvor mange indlæg skal vises pr headline kategori?"
+msgstr ""
 
 #: functions/admin.php:184
 msgid "Twitter username"
-msgstr "Twitter brugernavn"
+msgstr ""
 
 #: functions/admin.php:188
 msgid "Your Twitter username (if you have one)"
-msgstr "Dit Twitter brugernavn (hvis du har et)"
+msgstr ""
 
 #: functions/colorbox.php:50
 #, php-format
 msgctxt "colorbox"
 msgid "Image %1$s of %2$s"
-msgstr "Billede %1$s af %2$s"
+msgstr ""
 
 #: functions/colorbox.php:51
 msgctxt "colorbox"
 msgid "Previous"
-msgstr "Forrige"
+msgstr ""
 
 #: functions/colorbox.php:52
 msgctxt "colorbox"
 msgid "Next"
-msgstr "Næste"
+msgstr ""
 
 #: functions/colorbox.php:53
 msgctxt "colorbox"
 msgid "Close Lightbox"
-msgstr "Luk Lightbox"
+msgstr ""
 
 #: functions/colorbox.php:54
 msgctxt "colorbox"
 msgid "This content failed to load."
-msgstr "Fejl: Dette indhold kunne ikke indlæses."
+msgstr ""
 
 #: functions/colorbox.php:55
 msgctxt "colorbox"
 msgid "This image failed to load."
-msgstr "Fejl: Dette billede kunne ikke blive indlæst."
+msgstr ""
 
 #: functions/customize.php:142
 msgid "Number of posts in the slider"
-msgstr "Antal indlæg i slideren"
+msgstr ""
 
 #: functions/customize.php:163
 msgid "Optional: Twitter username"
-msgstr "Valgfrit: Twitter brugernavn"
+msgstr ""
 
 #: functions/customize.php:209
 msgid "Number of Headline posts"
-msgstr "Antal af overskriftsindlæg der vises på forsiden"
+msgstr ""
 
 #: functions/shortcodes.php:46 functions/sidebars.php:312
 #: library/classes/widget-bookmarks.php:208
 #: library/classes/widget-categories.php:187
 msgid "RSS"
-msgstr "RSS"
+msgstr ""
 
 #: functions/shortcodes.php:70
 msgid "Follow me on Twitter"
-msgstr "Følg mig på Twitter"
+msgstr ""
 
 #: functions/shortcodes.php:96
 msgid "Save on Delicious"
-msgstr "Gem på Delicious"
+msgstr ""
 
 #: functions/shortcodes.php:112
 msgid "Digg this entry"
-msgstr "Digg dette indlæg"
+msgstr ""
 
 #: functions/shortcodes.php:112
 msgid "Digg"
-msgstr "Digg"
+msgstr ""
 
 #: functions/sidebars.php:44
 msgctxt "sidebar name"
 msgid "Primary"
-msgstr "Primær"
+msgstr ""
 
 #: functions/sidebars.php:45 library/functions/sidebars.php:88
 msgid "The main (primary) widget area, most often used as a sidebar."
-msgstr "Det primære widgetområde, ofte brugt som sidebar"
+msgstr ""
 
 #: functions/sidebars.php:55
 msgctxt "sidebar name"
 msgid "Secondary"
-msgstr "Sekundær"
+msgstr ""
 
 #: functions/sidebars.php:56 library/functions/sidebars.php:92
 msgid ""
 "The second most important widget area, most often used as a secondary "
 "sidebar."
-msgstr "The andet mest vigtige widgetområde, ofte brugt som sekundær sidebar"
+msgstr ""
 
 #: functions/sidebars.php:66
 msgctxt "sidebar name"
 msgid "Footer Area One"
-msgstr "Footer-område 1"
+msgstr ""
 
 #: functions/sidebars.php:67 functions/sidebars.php:78
 #: functions/sidebars.php:89
 msgid "An optional widget area for your site footer."
-msgstr "En valgfri widget-området til dit sidefod."
+msgstr ""
 
 #: functions/sidebars.php:77
 msgctxt "sidebar name"
 msgid "Footer Area Two"
-msgstr "Footer-område 2"
+msgstr ""
 
 #: functions/sidebars.php:88
 msgctxt "sidebar name"
 msgid "Footer Area Three"
-msgstr "Footer-område 3"
+msgstr ""
 
 #: functions/sidebars.php:99
 msgctxt "sidebar name"
 msgid "Header"
-msgstr "Header"
+msgstr ""
 
 #: functions/sidebars.php:100 library/functions/sidebars.php:100
 msgid "Displayed within the site's header area."
-msgstr "Vist i sidens headerområde"
+msgstr ""
 
 #: functions/sidebars.php:110
 msgctxt "sidebar name"
 msgid "Before Content"
-msgstr "Før indhold"
+msgstr ""
 
 #: functions/sidebars.php:111 library/functions/sidebars.php:104
 msgid "Loaded before the page's main content area."
-msgstr "Indlæst før sidens primære indhold"
+msgstr ""
 
 #: functions/sidebars.php:121
 msgctxt "sidebar name"
 msgid "After Content"
-msgstr "Efter indhold"
+msgstr ""
 
 #: functions/sidebars.php:122 library/functions/sidebars.php:108
 msgid "Loaded after the page's main content area."
-msgstr "Indlæst efter sidens primære indhold"
+msgstr ""
 
 #: functions/sidebars.php:132
 msgctxt "sidebar name"
 msgid "After Singular"
-msgstr "Efter singular"
+msgstr ""
 
 #: functions/sidebars.php:133 library/functions/sidebars.php:112
 msgid ""
 "Loaded on singular post (page, attachment, etc.) views before the comments "
 "area."
 msgstr ""
-"Indlæg på singular indlæg (sider, attachments mm.) lige før kommentarerne"
 
 #: functions/sidebars.php:143
 msgctxt "sidebar name"
 msgid "After Single"
-msgstr "Efter single"
+msgstr ""
 
 #: functions/sidebars.php:144
 msgid "Loaded on single post views before the comments area."
-msgstr "Indlæg på single indlæg lige før kommentarerne"
+msgstr ""
 
 #: functions/sidebars.php:154
 msgctxt "sidebar name"
 msgid "Error Page"
-msgstr "Fejlside"
+msgstr ""
 
 #: functions/sidebars.php:155
 msgid "Loaded on 404 error pages"
-msgstr "Indlæst på 404 fejlsider"
+msgstr ""
 
 #: functions/sidebars.php:240
 msgid "Archives List"
-msgstr "Arkivliste"
+msgstr ""
 
 #: functions/sidebars.php:249
 msgid "Archives Dropdown"
-msgstr "Arkiv dropbox"
+msgstr ""
 
 #: functions/sidebars.php:257 library/classes/widget-calendar.php:44
 #: library/classes/widget-calendar.php:99
 msgid "Calendar"
-msgstr "Kalender"
+msgstr ""
 
 #: functions/sidebars.php:263
 msgid "Categories List"
-msgstr "Kategorier"
+msgstr ""
 
 #: functions/sidebars.php:272 library/classes/widget-pages.php:44
 #: library/classes/widget-pages.php:125
 msgid "Pages"
-msgstr "Sider"
+msgstr ""
 
 #: functions/sidebars.php:280
 msgid "Links"
-msgstr "Links"
+msgstr ""
 
 #: functions/sidebars.php:290
 msgid "Meta"
-msgstr "Meta"
+msgstr ""
 
 #: functions/sidebars.php:296
 msgid "Recent Comments"
-msgstr "Seneste kommentarer"
+msgstr ""
 
 #: functions/sidebars.php:331
 msgid "Text"
-msgstr "Tekst"
+msgstr ""
 
 #: functions/sidebars.php:339
 msgid "Tag Cloud"
-msgstr "Tag sky"
+msgstr ""
 
 #: functions/sidebars.php:350
 msgid "Nav Menu"
-msgstr "Navigation menu"
+msgstr ""
 
 #: functions/tweet_button.php:156
 msgid "Share this on Twitter"
-msgstr "Del på Twitter"
+msgstr ""
 
 #: functions/tweet_button.php:156
 msgid "Tweet"
-msgstr "Tweet"
+msgstr ""
 
 #: functions/widget-related-posts.php:27
 msgid ""
 "Use this widget to list related posts to the current viewed post, based on "
 "taxonomies."
 msgstr ""
-"Brug denne widget til at liste relaterede indlæg, baseret på kategorien og "
-"post formatet."
 
 #: functions/widget-related-posts.php:31
 msgid "Cakifo: Related Posts"
-msgstr "Cakifo: Relaterede Indlæg"
+msgstr ""
 
 #: functions/widget-related-posts.php:93
 #, php-format
 msgid "Read %s"
-msgstr "Læs %s"
+msgstr ""
 
 #: functions/widget-related-posts.php:101
 msgctxt "untitled post"
 msgid "Untitled"
-msgstr "Unavngivet"
+msgstr ""
 
 #: functions/widget-related-posts.php:126
 msgid "No related posts."
-msgstr "Ingen relaterede indlæg."
+msgstr ""
 
 #: functions/widget-related-posts.php:284
 msgid "Related Posts"
-msgstr "Relaterede indlæg"
+msgstr ""
 
 #: functions/widget-related-posts.php:296
 msgctxt "order by"
 msgid "Random"
-msgstr "Tilfældig"
+msgstr ""
 
 #: functions/widget-related-posts.php:297
 msgctxt "order by"
 msgid "Date"
-msgstr "Dato"
+msgstr ""
 
 #: functions/widget-related-posts.php:298
 msgctxt "order by"
 msgid "Comment count"
-msgstr "Kommentarer"
+msgstr ""
 
 #: functions/widget-related-posts.php:304
 #: library/classes/widget-archives.php:174
@@ -796,83 +757,83 @@ msgstr "Kommentarer"
 #: library/classes/widget-pages.php:178 library/classes/widget-search.php:144
 #: library/classes/widget-tags.php:207
 msgid "Title:"
-msgstr "Titel:"
+msgstr ""
 
 #: functions/widget-related-posts.php:306
 #, php-format
 msgid "Use %s as a placeholder for the title"
-msgstr "Brug %s som en pladsholder for navnet"
+msgstr ""
 
 #: functions/widget-related-posts.php:310
 msgid "Number of posts to show:"
-msgstr "Antal indlæg:"
+msgstr ""
 
 #: functions/widget-related-posts.php:315
 msgid "Taxonomies:"
-msgstr "Taksonomier"
+msgstr ""
 
 #: functions/widget-related-posts.php:324
 msgid "Order by:"
-msgstr "Sorter efter:"
+msgstr ""
 
 #: functions/widget-related-posts.php:335
 msgid "Show post thumbnails?"
-msgstr "Vis indlæg thumbnails?"
+msgstr ""
 
 #: library/admin/admin.php:37 library/admin/admin.php:38
 #: library/admin/theme-settings.php:172
 msgid "Customize"
-msgstr "Tilpas"
+msgstr ""
 
 #: library/admin/meta-box-post-seo.php:37
 msgid "SEO"
-msgstr "SEO"
+msgstr ""
 
 #: library/admin/meta-box-post-seo.php:70
 msgid "Document Title:"
-msgstr "Indlægs titel:"
+msgstr ""
 
 #: library/admin/meta-box-post-seo.php:76
 msgid "Meta Description:"
-msgstr "Meta beskrivelse:"
+msgstr ""
 
 #: library/admin/meta-box-post-seo.php:82
 msgid "Meta Keywords:"
-msgstr "Meta nøgleord:"
+msgstr ""
 
 #: library/admin/meta-box-post-template.php:36
 msgid "Template"
-msgstr "Template"
+msgstr ""
 
 #: library/admin/meta-box-post-template.php:87
 msgid "No templates exist for this post type."
-msgstr "Der eksisterer ikke nogle templates for denne post type."
+msgstr ""
 
 #: library/admin/meta-box-theme-about.php:31
 #: library/admin/meta-box-theme-about.php:36
 #, php-format
 msgid "About %s"
-msgstr "Om %s"
+msgstr ""
 
 #: library/admin/meta-box-theme-about.php:61
 msgid "Theme:"
-msgstr "Tema:"
+msgstr ""
 
 #: library/admin/meta-box-theme-about.php:69
 msgid "Version:"
-msgstr "Version:"
+msgstr ""
 
 #: library/admin/meta-box-theme-about.php:77
 msgid "Author:"
-msgstr "Forfatter:"
+msgstr ""
 
 #: library/admin/meta-box-theme-about.php:85
 msgid "Description:"
-msgstr "Beskrivelse:"
+msgstr ""
 
 #: library/admin/meta-box-theme-footer.php:29
 msgid "Footer settings"
-msgstr "Footer indstillinger"
+msgstr ""
 
 #: library/admin/meta-box-theme-footer.php:52
 msgid ""
@@ -880,104 +841,101 @@ msgid ""
 "acronym> and/or shortcodes, which will be automatically inserted into your "
 "theme."
 msgstr ""
-"Du kan tilføje <acronym title=\"Hypertext Markup Language\">HTML</acronym> "
-"og/eller shortcodes, som automatisk vil blive sat ind i dit tema."
 
 #: library/admin/theme-settings.php:47 library/admin/theme-settings.php:171
 #, php-format
 msgid "%s Theme Settings"
-msgstr "%s tema indstillinger"
+msgstr ""
 
 #: library/admin/theme-settings.php:48
 msgid "Theme Settings"
-msgstr "Tema indstillinger"
+msgstr ""
 
 #: library/admin/theme-settings.php:255
 msgid "Documentation"
-msgstr "Dokumentation"
+msgstr ""
 
 #: library/admin/theme-settings.php:259
 msgid "Support"
-msgstr "Support"
+msgstr ""
 
 #: library/classes/widget-archives.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "archives."
-msgstr "Et advanceret widget der giver dig total kontrol over dine arkiver."
+msgstr ""
 
 #: library/classes/widget-archives.php:79
 msgid "Select Year"
-msgstr "Vælg år"
+msgstr ""
 
 #: library/classes/widget-archives.php:82
 msgid "Select Month"
-msgstr "Vælg måned"
+msgstr ""
 
 #: library/classes/widget-archives.php:85
 msgid "Select Week"
-msgstr "Vælg uge"
+msgstr ""
 
 #: library/classes/widget-archives.php:88
 msgid "Select Day"
-msgstr "Vælg dag"
+msgstr ""
 
 #: library/classes/widget-archives.php:91
 msgid "Select Post"
-msgstr "Vælg indlæg"
+msgstr ""
 
 #: library/classes/widget-archives.php:156
 msgid "Alphabetical"
-msgstr "Alfabetisk"
+msgstr ""
 
 #: library/classes/widget-archives.php:157
 msgid "Daily"
-msgstr "Daglig"
+msgstr ""
 
 #: library/classes/widget-archives.php:158
 msgid "Monthly"
-msgstr "Månedlig"
+msgstr ""
 
 #: library/classes/widget-archives.php:159
 msgid "Post By Post"
-msgstr "Indlæg efter indlæg"
+msgstr ""
 
 #: library/classes/widget-archives.php:160
 msgid "Weekly"
-msgstr "Ugentlig"
+msgstr ""
 
 #: library/classes/widget-archives.php:161
 msgid "Yearly"
-msgstr "Årlig"
+msgstr ""
 
 #: library/classes/widget-archives.php:166
 msgid "Custom"
-msgstr "Brugerdefineret"
+msgstr ""
 
 #: library/classes/widget-archives.php:167
 msgid "HTML"
-msgstr "HTML"
+msgstr ""
 
 #: library/classes/widget-archives.php:168
 msgid "Option"
-msgstr "Dropdown"
+msgstr ""
 
 #: library/classes/widget-archives.php:210
 #: library/classes/widget-authors.php:208
 msgid "Show post count?"
-msgstr "Vis indlæg antal?"
+msgstr ""
 
 #: library/classes/widget-authors.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "author lists."
 msgstr ""
-"Et avanceret widget der giver dig total over over dine forfatter lister"
 
 #: library/classes/widget-authors.php:44
 #: library/classes/widget-authors.php:123
 msgid "Authors"
-msgstr "Forfattere"
+msgstr ""
 
 #: library/classes/widget-authors.php:141
 #: library/classes/widget-bookmarks.php:182
@@ -985,7 +943,7 @@ msgstr "Forfattere"
 #: library/classes/widget-categories.php:171
 #: library/classes/widget-pages.php:152 library/classes/widget-tags.php:186
 msgid "Ascending"
-msgstr "Stigende"
+msgstr ""
 
 #: library/classes/widget-authors.php:142
 #: library/classes/widget-bookmarks.php:183
@@ -993,15 +951,15 @@ msgstr "Stigende"
 #: library/classes/widget-categories.php:172
 #: library/classes/widget-pages.php:153 library/classes/widget-tags.php:187
 msgid "Descending"
-msgstr "Faldende"
+msgstr ""
 
 #: library/classes/widget-authors.php:146
 msgid "Display Name"
-msgstr "Vis name"
+msgstr ""
 
 #: library/classes/widget-authors.php:147 library/functions/comments.php:188
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: library/classes/widget-authors.php:148
 #: library/classes/widget-bookmarks.php:188
@@ -1009,323 +967,322 @@ msgstr "Email"
 #: library/classes/widget-categories.php:177
 #: library/classes/widget-pages.php:159
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: library/classes/widget-authors.php:149
 msgid "Nice Name"
-msgstr "Kaldenavn"
+msgstr ""
 
 #: library/classes/widget-authors.php:150
 msgid "Post Count"
-msgstr "Indlæg antal"
+msgstr ""
 
 #: library/classes/widget-authors.php:151
 msgid "Registered"
-msgstr "Registreret"
+msgstr ""
 
 #: library/classes/widget-authors.php:152
 #: library/classes/widget-bookmarks.php:211
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: library/classes/widget-authors.php:153
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
 #: library/classes/widget-authors.php:186
 #: library/classes/widget-categories.php:166
 #: library/classes/widget-tags.php:182
 msgid "List"
-msgstr "Liste"
+msgstr ""
 
 #: library/classes/widget-authors.php:186
 #: library/classes/widget-categories.php:167
 msgid "None"
-msgstr "Ingen"
+msgstr ""
 
 #: library/classes/widget-authors.php:204
 msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
-msgstr "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr ""
 
 #: library/classes/widget-authors.php:212
 msgid "Exclude admin?"
-msgstr "Ekskluder admin?"
+msgstr ""
 
 #: library/classes/widget-authors.php:216
 msgid "Show full name?"
-msgstr "Vis fulde navn?"
+msgstr ""
 
 #: library/classes/widget-authors.php:220
 #: library/classes/widget-categories.php:298
 #: library/classes/widget-tags.php:318
 msgid "Hide empty?"
-msgstr "Skjul tomme?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "bookmarks (links)."
 msgstr ""
-"Et avanceret widget der giver dig total kontrol over dine bogmærker (links)"
 
 #: library/classes/widget-bookmarks.php:44
 #: library/classes/widget-bookmarks.php:86
 #: library/classes/widget-bookmarks.php:150
 msgid "Bookmarks"
-msgstr "Bogmærker"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:187
 #: library/classes/widget-categories.php:176
 #: library/classes/widget-tags.php:192
 msgid "Count"
-msgstr "Antal"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:189
 #: library/classes/widget-bookmarks.php:202
 #: library/classes/widget-categories.php:178
 #: library/classes/widget-tags.php:193 library/functions/comments.php:187
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:190
 #: library/classes/widget-categories.php:179
 #: library/classes/widget-pages.php:162
 msgid "Slug"
-msgstr "Slug"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:200
 msgid "Description"
-msgstr "Beskrivelse"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:201
 msgid "Length"
-msgstr "Længde"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:203
 msgid "Notes"
-msgstr "Noter"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:204
 msgid "Owner"
-msgstr "Ejer"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:205
 #: library/classes/widget-tags.php:188
 msgid "Random"
-msgstr "Tilfældig"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:206
 msgid "Rating"
-msgstr "Rating"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:207
 msgid "Rel"
-msgstr "Rel"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:209
 msgid "Target"
-msgstr "Target"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:210
 msgid "Updated"
-msgstr "Opdateret"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:319
 msgid "Categorize?"
-msgstr "Kategoriser?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:323
 msgid "Show description?"
-msgstr "Vis beskrivelse?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:327
 msgid "Hide invisible?"
-msgstr "Skjul usynlige?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:331
 msgid "Show rating?"
-msgstr "Vis rating?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:335
 msgid "Show updated?"
-msgstr "Vis opdaterede?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:339
 msgid "Show images?"
-msgstr "Vis billeder?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:343
 msgid "Show name?"
-msgstr "Vis navn?"
+msgstr ""
 
 #: library/classes/widget-bookmarks.php:347
 msgid "Show private?"
-msgstr "Vis private?"
+msgstr ""
 
 #: library/classes/widget-calendar.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "calendar."
-msgstr "Et advanceret widget der giver dig total kontrol over din kalender"
+msgstr ""
 
 #: library/classes/widget-calendar.php:113
 msgid "One-letter abbreviation?"
-msgstr "Et-ords forkortelse?"
+msgstr ""
 
 #: library/classes/widget-categories.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "category links."
-msgstr "Et advanceret widget der giver dig total kontrol over dine kategorier"
+msgstr ""
 
 #: library/classes/widget-categories.php:44
 #: library/classes/widget-categories.php:136
 msgid "Categories"
-msgstr "Kategorier"
+msgstr ""
 
 #: library/classes/widget-categories.php:180
 msgid "Term Group"
-msgstr "Term gruppe"
+msgstr ""
 
 #: library/classes/widget-categories.php:185
 msgid "Atom"
-msgstr "Atom"
+msgstr ""
 
 #: library/classes/widget-categories.php:186
 msgid "RDF"
-msgstr "RDF"
+msgstr ""
 
 #: library/classes/widget-categories.php:188
 msgid "RSS 2.0"
-msgstr "RSS 2.0"
+msgstr ""
 
 #: library/classes/widget-categories.php:286
 #: library/classes/widget-pages.php:277
 msgid "Hierarchical?"
-msgstr "Hierarkisk?"
+msgstr ""
 
 #: library/classes/widget-categories.php:290
 msgid "Use description?"
-msgstr "Brug beskrivelse?"
+msgstr ""
 
 #: library/classes/widget-categories.php:294
 msgid "Show count?"
-msgstr "Vis antal indlæg?"
+msgstr ""
 
 #: library/classes/widget-nav-menu.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "menus."
-msgstr "Et advanceret widget der giver dig total kontrol over dine menuer"
+msgstr ""
 
 #: library/classes/widget-nav-menu.php:44
 msgid "Navigation Menu"
-msgstr "Navigation Menu"
+msgstr ""
 
 #: library/classes/widget-nav-menu.php:109
 msgid "Navigation"
-msgstr "Navigation"
+msgstr ""
 
 #: library/classes/widget-pages.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your page "
 "links."
-msgstr "Et advanceret widget der giver dig total kontrol over dine sider"
+msgstr ""
 
 #: library/classes/widget-pages.php:157
 msgid "Author"
-msgstr "Forfatter"
+msgstr ""
 
 #: library/classes/widget-pages.php:158
 msgid "Date"
-msgstr "Dato"
+msgstr ""
 
 #: library/classes/widget-pages.php:160
 msgid "Menu Order"
-msgstr "Menu rækkefølge"
+msgstr ""
 
 #: library/classes/widget-pages.php:161 library/classes/widget-pages.php:169
 msgid "Modified"
-msgstr "Ændret"
+msgstr ""
 
 #: library/classes/widget-pages.php:163
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 #: library/classes/widget-pages.php:168
 msgid "Created"
-msgstr "Oprettet"
+msgstr ""
 
 #: library/classes/widget-search.php:33
 msgid ""
 "An advanced widget that gives you total control over the output of your "
 "search form."
-msgstr "Et advanceret widget der giver dig total kontrol over din søgeform"
+msgstr ""
 
 #: library/classes/widget-search.php:148
 msgid "Search Label:"
-msgstr "Søg label:"
+msgstr ""
 
 #: library/classes/widget-search.php:152
 msgid "Search Text:"
-msgstr "Søg tekst:"
+msgstr ""
 
 #: library/classes/widget-search.php:159
 msgid "Search Submit:"
-msgstr "Søg submit:"
+msgstr ""
 
 #: library/classes/widget-search.php:164
 msgid "Use theme's <code>searchform.php</code>?"
-msgstr "Brug tema's <code>searchform.php</code>?"
+msgstr ""
 
 #: library/classes/widget-tags.php:32
 msgid ""
 "An advanced widget that gives you total control over the output of your tags."
-msgstr "Et advanceret widget der giver dig total kontrol over dine tags"
+msgstr ""
 
 #: library/classes/widget-tags.php:44 library/classes/widget-tags.php:146
 msgid "Tags"
-msgstr "Tags"
+msgstr ""
 
 #: library/classes/widget-tags.php:176
 msgid "View"
-msgstr "Vis"
+msgstr ""
 
 #: library/classes/widget-tags.php:181
 msgid "Flat"
-msgstr "Fladt"
+msgstr ""
 
 #: library/classes/widget-tags.php:314
 msgid "Pad counts?"
-msgstr "Pad counts?"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:44
 msgid "Browse:"
-msgstr "Gennemse:"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:47
 msgid "Home"
-msgstr "Hjem"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:389
 #: library/functions/context.php:429
 msgid "g:i a"
-msgstr "H:i"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:392
 #, php-format
 msgid "Minute %1$s"
-msgstr "Minut %1$s"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:392
 #: library/functions/context.php:432
 msgid "i"
-msgstr "i"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:395
 #: library/functions/context.php:435
 msgid "g a"
-msgstr "H:i"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:406
 #: library/extensions/breadcrumb-trail.php:416
@@ -1336,133 +1293,133 @@ msgstr "H:i"
 #: library/functions/context.php:441 library/functions/context.php:447
 #: library/functions/core-seo.php:90 library/functions/shortcodes.php:70
 msgid "Y"
-msgstr "Y"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:407
 #: library/extensions/breadcrumb-trail.php:428
 #: library/extensions/breadcrumb-trail.php:430
 #: library/extensions/breadcrumb-trail.php:641
 msgid "F"
-msgstr "F"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:410
 #: library/extensions/breadcrumb-trail.php:412
 #: library/extensions/breadcrumb-trail.php:645
 msgid "d"
-msgstr "d"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:419
 #: library/extensions/breadcrumb-trail.php:421
 #, php-format
 msgid "Week %1$s"
-msgstr "Uge %1$s"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:419
 #: library/extensions/breadcrumb-trail.php:421
 #: library/functions/context.php:441
 msgid "W"
-msgstr "W"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:447
 #: library/extensions/breadcrumb-trail.php:449
 #: library/functions/context.php:458
 #, php-format
 msgid "Search results for &quot;%1$s&quot;"
-msgstr "Søgeresultater for &quot;%1$s&quot;"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:454
 #: library/functions/context.php:462
 msgid "404 Not Found"
-msgstr "404 Ikke fundet"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:459
 #: library/extensions/breadcrumb-trail.php:461
 #, php-format
 msgid "Page %d"
-msgstr "Page %d"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:530
 msgid "Split"
-msgstr "Opdel"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:534
 msgid "Merge"
-msgstr "Flet"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:641
 #: library/functions/core-seo.php:86
 msgid "F Y"
-msgstr "F Y"
+msgstr ""
 
 #: library/extensions/breadcrumb-trail.php:645
 msgid "F j, Y"
-msgstr "j. F Y"
+msgstr ""
 
 #: library/extensions/custom-field-series.php:86
 msgid "Articles in this series"
-msgstr "Artikler i denne serie"
+msgstr ""
 
 #: library/extensions/custom-field-series.php:212
 msgid "Series"
-msgstr "Serier"
+msgstr ""
 
 #: library/extensions/post-stylesheets.php:277
 msgid "Stylesheet"
-msgstr "Stylesheet"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:337
 msgid "Default"
-msgstr "Standard"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:338
 msgid "One Column"
-msgstr "Én kolonne"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:339
 msgid "Two Columns, Left"
-msgstr "To kolonner, venstre"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:340
 msgid "Two Columns, Right"
-msgstr "To kolonner, højre"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:341
 msgid "Three Columns, Left"
-msgstr "Tre kolonner, venstre"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:342
 msgid "Three Columns, Right"
-msgstr "3 kolonner, højre"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:343
 msgid "Three Columns, Center"
-msgstr "3 kolonner, center"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:419
 #: library/extensions/theme-layouts.php:525
 #: library/extensions/theme-layouts.php:608
 msgid "Layout"
-msgstr "Layout"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:445
 msgid "Layout is a theme-specific structure for the single view of the post."
-msgstr "Layout er et tema-specifik struktur for indlægget i single view"
+msgstr ""
 
 #: library/extensions/theme-layouts.php:641
 msgid "Global Layout"
-msgstr "Globalt Layout"
+msgstr ""
 
 #: library/functions/comments.php:182
 msgid "*"
-msgstr "*"
+msgstr ""
 
 #: library/functions/comments.php:189
 msgid "Website"
-msgstr "Hjemmeside"
+msgstr ""
 
 #: library/functions/comments.php:195
 msgid "Comment"
-msgstr "Kommentar"
+msgstr ""
 
 #: library/functions/comments.php:196
 #, php-format
@@ -1470,78 +1427,76 @@ msgid ""
 "You must be <a href=\"%1$s\" title=\"Log in\">logged in</a> to post a "
 "comment."
 msgstr ""
-"Du skal være <a href=\"%1$s\" title=\"Log ind\">logget ind</a> for at skrive "
-"en kommentar."
 
 #: library/functions/comments.php:197
 #, php-format
 msgid "Logged in as <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
-msgstr "Logget ind som <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
+msgstr ""
 
 #: library/functions/comments.php:197
 msgid "Log out of this account"
-msgstr "Log ud af denne konto"
+msgstr ""
 
 #: library/functions/comments.php:197
 msgid "Log out &raquo;"
-msgstr "Log ud &raquo;"
+msgstr ""
 
 #: library/functions/comments.php:202
 msgid "Leave a Reply"
-msgstr "Skriv en kommentar"
+msgstr ""
 
 #: library/functions/comments.php:203
 #, php-format
 msgid "Leave a Reply to %s"
-msgstr "Skriv en kommentar til %s"
+msgstr ""
 
 #: library/functions/comments.php:204
 msgid "Click here to cancel reply."
-msgstr "Klik her for at annullere svar."
+msgstr ""
 
 #: library/functions/comments.php:205
 msgid "Post Comment"
-msgstr "Tilføj kommentar"
+msgstr ""
 
 #: library/functions/context.php:429 library/functions/context.php:435
 #: library/functions/context.php:438 library/functions/context.php:444
 #: library/functions/context.php:447
 #, php-format
 msgid "Archive for %1$s"
-msgstr "Arkiv for %1$s"
+msgstr ""
 
 #: library/functions/context.php:432
 #, php-format
 msgid "Archive for minute %1$s"
-msgstr "Arkiv for minuttet %1$s"
+msgstr ""
 
 #: library/functions/context.php:438
 msgid "F jS, Y"
-msgstr "j. F Y"
+msgstr ""
 
 #: library/functions/context.php:441
 #, php-format
 msgid "Archive for week %1$s of %2$s"
-msgstr "Arkiv for uge %1$s af %2$s"
+msgstr ""
 
 #: library/functions/context.php:466
 #, php-format
 msgid "%1$s Page %2$s"
-msgstr "%1$s Side %2$s"
+msgstr ""
 
 #: library/functions/core-seo.php:93
 #, php-format
 msgid "Copyright (c) %1$s"
-msgstr "Copyright (c) %1$s"
+msgstr ""
 
 #: library/functions/core-seo.php:112 library/functions/shortcodes.php:218
 #: library/functions/shortcodes.php:378
 msgid "l, F jS, Y, g:i a"
-msgstr "l, j. F Y, H:i"
+msgstr ""
 
 #: library/functions/customize.php:63 library/functions/customize.php:88
 msgid "Footer"
-msgstr "Footer"
+msgstr ""
 
 #: library/functions/deprecated.php:613
 #, php-format
@@ -1549,297 +1504,150 @@ msgid ""
 "<code>%1$s</code> &mdash; This function has been removed or replaced by "
 "another function."
 msgstr ""
-"<code>%1$s</code> &mdash; Denne funktion er blevet fjernet eller erstattet "
-"af en anden funktion."
 
 #: library/functions/menus.php:38
 msgctxt "nav menu location"
 msgid "Primary"
-msgstr "Primær"
+msgstr ""
 
 #: library/functions/menus.php:42
 msgctxt "nav menu location"
 msgid "Secondary"
-msgstr "Sekundær"
+msgstr ""
 
 #: library/functions/menus.php:46
 msgctxt "nav menu location"
 msgid "Subsidiary"
-msgstr "Footer"
+msgstr ""
 
 #: library/functions/settings.php:76 library/functions/settings.php:80
 msgid "Copyright &#169; [the-year] [site-link]."
-msgstr "Copyright &#169; [the-year] [site-link]."
+msgstr ""
 
 #: library/functions/settings.php:76
 msgid "Powered by [wp-link], [theme-link], and [child-link]."
-msgstr "Drevet af [wp-link], [theme-link], og [child-link]."
+msgstr ""
 
 #: library/functions/settings.php:80
 msgid "Powered by [wp-link] and [theme-link]."
-msgstr "Drevet af [wp-link] og [theme-link]."
+msgstr ""
 
 #: library/functions/shortcodes.php:93
 msgid "State-of-the-art semantic personal publishing platform"
-msgstr "Et moderne, semantisk publiceringsværktøj"
+msgstr ""
 
 #: library/functions/shortcodes.php:93
 msgid "WordPress"
-msgstr "WordPress"
+msgstr ""
 
 #: library/functions/shortcodes.php:106
 #, php-format
 msgid "%s WordPress Theme"
-msgstr "%s WordPress tema"
+msgstr ""
 
 #: library/functions/shortcodes.php:134
 msgid "Log out"
-msgstr "Log ud"
+msgstr ""
 
 #: library/functions/shortcodes.php:136
 msgid "Log in"
-msgstr "Log ind"
+msgstr ""
 
 #: library/functions/shortcodes.php:151
 #, php-format
 msgid "This page loaded in %1$s seconds with %2$s database queries."
-msgstr "Denne side blev indlæst på %1$s sekunder med %2$s database queries."
+msgstr ""
 
 #: library/functions/shortcodes.php:204 library/functions/shortcodes.php:448
 #, php-format
 msgid "Edit %1$s"
-msgstr "Rediger %1$s"
+msgstr ""
 
 #: library/functions/shortcodes.php:234
 msgid "Leave a response"
-msgstr "Skriv en kommentar"
+msgstr ""
 
 #: library/functions/shortcodes.php:234
 #, php-format
 msgid "%1$s Response"
-msgstr "%1$s kommentar"
+msgstr ""
 
 #: library/functions/shortcodes.php:234
 #, php-format
 msgid "%1$s Responses"
-msgstr "%1$s kommentarer"
+msgstr ""
 
 #: library/functions/shortcodes.php:241 library/functions/shortcodes.php:243
 #: library/functions/shortcodes.php:245
 #, php-format
 msgid "Comment on %1$s"
-msgstr "Kommentér på %1$s"
+msgstr ""
 
 #: library/functions/shortcodes.php:310
 msgid "(Untitled)"
-msgstr "(Untitled)"
+msgstr ""
 
 #: library/functions/shortcodes.php:326
 msgid "Shortlink"
-msgstr "Kort link"
+msgstr ""
 
 #: library/functions/shortcodes.php:350 library/functions/shortcodes.php:427
 msgid "Permalink"
-msgstr "Permalink"
+msgstr ""
 
 #: library/functions/shortcodes.php:378
 #, php-format
 msgid "%1$s at %2$s"
-msgstr "%1$s kl. %2$s"
+msgstr ""
 
 #: library/functions/shortcodes.php:427
 #, php-format
 msgid "Permalink to comment %1$s"
-msgstr "Permanent link til kommentar %1$s"
+msgstr ""
 
 #: library/functions/shortcodes.php:467
 msgid "Reply"
-msgstr "Besvar"
+msgstr ""
 
 #: library/functions/shortcodes.php:468
 msgid "Log in to reply."
-msgstr "Log ind for at besvare"
+msgstr ""
 
 #: library/functions/sidebars.php:87
 msgctxt "sidebar"
 msgid "Primary"
-msgstr "Primær"
+msgstr ""
 
 #: library/functions/sidebars.php:91
 msgctxt "sidebar"
 msgid "Secondary"
-msgstr "Sekundær"
+msgstr ""
 
 #: library/functions/sidebars.php:95
 msgctxt "sidebar"
 msgid "Subsidiary"
-msgstr "Footer"
+msgstr ""
 
 #: library/functions/sidebars.php:96
 msgid "A widget area loaded in the footer of the site."
-msgstr "Et widgetområde i footeren"
+msgstr ""
 
 #: library/functions/sidebars.php:99
 msgctxt "sidebar"
 msgid "Header"
-msgstr "Header"
+msgstr ""
 
 #: library/functions/sidebars.php:103
 msgctxt "sidebar"
 msgid "Before Content"
-msgstr "Før indhold"
+msgstr ""
 
 #: library/functions/sidebars.php:107
 msgctxt "sidebar"
 msgid "After Content"
-msgstr "Efter indhold"
+msgstr ""
 
 #: library/functions/sidebars.php:111
 msgctxt "sidebar"
 msgid "After Singular"
-msgstr "Efter singular"
-
-#~ msgid ""
-#~ "Published on [entry-published] in <a href=\"%1$s\" title=\"Return to %2$s"
-#~ "\" rel=\"gallery\">%2$s</a> [entry-edit-link before=\" | \"]"
-#~ msgstr ""
-#~ "Udgivet d. [entry-published] i <a href=\"%1$s\" title=\"Tilbage til %2$s"
-#~ "\" rel=\"gallery\">%2$s</a> [entry-edit-link before=\" | \"]"
-
-#~ msgid "View full size"
-#~ msgstr "Vis fuld størrelse"
-
-#~ msgid ""
-#~ "Posted by [entry-author] on [entry-published] [entry-edit-link before=\" "
-#~ "| \"]"
-#~ msgstr ""
-#~ "Af [entry-author], [entry-published] [entry-edit-link before=\" | \"]"
-
-#~ msgid "[entry-permalink] [entry-edit-link before=\" | \"]"
-#~ msgstr "[entry-permalink] [entry-edit-link before=\" | \"]"
-
-#~ msgid ""
-#~ "[entry-permalink after=\" | \"] By [entry-author] on [entry-published] "
-#~ "[entry-terms taxonomy=\"category\" before=\"in \"] [entry-terms before="
-#~ "\"| Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link "
-#~ "before=\" | \"]"
-#~ msgstr ""
-#~ "[entry-permalink after=\" | \"] Af [entry-author] [entry-published] "
-#~ "[entry-terms taxonomy=\"category\" before=\"i \"] [entry-terms before=\"| "
-#~ "Tagged \"] [entry-comments-link before=\" | \"] [entry-edit-link before="
-#~ "\" | \"]"
-
-#~ msgid ""
-#~ "<div>[entry-published] by [entry-author] [entry-edit-link before=\"<br/>"
-#~ "\"]</div> <div>[entry-terms taxonomy=\"category\" before=\"Posted in \"] "
-#~ "[entry-terms before=\"<br />Tagged \"] [entry-comments-link before=\"<br /"
-#~ ">\"]</div>"
-#~ msgstr ""
-#~ "<div>[entry-published] af [entry-author] [entry-terms taxonomy=\"category"
-#~ "\" before=\"i \"] [entry-terms before=\"| Tagget med \"] [entry-comments-"
-#~ "link before=\" | \"] [entry-edit-link before=\" | \"]"
-
-#~ msgid "Toggle menu"
-#~ msgstr "Vis/skjul menu"
-
-#~ msgid "Main menu"
-#~ msgstr "Hovedmenu"
-
-#~ msgid "[entry-published pubdate=\"no\"] by [entry-author]"
-#~ msgstr "[entry-published  pubdate=\"no\"] af [entry-author]"
-
-#~ msgid "Select a Color"
-#~ msgstr "Vælg farve"
-
-#~ msgid "Default color: %s"
-#~ msgstr "Standard farve: %s"
-
-#~ msgid "Featured Posts:"
-#~ msgstr "Fremhævede indlæg:"
-
-#~ msgctxt "sidebar name"
-#~ msgid "Subsidiary"
-#~ msgstr "Footer"
-
-#~ msgid ""
-#~ "Upgrading Cakifo will overwrite the current installed version of Cakifo. "
-#~ "Are you sure you want to upgrade?. \"Cancel\" to stop, \"OK\" to upgrade."
-#~ msgstr ""
-#~ "Hvis du opdaterer Cakifo vil den nuværende version overskrives. Er du "
-#~ "sikker på at du vil fortsætte? (anbefales)  \"Annuller\" for at stoppe, "
-#~ "\"OK\" for at opdatere"
-
-#~ msgid ""
-#~ "Cakifo %s is available. <a href=\"%s\">Check out what's new</a> or <a "
-#~ "href=\"%s\" onclick=\"return cakifo_confirm_upgrade('%s');\">update now</"
-#~ "a>. "
-#~ msgstr ""
-#~ "Cakifo %s er tilgængelig. <a href=\"%s\">Tjek hvad der er nyt</a> eller "
-#~ "<a href=\"%s\" onclick=\"return cakifo_confirm_upgrade('%s');\">opdater "
-#~ "nu</a>. "
-
-#~ msgid "Please do not load this page directly. Thanks!"
-#~ msgstr "Please do not load this page directly. Thanks!"
-
-#~ msgid "<span class=\"prep\">Dimensions:</span> %s"
-#~ msgstr "<span class=\"prep\">Dimensioner:</span> %s"
-
-#~ msgid "<span class=\"prep\">Date:</span> %s"
-#~ msgstr "<span class=\"prep\">Dato:</span> %s"
-
-#~ msgid "<span class=\"prep\">Aperture:</span> %s"
-#~ msgstr "<span class=\"prep\">Blænde:</span> %s"
-
-#~ msgid "<span class=\"prep\">Focal Length:</span> %s"
-#~ msgstr "<span class=\"prep\">Brændvidde:</span> %s"
-
-#~ msgid "<span class=\"prep\">ISO:</span> %s"
-#~ msgstr "<span class=\"prep\">ISO:</span> %s"
-
-#~ msgid "<span class=\"prep\">Shutter Speed:</span> %s"
-#~ msgstr "<span class=\"prep\">Lukkerhastighed:</span> %s"
-
-#~ msgid "Show last update?"
-#~ msgstr "Vis senest opdateret?"
-
-#~ msgid "Log into this account"
-#~ msgstr "Log ind"
-
-#~ msgid "&larr; Return to entry"
-#~ msgstr "&larr; Tilbage til indlæg"
-
-#~ msgid "Search this site..."
-#~ msgstr "Søg..."
-
-#~ msgid "%1$s Settings"
-#~ msgstr "%1$s Indstillinger"
-
-#~ msgid "Series:"
-#~ msgstr "Serier:"
-
-#~ msgid "Thumbnail:"
-#~ msgstr "Thumbnail:"
-
-#~ msgid "Shortcodes: %s"
-#~ msgstr "Shortcodes: %s"
-
-#~ msgid "Settings saved."
-#~ msgstr "Indstillingerne blev gemt."
-
-#~ msgid "&laquo; Previous"
-#~ msgstr "&laquo; Forrige"
-
-#~ msgid "Next &raquo;"
-#~ msgstr "Næste &raquo;"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Primær menu"
-
-#~ msgid "Secondary Menu"
-#~ msgstr "Sekundær menu"
-
-#~ msgid "Subsidiary Menu"
-#~ msgstr "Footer menu"
-
-#~ msgid "Not Found"
-#~ msgstr "Ikke fundet"
+msgstr ""
