@@ -19,7 +19,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 	<?php if ( have_comments() ) : ?>
 
 		<h2 id="comments-number" class="comments-header">
-			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '%s Responses', 'cakifo' ) ); ?>
+			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?>
 		</h2>
 
 		<?php do_atomic( 'before_comment_list' ); // cakifo_before_comment_list ?>
