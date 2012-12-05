@@ -24,16 +24,7 @@
 			<header class="comment-meta">
 				<?php echo hybrid_avatar(); ?>
 
-				<?php
-					echo apply_atomic_shortcode( 'comment_meta',
-						'<div class="comment-meta">
-							[comment-author]
-							[comment-published]
-							[comment-permalink before="| "]
-							[comment-edit-link before="| "]
-							[comment-reply-link before="| "]
-						</div> <!-- div.comment-meta -->' );
-				?>
+				<?php echo apply_atomic_shortcode( 'comment_meta', '<div class="comment-meta">[comment-author] [comment-published] [comment-permalink before="| "] [comment-edit-link before="| "] [comment-reply-link before="| "]</div>' ); ?>
 			</header> <!-- header.comment-meta -->
 
 			<section class="comment-content comment-text">

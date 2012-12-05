@@ -47,11 +47,13 @@ get_header(); // Loads the header.php template ?>
 
 						<ul class="xoxo category-archives">
 							<?php
-								wp_list_categories( array(
-									'show_count'         => true,
-									'use_desc_for_title' => false,
-									'title_li'           => false
-								) );
+								wp_list_categories(
+									array(
+										'show_count'         => true,
+										'use_desc_for_title' => false,
+										'title_li'           => false
+									)
+								);
 							?>
 						</ul> <!-- .xoxo .category-archives -->
 
@@ -59,10 +61,12 @@ get_header(); // Loads the header.php template ?>
 
 						<ul class="xoxo monthly-archives">
 							<?php
-								wp_get_archives( array(
-									'show_post_count' => true,
-									'type'            => 'monthly'
-								) );
+								wp_get_archives(
+									array(
+										'show_post_count' => true,
+										'type'            => 'monthly'
+									)
+								);
 							?>
 						</ul> <!-- .xoxo .monthly-archives -->
 
