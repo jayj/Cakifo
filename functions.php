@@ -218,8 +218,6 @@ function cakifo_theme_setup() {
 	/* {@internal Needs description} */
 	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
 
-	// Test change, please ignore
-
 	/**
 	 * Custom header for logo upload
 	 */
@@ -1107,6 +1105,8 @@ function cakifo_load_in_singular() {
 	if ( post_type_supports( get_post_type(), 'comments' ) )
 		comments_template( '/comments.php', true );
 }
+
+// Tester
 
 /**
  * Filter the arguments for the wp_link_pages(), used in the loop files.
