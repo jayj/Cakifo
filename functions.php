@@ -218,6 +218,8 @@ function cakifo_theme_setup() {
 	/* {@internal Needs description} */
 	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
 
+	// Test change, please ignore
+
 	/**
 	 * Custom header for logo upload
 	 */
