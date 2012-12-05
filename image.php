@@ -46,7 +46,7 @@ get_header(); // Loads the header.php template ?>
 						?>
 
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'unique' ), 'after' => '</p>' ) ); ?>
+						<?php wp_link_pages(); ?>
 					</div> <!-- .entry-content -->
 
 					<aside class="attachment-meta clearfix">

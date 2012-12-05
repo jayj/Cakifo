@@ -19,7 +19,7 @@ do_atomic( 'before_intro' ); // cakifo_before_intro ?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'cakifo' ) . '</span>', 'after' => '</div>' ) ); ?>
+		<?php wp_link_pages(); ?>
 		<?php echo do_shortcode( '[entry-edit-link]' ); ?>
 	</div> <!-- .entry-content -->
 

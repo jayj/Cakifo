@@ -26,7 +26,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
@@ -56,7 +56,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">

@@ -43,7 +43,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
 		<?php
@@ -81,14 +81,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 			<div class="entry-summary">
 				<?php the_excerpt(); ?>
-				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+				<?php wp_link_pages(); ?>
 			</div> <!-- .entry-summary -->
 
 		<?php } else { ?>
 
 			<div class="entry-content">
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
-				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+				<?php wp_link_pages(); ?>
 			</div> <!-- .entry-content -->
 
 		<?php } ?>

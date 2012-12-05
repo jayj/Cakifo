@@ -62,7 +62,7 @@ get_header(); // Loads the header.php template ?>
 
 						<?php do_atomic( 'after_bookmarks' ); // cakifo_after_bookmarks ?>
 
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+						<?php wp_link_pages(); ?>
 					</div> <!-- .entry-content -->
 
 					<?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>

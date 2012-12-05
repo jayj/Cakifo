@@ -212,6 +212,9 @@ function cakifo_theme_setup() {
 	/* Filter the comment input field types. */
 	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
 
+	/* Filter the arguments for the wp_link_pages(), used in the loop files */
+ 	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
+
 	/* {@internal Needs description} */
 	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
 
@@ -1101,6 +1104,20 @@ function cakifo_load_in_singular() {
 	// Loads the comments.php template
 	if ( post_type_supports( get_post_type(), 'comments' ) )
 		comments_template( '/comments.php', true );
+}
+
+/**
+ * Filter the arguments for the wp_link_pages(), used in the loop files.
+ *
+ * @since 1.5.0
+ * @return array $args Arguments for the wp_link_pages() function.
+ */
+function cakifo_link_pages_args( $args ) {
+
+	$args['before'] = '<p class="page-links">' . __( 'Pages:', 'cakifo' );
+	$args['after'] = '</p>';
+
+	return $args;
 }
 
 ?>
