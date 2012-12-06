@@ -218,6 +218,9 @@ function cakifo_theme_setup() {
 	/* {@internal Needs description} */
 	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
 
+	/* Back compat for the 'show_singular_comments' filter */
+	add_action( 'init', 'cakifo_compat_show_singular_comments' );
+
 	/**
 	 * Custom header for logo upload
 	 */
@@ -1106,8 +1109,6 @@ function cakifo_load_in_singular() {
 		comments_template( '/comments.php', true );
 }
 
-// Tester
-
 /**
  * Filter the arguments for the wp_link_pages(), used in the loop files.
  *
@@ -1120,6 +1121,16 @@ function cakifo_link_pages_args( $args ) {
 	$args['after'] = '</p>';
 
 	return $args;
+}
+
+/**
+ * Back compat for the 'show_singular_comments' filter
+ *
+ * @since 1.5
+ */
+function cakifo_compat_show_singular_comments() {
+	if ( apply_filters( 'show_singular_comments', true ) === false )
+		remove_post_type_support( 'page', 'comments' );
 }
 
 ?>
