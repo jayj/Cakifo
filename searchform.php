@@ -18,7 +18,7 @@
 	elseif ( is_404() )
 		$value = 'value="' . esc_attr( basename($_SERVER['REQUEST_URI']) ) . '"'; // Requested URI for 404 page
 	else
-		$value = 'placeholder="' . esc_attr__( 'Search', 'cakifo' ) . '"'; // Or "Search" as placeholder
+		$value = 'placeholder="' . esc_attr_x( 'Search', 'placeholder text', 'cakifo' ) . '"'; // Or "Search" as placeholder
 ?>
 
 <form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>" role="search">

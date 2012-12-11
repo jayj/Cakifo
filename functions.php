@@ -454,7 +454,7 @@ function cakifo_excerpt_more( $more ) {
 
 	if ( is_archive() )
 		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .
-					__( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) .
+					__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) .
 				'</a></p>';
 
 	return $more;
@@ -842,11 +842,11 @@ function cakifo_image_info() {
 
 	/* If an aperture exists, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['aperture'] ) )
-		$items['aperture'] = array( __( 'Aperture', 'cakifo' ), sprintf( __( 'f/%s', 'cakifo' ), $meta['image_meta']['aperture'] ) );
+		$items['aperture'] = array( __( 'Aperture', 'cakifo' ), sprintf( _x( 'f/%s', 'exif: aperture', 'cakifo' ), $meta['image_meta']['aperture'] ) );
 
 	/* If a focal length is set, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['focal_length'] ) )
-		$items['focal_length'] = array( __( 'Focal Length', 'cakifo' ), sprintf( __( '%s mm', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
+		$items['focal_length'] = array( __( 'Focal Length', 'cakifo' ), sprintf( _x( '%s mm', 'exif: focal length', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
 
 	/* If an ISO is set, add it to the $items array */
 	if ( ! empty( $meta['image_meta']['iso'] ) )
@@ -866,7 +866,7 @@ function cakifo_image_info() {
 			$shutter_speed = $meta['image_meta']['shutter_speed'];
 		}
 
-		$items['shutter_speed'] = array( __( 'Shutter Speed', 'cakifo' ), sprintf( __( '%s sec', 'cakifo' ), $shutter_speed ) );
+		$items['shutter_speed'] = array( __( 'Shutter Speed', 'cakifo' ), sprintf( _x( '%s sec', 'exif: shutter speed', 'cakifo' ), $shutter_speed ) );
 	}
 
 	/**
@@ -982,7 +982,7 @@ function cakifo_get_image_size_links() {
 function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	_deprecated_function( __FUNCTION__, 'Cakifo 1.3.0', 'wp_trim_words()' );
 
-	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
+	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a>';
 
 	if ( $echo )
 		echo wp_trim_words( get_the_excerpt(), $length, $more_link );

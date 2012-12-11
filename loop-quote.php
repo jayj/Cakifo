@@ -38,20 +38,11 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	<?php else : ?>
 
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
-		<?php
-			echo apply_atomic_shortcode( 'entry_meta_quote',
-				'<footer class="entry-meta">' . __(
-					'[post-format-link] published on [entry-published]
-					 [entry-permalink before="| "]
-					 [entry-comments-link before="| "]
-					 [entry-edit-link before=" | "]', 'cakifo' ) .
-				'</footer>'
-			);
-		?>
+		<?php echo apply_atomic_shortcode( 'entry_meta_quote', '<footer class="entry-meta">' . __( '[post-format-link] published on [entry-published] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' ); ?>
 
 	<?php endif; ?>
 

@@ -61,7 +61,7 @@
 	<div class="loop-meta">
 
 		<h1 class="loop-title">
-			<?php printf( __( 'Post format: %s', 'cakifo' ), '<span>' . get_post_format_string( get_post_format( get_the_ID() ) ) . '</span>' ); ?>
+			<?php printf( __( 'Post Format: %s', 'cakifo' ), '<span>' . get_post_format_string( get_post_format( get_the_ID() ) ) . '</span>' ); ?>
 		</h1>
 
 		<div class="loop-description">

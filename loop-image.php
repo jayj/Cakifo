@@ -33,9 +33,9 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 					/* Get full size version of the "Featured Image" */
 					get_the_image(
 						array(
-							'image_class' => 'aligncenter',
-							'size' => 'full',
-							'meta_key' => false,
+							'image_class'  => 'aligncenter',
+							'size'         => 'full',
+							'meta_key'     => false,
 							'link_to_post' => false
 						)
 					);
@@ -63,14 +63,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php
 				/* Get content if it exists */
 				if ( cakifo_post_has_content() ) {
-					the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) );
+					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) );
 				} else {
 					/* Get full size version of the "Featured Image" */
 					get_the_image(
 						array(
-							'image_class' => 'aligncenter',
-							'size' => 'full',
-							'meta_key' => false,
+							'image_class'  => 'aligncenter',
+							'size'         => 'full',
+							'meta_key'     => false,
 							'link_to_post' => false
 						)
 					);

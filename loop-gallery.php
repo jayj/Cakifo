@@ -30,15 +30,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
-		<?php
-			echo apply_atomic_shortcode( 'entry_meta_gallery',
-				'<footer class="entry-meta">' . __(
-					'[entry-terms taxonomy="category" before="Posted in "]
-					 [entry-terms before="| Tagged "]
-					 [entry-edit-link before=" | "]', 'cakifo' ) .
-				'</footer> <!-- .entry-meta -->'
-			);
-		?>
+		<?php echo apply_atomic_shortcode( 'entry_meta_gallery', '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer> <!-- .entry-meta -->' ); ?>
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
@@ -78,15 +70,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			</p>
 		</div> <!-- .entry-summary -->
 
-		<?php
-			echo apply_atomic_shortcode( 'entry_meta_gallery',
-				'<footer class="entry-meta">' . __(
-					'[entry-terms taxonomy="category" before="Posted in "]
-					 [entry-terms before="| Tagged "]
-					 [entry-edit-link before=" | "]', 'cakifo' ) .
-				'</footer> <!-- .entry-meta -->'
-			);
-		?>
+		<?php echo apply_atomic_shortcode( 'entry_meta_gallery', '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer> <!-- .entry-meta -->' ); ?>
 
 	<?php endif; ?>
 

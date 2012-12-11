@@ -43,7 +43,7 @@ get_header(); // Loads the header.php template ?>
 
 						<?php do_atomic( 'before_archives' ); // cakifo_before_archives ?>
 
-						<h2><?php _e( 'Archives by category', 'cakifo' ); ?></h2>
+						<h2><?php _e( 'Archives by Category', 'cakifo' ); ?></h2>
 
 						<ul class="xoxo category-archives">
 							<?php
@@ -57,7 +57,7 @@ get_header(); // Loads the header.php template ?>
 							?>
 						</ul> <!-- .xoxo .category-archives -->
 
-						<h2><?php _e( 'Archives by month', 'cakifo' ); ?></h2>
+						<h2><?php _e( 'Archives by Month', 'cakifo' ); ?></h2>
 
 						<ul class="xoxo monthly-archives">
 							<?php

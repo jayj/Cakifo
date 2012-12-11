@@ -30,21 +30,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
-		<?php
-			echo apply_atomic_shortcode( 'entry_meta_aside',
-				'<footer class="entry-meta">' . __(
-					'[entry-terms taxonomy="category" before="Posted in "]
-					 [entry-terms before="| Tagged "]', 'cakifo' ) .
-				'</footer> <!-- .entry-meta -->'
-			);
-		?>
+		<?php echo apply_atomic_shortcode( 'entry_meta_aside', '<footer class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "]', 'cakifo' ) . '</footer> <!-- .entry-meta -->' ); ?>
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
 
 	<?php else : ?>
 
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 

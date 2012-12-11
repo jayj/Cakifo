@@ -86,7 +86,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 
 				<div class="entry-summary">
 					<?php
-						$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'cakifo' ) . '</a>';
+						$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a>';
 
 						echo wp_trim_words( get_the_excerpt(), 20, $more_link );
 					?>
