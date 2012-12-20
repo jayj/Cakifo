@@ -18,8 +18,8 @@
  * http://jayj.dk
  *
  **********
- * NOTICE: Uncompressed version can be found at style.dev.css
+ * NOTICE: Uncompiled .LESS version can be found at style.dev.less
  **********
  */
 
-@import url('style.dev.css');
+@import url('style.min.css');

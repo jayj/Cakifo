@@ -21,7 +21,6 @@
 
 	<title><?php hybrid_document_title(); ?></title>
 
-	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" media="all" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<?php wp_head(); ?>
