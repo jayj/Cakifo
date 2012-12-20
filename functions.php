@@ -47,7 +47,6 @@ function cakifo_theme_setup() {
 
 	/* Load Cakifo theme includes */
 	require_once( trailingslashit( THEME_DIR ) . 'functions/customize.php' );
-	require_once( trailingslashit( THEME_DIR ) . 'functions/post-formats.php' );
 	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
 
 	/* Add theme support for core framework features */
