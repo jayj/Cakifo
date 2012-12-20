@@ -41,7 +41,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
-		<?php echo ( $video = cakifo_get_video_embed() ); ?>
+		<?php echo ( $video = post_format_tools_get_video() ); ?>
 
 		<?php if ( has_excerpt() ) { ?>
 

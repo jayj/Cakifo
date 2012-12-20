@@ -95,7 +95,7 @@
 
 							/* Try to embed a video from the post content */
 							} elseif ( has_post_format( 'video' ) ) {
-								echo '<div class="slider-video">' . cakifo_get_video_embed( $thumbnail_size['width'] ) . '</div>';
+								echo '<div class="slider-video">' . post_format_tools_get_video( $thumbnail_size['width'] ) . '</div>';
 							}
 
 						endif;

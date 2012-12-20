@@ -20,7 +20,7 @@ get_header(); // Loads the header.php template ?>
 				/**
 				 * If we have content for this page, let's display it.
 				 */
-				if ( cakifo_post_has_content() )
+				if ( post_format_tools_post_has_content() )
 					get_template_part( 'loop', 'intro' );
 			?>
 

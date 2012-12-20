@@ -50,7 +50,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	<?php else : ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( cakifo_url_grabber() ) . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">', ' <span class="meta-nav">&rarr;</span></a></h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( post_format_tools_url_grabber() ) . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">', ' <span class="meta-nav">&rarr;</span></a></h1>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 

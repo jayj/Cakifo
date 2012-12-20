@@ -63,7 +63,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 				}
 			?>
 
-			<?php $count = cakifo_get_image_attachment_count(); ?>
+			<?php $count = post_format_tools_get_image_attachment_count(); ?>
 
 			<p class="image-count">
 				<?php printf( _n( 'This gallery contains %s image.', 'This gallery contains %s images.', $count, 'cakifo' ), $count ); ?>
