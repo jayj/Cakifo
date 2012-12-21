@@ -69,12 +69,14 @@ function cakifo_theme_setup() {
 	/**
 	 * Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated
 	 * WordPress SEO is already checked for in Hybrid Core
+	 * @todo  Remove before 1.5.0
 	 */
 	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
 		add_theme_support( 'hybrid-core-seo' );
 
 	/* Add theme support for theme functions */
-	add_theme_support( 'cakifo-sidebars',
+	add_theme_support(
+		'cakifo-sidebars',
 		array(
 			'primary',
 			'secondary',
@@ -97,7 +99,8 @@ function cakifo_theme_setup() {
 	}
 
 	/* Add theme support for WordPress features */
-	add_theme_support( 'post-formats',
+	add_theme_support(
+		'post-formats',
 		array(
 			'aside',
 			'audio',
@@ -115,110 +118,19 @@ function cakifo_theme_setup() {
 	add_editor_style();
 
 	/* Custom background */
-	add_theme_support( 'custom-background', array(
-		'default-color' => 'e3ecf2',
-		'default-image' => get_template_directory_uri() . '/images/bg.png'
-	) );
-
-	/* Set $content_width */
-	hybrid_set_content_width( 630 );
-
-	/* Set embed width/height defaults and $content_width for non-default layouts */
-	add_filter( 'embed_defaults', 'cakifo_content_width' );
-
-	/*
-	 * Set new image sizes
-	 *
-	 * Small: For use in archives and searches
-	 * Slider: For use in the slider
-	 * Recent: For use in the recent posts
-	 */
-	add_image_size( 'small',
-		apply_filters( 'small_thumb_width', 100 ),
-		apply_filters( 'small_thumb_height', 100 ),
-		true
+	add_theme_support(
+		'custom-background',
+		array(
+			//'default-color' => 'e3ecf2',
+			//'default-image' => get_template_directory_uri() . '/images/bg.png'
+		)
 	);
-
-	add_image_size( 'slider',
-		apply_filters( 'slider_image_width', 500 ),
-		apply_filters( 'slider_image_height', 230 ),
-		true
-	);
-
-	add_image_size( 'recent',
-		apply_filters( 'recent_image_width', 220 ),
-		apply_filters( 'recent_image_height', 150 ),
-		true
-	);
-
-	/* Load JavaScript and CSS styles */
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
-
-	/* Link color from Theme Options */
-	add_action( 'wp_head', 'cakifo_print_link_color_style' );
-
-	/* Filter the body class */
-	add_filter( 'body_class', 'cakifo_body_class' );
-
-	/* Topbar search form */
-	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
-
-	/**
-	 * If you want the old RSS and Twitter link, do this in your child theme:
-	 * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
-	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
-	 */
-
-	/* Filter the sidebar widgets. */
-	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
-	add_action( 'template_redirect', 'cakifo_theme_layout' );
-
-	/* Add the breadcrumb trail just after the container is open */
-	if ( current_theme_supports( 'breadcrumb-trail' ) ) {
-		add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
-		add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
-	}
-
-	/* Frontpage javascript loading */
-	add_action( 'template_redirect', 'cakifo_front_page' );
-	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
-
-	/* Excerpt read more link */
-	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
-
-	/* Add Custom Field Series */
-	if ( current_theme_supports( 'custom-field-series' ) )
-		add_action( "{$prefix}_after_singular", 'custom_field_series' );
-
-	/* Add an author box after singular posts */
-	add_action( 'init', 'cakifo_place_author_box' );
-
-	/* Get the Image arguments */
-	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
-
-	/* `wp_list_comments()` arguments */
-	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
-
-	/* Filter default options */
-	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
-
-	/* Filter the comment input field types. */
-	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
-
-	/* Filter the arguments for the wp_link_pages(), used in the loop files */
- 	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
-
-	/* {@internal Needs description} */
-	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
-
-	/* Back compat for the 'show_singular_comments' filter */
-	add_action( 'init', 'cakifo_compat_show_singular_comments' );
 
 	/**
 	 * Custom header for logo upload
 	 */
-	add_theme_support( 'custom-header',
+	add_theme_support(
+		'custom-header',
 		array(
 			'width'                  => 400,
 			'height'                 => 60,
@@ -256,10 +168,108 @@ function cakifo_theme_setup() {
 			)
 		);
 	} // is_child_theme() && file_exists()
+
+	/* Set $content_width */
+	hybrid_set_content_width( 630 );
+
+	/* Set embed width/height defaults and $content_width for non-default layouts */
+	add_filter( 'embed_defaults', 'cakifo_content_width' );
+
+	/**
+	 * Set new image sizes
+	 *
+	 * Small: For use in archives and searches
+	 * Slider: For use in the slider
+	 * Recent: For use in the recent posts
+	 */
+	add_image_size(
+		'small',
+		apply_filters( 'small_thumb_width', 100 ),
+		apply_filters( 'small_thumb_height', 100 ),
+		true
+	);
+
+	add_image_size(
+		'slider',
+		apply_filters( 'slider_image_width', 500 ),
+		apply_filters( 'slider_image_height', 230 ),
+		true
+	);
+
+	add_image_size(
+		'recent',
+		apply_filters( 'recent_image_width', 220 ),
+		apply_filters( 'recent_image_height', 150 ),
+		true
+	);
+
+	/* Enqueue theme scripts and styles */
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
+	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
+
+	/* Output link color in the <head> */
+	add_action( 'wp_head', 'cakifo_print_link_color_style' );
+
+	/* Filter the body class */
+	add_filter( 'body_class', 'cakifo_body_class' );
+
+	/* Search Form in the topbar */
+	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
+
+	/**
+	 * If you want the old RSS and Twitter link, do this in your child theme:
+	 * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
+	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
+	 */
+
+	/* Filter the sidebar widgets. */
+	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
+	add_action( 'template_redirect', 'cakifo_theme_layout' );
+
+	/* Add the Breadcrumb Trail just after the container is open */
+	if ( current_theme_supports( 'breadcrumb-trail' ) ) {
+		add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
+		add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
+	}
+
+	/* Front age customisations */
+	add_action( 'template_redirect', 'cakifo_front_page' );
+	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
+
+	/* Excerpt "Read More" link */
+	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
+
+	/* Add Custom Field Series */
+	if ( current_theme_supports( 'custom-field-series' ) )
+		add_action( "{$prefix}_after_singular", 'custom_field_series' );
+
+	/* Add an Author Box after singular posts */
+	add_action( 'init', 'cakifo_place_author_box' );
+
+	/* Get the Image arguments */
+	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
+
+	/* wp_list_comments() arguments */
+	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
+
+	/* Filter default theme options */
+	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
+
+	/* Filter the comment input field types */
+	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
+
+	/* Filter the arguments for wp_link_pages(), used in the loop files */
+ 	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
+
+	/* Load all necessary files and hooks for singular pages  */
+	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
+
+	/* Backward compatibility for the 'show_singular_comments' filter */
+	add_action( 'init', 'cakifo_compat_show_singular_comments' );
 }
 
 /**
- * Loads the theme functions if the theme/child theme supports them.
+ * Load the theme functions, if the theme/child theme supports them.
  *
  * @since Cakifo 1.3.0
  */
@@ -279,9 +289,7 @@ function cakifo_load_theme_support() {
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
 
 /**
- * Loads the theme JavaScript files
- *
- * It loads jQuery, Modernizr, and the Javascript needed for this theme
+ * Enqueue theme scripts, includes jQuery, Modernizr, and Flexslider.
  *
  * @since Cakifo 1.0.0
  */
@@ -298,32 +306,45 @@ function cakifo_enqueue_script() {
 	 */
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', array(), '2.5.3' );
 
-	/* jQuery */
+	/* Enqueue jQuery */
 	wp_enqueue_script( 'jquery' );
 
-	/**
-	 * Loads the theme javascript
-	 */
+	/* Enqueue the theme javascript */
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.4', true );
+
+	/* Enqueue the Flexslider jQuery Plugin */
+	if ( hybrid_get_setting( 'featured_show' ) )
+		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.1', true );
 }
 
 /**
- * Loads fonts from the Google Font API
+ * Enqueue theme styles
  *
  * @since Cakifo 1.0.0
  */
 function cakifo_enqueue_style() {
-	$scheme = is_ssl() ? 'https' : 'http';
+	/**
+	 * Loads the PT Serif font from Google Fonts.
+	 *
+	 * The use of PT Serif by default is localized. For languages that use
+	 * characters not supported by the font, the font can be disabled.
+	 *
+	 * To disable in a child theme, use wp_dequeue_style()
+	 * function mychild_dequeue_fonts() {
+	 *     wp_dequeue_style( 'PT-Serif' );
+	 * }
+	 * add_action( 'wp_enqueue_scripts', 'mychild_dequeue_fonts', 11 );
+	 */
+	$protocol = is_ssl() ? 'https' : 'http';
+	$query_args = array(
+		'family' => 'PT+Serif:400italic,700italic,400,700',
+	);
 
-	wp_enqueue_style( 'PT-Serif', $scheme . '://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' );
-
-	//wp_enqueue_style( 'buttons' );
+	wp_enqueue_style( 'PT-Serif', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 }
 
 /**
- * Front Page stuff
- *
- * Adds JavaScript to the frontpage and removes the breadcrumb menu.
+ * Customize the front page
  *
  * @since Cakifo 1.0.0
  */
@@ -334,16 +355,12 @@ function cakifo_front_page() {
 	if ( ! is_home() && ! is_front_page() )
 		return;
 
-	/* Load the Flexslider jQuery Plugin */
-	if ( hybrid_get_setting( 'featured_show' ) )
-		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.1', true );
-
 	/* Remove the breadcrumb trail */
 	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
 }
 
 /**
- * Add the javascript needed for the slider
+ * Add Flexslider scripts
  *
  * @since Cakifo 1.0.0
  * @uses apply_filters() The `cakifo_flexslider_args` filter allows you to change the default values.
@@ -354,7 +371,7 @@ function cakifo_slider_javascript() {
 	if ( ! is_home() && ! is_front_page() )
 		return;
 
-	//* If slider is disabled, return */
+	/* If slider is disabled, return */
 	if ( ! hybrid_get_setting( 'featured_show' ) )
 		return;
 
@@ -462,7 +479,7 @@ function cakifo_excerpt_more( $more ) {
  * @return array      The filtered 'Breadcrumb' arguments
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-	$args['before'] = __( 'You are here:', 'cakifo' ); // Change the text before the breadcrumb trail
+	$args['before'] = __( 'You are here:', 'cakifo' ); // Changes the text before the breadcrumb trail
 
 	return $args;
 }
@@ -581,7 +598,7 @@ function cakifo_content_width( $args ) {
 }
 
 /**
- * Styles the header text displayed on the blog
+ * Output the custom header style in <head>
  *
  * @since Cakifo 1.0.0
  */
@@ -607,7 +624,7 @@ function cakifo_header_style() {
 				clip: rect(1px, 1px, 1px, 1px);
 			}
 		<?php
-			// If the user has set a custom color for the text use that
+			// If the user has set a custom color for the text, use that
 			elseif ( 'blank' != get_header_textcolor() ) :
 		?>
 			#site-title a,
@@ -656,7 +673,7 @@ function cakifo_admin_header_image() { ?>
 <?php }
 
 /**
- * Styles the header image and text on the Header admin screen
+ * Style the header image and text on the Header admin screen
  *
  * @since Cakifo 1.0.0
  */
@@ -720,7 +737,7 @@ function cakifo_logo() {
 	/* Get the site title */
 	$title = get_bloginfo( 'name' );
 
-	/* Check if there's a header image, else return the blog name */
+	/* Check if there's a header image */
 	if ( get_header_image() ) {
 		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
 		$maybe_image .= '<span class="assistive-text">' . $title . '</span>';
@@ -894,7 +911,7 @@ function cakifo_image_info() {
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
 
-	$builtin_sizes =array(
+	$builtin_sizes = array(
 		'large'	=> array(
 			'width'  => get_option( 'large_size_w' ),
 			'height' => get_option( 'large_size_h' )
@@ -924,7 +941,6 @@ function cakifo_get_image_sizes() {
  * @return array       Array containing 'width', 'height', 'crop'
  */
 function cakifo_get_image_size( $name ) {
-
 	$image_sizes = cakifo_get_image_sizes();
 
 	if ( isset( $image_sizes[$name] ) )
@@ -1080,7 +1096,7 @@ function cakifo_html5_comment_fields( $fields ) {
 }
 
 /**
- * Load all files files and hooks for singular pages.  This includes the sidebars, the loop-nav.php
+ * Load all necessary files and hooks for singular pages.  This includes the sidebars, the loop-nav.php
  * template, comments template and the `after_singular` atomic hook.
  *
  * @since Cakifo 1.5.0
@@ -1110,7 +1126,6 @@ function cakifo_load_in_singular() {
  * @return array $args Arguments for the wp_link_pages() function.
  */
 function cakifo_link_pages_args( $args ) {
-
 	$args['before'] = '<p class="page-links">' . __( 'Pages:', 'cakifo' );
 	$args['after'] = '</p>';
 

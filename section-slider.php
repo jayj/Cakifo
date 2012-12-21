@@ -18,17 +18,19 @@
 		'showposts'     => (int) hybrid_get_setting( 'featured_posts' ),
 		'post_status'   => 'publish',
 		'no_found_rows' => true,
-		'tax_query' => array(
+		'tax_query' =>
+			array(
 				array(
 					'taxonomy' => 'post_format',
 					'field' => 'slug',
-					'terms' => array(
-						'post-format-aside',
-						'post-format-audio',
-						'post-format-chat',
-						'post-format-quote',
-						'post-format-status'
-					),
+					'terms' =>
+						array(
+							'post-format-aside',
+							'post-format-audio',
+							'post-format-chat',
+							'post-format-quote',
+							'post-format-status'
+						),
 					'operator' => 'NOT IN'
 				)
 			)
@@ -95,7 +97,7 @@
 
 							/* Try to embed a video from the post content */
 							} elseif ( has_post_format( 'video' ) ) {
-								echo '<div class="slider-video">' . post_format_tools_get_video( $thumbnail_size['width'] ) . '</div>';
+								echo '<div class="slider-video">' . post_format_tools_get_video( array( 'width' => $thumbnail_size['width'] ) ) . '</div>';
 							}
 
 						endif;

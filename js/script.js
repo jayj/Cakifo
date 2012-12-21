@@ -11,7 +11,7 @@
 		button.hide();
 	}
 
-	button.off( 'click' ).click( function() {
+	button.off( 'click' ).on( 'click', function() {
 		topbar.find( '.menu-list-container' ).stop().slideToggle(400);
 		search.toggle();
 		$( this ).toggleClass( 'toggled-on' );
