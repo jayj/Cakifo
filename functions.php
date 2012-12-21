@@ -66,14 +66,6 @@ function cakifo_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
 
-	/**
-	 * Add Hybrid Core SEO if the (All in One SEO || HeadSpace2 SEO) plugin isn't activated
-	 * WordPress SEO is already checked for in Hybrid Core
-	 * @todo  Remove before 1.5.0
-	 */
-	if ( ! class_exists( 'All_in_One_SEO_Pack' ) && ! class_exists( 'Headspace_Plugin' ) )
-		add_theme_support( 'hybrid-core-seo' );
-
 	/* Add theme support for theme functions */
 	add_theme_support(
 		'cakifo-sidebars',
