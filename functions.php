@@ -121,8 +121,8 @@ function cakifo_theme_setup() {
 	add_theme_support(
 		'custom-background',
 		array(
-			//'default-color' => 'e3ecf2',
-			//'default-image' => get_template_directory_uri() . '/images/bg.png'
+			'default-color' => 'e3ecf2',
+			'default-image' => get_template_directory_uri() . '/images/bg.png'
 		)
 	);
 
