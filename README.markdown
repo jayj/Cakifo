@@ -1,43 +1,47 @@
-# Cakifo 1.4.4
+# Cakifo 1.5
 
 > Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core by Justin Tadlock"), so it provides a great starting point with many useful features..
 
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
-* Requires at least WordPress 3.4
-* Tested up to 3.4
 * [Cakifo in the official theme directory](http://wordpress.org/extend/themes/cakifo)
+* Requires at least WordPress 3.5
+* Tested up to 3.5
 
 ## Demo
 
 ###[See demo](http://wpthemes.jayj.dk/cakifo/)
 
-![Cakifo preview](http://i.imgur.com/DBtZz.png)
+![Cakifo preview](http://i.imgur.com/7EgbD.png)
 
 ## Features
 
 * Child theme friendly - Nearly everything can be customized in a child theme
-* Uses Hybrid Core as framework
+* Hybrid Core as framework
 * HTML5 markup
 * Responsive design
 * Theme Customizer – Make changes to the theme and live preview them
+* Post Formats
+* Multiple widget-ready areas
 * Custom logo (text, image or both)
 * Custom background
-* Custom front page with slider, recent posts, and posts from categories
-* Per-post layouts that allow you to quickly change the layout of your site
-* Post setting that allows you to add a custom stylesheet for individual posts
+* Custom link color
+* Custom front page
+* Per-post/page layouts - Quickly change the layout of your site
+* Add a custom stylesheet for individual posts
+* Featured Content Slider
 * Breadcrumbs
 * Built-in pagination
-* Killer post thumbnails function that work with WordPress' featured image functionality and provide extra features
-* Multiple sidebars that you can customize however you like
+* Supports post thumbnails
+* Colorbox - a jQuery lightbox plugin
 * Fully internationalized, so you can run the theme in any language (Danish and French are already added!)
+* RTL stylesheet
+* Editor stylesheet
 * Uses the built-in WordPress menu system
 * Context-aware action and filter hooks
-* Many useful shortcodes
 * Small theme settings page (yep, that's a feature)
-* Custom link color
 * Highly-configurable widgets that give you full control over their display
-* Update notification when a version is available - You can even update directly from dashboard!
+* Update notification when a version is available - download the update directly from WordPress.org
 * And much, much more!
 
 ## Child themes

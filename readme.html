@@ -133,7 +133,7 @@ table caption {
 
 <div id="wrapper">
 
-<h1>Cakifo 1.4.4 <small>By <a href="http://jayj.dk">Jesper J. / Jayj.dk</a></small></h1>
+<h1>Cakifo 1.5.0 <small>By <a href="http://jayj.dk">Jesper J. / Jayj.dk</a></small></h1>
 
 	<blockquote>
 		<p>Cakifo is a free WordPress theme built with from the rock-solid <a href="http://themehybrid.com/hybrid-core" title="Hybrid Core by Justin Tadlock">Hybrid Core theme framework</a>, so it provides a great starting point with many useful features..</p>
@@ -142,8 +142,8 @@ table caption {
 	<p>This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.</p>
 
 <ul>
-	<li>Requires at least WordPress 3.4</li>
-	<li>Tested up to 3.4</li>
+	<li>Requires at least WordPress 3.5</li>
+	<li>Tested up to 3.5</li>
 	<li><a href="http://wordpress.org/extend/themes/cakifo">Cakifo in the official theme directory</a></li>
 	<li><a href="https://github.com/jayj/Cakifo">Cakifo on Github</a></li>
 </ul>
@@ -156,23 +156,29 @@ table caption {
 	<li>HTML5 markup</li>
 	<li>Responsive design</li>
 	<li>Theme Customizer – Make changes to the theme and live preview them</li>
+	<li>Post Formats</li>
+	<li>Multiple widget-ready areas</li>
 	<li>Custom logo (text, image or both)</li>
 	<li>Custom background</li>
-	<li>Custom front page with slider, recent posts, and posts from categories</li>
-	<li>Per-post layouts that allow you to quickly change the layout of your site</li>
-	<li>Post setting that allows you to add a custom stylesheet for individual posts</li>
+	<li>Custom link color</li>
+	<li>Custom front page</li>
+	<li>Per-post layouts - Quickly change the layout of your site</li>
+	<li>Add a custom stylesheet for individual posts</li>
+	<li>Featured Content Slider</li>
 	<li>Breadcrumbs</li>
 	<li>Built-in pagination</li>
 	<li>Killer post thumbnails function that work with WordPress' featured image functionality and provide extra features</li>
+	<li>Colorbox - a jQuery lightbox plugin</li>
 	<li>Multiple sidebars that you can customize however you like</li>
 	<li>Fully internationalized, so you can run the theme in any language (Danish and French are already added!)</li>
-	<li>RTL support</li>
+	<li>RTL stylesheet</li>
+	<li>Editor stylesheet</li>
 	<li>Uses the built-in WordPress menu system</li>
 	<li>Context-aware action and filter hooks</li>
 	<li>Many useful shortcodes</li>
 	<li>Small theme settings page (yep, that's a feature)</li>
-	<li>Custom link color</li>
 	<li>Highly-configurable widgets that give you full control over their display</li>
+	<li>Update notification when a version is available - download the update directly from WordPress.org</li>
 	<li><em>And much, much more!</em></li>
 </ul>
 
@@ -224,28 +230,89 @@ table caption {
 
 	<p>You can make more than just style changes in a child theme. Unlike style.css, the functions.php of a child theme does not override its counterpart from the parent. Instead, it is loaded in addition to the parent's functions.php. (Specifically, it is loaded right before the parent's file.)</p>
 
-	<p>Adding functions or changing things in the parent theme will be lost when it's updated. Fortunately Cakifo is very user child theme friendly. It has a lot of hooks and filter to make it easy for you to change the functionality of the parent theme <em>in your child theme</em>. See the <a href="http://themehybrid.com/hybrid-core/hooks">Hybrid Core Hooks guide</a> for more information.</p>
+	<p>Adding functions or changing things in the parent theme will be lost when it's updated. Fortunately Cakifo is very user child theme friendly. It has a lot of hooks and filter to make it easy for you to change the functionality of the parent theme <em>in your child theme</em>. See the <a href="http://themehybrid.com/docs">Hybrid Core Docs</a> for more information.</p>
+
+	<h5>Child theme setup function</h5>
+
+	For full explanation, please see the <a href="http://themehybrid.com/docs/tutorials/theme-setup-function">Theme Hybrid Docs</a>.</p>
+
+<pre>
+&lt;?php
+
+add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
+
+function my_child_setup() {
+
+	/* Get the parent theme prefix. */
+	$prefix = hybrid_get_prefix();
+
+	/* Actions and filters calls go here in the future. */
+}
+
+?&gt;
+</pre>
+
+
 
 	<h5>Example</h5>
 
-	<p>An example child theme is included in the download. But I'll give an example here as well</p>
-
-	<p>Let's say you want to change the speed of the slider. That's very easy. In your child theme functions.php do this</p>
+	<p>Let's say you want to change the speed of the slider and/or remove comments from pages. In your child theme functions.php do this</p>
 
 <pre>
-function my_slider_args( $args ) {
-	$args['slideshow'] = false; // Disables auto start
-    return $args;
+&lt;?php
+
+add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
+
+function my_child_setup() {
+
+	/* Get the parent theme prefix. */
+	$prefix = hybrid_get_prefix();
+
+	/* Set the slider speed. */
+	add_filter( 'cakifo_flexslider_args', 'my_child_slider_args' );
+
+	/* Remove comments from pages. */
+	add_action( 'init', 'my_child_disable_comments_for_pages', 11 );
+
+	/* Other Actions and filters calls go here. */
 }
 
-add_filter( 'cakifo_flexslider_args', 'my_slider_args' );
+function my_child_slider_args( $args ) {
+	$args['slideshowSpeed'] = 4000; // Sets the speed to 4 seconds
+	return $args;
+}
+
+function cakifo_child_disable_comments_for_pages() {
+	remove_post_type_support( 'page', 'comments' );
+}
+
+?&gt;
 </pre>
 
-	<p>Or you want to remove comments from pages. Easy</p>
-
+Or what about adding some content to the header? Easy.
 <pre>
-    add_filter( 'show_singular_comments', '__return_false' );
+&lt;?php
+
+add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
+
+function my_child_setup() {
+
+	/* Get the parent theme prefix. */
+	$prefix = hybrid_get_prefix();
+
+	/* Add content to the header. */
+	add_action( "{$prefix}_header", 'my_child_header_content' );
+
+	/* Other Actions and filters calls go here. */
+}
+
+function my_child_header_content() {
+	echo 'Header Content';
+}
+
+?&gt;
 </pre>
+
 
 <h2>License</h2>
 
@@ -283,11 +350,16 @@ add_filter( 'cakifo_flexslider_args', 'my_slider_args' );
 
 <h2>Changelog</h2>
 
-	<h4>Version 1.4.4</h4>
+	<h4>Version 1.5.0</h4>
 	<ul>
-		<li>Bug fix: Default background color not showing before background settings were saved</li>
-		<li>Add <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;</code> to <code>&lt;head&gt;</code> to give mobile users a better experience</li>
-		<li>Style.css is no longer compressed into one line but has a linebreak after each selector</li>
+		<li>Hybrid Core 1.5 - <a href="http://themehybrid.com/weblog/hybrid-core-version-1-5">See the changelog</a></li>
+		<li>Some of the features from Hybrid Core 1.5 mentioned in the link above</li>
+		<li>Design update</li>
+		<li>Improved Post Format support</li>
+		<li>Secondary Navigation</li>
+		<li>Changed from <code>px</code> to <code>rem</code> in font sizes</li>
+		<li>Code improvements</li>
+		<li>Bug fixes</li>
 	</ul>
 
 <h2>Support</h2>
