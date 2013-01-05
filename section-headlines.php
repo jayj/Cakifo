@@ -68,7 +68,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 									array(
 										'size'          => 'small',
 										'image_class'   => 'thumbnail',
-										'default_image' => THEME_URI . '/images/default-thumb-mini.gif'
+										'default_image' => THEME_URI . '/images/default-thumb-mini.png'
 									)
 								);
 						?>
