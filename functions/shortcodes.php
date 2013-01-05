@@ -246,9 +246,10 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
 		$attr
 	);
 
+	// The count parameter is deprecated. Use annotation="none" instead
 	if ( $attr['count'] !== 'true' ) {
 		$attr['annotation'] = 'none';
-		//_deprecated_argument( __FUNCTION__, 'Cakifo 1.5', 'The count argument is deprecated. Use annotation="none" instead' );
+		//_deprecated_argument( __FUNCTION__, 'Cakifo 1.5', 'The count parameter is deprecated. Use annotation="none" instead' );
 	}
 
 	// Only add the script once
