@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cakifo 1.5\n"
-"POT-Creation-Date: 2012-12-06 15:54+0100\n"
+"POT-Creation-Date: 2013-01-05 01:34+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Jesper J <kontakt@jayj.dk>\n"
 "Language-Team: \n"
@@ -58,117 +58,117 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:244
+#: functions.php:142
 msgid "Logo.png from the Cakifo images folder"
 msgstr ""
 
-#: functions.php:258
+#: functions.php:156
 msgid "Logo.png from the Cakifo child theme images folder"
-msgstr ""
-
-#: functions.php:379
-msgctxt "slide"
-msgid "Previous"
-msgstr ""
-
-#: functions.php:380
-msgctxt "slide"
-msgid "Next"
-msgstr ""
-
-#: functions.php:381
-msgctxt "slide"
-msgid "Pause"
 msgstr ""
 
 #: functions.php:382
 msgctxt "slide"
+msgid "Previous"
+msgstr ""
+
+#: functions.php:383
+msgctxt "slide"
+msgid "Next"
+msgstr ""
+
+#: functions.php:384
+msgctxt "slide"
+msgid "Pause"
+msgstr ""
+
+#: functions.php:385
+msgctxt "slide"
 msgid "Play"
 msgstr ""
 
-#: functions.php:457 functions.php:985 loop-aside.php:40 loop-audio.php:53
+#: functions.php:460 functions.php:987 loop-aside.php:40 loop-audio.php:53
 #: loop-chat.php:53 loop-image.php:66 loop-link.php:71 loop-quote.php:41
 #: loop-video.php:55 loop.php:83 section-recentposts.php:89
-#: section-slider.php:107
+#: section-slider.php:109
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: functions.php:471
+#: functions.php:474
 msgid "You are here:"
 msgstr ""
 
-#: functions.php:492
+#: functions.php:495
 msgid "Subscribe by [rss-link] [twitter-username before=\"or \"]"
 msgstr ""
 
-#: functions.php:769
+#: functions.php:772
 msgid "Article written by [entry-author]"
 msgstr ""
 
-#: functions.php:780 functions.php:781 loop-meta.php:107 loop-meta.php:108
+#: functions.php:783 functions.php:784 loop-meta.php:107 loop-meta.php:108
 #, php-format
 msgid "Follow %s on Twitter"
 msgstr ""
 
-#: functions.php:833
+#: functions.php:836
 msgctxt "image dimensions"
 msgid "Dimensions"
 msgstr ""
 
-#: functions.php:833
+#: functions.php:836
 #, php-format
 msgctxt "image dimensions"
 msgid "%1$s &#215; %2$s pixels"
 msgstr ""
 
-#: functions.php:837
+#: functions.php:840
 msgctxt "image creation"
 msgid "Date"
 msgstr ""
 
-#: functions.php:841
+#: functions.php:844
 msgid "Camera"
 msgstr ""
 
-#: functions.php:845
+#: functions.php:848
 msgid "Aperture"
 msgstr ""
 
-#: functions.php:845
+#: functions.php:848
 #, php-format
 msgctxt "exif: aperture"
 msgid "f/%s"
 msgstr ""
 
-#: functions.php:849
+#: functions.php:852
 msgid "Focal Length"
 msgstr ""
 
-#: functions.php:849
+#: functions.php:852
 #, php-format
 msgctxt "exif: focal length"
 msgid "%s mm"
 msgstr ""
 
-#: functions.php:853
+#: functions.php:856
 msgid "ISO"
 msgstr ""
 
-#: functions.php:869
+#: functions.php:872
 msgid "Shutter Speed"
 msgstr ""
 
-#: functions.php:869
+#: functions.php:872
 #, php-format
 msgctxt "exif: shutter speed"
 msgid "%s sec"
 msgstr ""
 
-#: functions.php:886
+#: functions.php:889
 msgid "Image Info"
 msgstr ""
 
-#: functions.php:1120 page.php:44
+#: functions.php:1121 page.php:44
 msgid "Pages:"
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr[1] ""
 msgid "[entry-published] by [entry-author] [entry-comments-link]"
 msgstr ""
 
-#: loop-image.php:50 loop-image.php:87
+#: loop-image.php:50 loop-image.php:85
 msgid ""
 "[entry-terms taxonomy=\"category\" before=\"Posted in \"] [entry-terms "
 "before=\"Tagged: \"] [entry-edit-link]"
@@ -364,10 +364,10 @@ msgstr ""
 
 #: page.php:47 template-archives.php:78 template-bookmarks.php:68
 #: library/classes/widget-tags.php:177
-#: library/extensions/breadcrumb-trail.php:505
-#: library/extensions/breadcrumb-trail.php:538
-#: library/extensions/breadcrumb-trail.php:553
-#: library/extensions/breadcrumb-trail.php:581
+#: library/extensions/breadcrumb-trail.php:540
+#: library/extensions/breadcrumb-trail.php:573
+#: library/extensions/breadcrumb-trail.php:588
+#: library/extensions/breadcrumb-trail.php:616
 #: library/functions/shortcodes.php:204 library/functions/shortcodes.php:448
 msgid "Edit"
 msgstr ""
@@ -390,7 +390,7 @@ msgstr ""
 msgid "Recent Posts"
 msgstr ""
 
-#: section-slider.php:58 functions/admin.php:132
+#: section-slider.php:60 functions/admin.php:132
 msgid "Featured Posts"
 msgstr ""
 
@@ -650,7 +650,7 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: functions/sidebars.php:280
+#: functions/sidebars.php:280 library/extensions/post-format-tools.php:101
 msgid "Links"
 msgstr ""
 
@@ -726,12 +726,12 @@ msgid "Comment count"
 msgstr ""
 
 #: functions/widget-related-posts.php:304
-#: library/classes/widget-archives.php:174
+#: library/classes/widget-archives.php:181
 #: library/classes/widget-authors.php:160
 #: library/classes/widget-bookmarks.php:217
 #: library/classes/widget-calendar.php:108
 #: library/classes/widget-categories.php:195
-#: library/classes/widget-nav-menu.php:133
+#: library/classes/widget-nav-menu.php:131
 #: library/classes/widget-pages.php:178 library/classes/widget-search.php:144
 #: library/classes/widget-tags.php:207
 msgid "Title:"
@@ -763,27 +763,27 @@ msgstr ""
 msgid "Customize"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:37
+#: library/admin/meta-box-post-seo.php:39
 msgid "SEO"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:70
+#: library/admin/meta-box-post-seo.php:72
 msgid "Document Title:"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:76
+#: library/admin/meta-box-post-seo.php:78
 msgid "Meta Description:"
 msgstr ""
 
-#: library/admin/meta-box-post-seo.php:82
+#: library/admin/meta-box-post-seo.php:84
 msgid "Meta Keywords:"
 msgstr ""
 
-#: library/admin/meta-box-post-template.php:36
+#: library/admin/meta-box-post-template.php:38
 msgid "Template"
 msgstr ""
 
-#: library/admin/meta-box-post-template.php:87
+#: library/admin/meta-box-post-template.php:89
 msgid "No templates exist for this post type."
 msgstr ""
 
@@ -863,43 +863,61 @@ msgstr ""
 msgid "Select Post"
 msgstr ""
 
-#: library/classes/widget-archives.php:156
+#: library/classes/widget-archives.php:157
 msgid "Alphabetical"
 msgstr ""
 
-#: library/classes/widget-archives.php:157
+#: library/classes/widget-archives.php:158
 msgid "Daily"
 msgstr ""
 
-#: library/classes/widget-archives.php:158
+#: library/classes/widget-archives.php:159
 msgid "Monthly"
 msgstr ""
 
-#: library/classes/widget-archives.php:159
+#: library/classes/widget-archives.php:160
 msgid "Post By Post"
 msgstr ""
 
-#: library/classes/widget-archives.php:160
+#: library/classes/widget-archives.php:161
 msgid "Weekly"
 msgstr ""
 
-#: library/classes/widget-archives.php:161
+#: library/classes/widget-archives.php:162
 msgid "Yearly"
 msgstr ""
 
-#: library/classes/widget-archives.php:166
-msgid "Custom"
-msgstr ""
-
 #: library/classes/widget-archives.php:167
-msgid "HTML"
+#: library/classes/widget-authors.php:141
+#: library/classes/widget-bookmarks.php:182
+#: library/classes/widget-bookmarks.php:194
+#: library/classes/widget-categories.php:171
+#: library/classes/widget-pages.php:152 library/classes/widget-tags.php:186
+msgid "Ascending"
 msgstr ""
 
 #: library/classes/widget-archives.php:168
+#: library/classes/widget-authors.php:142
+#: library/classes/widget-bookmarks.php:183
+#: library/classes/widget-bookmarks.php:195
+#: library/classes/widget-categories.php:172
+#: library/classes/widget-pages.php:153 library/classes/widget-tags.php:187
+msgid "Descending"
+msgstr ""
+
+#: library/classes/widget-archives.php:173
+msgid "Custom"
+msgstr ""
+
+#: library/classes/widget-archives.php:174
+msgid "HTML"
+msgstr ""
+
+#: library/classes/widget-archives.php:175
 msgid "Option"
 msgstr ""
 
-#: library/classes/widget-archives.php:210
+#: library/classes/widget-archives.php:225
 #: library/classes/widget-authors.php:208
 msgid "Show post count?"
 msgstr ""
@@ -913,22 +931,6 @@ msgstr ""
 #: library/classes/widget-authors.php:44
 #: library/classes/widget-authors.php:123
 msgid "Authors"
-msgstr ""
-
-#: library/classes/widget-authors.php:141
-#: library/classes/widget-bookmarks.php:182
-#: library/classes/widget-bookmarks.php:194
-#: library/classes/widget-categories.php:171
-#: library/classes/widget-pages.php:152 library/classes/widget-tags.php:186
-msgid "Ascending"
-msgstr ""
-
-#: library/classes/widget-authors.php:142
-#: library/classes/widget-bookmarks.php:183
-#: library/classes/widget-bookmarks.php:195
-#: library/classes/widget-categories.php:172
-#: library/classes/widget-pages.php:153 library/classes/widget-tags.php:187
-msgid "Descending"
 msgstr ""
 
 #: library/classes/widget-authors.php:146
@@ -1157,7 +1159,7 @@ msgstr ""
 msgid "Navigation Menu"
 msgstr ""
 
-#: library/classes/widget-nav-menu.php:109
+#: library/classes/widget-nav-menu.php:108
 msgid "Navigation"
 msgstr ""
 
@@ -1242,94 +1244,94 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:389
+#: library/extensions/breadcrumb-trail.php:424
 #: library/functions/context.php:429
 msgid "g:i a"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:392
+#: library/extensions/breadcrumb-trail.php:427
 #, php-format
 msgid "Minute %1$s"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:392
+#: library/extensions/breadcrumb-trail.php:427
 #: library/functions/context.php:432
 msgid "i"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:395
+#: library/extensions/breadcrumb-trail.php:430
 #: library/functions/context.php:435
 msgid "g a"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:406
-#: library/extensions/breadcrumb-trail.php:416
-#: library/extensions/breadcrumb-trail.php:425
-#: library/extensions/breadcrumb-trail.php:436
-#: library/extensions/breadcrumb-trail.php:438
-#: library/extensions/breadcrumb-trail.php:637
+#: library/extensions/breadcrumb-trail.php:441
+#: library/extensions/breadcrumb-trail.php:451
+#: library/extensions/breadcrumb-trail.php:460
+#: library/extensions/breadcrumb-trail.php:471
+#: library/extensions/breadcrumb-trail.php:473
+#: library/extensions/breadcrumb-trail.php:672
 #: library/functions/context.php:441 library/functions/context.php:447
-#: library/functions/core-seo.php:90 library/functions/shortcodes.php:70
+#: library/functions/core-seo.php:94 library/functions/shortcodes.php:70
 msgid "Y"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:407
-#: library/extensions/breadcrumb-trail.php:428
-#: library/extensions/breadcrumb-trail.php:430
-#: library/extensions/breadcrumb-trail.php:641
+#: library/extensions/breadcrumb-trail.php:442
+#: library/extensions/breadcrumb-trail.php:463
+#: library/extensions/breadcrumb-trail.php:465
+#: library/extensions/breadcrumb-trail.php:676
 msgid "F"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:410
-#: library/extensions/breadcrumb-trail.php:412
-#: library/extensions/breadcrumb-trail.php:645
+#: library/extensions/breadcrumb-trail.php:445
+#: library/extensions/breadcrumb-trail.php:447
+#: library/extensions/breadcrumb-trail.php:680
 msgid "d"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:419
-#: library/extensions/breadcrumb-trail.php:421
+#: library/extensions/breadcrumb-trail.php:454
+#: library/extensions/breadcrumb-trail.php:456
 #, php-format
 msgid "Week %1$s"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:419
-#: library/extensions/breadcrumb-trail.php:421
+#: library/extensions/breadcrumb-trail.php:454
+#: library/extensions/breadcrumb-trail.php:456
 #: library/functions/context.php:441
 msgid "W"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:447
-#: library/extensions/breadcrumb-trail.php:449
+#: library/extensions/breadcrumb-trail.php:482
+#: library/extensions/breadcrumb-trail.php:484
 #: library/functions/context.php:458
 #, php-format
 msgid "Search results for &quot;%1$s&quot;"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:454
+#: library/extensions/breadcrumb-trail.php:489
 #: library/functions/context.php:462
 msgid "404 Not Found"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:459
-#: library/extensions/breadcrumb-trail.php:461
+#: library/extensions/breadcrumb-trail.php:494
+#: library/extensions/breadcrumb-trail.php:496
 #, php-format
 msgid "Page %d"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:530
+#: library/extensions/breadcrumb-trail.php:565
 msgid "Split"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:534
+#: library/extensions/breadcrumb-trail.php:569
 msgid "Merge"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:641
-#: library/functions/core-seo.php:86
+#: library/extensions/breadcrumb-trail.php:676
+#: library/functions/core-seo.php:90
 msgid "F Y"
 msgstr ""
 
-#: library/extensions/breadcrumb-trail.php:645
+#: library/extensions/breadcrumb-trail.php:680
 msgid "F j, Y"
 msgstr ""
 
@@ -1341,7 +1343,39 @@ msgstr ""
 msgid "Series"
 msgstr ""
 
-#: library/extensions/post-stylesheets.php:277
+#: library/extensions/post-format-tools.php:96
+msgid "Asides"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:97
+msgid "Audio"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:98
+msgid "Chats"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:99
+msgid "Images"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:100
+msgid "Galleries"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:102
+msgid "Quotes"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:103
+msgid "Status Updates"
+msgstr ""
+
+#: library/extensions/post-format-tools.php:104
+msgid "Videos"
+msgstr ""
+
+#: library/extensions/post-stylesheets.php:279
 msgid "Stylesheet"
 msgstr ""
 
@@ -1373,17 +1407,17 @@ msgstr ""
 msgid "Three Columns, Center"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:419
-#: library/extensions/theme-layouts.php:525
-#: library/extensions/theme-layouts.php:608
+#: library/extensions/theme-layouts.php:421
+#: library/extensions/theme-layouts.php:531
+#: library/extensions/theme-layouts.php:616
 msgid "Layout"
 msgstr ""
 
-#: library/extensions/theme-layouts.php:445
+#: library/extensions/theme-layouts.php:447
 msgid "Layout is a theme-specific structure for the single view of the post."
 msgstr ""
 
-#: library/extensions/theme-layouts.php:641
+#: library/extensions/theme-layouts.php:649
 msgid "Global Layout"
 msgstr ""
 
@@ -1462,12 +1496,12 @@ msgstr ""
 msgid "%1$s Page %2$s"
 msgstr ""
 
-#: library/functions/core-seo.php:93
+#: library/functions/core-seo.php:97
 #, php-format
 msgid "Copyright (c) %1$s"
 msgstr ""
 
-#: library/functions/core-seo.php:112 library/functions/shortcodes.php:218
+#: library/functions/core-seo.php:116 library/functions/shortcodes.php:218
 #: library/functions/shortcodes.php:378
 msgid "l, F jS, Y, g:i a"
 msgstr ""
@@ -1476,7 +1510,7 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: library/functions/deprecated.php:613
+#: library/functions/deprecated.php:587
 #, php-format
 msgid ""
 "<code>%1$s</code> &mdash; This function has been removed or replaced by "

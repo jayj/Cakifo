@@ -66,7 +66,6 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 * [Hybrid Core](http://themehybrid.com/hybrid-core "Hybrid Core") by Justin Tadlock
 * [Modernizr](http://modernizr.com)
 * Flexslider by [Woothemes](http://www.woothemes.com/flexslider/)
-* [Wolforg](http://wolforg.eu/) for french translation
 * Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)
 * And others! More people are credited in the source
 
