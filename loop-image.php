@@ -62,7 +62,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		<div class="entry-content">
 			<?php
 				/* Get content if it exists */
-				if ( cakifo_post_has_content() ) {
+				if ( post_format_tools_post_has_content() ) {
 					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) );
 				} else {
 					/* Get full size version of the "Featured Image" */
