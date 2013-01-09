@@ -14,14 +14,14 @@
  * @since Cakifo 1.0.0
  */
 function cakifo_register_shortcodes() {
-	add_shortcode( 'rss-link', 				'cakifo_rss_link_shortcode' );
-	add_shortcode( 'twitter-username', 		'cakifo_twitter_shortcode' );
-	add_shortcode( 'entry-delicious-link', 	'cakifo_entry_delicious_link_shortcode' );
-	add_shortcode( 'entry-digg-link', 		'cakifo_entry_digg_link_shortcode' );
-	add_shortcode( 'entry-facebook-link', 	'cakifo_entry_facebook_link_shortcode' );
-	add_shortcode( 'entry-twitter-link', 	'cakifo_entry_twitter_link_shortcode' );
+	add_shortcode( 'rss-link',              'cakifo_rss_link_shortcode' );
+	add_shortcode( 'twitter-username',      'cakifo_twitter_shortcode' );
+	add_shortcode( 'entry-delicious-link',  'cakifo_entry_delicious_link_shortcode' );
+	add_shortcode( 'entry-digg-link',       'cakifo_entry_digg_link_shortcode' );
+	add_shortcode( 'entry-facebook-link',   'cakifo_entry_facebook_link_shortcode' );
+	add_shortcode( 'entry-twitter-link',    'cakifo_entry_twitter_link_shortcode' );
 	add_shortcode( 'entry-googleplus-link', 'cakifo_entry_googleplus_link_shortcode' );
-	add_shortcode( 'entry-format', 			'cakifo_entry_format_shortcode' );
+	add_shortcode( 'entry-format',          'cakifo_entry_format_shortcode' );
 
 	/* Replace some Hybrid Core shortcodes */
 	remove_shortcode( 'entry-published' );
