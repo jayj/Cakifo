@@ -1,4 +1,4 @@
-# Cakifo 1.5.1
+# Cakifo 1.6-dev
 
 > Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core by Justin Tadlock"), so it provides a great starting point with many useful features..
 
