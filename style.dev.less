@@ -41,6 +41,7 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
@@ -287,11 +288,7 @@ pre {
 	background: lighten(@grayDark, 6%);
 	border-radius: 5px;
 	color: @white;
-
-	/* Improves readability of pre-formatted text in all browsers */
-	white-space: pre;
-	white-space: pre-wrap;
-	word-wrap: break-word;
+	white-space: pre-wrap; // Improves readability of pre-formatted text
 
 	code {
 		color: @white;
@@ -341,6 +338,8 @@ hr {
 	padding: 0;
 	margin: @smallGutterWidth 0;
 	border-bottom: 4px double @grayLighter;
+	-moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 /* Addresses styling not present in IE 8/9 */
