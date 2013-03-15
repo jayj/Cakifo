@@ -261,6 +261,42 @@ function cakifo_theme_setup() {
 }
 
 /**
+ * Load the Cakifo loop template
+ *
+ * It's modified version of get_template_part() to make sure the theme
+ * stays compatible with child themes as the loop files were changed
+ * from `loop.php` to `content.php` in Cakifo 1.6
+ *
+ * First it tries to get the old `loop-$name.php` then the new `content-$name.php`
+ * If neither of those exists, it will try `loop.php` and `content.php`
+ *
+ * The template is included using require, not require_once, so you may include the
+ * same template part multiple times.
+ *
+ * For the $name parameter, if the file is called "content-special.php" then specify
+ * "special".
+ *
+ * @since Cakifo 1.6.0
+ * @uses locate_template()
+ * @uses do_action() Calls 'get_template_part_content' action.
+ * @param string $name The name of the specialised template.
+ */
+function cakifo_get_loop_template( $name = null ) {
+	do_action( 'get_template_part_content', 'content', $name );
+	$templates = array();
+
+	if ( isset( $name ) ) {
+		$templates[] = "loop-{$name}.php";
+		$templates[] = "content-{$name}.php";
+	}
+
+	$templates[] = 'loop.php';
+	$templates[] = 'content.php';
+
+	locate_template( $templates, true, false );
+}
+
+/**
  * Load the theme functions, if the theme/child theme supports them.
  *
  * @since Cakifo 1.3.0

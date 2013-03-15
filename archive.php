@@ -20,7 +20,7 @@ get_header(); // Loads the header.php template ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'loop', get_post_format() ); ?>
+			<?php cakifo_get_loop_template( get_post_format() ); ?>
 
 		<?php endwhile; ?>
 
