@@ -1185,14 +1185,6 @@ caption {
 #site-title {
   float: left;
   margin: 0 0 0 40px;
-}
-#site-title img {
-  max-width: 100%;
-  width: auto\9;
-  height: auto;
-  margin-top: 20px;
-}
-#site-title span {
   font-size: 46px;
   font-size: 4.6rem;
   font-weight: normal;
@@ -1200,13 +1192,11 @@ caption {
   text-shadow: 0 1px 0 #ffffff;
   letter-spacing: -2px;
 }
-#site-title.display-header-text img {
-  margin-right: 10px;
-  vertical-align: text-bottom;
-}
-#site-title.display-header-text span {
-  position: relative !important;
-  clip: auto;
+#site-title img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
 }
 #site-title a {
   color: #3083aa;

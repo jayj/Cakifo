@@ -462,29 +462,15 @@ sub {
 	float: left;
 	margin: 0 0 0 @gutterWidth;
 
+	#font > .shorthand(46, normal);
+	text-shadow: 0 1px 0 @white;
+	letter-spacing: -2px;
+
 	img {
 		max-width: 100%;
 		width: auto\9; // IE7-8 need help adjusting responsive images
 		height: auto; // Scale the height according to the width, otherwise you get stretching
-		margin-top: 20px;
-	}
-
-	span {
-		#font > .shorthand(46, normal);
-		text-shadow: 0 1px 0 @white;
-		letter-spacing: -2px;
-	}
-
-	&.display-header-text {
-		img {
-			margin-right: 10px;
-			vertical-align: text-bottom;
-		}
-
-		span {
-			position: relative !important;
-			clip: auto;
-		}
+		vertical-align: middle;
 	}
 
 	a {

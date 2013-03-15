@@ -626,15 +626,16 @@ function cakifo_content_width( $args ) {
 }
 
 /**
- * Output the custom header style in <head>
+ * Styles the header displayed on the blog
  *
  * @since Cakifo 1.0.0
  */
 function cakifo_header_style() {
+
 	/* Get default text color */
 	$text_color = get_theme_support( 'custom-header', 'default-text-color' );
 
-	// If no custom options for text are set, let's bail
+	// If no custom options for text are set, let's bail.
 	if ( $text_color == get_header_textcolor() )
 		return;
 
@@ -643,12 +644,11 @@ function cakifo_header_style() {
 	<style type="text/css">
 		<?php
 			// Has the text been hidden?
-			if ( ! display_header_text() && ! get_header_image() ) :
+			if ( ! display_header_text() ) :
 		?>
-			#site-title,
-			#site-description {
+			#site-title span {
 				position: absolute !important;
-				clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+				clip: rect(1px 1px 1px 1px); /* IE7 */
 				clip: rect(1px, 1px, 1px, 1px);
 			}
 		<?php
@@ -660,13 +660,24 @@ function cakifo_header_style() {
 				color: #<?php echo get_header_textcolor(); ?> !important;
 			}
 		<?php endif; ?>
+
+		<?php
+			// Hide the description if there's no header image and the text has been hidden
+			if ( ! get_header_image() && ! display_header_text() ) :
+		?>
+			#site-description {
+				position: absolute !important;
+				clip: rect(1px 1px 1px 1px); /* IE7 */
+				clip: rect(1px, 1px, 1px, 1px);
+			}
+		<?php endif; ?>
 	</style>
 
 	<?php
 }
 
 /**
- * Custom header image markup displayed on the `Appearance > Header` admin panel.
+ * Custom header markup displayed on the Appearance > Header admin panel.
  *
  * @since Cakifo 1.4.0
  */
@@ -674,40 +685,65 @@ function cakifo_admin_header_image() { ?>
 
 	<div id="headimg">
 		<?php
-			if ( display_header_text() )
-				$style = ' style="color:#' . get_header_textcolor() . ';"';
-			else
-				$style = ' style="display:none;"';
+			/* Get header information */
+			$header_image  = get_header_image();
+			$default_color = get_theme_support( 'custom-header', 'default-text-color' );
+			$text_color    = get_header_textcolor();
 
-			$header_image = get_header_image();
+			/* Set up variables */
+			$style = '';
+			$span  = '';
+			$desc  = '';
+			$class = '';
+		?>
+
+		<?php
+			/* Set the styling for the individual elements */
+			if ( display_header_text() && $default_color != $text_color ) {
+				$style = "color: #{$text_color}; ";
+				$desc  = "color: #{$text_color}; ";
+			}
+
+			if ( ! display_header_text() ) {
+				$span = 'display: none; ';
+				$desc = 'display: none; ';
+			}
+
+			if ( ! empty( $header_image ) && ! display_header_text() )
+				$desc = 'display: block !important;';
 		?>
 
 		<h1>
-			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>">
-				<?php if ( ! empty( $header_image ) ) : ?>
-					<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
-				<?php endif; ?>
+			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>" style="<?php echo $style; ?>">
+				<?php
+					if ( ! empty( $header_image ) )
+						echo '<img src="' . $header_image . '" alt="" />';
+				?>
 
-				<span class="displaying-header-text" <?php echo $style; ?>>
+				<span class="displaying-header-text" style="<?php echo $span; ?>">
 					<?php bloginfo( 'name' ); ?>
 				</span>
 			</a>
 		</h1>
 
-		<h2 id="desc" class="displaying-header-text"><?php bloginfo( 'description' ); ?></h2>
+		<?php
+			if ( empty( $header_image ) )
+				$class = 'displaying-header-text';
+		?>
+		<h2 id="desc" class="<?php echo $class; ?>" style="<?php echo $desc; ?>"><?php bloginfo( 'description' ); ?></h2>
 
 		<br class="clear" />
 	</div>
 <?php }
 
 /**
- * Style the header image and text on the Header admin screen
+ * Styles the header styles displayed on the Appearance > Header admin panel.
  *
  * @since Cakifo 1.0.0
  */
 function cakifo_admin_header_style() { ?>
 
-	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold' type='text/css' media='all' />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold" type="text/css" media="all" />
 
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
@@ -764,25 +800,17 @@ function cakifo_logo() {
 
 	/* Get the site title */
 	$title = get_bloginfo( 'name' );
+	$maybe_image = '';
 
-	/* Check if there's a header image */
-	if ( get_header_image() ) {
+	if ( get_header_image() )
 		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
-		$maybe_image .= '<span class="assistive-text">' . $title . '</span>';
-	} else {
-		$maybe_image = '<span>' . $title . '</span>';
-	}
 
-	/* If 'Show header text with your image' is checked, add the 'display-header-text' to the heading */
-	$heading_class = ( display_header_text() ) ? 'display-header-text' : '';
-
-	/* Format the output */
-	$output =
-		'<h1 id="site-title" class="' . esc_attr( $heading_class ) . '">
-			<a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' .
-				$maybe_image . '
-			</a>
-		</h1>';
+	$output = sprintf( '<h1 id="site-title"><a href="%s" title="%s" rel="home">%s<span>%s</span></a></h1>',
+		esc_url( home_url() ),
+		esc_attr( $title ),
+		$maybe_image,
+		$title
+	);
 
 	/* Display the site title and allow child themes to overwrite the final output */
 	echo apply_atomic( 'site_title', $output );

@@ -44,8 +44,9 @@ function cakifo_customize_register( $wp_customize ) {
 		$categories[$cat->term_id] = $cat->name;
 	}
 
-	$wp_customize->get_setting('blogname')->transport = 'postMessage';
-	$wp_customize->get_setting('blogdescription')->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 	/* Add the Cakifo section */
 	$wp_customize->add_section(
@@ -228,15 +229,51 @@ function cakifo_customize_preview() {
 		( function( $ ){
 			wp.customize( 'blogname', function( value ) {
 				value.bind(function(to) {
-					$('#site-title span').html(to);
+					$('#site-title span').text(to);
 				});
 			});
 
 			wp.customize( 'blogdescription', function( value ) {
 				value.bind(function(to) {
-					$('#site-description').html(to);
+					$('#site-description').text(to);
 				});
 			});
+
+			// Header text
+			wp.customize( 'header_textcolor', function( value ) {
+				value.bind( function( to ) {
+
+					if ( 'blank' == to ) {
+
+						// No header image and no title
+						if ( 'remove-header' == _wpCustomizeSettings.values.header_image ) {
+							$( '#branding' ).css( 'padding', '40px 0' );
+
+							$( '#site-description' ).css( {
+								'clip': 'rect(1px, 1px, 1px, 1px)',
+								'position': 'absolute'
+							} );
+						}
+
+						// Hide title
+						$( '#site-title span' ).css( {
+							'clip': 'rect(1px, 1px, 1px, 1px)',
+							'position': 'absolute'
+						} );
+
+					} else {
+
+						$( '#branding' ).css( 'padding', '60px 0 50px' );
+
+						$( '#site-title span, #site-description' ).css( {
+							'clip': 'auto',
+							'color': to,
+							'position': 'relative'
+						} );
+					}
+				} );
+			} );
+
 		} )( jQuery )
 	</script>
 	<?php
