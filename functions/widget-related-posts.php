@@ -284,7 +284,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			'title'          => esc_attr__( 'Related Posts', 'cakifo' ),
 			'limit'          => 5,
 			'taxonomies'     => array( 'category', 'post_format' ),
-			'orderby'        => 'random',
+			'orderby'        => 'rand',
 			'show_thumbnail' => true
 		);
 
@@ -293,7 +293,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		/* Create an array of orderby types. */
 		$orderby = array(
-			'random'        => _x( 'Random', 'order by', 'cakifo' ),
+			'rand'          => _x( 'Random', 'order by', 'cakifo' ),
 			'date'          => _x( 'Date', 'order by', 'cakifo' ),
 			'comment_count' => _x( 'Comment count', 'order by', 'cakifo' ),
 		);
