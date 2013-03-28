@@ -67,8 +67,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'custom-field-series' );
 
 	/* Add theme support for theme functions */
-	add_theme_support(
-		'cakifo-sidebars',
+	add_theme_support( 'cakifo-sidebars',
 		array(
 			'primary',
 			'secondary',
@@ -90,28 +89,32 @@ function cakifo_theme_setup() {
 		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
 
-	/* Add theme support for WordPress features */
-	add_theme_support(
-		'post-formats',
-		array(
-			'aside',
-			'audio',
-			'chat',
-			'image',
-			'gallery',
-			'link',
-			'quote',
-			'status',
-			'video'
-		)
-	);
+	/*
+	 * This theme supports all available post formats.
+	 * See http://codex.wordpress.org/Post_Formats
+	 *
+	 * Structured post formats are formats where Twenty Thirteen handles the
+	 * output instead of the default core HTML output.
+	 */
+	add_theme_support( 'structured-post-formats', array(
+		'link'
+	) );
 
+	add_theme_support( 'post-formats', array(
+		'aside', 'audio', 'chat', 'gallery', 'image', 'quote', 'status', 'video'
+	) );
+
+	/* Adds RSS feed links to <head> for posts and comments. */
 	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	 * This theme styles the visual editor to resemble the theme style,
+	 * specifically font, colors, and column width.
+	 */
 	add_editor_style();
 
 	/* Custom background */
-	add_theme_support(
-		'custom-background',
+	add_theme_support( 'custom-background',
 		array(
 			'default-color' => 'e3ecf2',
 			'default-image' => get_template_directory_uri() . '/images/bg.png'
@@ -121,8 +124,7 @@ function cakifo_theme_setup() {
 	/**
 	 * Custom header for logo upload
 	 */
-	add_theme_support(
-		'custom-header',
+	add_theme_support( 'custom-header',
 		array(
 			'width'                  => 400,
 			'height'                 => 60,
@@ -1191,11 +1193,28 @@ function cakifo_link_pages_args( $args ) {
 /**
  * Back compat for the 'show_singular_comments' filter
  *
- * @since 1.5
+ * @since Cakifo 1.5.0
  */
 function cakifo_compat_show_singular_comments() {
 	if ( apply_filters( 'show_singular_comments', true ) === false )
 		remove_post_type_support( 'page', 'comments' );
+}
+
+/**
+ * Returns the URL from the post.
+ *
+ * @uses get_the_link() to get the URL in the post meta (if it exists) or
+ * the first link found in the post content.
+ *
+ * Falls back to the post permalink if no URL is found in the post.
+ *
+ * @since Cakifo 1.0
+ * @return string URL
+ */
+function cakifo_get_link_url() {
+	$has_url = get_the_url();
+
+	return ( $has_url ) ? $has_url : apply_filters( 'the_permalink', get_permalink() );
 }
 
 ?>

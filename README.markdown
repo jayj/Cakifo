@@ -5,8 +5,10 @@
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
 * [Cakifo in the official theme directory](http://wordpress.org/extend/themes/cakifo)
-* Requires at least WordPress 3.5
-* Tested up to 3.5
+* Requires at least WordPress 3.6 (stable version 3.5)
+* Tested up to 3.6
+
+**This dev version requires WordPress 3.6**
 
 ## Demo
 
