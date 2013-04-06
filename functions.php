@@ -97,11 +97,11 @@ function cakifo_theme_setup() {
 	 * output instead of the default core HTML output.
 	 */
 	add_theme_support( 'structured-post-formats', array(
-		'link'
+		'link', 'image'
 	) );
 
 	add_theme_support( 'post-formats', array(
-		'aside', 'audio', 'chat', 'gallery', 'image', 'quote', 'status', 'video'
+		'aside', 'audio', 'chat', 'gallery', 'quote', 'status', 'video'
 	) );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
@@ -164,7 +164,7 @@ function cakifo_theme_setup() {
 	} // is_child_theme() && file_exists()
 
 	/* Set $content_width */
-	hybrid_set_content_width( 630 );
+	hybrid_set_content_width( 650 );
 
 	/* Set embed width/height defaults and $content_width for non-default layouts */
 	add_filter( 'embed_defaults', 'cakifo_content_width' );

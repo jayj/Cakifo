@@ -477,6 +477,7 @@ figure {
 }
 /* Add fancy borders to all WordPress-added images */
 .entry-content img,
+.entry-media img,
 .comment-content img,
 .wp-post-image,
 .widget img,
@@ -1839,7 +1840,11 @@ body.page-template-template-front-page #main,
 /**
  * Format: Image
  */
+.format-image .entry-media {
+  line-height: normal;
+}
 .format-image .entry-meta {
+  margin-top: 30px;
   padding: 25px;
   font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
@@ -1850,19 +1855,8 @@ body.page-template-template-front-page #main,
   border-radius: 3px;
   color: #555555;
 }
-.format-image .entry-meta .entry-meta-col {
-  display: inline-block;
-  float: left;
-  width: 40%;
-}
-.format-image .entry-meta .entry-meta-col + .entry-meta-col {
-  float: none;
-  width: 60%;
-}
-.format-image .entry-meta .comments-link,
-.format-image .entry-meta .edit,
-.format-image .entry-meta .category {
-  display: block;
+.format-image .entry-meta p {
+  margin: 0;
 }
 /* =============================================================================
    Components:  Author box

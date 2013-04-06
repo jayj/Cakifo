@@ -137,29 +137,22 @@
 /**
  * Format: Image
  */
-.format-image .entry-meta {
-	padding: @smallGutterWidth;
-	#font > .alternative(14, normal, 2);
-	background: #e0e6e8;
-	border-radius: 3px;
-	color: @gray;
+.format-image {
 
-	// Entry meta columns
-	.entry-meta-col {
-		display: inline-block;
-		float: left;
-		width: 40%;
+	.entry-media {
+		line-height: normal;
 	}
 
-	.entry-meta-col + .entry-meta-col {
-		float: none;
-		width: 60%;
-	}
+	.entry-meta {
+		margin-top: @smallGutterWidth + 5px;
+		padding: @smallGutterWidth;
+		#font > .alternative(14, normal, 2);
+		background: #e0e6e8;
+		border-radius: 3px;
+		color: @gray;
 
-	// Display them on their own line
-	.comments-link,
-	.edit,
-	.category {
-		display: block;
+		p {
+			margin: 0;
+		}
 	}
 }
