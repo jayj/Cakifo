@@ -1601,6 +1601,7 @@ body.page-template-template-front-page #main,
   padding-bottom: 25px;
   border-bottom: 4px double #eeeeee;
   margin-bottom: 25px;
+  word-wrap: break-word;
 }
 .singular .hentry {
   padding-bottom: 0;

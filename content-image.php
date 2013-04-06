@@ -18,7 +18,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
 	<div class="entry-media">
-		<?php the_post_format_image( 'large' ); ?>
+		<?php the_post_format_image( apply_filters( 'cakifo_post_format_image_size', 'large' ) ); ?>
 	</div> <!-- .entry-media -->
 
 	<header class="entry-header">
@@ -36,8 +36,9 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	</div> <!-- .entry-content -->
 
 	<footer class="entry-meta">
-		<?php echo apply_atomic_shortcode( 'byline_image', '<p>' . __( '[post-format-link] published on [entry-published] [entry-comments-link before="| "] [entry-edit-link before="| "]', 'cakifo' ) . '</p>' ); ?>
 		<?php
+			echo apply_atomic_shortcode( 'byline_image', '<p>' . __( '[post-format-link] published on [entry-published] [entry-comments-link before="| "] [entry-edit-link before="| "]', 'cakifo' ) . '</p>' );
+
 			if ( is_singular() )
 				echo apply_atomic_shortcode( 'entry_meta_image', '<p>' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged: "]', 'cakifo' ) . '</p>' );
 		?>
