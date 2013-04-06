@@ -26,7 +26,6 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</header> <!-- .entry-header -->
 
 		<div class="entry-content">
-			<?php //the_post_format_chat(); ?>
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
