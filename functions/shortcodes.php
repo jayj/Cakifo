@@ -41,14 +41,11 @@ add_action( 'init', 'cakifo_register_shortcodes', 15 );
  * @return string The RSS link
  */
 function cakifo_rss_link_shortcode( $attr ) {
-	$attr = shortcode_atts(
-		array(
-			'text'   => __( 'RSS', 'cakifo' ),
-			'before' => '',
-			'after'  => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'text'   => __( 'RSS', 'cakifo' ),
+		'before' => '',
+		'after'  => '',
+	), $attr, 'rss-link' );
 
 	return $attr['before'] . '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' .  $attr['text'] . '</a>' . $attr['after'];
 }
@@ -64,16 +61,13 @@ function cakifo_rss_link_shortcode( $attr ) {
  * @since Cakifo 1.0.0
  */
 function cakifo_twitter_shortcode( $attr ) {
-	$attr = shortcode_atts(
-		array(
-			'username' => hybrid_get_setting( 'twitter_username' ),
-			'text'     => __( 'Follow me on Twitter', 'cakifo' ),
-			'link'     => true,
-			'before'   => '',
-			'after'    => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'username' => hybrid_get_setting( 'twitter_username' ),
+		'text'     => __( 'Follow me on Twitter', 'cakifo' ),
+		'link'     => true,
+		'before'   => '',
+		'after'    => '',
+	), $attr, 'cakifo-twitter-username' );
 
 	if ( empty( $attr['username'] ) )
 		return;
@@ -91,7 +85,10 @@ function cakifo_twitter_shortcode( $attr ) {
  * @since Cakifo 1.0.0
  */
 function cakifo_entry_delicious_link_shortcode( $attr ) {
-	$attr = shortcode_atts( array( 'before' => '', 'after'  => '' ), $attr );
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after'  => ''
+	), $attr, 'entry-delicious-link' );
 
 	return $attr['before'] . '<a href="http://delicious.com/save" onclick="window.open(\'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=\'+encodeURIComponent(\'' . get_permalink() . '\')+\'&amp;title=\'+encodeURIComponent(\'' . the_title_attribute( 'echo=0' ) . '\'),\'delicious\', \'toolbar=no,width=550,height=550\'); return false;" class="delicious-share-button">' . __( 'Save on Delicious', 'cakifo' ) . '</a>' . $attr['after'];
 
@@ -106,7 +103,11 @@ function cakifo_entry_delicious_link_shortcode( $attr ) {
  * @since Cakifo 1.0.0
  */
 function cakifo_entry_digg_link_shortcode( $attr ) {
-	$attr = shortcode_atts( array( 'before' => '', 'after'  => '' ), $attr );
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after'  => ''
+	), $attr, 'entry-digg-link' );
+
 	$url = 'http://digg.com/submit?url=' . urlencode( get_permalink( get_the_ID() ) );
 
 	return $attr['before'] . '<a href="' . esc_url( $url ) . '" title="' . esc_attr__( 'Digg this entry', 'cakifo' ) . '" class="digg-share-button">' . __( 'Digg', 'cakifo' ) . '</a>' . $attr['after'];
@@ -117,7 +118,6 @@ function cakifo_entry_digg_link_shortcode( $attr ) {
  *
  * @note This won't work from your computer (http://localhost). Must be a live site.
  * @link http://developers.facebook.com/docs/reference/plugins/like/
- *
  * @param array $attr
  * @since Cakifo 1.0.0
  */
@@ -125,27 +125,24 @@ function cakifo_entry_facebook_link_shortcode( $attr ) {
 
 	static $first = true;
 
-	$attr = shortcode_atts(
-		array(
-			'href'        => get_permalink(),
-			'layout'      => 'standard', // standard, button_count, box_count
-			'action'      => 'like', // like, recommend
-			'send'        => 'false', // true, false
-			'faces'       => 'false', // true, false
-			'colorscheme' => 'light', // light, dark
-			'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR. This does only work for the first button at the page
-			'width'       => '',
-			'before'      => '',
-			'after'       => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'href'        => get_permalink(),
+		'layout'      => 'standard', // standard, button_count, box_count
+		'action'      => 'like', // like, recommend
+		'send'        => 'false', // true, false
+		'faces'       => 'false', // true, false
+		'colorscheme' => 'light', // light, dark
+		'locale'      => get_locale(), // Language of the button - ex: da_DK, fr_FR. This only works for the first button at the page
+		'width'       => '',
+		'before'      => '',
+		'after'       => '',
+	), $attr, 'entry-facebook-link' );
 
 	// Set default locale
 	$locale = ( isset( $attr['locale'] ) ) ? $attr['locale'] : 'en_US';
 
 	// Only add the script once
-	$script = ( $first == true ) ? "<div id='fb-root'></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/$locale/all.js#xfbml=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>" : '';
+	$script = ( $first ) ? "<div id='fb-root'></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/$locale/all.js#xfbml=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>" : '';
 
 	$first = false;
 
@@ -169,33 +166,32 @@ function cakifo_entry_facebook_link_shortcode( $attr ) {
  * @since Cakifo 1.0.0
  */
 function cakifo_entry_twitter_link_shortcode( $attr ) {
-	$attr = shortcode_atts(
-		array(
-			'href'   => get_permalink(),
-			'text'   => the_title_attribute( 'echo=0' ),
-			'layout' => 'horizontal', // horizontal, vertical, none
-			'via'    => hybrid_get_setting( 'twitter_username' ),
-			'width'  => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
-			'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
-			'before' => '',
-			'after'  => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'href'   => get_permalink(),
+		'text'   => the_title_attribute( 'echo=0' ),
+		'layout' => 'horizontal', // horizontal, vertical, none
+		'via'    => hybrid_get_setting( 'twitter_username' ),
+		'width'  => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
+		'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
+		'before' => '',
+		'after'  => '',
+	), $attr, 'entry-twitter-link' );
 
 	/* Load the PHP tweet button script if the theme supports it */
 	if ( current_theme_supports( 'cakifo-twitter-button' ) ) :
 
-		return cakifo_tweet_button( array(
-			'before'   => $attr['before'],
-			'after'    => $attr['after'],
-			'layout'   => $attr['layout'],
-			'href'     => $attr['href'],
-			'counturl' => $attr['href'],
-			'text'     => $attr['text'],
-			'layout'   => $attr['layout'],
-			'via'      => $attr['via']
-		) );
+		return cakifo_tweet_button(
+			array(
+				'before'   => $attr['before'],
+				'after'    => $attr['after'],
+				'layout'   => $attr['layout'],
+				'href'     => $attr['href'],
+				'counturl' => $attr['href'],
+				'text'     => $attr['text'],
+				'layout'   => $attr['layout'],
+				'via'      => $attr['via']
+			)
+		);
 
 	/* Else, load the Twitter iframe */
 	else :
@@ -232,28 +228,24 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
 
 	static $first = true;
 
-	$attr = shortcode_atts(
-		array(
-			'href'       => get_permalink(),
-			'layout'     => 'standard', // small, medium, standard, tall
-			'annotation' => 'bubble', // Bubble, inline, none
-			'count'      => 'true', // @deprecated Use annotation instead
-			'align'      => 'left', // left, right
-			'callback'   => '',
-			'before'     => '',
-			'after'      => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'href'       => get_permalink(),
+		'layout'     => 'standard', // small, medium, standard, tall
+		'annotation' => 'bubble', // Bubble, inline, none
+		'count'      => 'true', // @deprecated Use annotation instead
+		'align'      => 'left', // left, right
+		'callback'   => '',
+		'before'     => '',
+		'after'      => '',
+	), $attr, 'entry-googleplus-link' );
 
 	// The count parameter is deprecated. Use annotation="none" instead
 	if ( $attr['count'] !== 'true' ) {
 		$attr['annotation'] = 'none';
-		//_deprecated_argument( __FUNCTION__, 'Cakifo 1.5', 'The count parameter is deprecated. Use annotation="none" instead' );
 	}
 
 	// Only add the script once
-	$script = ( $first == true ) ? "<script>(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>" : "";
+	$script = ( $first ) ? "<script>(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>" : "";
 
 	$first = false;
 
@@ -277,16 +269,13 @@ function cakifo_entry_googleplus_link_shortcode( $attr ) {
  * @since Cakifo 1.1.0
  */
 function cakifo_entry_published_shortcode( $attr ) {
-	$attr = shortcode_atts(
-		array(
-			'format'  => get_option( 'date_format' ),
-			'before'  => '',
-			'after'   => '',
-		),
-		$attr
-	);
+	$attr = shortcode_atts( array(
+		'format' => get_option( 'date_format' ),
+		'before' => '',
+		'after'  => '',
+	), $attr, 'entry-published' );
 
-	$published = '<time class="published" datetime="' . get_the_date( 'c' ) . '">' . get_the_date( $attr['format'] ) . '</time>';
+	$published = '<time class="published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . get_the_date( $attr['format'] ) . '</time>';
 
 	return $attr['before'] . $published . $attr['after'];
 }
@@ -300,9 +289,12 @@ function cakifo_entry_published_shortcode( $attr ) {
  * @since Cakifo 1.1.0
  */
 function cakifo_comment_published_shortcode( $attr ) {
-	$attr = shortcode_atts( array( 'before' => '', 'after'  => '' ), $attr );
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after'  => ''
+	), $attr, 'comment-published' );
 
-	$published = '<time class="published" datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>';
+	$published = '<time class="published" datetime="' . esc_attr( get_comment_date( 'c' ) ) . '">' . get_comment_date() . '</time>';
 
 	return $attr['before'] . $published . $attr['after'];
 }
@@ -314,7 +306,10 @@ function cakifo_comment_published_shortcode( $attr ) {
  * @since Cakifo 1.3.0
  */
 function cakifo_entry_format_shortcode( $attr ) {
-	$attr = shortcode_atts( array( 'before' => '', 'after'  => '' ), $attr );
+	$attr = shortcode_atts( array(
+		'before' => '',
+		'after'  => ''
+	), $attr, 'entry-format' );
 
 	return $attr['before'] . get_post_format() . $attr['after'];
 }
