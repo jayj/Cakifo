@@ -254,21 +254,27 @@
 		z-index: 500;
 		top: 100%;
 		left: 0;
-		box-shadow: 1px 1px 2px fade(@black, 15%);
+		min-width: 200px;
+		box-shadow: 1px 1px 2px fade(@black, 25%);
+
+		.menu-item {
+			float: none;
+		}
 
 		a {
 			display: block;
-			width: 180px;
-			padding: 8px 10px;
-			border-bottom: 1px solid darken(@grayLighter, 6%);
+			// width: 100%;
+			padding: 8px 12px;
+			border-bottom: 1px solid lighten(@grayDark, 10%);
 			.font-size(14);
 			line-height: 2.2;
-			background: @grayLighter;
+			background: @grayDarker;
+			color: @grayLighter;
 			text-transform: none;
 			white-space: normal;
 
 			&:hover {
-				background: darken(@grayLighter, 5%);
+				background: darken(@grayDarker, 13%);
 			}
 		}
 
