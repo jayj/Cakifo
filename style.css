@@ -206,9 +206,7 @@ h6 {
 .widget-title {
   background-color: #f4f4f4;
   background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec 100%);
-  background-image: -moz-linear-gradient(top, #f9f9f9, #ececec 100%);
-  background-image: -o-linear-gradient(top, #f9f9f9, #ececec 100%);
-  background-image: linear-gradient(top, #f9f9f9, #ececec 100%);
+  background-image: linear-gradient(to bottom, #f9f9f9, #ececec 100%);
   border: 1px solid #e9e9e9;
   border-bottom-color: #dfdfdf;
   border-radius: 50px 30px;
@@ -230,9 +228,7 @@ h6 {
 .section-title {
   background-color: #d04b1f;
   background-image: -webkit-linear-gradient(top, #d54e21, #c8471b 100%);
-  background-image: -moz-linear-gradient(top, #d54e21, #c8471b 100%);
-  background-image: -o-linear-gradient(top, #d54e21, #c8471b 100%);
-  background-image: linear-gradient(top, #d54e21, #c8471b 100%);
+  background-image: linear-gradient(to bottom, #d54e21, #c8471b 100%);
   border-radius: 30px;
   color: #ffffff;
   font-size: 24px;
@@ -977,9 +973,7 @@ caption {
   line-height: 1.5;
   background-color: #4e4e4e;
   background-image: -webkit-linear-gradient(top, #555555, #444444 100%);
-  background-image: -moz-linear-gradient(top, #555555, #444444 100%);
-  background-image: -o-linear-gradient(top, #555555, #444444 100%);
-  background-image: linear-gradient(top, #555555, #444444 100%);
+  background-image: linear-gradient(to bottom, #555555, #444444 100%);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid #050505;
   color: #ffffff;
@@ -1031,8 +1025,6 @@ caption {
     text-shadow: 1px 1px 0 #222222;
     color: #ccc;
     -webkit-transition: all 150ms;
-    -moz-transition: all 150ms;
-    -o-transition: all 150ms;
     transition: all 150ms;
   }
   .main-navigation .menu-item > a:hover,
@@ -1041,9 +1033,7 @@ caption {
     background-color: #444;
     background-color: rgba(255, 255, 255, 0.08000000000000002);
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2) 100%);
-    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2) 100%);
-    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2) 100%);
-    background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2) 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2) 100%);
     color: #ececec;
   }
   .main-navigation .sub-menu {
@@ -1106,9 +1096,7 @@ caption {
 .secondary-navigation {
   background-color: rgba(255, 255, 255, 0.332);
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.53) 100%);
   border-radius: 5px 5px 0 0;
 }
 .no-rgba .secondary-navigation {
@@ -1245,7 +1233,7 @@ caption {
 .flexbox #branding hgroup {
   display: -webkit-flex;
   display: -moz-flex;
-  display: -ms-flex;
+  display: -ms-flexbox;
   display: -o-flex;
   display: flex;
 }
@@ -1439,8 +1427,6 @@ body.page-template-template-front-page #main,
 .flex-viewport {
   max-height: 2000px;
   -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
   transition: all 1s ease;
 }
 .loading .flex-viewport {
@@ -1452,7 +1438,6 @@ body.page-template-template-front-page #main,
 
   display: none;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .slide .thumbnail,
@@ -1487,8 +1472,6 @@ body.page-template-template-front-page #main,
   text-indent: -9999px;
   cursor: pointer;
   -webkit-transition: all 150ms ease;
-  -moz-transition: all 150ms ease;
-  -o-transition: all 150ms ease;
   transition: all 150ms ease;
 }
 .flex-control-paging li a:hover {
@@ -1499,9 +1482,7 @@ body.page-template-template-front-page #main,
   background: #d54e21;
   cursor: default;
   -webkit-transform: scale(1.07);
-  -moz-transform: scale(1.07);
   -ms-transform: scale(1.07);
-  -o-transform: scale(1.07);
   transform: scale(1.07);
 }
 .flex-pauseplay a {
@@ -1525,8 +1506,6 @@ body.page-template-template-front-page #main,
   text-indent: -9999px;
   opacity: 0.6;
   -webkit-transition: opacity 150ms ease;
-  -moz-transition: opacity 150ms ease;
-  -o-transition: opacity 150ms ease;
   transition: opacity 150ms ease;
 }
 .flex-direction-nav a:focus {
@@ -1819,8 +1798,6 @@ body.page-template-template-front-page #main,
 .format-link .entry-title:hover .meta-nav {
   margin-left: 5px;
   -webkit-transition: margin-left 200ms ease-in-out;
-  -moz-transition: margin-left 200ms ease-in-out;
-  -o-transition: margin-left 200ms ease-in-out;
   transition: margin-left 200ms ease-in-out;
 }
 /**
@@ -1928,8 +1905,6 @@ body.page-template-template-front-page #main,
   width: 220px;
   margin-right: 40px;
   -webkit-transition: opacity 250ms;
-  -moz-transition: opacity 250ms;
-  -o-transition: opacity 250ms;
   transition: opacity 250ms;
   /* Lower opacity on every column except the hovered */
 
@@ -2005,9 +1980,7 @@ body.page-template-template-front-page #main,
 .headline-list li:active {
   background-color: #f2f7fc;
   background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-  background-image: -moz-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-  background-image: -o-linear-gradient(left, #f7fafc 50%, #f2f7fc);
-  background-image: linear-gradient(left, #f7fafc 50%, #f2f7fc);
+  background-image: linear-gradient(to right, #f7fafc 50%, #f2f7fc);
   background-repeat: repeat-x;
 }
 .headline-list .entry-title {
@@ -2055,9 +2028,7 @@ body.page-template-template-front-page #main,
 .image-info dt:active {
   background-color: #f2f7fc;
   background-image: -webkit-linear-gradient(left, #f7fafc 40%, #f2f7fc);
-  background-image: -moz-linear-gradient(left, #f7fafc 40%, #f2f7fc);
-  background-image: -o-linear-gradient(left, #f7fafc 40%, #f2f7fc);
-  background-image: linear-gradient(left, #f7fafc 40%, #f2f7fc);
+  background-image: linear-gradient(to right, #f7fafc 40%, #f2f7fc);
   background-repeat: repeat-x;
 }
 .image-info dd {
@@ -2114,8 +2085,6 @@ body.page-template-template-front-page #main,
   color: #484848;
   text-shadow: 0 1px 0 #ffffff;
   -webkit-transition: all 150ms ease;
-  -moz-transition: all 150ms ease;
-  -o-transition: all 150ms ease;
   transition: all 150ms ease;
 }
 .pagination a:hover {
@@ -2492,8 +2461,6 @@ textarea {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   color: #555555;
   -webkit-transition: all 150ms ease;
-  -moz-transition: all 150ms ease;
-  -o-transition: all 150ms ease;
   transition: all 150ms ease;
 }
 input:hover,
@@ -2594,9 +2561,7 @@ input[type="reset"],
 input[type="button"] {
   background-color: #fafafa;
   background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4 100%);
-  background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4 100%);
-  background-image: -o-linear-gradient(top, #fefefe, #f4f4f4 100%);
-  background-image: linear-gradient(top, #fefefe, #f4f4f4 100%);
+  background-image: linear-gradient(to bottom, #fefefe, #f4f4f4 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #e0e0e0 #e0e0e0 #c1c1c1;
@@ -2618,14 +2583,10 @@ input[type="reset"]:hover,
 input[type="button"]:hover {
   background-color: #f0f0f0;
   background-image: -webkit-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
-  background-image: -moz-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
-  background-image: -o-linear-gradient(top, #f6f6f6, #e7e7e7 100%);
-  background-image: linear-gradient(top, #f6f6f6, #e7e7e7 100%);
+  background-image: linear-gradient(to bottom, #f6f6f6, #e7e7e7 100%);
   border-color: #c1c1c1 #c1c1c1 #a8a8a8;
   color: #333333;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 .btn:active,
@@ -2666,9 +2627,7 @@ input[type="button"]:focus {
 html .btn-primary {
   background-color: #006dcc;
   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #0036a3 #0036a3 #002266;
@@ -2678,14 +2637,10 @@ html .btn-primary {
 html .btn-primary:hover {
   background-color: #0063b9;
   background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: -moz-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: linear-gradient(to bottom, #007ebd, #003bb3 100%);
   border-color: #002266 #002266 #001133;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-primary:active {
@@ -2694,9 +2649,7 @@ html .btn-primary:active {
 html .btn-warning {
   background-color: #f8941c;
   background-image: -webkit-linear-gradient(top, #faa51a, #f47a20 100%);
-  background-image: -moz-linear-gradient(top, #faa51a, #f47a20 100%);
-  background-image: -o-linear-gradient(top, #faa51a, #f47a20 100%);
-  background-image: linear-gradient(top, #faa51a, #f47a20 100%);
+  background-image: linear-gradient(to bottom, #faa51a, #f47a20 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #e0660b #e0660b #a64b08;
@@ -2706,14 +2659,10 @@ html .btn-warning {
 html .btn-warning:hover {
   background-color: #f58b0b;
   background-image: -webkit-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
-  background-image: -moz-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
-  background-image: -o-linear-gradient(top, #fa9f0b, #ef6c0c 100%);
-  background-image: linear-gradient(top, #fa9f0b, #ef6c0c 100%);
+  background-image: linear-gradient(to bottom, #fa9f0b, #ef6c0c 100%);
   border-color: #a64b08 #a64b08 #753506;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-warning:active {
@@ -2722,9 +2671,7 @@ html .btn-warning:active {
 html .btn-danger {
   background-color: #da4f49;
   background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f 100%);
-  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f 100%);
-  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f 100%);
-  background-image: linear-gradient(top, #ee5f5b, #bd362f 100%);
+  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #9c2d27 #9c2d27 #6b1f1b;
@@ -2734,14 +2681,10 @@ html .btn-danger {
 html .btn-danger:hover {
   background-color: #d1443f;
   background-image: -webkit-linear-gradient(top, #ed514d, #a9302a 100%);
-  background-image: -moz-linear-gradient(top, #ed514d, #a9302a 100%);
-  background-image: -o-linear-gradient(top, #ed514d, #a9302a 100%);
-  background-image: linear-gradient(top, #ed514d, #a9302a 100%);
+  background-image: linear-gradient(to bottom, #ed514d, #a9302a 100%);
   border-color: #6b1f1b #6b1f1b #421311;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-danger:active {
@@ -2750,9 +2693,7 @@ html .btn-danger:active {
 html .btn-success {
   background-color: #5bb75b;
   background-image: -webkit-linear-gradient(top, #62c462, #51a351 100%);
-  background-image: -moz-linear-gradient(top, #62c462, #51a351 100%);
-  background-image: -o-linear-gradient(top, #62c462, #51a351 100%);
-  background-image: linear-gradient(top, #62c462, #51a351 100%);
+  background-image: linear-gradient(to bottom, #62c462, #51a351 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #438843 #438843 #2f5f2f;
@@ -2762,14 +2703,10 @@ html .btn-success {
 html .btn-success:hover {
   background-color: #51ad51;
   background-image: -webkit-linear-gradient(top, #57c057, #499249 100%);
-  background-image: -moz-linear-gradient(top, #57c057, #499249 100%);
-  background-image: -o-linear-gradient(top, #57c057, #499249 100%);
-  background-image: linear-gradient(top, #57c057, #499249 100%);
+  background-image: linear-gradient(to bottom, #57c057, #499249 100%);
   border-color: #2f5f2f #2f5f2f #1e3d1e;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-success:active {
@@ -2778,9 +2715,7 @@ html .btn-success:active {
 html .btn-info {
   background-color: #49afcd;
   background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4 100%);
-  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4 100%);
-  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4 100%);
-  background-image: linear-gradient(top, #5bc0de, #2f96b4 100%);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #277b94 #277b94 #1a5363;
@@ -2790,14 +2725,10 @@ html .btn-info {
 html .btn-info:hover {
   background-color: #40a6c4;
   background-image: -webkit-linear-gradient(top, #4ebbdb, #2a85a0 100%);
-  background-image: -moz-linear-gradient(top, #4ebbdb, #2a85a0 100%);
-  background-image: -o-linear-gradient(top, #4ebbdb, #2a85a0 100%);
-  background-image: linear-gradient(top, #4ebbdb, #2a85a0 100%);
+  background-image: linear-gradient(to bottom, #4ebbdb, #2a85a0 100%);
   border-color: #1a5363 #1a5363 #0f313b;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-info:active {
@@ -2806,9 +2737,7 @@ html .btn-info:active {
 html .btn-inverse {
   background-color: #363636;
   background-image: -webkit-linear-gradient(top, #444444, #222222 100%);
-  background-image: -moz-linear-gradient(top, #444444, #222222 100%);
-  background-image: -o-linear-gradient(top, #444444, #222222 100%);
-  background-image: linear-gradient(top, #444444, #222222 100%);
+  background-image: linear-gradient(to bottom, #444444, #222222 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #0e0e0e #0e0e0e #000000;
@@ -2818,14 +2747,10 @@ html .btn-inverse {
 html .btn-inverse:hover {
   background-color: #2d2d2d;
   background-image: -webkit-linear-gradient(top, #3c3c3c, #151515 100%);
-  background-image: -moz-linear-gradient(top, #3c3c3c, #151515 100%);
-  background-image: -o-linear-gradient(top, #3c3c3c, #151515 100%);
-  background-image: linear-gradient(top, #3c3c3c, #151515 100%);
+  background-image: linear-gradient(to bottom, #3c3c3c, #151515 100%);
   border-color: #000000 #000000 #000000;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 html .btn-inverse:active {
@@ -2890,9 +2815,7 @@ html .btn-inverse:hover {
 #submit {
   background-color: #006dcc;
   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: linear-gradient(top, #0088cc, #0044cc 100%);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc 100%);
   background-repeat: repeat-x;
   border: 1px solid;
   border-color: #0036a3 #0036a3 #002266;
@@ -2902,14 +2825,10 @@ html .btn-inverse:hover {
 #submit:hover {
   background-color: #0063b9;
   background-image: -webkit-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: -moz-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: -o-linear-gradient(top, #007ebd, #003bb3 100%);
-  background-image: linear-gradient(top, #007ebd, #003bb3 100%);
+  background-image: linear-gradient(to bottom, #007ebd, #003bb3 100%);
   border-color: #002266 #002266 #001133;
   color: #ffffff;
   -webkit-transition: background-position 100ms linear;
-  -moz-transition: background-position 100ms linear;
-  -o-transition: background-position 100ms linear;
   transition: background-position 100ms linear;
 }
 #submit:active {
@@ -2945,7 +2864,7 @@ html .btn-inverse:hover {
   color: #ffffff;
   color: rgba(255, 255, 255, 0.8);
 }
-.main-navigation .search-form .search-text:-moz-placeholder {
+.main-navigation .search-form .search-text::-moz-placeholder {
   color: #b3b3b3;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
@@ -3143,8 +3062,6 @@ html .btn-inverse:hover {
   -moz-animation: shake-it-baby 1s infinite;
   animation: shake-it-baby 1s infinite;
   -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
   transition: all 1s ease;
 }
 @-webkit-keyframes shake-it-baby {
@@ -3436,9 +3353,7 @@ html .btn-inverse:hover {
   .recent-post:active {
     background-color: #f7fafc;
     background-image: -webkit-linear-gradient(left, #f2f7fc 50%, #f7fafc);
-    background-image: -moz-linear-gradient(left, #f2f7fc 50%, #f7fafc);
-    background-image: -o-linear-gradient(left, #f2f7fc 50%, #f7fafc);
-    background-image: linear-gradient(left, #f2f7fc 50%, #f7fafc);
+    background-image: linear-gradient(to right, #f2f7fc 50%, #f7fafc);
     background-repeat: repeat-x;
   }
   .recent-post .entry-title {
@@ -3535,7 +3450,6 @@ html .btn-inverse:hover {
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
-    -o-flex-direction: column;
     flex-direction: column;
   }
   .flexbox #site-title,
