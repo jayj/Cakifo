@@ -556,7 +556,7 @@ function cakifo_theme_layout() {
 	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	elseif ( is_front_page() && ! is_home() ) // Static frontpage
+        elseif ( is_page_template( 'template-front-page.php' ) ) // Static frontpage
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
 	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
