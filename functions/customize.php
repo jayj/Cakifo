@@ -39,7 +39,9 @@ function cakifo_customize_register( $wp_customize ) {
 	/* Get the default theme settings. */
 	$defaults = hybrid_get_default_theme_settings();
 
-	/* Create a Categories array */
+	/* Create the categories array */
+	$categories = array( '' => '' ); // Add an empty option in the beginning of the array
+
 	foreach ( get_categories() as $cat ) {
 		$categories[$cat->term_id] = $cat->name;
 	}
