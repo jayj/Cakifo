@@ -97,7 +97,7 @@
 
 							/* Try to embed a video from the post content */
 							} elseif ( has_post_format( 'video' ) ) {
-								echo '<div class="slider-video">' . post_format_tools_get_video( array( 'width' => $thumbnail_size['width'] ) ) . '</div>';
+							//	the_post_format_video();
 							}
 
 						endif;
