@@ -205,7 +205,7 @@ h6 {
 
 /* Entry titles */
 .entry-title {
-	margin-bottom: 5px;
+	margin-bottom: 0;
 	.font-size(@headingsFontSize + 4);
 }
 
@@ -552,8 +552,22 @@ sub {
 }
 
 /**
- * Byline and entry meta
+ * Entry meta
  */
+
+.entry-header {
+
+
+
+	.byline {
+		margin-top: 5px;
+	}
+}
+
+.entry-media {
+	margin: @smallGutterWidth 0;
+}
+
 .byline,
 .entry-meta {
 	#font > .sans-serif(14, normal, 2);

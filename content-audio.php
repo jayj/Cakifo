@@ -17,7 +17,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
-	<?php if ( is_singular() && is_main_query() ) : ?>
+	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
@@ -25,8 +25,12 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php echo apply_atomic_shortcode( 'byline_audio', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 		</header> <!-- .entry-header -->
 
+		<div class="entry-media">
+			<?php the_post_format_audio(); ?>
+		</div> <!-- .entry-media -->
+
 		<div class="entry-content">
-			<?php the_content(); ?>
+			<?php the_remaining_content(); ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
@@ -41,6 +45,10 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
+		<div class="entry-media">
+			<?php the_post_format_audio(); ?>
+		</div> <!-- .entry-media -->
+
 		<?php if ( has_excerpt() ) { ?>
 
 			<div class="entry-summary">
@@ -50,7 +58,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		<?php } else { ?>
 
 			<div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
+				<?php the_remaining_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
 				<?php wp_link_pages(); ?>
 			</div> <!-- .entry-content -->
 

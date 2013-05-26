@@ -97,7 +97,7 @@ function cakifo_theme_setup() {
 	 * output instead of the default core HTML output.
 	 */
 	add_theme_support( 'structured-post-formats', array(
-		'link', 'image'
+                'audio', 'link', 'image'
 	) );
 
 	add_theme_support( 'post-formats', array(

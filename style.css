@@ -193,7 +193,7 @@ h6 {
 }
 /* Entry titles */
 .entry-title {
-  margin-bottom: 5px;
+  margin-bottom: 0;
   font-size: 30px;
   font-size: 3rem;
 }
@@ -1641,8 +1641,14 @@ body.page-template-template-front-page #main,
   margin-top: 0;
 }
 /**
- * Byline and entry meta
+ * Entry meta
  */
+.entry-header .byline {
+  margin-top: 5px;
+}
+.entry-media {
+  margin: 25px 0;
+}
 .byline,
 .entry-meta {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
