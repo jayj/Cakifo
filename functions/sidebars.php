@@ -32,176 +32,95 @@ add_action( 'widgets_init', 'cakifo_register_widgets' );
 function cakifo_register_sidebars() {
 
 	/* Get theme-supported sidebars */
-	$sidebars = get_theme_support( 'cakifo-sidebars' );
+	$supported_sidebars = get_theme_support( 'cakifo-sidebars' );
 
 	/* If there is no array of sidebars IDs, return */
-	if ( ! is_array( $sidebars[0] ) )
+	if ( ! is_array( $supported_sidebars[0] ) )
 		return;
 
-	/* Set up the primary sidebar arguments */
-	$primary = array(
-		'id'            => 'primary',
-		'name'          => _x( 'Primary', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'The main (primary) widget area, most often used as a sidebar.', 'cakifo' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</aside>',
+	/* Set up some default sidebar arguments. */
+	$defaults = array(
+		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s">',
+		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>'
 	);
 
-	/* Set up the secondary sidebar arguments */
-	$secondary = array(
-		'id'            => 'secondary',
-		'name'          => _x( 'Secondary', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'The second most important widget area, most often used as a secondary sidebar.', 'cakifo' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
+	/* Set up an array of sidebars. */
+	$theme_sidebars = array(
+		'primary' => array(
+			'name'        => _x( 'Primary', 'sidebar', 'cakifo' ),
+			'description' => __( 'The main (primary) widget area, most often used as a sidebar.', 'cakifo' )
+		),
+		'secondary' => array(
+			'name'        => _x( 'Secondary', 'sidebar', 'cakifo' ),
+			'description' => __( 'The second most important widget area, most often used as a secondary sidebar.', 'cakifo' ),
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>'
+		),
+		'subsidiary' => array(
+			'name'        => _x( 'Footer Area One', 'sidebar', 'cakifo' ),
+			'description' => __( 'A widget area loaded in the footer of the site.', 'cakifo' ),
+		),
+		'subsidiary-two' => array(
+			'name'        => _x( 'Footer Area Two', 'sidebar', 'cakifo' ),
+			'description' => __( 'A widget area loaded in the footer of the site.', 'cakifo' ),
+		),
+		'subsidiary-three' => array(
+			'name'        => _x( 'Footer Area Three', 'sidebar', 'cakifo' ),
+			'description' => __( 'A widget area loaded in the footer of the site.', 'cakifo' ),
+		),
+		'header' => array(
+			'name'        => _x( 'Header', 'sidebar', 'cakifo' ),
+			'description' => __( "Displayed within the site's header area.", 'cakifo' ),
+		),
+		'before-content' => array(
+			'name'        => _x( 'Before Content', 'sidebar', 'cakifo' ),
+			'description' => __( "Loaded before the page's main content area.", 'cakifo' ),
+		),
+		'after-content' => array(
+			'name'        => _x( 'After Content', 'sidebar', 'cakifo' ),
+			'description' => __( "Loaded after the page's main content area.", 'cakifo' ),
+		),
+		'after-singular' => array(
+			'name'        => _x( 'After Singular', 'sidebar', 'cakifo' ),
+			'description' => __( 'Loaded on singular post (page, attachment, etc.) views before the comments area.', 'cakifo' ),
+		),
+		'after-single' => array(
+			'name'        => _x( 'After Single', 'sidebar', 'cakifo' ),
+			'description' => __( 'Loaded on single post views, before the comments area.', 'cakifo' ),
+		),
+		'error-page' => array(
+			'name'        => _x( 'Error Page', 'sidebar', 'cakifo' ),
+			'description' => __( 'Loaded on 404 (Not found) error pages.', 'cakifo' ),
+		)
 	);
 
-	/* Set up the first footer sidebar arguments */
-	$subsidiary_one = array(
-		'id'            => 'subsidiary',
-		'name'          => _x( 'Footer Area One', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+	/* Allow developers to filter the sidebars. */
+	$theme_sidebars = apply_filters( hybrid_get_prefix() . '_theme_sidebars', $theme_sidebars );
 
-	/* Set up the second footer sidebar arguments */
-	$subsidiary_two = array(
-		'id'            => 'subsidiary-two',
-		'name'          => _x( 'Footer Area Two', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+	/* Loop through the supported sidebars. */
+	foreach ( $supported_sidebars[0] as $sidebar ) {
 
-	/* Set up the third footer sidebar arguments */
-	$subsidiary_three = array(
-		'id'            => 'subsidiary-three',
-		'name'          => _x( 'Footer Area Three', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'An optional widget area for your site footer.', 'cakifo' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+		/* Make sure the given sidebar is one of the theme sidebars. */
+		if ( isset( $theme_sidebars[ $sidebar ] ) ) {
 
-	/* Set up the header sidebar arguments */
-	$header = array(
-		'id'            => 'header',
-		'name'          => _x( 'Header', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Displayed within the site\'s header area.', 'cakifo' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
-		'after_widget'  => '</div></div>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+			/* Allow developers to filter the default sidebar arguments. */
+			$defaults = apply_filters( hybrid_get_prefix() . '_sidebar_defaults', $defaults, $sidebar );
 
-	/* Set up the before content sidebar arguments */
-	$before_content = array(
-		'id'            => 'before-content',
-		'name'          => _x( 'Before Content', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Loaded before the page\'s main content area.', 'cakifo' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
-		'after_widget'  => '</div></section>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+			/* Parse the sidebar arguments and defaults. */
+			$args = wp_parse_args( $theme_sidebars[ $sidebar ], $defaults );
 
-	/* Set up the after content sidebar arguments */
-	$after_content = array(
-		'id'            => 'after-content',
-		'name'          => _x( 'After Content', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Loaded after the page\'s main content area.', 'cakifo' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap widget-inside">',
-		'after_widget'  => '</div></section>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+			/* If no 'id' was given, use the $sidebar variable and sanitize it. */
+			$args['id'] = ( isset( $args['id'] ) ? sanitize_key( $args['id'] ) : sanitize_key( $sidebar ) );
 
-	/* Set up the after singular sidebar arguments */
-	$after_singular = array(
-		'id'            => 'after-singular',
-		'name'          => _x( 'After Singular', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Loaded on singular post (page, attachment, etc.) views before the comments area.', 'cakifo' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
+			/* Allow developers to filter the sidebar arguments. */
+			$args = apply_filters( hybrid_get_prefix() . '_sidebar_args', $args, $sidebar );
 
-	/* Set up the after single sidebar arguments */
-	$after_single = array(
-		'id'            => 'after-single',
-		'name'          => _x( 'After Single', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Loaded on single post views before the comments area.', 'cakifo' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
-	);
-
-	/* Set up the 404 error page arguments */
-	$error_page = array(
-		'id'            => 'error-page',
-		'name'          => _x( 'Error Page', 'sidebar name', 'cakifo' ),
-		'description'   => __( 'Loaded on 404 error pages', 'cakifo' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>'
-	);
-
-	/* Register the primary sidebar */
-	if ( in_array( 'primary', $sidebars[0] ) )
-		register_sidebar( $primary );
-
-	/* Register the secondary sidebar */
-	if ( in_array( 'secondary', $sidebars[0] ) )
-		register_sidebar( $secondary );
-
-	/* Register the first footer sidebar */
-	if ( in_array( 'subsidiary', $sidebars[0] ) || in_array( 'footer', $sidebars[0] ) )
-		register_sidebar( $subsidiary_one );
-
-	/* Register the second footer sidebar */
-	if ( in_array( 'subsidiary-two', $sidebars[0] ) || in_array( 'footer-two', $sidebars[0] ) )
-		register_sidebar( $subsidiary_two );
-
-	/* Register the third footer sidebar */
-	if ( in_array( 'subsidiary-three', $sidebars[0] ) || in_array( 'footer-three', $sidebars[0] ) )
-		register_sidebar( $subsidiary_three );
-
-	/* Register the header sidebar */
-	if ( in_array( 'header', $sidebars[0] ) )
-		register_sidebar( $header );
-
-	/* Register the before content sidebar */
-	if ( in_array( 'before-content', $sidebars[0] ) )
-		register_sidebar( $before_content );
-
-	/* Register the after content sidebar */
-	if ( in_array( 'after-content', $sidebars[0] ) )
-		register_sidebar( $after_content );
-
-	/* Register the after singular sidebar */
-	if ( in_array( 'after-singular', $sidebars[0] ) )
-		register_sidebar( $after_singular );
-
-	/* Register the after singular sidebar */
-	if ( in_array( 'after-single', $sidebars[0] ) )
-		register_sidebar( $after_single );
-
-	/* Register the error page sidebar */
-	if ( in_array( 'error-page', $sidebars[0] ) )
-		register_sidebar( $error_page );
+			/* Register the sidebar. */
+			register_sidebar( $args );
+		}
+	}
 }
 
 /**
