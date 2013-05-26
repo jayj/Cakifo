@@ -509,7 +509,7 @@ function cakifo_excerpt_more( $more ) {
  * @return array      The filtered 'Breadcrumb' arguments
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-	$args['before'] = __( 'You are here:', 'cakifo' ); // Changes the text before the breadcrumb trail
+        $args['labels']['browse'] =  __( 'You are here: ', 'cakifo' );
 
 	return $args;
 }
