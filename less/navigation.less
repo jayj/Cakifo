@@ -1,57 +1,135 @@
+/* =============================================================================
+   Layout:  Topbar
+   ========================================================================== */
+
+#topbar {
+	position: relative;
+	width: 100%;
+	min-height: 60px;
+	background: @topbarBackground url(images/topbar.png) repeat; // The noise image is transparent
+	color: #ccc;
+
+	&:after {
+		position: absolute;
+		bottom: -11px;
+		left: 0;
+		.size(100%, 10px);
+		background: url(images/topbar-bottom.png) repeat-x;
+		content: "";
+	}
+}
+
 // =============================================================================
-// Primary Navigation for screens < 980px
+// Primary Navigation
 // =============================================================================
 
 .main-navigation {
-	.clearfix;
-	width: 100%;
+	position: relative;
+	width: @siteWidth;
+	padding: 0 @gutterWidth 0 (@gutterWidth - 15px); // 15px is the padding-left on .menu-item a {}
 	margin: 0 auto;
+	.clearfix();
 
-	.menu {
-		list-style: none;
-		margin: 0;
+	.menu,
+	.menu ul {
+		.no-list-style();
 	}
 
 	.menu-item {
-		float: none;
-		width: 100%;
-		margin: 8px 0;
+		position: relative;
+		float: left;
 	}
 
 	.menu-item > a {
-		display: block;
-		padding: 14px 20px;
-		color: #c6c6c6;
+		display: inline-block;
+		padding: 20px 15px;
+		color: #ccc;
+		#font > .alternative(15, bold, normal);
+		text-shadow: 1px 1px 0 @grayDarker;
+		.transition(all 150ms);
 	}
 
 	.menu-item > a:hover,
 	.menu-item > a:focus,
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
-		background: darken(@grayDarker, 5%);
+		background-color: #444;
+		#gradient > .vertical(fade(#fff, 0%), fade(#fff, 20%));
 		color: #ececec;
 	}
 
-	.menu-list-container,
-	.search-form,
+	.menu-item > a:active {
+		#gradient > .vertical(fade(@grayLight, 0%), fade(@grayLight, 20%));
+	}
+
 	.sep {
+		color: #9b9b9b;
+	}
+
+	.sub-menu .sep,
+	.menu-item:last-of-type .sep {
 		display: none;
+	}
+
+	/* Level 2 */
+	.sub-menu {
+		display: none;
+		position: absolute;
+		z-index: 500;
+		top: 100%;
+		left: 0;
+		min-width: 200px;
+		background: @topbarBackground url(images/topbar.png) repeat;
+		border-radius: 0 0 5px 5px;
+		box-shadow: 1px 2px 2px fade(#000, 30%);
+
+		.menu-item {
+			float: none;
+		}
+
+		.menu-item > a {
+			width: 100%;
+			border-top: 1px solid #393939;
+			border-bottom: 1px solid #111;
+		}
+
+		.menu-item:first-of-type > a {
+			border-top: none;
+		}
+
+		.menu-item:last-of-type > a {
+			border-bottom: none;
+		}
+
+		// Level n
+		.sub-menu {
+			top: 0;
+			left: 100%;
+			border-radius: 0 5px 5px 0;
+		}
+	}
+
+	// Display the sub menus on hover
+	.menu-item:hover > .sub-menu {
+		display: block;
 	}
 }
 
-/* Toggle button */
-#menu-toggle {
-	display: block;
+/**
+ * Toggle button
+ */
+.menu-toggle {
+	display: none;
 	width: 100%;
 	padding: 15px 0;
+	border-bottom: 1px solid #050505;
 	margin: 0;
 	#font > .alternative(21, bold, 1.5);
 	#gradient > .vertical(#555, #444);
 	box-shadow: 0 1px 0 fade(@white, 10%);
-	border-bottom: 1px solid #050505;
 	color: @white;
-	cursor: pointer;
 	text-align: center;
+	cursor: pointer;
 
 	&:hover {
 		background: @grayDark;
@@ -64,130 +142,120 @@
 }
 
 // =============================================================================
-// Primary Navigation for screens > 980px
+// Primary Navigation for screens < 980px
 // =============================================================================
 
-@media screen and (min-width: 980px) {
-	.main-navigation {
-		position: relative;
-		width: @siteWidth;
-		margin: 0 auto;
-		padding: 0 @gutterWidth 0 (@gutterWidth - 15px); // 15px is the padding-left on .menu-item a {}
+@media screen and (max-width: 979px) {
 
-		ul {
-			.no-list-style();
+	.main-navigation {
+		padding: 0;
+
+		.menu-toggle {
+			display: block;
 		}
 
 		.menu-list-container,
 		.search-form {
-			display: block !important;
-		}
-
-		// Reset the styling created by the small navigation
-		// If the viewport is made bigger while the small navigation was open,
-		// the container would still the same size without this
-		.menu-list-container {
-			overflow: visible !important;
-			height: auto;
-		}
-
-		// Each item in the navigation
-		.menu-item {
-			position: relative;
-			float: left;
-			width: auto;
-			margin: 0;
-			background: @topbarBackground ~"url(images/topbar.png)" repeat;
-
-			> a {
-				display: inline-block;
-				padding: 21px 15px;
-				#font > .alternative(15, bold, normal);
-				text-shadow: 1px 1px 0 @grayDarker;
-				color: #ccc;
-				.transition(all 150ms);
-			}
-		}
-
-		.menu-item > a:hover,
-		.current-menu-item > a,
-		.current-menu-ancestor > a {
-			background-color: #444;
-			#gradient > .vertical(fade(@white, 0%), fade(@white, 20%));
-			color: #ececec;
-		}
-
-		// Level two
-		.sub-menu {
 			display: none;
-			position: absolute;
-			z-index: 500;
-			top: 100%;
-			left: 0;
-			background: @topbarBackground ~"url(images/topbar.png)" repeat;
-			box-shadow: 1px 2px 2px fade(@black, 30%);
-			border-radius: 0 0 5px 5px;
-
-			.menu-item {
-				float: none;
-				background: none;
-			}
-
-			.menu-item > a {
-				display: block;
-				width: 180px;
-				padding: 18px 14px;
-				border-top: 1px solid #3a3a3a;
-				border-bottom: 1px solid #262627;
-				.font-size(14);
-			}
-
-			.menu-item:first-of-type > a {
-				border-top: none;
-			}
-
-			.menu-item:last-of-type > a {
-				border-bottom: none;
-			}
-
-			// Level n
-			.sub-menu {
-				top: 0;
-				left: 100%;
-			}
 		}
 
-		// Display the sub menus on hover
-		.menu-item:hover > ul {
+		/* Menu is toggled on */
+		&.toggled-on .menu-list-container,
+		&.toggled-on .search-form {
 			display: block;
 		}
 
-		// Separator
-		.sep {
-			display: inline;
-			color: #808080;
+		.menu-list-container {
+			padding: @gutterWidth;
 		}
 
-		.sub-menu .sep,
-		.menu-item:last-of-type .sep {
+		.menu-item {
+			float: none;
+		}
+
+		.menu-item > a {
+			width: 100%;
+			border-top: 1px solid #393939;
+			border-bottom: 1px solid #111;
+		}
+
+		.menu-item:first-of-type > a {
+			border-top: none;
+		}
+
+		.menu-item:last-of-type > a {
+			border-bottom: none;
+		}
+
+		.sep,
+		.menu-item:hover > .sub-menu {
 			display: none;
 		}
+
+	} // .main-navigation
+
+} // Media query: max-width 979px;
+
+// =============================================================================
+// Search form in the topbar
+// =============================================================================
+
+.main-navigation .search-form {
+	float: right;
+	margin-top: 10px;
+
+	label {
+		margin: 0;
 	}
 
-	/* Hide toggle button */
-	#menu-toggle {
-		display: none;
+	.search-text {
+		margin-bottom: 0;
+		background-color: @gray;
+		background-color: fade(#fff, 30%);
+		border: 1px solid #000;
+		box-shadow:
+			inset 0 1px 2px fade(#000, 10%),
+			0 1px 0px fade(#fff, 30%);
+		color: #fff;
+		color: fade(#fff, 80%);
+
+		// Give the input placeholder a lighter colour
+		.placeholder( lighten(@grayLight, 10%), -1px -1px 0 fade(#000, 30%) );
 	}
-} // Media query: min-width 980px;
+
+	.search-submit {
+		display: none;
+		padding: 2px 14px;
+		border-color: #000;
+		margin-left: 5px;
+	}
+}
+
+@media screen and (max-width: 979px) {
+	.main-navigation .search-form {
+		float: none;
+		padding: @smallGutterWidth @gutterWidth;
+		margin-top: -(@smallGutterWidth);
+		border: solid @grayDarker;
+		border-width: 1px 0;
+		box-shadow:
+			inset 0 1px 0 fade(#fff, 10%),
+			0 1px 0 fade(#fff, 10%);
+
+		.search-submit {
+			display: inline-block;
+		}
+	}
+}
 
 /* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
 .no-js .main-navigation .search-form {
-	display: block !important;
+	display: block;
 }
 
-.no-js #menu-toggle {
-	visibility: hidden;
+.no-js .menu-toggle {
+	display: none;
 }
 
 // =============================================================================
@@ -217,7 +285,7 @@
 		.font-size(14);
 	}
 
-	a {
+	.menu-item > a {
 		display: inline-block;
 		padding: 4px 20px;
 		line-height: 3.5;
@@ -281,16 +349,16 @@
 		.menu-item:last-of-type > a {
 			border-bottom: none;
 		}
+
+		// Level n
+		.sub-menu {
+			top: 0;
+			left: 100%;
+		}
 	}
 
 	// Display the sub menu on hover
 	.menu-item:hover > ul {
 		display: block;
-	}
-
-	// Level n
-	.sub-menu .sub-menu {
-		top: 0;
-		left: 100%;
 	}
 }

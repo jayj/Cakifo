@@ -444,27 +444,6 @@ sub {
 @import "less/utilities.less";
 
 /* =============================================================================
-   Layout:  Topbar
-   ========================================================================== */
-
-#topbar {
-	position: relative;
-	width: 100%;
-	min-height: 60px;
-	background: @topbarBackground url(images/topbar.png) repeat; // The noise image is transparent
-	color: #ccc;
-
-	&:after {
-		position: absolute;
-		bottom: -11px;
-		left: 0;
-		.size(100%, 10px);
-		background: url(images/topbar-bottom.png) repeat-x;
-		content: "";
-	}
-}
-
-/* =============================================================================
    Layout:  Main navigation
    ========================================================================== */
 
@@ -705,7 +684,7 @@ sub {
 }
 
 .loop-meta-home {
-        border-bottom: 5px solid @orangeLight;
+	border-bottom: 5px solid @orangeLight;
 }
 
 .loop-title {

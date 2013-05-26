@@ -18,7 +18,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 			<?php do_atomic( 'open_menu_primary' ); // cakifo_open_menu_primary ?>
 
-				<h3 id="menu-toggle" title="<?php esc_attr_e( 'Show menu', 'cakifo' ); ?>">
+				<h3 class="menu-toggle" title="<?php esc_attr_e( 'Show menu', 'cakifo' ); ?>">
 					<?php _e( 'Show menu', 'cakifo' ); ?>
 				</h3>
 

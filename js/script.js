@@ -1,21 +1,33 @@
 (function($, window, document) {
 
 	/**
-	 * Topbar navigation toggle functionality
+	 * Enables menu toggle for small screens.
 	 */
-	var topbar = $( document.getElementById( 'topbar' ) ),
-		button = $( document.getElementById( 'menu-toggle' ) ),
-		search = topbar.find( '.search-form' );
+	( function() {
+		var nav = $( '.main-navigation' ), button, menu;
+		if ( ! nav )
+			return;
 
-	if ( ! topbar.find( '.menu' ).children().length ) {
-		button.hide();
-	}
+		button = nav.find( '.menu-toggle' );
+		menu   = nav.find( '.menu-list-container' );
+		if ( ! button )
+			return;
 
-	button.off( 'click' ).on( 'click', function() {
-		topbar.find( '.menu-list-container' ).stop().slideToggle(400);
-		search.toggle();
-		$( this ).toggleClass( 'toggled-on' );
-	} );
+		// Hide button if menu is missing or empty.
+		if ( ! menu || ! menu.children().length ) {
+			button.hide();
+			return;
+		}
+
+		$( '.menu-toggle' ).on( 'click', function() {
+			nav.toggleClass( 'toggled-on' );
+		} );
+	} )();
+
+
+
+
+
 
 	function equal_height_columns() {return;}
 
