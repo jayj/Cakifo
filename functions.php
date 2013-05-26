@@ -97,11 +97,11 @@ function cakifo_theme_setup() {
 	 * output instead of the default core HTML output.
 	 */
 	add_theme_support( 'structured-post-formats', array(
-                'audio', 'link', 'image'
+                'audio', 'link', 'image', 'video'
 	) );
 
 	add_theme_support( 'post-formats', array(
-		'aside', 'audio', 'chat', 'gallery', 'quote', 'status', 'video'
+                'aside', 'chat', 'gallery', 'quote', 'status',
 	) );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
