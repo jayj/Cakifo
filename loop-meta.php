@@ -16,7 +16,7 @@
 
 	<?php global $wp_query; ?>
 
-	<div class="loop-meta loop-meta-home">
+        <div class="loop-meta-home">
 
 		<h1 class="loop-title">
 			<?php echo get_post_field( 'post_title', $wp_query->get_queried_object_id() ); ?>
@@ -26,7 +26,7 @@
 			<?php echo apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $wp_query->get_queried_object_id() ) ); ?>
 		</div> <!-- .loop-description -->
 
-	</div> <!-- .loop-meta -->
+        </div> <!-- .loop-meta-home -->
 
 <?php elseif ( is_category() ) : ?>
 
