@@ -17,10 +17,10 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
-	<?php if ( is_singular() && is_main_query() ) : ?>
+	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
+			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( get_the_post_format_url() ) . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">', ' <span class="meta-nav">&rarr;</span></a></h1>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 			<?php echo apply_atomic_shortcode( 'byline_link', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 		</header> <!-- .entry-header -->
