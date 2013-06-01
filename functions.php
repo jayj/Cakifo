@@ -97,11 +97,11 @@ function cakifo_theme_setup() {
 	 * output instead of the default core HTML output.
 	 */
 	add_theme_support( 'structured-post-formats', array(
-                'audio', 'link', 'image', 'video'
+		'audio', 'link', 'image', 'video'
 	) );
 
 	add_theme_support( 'post-formats', array(
-                'aside', 'chat', 'gallery', 'quote', 'status',
+		'aside', 'chat', 'gallery', 'quote', 'status',
 	) );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
@@ -509,7 +509,7 @@ function cakifo_excerpt_more( $more ) {
  * @return array      The filtered 'Breadcrumb' arguments
  */
 function cakifo_breadcrumb_trail_args( $args ) {
-        $args['labels']['browse'] =  __( 'You are here: ', 'cakifo' );
+	$args['labels']['browse'] =  __( 'You are here: ', 'cakifo' );
 
 	return $args;
 }
@@ -556,7 +556,7 @@ function cakifo_theme_layout() {
 	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) )
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-        elseif ( is_page_template( 'template-front-page.php' ) ) // Static frontpage
+	elseif ( is_page_template( 'template-front-page.php' ) ) // Static frontpage
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
 	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
