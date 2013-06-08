@@ -89,19 +89,12 @@ function cakifo_theme_setup() {
 		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
 
-	/*
+	/**
 	 * This theme supports all available post formats.
 	 * See http://codex.wordpress.org/Post_Formats
-	 *
-	 * Structured post formats are formats where Twenty Thirteen handles the
-	 * output instead of the default core HTML output.
 	 */
-	add_theme_support( 'structured-post-formats', array(
-		'audio', 'link', 'image', 'video'
-	) );
-
 	add_theme_support( 'post-formats', array(
-		'aside', 'chat', 'gallery', 'quote', 'status',
+		'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
 	) );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
