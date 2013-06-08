@@ -155,13 +155,13 @@
 		}
 
 		.menu-list-container,
-		.search-form {
+		.searchform {
 			display: none;
 		}
 
 		/* Menu is toggled on */
 		&.toggled-on .menu-list-container,
-		&.toggled-on .search-form {
+		&.toggled-on .searchform {
 			display: block;
 		}
 
@@ -200,7 +200,7 @@
 // Search form in the topbar
 // =============================================================================
 
-.main-navigation .search-form {
+.main-navigation .searchform {
 	float: right;
 	margin-top: 10px;
 
@@ -208,7 +208,7 @@
 		margin: 0;
 	}
 
-	.search-text {
+	input[type="search"] {
 		margin-bottom: 0;
 		background-color: @gray;
 		background-color: fade(#fff, 30%);
@@ -223,7 +223,7 @@
 		.placeholder( lighten(@grayLight, 10%), -1px -1px 0 fade(#000, 30%) );
 	}
 
-	.search-submit {
+	.searchsubmit {
 		display: none;
 		padding: 2px 14px;
 		border-color: #000;
@@ -232,7 +232,7 @@
 }
 
 @media screen and (max-width: 979px) {
-	.main-navigation .search-form {
+	.main-navigation .searchform {
 		float: none;
 		padding: @smallGutterWidth @gutterWidth;
 		margin-top: -(@smallGutterWidth);
@@ -242,7 +242,7 @@
 			inset 0 1px 0 fade(#fff, 10%),
 			0 1px 0 fade(#fff, 10%);
 
-		.search-submit {
+		.searchsubmit {
 			display: inline-block;
 		}
 	}
@@ -250,7 +250,7 @@
 
 /* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
-.no-js .main-navigation .search-form {
+.no-js .main-navigation .searchform {
 	display: block;
 }
 

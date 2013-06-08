@@ -858,7 +858,8 @@ caption {
  *
  * This is used to hide content from browsers but allow screen readers to see it
  */
-.assistive-text {
+.assistive-text,
+.screen-reader-text {
   overflow: hidden;
   position: absolute !important;
   width: 1px;
@@ -1055,11 +1056,11 @@ caption {
     display: block;
   }
   .main-navigation .menu-list-container,
-  .main-navigation .search-form {
+  .main-navigation .searchform {
     display: none;
   }
   .main-navigation.toggled-on .menu-list-container,
-  .main-navigation.toggled-on .search-form {
+  .main-navigation.toggled-on .searchform {
     display: block;
   }
   .main-navigation .menu-list-container {
@@ -1084,14 +1085,14 @@ caption {
     display: none;
   }
 }
-.main-navigation .search-form {
+.main-navigation .searchform {
   float: right;
   margin-top: 10px;
 }
-.main-navigation .search-form label {
+.main-navigation .searchform label {
   margin: 0;
 }
-.main-navigation .search-form .search-text {
+.main-navigation .searchform input[type="search"] {
   margin-bottom: 0;
   background-color: #555555;
   background-color: rgba(255, 255, 255, 0.3);
@@ -1100,22 +1101,22 @@ caption {
   color: #fff;
   color: rgba(255, 255, 255, 0.8);
 }
-.main-navigation .search-form .search-text::-moz-placeholder {
+.main-navigation .searchform input[type="search"]::-moz-placeholder {
   color: #b3b3b3;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
-.main-navigation .search-form .search-text::-webkit-input-placeholder {
+.main-navigation .searchform input[type="search"]::-webkit-input-placeholder {
   color: #b3b3b3;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
-.main-navigation .search-form .search-submit {
+.main-navigation .searchform .searchsubmit {
   display: none;
   padding: 2px 14px;
   border-color: #000;
   margin-left: 5px;
 }
 @media screen and (max-width: 979px) {
-  .main-navigation .search-form {
+  .main-navigation .searchform {
     float: none;
     padding: 25px 40px;
     margin-top: -25px;
@@ -1123,13 +1124,13 @@ caption {
     border-width: 1px 0;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   }
-  .main-navigation .search-form .search-submit {
+  .main-navigation .searchform .searchsubmit {
     display: inline-block;
   }
 }
 /* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
-.no-js .main-navigation .search-form {
+.no-js .main-navigation .searchform {
   display: block;
 }
 .no-js .menu-toggle {
@@ -2884,15 +2885,15 @@ html .btn-inverse:hover {
 /* =============================================================================
    Layout:  Search form
    ========================================================================== */
-.search-form label {
+.searchform label {
   display: inline-block;
   margin-right: 5px;
 }
-.search-form .search-text {
+.searchform input[type="search"] {
   padding-left: 27px;
   background: #ffffff url(images/search.png) no-repeat 5px center;
 }
-.search-form .search-text[results] {
+.searchform input[type="search"][results] {
   padding-left: 6px;
   background-image: none;
 }
