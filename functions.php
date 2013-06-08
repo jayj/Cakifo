@@ -89,13 +89,18 @@ function cakifo_theme_setup() {
 		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
 
+	/* Add theme support for HTML5. */
+	add_theme_support( 'html5', array(
+		'comment-list', 'comment-form', 'search-form'
+	));
+
 	/**
 	 * This theme supports all available post formats.
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
-	) );
+	));
 
 	/* Adds RSS feed links to <head> for posts and comments. */
 	add_theme_support( 'automatic-feed-links' );
@@ -1205,7 +1210,7 @@ function cakifo_compat_show_singular_comments() {
  * @return string URL
  */
 function cakifo_get_link_url() {
-        $has_url = hybrid_get_the_post_format_url();
+	$has_url = hybrid_get_the_post_format_url();
 
 	return ( $has_url ) ? $has_url : apply_filters( 'the_permalink', get_permalink() );
 }
