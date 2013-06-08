@@ -17,7 +17,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
-	<?php if ( is_singular() && is_main_query() ) : ?>
+	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>

@@ -17,7 +17,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
-	<?php if ( is_singular() && is_main_query() ) : ?>
+	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header clearfix">
 			<?php echo get_avatar( get_the_author_meta( 'email' ), apply_atomic( 'status_avatar', 48 ) ); ?>

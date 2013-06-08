@@ -18,7 +18,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
 	<div class="entry-media">
-                <?php the_post_format_image( 'large' ); ?>
+		<?php //the_post_format_image( 'large' ); ?>
 	</div> <!-- .entry-media -->
 
 	<header class="entry-header">
@@ -31,7 +31,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 	</header> <!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_remaining_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
+		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
 		<?php wp_link_pages(); ?>
 	</div> <!-- .entry-content -->
 
