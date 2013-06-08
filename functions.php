@@ -241,14 +241,8 @@ function cakifo_theme_setup() {
 	/* Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
 
-	/* wp_list_comments() arguments */
-	add_filter( "{$prefix}_list_comments_args" , 'cakifo_change_list_comments_args' );
-
 	/* Filter default theme options */
 	add_filter( "{$prefix}_default_theme_settings", 'cakifo_filter_default_theme_settings' );
-
-	/* Filter the comment input field types */
-	add_filter( 'comment_form_default_fields', 'cakifo_html5_comment_fields' );
 
 	/* Filter the arguments for wp_link_pages(), used in the loop files */
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
@@ -466,18 +460,6 @@ function cakifo_get_the_image_arguments( $args ) {
 		$args['image_class'] = 'thumbnail';
 	}
 
-	return $args;
-}
-
-/**
- * Change the arguments of wp_list_comments()
- *
- * @since Cakifo 1.3.0
- * @param array $args The wp_list_comments() arguments
- * @return array      The filtered wp_list_comments() arguments
- */
-function cakifo_change_list_comments_args( $args ) {
-	$args['avatar_size'] = 48;
 	return $args;
 }
 
@@ -1134,21 +1116,6 @@ function cakifo_body_class( $classes ) {
 		$classes[] = 'custom-background-white';
 
 	return $classes;
-}
-
-/**
- * Changes the comment form to use HTML5 input fields for email and url.
- *
- * @since Cakifo 1.5.0
- */
-function cakifo_html5_comment_fields( $fields ) {
-	if ( isset( $fields['email'] ) )
-		$fields['email'] = str_replace( 'type="text"', 'type="email"', $fields['email'] );
-
-	if ( isset( $fields['url'] ) )
-		$fields['url'] = str_replace( 'type="text"', 'type="url"', $fields['url'] );
-
-	return $fields;
 }
 
 /**

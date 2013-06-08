@@ -25,7 +25,13 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 		<?php do_atomic( 'before_comment_list' ); // cakifo_before_comment_list ?>
 
 		<ol class="comment-list">
-			<?php wp_list_comments( hybrid_list_comments_args() ); ?>
+			<?php
+				wp_list_comments( array(
+					'style'       => 'ol',
+					'short_ping'  => true,
+					'avatar_size' => 48,
+				) );
+			?>
 		</ol> <!-- .comment-list -->
 
 		<?php do_atomic( 'after_comment_list' ); // cakifo_after_comment_list ?>
