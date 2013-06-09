@@ -29,8 +29,8 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'byline_quote', '<div>' . __( '[post-format-link] published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before="| "]', 'cakifo' ) . '</div>' ); ?>
-			<?php echo apply_atomic_shortcode( 'entry_meta_quote', '<div>' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged: "]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'byline_quote', '<div class="byline">' . __( '[post-format-link] published on [entry-published] by [entry-author] [entry-edit-link before="| "]', 'cakifo' ) . '</div>' ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_meta_quote', '<div>' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged: "]', 'cakifo' ) . '</div>' ); ?>
 		</footer> <!-- .entry-meta -->
 
 		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
@@ -42,7 +42,9 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 			<?php wp_link_pages(); ?>
 		</div> <!-- .entry-content -->
 
-		<?php echo apply_atomic_shortcode( 'entry_meta_quote', '<footer class="entry-meta">' . __( '[post-format-link] published on [entry-published] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) . '</footer>' ); ?>
+		<footer class="entry-meta">
+			<?php echo apply_atomic_shortcode( 'entry_meta_quote', __( '[post-format-link] published on [entry-published] by [entry-author] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) ); ?>
+		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
 
