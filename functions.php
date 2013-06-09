@@ -455,7 +455,7 @@ function cakifo_slider_javascript() {
  */
 function cakifo_get_the_image_arguments( $args ) {
 
-	if ( is_archive() || is_search() ) {
+	if ( ( is_archive() || is_search() ) && ! has_post_format( 'image' ) ) {
 		$args['size'] = 'small';
 		$args['image_class'] = 'thumbnail';
 	}
