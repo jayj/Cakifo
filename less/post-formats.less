@@ -81,14 +81,14 @@
 	position: relative;
 	margin-bottom: @smallGutterWidth;
 
-	h1 {
+	.entry-author {
 		display: inline-block;
 		margin: 0;
 		.font-size(16);
 		font-weight: normal;
 	}
 
-	h2 {
+	.entry-date {
 		margin: 0;
 		.font-size(13);
 		font-weight: normal;
@@ -111,6 +111,14 @@
 }
 
 /**
+ * Format: Aside
+ */
+.format-aside .permalink {
+	.font-size(18);
+}
+
+
+/**
  * Format: Link
  */
 .format-link .entry-title:hover .meta-nav {
@@ -119,7 +127,7 @@
 }
 
 /**
- * Format: video
+ * Format: Video
  */
 .format-video .entry-header {
 	margin-bottom: @smallGutterWidth - 10px;

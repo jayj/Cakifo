@@ -1820,14 +1820,14 @@ body.page-template-template-front-page #main,
   position: relative;
   margin-bottom: 25px;
 }
-.format-status .entry-header h1 {
+.format-status .entry-header .entry-author {
   display: inline-block;
   margin: 0;
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: normal;
 }
-.format-status .entry-header h2 {
+.format-status .entry-header .entry-date {
   margin: 0;
   font-size: 13px;
   font-size: 1.3rem;
@@ -1847,6 +1847,13 @@ body.page-template-template-front-page #main,
   z-index: 10;
 }
 /**
+ * Format: Aside
+ */
+.format-aside .permalink {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+/**
  * Format: Link
  */
 .format-link .entry-title:hover .meta-nav {
@@ -1855,7 +1862,7 @@ body.page-template-template-front-page #main,
   transition: margin-left 200ms ease-in-out;
 }
 /**
- * Format: video
+ * Format: Video
  */
 .format-video .entry-header {
   margin-bottom: 15px;
