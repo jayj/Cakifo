@@ -17,53 +17,35 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
 
-	<?php if ( is_singular() ) : ?>
+	<header class="entry-header clearfix">
+		<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', 48 ) ); ?>
 
-		<header class="entry-header clearfix">
-			<?php echo get_avatar( get_the_author_meta( 'email' ), apply_atomic( 'status_avatar', 48 ) ); ?>
-			<?php echo do_shortcode( '[entry-author before="<h1>" after="</h1>"]' ); ?>
-		</header> <!-- .entry-header -->
+		<h1 class="entry-author">
+			<?php echo do_shortcode( '[entry-author]' ); ?>
+		</h1>
 
-		<div class="entry-content">
-			<?php the_content(); ?>
-			<?php wp_link_pages(); ?>
-		</div> <!-- .entry-content -->
+		<h2 class="entry-date">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+				<?php echo do_shortcode( '[entry-published]' ); ?>
+			</a>
+		</h2>
 
-		<footer class="entry-meta">
-			<?php
-				echo apply_atomic_shortcode( 'byline_status', '<div>' . __( '[post-format-link] published on [entry-published] [entry-edit-link before="| "]', 'cakifo' ) . '</div>' );
-				echo apply_atomic_shortcode( 'entry_meta_status' );
-			?>
-		</footer> <!-- .entry-meta -->
+		<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+	</header> <!-- .entry-header -->
 
-		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
+	<div class="entry-content">
+		<?php the_content(); ?>
+		<?php wp_link_pages(); ?>
+	</div> <!-- .entry-content -->
 
-	<?php else : ?>
+	<footer class="entry-meta">
+		<?php echo apply_atomic_shortcode( 'entry_meta_status', '[entry-edit-link]' ); ?>
+	</footer> <!-- .entry-meta -->
 
-		<header class="entry-header clearfix">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', 48 ) ); ?>
-
-			<?php echo do_shortcode( '[entry-author before="<h1>" after="</h1>"]' ); ?>
-
-			<h2>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-					<?php echo do_shortcode( '[entry-published]' ); ?>
-				</a>
-			</h2>
-
-			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
-		</header> <!-- .entry-header -->
-
-		<div class="entry-content">
-			<?php the_content(); ?>
-			<?php wp_link_pages(); ?>
-		</div> <!-- .entry-content -->
-
-		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_status', __( '[entry-edit-link]', 'cakifo' ) ); ?>
-		</footer> <!-- .entry-meta -->
-
-	<?php endif; ?>
+	<?php
+		if ( is_singular() )
+			do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular)
+	?>
 
 	<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
 
