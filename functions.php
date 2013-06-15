@@ -119,6 +119,9 @@ function cakifo_theme_setup() {
 		)
 	);
 
+	/* Add theme support for theme fonts. */
+	add_theme_support( 'theme-fonts',   array( 'callback' => 'cakifo_register_fonts', 'customizer' => true ) );
+
 	/**
 	 * Custom header for logo upload
 	 */
@@ -197,7 +200,6 @@ function cakifo_theme_setup() {
 
 	/* Enqueue theme scripts and styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
-	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_style' );
 
 	/* Output link color in the <head> */
 	add_action( 'wp_head', 'cakifo_print_link_color_style' );
@@ -337,32 +339,6 @@ function cakifo_enqueue_script() {
 	/* Enqueue the Flexslider jQuery Plugin */
 	if ( hybrid_get_setting( 'featured_show' ) )
 		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.1', true );
-}
-
-/**
- * Enqueue theme styles
- *
- * @since Cakifo 1.0.0
- */
-function cakifo_enqueue_style() {
-	/**
-	 * Loads the PT Serif font from Google Fonts.
-	 *
-	 * The use of PT Serif by default is localized. For languages that use
-	 * characters not supported by the font, the font can be disabled.
-	 *
-	 * To disable in a child theme, use wp_dequeue_style()
-	 * function mychild_dequeue_fonts() {
-	 *     wp_dequeue_style( 'PT-Serif' );
-	 * }
-	 * add_action( 'wp_enqueue_scripts', 'mychild_dequeue_fonts', 11 );
-	 */
-	$protocol = is_ssl() ? 'https' : 'http';
-	$query_args = array(
-		'family' => 'PT+Serif:400italic,700italic,400,700',
-	);
-
-	wp_enqueue_style( 'PT-Serif', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 }
 
 /**
@@ -1180,6 +1156,166 @@ function cakifo_get_link_url() {
 	$has_url = hybrid_get_the_post_format_url();
 
 	return ( $has_url ) ? $has_url : apply_filters( 'the_permalink', get_permalink() );
+}
+
+/**
+ * Registers custom fonts for the Theme Fonts extension.
+ *
+ * @since  Cakifo 1.6.0
+ * @param  object  $theme_fonts
+ * @return void
+ */
+function cakifo_register_fonts( $theme_fonts ) {
+
+	/* Add the 'body' font setting. */
+	$theme_fonts->add_setting(
+		array(
+			'id'        => 'body',
+			'label'     => __( 'Body text', 'cakifo' ),
+			'default'   => 'georgia-font-stack',
+			'selectors' => 'body',
+		)
+	);
+
+	/* Add the 'headings' font setting. */
+	$theme_fonts->add_setting(
+		array(
+			'id'        => 'headings',
+			'label'     => __( 'Headings', 'cakifo' ),
+			'weight'    => '700',
+			'default'   => 'pt-serif-bold',
+			'selectors' => 'h1, h2, h3, h4, h5, h6',
+		)
+	);
+
+	/* Register fonts that users can select for this theme. */
+	$fonts = array(
+		array(
+			'handle'  => 'georgia-font-stack',
+			'label'   => __( 'Georgia', 'cakifo' ),
+			'stack'   => 'Georgia, Cambria, "Bitstream Charter", serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'arial-font-stack',
+			'label'   => __( 'Arial', 'cakifo' ),
+			'stack'   => 'Arial, Helvetica, sans-serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'helvetica-font-stack',
+			'label'   => __( 'Helvetica', 'cakifo' ),
+			'stack'   => '"Helvetica Neue", Helvetica, Arial, sans-serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'segoe-font-stack',
+			'label'   => __( 'Segoe UI', 'cakifo' ),
+			'stack'   => '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'trebuchet-font-stack',
+			'label'   => __( 'Trebuchet', 'cakifo' ),
+			'stack'   => '"Trebuchet MS", Verdana, sans-serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'lucida-sans-unicode',
+			'label'   => __( 'Lucida Sans Unicode', 'cakifo' ),
+			'stack'   => '"Lucida Sans Unicode", "Lucida Grande", sans-serif',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'pt-serif',
+			'label'   => __( 'PT Serif', 'cakifo' ),
+			'family'  => 'PT Serif',
+			'stack'   => "'PT Serif', Georgia, serif",
+			'type'    => 'google',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'merriweather',
+			'label'   => __( 'Merriweather', 'cakifo' ),
+			'family'  => 'Merriweather',
+			'stack'   => "'Merriweather', serif",
+			'type'    => 'google',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'roboto',
+			'label'   => __( 'Roboto', 'cakifo' ),
+			'family'  => 'Roboto',
+			'stack'   => "'Roboto', sans-serif",
+			'type'    => 'google',
+			'weights' => array( '400', '700' )
+		),
+		array(
+			'handle'  => 'open-sans',
+			'label'   => __( 'Open Sans', 'cakifo' ),
+			'family'  => 'Open Sans',
+			'stack'   => "'Open Sans', sans-serif",
+			'type'    => 'google',
+			'weights' => array( '300', '400', '600', '700' )
+		),
+		array(
+			'handle'  => 'oswald',
+			'setting' => 'headings',
+			'label'   => __( 'Oswald', 'cakifo' ),
+			'family'  => 'Oswald',
+			'stack'   => "'Oswald', sans-serif",
+			'type'    => 'google',
+			'weights' => array( '300', '400', '700' )
+		),
+	);
+
+	/* Add each font and font weight */
+	foreach( $fonts as $font ) :
+
+		foreach( $font['weights'] as $weight ) {
+
+			$theme_fonts->add_font( array(
+				'handle'  => $font['handle'] . "-{$weight}",
+				'label'   => sprintf( '%s [%s]', $font['label'], cakifo_convert_font_weight($weight) ),
+				'stack'   => $font['stack'],
+				'weight'  => $weight,
+				'family'  => ( isset( $font['family'] ) )  ? $font['family']  : '',
+				'style'   => ( isset( $font['style'] ) )   ? $font['style']   : '',
+				'setting' => ( isset( $font['setting'] ) ) ? $font['setting'] : '',
+				'type'    => ( isset( $font['type'] ) )    ? $font['type']    : '',
+				'uri'     => ( isset( $font['uri'] ) )     ? $font['uri']     : '',
+			));
+
+		}
+
+	endforeach;
+}
+
+/**
+ * Convert numeric font weights to more user-friendly names
+ *
+ * @since  Cakifo 1.6.0
+ * @param  string  $weight Numeric font weight
+ * @return string          Font weight name
+ */
+function cakifo_convert_font_weight( $weight) {
+	$convert = array(
+		'100'     => _x( 'Ultra light', 'font weight', 'cakifo' ),
+		'200'     => _x( 'Thin',        'font weight', 'cakifo' ),
+		'300'     => _x( 'Light',       'font weight', 'cakifo' ),
+		'400'     => _x( 'Normal',      'font weight', 'cakifo' ),
+		'500'     => _x( 'Medium',      'font weight', 'cakifo' ),
+		'600'     => _x( 'Semi bold',   'font weight', 'cakifo' ),
+		'700'     => _x( 'Bold',        'font weight', 'cakifo' ),
+		'800'     => _x( 'Extra bold',  'font weight', 'cakifo' ),
+		'900'     => _x( 'Ultra bold',  'font weight', 'cakifo' ),
+		'normal'  => _x( 'Normal',      'font weight', 'cakifo' ),
+		'bold'    => _x( 'Bold',        'font weight', 'cakifo' ),
+		'bolder'  => _x( 'Bolder',      'font weight', 'cakifo' ),
+		'lighter' => _x( 'Lighter',     'font weight', 'cakifo' ),
+	);
+
+	return $convert[$weight];
 }
 
 ?>
