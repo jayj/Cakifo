@@ -1,6 +1,22 @@
-// =============================================================================
-// Helper classes
-// =============================================================================
+/* =============================================================================
+   Helper classes
+   ========================================================================== */
+
+// Clearfix
+// -------------------------
+.clearfix {
+	*zoom: 1;
+
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
 
 /**
  * Alignments
@@ -33,7 +49,6 @@
 
 /**
  * Screen reader text
- *
  * This is used to hide content from browsers but allow screen readers to see it
  */
 .assistive-text,

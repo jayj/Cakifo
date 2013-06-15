@@ -1,0 +1,361 @@
+/* =============================================================================
+   Typography:  Headings
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+	// Fix the character spacing for headings
+	text-rendering: optimizelegibility;
+}
+
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari 5, and Chrome.
+h1 {
+	margin: 0.67em 0;
+}
+
+h1, h2 {
+	.font-size(@headingsFontSize);
+	letter-spacing: -1px;
+}
+
+h3 {
+	.font-size(@headingsFontSize - 4);
+	color: @orangeDark;
+}
+
+h4 {
+	.font-size(@headingsFontSize - 5);
+}
+
+h5 {
+	.font-size(@headingsFontSize - 6);
+}
+
+h6 {
+	#font > .shorthand(@headingsFontSize - 8, normal);
+}
+
+/* Entry titles */
+.entry-title {
+	margin-bottom: 0;
+	.font-size(@headingsFontSize + 4);
+}
+
+/* h3 headings in post content */
+.entry-content h3 {
+	background: lighten(@grayLighter, 2.5%);
+	padding: 8px 10px;
+}
+
+/* Widget titles */
+.widget-title {
+	.widget-title-bar;
+	letter-spacing: -1px;
+
+	// Links
+	a {
+		color: @grayDark;
+
+		&:hover { color: @linkColorHover; }
+	}
+}
+
+/* Section titles */
+.section-title {
+	.section-title-bar;
+	box-shadow:
+		0 0 0 3px fade(@white, 90%),
+		-4px 0 3px fade(@black, 30%),
+		inset 0 1px 3px #ac3d18;
+
+	a {
+		display: block;
+		color: @white;
+
+		&:hover {
+			color: @grayLighter;
+		}
+	}
+}
+
+/* =============================================================================
+   Typography:  Lists
+   ========================================================================== */
+
+li {
+	line-height: @baseLineHeight + 0.4;
+}
+
+// Ordered lists
+ol ol {
+	list-style: upper-roman;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ol ol ol ol {
+	list-style: upper-alpha;
+}
+
+ol ol ol ol ol {
+	list-style: lower-alpha;
+}
+
+// Definition lists
+dt {
+	font-weight: bold;
+}
+
+/* =============================================================================
+   Typography:  Quotes
+   ========================================================================== */
+
+// Set consistent quote types.
+q {
+	quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Blockquotes
+ */
+blockquote {
+	.quote-box(30px 50px);
+	clear: both;
+
+	// Blockquotes within blockquotes
+	blockquote {
+		background: #eef7f9;
+		color: #33505c;
+	}
+
+	// Quote content
+	p {
+		position: relative;
+		margin-top: 5px;
+	}
+
+	em, cite {
+		font-style: italic;
+	}
+
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+
+	// The author of the quote
+	cite, span {
+		display: block;
+		margin-top: 20px;
+		.font-size(@baseFontSize - 1);
+		color: #91acbe;
+	}
+
+	span cite {
+		display: inline;
+	}
+
+	// Aligned quotes
+	&.alignleft,
+	&.alignright {
+		clear: none;
+		width: 33%;
+		padding: 30px @smallGutterWidth;
+	}
+
+	&.aligncenter {
+		width: 66%;
+		text-align: center;
+	}
+
+	&.alignleft {
+		margin-right: @smallGutterWidth;
+	}
+
+	&.alignright {
+		margin-left: @smallGutterWidth;
+	}
+
+	// The quote before the blockquote
+	&:before {
+		content: "\201C";
+		position: absolute;
+		top: -45px;
+		left: -25px;
+		#font > .serif(170, normal, normal);
+		color: rgb(94, 141, 181);
+		opacity: 0.35;
+	}
+
+	// The quote after the blockquote
+	p:first-of-type:after {
+		content: "\201E";
+		position: absolute;
+		bottom: -10px;
+		margin-left: 10px;
+		#font > .serif(70, normal, normal);
+		color: rgb(94, 141, 181);
+		opacity: 0.25;
+	}
+
+	// Hide the quote if there's only one <p>
+	p:only-of-type:after {
+		display: none;
+	}
+}
+
+/* Hide the quote for embedded tweets */
+.twt-tweet:before {
+	display: none;
+}
+
+/* Pull quotes */
+.pull {
+	.font-size(19);
+	/* Reset styles inherited from 'blockquote' */
+	background: none;
+	border: none;
+	text-shadow: none;
+	box-shadow: none;
+
+	// Aligned pull quotes
+	&.alignleft {
+		padding-right: 0;
+		margin: 0 @smallGutterWidth 0 0;
+	}
+
+	&.alignright {
+		margin: 0 0 0 @smallGutterWidth;
+	}
+
+	// The pullquote quotes
+	&:before {
+		top: -22px;
+		left: -12px;
+		.font-size(120);
+		opacity: 0.25;
+	}
+
+	&:after,
+	p:first-of-type:after {
+		.font-size(56);
+		opacity: 0.2;
+	}
+}
+
+/* =============================================================================
+   Typography:  Code
+   ========================================================================== */
+
+/**
+ * Corrects font family set oddly in Safari 5 and Chrome.
+ */
+code, kbd, pre, samp {
+	#font > .monospace(@baseFontSize, normal);
+}
+
+/**
+ * Inline code
+ */
+code {
+	color: @green;
+}
+
+/**
+ * Blocks of code
+ */
+pre {
+	overflow: auto;
+	padding: @smallGutterWidth;
+	background: lighten(@grayDark, 6%);
+	border-radius: 5px;
+	color: @white;
+	white-space: pre-wrap; // Improves readability of pre-formatted text
+
+	code {
+		color: @white;
+	}
+}
+
+/* =============================================================================
+   Typography:  HTML elements
+   ========================================================================== */
+
+// Address styling not present in IE 8/9, Safari 5, and Chrome.
+abbr[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+acronym {
+	border-bottom: 1px dashed @gray;
+	text-transform: uppercase;
+	cursor: help;
+}
+
+// Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+b,
+strong {
+	font-weight: bold;
+}
+
+// Address styling not present in Safari 5 and Chrome.
+dfn {
+  font-style: italic;
+}
+
+// Horizontal rule
+hr {
+	display: block;
+	clear: both;
+	border: 0;
+	height: 0;
+	padding: 0;
+	margin: @smallGutterWidth 0;
+	border-bottom: 4px double @grayLighter;
+}
+
+// Address styling not present in IE 8/9.
+mark, ins {
+	background: #fff9c0;
+	color: #000;
+}
+
+// Address inconsistent and variable font size in all browsers.
+small {
+    font-size: 80%;
+}
+
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+/* =============================================================================
+   Typography:  Selections
+   ========================================================================== */
+
+::-moz-selection {
+	background: @selectionColor;
+	color: @selectionTextColor;
+	text-shadow: none;
+}
+
+::selection {
+	background: @selectionColor;
+	color: @selectionTextColor;
+	text-shadow: none;
+}

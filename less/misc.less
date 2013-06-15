@@ -1,0 +1,196 @@
+/* =============================================================================
+   Components:  Message boxes
+   ========================================================================== */
+
+.note,
+.alert,
+.warning,
+.success,
+.download,
+.danger,
+.error,
+.info {
+	padding: @smallGutterWidth;
+	border: double @alertBorder;
+	border-width: 4px 0;
+	margin-bottom: @smallGutterWidth;
+	text-shadow: 0 1px 0 fade(@white, 50%);
+	background-color: @alertBackground;
+	color: @alertText;
+}
+
+.warning,
+.alert {
+	background-color: @warningBackground;
+	border-color: @warningBorder;
+	color: @warningText;
+}
+
+.success,
+.download {
+	background-color: @successBackground;
+	border-color: @successBorder;
+	color: @successText;
+}
+
+.danger,
+.error {
+	background-color: @errorBackground;
+	border-color: @errorBorder;
+	color: @errorText;
+}
+
+.info {
+	background-color: @infoBackground;
+	border-color: @infoBorder;
+	color: @infoText;
+}
+
+.box-blue {
+	.blue-box(@smallGutterWidth);
+}
+
+.box-orange {
+	.highlight-box(@smallGutterWidth);
+}
+
+/* =============================================================================
+   Components:  Twitter share button
+   ========================================================================== */
+
+@tweetHeight: 20px; // Height of the button in the tweet.png
+@tweetArrow: 5px; // Width of the arrows in tweet.png
+
+.facebook-share-button,
+.twitter-share-button {
+	border: none;
+}
+
+/* Twitter button */
+.twitter-share {
+	display: inline-block;
+	overflow: hidden;
+	#font > .sans-serif(12, bold, 1.5);
+	text-align: center;
+}
+
+.twitter-button {
+	overflow: hidden;
+	position: relative;
+	float: left;
+	.size(55px, @tweetHeight);
+	background: url(images/tweet.png) no-repeat;
+	text-indent: -999em;
+
+	&:hover,
+	&:focus {
+		background-position: 0 -(@tweetHeight);
+	}
+
+	&:active {
+		background-position: 0 -(@tweetHeight * 2);
+	}
+}
+
+/* The Twitter button count */
+.twitter-count {
+	position: relative;
+	float: left;
+	min-width: @tweetHeight;
+	padding: 0 4px;
+	border: 1px solid #cee3f0;
+	margin: 0 0 0 7px;
+	border-radius: 2px;
+	color: #2a7090;
+	text-decoration: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		border: 1px solid #9dc6e1;
+		background: #e8f3f9;
+		color: #30566d;
+		text-shadow: 0 1px 0 @white;
+	}
+
+	/* The count tooltip. Not displayed in IE < 8 */
+	&:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: -(@tweetArrow);
+		.size(@tweetArrow, 9px);
+		margin: -4px 0 0;
+		background: url(images/tweet.png) no-repeat 0 -(@tweetHeight * 3);
+	}
+
+	&:hover:before,
+	&:focus:before,
+	&:active:before {
+		background-position: -(@tweetArrow) -(@tweetHeight * 3);
+	}
+}
+
+/* Vertical Twitter button */
+.twitter-button-size-vertical {
+	position: relative;
+	padding-top: 42px;
+
+	.twitter-count {
+		position: absolute;
+		top: 0;
+		left: 9%;
+		margin: 0;
+		.size(45px, 34px);
+		#font > .sans-serif(16, bold, 34px);
+		text-align: center;
+
+		&:before {
+			top: 100%;
+			left: 48%;
+			.size(9px, @tweetArrow);
+			margin: 0 0 0 -4px;
+			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3);
+		}
+
+		&:hover:before,
+		&:focus:before,
+		&:active:before {
+			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3 + 5px);
+		}
+	}
+}
+
+/* =============================================================================
+   Components:  Surprise!
+   ========================================================================== */
+
+.shake-it-baby{-webkit-animation:shake-it-baby 1s infinite;-moz-animation:shake-it-baby 1s infinite;animation:shake-it-baby 1s infinite;.transition(all 1s ease); }
+@-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
+@-moz-keyframes shake-it-baby{0%{-moz-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-moz-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-moz-transform:scale(1.0) skew(0);background-color:#fff}}
+@keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
+
+/* =============================================================================
+   Misc:  Internet Explorer styles
+   ========================================================================== */
+
+.oldie {
+	.main-navigation .sep,
+	.sub-menu .sep {
+		display: none !important;
+	}
+
+	.recent-post,
+	.headline-list {
+		margin-right: ( @gutterWidth / 2 - 5px );
+		margin-left:  ( @gutterWidth / 2 - 5px );
+	}
+}
+
+/**
+ * IE7 fixes
+ */
+.ie7 .secondary-navigation {
+	position: relative;
+	z-index: 100;
+}

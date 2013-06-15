@@ -1,46 +1,33 @@
-// =============================================================================
-// Media
-// =============================================================================
+/* =============================================================================
+   Media:  Embedded content
+   ========================================================================== */
 
-/* Removes border when inside `a` element in IE 8/9 */
+// Remove border when inside `a` element in IE 8/9.
 img {
 	border: 0;
-	-ms-interpolation-mode: bicubic;
 }
 
-/* Corrects overflow displayed oddly in IE9  */
+// Correct overflow displayed oddly in IE 9.
 svg:not(:root) {
 	overflow: hidden;
 }
 
-/* Addresses margin not present in IE 8/9 and Safari 5 */
+// Address margin not present in IE 8/9 and Safari 5.
 figure {
 	margin: 0;
 }
 
-/**
- * Responsive images (ensure images don't scale beyond their parents)
- */
+/* =============================================================================
+   Media:  Images
+   ========================================================================== */
 
-/* Fluid images for posts, comments, and widgets */
-.entry-content img,
-.comment-content img,
-.widget img {
-	max-width: 100%;
-	width: auto\9; // IE7-8 need help adjusting responsive images
-	height: auto; // Scale the height according to the width, otherwise you get stretching
-}
-
-.size-full,
-.size-large,
-.wp-post-image {
-	max-width: 100%;
-	height: auto; // Make sure images with WordPress-added height and width attributes are scaled correctly
+img {
+	max-width: 100%; // Fluid images
+	height: auto; // Make sure images are scaled correctly.
 }
 
 /* Add fancy borders to all WordPress-added images */
 .entry-content img,
-.entry-media img,
 .comment-content img,
 .wp-post-image,
 .widget img,
@@ -72,15 +59,15 @@ img.alignright {
 /* Avatars */
 .avatar {
 	float: left;
-	margin-right: @smallGutterWidth - 7px;
+	margin-right: (@smallGutterWidth - 7px);
 }
 
 /* Remove borders from some images */
 .wp-smiley,
 .no-image-border,
 .rsswidget img {
-	border-radius: 0 !important;
-	box-shadow: none !important;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 /* Make sure videos and embeds fit their containers */
@@ -192,5 +179,5 @@ iframe[seamless] {
 // End the loop when index is 0
 .gallery-cols(0) {}
 
-// Generate 30 columns
-.gallery-cols(30);
+// Generate 10 columns
+.gallery-cols(10);

@@ -1,0 +1,126 @@
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================= */
+
+//
+// Correct `block` display not defined in IE 8/9.
+//
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+//
+// Correct `inline-block` display not defined in IE 8/9.
+//
+
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+//
+// Prevent modern browsers from displaying `audio` without controls.
+// Remove excess height in iOS 5 devices.
+//
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+//
+// Address styling not present in IE 8/9.
+//
+
+[hidden] {
+  display: none;
+}
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * Apply a natural box layout model to all elements
+ * @link http://paulirish.com/2012/box-sizing-border-box-ftw/
+ */
+* {
+	.box-sizing(border-box);
+}
+
+/**
+ * 1. Sets 1 rem = 10px
+ * 2. Prevents iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	#font > .serif;
+	background-color: @bodyBackground;
+	color: @textColor;
+}
+
+/**
+ * Set site width and center the site.
+ */
+#wrapper {
+	width: 100%;
+	max-width: @siteWidth;
+	margin: 0 auto;
+}
+
+/**
+ * Remove background color if a user removes the color
+ */
+.custom-background-empty {
+	background-color: @white;
+
+	#content,
+	#footer {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a {
+	color: @linkColor;
+	text-decoration: none;
+
+	&:hover {
+		color: @linkColorHover;
+	}
+
+	// Addresses `outline` inconsistency between Chrome and other browsers
+	&:focus {
+		.tab-focus();
+	}
+
+	// Improves readability when focused and also mouse hovered in all browsers
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

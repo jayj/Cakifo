@@ -1,0 +1,287 @@
+/* =============================================================================
+   Layout:  Posts
+   ========================================================================== */
+
+.hentry {
+	position: relative;
+	padding-bottom: @smallGutterWidth;
+	border-bottom: 4px double @grayLighter;
+	margin-bottom: @smallGutterWidth;
+	word-wrap: break-word;
+
+	.singular & {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+}
+
+.sticky {
+	padding: @smallGutterWidth;
+	background: @highlightBackground;
+
+	.entry-title {
+		margin-top: 0;
+	}
+}
+
+/**
+ * Entry meta
+ */
+
+.byline,
+.entry-meta {
+	#font > .shorthand(14, normal, 2);
+	color: darken(@grayLight, 10%);
+	clear: both;
+}
+
+.byline {
+	margin-bottom: 15px;
+
+	.entry-header & {
+		margin-top: 5px;
+	}
+}
+
+.singular .entry-meta {
+	padding: 15px 0 0;
+	border-top: 1px solid @grayLighter;
+	margin: @smallGutterWidth 0;
+}
+
+.page-links {
+	clear: both;
+}
+
+/**
+ * Intro
+ */
+
+.intro-post {
+	margin-bottom: @gutterWidth;
+
+	.entry-content {
+		.font-size(@baseFontSize + 5);
+	}
+
+	.post-edit-link {
+		position: absolute;
+		top: 40%;
+		right: @smallGutterWidth;
+		padding: 0 8px;
+		.font-size(12);
+		background: @grayLight;
+		border-radius: 3px;
+		color: @white;
+		text-decoration: none;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: darken(@grayLight, 10%);
+		}
+	}
+}
+
+/* =============================================================================
+   Components:  Breadcrumbs
+   ========================================================================== */
+
+.breadcrumbs {
+	padding: 12px @smallGutterWidth;
+	border-bottom: 1px solid @grayLighter;
+	margin-bottom: @smallGutterWidth;
+	#font > .shorthand(14, normal, 2);
+	background: #f8f8f7;
+	border-radius: 5px;
+	color: @gray;
+
+	a {
+		color: @grayDark;
+
+		&:hover {
+			color: @linkColorHover;
+		}
+	}
+
+	.trail-browse {
+		margin-right: 3px;
+	}
+
+	.sep {
+		margin: 0 3px;
+	}
+
+	.trail-end {
+		font-style: italic;
+	}
+}
+
+/* =============================================================================
+   Components:  Author box
+   ========================================================================== */
+
+.author-profile {
+	// padding, margin
+	.blue-box(0 @smallGutterWidth @smallGutterWidth, @smallGutterWidth 0);
+
+	.author-name {
+		.font-size(18);
+	}
+}
+
+.author-profile .twitter-link,
+.loop-meta .twitter-link {
+	text-align: right;
+
+	a {
+		padding-left: (@smallGutterWidth - 2px);
+		.font-size(14);
+		background: url(images/twitter.png) no-repeat left bottom;
+	}
+}
+
+/* =============================================================================
+   Components:  Loop meta
+   ========================================================================== */
+
+.loop-meta {
+	.highlight-box();
+	.clearfix();
+}
+
+.loop-meta-home {
+	border-bottom: 5px solid @orangeLight;
+}
+
+.loop-title {
+	.font-size(22);
+
+	span {
+		font-weight: normal;
+		color: @orangeDark;
+	}
+}
+
+
+/* =============================================================================
+   Components:  Pagination
+   ========================================================================== */
+
+.pagination {
+	margin: @gutterWidth 0;
+
+	a,
+	> span {
+		display: inline-block;
+		padding: 13px 14px 12px;
+		margin-right: 2px;
+		line-height: normal;
+		background-color: @grayLighter;
+		box-shadow: 0 2px 0 darken(@grayLighter, 15%);
+		border-radius: 3px;
+		color: darken(@gray, 5%);
+		text-shadow: 0 1px 0 #fff;
+		.transition(all 150ms ease);
+	}
+
+	a:hover {
+		background-color: @orangeLight;
+		box-shadow: 0 2px 0 @orange;
+		color: darken(@orangeDark, 30%);
+		text-shadow: 0 1px 0 lighten(@orangeLight, 20%);
+	}
+
+	a:active {
+		box-shadow:
+			0 2px 0 @orange,
+			inset 2px 2px 8px fade(#000, 30%);
+	}
+
+	.current {
+		background-color: lighten(@grayDark, 10%);
+		box-shadow: 0 2px 0 #000;
+		color: #fff;
+		text-shadow: 0 -1px 0 #000;
+	}
+}
+
+/* Prev and next post pagination */
+.post-pagination a {
+	max-width: 49%;
+
+	&[rel="prev"] {
+		float: left;
+	}
+
+	&[rel="next"] {
+		float: right;
+	}
+}
+
+/* =============================================================================
+   Layout:  Attachment pages
+   ========================================================================== */
+
+.attachment-title {
+	margin-top: 0;
+}
+
+.attachment-meta {
+	margin-bottom: @smallGutterWidth;
+}
+
+.image-info {
+	float: left;
+	width: 35%;
+
+	dl {
+		line-height: 40px;
+	}
+
+	dt,
+	dd {
+		border-bottom: 1px solid @grayLighter;
+		padding: 5px;
+	}
+
+	dt {
+		float: left;
+		clear: left;
+	}
+
+	dd {
+		text-align: right;
+	}
+}
+
+.image-gallery {
+	float: right;
+	width: 60%;
+}
+
+/* =============================================================================
+   Layout:  404 Error Page
+   ========================================================================== */
+
+.error-404 .hentry {
+	.font-size(18);
+
+	.entry-title {
+		margin-bottom: @smallGutterWidth;
+	}
+}
+
+.not-found-widgets {
+	margin-top: @gutterWidth;
+
+	.widget {
+		float: left;
+		width: 306px;
+		margin: 0 @gutterWidth @smallGutterWidth 0;
+
+		&:nth-of-type(3n) {
+			margin-right: 0;
+		}
+	}
+}
