@@ -105,22 +105,20 @@ function cakifo_theme_setup() {
 	/* Adds RSS feed links to <head> for posts and comments. */
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * This theme styles the visual editor to resemble the theme style,
-	 * specifically font, colors, and column width.
-	 */
+	/* Add theme support for editor styles. */
 	add_editor_style();
 
-	/* Custom background */
-	add_theme_support( 'custom-background',
-		array(
-			'default-color' => 'e3ecf2',
-			'default-image' => get_template_directory_uri() . '/images/bg.png'
-		)
-	);
+	/* Add theme support for custom backgrounds. */
+	add_theme_support( 'custom-background', array(
+		'default-color' => 'e3ecf2',
+		'default-image' => get_template_directory_uri() . '/images/bg.png'
+	));
 
 	/* Add theme support for theme fonts. */
-	add_theme_support( 'theme-fonts',   array( 'callback' => 'cakifo_register_fonts', 'customizer' => true ) );
+	add_theme_support( 'theme-fonts', array(
+		'callback' => 'cakifo_register_fonts',
+		'customizer' => true
+	));
 
 	/**
 	 * Custom header for logo upload
@@ -1276,7 +1274,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 
 			$theme_fonts->add_font( array(
 				'handle'  => $font['handle'] . "-{$weight}",
-				'label'   => sprintf( '%s [%s]', $font['label'], cakifo_convert_font_weight($weight) ),
+				'label'   => sprintf( '%s [%s]', $font['label'], cakifo_convert_font_weight( $weight ) ),
 				'stack'   => $font['stack'],
 				'weight'  => $weight,
 				'family'  => ( isset( $font['family'] ) )  ? $font['family']  : '',
@@ -1298,7 +1296,7 @@ function cakifo_register_fonts( $theme_fonts ) {
  * @param  string  $weight Numeric font weight
  * @return string          Font weight name
  */
-function cakifo_convert_font_weight( $weight) {
+function cakifo_convert_font_weight( $weight ) {
 	$convert = array(
 		'100'     => _x( 'Ultra light', 'font weight', 'cakifo' ),
 		'200'     => _x( 'Thin',        'font weight', 'cakifo' ),
