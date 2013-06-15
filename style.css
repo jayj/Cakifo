@@ -158,9 +158,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
-  font-weight: bold;
-  color: inherit;
   text-rendering: optimizelegibility;
 }
 h1,
@@ -175,11 +172,8 @@ h3 {
   color: #d54e21;
 }
 h4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-size: 2.2rem;
-  font-weight: bold;
-  line-height: 1.8;
+  font-size: 21px;
+  font-size: 2.1rem;
 }
 h5 {
   font-size: 20px;
@@ -286,9 +280,9 @@ blockquote {
   border-radius: 5px;
   color: #4c636e;
   text-shadow: 0 1px 0 #ffffff;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-family: Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: normal;
   line-height: 32px;
   margin: 25px auto;
@@ -343,7 +337,7 @@ blockquote:before {
   position: absolute;
   top: -45px;
   left: -25px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-family: Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 170px;
   font-size: 17rem;
   font-weight: normal;
@@ -356,7 +350,7 @@ blockquote p:first-of-type:after {
   position: absolute;
   bottom: -10px;
   margin-left: 10px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
+  font-family: Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 70px;
   font-size: 7rem;
   font-weight: normal;
@@ -559,11 +553,8 @@ iframe[seamless] {
 .wp-caption-text {
   padding: 10px 20px 20px;
   margin: 0;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.8;
   color: #dddddd;
 }
 /**
@@ -591,11 +582,8 @@ iframe[seamless] {
   text-align: center;
 }
 .gallery-caption {
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.8;
   margin: 0 0 15px 0;
 }
 /* Gallery columns */
@@ -804,11 +792,6 @@ tfoot td {
 }
 caption {
   margin-bottom: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  line-height: 1.8;
 }
 /* =============================================================================
    Typography:  Selections
@@ -953,7 +936,6 @@ caption {
   display: inline-block;
   padding: 20px 15px;
   color: #ccc;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 15px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -1026,7 +1008,6 @@ caption {
   padding: 15px 0;
   border-bottom: 1px solid #050505;
   margin: 0;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 21px;
   font-size: 2.1rem;
   font-weight: bold;
@@ -1261,7 +1242,6 @@ caption {
   float: right;
   margin: 25px 40px 0 0;
   padding: 2px 8px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 21px;
   font-size: 2.1rem;
   font-weight: normal;
@@ -1567,7 +1547,6 @@ body.page-template-template-front-page #main,
   left: -2px;
   width: 100%;
   height: 100%;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 38px;
   font-size: 3.8rem;
   font-weight: bold;
@@ -1652,7 +1631,6 @@ body.page-template-template-front-page #main,
 }
 .byline,
 .entry-meta {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: normal;
@@ -1708,7 +1686,6 @@ body.page-template-template-front-page #main,
   padding: 12px 25px;
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 25px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: normal;
@@ -1885,7 +1862,6 @@ body.page-template-template-front-page #main,
 .format-image .entry-meta {
   margin-top: 30px;
   padding: 25px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: normal;
@@ -2090,11 +2066,8 @@ body.page-template-template-front-page #main,
   float: right;
   padding-right: 5px;
   margin-top: -38px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.8;
   text-align: right;
 }
 .image-gallery {
@@ -2251,11 +2224,8 @@ body.page-template-template-front-page #main,
   box-shadow: none;
 }
 .related-posts .with-thumbnails .related-post span {
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 13px;
   font-size: 1.3rem;
-  font-weight: normal;
-  line-height: 1.8;
 }
 /* =============================================================================
    Layout:  Comments
@@ -2283,7 +2253,6 @@ body.page-template-template-front-page #main,
   padding: 25px;
 }
 .comment .comment-meta {
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 13px;
   font-size: 1.3rem;
   font-weight: normal;
@@ -2301,7 +2270,6 @@ body.page-template-template-front-page #main,
 }
 .comment .comment-author {
   display: block;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: bold;
@@ -2599,9 +2567,8 @@ select {
 label {
   display: block;
   margin-bottom: 5px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 15px;
+  font-size: 1.5rem;
   font-weight: normal;
   line-height: 1.8;
   cursor: pointer;
@@ -2624,11 +2591,10 @@ input[type="button"] {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: bold;
-  line-height: 1.8;
+  line-height: 1.6;
   padding: 4px 14px;
 }
 .btn:hover,
@@ -3191,10 +3157,7 @@ html .btn-inverse:hover {
 .oldie .sub-menu .sep {
   display: none !important;
 }
-.oldie .recent-post {
-  margin-right: 15px;
-  margin-left: 15px;
-}
+.oldie .recent-post,
 .oldie .headline-list {
   margin-right: 15px;
   margin-left: 15px;

@@ -173,10 +173,6 @@ a {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: @headingsFontFamily;
-	font-weight: @headingsFontWeight;
-	color: @headingsColor;
-
 	// Fix the character spacing for headings
 	text-rendering: optimizelegibility;
 }
@@ -192,7 +188,7 @@ h3 {
 }
 
 h4 {
-	#font > .sans-serif(@headingsFontSize - 4, bold);
+	.font-size(@headingsFontSize - 5);
 }
 
 h5 {
@@ -483,7 +479,7 @@ sub {
 	float: right;
 	margin: @smallGutterWidth @gutterWidth 0 0;
 	padding: 2px 8px;
-	#font > .alternative(21);
+	#font > .shorthand(21, normal);
 	background-color: @white;
 	background-color: fade(@white, 53%);
 	border-radius: 3px;
@@ -570,7 +566,7 @@ sub {
 
 .byline,
 .entry-meta {
-	#font > .sans-serif(14, normal, 2);
+	#font > .shorthand(14, normal, 2);
 	color: darken(@grayLight, 10%);
 	clear: both;
 }
@@ -630,7 +626,7 @@ sub {
 	padding: 12px @smallGutterWidth;
 	border-bottom: 1px solid @grayLighter;
 	margin-bottom: @smallGutterWidth;
-	#font > .alternative(14, normal, 2);
+	#font > .shorthand(14, normal, 2);
 	background: #f8f8f7;
 	border-radius: 5px;
 	color: @gray;
@@ -856,7 +852,7 @@ sub {
 		float: right;
 		padding-right: 5px;
 		margin-top: -38px;
-		#font > .alternative(14);
+		.font-size(14);
 		text-align: right;
 	}
 }
@@ -1024,7 +1020,7 @@ sub {
 		}
 
 		span {
-			#font > .alternative(13);
+			.font-size(13);
 		}
 	}
 }
@@ -1055,7 +1051,7 @@ sub {
 
 	// Comment meta
 	.comment-meta {
-		#font > .alternative(13, normal, 25px);
+		#font > .shorthand(13, normal, 25px);
 		color: @grayLight;
 
 		a {
@@ -1073,7 +1069,7 @@ sub {
 
 	.comment-author {
 		display: block;
-		#font > .alternative(16, bold, 25px);
+		#font > .shorthand(16, bold, 25px);
 		color: @gray;
 
 		cite {
@@ -1312,14 +1308,10 @@ sub {
 		display: none !important;
 	}
 
-	.recent-post {
-		margin-right: @gutterWidth / 2 - 5px;
-		margin-left:  @gutterWidth / 2 - 5px;
-	}
-
+	.recent-post,
 	.headline-list {
-		margin-right: @gutterWidth / 2 - 5px;
-		margin-left:  @gutterWidth / 2 - 5px;
+		margin-right: ( @gutterWidth / 2 - 5px );
+		margin-left:  ( @gutterWidth / 2 - 5px );
 	}
 }
 

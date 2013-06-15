@@ -46,7 +46,7 @@
 	border-radius: 5px;
 	color: darken(#56717d, 5%);
 	text-shadow: 0 1px 0 @white;
-	#font > .alternative(16, normal, 32px);
+	#font > .serif(18, normal, 32px);
 	margin: @smallGutterWidth auto;
 	padding: @padding;
 	position: relative;
@@ -120,7 +120,7 @@
 	.buttonBackground(@startColor, @endColor, @textColor, @shadowColor);
 	box-shadow: inset 0 1px 0 fade(@white, 22%), 0 1px 2px fade(@black, 5%);
 	border-radius: 3px;
-	#font > .alternative(16, bold);
+	#font > .shorthand(16, bold, 1.6);
 	padding: 4px 14px;
 
 	&:focus {
@@ -164,10 +164,6 @@
 		.monospace() {
 			font-family: @monoFontFamily;
 		}
-
-		.alternative() {
-			font-family: @altFontFamily;
-		}
 	}
 
 	.shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
@@ -188,11 +184,6 @@
 
 	.monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
 		#font > #family > .monospace;
-		#font > .shorthand(@size, @weight, @lineHeight);
-	}
-
-	.alternative(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
-		#font > #family > .alternative;
 		#font > .shorthand(@size, @weight, @lineHeight);
 	}
 }

@@ -77,11 +77,8 @@
 #cboxContent {
   padding: 15px 15px 55px;
   border: 10px solid rgba(0, 0, 0, 0.15);
-  font-family: 'PT Serif', Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 14px;
   font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.8;
   background: #ffffff;
   background-clip: padding-box;
   border-radius: 8px;
@@ -181,6 +178,7 @@
   top: -8px;
   left: 5px;
   font-size: 21px;
+  font-size: 2.1rem;
   font-weight: bold;
   color: #4b4b4b;
   text-indent: 0;
