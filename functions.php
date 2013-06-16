@@ -1171,7 +1171,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 			'id'        => 'body',
 			'label'     => __( 'Body text', 'cakifo' ),
 			'default'   => 'georgia-font-stack',
-			'selectors' => 'body, #site-description',
+			'selectors' => 'body',
 		)
 	);
 
@@ -1180,9 +1180,18 @@ function cakifo_register_fonts( $theme_fonts ) {
 		array(
 			'id'        => 'headings',
 			'label'     => __( 'Headings', 'cakifo' ),
-			'weight'    => '700',
-			'default'   => 'pt-serif-bold',
+			'default'   => 'pt-serif-700',
 			'selectors' => 'h1, h2, h3, h4, h5, h6, caption',
+		)
+	);
+
+	/* Add the 'site title' font setting. */
+	$theme_fonts->add_setting(
+		array(
+			'id'        => 'title',
+			'label'     => __( 'Site title and description', 'cakifo' ),
+			'default'   => 'pt-serif-400',
+			'selectors' => '#site-title, #site-description',
 		)
 	);
 
