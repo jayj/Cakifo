@@ -120,6 +120,14 @@ function cakifo_theme_setup() {
 		'customizer' => true
 	));
 
+	/* Add theme support for custom colors. */
+	add_theme_support( 'color-palette', array(
+		'callback' => 'cakifo_register_colors'
+	));
+
+	/* Ignore some selectors for the Color Palette extension in the theme customizer. */
+	add_filter( 'color_palette_preview_js_ignore', 'cakifo_cp_preview_js_ignore', 10, 3 );
+
 	/**
 	 * Custom header for logo upload
 	 */
@@ -198,9 +206,6 @@ function cakifo_theme_setup() {
 
 	/* Enqueue theme scripts and styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
-
-	/* Output link color in the <head> */
-	add_action( 'wp_head', 'cakifo_print_link_color_style' );
 
 	/* Filter the body class */
 	add_filter( 'body_class', 'cakifo_body_class' );
@@ -1023,16 +1028,6 @@ function cakifo_get_default_link_color_no_hash() {
 }
 
 /**
- * Returns the default link color for Cakifo
- *
- * @since Cakifo 1.4.0
- * @return string The default color
- */
-function cakifo_get_default_link_color() {
-	return '#' . cakifo_get_default_link_color_no_hash();
-}
-
-/**
  * Filter the default theme settings
  *
  * @since Cakifo 1.4.0
@@ -1040,39 +1035,11 @@ function cakifo_get_default_link_color() {
  * @return array
  */
 function cakifo_filter_default_theme_settings( $settings ) {
-	$settings['link_color']          = cakifo_get_default_link_color();
+	$settings['link_color']          = '#' . cakifo_get_default_link_color_no_hash();
 	$settings['featured_posts']      = 5;
 	$settings['headlines_num_posts'] = 4;
 
 	return $settings;
-}
-
-/**
- * Add a style block to the theme for the current link color.
- *
- * This function is attached to the `wp_head` action hook.
- *
- * @since Cakifo 1.4.0
- */
-function cakifo_print_link_color_style() {
-	$defaults   = hybrid_get_default_theme_settings();
-	$link_color = hybrid_get_setting( 'link_color' );
-
-	// Don't do anything if the current link color is the default color for the current scheme
-	if ( $link_color == $defaults['link_color'] )
-		return;
-?>
-	<style>
-		/* Link color */
-		a {
-			color: <?php echo esc_attr( $link_color ); ?>;
-		}
-
-		a:hover {
-			color: #111;
-		}
-	</style>
-<?php
 }
 
 /**
@@ -1323,6 +1290,80 @@ function cakifo_convert_font_weight( $weight ) {
 	);
 
 	return $convert[$weight];
+}
+
+/**
+ * Registers colors for the Color Palette extension.
+ *
+ * @since  Cakifo 1.6.0
+ * @param  object  $color_palette
+ * @return void
+ */
+function cakifo_register_colors( $color_palette ) {
+
+	/* Get the link color from the Cakifo settings. */
+	$default_link_color = ltrim( hybrid_get_setting( 'link_color' ), '#' );
+
+	/* Add custom colors. */
+	$color_palette->add_color( array(
+		'id'      => 'link',
+		'label'   => __( 'Link Color', 'cakifo' ),
+		'default' => $default_link_color
+	));
+
+	$color_palette->add_color( array(
+		'id'      => 'secondary',
+		'label'   => __( 'Secondary Color', 'cakifo' ),
+		'default' => 'ffc768'
+	));
+
+	$color_palette->add_color( array(
+		'id'      => 'topbar',
+		'label'   => __( 'Topbar', 'cakifo' ),
+		'default' => '262626'
+	));
+
+	/* Add rule sets for colors. */
+	$color_palette->add_rule_set(
+		'link',
+		array(
+			'color' => 'a',
+		)
+	);
+
+	$color_palette->add_rule_set(
+		'topbar',
+		array(
+			'background-color' => '#topbar',
+		)
+	);
+
+	$color_palette->add_rule_set(
+		'secondary',
+		array(
+			'background-color' => '.flex-control-paging li a, .flex-direction-nav a:focus',
+			'border-top-color' => '#content, #footer, #respond',
+			'border-bottom-color' => '.loop-meta-home'
+		)
+	);
+}
+
+/**
+ * Filters the 'color_palette_preview_js_ignore' hook with some selectors that should be ignored on the
+ * live preview because they don't need to be overwritten.
+ *
+ * @since  Cakifo 1.6.0
+ * @param  string  $selectors
+ * @param  string  $color_id
+ * @param  string  $property
+ * @return string
+ */
+function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
+
+	if ( 'color' === $property && 'link' === $color_id )
+		$selectors = '#site-title a, .menu a, .section-title a, .widget-title a, .intro-post .post-edit-link';
+
+	return $selectors;
 }
 
 ?>

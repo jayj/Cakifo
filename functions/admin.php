@@ -79,20 +79,6 @@ function cakifo_theme_meta_box() { ?>
 
 	<table class="form-table">
 
-		<?php
-			$default_color = 'data-default-color="' . esc_attr( cakifo_get_default_link_color() ) . '"';
-		?>
-		<tr>
-			<th><label for="<?php echo hybrid_settings_field_id( 'link_color' ); ?>"><?php _e( 'Link Color', 'cakifo' ); ?></label></th>
-			<td>
-				<fieldset>
-					<legend class="screen-reader-text"><span><?php _e( 'Link Color', 'cakifo' ); ?></span></legend>
-
-					<input type="text" name="<?php echo hybrid_settings_field_name( 'link_color' ); ?>" id="link-color" value="<?php echo esc_attr( hybrid_get_setting( 'link_color' ) ); ?>" <?php echo $default_color ?> />
-				</fieldset>
-			</td>
-		</tr>
-
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show "Featured Content" slider?', 'cakifo' ); ?></label>
@@ -206,10 +192,6 @@ function cakifo_theme_validate_settings( $input ) {
 	$input['featured_category'] = absint( $input['featured_category'] );
 	$input['twitter_username']  = wp_filter_nohtml_kses( $input['twitter_username'] );
 	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : 5 ); // 5 is the default number of featured posts
-
-	// Link color must be 3 or 6 hexadecimal characters
-	if ( isset( $input['link_color'] ) && preg_match( '/^#?([a-f0-9]{3}){1,2}$/i', $input['link_color'] ) )
-		$input['link_color'] = '#' . strtolower( ltrim( $input['link_color'], '#' ) );
 
 	/* Return the array of theme settings */
 	return $input;

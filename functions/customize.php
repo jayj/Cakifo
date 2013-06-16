@@ -60,30 +60,6 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'link_color' setting */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[link_color]",
-		array(
-			'default'           => $defaults['link_color'],
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-
-	/* Add the color control for the 'link_color' setting */
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'link_color',
-			array(
-				'label'    => esc_html__( 'Link Color', 'cakifo' ),
-				'section'  => 'colors',
-				'settings' => "{$prefix}_theme_settings[link_color]",
-			)
-		)
-	);
-
 	/* Add the 'featured_show' setting */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
