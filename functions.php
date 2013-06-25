@@ -1148,7 +1148,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 			'id'        => 'headings',
 			'label'     => __( 'Headings', 'cakifo' ),
 			'default'   => 'pt-serif-700',
-			'selectors' => 'h1, h2, h3, h4, h5, h6, caption',
+			'selectors' => 'h1, h2, h3, h4, h5, h6, caption, .main-navigation .menu-item > a',
 		)
 	);
 
