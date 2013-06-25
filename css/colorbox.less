@@ -17,6 +17,10 @@
 	overflow: hidden;
 }
 
+#colorbox:focus {
+	outline: 0;
+}
+
 #cboxOverlay {
 	position: fixed;
 	.square(100%);
@@ -79,15 +83,15 @@
    ========================================================================= */
 
 #cboxOverlay {
-	background: @black;
-	#gradient > .radial(fade(@black, 5%), fade(@black, 90%), ellipse);
+	background: @colorboxColor;
+	#gradient > .radial(fade(@colorboxColor, 5%), fade(@colorboxColor, 90%), ellipse);
 }
 
 #cboxContent {
 	padding: 15px 15px 55px;
-	border: 10px solid fade(@black, 15%);
+	border: 10px solid fade(@colorboxColor, 15%);
 	.font-size(14);
-	background: @white;
+	background: #fff;
 	background-clip: padding-box; // Needed to make the border transparent
 	border-radius: 8px;
 }
@@ -117,8 +121,8 @@
 #cboxPrevious,
 #cboxNext,
 #cboxClose {
-	.square(24px);
 	border-radius: 50%; // Makes the buttons round
+	padding: 0;
 	text-indent: -9999px;
 }
 
@@ -127,10 +131,11 @@
 #cboxNext {
 	position: absolute;
 	top: 45%;
+	.square(32px);
 	margin: 0;
 	opacity: 0.4;
-	background: @white url(../images/colorbox.png) no-repeat;
-	box-shadow: 0 0 10px fade(@black, 30%);
+	background: #fff url(../images/colorbox.png) no-repeat;
+	box-shadow: 0 0 8px fade(@colorboxColor, 30%);
 	.transition(opacity 150ms ease);
 
 	#cboxContent:hover & {
@@ -143,37 +148,38 @@
 
 	&:active {
 		box-shadow:
-			inset 0 0 5px fade(@black, 30%),
-			0 0 10px fade(@black, 30%);
+			inset 0 0 5px fade(@colorboxColor, 30%),
+			0 0 10px fade(@colorboxColor, 30%);
 	}
 }
 
 #cboxPrevious {
-	background-position: -2px -2px;
+	background-position: 1px 1px;
 	left: 4%;
 }
 
 #cboxNext {
-	background-position: -67px -2px;
+	background-position: -64px 1px;
 	right: 4%;
 }
 
 /* Close and slideshow buttons */
 #cboxClose,
 #cboxSlideshow {
+	.square(24px);
 	#gradient > .vertical(#f9f9f9, #e0e0e0);
 	border: 1px solid #cfcfcf;
 
 	&:hover {
 		border-color: darken(#cfcfcf, 15%);
-		box-shadow: 0 0 7px fade(@black, 20%);
+		box-shadow: 0 0 7px fade(@colorboxColor, 20%);
 	}
 }
 
 #cboxSlideshow {
 	position: relative;
 	#font > .sans-serif(14, bold, 1.6);
-	text-shadow: 1px 1px 0 fade(@white, 80%);
+	text-shadow: 1px 1px 0 fade(#fff, 80%);
 	text-align: center;
 	text-indent: 0;
 }
@@ -187,9 +193,9 @@
 	&:after {
 		content: '\00D7'; // × symbol
 		position: absolute;
-		top: -8px;
+		top: -7px;
 		left: 5px;
-		.font-size(21);
+		#font > .sans-serif(20, bold);
 		font-weight: bold;
 		color: darken(#717171, 15%);
 		text-indent: 0;

@@ -24,11 +24,6 @@
 		} );
 	} )();
 
-
-
-
-
-
 	function equal_height_columns() {return;}
 
 	/* A little surprise ;-) */

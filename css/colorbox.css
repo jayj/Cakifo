@@ -10,6 +10,9 @@
   z-index: 9999;
   overflow: hidden;
 }
+#colorbox:focus {
+  outline: 0;
+}
 #cboxOverlay {
   position: fixed;
   width: 100%;
@@ -79,7 +82,7 @@
   border: 10px solid rgba(0, 0, 0, 0.15);
   font-size: 14px;
   font-size: 1.4rem;
-  background: #ffffff;
+  background: #fff;
   background-clip: padding-box;
   border-radius: 8px;
 }
@@ -105,9 +108,8 @@
 #cboxPrevious,
 #cboxNext,
 #cboxClose {
-  width: 24px;
-  height: 24px;
   border-radius: 50%;
+  padding: 0;
   text-indent: -9999px;
 }
 /* Next and prev buttons */
@@ -115,10 +117,12 @@
 #cboxNext {
   position: absolute;
   top: 45%;
+  width: 32px;
+  height: 32px;
   margin: 0;
   opacity: 0.4;
   background: #ffffff url(../images/colorbox.png) no-repeat;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   -webkit-transition: opacity 150ms ease;
   transition: opacity 150ms ease;
 }
@@ -135,16 +139,18 @@
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
 }
 #cboxPrevious {
-  background-position: -2px -2px;
+  background-position: 1px 1px;
   left: 4%;
 }
 #cboxNext {
-  background-position: -67px -2px;
+  background-position: -64px 1px;
   right: 4%;
 }
 /* Close and slideshow buttons */
 #cboxClose,
 #cboxSlideshow {
+  width: 24px;
+  height: 24px;
   background-color: #efefef;
   background-image: -webkit-linear-gradient(top, #f9f9f9, #e0e0e0 100%);
   background-image: linear-gradient(to bottom, #f9f9f9, #e0e0e0 100%);
@@ -175,10 +181,12 @@
 #cboxClose:after {
   content: '\00D7';
   position: absolute;
-  top: -8px;
+  top: -7px;
   left: 5px;
-  font-size: 21px;
-  font-size: 2.1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 1.8;
   font-weight: bold;
   color: #4b4b4b;
   text-indent: 0;
