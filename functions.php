@@ -1137,7 +1137,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 		array(
 			'id'        => 'body',
 			'label'     => __( 'Body text', 'cakifo' ),
-			'default'   => 'georgia-font-stack',
+			'default'   => 'georgia-font-stack-400',
 			'selectors' => 'body',
 		)
 	);
