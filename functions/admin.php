@@ -43,9 +43,8 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
 		return;
 
-	wp_enqueue_script( 'cakifo-theme-settings-color-picker', get_template_directory_uri() . '/functions/admin/color-picker.js', array( 'wp-color-picker' ), '1.5' );
-	wp_enqueue_script( 'wp-color-picker' );
-	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.js', array( 'jquery' ), '1.6' );
+	wp_enqueue_style( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.css', array(), '1.6' );
 }
 
 /**
