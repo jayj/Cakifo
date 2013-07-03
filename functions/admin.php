@@ -131,59 +131,50 @@ function cakifo_theme_meta_box() { ?>
 			</td>
 		</tr>
 
+		<!-- Headline taxonomies -->
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Taxonomies', 'cakifo' ); ?></label>
 			</th>
-<!-- 			<td>
-				Categories
-				<select id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" style="height:150px;">
-					<?php foreach( $categories as $cat ) { ?>
-						<option value="<?php echo $cat->term_id; ?>" <?php if ( is_array( hybrid_get_setting( 'headlines_category' ) ) && in_array( $cat->term_id, hybrid_get_setting( 'headlines_category' ) ) ) echo ' selected="selected"'; ?>><?php echo esc_html( $cat->name ); ?></option>
-					<?php } ?>
+
+			<td>
+				<select name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>">
+
+				<?php
+					/* Get the setting. */
+					$settings = (array) hybrid_get_setting( 'headlines_category' );
+				?>
+
+				<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $slug => $taxonomy ) : ?>
+
+					<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
+						<?php
+							foreach ( get_terms( $slug ) as $term ) :
+								/* Generate the value to save in the database. */
+								$id = $slug . ':' . $term->term_id;
+
+								/* Back-compat for Cakifo version < 1.6.0 */
+								foreach( $settings as $selected ) {
+									if ( false === strpos( $selected, ':' ) )
+										$settings[] =  $slug . ':' . $selected;
+								}
+							?>
+
+							<option value="<?php echo esc_attr( $id ); ?>" <?php if ( in_array( $id, $settings ) ) selected( 1 ); ?>>
+								<?php printf( '%s: %s', esc_attr( $taxonomy->labels->singular_name ), esc_html( $term->name )  ); ?>
+							</option>
+						<?php endforeach; ?>
+					</optgroup>
+
+				<?php endforeach; ?>
 				</select>
 
-				<p class="description"><?php _e( 'Multiple terms may be chosen by holding the <code>Ctrl</code> key and selecting.', 'cakifo' ); ?>
-				</p>
-			</td> -->
-
-			<?php var_dump(hybrid_get_setting( 'headlines_category' ) ); ?>
-
-			<?php //foreach ( get_object_taxonomies( 'post', 'objects' ) as $slug => $taxonomy ) : ?>
-
-				<td>
-					<?php //echo esc_html( $taxonomy->label ); ?>
-					<select name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>" style="height:150px;">
-
-
-
-						<?php
-						$args = array(
-							'orderby' => 'count',
-							'order' => 'DESC'
-						);
-					?>
-
-
-					<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $slug => $taxonomy ) : ?>
-
-
-
-						<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
-							<?php foreach ( get_terms( $slug, $args ) as $term ) { ?>
-								<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php if ( is_array( hybrid_get_setting( 'headlines_category' ) ) && in_array( $term->term_id, hybrid_get_setting( 'headlines_category' ) ) ) selected(1); ?>><?php echo esc_attr( $taxonomy->labels->singular_name ); ?>: <?php echo esc_html( $term->name ); ?></option>
-							<?php } ?>
-						</optgroup>
-					<?php endforeach; ?>
-					</select>
-
-					<p class="description"><?php _e( 'Click on a term to add/remove it.', 'cakifo' ); ?>
-				</p>
-				<td>
-
-			<?php //endforeach; ?>
-
+				<p><?php _e( 'Used on the Front Page template. Click on a term to add/remove it.', 'cakifo' ); ?>
+			</p>
+			<td>
 		</tr>
+
+		<!-- Number of Headline posts -->
 		<tr>
 			<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts', 'cakifo' ); ?></label></th>
 			<td>
