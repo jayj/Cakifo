@@ -16,50 +16,64 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 	<?php do_atomic( 'open_headlines' ); // cakifo_open_headlines ?>
 
 <?php
+
+$start = microtime(true);
+
+	$taxonomies = get_object_taxonomies( 'post', 'names' );
+
 	/**
-	 * Loop through each selected category
+	 * Loop through each selected term.
 	 */
-	foreach ( hybrid_get_setting( 'headlines_category' ) as $category ) :
+	foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
+
+		/* Get term info. */
+		$term = get_terms( $taxonomies, array( 'include' => $selected_term ) );
+		$term = $term[0];
+
+		//var_dump($term);
 
 		/**
-		 * Create the loop for each selected category
+		 * Create the loop for each selected term.
 		 *
 		 * @uses $GLOBALS['cakifo_do_not_duplicate'] Excludes posts from the 'Recent Posts' section
 		 */
-		$headlines = get_posts( array(
-			'numberposts'  => hybrid_get_setting( 'headlines_num_posts' ),
-			'post__not_in' => $GLOBALS['cakifo_do_not_duplicate'],
-			'category'     => $category,
-			'post_status'  => 'publish',
-			'tax_query'    => array(
-				array(
-					// Exclude posts with the Aside, Link, Quote, and Status format
-					'taxonomy'     => 'post_format',
-					'terms'        => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),
-					'field'        => 'slug',
-					'operator'     => 'NOT IN',
+		$headlines = new WP_Query(
+			array(
+				'posts_per_page' => hybrid_get_setting( 'headlines_num_posts' ),
+				//'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
+				'tax_query'      => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => $term->taxonomy,
+						'field' => 'id',
+						'terms' => $selected_term,
+					),
+					array(
+						// Exclude posts with the Aside, Link, Quote, and Status format
+						'taxonomy'     => 'post_format',
+						'terms'        => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),
+						'field'        => 'slug',
+						'operator'     => 'NOT IN',
+					),
 				),
-			),
-		) );
+			)
+		);
 
-	if ( ! empty( $headlines ) ) : ?>
+	if ( $headlines->have_posts() ) : ?>
 
 		<div class="headline-list">
 
 			<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 
-			<?php $cat = get_category( $category ); ?>
-
 			<h2 class="widget-title">
-				<a href="<?php echo get_category_link( $category ); ?>" title="<?php echo esc_attr( $cat->name ); ?>"><?php echo $cat->name; ?></a>
+				<a href="<?php echo get_term_link( $term ); ?>" title="<?php echo esc_attr( $term->description ); ?>"><?php echo $term->name; ?></a>
 			</h2>
 
 			<ol>
-				<?php foreach ( $headlines as $post ) : ?>
+				<?php while ( $headlines->have_posts() ) : $headlines->the_post(); ?>
 
 					<?php
-						setup_postdata( $post );
-						$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
+						//$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
 					?>
 
 					<li class="clearfix">
@@ -86,16 +100,21 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 						<?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>
 					</li>
-				<?php endforeach; ?>
+				<?php endwhile; ?>
 			</ol>
 
 			<?php do_atomic( 'close_headline_list' ); // cakifo_close_headline_list ?>
 
 		</div> <!-- .headline-list -->
 
-	<?php endif; ?>
+	<?php endif;  wp_reset_postdata(); ?>
 
-<?php endforeach; ?>
+<?php endforeach;
+
+$end = microtime(true);
+var_dump($end - $start);
+
+?>
 
 	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the variable ?>
 
