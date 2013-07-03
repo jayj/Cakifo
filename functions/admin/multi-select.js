@@ -15,9 +15,9 @@
 
 	$(document).ready( function() {
 		$('#cakifo_theme_settings-headlines_category').multiSelect({
-			keepOrder: true,
-      selectableHeader: "<div class='custom-header'>Selectable terms</div>",
-      selectionHeader: "<div class='custom-header'>Selected terms</div>",
+			keepOrder       : true, // currently not used when using Optgroup
+			selectableHeader: '<div class="custom-header">' + cakifo_admin.selectableHeader + '</div>',
+			selectionHeader : '<div class="custom-header">' + cakifo_admin.selectionHeader + '</div>',
 		});
 	});
 

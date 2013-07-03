@@ -45,6 +45,11 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 
 	wp_enqueue_script( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.js', array( 'jquery' ), '1.6' );
 	wp_enqueue_style( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.css', array(), '1.6' );
+
+	wp_localize_script( 'cakifo-theme-settings-multi-select', 'cakifo_admin', array(
+		'selectableHeader' => __( 'Selectable terms by taxonomy', 'cakifo' ),
+		'selectionHeader'  => __( 'Selected terms', 'cakifo' ),
+	) );
 }
 
 /**
