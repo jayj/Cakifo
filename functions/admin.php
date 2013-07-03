@@ -83,6 +83,7 @@ function cakifo_theme_meta_box() { ?>
 
 	<table class="form-table">
 
+		<!-- Slider -->
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show "Featured Content" slider?', 'cakifo' ); ?></label>
@@ -94,6 +95,7 @@ function cakifo_theme_meta_box() { ?>
 			</td>
 		</tr>
 
+		<!-- Featured Category -->
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category', 'cakifo' ); ?></label>
@@ -117,6 +119,7 @@ function cakifo_theme_meta_box() { ?>
 			</td>
 		</tr>
 
+		<!-- Number of featured posts -->
 		<tr>
 			<th>
 				<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts', 'cakifo' ); ?></label>
@@ -190,6 +193,7 @@ function cakifo_theme_meta_box() { ?>
 			</td>
 		</tr>
 
+		<!-- Twitter username -->
 		<tr>
 			<?php
 				/**
