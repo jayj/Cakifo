@@ -16,18 +16,18 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 	<?php do_atomic( 'open_headlines' ); // cakifo_open_headlines ?>
 
 	<?php
-
 		/**
 		 * Loop through each selected term.
 		 */
 		foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
 
 			/* Separate the taxonomy and term ID. */
-			list( $taxonomy, $term_id ) = array_pad( explode(':', $selected_term, 2 ), 2, null); // array_pad() prevents a `undefined offset` notice when the format is not: $taxonomy:$id
+			if ( is_array( $selected_term ) ) {
+				list( $taxonomy, $term_id ) = $selected_term;
 
 			/* Back-compat when only an ID is used. */
-			if ( ! isset( $term_id ) ) {
-				$term_id = $taxonomy;
+			} elseif ( is_string( $selected_term ) || is_int( $selected_term )  ) {
+				$term_id = $selected_term;
 				$taxonomy = 'category';
 			}
 

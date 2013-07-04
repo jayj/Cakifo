@@ -228,6 +228,15 @@ function cakifo_theme_validate_settings( $input ) {
 	$input['twitter_username']  = wp_filter_nohtml_kses( $input['twitter_username'] );
 	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : 5 ); // 5 is the default number of featured posts
 
+	/* Save the headline terms in an array containing the taxonomy and term ID. */
+	$headlines = array();
+
+	foreach( $input['headlines_category'] as $headline ) {
+		$headlines[] = explode( ':', $headline );
+	}
+
+	$input['headlines_category'] = $headlines;
+
 	/* Return the array of theme settings */
 	return $input;
 }
