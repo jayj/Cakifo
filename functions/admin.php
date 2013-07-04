@@ -150,17 +150,22 @@ function cakifo_theme_meta_box() { ?>
 					<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
 						<?php
 							foreach ( get_terms( $slug ) as $term ) :
-								/* Generate the value to save in the database. */
+								/* Generate the value containing taxonomy and term ID. */
 								$id = $slug . ':' . $term->term_id;
 
-								/* Back-compat for Cakifo version < 1.6.0 */
+								/* Check if the current term is selected. */
 								foreach( $settings as $selected ) {
-									if ( false === strpos( $selected, ':' ) )
-										$settings[] =  $slug . ':' . $selected;
+									if ( array_search( $term->term_id, $selected ) ) {
+										$selected = true;
+										break;
+									} else {
+										$selected = false;
+										continue;
+									}
 								}
 							?>
 
-							<option value="<?php echo esc_attr( $id ); ?>" <?php if ( in_array( $id, $settings ) ) selected( 1 ); ?>>
+							<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $selected ); ?>>
 								<?php printf( '%s: %s', esc_attr( $taxonomy->labels->singular_name ), esc_html( $term->name )  ); ?>
 							</option>
 						<?php endforeach; ?>
