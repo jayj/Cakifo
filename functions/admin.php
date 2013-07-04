@@ -155,7 +155,7 @@ function cakifo_theme_meta_box() { ?>
 
 								/* Check if the current term is selected. */
 								foreach( $settings as $selected ) {
-									if ( array_search( $term->term_id, $selected ) ) {
+									if ( $selected[1] == $term->term_id ) {
 										$selected = true;
 										break;
 									} else {
