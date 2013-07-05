@@ -166,18 +166,16 @@ iframe[seamless] {
 }
 
 /* Gallery columns */
-.gallery-cols(@index) when (@index > 0) {
-	// Create the column class
-	(~".col-@{index}") {
-		width: percentage((100 / @index) / 100);
-	}
+@gallery-columns: 10;
 
-	// Next column
-	.gallery-cols(@index - 1);
-}
+.col-1  { width: percentage(( 100 / 1 / 100 )); }
+.col-2  { width: percentage(( 100 / 2 / 100 )); }
+.col-3  { width: percentage(( 100 / 3 / 100 )); }
+.col-4  { width: percentage(( 100 / 4 / 100 )); }
+.col-5  { width: percentage(( 100 / 5 / 100 )); }
+.col-6  { width: percentage(( 100 / 6 / 100 )); }
+.col-7  { width: percentage(( 100 / 7 / 100 )); }
+.col-8  { width: percentage(( 100 / 8 / 100 )); }
+.col-9  { width: percentage(( 100 / 9 / 100 )); }
+.col-10 { width: percentage(( 100 / 10 / 100 )); }
 
-// End the loop when index is 0
-.gallery-cols(0) {}
-
-// Generate 10 columns
-.gallery-cols(10);

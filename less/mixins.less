@@ -5,8 +5,8 @@
 // Calculate font size in rems
 .font-size(@font-size: 16) {
 	@rem: (@font-size / 10);
-	font-size: @font-size * 1px;
-	font-size: ~"@{rem}rem";
+	font-size: (@font-size * 1px);
+	font-size: unit(@rem, rem);
 }
 
 // Widget title bar
@@ -20,7 +20,7 @@
 	.font-size(18);
 	padding: 8px 20px;
 	margin: 0 0 @smallGutterWidth;
-	text-shadow: 0 1px 0 @white;
+	text-shadow: 0 1px 0 #fff;
 
 }
 
@@ -29,10 +29,10 @@
 .section-title-bar(@radius: 30px, @space: 60px) {
 	#gradient > .vertical(#d54e21, #c8471b);
 	border-radius: @radius;
-	color: @white;
+	color: #fff;
 	.font-size(24);
 	padding: 10px @space;
-	margin: 0 0 @gutterWidth -(@space);
+	margin: 0 0 @gutterWidth -@space;
 	text-shadow: 1px 1px 0 #9c3412;
 }
 

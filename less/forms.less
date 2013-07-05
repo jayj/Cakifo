@@ -354,7 +354,7 @@ html {
 
 #reply-title {
 	.highlight-box;
-	margin: -(@gutterWidth) 0 @smallGutterWidth;
+	margin: (-@gutterWidth) 0 @smallGutterWidth;
 	.font-size(26);
 	letter-spacing: -1px;
 	text-align: center;
@@ -392,13 +392,13 @@ html {
    Layout:  Search form
    ========================================================================== */
 
-.searchform {
+.search-form {
 	label {
 		display: inline-block;
 		margin-right: 5px;
 	}
 
-	input[type="search"] {
+	.search-field {
 		padding-left: 27px;
 		background: @white url(images/search.png) no-repeat 5px center;
 

@@ -84,11 +84,11 @@
 
 	&:hover,
 	&:focus {
-		background-position: 0 -(@tweetHeight);
+		background-position: 0 ( -(@tweetHeight) );
 	}
 
 	&:active {
-		background-position: 0 -(@tweetHeight * 2);
+		background-position: 0 ( -(@tweetHeight * 2) );
 	}
 }
 
@@ -118,16 +118,16 @@
 		content: "";
 		position: absolute;
 		top: 50%;
-		left: -(@tweetArrow);
+		left: (-@tweetArrow);
 		.size(@tweetArrow, 9px);
 		margin: -4px 0 0;
-		background: url(images/tweet.png) no-repeat 0 -(@tweetHeight * 3);
+		background: url(images/tweet.png) no-repeat 0 ( -(@tweetHeight * 3) );
 	}
 
 	&:hover:before,
 	&:focus:before,
 	&:active:before {
-		background-position: -(@tweetArrow) -(@tweetHeight * 3);
+		background-position: (-@tweetArrow) (-(@tweetHeight * 3));
 	}
 }
 
@@ -150,13 +150,13 @@
 			left: 48%;
 			.size(9px, @tweetArrow);
 			margin: 0 0 0 -4px;
-			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3);
+			background-position: (-(@tweetArrow * 2)) (-(@tweetHeight * 3));
 		}
 
 		&:hover:before,
 		&:focus:before,
 		&:active:before {
-			background-position: -(@tweetArrow * 2) -(@tweetHeight * 3 + 5px);
+			background-position: (-(@tweetArrow * 2)) (-(@tweetHeight * 3 + 5px));
 		}
 	}
 }

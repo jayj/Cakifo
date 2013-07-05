@@ -7,7 +7,7 @@
 
 	.highlight-box(
 		0 @gutterWidth @smallGutterWidth,
-		0 -(@gutterWidth) @gutterWidth -(@gutterWidth),
+		0 (-@gutterWidth) @gutterWidth (-@gutterWidth),
 		0 0 4px
 	);
 
@@ -134,7 +134,7 @@
 	}
 
 	.flex-prev {
-		left: -(@smallGutterWidth);
+		left: (-@smallGutterWidth);
 
 		&:after {
 			content: "\00AB";
@@ -142,7 +142,8 @@
 	}
 
 	.flex-next {
-		right: -(@smallGutterWidth);
+		right: (-@smallGutterWidth);
+		right: (-@smallGutterWidth);
 
 		&:after {
 			content: "\00BB";

@@ -189,7 +189,7 @@ h6 {
   font-size: 1.8rem;
   padding: 8px 20px;
   margin: 0 0 25px;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #fff;
   letter-spacing: -1px;
 }
 .widget-title a {
@@ -204,7 +204,7 @@ h6 {
   background-image: -webkit-linear-gradient(top, #d54e21, #c8471b 100%);
   background-image: linear-gradient(to bottom, #d54e21, #c8471b 100%);
   border-radius: 30px;
-  color: #ffffff;
+  color: #fff;
   font-size: 24px;
   font-size: 2.4rem;
   padding: 10px 60px;
@@ -879,11 +879,11 @@ body.page-template-template-front-page #main,
     display: block;
   }
   .main-navigation .menu-list-container,
-  .main-navigation .searchform {
+  .main-navigation .search-form {
     display: none;
   }
   .main-navigation.toggled-on .menu-list-container,
-  .main-navigation.toggled-on .searchform {
+  .main-navigation.toggled-on .search-form {
     display: block;
   }
   .main-navigation .menu-list-container {
@@ -908,14 +908,14 @@ body.page-template-template-front-page #main,
     display: none;
   }
 }
-.main-navigation .searchform {
+.main-navigation .search-form {
   float: right;
   margin-top: 10px;
 }
-.main-navigation .searchform label {
+.main-navigation .search-form label {
   margin: 0;
 }
-.main-navigation .searchform input[type="search"] {
+.main-navigation .search-form .search-field {
   margin-bottom: 0;
   background-color: #555555;
   background-color: rgba(255, 255, 255, 0.3);
@@ -924,22 +924,22 @@ body.page-template-template-front-page #main,
   color: #fff;
   color: rgba(255, 255, 255, 0.8);
 }
-.main-navigation .searchform input[type="search"]::-moz-placeholder {
+.main-navigation .search-form .search-field::-moz-placeholder {
   color: #b3b3b3;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
-.main-navigation .searchform input[type="search"]::-webkit-input-placeholder {
+.main-navigation .search-form .search-field::-webkit-input-placeholder {
   color: #b3b3b3;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
-.main-navigation .searchform .searchsubmit {
+.main-navigation .search-form .search-submit {
   display: none;
   padding: 2px 14px;
   border-color: #000;
   margin-left: 5px;
 }
 @media screen and (max-width: 979px) {
-  .main-navigation .searchform {
+  .main-navigation .search-form {
     float: none;
     padding: 25px 40px;
     margin-top: -25px;
@@ -947,13 +947,13 @@ body.page-template-template-front-page #main,
     border-width: 1px 0;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   }
-  .main-navigation .searchform .searchsubmit {
+  .main-navigation .search-form .search-submit {
     display: inline-block;
   }
 }
 /* No JS: show the menu */
 .no-js .main-navigation .menu-list-container,
-.no-js .main-navigation .searchform {
+.no-js .main-navigation .search-form {
   display: block;
 }
 .no-js .menu-toggle {
@@ -1616,35 +1616,35 @@ iframe[seamless] {
   margin: 0 0 15px 0;
 }
 /* Gallery columns */
-.col-10 {
-  width: 10%;
-}
-.col-9 {
-  width: 11.11111111111111%;
-}
-.col-8 {
-  width: 12.5%;
-}
-.col-7 {
-  width: 14.285714285714288%;
-}
-.col-6 {
-  width: 16.666666666666668%;
-}
-.col-5 {
-  width: 20%;
-}
-.col-4 {
-  width: 25%;
-}
-.col-3 {
-  width: 33.333333333333336%;
+.col-1 {
+  width: 100%;
 }
 .col-2 {
   width: 50%;
 }
-.col-1 {
-  width: 100%;
+.col-3 {
+  width: 33.333333333333336%;
+}
+.col-4 {
+  width: 25%;
+}
+.col-5 {
+  width: 20%;
+}
+.col-6 {
+  width: 16.666666666666668%;
+}
+.col-7 {
+  width: 14.285714285714288%;
+}
+.col-8 {
+  width: 12.5%;
+}
+.col-9 {
+  width: 11.11111111111111%;
+}
+.col-10 {
+  width: 10%;
 }
 /* =============================================================================
    Layout:  Post formats
@@ -2581,15 +2581,15 @@ html .btn-inverse:hover {
 /* =============================================================================
    Layout:  Search form
    ========================================================================== */
-.searchform label {
+.search-form label {
   display: inline-block;
   margin-right: 5px;
 }
-.searchform input[type="search"] {
+.search-form .search-field {
   padding-left: 27px;
   background: #ffffff url(images/search.png) no-repeat 5px center;
 }
-.searchform input[type="search"][results] {
+.search-form .search-field[results] {
   padding-left: 6px;
   background-image: none;
 }

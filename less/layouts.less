@@ -160,7 +160,7 @@
 
 // Set the width of the three column layouts
 @three-col-main-width: 500px;
-@three-col-sidebar-width: @three-col-main-width / 2 - @smallGutterWidth; // 225px
+@three-col-sidebar-width: ( @three-col-main-width / 2 - @smallGutterWidth ); // 225px
 
 /**
  * One column layout
@@ -186,7 +186,7 @@ body.page-template-template-front-page #main,
 	#sidebar-secondary {
 		float: left;
 		clear: left;
-		margin-left: -(@smallGutterWidth - 10px);
+		margin-left: ( -(@smallGutterWidth - 10px) );
 	}
 }
 
@@ -215,17 +215,17 @@ body.page-template-template-front-page #main,
 	#main {
 		float: left;
 		width: @three-col-main-width;
-  		margin-left: @three-col-main-width / 2;
+  		margin-left: ( @three-col-main-width / 2 );
 	}
 
 	#sidebar-primary {
 		float: left;
-		margin-left: -(@three-col-main-width + @three-col-sidebar-width + @gutterWidth); // -765px
+		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutterWidth) ); // -765px
 	}
 
 	#sidebar-secondary {
 		float: right;
-		margin-right: -(@smallGutterWidth - 10px);
+		margin-right: ( -(@smallGutterWidth - 10px) );
 	}
 }
 
@@ -246,7 +246,7 @@ body.page-template-template-front-page #main,
 	}
 
 	#sidebar-secondary {
-		margin-right: -(@smallGutterWidth - 10px);
+		margin-right: ( -(@smallGutterWidth - 10px) );
 	}
 }
 
@@ -263,6 +263,6 @@ body.page-template-template-front-page #main,
 	}
 
 	#sidebar-primary {
-		margin-left: -(@smallGutterWidth - 10px);
+		margin-left: ( -(@smallGutterWidth - 10px) );
 	}
 }
