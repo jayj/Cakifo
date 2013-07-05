@@ -155,7 +155,9 @@ function cakifo_theme_meta_box() { ?>
 
 								/* Check if the current term is selected. */
 								foreach( $settings as $selected ) {
-									if ( $selected[1] == $term->term_id ) {
+
+									/* in_array() is used for back-compat. */
+									if ( ( is_array( $selected ) && $term->term_id == $selected[1] ) || in_array( $term->term_id, $settings ) ) {
 										$selected = true;
 										break;
 									} else {
