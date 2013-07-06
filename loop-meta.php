@@ -12,6 +12,21 @@
 
 <?php do_atomic( 'before_loop_meta' ); // cakifo_before_loop_meta ?>
 
+<?php
+	/**
+	 * Add Breadcrumb Trail
+	 */
+	if ( current_theme_supports( 'breadcrumb-trail' ) && ( ! is_home() && ! is_front_page() ) ) :
+
+		breadcrumb_trail( array(
+			'labels' => array(
+				'browse' => __( 'You are here: ', 'cakifo' )
+			)
+		));
+
+	endif;
+?>
+
 <?php if ( ( is_home() && ! is_front_page() ) && hybrid_get_setting( 'featured_show' ) ) : ?>
 
 	<?php global $wp_query; ?>

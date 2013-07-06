@@ -67,18 +67,16 @@ function cakifo_theme_setup() {
 	add_theme_support( 'custom-field-series' );
 
 	/* Add theme support for theme functions */
-	add_theme_support( 'cakifo-sidebars',
-		array(
-			'primary',
-			'secondary',
-			'subsidiary',
-			'subsidiary-two',
-			'subsidiary-three',
-			'after-single',
-			'after-singular',
-			'error-page'
-		)
-	);
+	add_theme_support( 'cakifo-sidebars', array(
+		'primary',
+		'secondary',
+		'subsidiary',
+		'subsidiary-two',
+		'subsidiary-three',
+		'after-single',
+		'after-singular',
+		'error-page'
+	));
 
 	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
@@ -158,7 +156,7 @@ function cakifo_theme_setup() {
 	);
 
 	// If the user is using a child theme, register the logo.png from that as well
-	if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo.png' ) ) {
+	if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo.png' ) ) :
 		register_default_headers( array(
 			'childtheme_logo' =>
 				array(
@@ -168,20 +166,13 @@ function cakifo_theme_setup() {
 				)
 			)
 		);
-	} // is_child_theme() && file_exists()
+	endif; // is_child_theme() && file_exists()
 
 	/* Set $content_width */
 	hybrid_set_content_width( 650 );
 
-	/* Set embed width/height defaults and $content_width for non-default layouts */
-	add_filter( 'embed_defaults', 'cakifo_content_width' );
-
 	/**
 	 * Set new image sizes
-	 *
-	 * Small: For use in archives and searches
-	 * Slider: For use in the slider
-	 * Recent: For use in the recent posts
 	 */
 	add_image_size(
 		'small',
@@ -206,44 +197,39 @@ function cakifo_theme_setup() {
 
 	/* Enqueue theme scripts and styles */
 	add_action( 'wp_enqueue_scripts', 'cakifo_enqueue_script', 1 );
+	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
 
 	/* Filter the body class */
 	add_filter( 'body_class', 'cakifo_body_class' );
-
-	/* Search Form in the topbar */
-	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
-
-	/**
-	 * If you want the old RSS and Twitter link, do this in your child theme:
-	 * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
-	 * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
-	 */
 
 	/* Filter the sidebar widgets. */
 	add_filter( 'sidebars_widgets', 'cakifo_disable_sidebars' );
 	add_action( 'template_redirect', 'cakifo_theme_layout' );
 
-	/* Add the Breadcrumb Trail just after the container is open */
-	if ( current_theme_supports( 'breadcrumb-trail' ) ) {
-		add_action( "{$prefix}_open_main", 'breadcrumb_trail' );
-		add_filter( 'breadcrumb_trail_args', 'cakifo_breadcrumb_trail_args' );
-	}
+	/* Set embed width/height defaults and $content_width for non-default layouts */
+	add_filter( 'embed_defaults', 'cakifo_content_width' );
 
-	/* Front age customisations */
-	add_action( 'template_redirect', 'cakifo_front_page' );
-	add_action( 'wp_footer', 'cakifo_slider_javascript', 100 );
+	/* Search Form in the topbar */
+	add_action( "{$prefix}_close_menu_primary", 'get_search_form' );
 
 	/* Excerpt "Read More" link */
 	add_filter( 'excerpt_more', 'cakifo_excerpt_more' );
 
 	/* Add Custom Field Series */
-	if ( current_theme_supports( 'custom-field-series' ) )
+	if ( current_theme_supports( 'custom-field-series' ) ) {
 		add_action( "{$prefix}_after_singular", 'custom_field_series' );
+	}
 
 	/* Add an Author Box after singular posts */
 	add_action( 'init', 'cakifo_place_author_box' );
 
-	/* Get the Image arguments */
+	/* Load all necessary files and hooks for singular pages  */
+	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
+
+	/* Backward compatibility for the 'show_singular_comments' filter */
+	add_action( 'init', 'cakifo_compat_show_singular_comments' );
+
+	/* Filter Get the Image arguments */
 	add_filter( 'get_the_image_args', 'cakifo_get_the_image_arguments' );
 
 	/* Filter default theme options */
@@ -251,12 +237,6 @@ function cakifo_theme_setup() {
 
 	/* Filter the arguments for wp_link_pages(), used in the loop files */
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
-
-	/* Load all necessary files and hooks for singular pages  */
-	add_filter( "{$prefix}_in_singular", 'cakifo_load_in_singular' );
-
-	/* Backward compatibility for the 'show_singular_comments' filter */
-	add_action( 'init', 'cakifo_compat_show_singular_comments' );
 }
 
 /**
@@ -337,27 +317,11 @@ function cakifo_enqueue_script() {
 	wp_enqueue_script( 'jquery' );
 
 	/* Enqueue the theme javascript */
-	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.4', true );
+	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.6', true );
 
 	/* Enqueue the Flexslider jQuery Plugin */
 	if ( hybrid_get_setting( 'featured_show' ) )
-		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.1', true );
-}
-
-/**
- * Customize the front page
- *
- * @since Cakifo 1.0.0
- */
-function cakifo_front_page() {
-	$prefix = hybrid_get_prefix();
-
-	/* If we're not looking at the front page, return */
-	if ( ! is_home() && ! is_front_page() )
-		return;
-
-	/* Remove the breadcrumb trail */
-	remove_action( "{$prefix}_open_main", 'breadcrumb_trail' );
+		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.0', true );
 }
 
 /**
@@ -461,50 +425,6 @@ function cakifo_excerpt_more( $more ) {
 }
 
 /**
- * Custom breadcrumb trail arguments.
- *
- * @since Cakifo 1.0.0
- * @param array $args The 'Breadcrumb' arguments
- * @return array      The filtered 'Breadcrumb' arguments
- */
-function cakifo_breadcrumb_trail_args( $args ) {
-	$args['labels']['browse'] =  __( 'You are here: ', 'cakifo' );
-
-	return $args;
-}
-
-/**
- * Display RSS feed link in the topbar.
- *
- * No longer showed by default in version 1.3
- * If you still want it, use this in your child theme:
- *	<code>
- * 		remove_action( "{$prefix}_close_menu_primary", 'get_search_form' );
- * 		add_action( "{$prefix}_close_menu_primary", 'cakifo_topbar_rss' );
- *	</code>
- *
- * @since Cakifo 1.0.0
- * @return string The RSS feed and maybe a Twitter link
- */
-function cakifo_topbar_rss() {
-	echo apply_atomic_shortcode( 'rss_subscribe',
-		'<div id="rss-subscribe">' .
-			__( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) .
-		'</div>' );
-}
-
-/**
- * Add a search form to the topbar.
- *
- * @since Cakifo 1.3.0
- * @deprecated 1.4.0
- */
-function cakifo_topbar_search() {
-	_deprecated_function( __FUNCTION__, '1.4.0', 'get_search_form()' );
-	get_search_form();
-}
-
-/**
  * Function for deciding which pages should have a one-column layout.
  *
  * @since Cakifo 1.5.0
@@ -512,14 +432,18 @@ function cakifo_topbar_search() {
  */
 function cakifo_theme_layout() {
 
-	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) )
+	// No active sidebars
+	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	elseif ( is_page_template( 'template-front-page.php' ) ) // Static frontpage
+	// Front page template
+	} elseif ( is_page_template( 'template-front-page.php' ) ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() )
+	// Attachment or default layout
+	} elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
+	}
 }
 
 /**
@@ -548,7 +472,7 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 			$sidebars_widgets['primary']   = false;
 			$sidebars_widgets['secondary'] = false;
 		}
-	}
+ 	}
 
 	return $sidebars_widgets;
 }
@@ -568,20 +492,22 @@ function cakifo_content_width( $args ) {
 
 	$args['width'] = hybrid_get_content_width();
 
-	if ( current_theme_supports( 'theme-layouts' ) ) {
+	if ( current_theme_supports( 'theme-layouts' ) ) :
 
 		$layout = theme_layouts_get_layout();
 
-		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout )
+		if ( 'layout-3c-l' == $layout || 'layout-3c-r' == $layout ) {
 			$args['width'] = 490;
-		elseif ( 'layout-3c-c' == $layout )
+		} elseif ( 'layout-3c-c' == $layout ) {
 			$args['width'] = 500;
-		elseif ( 'layout-1c' == $layout )
+		} elseif ( 'layout-1c' == $layout ) {
 			$args['width'] = 940;
+		}
 
 		/* Set $content_width */
 		hybrid_set_content_width( $args['width'] );
-	}
+
+	endif;
 
 	return $args;
 }
@@ -646,20 +572,17 @@ function cakifo_admin_header_image() { ?>
 
 	<div id="headimg">
 		<?php
-			/* Get header information */
+			/* Get header information. */
 			$header_image  = get_header_image();
 			$default_color = get_theme_support( 'custom-header', 'default-text-color' );
 			$text_color    = get_header_textcolor();
 
-			/* Set up variables */
-			$style = '';
-			$span  = '';
-			$desc  = '';
-			$class = '';
+			/* Set up variables. */
+			$style = $span = $desc = $class = '';
 		?>
 
 		<?php
-			/* Set the styling for the individual elements */
+			/* Set the styling for the individual elements. */
 			if ( display_header_text() && $default_color != $text_color ) {
 				$style = "color: #{$text_color}; ";
 				$desc  = "color: #{$text_color}; ";
@@ -670,8 +593,9 @@ function cakifo_admin_header_image() { ?>
 				$desc = 'display: none; ';
 			}
 
-			if ( ! empty( $header_image ) && ! display_header_text() )
+			if ( ! empty( $header_image ) && ! display_header_text() ) {
 				$desc = 'display: block !important;';
+			}
 		?>
 
 		<h1>
@@ -739,18 +663,6 @@ function cakifo_admin_header_style() { ?>
 }
 
 /**
- * Custom Background callback
- *
- * @since Cakifo 1.3.0
- * @deprecated Cakifo 1.4.0
- */
-function cakifo_custom_background_callback() {
-	_deprecated_function( __FUNCTION__, '1.4.0' );
-	_custom_background_cb();
-	return;
-}
-
-/**
  * Display the site title as logo and/or name.	What this function
  * returns depends on what the user has choosen in `Apperance > Header`.
  *
@@ -759,12 +671,13 @@ function cakifo_custom_background_callback() {
  */
 function cakifo_logo() {
 
-	/* Get the site title */
+	/* Get the site title. */
 	$title = get_bloginfo( 'name' );
 	$maybe_image = '';
 
-	if ( get_header_image() )
+	if ( get_header_image() ) {
 		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
+	}
 
 	$output = sprintf( '<h1 id="site-title"><a href="%s" title="%s" rel="home">%s<span>%s</span></a></h1>',
 		esc_url( home_url() ),
@@ -778,47 +691,49 @@ function cakifo_logo() {
 }
 
 if ( ! function_exists( 'cakifo_author_box' ) ) :
-/**
- * Function to add an author box
- *
- * @since Cakifo 1.0.0
- */
-function cakifo_author_box() { ?>
 
-	<?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
+	/**
+	 * Function to add an author box
+	 *
+	 * @since Cakifo 1.0.0
+	 */
+	function cakifo_author_box() { ?>
 
-		<?php do_atomic( 'before_author_box' ); // cakifo_before_author_box ?>
+		<?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
 
-		<div class="author-profile clearfix vcard">
+			<?php do_atomic( 'before_author_box' ); // cakifo_before_author_box ?>
 
-			<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
+			<div class="author-profile clearfix vcard">
 
-			<h4 class="author-name fn n">
-				<?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?>
-			</h4>
+				<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
 
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), 96 ); ?>
+				<h4 class="author-name fn n">
+					<?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?>
+				</h4>
 
-			<div class="author-description author-bio">
-				<?php echo wpautop( get_the_author_meta( 'description' ) ); ?>
-			</div>
+				<?php echo get_avatar( get_the_author_meta( 'user_email' ), 96 ); ?>
 
-			<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) { ?>
-				<p class="twitter-link">
-					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
-						<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
-					</a>
-				</p>
-			<?php } // Twitter ?>
+				<div class="author-description author-bio">
+					<?php echo wpautop( get_the_author_meta( 'description' ) ); ?>
+				</div>
 
-			<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
+				<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) { ?>
+					<p class="twitter-link">
+						<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
+							<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
+						</a>
+					</p>
+				<?php } // Twitter ?>
 
-		</div> <!-- .author-profile -->
+				<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
 
-		<?php do_atomic( 'after_author_box' ); // cakifo_after_author_box
+			</div> <!-- .author-profile -->
 
-	endif;
-}
+			<?php do_atomic( 'after_author_box' ); // cakifo_after_author_box
+
+		endif;
+	}
+
 endif; // cakifo_author_box
 
 /**
@@ -1003,21 +918,6 @@ function cakifo_get_image_size_links() {
 }
 
 /**
- * @since Cakifo 1.0.0
- * @deprecated Cakifo 1.3.0 Use wp_trim_words() instead.
- */
-function cakifo_the_excerpt( $length = 55, $echo = true ) {
-	_deprecated_function( __FUNCTION__, 'Cakifo 1.3.0', 'wp_trim_words()' );
-
-	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a>';
-
-	if ( $echo )
-		echo wp_trim_words( get_the_excerpt(), $length, $more_link );
-	else
-		return wp_trim_words( get_the_excerpt(), $length, $more_link );
-}
-
-/**
  * Returns the default link color for Cakifo with no hash
  *
  * @since Cakifo 1.4.0
@@ -1051,10 +951,11 @@ function cakifo_filter_default_theme_settings( $settings ) {
 function cakifo_body_class( $classes ) {
 	$background_color = get_background_color();
 
-	if ( empty( $background_color ) )
+	if ( empty( $background_color ) ) {
 		$classes[] = 'custom-background-empty';
-	elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
+	} elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) ) {
 		$classes[] = 'custom-background-white';
+	}
 
 	return $classes;
 }
@@ -1079,8 +980,9 @@ function cakifo_load_in_singular() {
 	get_template_part( 'loop-nav' );
 
 	// Loads the comments.php template
-	if ( post_type_supports( get_post_type(), 'comments' ) )
+	if ( post_type_supports( get_post_type(), 'comments' ) ) {
 		comments_template( '/comments.php', true );
+	}
 }
 
 /**
@@ -1091,7 +993,7 @@ function cakifo_load_in_singular() {
  */
 function cakifo_link_pages_args( $args ) {
 	$args['before'] = '<p class="page-links">' . __( 'Pages:', 'cakifo' );
-	$args['after'] = '</p>';
+	$args['after']  = '</p>';
 
 	return $args;
 }
@@ -1102,7 +1004,7 @@ function cakifo_link_pages_args( $args ) {
  * @since Cakifo 1.5.0
  */
 function cakifo_compat_show_singular_comments() {
-	if ( apply_filters( 'show_singular_comments', true ) === false )
+	if ( false === apply_filters( 'show_singular_comments', true ) )
 		remove_post_type_support( 'page', 'comments' );
 }
 
@@ -1364,6 +1266,64 @@ function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
 		$selectors = '#site-title a, .menu a, .section-title a, .widget-title a, .intro-post .post-edit-link';
 
 	return $selectors;
+}
+
+/**
+ * Custom Background callback
+ *
+ * @since Cakifo 1.3.0
+ * @deprecated Cakifo 1.4.0
+ */
+function cakifo_custom_background_callback() {
+	_deprecated_function( __FUNCTION__, '1.4.0' );
+	_custom_background_cb();
+	return;
+}
+
+/**
+ * Display RSS feed link in the topbar.
+ *
+ * No longer showed by default in version 1.3.
+ * If you still want it, you should create your own
+ * functiion
+ *
+ * @since Cakifo 1.0.0
+ * @deprecated 1.6.0
+ * @return string The RSS feed and maybe a Twitter link
+ */
+function cakifo_topbar_rss() {
+	_deprecated_function( __FUNCTION__, '1.6.0' );
+
+	echo apply_atomic_shortcode( 'rss_subscribe',
+		'<div id="rss-subscribe">' .
+			__( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) .
+		'</div>' );
+}
+
+/**
+ * Add a search form to the topbar.
+ *
+ * @since Cakifo 1.3.0
+ * @deprecated 1.4.0
+ */
+function cakifo_topbar_search() {
+	_deprecated_function( __FUNCTION__, '1.4.0', 'get_search_form()' );
+	get_search_form();
+}
+
+/**
+ * @since Cakifo 1.0.0
+ * @deprecated Cakifo 1.3.0 Use wp_trim_words() instead.
+ */
+function cakifo_the_excerpt( $length = 55, $echo = true ) {
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.3.0', 'wp_trim_words()' );
+
+	$more_link = apply_filters( 'excerpt_more', '...' ) . '<br /> <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a>';
+
+	if ( $echo )
+		echo wp_trim_words( get_the_excerpt(), $length, $more_link );
+	else
+		return wp_trim_words( get_the_excerpt(), $length, $more_link );
 }
 
 ?>
