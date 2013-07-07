@@ -166,55 +166,44 @@ function cakifo_entry_facebook_link_shortcode( $attr ) {
  * @since Cakifo 1.0.0
  */
 function cakifo_entry_twitter_link_shortcode( $attr ) {
+
+	static $first = true;
+
 	$attr = shortcode_atts( array(
 		'href'   => get_permalink(),
 		'text'   => the_title_attribute( 'echo=0' ),
-		'layout' => 'horizontal', // horizontal, vertical, none
-		'via'    => hybrid_get_setting( 'twitter_username' ),
-		'width'  => 55, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
-		'height' => 20, // Only need to use if there's no add_theme_support( 'cakifo-twitter-button' )
+		'layout' => 'horizontal', // horizontal, vertical, non
+		'via'    => '',
 		'before' => '',
 		'after'  => '',
 	), $attr, 'entry-twitter-link' );
 
-	/* Load the PHP tweet button script if the theme supports it */
-	if ( current_theme_supports( 'cakifo-twitter-button' ) ) :
+	// Only add the script once
+	$script = ( $first ) ? "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>" : "";
 
-		return cakifo_tweet_button(
-			array(
-				'before'   => $attr['before'],
-				'after'    => $attr['after'],
-				'layout'   => $attr['layout'],
-				'href'     => $attr['href'],
-				'counturl' => $attr['href'],
-				'text'     => $attr['text'],
-				'layout'   => $attr['layout'],
-				'via'      => $attr['via']
-			)
-		);
+	$first = false;
 
-	/* Else, load the Twitter iframe */
-	else :
+	// Build the query
+	$query_args = array(
+		'url'      => esc_url( $attr['href'] ),
+		'counturl' => esc_url( $attr['href'] ),
+		'text'     => esc_attr( $attr['text'] ),
+		'count'    => esc_attr( $attr['layout'] ),
+	);
 
-		// Set the height to 62px if the layout is vertical and the height is the default value
-		if ( 'vertical' == $attr['layout'] && 20 == $attr['height'] )
-			$attr['height'] = 62;
+	/* Use the shortlink as the share URL if it exists. */
+	$shortlink = wp_get_shortlink();
 
-		// Set width to 110px if the layout is horizontal and the width is the default value
-		if ( 'horizontal' == $attr['layout'] && 55 == $attr['width'] )
-			$attr['width'] = 110;
+	if ( ! empty( $shortlink ) ) {
+		$query_args['url'] = esc_url( $shortlink );
+	}
 
-		// Build the query
-		$query_args = array(
-			'url'   => esc_url( $attr['href'] ),
-			'via'   => esc_attr( $attr['via'] ),
-			'text'  => esc_attr( $attr['text'] ),
-			'count' => esc_attr( $attr['layout'] )
-		);
+	/* Set 'via' attribute. */
+	if ( ! empty( $attr['via'] ) ) {
+		$query_args['via'] = esc_attr( $attr['via'] );
+	}
 
-		return $attr['before'] . '<iframe src="http://platform.twitter.com/widgets/tweet_button.html?' . http_build_query( $query_args, '', '&amp;' ) . '" class="twitter-share-button" style="width:' . intval( $attr['width'] ) . 'px; height:' . intval( $attr['height'] ) . 'px;" seamless></iframe>' . $attr['after'];
-
-	endif;
+	return $attr['before'] . '<a href="https://twitter.com/share?' . http_build_query( $query_args, '', '&amp;' ) . '" class="twitter-share-button"></a>' . $attr['after'] . $script;
 }
 
 /**

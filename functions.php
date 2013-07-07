@@ -80,7 +80,6 @@ function cakifo_theme_setup() {
 
 	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
-	add_theme_support( 'cakifo-twitter-button' );
 
 	/* Load Theme Settings */
 	if ( is_admin() ) {
@@ -288,9 +287,6 @@ function cakifo_load_theme_support() {
 
 	/* Load the Colorbox Script extention if supported. */
 	require_if_theme_supports( 'cakifo-colorbox', $template_directory . 'functions/colorbox.php' );
-
-	/* Load the Twitter Button extention if supported */
-	require_if_theme_supports( 'cakifo-twitter-button', $template_directory . 'functions/tweet_button.php' );
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
