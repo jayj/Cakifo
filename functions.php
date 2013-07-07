@@ -1285,15 +1285,14 @@ function cakifo_custom_background_callback() {
  *
  * @since Cakifo 1.0.0
  * @deprecated 1.6.0
- * @return string The RSS feed and maybe a Twitter link
+ * @return string The RSS feed
  */
 function cakifo_topbar_rss() {
 	_deprecated_function( __FUNCTION__, '1.6.0' );
 
-	echo apply_atomic_shortcode( 'rss_subscribe',
-		'<div id="rss-subscribe">' .
-			__( 'Subscribe by [rss-link] [twitter-username before="or "]', 'cakifo' ) .
-		'</div>' );
+	$rss = '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' . __( 'RSS', 'cakifo' ) . '</a>';
+
+	echo '<div id="rss-subscribe">' . sprintf( __( 'Subscribe by %s', 'cakifo' ), $rss ) . '</div>';
 }
 
 /**
