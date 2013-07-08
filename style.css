@@ -1971,12 +1971,13 @@ iframe[seamless] {
   padding: 0;
   margin: 0;
 }
-.headline-list li {
+.headline-list .headline-item {
   padding: 25px 20px;
   border-bottom: 1px solid #e1e1e1;
+  line-height: 1.8;
 }
-.headline-list li:hover,
-.headline-list li:active {
+.headline-list .headline-item:hover,
+.headline-list .headline-item:active {
   background-color: #f2f7fc;
   background-image: -webkit-linear-gradient(left, #f7fafc 50%, #f2f7fc);
   background-image: linear-gradient(to right, #f7fafc 50%, #f2f7fc);
