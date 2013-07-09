@@ -2,101 +2,275 @@
 // Variables
 // =============================================================================
 
-// ====================
+// ==========================================
 // Colour definitions
-// ====================
+// ==========================================
 
 // Grays
 // -------------------------
-@black:                 #000;
-@grayDarker:            #222;
-@grayDark:              #333;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
-@white:                 #fff;
+
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
 
 // Accent colors
 // -------------------------
-@blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #093;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orangeLight:           #ffc768;
-@orange:                #f89406;
-@orangeDark:            #d54e21;
-@pink:                  #f71570;
-@purple:                #7a43b6;
 
-// ====================
+@blue:                   #049cdb;
+@blue-dark:              #0064cd;
+@green:                  #093;
+@red:                    #9d261d;
+@orange-light:           #ffc768;
+@orange:                 #f89406;
+@orange-dark:            #d54e21;
+@pink:                   #f71570;
+@purple:                 #7a43b6;
+
+// ==========================================
 // Scaffolding
-// ====================
-@bodyBackground:        #e3ecf2;
-@topbarBackground:      #262626;
-@textColor:             @gray;
+// ==========================================
 
-@highlightBackground:   #ffffdf; // Used for slider, sticky posts...
-@highlightBlue:         #f2f7fc; // Used for author boxes, author replies...
+@body-bg:                #e3ecf2;
+@text-color:             @gray;
 
-// Widths
-@siteWidth:             1080px;
-@mainWidth:             650px;
-@sideWidth:             310px;
-@gutterWidth:           40px;
-@smallGutterWidth:      25px;
-
-// ====================
+// ==========================================
 // Links
-// ====================
-@linkColor:             #3083aa;
-@linkColorHover:        @orangeDark;
+// ==========================================
 
-// ====================
+@link-color:             #3083aa;
+@link-color-hover:       @orange-dark;
+
+// ==========================================
 // Selections
-// ====================
-@selectionColor:		#568cbb;
-@selectionTextColor:	@white;
+// ==========================================
 
-// ====================
+@color-selection:		 #568cbb;
+@color-selection-text:	 #fff;
+
+// ==========================================
 // Typography
-// ====================
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@serifFontFamily:       Georgia, Cambria, "Bitstream Charter", serif;
-@monoFontFamily:        Monaco, Consolas, "Courier New", monospace;
+// ==========================================
 
-@baseFontSize:          16; // 16px, 1.6 rem
-@baseFontFamily:        @serifFontFamily;
-@baseLineHeight:        1.8;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, Cambria, "Bitstream Charter", serif;
+@font-family-monospace:   Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-serif;
 
-@headingsFontSize:      26;
+@font-size-base:          16; // 16px, 1.6 rem
+@font-size-large:         ceil( (@font-size-base * 1.1) );  // ~18px
+@font-size-medium:        ceil( (@font-size-base * 0.9) );  // ~15px
+@font-size-small:         ceil( (@font-size-base * 0.85) ); // ~14px
+@font-size-mini:          ceil( (@font-size-base * 0.8) );  // ~13px
+@font-size-micro:         ceil( (@font-size-base * 0.75) ); // ~12px
 
-// ====================
+@line-height-base:        1.6;
+
+@headings-font-size:      26; // 26px, 1.6 rem
+@headings-size-large:     ceil( (@headings-font-size * 1.15) );  // ~30px
+@headings-size-medium:    ceil( (@headings-font-size * 0.85) );  // ~23px
+@headings-size-small:     ceil( (@headings-font-size * 0.8) );   // ~21px
+@headings-size-mini:      ceil( (@headings-font-size * 0.75) );  // ~20px
+@headings-size-micro:     ceil( (@headings-font-size * 0.7) );   // ~19px
+
+// ==========================================
+// Widths
+// ==========================================
+
+@width-site:                  1080px;
+@width-main:                  650px;
+@width-secondary:             310px;
+
+@gutter-width:                40px;
+@gutter-width-small:          25px;
+
+// Set the width of the three column layouts
+@three-col-main-width:        500px;
+@three-col-sidebar-width:     ( @three-col-main-width / 2 - @gutter-width-small ); // 225px
+
+// ==========================================
+// Component variables
+// ==========================================
+
+
+// Widget and section titles
+// -------------------------
+
+@title-widget-bg:             lighten(#000, 92.5%); // #ececec
+@title-section-bg:            @orange-dark;
+
+
+// Inputs
+// -------------------------
+
+@input-border-color:          lighten(#000, 80%); // #ccc
+@input-text-color:            @gray;
+@input-focus-color:           #52a8ec;
+
+
+// Topbar
+// -------------------------
+@topbar-bg:                   #262626;
+@topbar-height:               60px;
+@topbar-color:                lighten(#000, 80%); // #ccc
+
+@topbar-search-border:        @gray-darker;
+
+// Posts
+// -------------------------
+
+@post-border-color:           @gray-lighter;
+@post-meta-color:             darken(@gray-light, 10%);
+
+
+// Comments
+// -------------------------
+
+@comments-border-color:       @gray-lighter;
+
+
+// Post formats
+// -------------------------
+
+@format-image-meta-bg:        #e0e6e8;
+
+
+// Slider
+// -------------------------
+
+@slider-pagination-size:           16px;
+@slider-pagination-color:          @orange-light;
+@slider-pagination-color-hover:    @orange;
+@slider-pagination-color-active:   @orange-dark;
+
+
+// Recent Posts
+// -------------------------
+
+@recent-post-width:           220px;
+@recent-post-opacity:         0.75;
+
+
+// Headlines Lists
+// -------------------------
+
+@headline-box-count:          2; // Number of boxes in each row
+@headline-box-width:          470px; // @todo use calc()
+
+
+// Breadcrumbs
+// -------------------------
+
+@breadcrumb-bg:               #f8f8f7;
+
+
+// Pagination
+// -------------------------
+
+@pagination-bg:               @gray-lighter;
+
+@pagination-hover-bg:         @orange-light;
+@pagination-hover-border:     @orange;
+@pagination-hover-text:       darken(@orange-dark, 30%);
+
+
+// Captions
+// -------------------------
+
+@caption-bg:                  @gray-darker;
+@caption-text-color:          darken(@gray-lighter, 6%);
+
+
+// Tables
+// -------------------------
+
+@table-bg:                    #fff; // overall background-color
+@table-bg-accent:             #f9f9f9; // for striping
+@table-bg-hover:              #f5f5f5; // for hover
+
+@table-border-color:          #ddd; // table and cell border
+
+
+// Related Posts
+// -------------------------
+
+@related-post-bg:             #fff;
+@related-post-border:         darken(@gray-lighter, 3%);
+
+@related-post-hover-bg:       @orange-light;
+@related-post-hover-border:   @orange;
+@related-post-hover-text:     darken(@orange-dark, 30%);
+
+
 // Colorbox
-// ====================
+// -------------------------
 
-@colorboxColor: #000;
+@colorbox-primary-color:      #000;
 
-// ====================
+
+// Misc
+// -------------------------
+
+@highlight-bg:                #f2f7fc; // blue
+@highlight-bg-secondary:      #ffffdf; // yellowish
+
+@orange-line:                 5px solid @orange-light;
+
+
+// ==========================================
+// Buttons
+// ==========================================
+
+@btn-default-color:           @text-color;
+@btn-default-bg:              #fefefe; // #fefefe, #f4f4f4
+@btn-default-secondary:       #f4f4f4;
+
+@btn-primary-color:           #fff;
+@btn-primary-bg:              #08c;
+@btn-primary-secondary:       spin(#08c, 20%);
+
+@btn-success-color:           #fff;
+@btn-success-bg:              #62c462;
+@btn-success-secondary:       #51a351;
+
+@btn-warning-color:           #fff;
+@btn-warning-bg:              #faa51a;
+@btn-warning-secondary:       #f47a20;
+
+@btn-danger-color:            #fff;
+@btn-danger-bg:               #ee5f5b;
+@btn-danger-secondary:        #bd362f;
+
+@btn-info-color:              #fff;
+@btn-info-bg:                 #5bc0de;
+@btn-info-secondary:          #2f96b4;
+
+@btn-inverse-color:           #fff;
+@btn-inverse-bg:              #444;
+@btn-inverse-secondary:       @gray-darker;
+
+
+// ==========================================
 // Alert messages
-// ====================
+// ==========================================
 
-@alertText:             @grayDarker;
-@alertBackground:       @grayLighter;
-@alertBorder:           darken(@grayLighter, 8%);
+@alert-bg:                    @gray-lighter;
+@alert-text:                  @gray-darker;
+@alert-border:                darken(@gray-lighter, 8%);
 
-@warningText:           #3b3601;
-@warningBackground:     #fef9c7;
-@warningBorder:         darken(spin(@warningBackground, -5), 25%);
+@alert-success-bg:            #dff0d8;
+@alert-success-text:          #0d370d;
+@alert-success-border:        darken(spin(@alert-success-bg, 10), 40%);
 
-@errorText:             darken(#7a0b0a, 10%);
-@errorBackground:       #f2dede;
-@errorBorder:           darken(spin(@errorBackground, -10), 25%);
+@alert-warning-bg:            #fef9c7;
+@alert-warning-text:          #3b3601;
+@alert-warning-border:        darken(spin(@alert-warning-bg, -5), 25%);
 
-@successText:           #0d370d;
-@successBackground:     #dff0d8;
-@successBorder:         darken(spin(@successBackground, 10), 40%);
+@alert-error-bg:              #f2dede;
+@alert-error-text:            #4b0706;
+@alert-error-border:          darken(spin(@alert-error-bg, -10), 25%);
 
-@infoText:              #0c3346;
-@infoBackground:        #d9edf7;
-@infoBorder:            @blue;
+@alert-info-bg:               @highlight-bg;
+@alert-info-text:             darken(@text-color, 10%);
+@alert-info-border:           double spin(desaturate(darken(@alert-info-bg, 10%), 40), -21);
