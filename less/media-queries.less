@@ -34,12 +34,12 @@
 
 @media screen and (max-width: 1080px) {
 
-	#main {
+	.site-main {
 		width: 65%;
 	}
 
-	#sidebar-primary,
-	#sidebar-secondary {
+	.sidebar-primary,
+	.sidebar-secondary {
 		width: 32%;
 	}
 
@@ -48,7 +48,7 @@
 	}
 
 	/* Remove box-shadow and border-radius */
-	#content,
+	.site-content,
 	.site-footer {
 		border-radius: 0;
 		box-shadow: none;
@@ -76,33 +76,33 @@
 	.layout-3c-c,
 	.layout-3c-r,
 	.layout-3c-l {
-		#main {
+		.site-main {
 			float: none;
 			width: 50%;
 		}
 
-		#sidebar-primary,
-		#sidebar-secondary {
+		.sidebar-primary,
+		.sidebar-secondary {
 			width: 20%;
 		}
 	}
 
-	.layout-3c-c #sidebar-primary {
+	.layout-3c-c .sidebar-primary {
 		margin-left: -740px;
 	}
 
 	.layout-3c-l {
-		#sidebar-primary,
-		#sidebar-secondary {
+		.sidebar-primary,
+		.sidebar-secondary {
 			margin-right: 1%;
 		}
 
-		#sidebar-secondary {
+		.sidebar-secondary {
 			float: right;
 		}
 	}
 
-	.layout-3c-r #sidebar-secondary {
+	.layout-3c-r .sidebar-secondary {
 		margin-left: 2%;
 	}
 } // 1080px
@@ -114,40 +114,40 @@
 @media screen and (max-width: 980px) {
 
 	/* Switch padding from 40px to 25px */
-	#content,
+	.site-content,
 	.site-footer {
 		padding-left: @gutter-width-small;
 		padding-right: @gutter-width-small;
 	}
 
-	#site-title {
+	.site-title {
 		margin-left: @gutter-width-small;
 	}
 
-	#site-description {
+	.site-description {
 		margin-right: @gutter-width-small;
 	}
 
-	/* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
+	/* Turn 3 column layouts into a layout with a full width .site-main and two 50% width sidebars underneath */
 	.layout-3c-c,
 	.layout-3c-r,
 	.layout-3c-l {
-		#main {
+		.site-main {
 			clear: both;
 			width: 100%;
 			margin-left: 0;
 			margin-right: 0;
 		}
 
-		#sidebar-primary,
-		#sidebar-secondary {
+		.sidebar-primary,
+		.sidebar-secondary {
 			clear: none;
 			width: 48%;
 			margin-left: 0;
 			margin-right: 0;
 		}
 
-		#sidebar-secondary {
+		.sidebar-secondary {
 			float: right;
 		}
 	}
@@ -201,17 +201,17 @@
 @media screen and (max-width: 768px) {
 
 	/* Make the main content full width and move the sidebars underneath it */
-	#main {
+	.site-main {
 		float: none;
 		width: 100%;
 	}
 
-	#sidebar-primary {
+	.sidebar-primary {
 		float: left;
 		width: 48%;
 	}
 
-	#sidebar-secondary {
+	.sidebar-secondary {
 		width: 48%;
 		float: right;
 	}
@@ -241,7 +241,7 @@
 	}
 
 	/* If there's 3 columns of footer widgets, turn them into 2 columns */
-	#sidebar-subsidiary.three-col .widget-area {
+	.sidebar-subsidiary.three-col .widget-area {
 		width: 48%;
 		margin-right: 4%;
 
@@ -298,7 +298,7 @@
 	}
 
 	/* Hide the slider */
-	#slider {
+	.slider {
 		display: none;
 	}
 

@@ -2,7 +2,7 @@
 // Layouts
 // =============================================================================
 
-#content,
+.site-content,
 .site-footer {
 	position: relative;
 	padding: @gutter-width @gutter-width @gutter-width;
@@ -12,19 +12,19 @@
 	box-shadow: 1px 1px 10px fade(#000, 10%);
 }
 
-#main {
+.site-main {
 	position: relative;
 	width: @width-main;
 	float: left;
 }
 
-#sidebar-primary,
-#sidebar-secondary {
+.sidebar-primary,
+.sidebar-secondary {
 	width: @width-secondary;
 	float: right;
 }
 
-#sidebar-secondary {
+.sidebar-secondary {
 	clear: right;
 }
 
@@ -127,7 +127,7 @@
 /**
  * Footer Widget Area
  */
-#sidebar-subsidiary {
+.sidebar-subsidiary {
 	clear: both;
 	margin-top: @gutter-width-small;
 
@@ -160,26 +160,28 @@
 
 /**
  * One column layout
- *
- * The first selector makes sure that the theme layout on the front page
- * don't get overwritten in the Theme Customizer preview
  */
-body.page-template-template-front-page #main,
-.layout-1c #main {
+.layout-1c .site-main {
 	float: none;
 	width: 100%;
+}
+
+/* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
+body.page-template-template-front-page .site-main {
+	&:extend(.layout-1c .site-main);
+	margin: 0;
 }
 
 /**
  * Two columns
  */
 .layout-2c-r {
-	#main {
+	.site-main {
 		float: right;
 	}
 
-	#sidebar-primary,
-	#sidebar-secondary {
+	.sidebar-primary,
+	.sidebar-secondary {
 		float: left;
 		clear: left;
 		margin-left: ( -(@gutter-width-small - 10px) );
@@ -192,8 +194,8 @@ body.page-template-template-front-page #main,
 .layout-3c-c,
 .layout-3c-r,
 .layout-3c-l {
-	#sidebar-primary,
-	#sidebar-secondary {
+	.sidebar-primary,
+	.sidebar-secondary {
 		clear: none;
 		width: @three-col-sidebar-width;
 	}
@@ -201,25 +203,25 @@ body.page-template-template-front-page #main,
 
 .layout-3c-l,
 .layout-3c-r {
-	#main {
+	.site-main {
 		width: @three-col-main-width;
 	}
 }
 
 /* Three columns, center */
 .layout-3c-c {
-	#main {
+	.site-main {
 		float: left;
 		width: @three-col-main-width;
   		margin-left: ( @three-col-main-width / 2 );
 	}
 
-	#sidebar-primary {
+	.sidebar-primary {
 		float: left;
 		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutter-width) ); // -765px
 	}
 
-	#sidebar-secondary {
+	.sidebar-secondary {
 		float: right;
 		margin-right: ( -(@gutter-width-small - 10px) );
 	}
@@ -227,38 +229,38 @@ body.page-template-template-front-page #main,
 
 /* Three columns, left */
 .layout-3c-l {
-	#main {
+	.site-main {
 		float: left;
 	}
 
-	#sidebar-primary,
-	#sidebar-secondary {
+	.sidebar-primary,
+	.sidebar-secondary {
 		float: left;
 		margin-left: @gutter-width-small;
 	}
 
-	#sidebar-primary {
+	.sidebar-primary {
 		margin-left: @gutter-width;
 	}
 
-	#sidebar-secondary {
+	.sidebar-secondary {
 		margin-right: ( -(@gutter-width-small - 10px) );
 	}
 }
 
 /* Three columns, right */
 .layout-3c-r {
-	#main {
+	.site-main {
 		float: right;
 	}
 
-	#sidebar-primary,
-	#sidebar-secondary {
+	.sidebar-primary,
+	.sidebar-secondary {
 		float: left;
 		margin-right: @gutter-width-small;
 	}
 
-	#sidebar-primary {
+	.sidebar-primary {
 		margin-left: ( -(@gutter-width-small - 10px) );
 	}
 }

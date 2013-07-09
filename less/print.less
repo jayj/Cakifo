@@ -39,8 +39,8 @@
 	/**
 	 * Insert page breaks before the sidebar and comments
 	 */
-	#sidebar-primary,
-	#comments {
+	.sidebar-primary,
+	.comments-area {
 		page-break-before: always;
 	}
 
@@ -110,15 +110,17 @@
 	 * Hide elements
 	 */
 	object, embed, video, audio, iframe[src*="youtube"], blockquote:before, blockquote p:first-of-type:after,
-	#topbar, #slider, #respond, #wpadminbar, #site-title img, .pagination, .search, .loop-meta-home,
+	.topbar, .cakifo-slider, .comment-respond, #wpadminbar, .site-title img, .pagination, .search, .loop-meta-home,
 	.post-format-link, .twitter-link, .comment .permalink, .comment-edit-link, .comment-reply-link,
-	.twitter-share, .fb-like, .delicious-share-button, .digg-share-button, [id*="___plusone_"],
 	.more-link, .comments-link, .post-edit-link {
 		display: none !important;
 	}
 
 	.singular-attachment {
-		.loop-nav, .byline, .image-gallery, .related-posts {
+		.loop-nav,
+		.byline,
+		.image-gallery,
+		.related-posts {
 			display: none;
 		}
 
@@ -141,9 +143,9 @@
 		position: relative !important;
 	}
 
-	#main,
-	#sidebar-primary,
-	#sidebar-secondary {
+	.site-main,
+	.sidebar-primary,
+	.sidebar-secondary {
 		float: none;
 		width: 100%;
 	}
@@ -151,22 +153,22 @@
 	.layout-3c-c,
 	.layout-3c-r,
 	.layout-3c-l {
-		#main {
+		.site-main {
 			clear: both;
 			width: 100%;
 			margin-left: 0;
 			margin-right: 0;
 		}
 
-		#sidebar-primary,
-		#sidebar-secondary {
+		.sidebar-primary,
+		.sidebar-secondary {
 			clear: none;
 			width: 48%;
 			margin-left: 0;
 			margin-right: 0;
 		}
 
-		#sidebar-secondary {
+		.sidebar-secondary {
 			float: right;
 		}
 	}
@@ -174,13 +176,13 @@
 	/**
 	 * Remove margins, paddings and borders
 	 */
-	#content, #footer, #headlines, .author-profile, .singular .hentry,
+	.site-content, .site-footer, .headline-columns, .author-profile, .singular .hentry,
 	.widget-title, .section-title, .breadcrumbs,
 	blockquote cite, blockquote span {
 		margin: 0;
 	}
 
-	#branding, #content, #footer,
+	.site-content, .site-footer, .site-header,
 	.widget-title, .section-title, .hentry,
 	.breadcrumbs, .author-profile {
 		padding: 0;

@@ -378,7 +378,7 @@ function cakifo_slider_javascript() {
 
 	echo "<script>
 			jQuery(document).ready(function($) {
-				$('#slider').flexslider(
+				$('.cakifo-slider').flexslider(
 					{$json}
 				);
 			});
@@ -1232,7 +1232,7 @@ function cakifo_register_colors( $color_palette ) {
 	$color_palette->add_rule_set(
 		'topbar',
 		array(
-			'background-color' => '#topbar',
+			'background-color' => '.topbar',
 		)
 	);
 
@@ -1240,7 +1240,7 @@ function cakifo_register_colors( $color_palette ) {
 		'secondary',
 		array(
 			'background-color' => '.flex-control-paging li a, .flex-direction-nav a:focus',
-			'border-top-color' => '#content, #footer, #respond',
+			'border-top-color' => '.site-content, .site-footer, .comment-respond',
 			'border-bottom-color' => '.loop-meta-home'
 		)
 	);

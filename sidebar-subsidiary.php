@@ -33,17 +33,17 @@ if ( ! $subsidiary_active && ! $subsidiary_two_active && ! $subsidiary_three_act
 	if ( $subsidiary_three_active )
 		$count++;
 
-	$class = '';
+	$classes = array( 'sidebar-subsidiary', 'clearfix' );
 
 	switch ( $count ) {
 		case '1':
-			$class = 'one-col';
+			$classes[] = 'one-col';
 			break;
 		case '2':
-			$class = 'two-col';
+			$classes[] = 'two-col';
 			break;
 		case '3':
-			$class = 'three-col';
+			$classes[] = 'three-col';
 			break;
 	}
 
@@ -51,30 +51,30 @@ if ( ! $subsidiary_active && ! $subsidiary_two_active && ! $subsidiary_three_act
 
 <?php do_atomic( 'before_sidebar_subsidiary' ); // cakifo_before_sidebar_subsidiary ?>
 
-	<div id="sidebar-subsidiary" class="<?php echo esc_attr( $class ); ?> clearfix">
+	<div class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
 
 		<?php do_atomic( 'open_sidebar_subsidiary' ); // cakifo_open_sidebar_subsidiary ?>
 
 		<?php if ( $subsidiary_active ) : ?>
-			<div id="first-footer-col" class="widget-area" role="complementary">
+			<div class="first-footer-col widget-area" role="complementary">
 				<?php dynamic_sidebar( 'subsidiary' ); ?>
-			</div><!-- #first-footer-col.widget-area -->
+			</div> <!-- .first-footer-col .widget-area -->
 		<?php endif; ?>
 
 		<?php if ( $subsidiary_two_active ) : ?>
-			<div id="second-footer-col" class="widget-area" role="complementary">
+			<div class="second-footer-col widget-area" role="complementary">
 				<?php dynamic_sidebar( 'subsidiary-two' ); ?>
-			</div><!-- #second-footer-col.widget-area -->
+			</div> <!-- .second-footer-col .widget-area -->
 		<?php endif; ?>
 
 		<?php if ( $subsidiary_three_active ) : ?>
-			<div id="third-footer-col" class="widget-area" role="complementary">
+			<div class="third-footer-col widget-area" role="complementary">
 				<?php dynamic_sidebar( 'subsidiary-three' ); ?>
-			</div><!-- #third-footer-col.widget-area -->
+			</div> <!-- .third-footer-col .widget-area -->
 		<?php endif; ?>
 
 		<?php do_atomic( 'close_sidebar_subsidiary' ); // cakifo_close_sidebar_subsidiary ?>
 
-	</div> <!-- #sidebar-subsidiary -->
+	</div> <!-- .sidebar-subsidiary -->
 
 <?php do_atomic( 'after_sidebar_subsidiary' ); // cakifo_after_sidebar_subsidiary ?>

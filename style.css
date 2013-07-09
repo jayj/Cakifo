@@ -102,7 +102,7 @@ body {
 .custom-background-empty {
   background-color: #fff;
 }
-.custom-background-empty #content,
+.custom-background-empty .site-content,
 .custom-background-empty .site-footer {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -507,7 +507,7 @@ tfoot td {
 caption {
   margin-bottom: 10px;
 }
-#content,
+.site-content,
 .site-footer {
   position: relative;
   padding: 40px 40px 40px;
@@ -516,17 +516,17 @@ caption {
   border-radius: 0 0 5px 5px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
-#main {
+.site-main {
   position: relative;
   width: 650px;
   float: left;
 }
-#sidebar-primary,
-#sidebar-secondary {
+.sidebar-primary,
+.sidebar-secondary {
   width: 310px;
   float: right;
 }
-#sidebar-secondary {
+.sidebar-secondary {
   clear: right;
 }
 /* =============================================================================
@@ -618,7 +618,7 @@ caption {
 /**
  * Footer Widget Area
  */
-#sidebar-subsidiary {
+.sidebar-subsidiary {
   clear: both;
   margin-top: 25px;
   /* Two columns */
@@ -626,20 +626,20 @@ caption {
   /* Three columns */
 
 }
-#sidebar-subsidiary.two-col .widget-area {
+.sidebar-subsidiary.two-col .widget-area {
   float: left;
   width: 48%;
   margin-right: 4%;
 }
-#sidebar-subsidiary.two-col .widget-area + .widget-area {
+.sidebar-subsidiary.two-col .widget-area + .widget-area {
   margin-right: 0;
 }
-#sidebar-subsidiary.three-col .widget-area {
+.sidebar-subsidiary.three-col .widget-area {
   float: left;
   width: 31%;
   margin-right: 3.5%;
 }
-#sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
+.sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
   margin-right: 0;
 }
 /* =============================================================================
@@ -647,23 +647,24 @@ caption {
    ========================================================================== */
 /**
  * One column layout
- *
- * The first selector makes sure that the theme layout on the front page
- * don't get overwritten in the Theme Customizer preview
  */
-body.page-template-template-front-page #main,
-.layout-1c #main {
+.layout-1c .site-main,
+body.page-template-template-front-page .site-main {
   float: none;
   width: 100%;
+}
+/* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
+body.page-template-template-front-page .site-main {
+  margin: 0;
 }
 /**
  * Two columns
  */
-.layout-2c-r #main {
+.layout-2c-r .site-main {
   float: right;
 }
-.layout-2c-r #sidebar-primary,
-.layout-2c-r #sidebar-secondary {
+.layout-2c-r .sidebar-primary,
+.layout-2c-r .sidebar-secondary {
   float: left;
   clear: left;
   margin-left: -15px;
@@ -671,71 +672,71 @@ body.page-template-template-front-page #main,
 /**
  * Three columns
  */
-.layout-3c-c #sidebar-primary,
-.layout-3c-r #sidebar-primary,
-.layout-3c-l #sidebar-primary,
-.layout-3c-c #sidebar-secondary,
-.layout-3c-r #sidebar-secondary,
-.layout-3c-l #sidebar-secondary {
+.layout-3c-c .sidebar-primary,
+.layout-3c-r .sidebar-primary,
+.layout-3c-l .sidebar-primary,
+.layout-3c-c .sidebar-secondary,
+.layout-3c-r .sidebar-secondary,
+.layout-3c-l .sidebar-secondary {
   clear: none;
   width: 225px;
 }
-.layout-3c-l #main,
-.layout-3c-r #main {
+.layout-3c-l .site-main,
+.layout-3c-r .site-main {
   width: 500px;
 }
 /* Three columns, center */
-.layout-3c-c #main {
+.layout-3c-c .site-main {
   float: left;
   width: 500px;
   margin-left: 250px;
 }
-.layout-3c-c #sidebar-primary {
+.layout-3c-c .sidebar-primary {
   float: left;
   margin-left: -765px;
 }
-.layout-3c-c #sidebar-secondary {
+.layout-3c-c .sidebar-secondary {
   float: right;
   margin-right: -15px;
 }
 /* Three columns, left */
-.layout-3c-l #main {
+.layout-3c-l .site-main {
   float: left;
 }
-.layout-3c-l #sidebar-primary,
-.layout-3c-l #sidebar-secondary {
+.layout-3c-l .sidebar-primary,
+.layout-3c-l .sidebar-secondary {
   float: left;
   margin-left: 25px;
 }
-.layout-3c-l #sidebar-primary {
+.layout-3c-l .sidebar-primary {
   margin-left: 40px;
 }
-.layout-3c-l #sidebar-secondary {
+.layout-3c-l .sidebar-secondary {
   margin-right: -15px;
 }
 /* Three columns, right */
-.layout-3c-r #main {
+.layout-3c-r .site-main {
   float: right;
 }
-.layout-3c-r #sidebar-primary,
-.layout-3c-r #sidebar-secondary {
+.layout-3c-r .sidebar-primary,
+.layout-3c-r .sidebar-secondary {
   float: left;
   margin-right: 25px;
 }
-.layout-3c-r #sidebar-primary {
+.layout-3c-r .sidebar-primary {
   margin-left: -15px;
 }
 /* =============================================================================
    Layout:  Topbar
    ========================================================================== */
-#topbar {
+.topbar {
   position: relative;
   width: 100%;
   min-height: 60px;
   background: #262626 url(images/topbar.png) repeat;
   color: #cccccc;
 }
-#topbar:after {
+.topbar:after {
   content: "";
   position: absolute;
   bottom: -11px;
@@ -1055,7 +1056,7 @@ body.page-template-template-front-page #main,
 /* =============================================================================
    Layout:  Slider
    ========================================================================== */
-#slider {
+.cakifo-slider {
   position: relative;
   background-color: #ffffdf;
   border: double #eeddbd;
@@ -1166,7 +1167,7 @@ body.page-template-template-front-page #main,
   text-align: center;
   text-indent: 0;
 }
-#slider:hover .flex-direction-nav a {
+.cakifo-slider:hover .flex-direction-nav a {
   opacity: 1;
 }
 .flex-direction-nav .flex-prev {
@@ -1830,8 +1831,8 @@ iframe[seamless] {
   margin: 0;
   margin-left: 20px;
 }
-#sidebar-after-singular .related-posts .with-thumbnails,
-#sidebar-after-single .related-posts .with-thumbnails {
+.sidebar-after-singular .related-posts .with-thumbnails,
+.sidebar-after-single .related-posts .with-thumbnails {
   margin-left: 0;
 }
 .related-posts .with-thumbnails .related-post {
@@ -1921,19 +1922,19 @@ iframe[seamless] {
   -o-hyphens: auto;
   hyphens: auto;
 }
-#recent-posts:hover .recent-post {
+.recent-post-columns:hover .recent-post {
   opacity: 0.75;
 }
-#recent-posts:hover .recent-post:hover {
+.recent-post-columns:hover .recent-post:hover {
   opacity: 1;
 }
 /* =============================================================================
    Components:  Headlines Lists
    ========================================================================== */
-#headlines {
+.headline-columns {
   margin: 40px 0;
 }
-#headlines .widget-title {
+.headline-columns .widget-title {
   margin-bottom: 15px;
 }
 .headline-list {
@@ -2789,18 +2790,18 @@ html .btn-inverse:hover {
    Media Queries:  Max-width 1080px
    ========================================================================== */
 @media screen and (max-width: 1080px) {
-  #main {
+  .site-main {
     width: 65%;
   }
-  #sidebar-primary,
-  #sidebar-secondary {
+  .sidebar-primary,
+  .sidebar-secondary {
     width: 32%;
   }
   .main-navigation {
     width: 100%;
   }
   /* Remove box-shadow and border-radius */
-  #content,
+  .site-content,
   .site-footer {
     border-radius: 0;
     box-shadow: none;
@@ -2821,31 +2822,31 @@ html .btn-inverse:hover {
     margin-right: 2%;
   }
   /* Prevent the sidebars on 3 column layouts from moving underneath the content */
-  .layout-3c-c #main,
-  .layout-3c-r #main,
-  .layout-3c-l #main {
+  .layout-3c-c .site-main,
+  .layout-3c-r .site-main,
+  .layout-3c-l .site-main {
     float: none;
     width: 50%;
   }
-  .layout-3c-c #sidebar-primary,
-  .layout-3c-r #sidebar-primary,
-  .layout-3c-l #sidebar-primary,
-  .layout-3c-c #sidebar-secondary,
-  .layout-3c-r #sidebar-secondary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-c .sidebar-primary,
+  .layout-3c-r .sidebar-primary,
+  .layout-3c-l .sidebar-primary,
+  .layout-3c-c .sidebar-secondary,
+  .layout-3c-r .sidebar-secondary,
+  .layout-3c-l .sidebar-secondary {
     width: 20%;
   }
-  .layout-3c-c #sidebar-primary {
+  .layout-3c-c .sidebar-primary {
     margin-left: -740px;
   }
-  .layout-3c-l #sidebar-primary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-l .sidebar-primary,
+  .layout-3c-l .sidebar-secondary {
     margin-right: 1%;
   }
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-l .sidebar-secondary {
     float: right;
   }
-  .layout-3c-r #sidebar-secondary {
+  .layout-3c-r .sidebar-secondary {
     margin-left: 2%;
   }
 }
@@ -2854,40 +2855,40 @@ html .btn-inverse:hover {
    ========================================================================== */
 @media screen and (max-width: 980px) {
   /* Switch padding from 40px to 25px */
-  #content,
+  .site-content,
   .site-footer {
     padding-left: 25px;
     padding-right: 25px;
   }
-  #site-title {
+  .site-title {
     margin-left: 25px;
   }
-  #site-description {
+  .site-description {
     margin-right: 25px;
   }
-  /* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
-  .layout-3c-c #main,
-  .layout-3c-r #main,
-  .layout-3c-l #main {
+  /* Turn 3 column layouts into a layout with a full width .site-main and two 50% width sidebars underneath */
+  .layout-3c-c .site-main,
+  .layout-3c-r .site-main,
+  .layout-3c-l .site-main {
     clear: both;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
-  .layout-3c-c #sidebar-primary,
-  .layout-3c-r #sidebar-primary,
-  .layout-3c-l #sidebar-primary,
-  .layout-3c-c #sidebar-secondary,
-  .layout-3c-r #sidebar-secondary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-c .sidebar-primary,
+  .layout-3c-r .sidebar-primary,
+  .layout-3c-l .sidebar-primary,
+  .layout-3c-c .sidebar-secondary,
+  .layout-3c-r .sidebar-secondary,
+  .layout-3c-l .sidebar-secondary {
     clear: none;
     width: 48%;
     margin-left: 0;
     margin-right: 0;
   }
-  .layout-3c-c #sidebar-secondary,
-  .layout-3c-r #sidebar-secondary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-c .sidebar-secondary,
+  .layout-3c-r .sidebar-secondary,
+  .layout-3c-l .sidebar-secondary {
     float: right;
   }
   /* Show Recent Posts in one column */
@@ -2937,15 +2938,15 @@ html .btn-inverse:hover {
    ========================================================================== */
 @media screen and (max-width: 768px) {
   /* Make the main content full width and move the sidebars underneath it */
-  #main {
+  .site-main {
     float: none;
     width: 100%;
   }
-  #sidebar-primary {
+  .sidebar-primary {
     float: left;
     width: 48%;
   }
-  #sidebar-secondary {
+  .sidebar-secondary {
     width: 48%;
     float: right;
   }
@@ -2967,11 +2968,11 @@ html .btn-inverse:hover {
     margin-bottom: 10px;
   }
   /* If there's 3 columns of footer widgets, turn them into 2 columns */
-  #sidebar-subsidiary.three-col .widget-area {
+  .sidebar-subsidiary.three-col .widget-area {
     width: 48%;
     margin-right: 4%;
   }
-  #sidebar-subsidiary.three-col .widget-area + .widget-area {
+  .sidebar-subsidiary.three-col .widget-area + .widget-area {
     margin-right: 0;
   }
   /* Make the Category Headlines list smaller */
@@ -3013,7 +3014,7 @@ html .btn-inverse:hover {
     margin: 0 auto 20px;
   }
   /* Hide the slider */
-  #slider {
+  .slider {
     display: none;
   }
   /* Make the Recent Posts list smaller */
@@ -3185,8 +3186,8 @@ html .btn-inverse:hover {
   /**
   	 * Insert page breaks before the sidebar and comments
   	 */
-  #sidebar-primary,
-  #comments {
+  .sidebar-primary,
+  .comments-area {
     page-break-before: always;
   }
   /**
@@ -3252,11 +3253,11 @@ html .btn-inverse:hover {
   iframe[src*="youtube"],
   blockquote:before,
   blockquote p:first-of-type:after,
-  #topbar,
-  #slider,
-  #respond,
+  .topbar,
+  .cakifo-slider,
+  .comment-respond,
   #wpadminbar,
-  #site-title img,
+  .site-title img,
   .pagination,
   .search,
   .loop-meta-home,
@@ -3265,11 +3266,6 @@ html .btn-inverse:hover {
   .comment .permalink,
   .comment-edit-link,
   .comment-reply-link,
-  .twitter-share,
-  .fb-like,
-  .delicious-share-button,
-  .digg-share-button,
-  [id*="___plusone_"],
   .more-link,
   .comments-link,
   .post-edit-link {
@@ -3298,42 +3294,42 @@ html .btn-inverse:hover {
     max-width: 100%;
     position: relative !important;
   }
-  #main,
-  #sidebar-primary,
-  #sidebar-secondary {
+  .site-main,
+  .sidebar-primary,
+  .sidebar-secondary {
     float: none;
     width: 100%;
   }
-  .layout-3c-c #main,
-  .layout-3c-r #main,
-  .layout-3c-l #main {
+  .layout-3c-c .site-main,
+  .layout-3c-r .site-main,
+  .layout-3c-l .site-main {
     clear: both;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
-  .layout-3c-c #sidebar-primary,
-  .layout-3c-r #sidebar-primary,
-  .layout-3c-l #sidebar-primary,
-  .layout-3c-c #sidebar-secondary,
-  .layout-3c-r #sidebar-secondary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-c .sidebar-primary,
+  .layout-3c-r .sidebar-primary,
+  .layout-3c-l .sidebar-primary,
+  .layout-3c-c .sidebar-secondary,
+  .layout-3c-r .sidebar-secondary,
+  .layout-3c-l .sidebar-secondary {
     clear: none;
     width: 48%;
     margin-left: 0;
     margin-right: 0;
   }
-  .layout-3c-c #sidebar-secondary,
-  .layout-3c-r #sidebar-secondary,
-  .layout-3c-l #sidebar-secondary {
+  .layout-3c-c .sidebar-secondary,
+  .layout-3c-r .sidebar-secondary,
+  .layout-3c-l .sidebar-secondary {
     float: right;
   }
   /**
   	 * Remove margins, paddings and borders
   	 */
-  #content,
-  #footer,
-  #headlines,
+  .site-content,
+  .site-footer,
+  .headline-columns,
   .author-profile,
   .singular .hentry,
   .widget-title,
@@ -3343,9 +3339,9 @@ html .btn-inverse:hover {
   blockquote span {
     margin: 0;
   }
-  #branding,
-  #content,
-  #footer,
+  .site-content,
+  .site-footer,
+  .site-header,
   .widget-title,
   .section-title,
   .hentry,

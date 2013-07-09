@@ -9,11 +9,6 @@ body {
 	unicode-bidi: embed;
 }
 
-.last {
-	margin-left: 0 !important;
-	margin-right: auto;
-}
-
 pre {
 	direction: ltr;
 	text-align: left;
@@ -178,50 +173,50 @@ thead th {
 /**
  * Layout: Content
  */
-#main {
+.site-main {
 	float: right;
 }
 
-#sidebar-primary,
-#sidebar-secondary {
+.sidebar-primary,
+.sidebar-secondary {
 	float: left;
 }
 
-#sidebar-secondary {
+.sidebar-secondary {
 	clear: left;
 }
 
 /**
  * Layout: Footer
  */
-#footer .copyright {
+.site-footer .copyright {
 	float: right;
 }
 
-#footer .credit {
+.site-footer .credit {
 	float: left;
 	text-align: left;
 }
 
 /* Footer Widget Area */
-#sidebar-subsidiary.two-col .widget-area {
+.sidebar-subsidiary.two-col .widget-area {
 	float: right;
 	margin-left: 4%;
 	margin-right: auto;
 }
 
-#sidebar-subsidiary.two-col .widget-area + .widget-area {
+.sidebar-subsidiary.two-col .widget-area + .widget-area {
 	margin-left: 0;
 	margin-right: auto;
 }
 
-#sidebar-subsidiary.three-col .widget-area {
+.sidebar-subsidiary.three-col .widget-area {
 	float: right;
 	margin-left: 3.5%;
 	margin-right: auto;
 }
 
-#sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
+.sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
 	margin-left: 0;
 	margin-right: auto;
 }
@@ -229,12 +224,12 @@ thead th {
 /**
  * Layout: Theme Layouts
  */
-.layout-2c-r #main {
+.layout-2c-r .site-main {
 	float: left;
 }
 
-.layout-2c-r #sidebar-primary,
-.layout-2c-r #sidebar-secondary {
+.layout-2c-r .sidebar-primary,
+.layout-2c-r .sidebar-secondary {
 	float: right;
 	clear: right;
 	margin-right: -15px;
@@ -242,57 +237,57 @@ thead th {
 }
 
 /* Three columns, center */
-.layout-3c-c #main {
+.layout-3c-c .site-main {
 	float: right;
 	margin-right: 250px;
 	margin-left: auto;
 }
 
-.layout-3c-c #sidebar-primary {
+.layout-3c-c .sidebar-primary {
 	float: right;
 	margin-right: -765px;
 	margin-left: auto;
 }
 
-.layout-3c-c #sidebar-secondary {
+.layout-3c-c .sidebar-secondary {
 	float: left;
 	margin-left: -15px;
 	margin-right: auto;
 }
 
 /* Three columns, left */
-.layout-3c-l #main {
+.layout-3c-l .site-main {
 	float: right;
 }
 
-.layout-3c-l #sidebar-primary,
-.layout-3c-l #sidebar-secondary {
+.layout-3c-l .sidebar-primary,
+.layout-3c-l .sidebar-secondary {
 	float: right;
 	margin-right: 25px;
 	margin-left: auto;
 }
 
-.layout-3c-l #sidebar-primary {
+.layout-3c-l .sidebar-primary {
 	margin-right: 40px;
 	margin-left: auto;
 }
 
-.layout-3c-l #sidebar-secondary {
+.layout-3c-l .sidebar-secondary {
 	margin-left: -15px;
 }
 
 /* Three columns, right */
-.layout-3c-r #main {
+.layout-3c-r .site-main {
 	float: left;
 }
 
-.layout-3c-r #sidebar-primary,
-.layout-3c-r #sidebar-secondary {
+.layout-3c-r .sidebar-primary,
+.layout-3c-r .sidebar-secondary {
 	float: right;
 	margin-left: 25px;
 }
 
-.layout-3c-r #sidebar-primary {
+.layout-3c-r .sidebar-primary {
 	margin-right: -15px;
 	margin-left: auto;
 }
@@ -300,7 +295,7 @@ thead th {
 /**
  * Layout: Slider
  */
-#slider .flex-active-slide {
+.cakifo-slider .flex-active-slide {
 	float: right !important;
 }
 
@@ -370,7 +365,6 @@ thead th {
 	display: inline-block;
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
@@ -380,7 +374,6 @@ thead th {
 	margin-left: auto;
 	-webkit-transition: margin-right 200ms ease-in-out;
 	-moz-transition: margin-right 200ms ease-in-out;
-	-o-transition: margin-right 200ms ease-in-out;
 	-ms-transition: margin-right 200ms ease-in-out;
 	transition: margin-right 200ms ease-in-out;
 }
@@ -546,11 +539,11 @@ thead th {
 	padding-left: 0;
 }
 
-#commentform .form-author {
+.comment-form .form-author {
 	float: right;
 }
 
-#commentform .form-email {
+.comment-form .form-email {
 	float: left;
 }
 
@@ -632,9 +625,9 @@ thead th {
 		margin-right: auto;
 	}
 
-	.layout-3c-c #sidebar-secondary,
-	.layout-3c-r #sidebar-secondary,
-	.layout-3c-l #sidebar-secondary {
+	.layout-3c-c .sidebar-secondary,
+	.layout-3c-r .sidebar-secondary,
+	.layout-3c-l .sidebar-secondary {
 		float: left;
 	}
 
@@ -662,25 +655,25 @@ thead th {
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
-	#sidebar-primary {
+	.sidebar-primary {
 		float: right;
 	}
 
-	#sidebar-secondary {
+	.sidebar-secondary {
 		float: left;
 	}
 
-	 .slide .thumbnail {
+	.slide .thumbnail {
 		margin-left: 25px;
 		margin-right: auto;
 	}
 
-	#sidebar-subsidiary.three-col .widget-area {
+	.sidebar-subsidiary.three-col .widget-area {
 		margin-left: 4%;
 		margin-right: auto;
 	}
 
-	#sidebar-subsidiary.three-col .widget-area + .widget-area {
+	.sidebar-subsidiary.three-col .widget-area + .widget-area {
 		margin-left: 0;
 		margin-right: auto;
 	}
