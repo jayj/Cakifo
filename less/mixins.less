@@ -131,32 +131,30 @@
 
 // Buttons
 // -------------------------
-.button(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%) ) {
-	.buttonBackground(@startColor, @endColor, @textColor, @shadowColor);
-	box-shadow: inset 0 1px 0 fade(@white, 22%), 0 1px 2px fade(@black, 5%);
-	border-radius: 3px;
-	#font > .shorthand(16, bold, 1.6);
-	padding: 4px 14px;
 
+.btn-pseudo-states(@background, @secondary, @color) {
+	#gradient > .vertical(@background, @secondary);
+	border-color:
+		darken(@secondary, 8%)
+		darken(@secondary, 8%)
+		darken(@secondary, 20%);
+	color: @color;
+	text-shadow: 0 1px 0 fade(contrast(@color), 50%); // Use the opposite color of @color
+
+	&:hover,
 	&:focus {
-		.tab-focus;
+		#gradient > .vertical(darken(@background, 5%), darken(@secondary, 8%));
+		border-color:
+			darken(@secondary, 15%)
+			darken(@secondary, 15%)
+			darken(@secondary, 30%);
+		color: @color;
+		text-decoration: none;
 	}
 }
 
-.buttonBackground(@startColor, @endColor, @textColor: @grayDark, @shadowColor: fade(@white, 75%)) {
-	#gradient > .vertical(@startColor, @endColor);
-	background-repeat: repeat-x;
-	border: 1px solid;
-	border-color: darken(@endColor, 8%) darken(@endColor, 8%) darken(@endColor, 20%);
-	color: @textColor;
-	text-shadow: 0 1px 0 @shadowColor;
-
-	&:hover {
-		#gradient > .vertical(darken(@startColor, 3%), darken(@endColor, 5%));
-		border-color: darken(@endColor, 20%) darken(@endColor, 20%) darken(@endColor, 30%);
-		color: @textColor;
-		.transition(background-position 100ms linear);
-	}
+// Labels
+// --------------------------------------------------
 
 	&:active {
 		box-shadow: inset 0 2px 4px fade(@black, 15%), 0 1px 2px fade(@black, 5%);
