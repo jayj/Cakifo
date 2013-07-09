@@ -101,6 +101,21 @@
 	margin: 0;
 }
 
+// Selection text
+// -------------------------
+.text-selection() {
+	&::-moz-selection {
+		background-color: @color-selection;
+		color: @color-selection-text;
+		text-shadow: none;
+	}
+	&::selection {
+		background-color: @color-selection;
+		color: @color-selection-text;
+		text-shadow: none;
+	}
+}
+
 // Placeholder text
 // -------------------------
 .placeholder(@color: @placeholderText, @textShadow: none) {
