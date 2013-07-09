@@ -18,13 +18,13 @@
 
 	<?php do_atomic( 'close_content' ); // cakifo_close_content ?>
 
-</div> <!-- #content -->
+</div> <!-- .site-content -->
 
 	<?php do_atomic( 'after_content' ); // cakifo_after_content ?>
 
 	<?php do_atomic( 'before_footer' ); // cakifo_before_footer ?>
 
-	<footer id="footer" role="contentinfo">
+	<footer id="footer" class="site-footer" role="contentinfo">
 
 		<?php do_atomic( 'open_footer' ); // cakifo_open_footer ?>
 
@@ -45,7 +45,7 @@
 
 		<?php do_atomic( 'close_footer' ); // cakifo_close_footer ?>
 
-	</footer> <!-- #footer -->
+	</footer> <!-- .site-footer -->
 
 	<?php do_atomic( 'after_footer' ); // cakifo_after_footer ?>
 
@@ -53,7 +53,7 @@
 
 	<?php do_atomic( 'close_body' ); // cakifo_close_body ?>
 
-	<?php wp_footer(); // wp_footer ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>

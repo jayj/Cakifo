@@ -12,7 +12,7 @@ get_header(); // Loads the header.php template ?>
 
 	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
 
-	<div id="main">
+	<main id="main" class="site-main" role="main">
 
 		<?php do_atomic( 'open_main' ); // cakifo_open_main ?>
 
@@ -28,7 +28,7 @@ get_header(); // Loads the header.php template ?>
 
 		<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
 
-	</div> <!-- #main -->
+	</main> <!-- .site-main -->
 
 	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
 

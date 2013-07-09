@@ -36,7 +36,7 @@
 
 	<?php do_atomic( 'before_header' ); // cakifo_before_header ?>
 
-	<header id="branding" role="banner" class="clearfix">
+	<header id="branding" class="site-header clearfix" role="banner">
 
 		<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
@@ -47,7 +47,7 @@
 
 		<?php do_atomic( 'header' ); // cakifo_header ?>
 
-	</header> <!-- #branding -->
+	</header> <!-- .site-header -->
 
 	<?php do_atomic( 'after_header' ); // cakifo_after_header ?>
 
@@ -55,7 +55,7 @@
 
 <?php do_atomic( 'before_content' ); // cakifo_before_content ?>
 
-<div id="content" class="clearfix">
+<div id="content" class="site-content clearfix">
 
 	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
 

@@ -14,11 +14,11 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 	return;
 ?>
 
-<section id="comments">
+<section id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
 
-		<h2 id="comments-number" class="comments-header">
+		<h2 class="comments-header">
 			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?>
 		</h2>
 
@@ -61,4 +61,4 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
 	<?php comment_form(); // Loads the comment form ?>
 
-</section> <!-- #comments -->
+</section> <!-- .comments-area -->
