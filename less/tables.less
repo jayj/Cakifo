@@ -2,15 +2,13 @@
 // Tables
 // =============================================================================
 
-@tableBorder: #ddd;
-
 table {
 	width: 100%;
-	margin: 0 0 @smallGutterWidth 0;
-	background-color: @white;
-	box-shadow: 0 1px 2px fade(@black, 7%);
-	border-left: 1px solid @tableBorder;
-	border-right: 1px solid @tableBorder;
+	margin: 0 0 @gutter-width-small 0;
+	background-color: @table-bg;
+	box-shadow: 0 1px 2px fade(#000, 7%);
+	border-left: 1px solid @table-border-color;
+	border-right: 1px solid @table-border-color;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -18,17 +16,16 @@ table {
 th,
 td {
 	padding: 8px;
-	border: 1px solid @tableBorder;
+	border: 1px solid @table-border-color;
 	text-align: left;
 }
 
 tr:hover td {
-	background: darken(#fafafa, 0.5%);
+	background: @table-bg-hover;
 }
 
 thead th {
-	background: lighten(@highlightBlue, 1.3%);
-	border-left: 1px solid #e9f2f7;
+	background: @highlight-bg;
 }
 
 th {
@@ -37,11 +34,10 @@ th {
 
 // tfoot
 tfoot td {
-	background: #f5f5f5;
-	box-shadow: inset 0 1px 1px 0 @grayLighter;
-	color: darken(@grayLight, 20%);
-	.font-size(11);
-	text-transform: uppercase;
+	background: @table-bg-accent;
+	box-shadow: inset 0 1px 1px 0 @gray-lighter;
+	color: darken(@gray-light, 20%);
+	.font-size(@font-size-mini);
 }
 
 // Table caption

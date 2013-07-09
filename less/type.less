@@ -14,36 +14,36 @@ h1 {
 }
 
 h1, h2 {
-	.font-size(@headingsFontSize);
+	.font-size(@headings-font-size);
 	letter-spacing: -1px;
 }
 
 h3 {
-	.font-size(@headingsFontSize - 4);
-	color: @orangeDark;
+	.font-size(@headings-size-medium);
+	color: @orange-dark;
 }
 
 h4 {
-	.font-size(@headingsFontSize - 5);
+	.font-size(@headings-size-small);
 }
 
 h5 {
-	.font-size(@headingsFontSize - 6);
+	.font-size(@headings-size-mini);
 }
 
 h6 {
-	#font > .shorthand(@headingsFontSize - 8, normal);
+	#font > .shorthand(@headings-size-micro, normal);
 }
 
 /* Entry titles */
 .entry-title {
+	.font-size(@headings-size-large);
 	margin-bottom: 0;
-	.font-size(@headingsFontSize + 4);
 }
 
 /* h3 headings in post content */
 .entry-content h3 {
-	background: lighten(@grayLighter, 2.5%);
+	background: lighten(@gray-lighter, 2.5%);
 	padding: 8px 10px;
 }
 
@@ -54,9 +54,9 @@ h6 {
 
 	// Links
 	a {
-		color: @grayDark;
+		color: @gray-dark;
 
-		&:hover { color: @linkColorHover; }
+		&:hover { color: @link-color-hover; }
 	}
 }
 
@@ -64,16 +64,16 @@ h6 {
 .section-title {
 	.section-title-bar;
 	box-shadow:
-		0 0 0 3px fade(@white, 90%),
-		-4px 0 3px fade(@black, 30%),
-		inset 0 1px 3px #ac3d18;
+		0 0 0 3px fade(#fff, 90%),
+		-4px 0 3px fade(#000, 30%),
+		inset 0 1px 3px darken(@title-section-bg, 10%);
 
 	a {
 		display: block;
-		color: @white;
+		color: #fff;
 
 		&:hover {
-			color: @grayLighter;
+			color: @gray-lighter;
 		}
 	}
 }
@@ -83,7 +83,7 @@ h6 {
    ========================================================================== */
 
 li {
-	line-height: ( @baseLineHeight + 0.4 );
+	line-height: ( @line-height-base * 1.25 );
 }
 
 // Ordered lists
@@ -119,6 +119,7 @@ q {
 
 /**
  * Blockquotes
+ * @todo New quote styles
  */
 blockquote {
 	.quote-box(30px 50px);
@@ -148,7 +149,7 @@ blockquote {
 	cite, span {
 		display: block;
 		margin-top: 20px;
-		.font-size(@baseFontSize - 1);
+		.font-size(@font-size-medium);
 		color: #91acbe;
 	}
 
@@ -161,7 +162,7 @@ blockquote {
 	&.alignright {
 		clear: none;
 		width: 33%;
-		padding: 30px @smallGutterWidth;
+		padding: 30px @gutter-width-small;
 	}
 
 	&.aligncenter {
@@ -170,11 +171,11 @@ blockquote {
 	}
 
 	&.alignleft {
-		margin-right: @smallGutterWidth;
+		margin-right: @gutter-width-small;
 	}
 
 	&.alignright {
-		margin-left: @smallGutterWidth;
+		margin-left: @gutter-width-small;
 	}
 
 	// The quote before the blockquote
@@ -212,7 +213,7 @@ blockquote {
 
 /* Pull quotes */
 .pull {
-	.font-size(19);
+	.font-size(@headings-size-micro);
 	/* Reset styles inherited from 'blockquote' */
 	background: none;
 	border: none;
@@ -222,11 +223,11 @@ blockquote {
 	// Aligned pull quotes
 	&.alignleft {
 		padding-right: 0;
-		margin: 0 @smallGutterWidth 0 0;
+		margin: 0 @gutter-width-small 0 0;
 	}
 
 	&.alignright {
-		margin: 0 0 0 @smallGutterWidth;
+		margin: 0 0 0 @gutter-width-small;
 	}
 
 	// The pullquote quotes
@@ -252,7 +253,7 @@ blockquote {
  * Corrects font family set oddly in Safari 5 and Chrome.
  */
 code, kbd, pre, samp {
-	#font > .monospace(@baseFontSize, normal);
+	#font > .monospace(@font-size-base, normal);
 }
 
 /**
@@ -267,14 +268,14 @@ code {
  */
 pre {
 	overflow: auto;
-	padding: @smallGutterWidth;
-	background: lighten(@grayDark, 6%);
+	padding: @gutter-width-small;
+	background: lighten(@gray-dark, 6%);
 	border-radius: 5px;
-	color: @white;
+	color: #fff;
 	white-space: pre-wrap; // Improves readability of pre-formatted text
 
 	code {
-		color: @white;
+		color: #fff;
 	}
 }
 
@@ -312,8 +313,8 @@ hr {
 	border: 0;
 	height: 0;
 	padding: 0;
-	margin: @smallGutterWidth 0;
-	border-bottom: 4px double @grayLighter;
+	margin: @gutter-width-small 0;
+	border-bottom: 4px double @gray-lighter;
 }
 
 // Address styling not present in IE 8/9.
@@ -348,14 +349,4 @@ sub {
    Typography:  Selections
    ========================================================================== */
 
-::-moz-selection {
-	background: @selectionColor;
-	color: @selectionTextColor;
-	text-shadow: none;
-}
-
-::selection {
-	background: @selectionColor;
-	color: @selectionTextColor;
-	text-shadow: none;
-}
+.text-selection();

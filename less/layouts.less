@@ -2,26 +2,25 @@
 // Layouts
 // =============================================================================
 
-
 #content,
-#footer {
+.site-footer {
 	position: relative;
-	padding: @gutterWidth @gutterWidth @gutterWidth;
+	padding: @gutter-width @gutter-width @gutter-width;
 	background-color: #fff;
-	border-top: 5px solid @orangeLight;
+	border-top: @orange-line;
 	border-radius: 0 0 5px 5px;
-	box-shadow: 1px 1px 10px fade(@black, 10%);
+	box-shadow: 1px 1px 10px fade(#000, 10%);
 }
 
 #main {
 	position: relative;
-	width: @mainWidth;
+	width: @width-main;
 	float: left;
 }
 
 #sidebar-primary,
 #sidebar-secondary {
-	width: @sideWidth;
+	width: @width-secondary;
 	float: right;
 }
 
@@ -33,16 +32,15 @@
    Layout:  Header
    ========================================================================== */
 
-#branding {
-	padding: (@gutterWidth + 20px) 0 (@gutterWidth + 10px);
+.site-header {
+	padding: (@gutter-width + 20px) 0 (@gutter-width + 10px);
 }
 
 #site-title {
 	float: left;
-	margin: 0 0 0 @gutterWidth;
-
+	margin: 0 0 0 @gutter-width;
 	#font > .shorthand(46, normal);
-	text-shadow: 0 1px 0 @white;
+	text-shadow: 0 1px 0 #fff;
 	letter-spacing: -2px;
 
 	img {
@@ -53,19 +51,19 @@
 	}
 
 	a {
-		color: @linkColor;
+		color: @link-color;
 
-		&:hover { color: @linkColorHover; }
+		&:hover { color: @link-color-hover; }
 	}
 }
 
 #site-description {
 	float: right;
-	margin: @smallGutterWidth @gutterWidth 0 0;
+	margin: @gutter-width-small @gutter-width 0 0;
 	padding: 2px 8px;
-	.font-size(21);
-	background-color: @white;
-	background-color: fade(@white, 53%);
+	.font-size(@headings-size-small);
+	background-color: #fff;
+	background-color: fade(#fff, 53%);
 	border-radius: 3px;
 	color: @gray;
 
@@ -78,18 +76,18 @@
  * Use Flexbox to vertical center the site title and description
  */
 .flexbox {
-	#branding hgroup {
+	.site-header hgroup {
 		.flex-display();
 	}
 
 	#site-title {
 		float: none;
-		margin: auto auto auto @gutterWidth;
+		margin: auto auto auto @gutter-width;
 	}
 
 	#site-description {
 		float: none;
-		margin: auto @gutterWidth auto auto;
+		margin: auto @gutter-width auto auto;
 	}
 }
 
@@ -97,12 +95,12 @@
    Layout:  Footer
    ========================================================================== */
 
-#footer {
+.site-footer {
 	position: relative;
-	padding-top: @gutterWidth;
-	margin: @gutterWidth 0;
-	background-color: #f8fafb;
-	text-shadow: 1px 1px 0 @white;
+	padding-top: @gutter-width;
+	margin: @gutter-width 0;
+	background-color: lighten(@highlight-bg, 1.5%);
+	text-shadow: 1px 1px 0 #fff;
 
 	.footer-content {
 		margin-top: 10px;
@@ -118,7 +116,8 @@
 		float: left;
 	}
 
-	.credit {
+	.credit,
+	.column-last {
 		float: right;
 		text-align: right;
 	}
@@ -129,7 +128,7 @@
  */
 #sidebar-subsidiary {
 	clear: both;
-	margin-top: @smallGutterWidth;
+	margin-top: @gutter-width-small;
 
 	/* Two columns */
 	&.two-col .widget-area {
@@ -158,10 +157,6 @@
    Layout:  Theme Layouts
    ========================================================================== */
 
-// Set the width of the three column layouts
-@three-col-main-width: 500px;
-@three-col-sidebar-width: ( @three-col-main-width / 2 - @smallGutterWidth ); // 225px
-
 /**
  * One column layout
  *
@@ -186,7 +181,7 @@ body.page-template-template-front-page #main,
 	#sidebar-secondary {
 		float: left;
 		clear: left;
-		margin-left: ( -(@smallGutterWidth - 10px) );
+		margin-left: ( -(@gutter-width-small - 10px) );
 	}
 }
 
@@ -220,12 +215,12 @@ body.page-template-template-front-page #main,
 
 	#sidebar-primary {
 		float: left;
-		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutterWidth) ); // -765px
+		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutter-width) ); // -765px
 	}
 
 	#sidebar-secondary {
 		float: right;
-		margin-right: ( -(@smallGutterWidth - 10px) );
+		margin-right: ( -(@gutter-width-small - 10px) );
 	}
 }
 
@@ -238,15 +233,15 @@ body.page-template-template-front-page #main,
 	#sidebar-primary,
 	#sidebar-secondary {
 		float: left;
-		margin-left: @smallGutterWidth;
+		margin-left: @gutter-width-small;
 	}
 
 	#sidebar-primary {
-		margin-left: @gutterWidth;
+		margin-left: @gutter-width;
 	}
 
 	#sidebar-secondary {
-		margin-right: ( -(@smallGutterWidth - 10px) );
+		margin-right: ( -(@gutter-width-small - 10px) );
 	}
 }
 
@@ -259,10 +254,10 @@ body.page-template-template-front-page #main,
 	#sidebar-primary,
 	#sidebar-secondary {
 		float: left;
-		margin-right: @smallGutterWidth;
+		margin-right: @gutter-width-small;
 	}
 
 	#sidebar-primary {
-		margin-left: ( -(@smallGutterWidth - 10px) );
+		margin-left: ( -(@gutter-width-small - 10px) );
 	}
 }

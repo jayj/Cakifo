@@ -6,31 +6,19 @@
  * Post format link
  */
 .entry-header .post-format-link {
+	.label-variant();
 	position: absolute;
 	top: 10px;
 	right: 0;
-	float: right;
-	padding: 3px 10px;
-	.font-size(12);
-	background-color: @grayLighter;
-	border-radius: 3px;
-	color: lighten(@gray, 15%);
-	text-transform: uppercase;
-
-	&:hover,
-	.format-status &:hover {
-		background-color: @orangeDark;
-		color: @white;
-	}
 }
 
 /**
  * Format: Chat
  */
 .chat-transcript {
-	margin: @smallGutterWidth 0;
+	margin: @gutter-width-small 0;
 	// Give the chat transcripts a monospace font
-	#font > .monospace(14);
+	#font > .monospace(@font-size-small);
 }
 
 .chat-row {
@@ -42,7 +30,7 @@
 	color: #000;
 
 	cite {
-		.font-size(12);
+		.font-size(@font-size-micro);
 		font-style: normal;
 		font-weight: bold;
 		text-transform: uppercase;
@@ -50,8 +38,8 @@
 	}
 
 	// Give the chat person different colors
-	.chat-speaker-1 & { color: @orangeDark; }
-	.chat-speaker-2 & { color: darken(@blueDark, 5%); }
+	.chat-speaker-1 & { color: @orange-dark; }
+	.chat-speaker-2 & { color: darken(@blue-dark, 5%); }
 	.chat-speaker-3 & { color: @purple; }
 	.chat-speaker-4 & { color: darken(@green, 5%); }
 	.chat-speaker-5 & { color: darken(@pink, 5%); }
@@ -60,7 +48,7 @@
 
 /* The speaker text */
 .chat-text {
-	padding-left: @smallGutterWidth;
+	padding-left: @gutter-width-small;
 
 	p {
 		margin-top: 10px;
@@ -79,25 +67,25 @@
  */
 .format-status .entry-header {
 	position: relative;
-	margin-bottom: @smallGutterWidth;
+	margin-bottom: @gutter-width-small;
 
 	.entry-author {
 		display: inline-block;
 		margin: 0;
-		.font-size(16);
+		.font-size(@font-size-base);
 		font-weight: normal;
 	}
 
 	.entry-date {
 		margin: 0;
-		.font-size(13);
+		.font-size(@font-size-small);
 		font-weight: normal;
 	}
 
 	a {
 		color: @gray;
 
-		&:hover { color: @linkColorHover; }
+		&:hover { color: @link-color-hover; }
 	}
 }
 
@@ -114,7 +102,7 @@
  * Format: Aside
  */
 .format-aside .permalink {
-	.font-size(18);
+	.font-size(@font-size-large);
 }
 
 
@@ -130,16 +118,7 @@
  * Format: Video
  */
 .format-video .entry-header {
-	margin-bottom: (@smallGutterWidth - 10px);
-}
-
-/**
- * Format: Gallery
- */
-.image-count {
-	.font-size(@baseFontSize - 1);
-	font-style: italic;
-	color: @grayLight;
+	margin-bottom: (@gutter-width-small - 10px);
 }
 
 /**
@@ -152,10 +131,10 @@
 	}
 
 	.entry-meta {
-		margin-top: (@smallGutterWidth + 5px);
-		padding: @smallGutterWidth;
-		#font > .shorthand(14, normal, 2);
-		background: #e0e6e8;
+		margin-top: (@gutter-width-small + 5px);
+		padding: @gutter-width-small;
+		#font > .shorthand(@font-size-small, normal, 1.8);
+		background: @format-image-meta-bg;
 		border-radius: 3px;
 		color: @gray;
 

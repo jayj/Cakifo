@@ -5,23 +5,29 @@
 #slider {
 	position: relative;
 
+	// .highlight-box(
+	// 	0 @gutter-width @gutter-width-small,
+	// 	0 (-@gutter-width) @gutter-width (-@gutter-width),
+	// 	0 0 4px
+	// );
+
 	.highlight-box(
-		0 @gutterWidth @smallGutterWidth,
-		0 (-@gutterWidth) @gutterWidth (-@gutterWidth),
+		(@gutter-width) @gutter-width @gutter-width-small,
+		(-@gutter-width) (-@gutter-width) @gutter-width (-@gutter-width),
 		0 0 4px
 	);
 
 	// Use a pseudo-element to give the illusion of the slider goes all the way to the top
 	// The optimal solution should be use to use negative margin-top on #slider but some mobile
 	// devices don't like that
-	&:before {
-		content: " ";
-		position: absolute;
-		top: -40px;
-		left: 0;
-		.size(100%, 40px);
-		background-color: darken(#ffffe9, 2%);
-	}
+	// &:before {
+	// 	content: " ";
+	// 	position: absolute;
+	// 	top: -40px;
+	// 	left: 0;
+	// 	.size(100%, 40px);
+	// 	background-color: darken(#ffffe9, 2%);
+	// }
 }
 
 .flex-viewport {
@@ -43,7 +49,7 @@
 	.slider-video {
 		float: left;
 		max-width: 100%;
-		margin: 0 @gutterWidth 3px 3px;
+		margin: 0 @gutter-width 3px 3px;
 	}
 
 	.entry-title {
@@ -54,7 +60,7 @@
 /* Control navigation */
 .flex-control-nav {
 	list-style: none;
-	margin: 20px auto 0 -60px;
+	margin: @gutter-width-small auto 0 (-@gutter-width);
 	text-align: center;
 
 	li {
@@ -71,21 +77,21 @@
 .flex-control-paging li {
 	a {
 		display: block;
-		.square(16px);
-		background: @orangeLight;
+		.square(@slider-pagination-size);
+		background-color: @slider-pagination-color;
 		border-radius: 50%;
 		text-indent: -9999px;
 		cursor: pointer;
 		.transition(all 150ms ease);
 
 		&:hover {
-			background: @orange;
+			background: @slider-pagination-color-hover;
 		}
 	}
 
 	.flex-active,
 	.flex-active:hover {
-		background: @orangeDark;
+		background: @slider-pagination-color-active;
 		cursor: default;
 		.scale(1.07);
 	}
@@ -104,15 +110,15 @@
 		top: 40%;
 		.square(48px);
 		margin: 0;
-		background-color: @white;
+		background-color: #fff;
 		border-radius: 50%;
-		box-shadow: 0 0 7px fade(@black, 30%);
+		box-shadow: 0 0 7px fade(#000, 30%);
 		text-indent: -9999px;
 		opacity: 0.6;
 		.transition(opacity 150ms ease);
 
 		&:focus {
-			background: @orangeLight;
+			background: @slider-pagination-color;
 			outline: 0;
 		}
 
@@ -134,7 +140,7 @@
 	}
 
 	.flex-prev {
-		left: (-@smallGutterWidth);
+		left: (-@gutter-width-small);
 
 		&:after {
 			content: "\00AB";
@@ -142,8 +148,8 @@
 	}
 
 	.flex-next {
-		right: (-@smallGutterWidth);
-		right: (-@smallGutterWidth);
+		right: (-@gutter-width-small);
+		right: (-@gutter-width-small);
 
 		&:after {
 			content: "\00BB";
@@ -160,18 +166,18 @@
 	.flex-prev:active,
 	.flex-next:active {
 		box-shadow:
-			inset 0 0 5px fade(@black, 30%),
-			0 0 7px fade(@black, 30%);
+			inset 0 0 5px fade(#000, 30%),
+			0 0 7px fade(#000, 30%);
 	}
 }
 
 /* Fallback to a border for browsers without box-shadow support */
 .no-boxshadow .flex-direction-nav .flex-prev,
 .no-boxshadow .flex-direction-nav .flex-next {
-	border: 2px solid @orangeLight;
+	border: 2px solid @slider-pagination-color;
 
 	&:hover {
-		border-color: @orangeDark;
+		border-color: @slider-pagination-color-active;
 	}
 }
 

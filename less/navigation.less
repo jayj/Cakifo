@@ -5,17 +5,17 @@
 #topbar {
 	position: relative;
 	width: 100%;
-	min-height: 60px;
-	background: @topbarBackground url(images/topbar.png) repeat; // The noise image is transparent
-	color: #ccc;
+	min-height: @topbar-height;
+	background: @topbar-bg url(images/topbar.png) repeat; // The noise image is transparent
+	color: @topbar-color;
 
 	&:after {
+		content: "";
 		position: absolute;
 		bottom: -11px;
 		left: 0;
 		.size(100%, 10px);
 		background: url(images/topbar-bottom.png) repeat-x;
-		content: "";
 	}
 }
 
@@ -25,8 +25,8 @@
 
 .main-navigation {
 	position: relative;
-	width: @siteWidth;
-	padding: 0 @gutterWidth 0 (@gutterWidth - 15px); // 15px is the padding-left on .menu-item a {}
+	width: @width-site;
+	padding: 0 @gutter-width 0 (@gutter-width - 15px); // 15px is the padding-left on .menu-item a {}
 	margin: 0 auto;
 	.clearfix();
 
@@ -43,9 +43,9 @@
 	.menu-item > a {
 		display: inline-block;
 		padding: 20px 15px;
-		color: #ccc;
-		#font > .shorthand(15, bold, normal);
-		text-shadow: 1px 1px 0 @grayDarker;
+		color: @topbar-color;
+		#font > .shorthand(@font-size-medium, bold, normal);
+		text-shadow: 1px 1px 0 darken(@topbar-color, 70%);
 		.transition(all 150ms);
 	}
 
@@ -53,17 +53,17 @@
 	.menu-item > a:focus,
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
-		background-color: #444;
+		background-color: lighten(@topbar-bg, 12%);
 		#gradient > .vertical(fade(#fff, 0%), fade(#fff, 20%));
-		color: #ececec;
+		color: lighten(@topbar-color, 14%);
 	}
 
 	.menu-item > a:active {
-		#gradient > .vertical(fade(@grayLight, 0%), fade(@grayLight, 20%));
+		background: lighten(@topbar-bg, 8%);
 	}
 
 	.sep {
-		color: #9b9b9b;
+		color: darken(@topbar-color, 20%);
 	}
 
 	.sub-menu .sep,
@@ -79,7 +79,7 @@
 		top: 100%;
 		left: 0;
 		min-width: 200px;
-		background: @topbarBackground url(images/topbar.png) repeat;
+		background: @topbar-bg url(images/topbar.png) repeat;
 		border-radius: 0 0 5px 5px;
 		box-shadow: 1px 2px 2px fade(#000, 30%);
 
@@ -89,8 +89,8 @@
 
 		.menu-item > a {
 			width: 100%;
-			border-top: 1px solid #393939;
-			border-bottom: 1px solid #111;
+			border-top: 1px solid lighten(@topbar-bg, 10%);
+			border-bottom: 1px solid darken(@topbar-bg, 10%);
 		}
 
 		.menu-item:first-of-type > a {
@@ -122,22 +122,22 @@
 	display: none;
 	width: 100%;
 	padding: 15px 0;
-	border-bottom: 1px solid #050505;
+	border-bottom: 1px solid @topbar-bg;
 	margin: 0;
-	#font > .shorthand(21, bold, 1.5);
-	#gradient > .vertical(#555, #444);
-	box-shadow: 0 1px 0 fade(@white, 10%);
-	color: @white;
+	#font > .shorthand(21, bold);
+	#gradient > .vertical(@gray, darken(@gray, 6%));
+	box-shadow: 0 1px 0 fade(#fff, 10%);
+	color: #fff;
 	text-align: center;
 	cursor: pointer;
 
 	&:hover {
-		background: @grayDark;
+		background: @gray-dark;
 	}
 
 	&:active,
 	&:focus {
-		background: @grayDarker;
+		background: @gray-darker;
 	}
 }
 
@@ -166,7 +166,7 @@
 		}
 
 		.menu-list-container {
-			padding: @gutterWidth;
+			padding: @gutter-width;
 		}
 
 		.menu-item {
@@ -175,8 +175,8 @@
 
 		.menu-item > a {
 			width: 100%;
-			border-top: 1px solid #393939;
-			border-bottom: 1px solid #111;
+			border-top: 1px solid lighten(@topbar-bg, 10%);
+			border-bottom: 1px solid darken(@topbar-bg, 10%);
 		}
 
 		.menu-item:first-of-type > a {
@@ -220,7 +220,7 @@
 		color: fade(#fff, 80%);
 
 		// Give the input placeholder a lighter colour
-		.placeholder( lighten(@grayLight, 10%), -1px -1px 0 fade(#000, 30%) );
+		.placeholder( lighten(@gray-light, 15%), -1px -1px 0 fade(#000, 30%) );
 	}
 
 	.search-submit {
@@ -234,9 +234,9 @@
 @media screen and (max-width: 979px) {
 	.main-navigation .search-form {
 		float: none;
-		padding: @smallGutterWidth @gutterWidth;
-		margin-top: (-@smallGutterWidth);
-		border: solid @grayDarker;
+		padding: @gutter-width-small @gutter-width;
+		margin-top: (-@gutter-width-small);
+		border: solid @topbar-search-border;
 		border-width: 1px 0;
 		box-shadow:
 			inset 0 1px 0 fade(#fff, 10%),
@@ -263,7 +263,7 @@
 // =============================================================================
 
 .secondary-navigation {
-	#gradient > .vertical(fade(@white, 20%), fade(@white, 53%));
+	#gradient > .vertical(fade(#fff, 20%), fade(#fff, 50%));
 	border-radius: 5px 5px 0 0;
 
 	.no-rgba & {
@@ -276,38 +276,37 @@
 
 	.menu {
 		.clearfix();
-		margin-left: @smallGutterWidth;
+		margin-left: @gutter-width-small;
 	}
 
 	.menu-item {
 		position: relative;
 		float: left;
-		.font-size(14);
+		.font-size(@font-size-small);
 	}
 
 	.menu-item > a {
 		display: inline-block;
-		padding: 4px 20px;
-		line-height: 3.5;
+		padding: 14px 20px;
 		color: darken(@gray, 5%);
 		text-transform: uppercase;
 
 		&:hover {
-			background-color: @white;
-			background-color: fade(@white, 53%);
-			color: @linkColorHover;
+			background-color: #fff;
+			background-color: fade(#fff, 53%);
+			color: @link-color-hover;
 		}
 	}
 
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
 		font-weight: bold;
-		color: @grayDarker;
+		color: @gray-darker;
 	}
 
 	// Separator
 	.sep {
-		color: @grayLight;
+		color: @gray-light;
 	}
 
 	.sub-menu .sep,
@@ -323,7 +322,7 @@
 		top: 100%;
 		left: 0;
 		min-width: 200px;
-		box-shadow: 1px 1px 2px fade(@black, 25%);
+		box-shadow: 1px 1px 2px fade(#000, 25%);
 
 		.menu-item {
 			float: none;
@@ -332,17 +331,16 @@
 		a {
 			display: block;
 			// width: 100%;
-			padding: 8px 12px;
-			border-bottom: 1px solid lighten(@grayDark, 10%);
-			.font-size(14);
-			line-height: 2.2;
-			background: @grayDarker;
-			color: @grayLighter;
+			padding: 10px 12px;
+			border-bottom: 1px solid lighten(@gray-dark, 10%);
+			.font-size(@font-size-small);
+			background: @gray-darker;
+			color: @gray-lighter;
 			text-transform: none;
 			white-space: normal;
 
 			&:hover {
-				background: darken(@grayDarker, 13%);
+				background: darken(@gray-darker, 13%);
 			}
 		}
 

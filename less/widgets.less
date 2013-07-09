@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .widget {
-	margin-bottom: @smallGutterWidth;
+	margin-bottom: @gutter-width-small;
 	.hyphens;
 }
 
@@ -12,7 +12,7 @@
  */
 #wp-calendar {
 	th, td {
-		.font-size(14);
+		.font-size(@font-size-small);
 		padding: 4px;
 		text-align: center;
 
@@ -40,17 +40,17 @@
 	.related-post {
 		float: left;
 		.square(110px);
-		border: 1px solid darken(@grayLighter, 3%);
-		margin: 0 @smallGutterWidth @smallGutterWidth 0;
-		background: @white;
+		border: 1px solid @related-post-border;
+		margin: 0 @gutter-width-small @gutter-width-small 0;
+		background: @related-post-bg;
 		border-radius: 3px;
 
 		&:hover {
-			background: @orangeLight;
-			border-color: @orange;
-			box-shadow: 0 2px 0 @orange;
-			color: darken(@orangeDark, 30%);
-			text-shadow: 0 1px 0 lighten(@orangeLight, 20%);
+			background: @related-post-hover-bg;
+			border-color: @related-post-hover-border;
+			box-shadow: 0 2px 0 @related-post-hover-border;
+			color: @related-post-hover-text;
+			text-shadow: 0 1px 0 lighten(@related-post-hover-bg, 15%);
 		}
 
 		&:nth-of-type(5n) {
@@ -66,7 +66,7 @@
 			.hyphens;
 
 			&:hover {
-				color: darken(@orangeDark, 30%);
+				color: @related-post-hover-text;
 			}
 		}
 
@@ -75,7 +75,7 @@
 		}
 
 		span {
-			.font-size(13);
+			.font-size(@font-size-mini);
 		}
 	}
 }
@@ -86,8 +86,8 @@
 
 .recent-post {
 	float: left;
-	width: 220px;
-	margin-right: @gutterWidth;
+	width: @recent-post-width;
+	margin-right: @gutter-width;
 	.transition(opacity 250ms);
 
 	&:last-of-type {
@@ -96,7 +96,7 @@
 
 	.entry-title {
 		margin: 0;
-		.font-size(16);
+		.font-size(@font-size-base);
 		letter-spacing: 0;
 		word-wrap: break-word;
 	}
@@ -106,9 +106,9 @@
 	}
 
 	.recent-posts-meta {
-		.font-size(12);
+		.font-size(@font-size-micro);
 		font-style: italic;
-		color: darken(@grayLight, 5%);
+		color: darken(@gray-light, 5%);
 	}
 
 	.thumbnail {
@@ -123,7 +123,7 @@
 
 	/* Lower opacity on every column except the hovered */
 	#recent-posts:hover &{
-		opacity: 0.75;
+		opacity: @recent-post-opacity;
 
 		&:hover {
 			opacity: 1;
@@ -132,11 +132,11 @@
 }
 
 /* =============================================================================
-   Components:  Headlines - Category lists
+   Components:  Headlines Lists
    ========================================================================== */
 
 #headlines {
-	margin: @gutterWidth 0;
+	margin: @gutter-width 0;
 
 	.widget-title {
 		margin-bottom: 15px;
@@ -145,14 +145,14 @@
 
 .headline-list {
 	float: left;
-	width: 470px;
-	margin: 0 (@gutterWidth + 20px) @gutterWidth 0;
+	width: @headline-box-width;
+	margin: 0 (@gutter-width + 20px) @gutter-width 0;
 
-	&:nth-child(2n) {
+	&:nth-child(@{headline-box-count}n) {
 		margin-right: 0;
 	}
 
-	&:nth-child(2n+1) {
+	&:nth-child(@{headline-box-count}n+1) {
 		clear: left;
 	}
 
@@ -161,29 +161,29 @@
 	}
 
 	.headline-item {
-		padding: @smallGutterWidth 20px;
-		border-bottom: 1px solid darken(@grayLighter, 5%);
-		line-height: @baseLineHeight;
+		padding: @gutter-width-small 20px;
+		border-bottom: 1px solid darken(@gray-lighter, 5%);
+		line-height: @line-height-base;
 
 		&:hover,
 		&:active {
-			#gradient > .horizontal(#f7fafc, @highlightBlue, 50%);
+			#gradient > .horizontal(lighten(@highlight-bg, 1%), @highlight-bg, 50%);
 		}
 	}
 
 	.entry-title {
 		margin: 0;
-		.font-size(18);
+		.font-size(@font-size-large);
 	}
 
 	.headline-meta {
-		.font-size(14);
+		.font-size(@font-size-small);
 		font-style: italic;
-		color: darken(@grayLight, 5%);
+		color: darken(@gray-light, 5%);
 	}
 
 	.thumbnail {
 		float: left;
-		margin: 0 @smallGutterWidth 0 0;
+		margin: 0 @gutter-width-small 0 0;
 	}
 }

@@ -145,7 +145,7 @@ input,
 button,
 select,
 textarea {
-	#font > .shorthand(@baseFontSize - 1, normal, normal); // Set size, weight, line-height
+	#font > .shorthand(@font-size-medium, normal, normal); // Set size, weight, line-height
 }
 
 /**
@@ -154,7 +154,7 @@ textarea {
 label {
 	display: block;
 	margin-bottom: 5px;
-	#font > .shorthand(15);
+	#font > .shorthand(@font-size-medium);
 	cursor: pointer;
 }
 
@@ -179,20 +179,22 @@ input[type="tel"],
 input[type="color"] {
 	padding: 8px 6px;
 	margin-bottom: 10px;
-	font-family: @sansFontFamily;
-	border: 1px solid #ccc;
+	font-family: @font-family-sans-serif;
+	border: 1px solid @input-border-color;
 	border-radius: 3px;
 	box-shadow: inset 0 1px 1px fade(#000, 7.5%);
-	color: @gray;
+	color: @input-text-color;
 	.transition(all 150ms ease);
 
 	&:hover {
-		border-color: @grayLight;
+		border-color: @gray-light;
 	}
 
 	&:focus {
-		box-shadow: inset 0 1px 1px fade(#000, 7.5%), 0 0 6px fade(rgb(82, 168, 236), 50%);
-		border-color: fade(#52a8ec, 80%);
+		border-color: fade(@input-focus-color, 80%);
+		box-shadow:
+			inset 0 1px 1px fade(#000, 7.5%),
+			0 0 6px fade(@input-focus-color, 50%);
 		outline: 0;
 	}
 }
@@ -201,7 +203,7 @@ input[type="color"] {
 input,
 select,
 textarea {
-  width: 100%;
+	width: 100%;
 }
 
 // Reset width of input images, buttons, radios, checkboxes
@@ -247,7 +249,7 @@ input[readonly],
 button[readonly],
 select[readonly],
 textarea[readonly] {
-	background: @grayLighter !important;
+	background: @gray-lighter !important;
 	cursor: not-allowed;
 
 	&:active {
@@ -263,98 +265,130 @@ input[type="checkbox"][readonly] {
 	background-color: transparent;
 }
 
-// =============================================================================
-// Buttons
-// =============================================================================
+/* =============================================================================
+   Buttons
+   ========================================================================== */
 
+// Core styles
 .btn,
-button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-	.button(#fefefe, #f4f4f4);
+	display: inline-block;
+	padding: 4px 14px;
+	#font > .shorthand(@font-size-base, bold, @line-height-base);
+	border: 1px solid;
+	border-radius: 3px;
+	box-shadow:
+		inset 0 1px 0 fade(#fff, 22%),
+		0 1px 2px fade(#000, 5%);
+
+	&:focus {
+		.tab-focus();
+	}
+
+	&:active {
+		background-image: none;
+		box-shadow:
+			inset 0 2px 4px fade(#000, 15%),
+			0 1px 2px fade(#000, 5%);
+		outline: 0;
+	}
+
+	&[disabled],
+	fieldset[disabled] & {
+		background: @gray-lighter;
+		border-color: @gray-light;
+		box-shadow: none;
+		color: @gray;
+		text-shadow: none;
+		opacity: 0.65;
+		cursor: default;
+		pointer-events: none; // Future-proof disabling of clicks
+	}
 }
 
-// Large button
+// Alternate buttons
+.btn,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	.btn-pseudo-states(@btn-default-bg, @btn-default-secondary, @btn-default-color);
+}
+
+html {
+	.btn-primary {
+		.btn-pseudo-states(@btn-primary-bg, @btn-primary-secondary, @btn-primary-color);
+	}
+
+	.btn-success {
+		.btn-pseudo-states(@btn-success-bg, @btn-success-secondary, @btn-success-color);
+	}
+
+	.btn-warning {
+		.btn-pseudo-states(@btn-warning-bg, @btn-warning-secondary, @btn-warning-color);
+	}
+
+	.btn-danger {
+		.btn-pseudo-states(@btn-danger-bg, @btn-danger-secondary, @btn-danger-color);
+	}
+
+	.btn-info {
+		.btn-pseudo-states(@btn-info-bg, @btn-info-secondary, @btn-info-color);
+	}
+
+	.btn-inverse {
+		.btn-pseudo-states(@btn-inverse-bg, @btn-inverse-secondary, @btn-inverse-color);
+
+		&:hover {
+			background: @orange-dark;
+			border-color: darken(@orange-dark, 10%);
+		}
+	}
+}
+
+// Button sizes
 .btn-large {
 	padding: 9px 16px;
-	.font-size(@baseFontSize + 2);
+	.font-size(@font-size-large);
 	line-height: normal;
 	border-radius: 5px;
 }
 
-// Small button
 .btn-small {
 	padding: 4px 9px;
-	.font-size(@baseFontSize - 2);
+	.font-size(@font-size-small);
 }
 
-// Mini button
 .btn-mini {
 	padding: 3px 7px;
-	.font-size(@baseFontSize - 3);
+	.font-size(@font-size-mini);
 	font-weight: normal;
-}
-
-/* Button colours */
-html {
-	// Primary button
-	.btn-primary {
-		.buttonBackground(#08c, spin(#08c, 20%), @white, fade(@black, 40%));
-	}
-
-	// Warning appears are orange
-	.btn-warning {
-		.buttonBackground(#faa51a, #f47a20, @white, fade(@black, 40%));
-	}
-
-	// Danger and error appear as red
-	.btn-danger {
-		.buttonBackground(#ee5f5b, #bd362f, @white, fade(@black, 40%));
-	}
-
-	// Success appears as green
-	.btn-success {
-		.buttonBackground(#62c462, #51a351, @white, fade(@black, 40%));
-	}
-
-	// Info appears as a neutral blue
-	.btn-info {
-		.buttonBackground(#5bc0de, #2f96b4, @white, fade(@black, 40%));
-	}
-
-	// Inverse appears as dark gray
-	.btn-inverse {
-		.buttonBackground(#444, @grayDarker, @white, fade(@black, 40%));
-
-		&:hover {
-			background: @orangeDark;
-			border-color: darken(@orangeDark, 10%);
-		}
-	}
 }
 
 /* =============================================================================
    Layout:  Comment form
    ========================================================================== */
 
-#respond {
-	padding: @smallGutterWidth;
-	margin: (@gutterWidth + 20px) 0 0;
-	background: @highlightBlue;
-	border-top: 5px solid @orangeLight;
+.comment-respond {
+	padding: @gutter-width-small;
+	margin: (@gutter-width + 20px) 0 0;
+	background: @highlight-bg;
+	border-top: @orange-line;
 	color: @gray;
 
 	// Logged-in text
 	.log-in-out {
-		.font-size(18);
+		.font-size(@font-size-large);
 		text-align: center;
 	}
 }
 
-#reply-title {
-	.highlight-box;
-	margin: (-@gutterWidth) 0 @smallGutterWidth;
+.comment-reply-title {
+	.highlight-box(
+			10px @gutter-width-small, // padding
+			(-@gutter-width) 0 @gutter-width-small // margin
+	);
 	.font-size(26);
 	letter-spacing: -1px;
 	text-align: center;
@@ -362,13 +396,13 @@ html {
 
 #cancel-comment-reply-link {
 	padding-left: 10px;
-	.font-size(18);
+	.font-size(@font-size-large);
 	font-style: italic;
 	font-weight: normal;
 }
 
 /* Comment form fields */
-#commentform {
+.comment-form {
 	.form-author {
 		float: left;
 		width: 48%;
@@ -385,7 +419,7 @@ html {
 }
 
 #submit {
-	.buttonBackground(#08c, spin(#08c, 20%), @white, fade(@black, 40%));
+	.btn-pseudo-states(@btn-primary-bg, @btn-primary-secondary, @btn-primary-color);
 }
 
 /* =============================================================================
@@ -400,7 +434,7 @@ html {
 
 	.search-field {
 		padding-left: 27px;
-		background: @white url(images/search.png) no-repeat 5px center;
+		background: #fff url(images/search.png) no-repeat 5px center;
 
 		&[results] {
 			padding-left: 6px;

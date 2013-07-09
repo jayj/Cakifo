@@ -2,11 +2,11 @@
    Layout:  Comments
    ========================================================================== */
 
-#comments {
-	margin-top: @gutterWidth;
+.comments-area {
+	margin-top: @gutter-width;
 }
 
-#comments-number {
+.comments-header {
 	.highlight-box;
 }
 
@@ -16,22 +16,22 @@
 }
 
 .comment {
-	border-bottom: 4px double @grayLighter;
+	border-bottom: 4px double @comments-border-color;
 
 	.comment-wrapper {
-		padding: @smallGutterWidth;
+		padding: @gutter-width-small;
 	}
 
 	// Comment meta
 	.comment-meta {
-		#font > .shorthand(13, normal, 25px);
-		color: @grayLight;
+		#font > .shorthand(@font-size-mini, normal, 25px);
+		color: @gray-light;
 
 		a {
 			color: @gray;
 
 			&:hover {
-				color: @linkColorHover;
+				color: @link-color-hover;
 			}
 		}
 
@@ -42,7 +42,7 @@
 
 	.comment-author {
 		display: block;
-		#font > .shorthand(16, bold, 25px);
+		#font > .shorthand(@font-size-base, bold, 25px);
 		color: @gray;
 
 		cite {
@@ -54,24 +54,24 @@
 /* Comment background colours */
 .comment {
 	.even {
-		background-color: @white;
+		background-color: #fff;
 	}
 
 	.odd {
-		background-color: lighten(@highlightBackground, 2%);
+		background-color: lighten(@highlight-bg-secondary, 2%);
 	}
 
 	.bypostauthor {
-		background-color: @highlightBlue;
+		background-color: @highlight-bg;
 	}
 }
 
 /* Child comments */
 .comment-list .children {
-	margin-left: @gutterWidth;
+	margin-left: @gutter-width;
 
 	.comment {
-		border-top: 1px solid @grayLighter;
+		border-top: 1px solid @comments-border-color;
 		border-bottom: none;
 	}
 

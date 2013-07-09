@@ -83,14 +83,14 @@
    ========================================================================= */
 
 #cboxOverlay {
-	background: @colorboxColor;
-	#gradient > .radial(fade(@colorboxColor, 5%), fade(@colorboxColor, 90%), ellipse);
+	background: @colorbox-primary-color;
+	#gradient > .radial(fade(@colorbox-primary-color, 5%), fade(@colorbox-primary-color, 90%), ellipse);
 }
 
 #cboxContent {
 	padding: 15px 15px 55px;
-	border: 10px solid fade(@colorboxColor, 15%);
-	.font-size(14);
+	border: 10px solid fade(@colorbox-primary-color, 15%);
+	.font-size(@font-size-small);
 	background: #fff;
 	background-clip: padding-box; // Needed to make the border transparent
 	border-radius: 8px;
@@ -135,7 +135,7 @@
 	margin: 0;
 	opacity: 0.4;
 	background: #fff url(../images/colorbox.png) no-repeat;
-	box-shadow: 0 0 8px fade(@colorboxColor, 30%);
+	box-shadow: 0 0 8px fade(@colorbox-primary-color, 30%);
 	.transition(opacity 150ms ease);
 
 	#cboxContent:hover & {
@@ -148,8 +148,8 @@
 
 	&:active {
 		box-shadow:
-			inset 0 0 5px fade(@colorboxColor, 30%),
-			0 0 10px fade(@colorboxColor, 30%);
+			inset 0 0 5px fade(@colorbox-primary-color, 30%),
+			0 0 10px fade(@colorbox-primary-color, 30%);
 	}
 }
 
@@ -172,13 +172,13 @@
 
 	&:hover {
 		border-color: darken(#cfcfcf, 15%);
-		box-shadow: 0 0 7px fade(@colorboxColor, 20%);
+		box-shadow: 0 0 7px fade(@colorbox-primary-color, 20%);
 	}
 }
 
 #cboxSlideshow {
 	position: relative;
-	#font > .sans-serif(14, bold, 1.6);
+	#font > .sans-serif(@font-size-small, bold);
 	text-shadow: 1px 1px 0 fade(#fff, 80%);
 	text-align: center;
 	text-indent: 0;

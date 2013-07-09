@@ -34,32 +34,32 @@ img {
 .thumbnail,
 .avatar {
 	border-radius: 3px;
-	box-shadow: 0 1px 4px fade(@black, 20%);
+	box-shadow: 0 1px 4px fade(#000, 20%);
 }
 
 /* Post thumbnails */
 .thumbnail {
 	float: right;
-	margin: 0 0 @smallGutterWidth @smallGutterWidth;
+	margin: 0 0 @gutter-width-small @gutter-width-small;
 }
 
 /* Aligned images */
 img.aligncenter {
-	margin: @smallGutterWidth auto;
+	margin: @gutter-width-small auto;
 }
 
 img.alignleft {
-	margin: 0 @smallGutterWidth 12px 0;
+	margin: 0 @gutter-width-small 12px 0;
 }
 
 img.alignright {
-	margin: 0 0 12px @smallGutterWidth;
+	margin: 0 0 12px @gutter-width-small;
 }
 
 /* Avatars */
 .avatar {
 	float: left;
-	margin-right: (@smallGutterWidth - 7px);
+	margin-right: (@gutter-width-small - 7px);
 }
 
 /* Remove borders from some images */
@@ -102,8 +102,8 @@ iframe[seamless] {
 	clear: both;
 	max-width: 100%;
 	padding-top: 5px;
-	margin: @smallGutterWidth 0;
-	background: @grayDarker;
+	margin: @gutter-width-small 0;
+	background: @caption-bg;
 	border-radius: 0 0 3px 3px;
 	text-align: center;
 
@@ -114,15 +114,15 @@ iframe[seamless] {
 
 	// Aligned captions
 	&.aligncenter {
-		margin: @smallGutterWidth auto;
+		margin: @gutter-width-small auto;
 	}
 
 	&.alignleft {
-		margin: 0 @smallGutterWidth 0 0;
+		margin: 0 @gutter-width-small 0 0;
 	}
 
 	&.alignright {
-		margin: 0 0 0 @smallGutterWidth;
+		margin: 0 0 0 @gutter-width-small;
 	}
 }
 
@@ -130,8 +130,8 @@ iframe[seamless] {
 .wp-caption-text {
 	padding: 10px 20px 20px;
 	margin: 0;
-	.font-size(14);
-	color: darken(#eee, 6.5%);
+	.font-size(@font-size-small);
+	color: @caption-text-color;
 }
 
 /**
@@ -145,7 +145,7 @@ iframe[seamless] {
 }
 
 .gallery {
-	margin: @smallGutterWidth auto;
+	margin: @gutter-width-small auto;
 	text-align: center;
 }
 
@@ -161,21 +161,19 @@ iframe[seamless] {
 }
 
 .gallery-caption {
-	.font-size(14);
+	.font-size(@font-size-small);
 	margin: 0 0 15px 0;
 }
 
 /* Gallery columns */
-@gallery-columns: 10;
-
-.col-1  { width: percentage(( 100 / 1 / 100 )); }
-.col-2  { width: percentage(( 100 / 2 / 100 )); }
-.col-3  { width: percentage(( 100 / 3 / 100 )); }
-.col-4  { width: percentage(( 100 / 4 / 100 )); }
-.col-5  { width: percentage(( 100 / 5 / 100 )); }
-.col-6  { width: percentage(( 100 / 6 / 100 )); }
-.col-7  { width: percentage(( 100 / 7 / 100 )); }
-.col-8  { width: percentage(( 100 / 8 / 100 )); }
-.col-9  { width: percentage(( 100 / 9 / 100 )); }
+.col-1  { width: percentage(( 100 / 1 / 100 ));  }
+.col-2  { width: percentage(( 100 / 2 / 100 ));  }
+.col-3  { width: percentage(( 100 / 3 / 100 ));  }
+.col-4  { width: percentage(( 100 / 4 / 100 ));  }
+.col-5  { width: percentage(( 100 / 5 / 100 ));  }
+.col-6  { width: percentage(( 100 / 6 / 100 ));  }
+.col-7  { width: percentage(( 100 / 7 / 100 ));  }
+.col-8  { width: percentage(( 100 / 8 / 100 ));  }
+.col-9  { width: percentage(( 100 / 9 / 100 ));  }
 .col-10 { width: percentage(( 100 / 10 / 100 )); }
 

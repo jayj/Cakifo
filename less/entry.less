@@ -4,9 +4,9 @@
 
 .hentry {
 	position: relative;
-	padding-bottom: @smallGutterWidth;
-	border-bottom: 4px double @grayLighter;
-	margin-bottom: @smallGutterWidth;
+	padding-bottom: @gutter-width-small;
+	border-bottom: 4px double @post-border-color;
+	margin-bottom: @gutter-width-small;
 	word-wrap: break-word;
 
 	.singular & {
@@ -16,8 +16,8 @@
 }
 
 .sticky {
-	padding: @smallGutterWidth;
-	background: @highlightBackground;
+	padding: @gutter-width-small;
+	background: @highlight-bg-secondary;
 
 	.entry-title {
 		margin-top: 0;
@@ -30,8 +30,8 @@
 
 .byline,
 .entry-meta {
-	#font > .shorthand(14, normal, 2);
-	color: darken(@grayLight, 10%);
+	#font > .shorthand(@font-size-small, normal, 2);
+	color: @post-meta-color;
 	clear: both;
 }
 
@@ -45,8 +45,8 @@
 
 .singular .entry-meta {
 	padding: 15px 0 0;
-	border-top: 1px solid @grayLighter;
-	margin: @smallGutterWidth 0;
+	border-top: 1px solid @post-border-color;
+	margin: @gutter-width-small 0;
 }
 
 .page-links {
@@ -58,28 +58,17 @@
  */
 
 .intro-post {
-	margin-bottom: @gutterWidth;
+	margin-bottom: @gutter-width;
 
 	.entry-content {
-		.font-size(@baseFontSize + 5);
+		.font-size(@headings-size-small);
 	}
 
 	.post-edit-link {
+		.label-variant();
 		position: absolute;
 		top: 40%;
-		right: @smallGutterWidth;
-		padding: 0 8px;
-		.font-size(12);
-		background: @grayLight;
-		border-radius: 3px;
-		color: @white;
-		text-decoration: none;
-
-		&:hover,
-		&:focus,
-		&:active {
-			background: darken(@grayLight, 10%);
-		}
+		right: @gutter-width-small;
 	}
 }
 
@@ -88,19 +77,19 @@
    ========================================================================== */
 
 .breadcrumbs {
-	padding: 12px @smallGutterWidth;
-	border-bottom: 1px solid @grayLighter;
-	margin-bottom: @smallGutterWidth;
-	#font > .shorthand(14, normal, 2);
-	background: #f8f8f7;
+	padding: 12px @gutter-width-small;
+	border-bottom: 1px solid darken(@breadcrumb-bg, 5%);
+	margin-bottom: @gutter-width-small;
+	#font > .shorthand(@font-size-small, normal, 2);
+	background: @breadcrumb-bg;
 	border-radius: 5px;
 	color: @gray;
 
 	a {
-		color: @grayDark;
+		color: @gray-dark;
 
 		&:hover {
-			color: @linkColorHover;
+			color: @link-color-hover;
 		}
 	}
 
@@ -123,10 +112,10 @@
 
 .author-profile {
 	// padding, margin
-	.blue-box(0 @smallGutterWidth @smallGutterWidth, @smallGutterWidth 0);
+	.blue-box(0 @gutter-width-small @gutter-width-small, @gutter-width-small 0);
 
 	.author-name {
-		.font-size(18);
+		.font-size(@font-size-large);
 	}
 }
 
@@ -135,8 +124,8 @@
 	text-align: right;
 
 	a {
-		padding-left: (@smallGutterWidth - 2px);
-		.font-size(14);
+		padding-left: (@gutter-width-small - 2px);
+		.font-size(@font-size-small);
 		background: url(images/twitter.png) no-repeat left bottom;
 	}
 }
@@ -151,15 +140,15 @@
 }
 
 .loop-meta-home {
-	border-bottom: 5px solid @orangeLight;
+	border-bottom: @orange-line;
 }
 
 .loop-title {
-	.font-size(22);
+	.font-size(@headings-size-medium);
 
 	span {
 		font-weight: normal;
-		color: @orangeDark;
+		color: @orange-dark;
 	}
 }
 
@@ -169,7 +158,7 @@
    ========================================================================== */
 
 .pagination {
-	margin: @gutterWidth 0;
+	margin: @gutter-width 0;
 
 	a,
 	> span {
@@ -177,8 +166,8 @@
 		padding: 13px 14px 12px;
 		margin-right: 2px;
 		line-height: normal;
-		background-color: @grayLighter;
-		box-shadow: 0 2px 0 darken(@grayLighter, 15%);
+		background-color: @pagination-bg;
+		box-shadow: 0 2px 0 darken(@pagination-bg, 15%);
 		border-radius: 3px;
 		color: darken(@gray, 5%);
 		text-shadow: 0 1px 0 #fff;
@@ -186,20 +175,20 @@
 	}
 
 	a:hover {
-		background-color: @orangeLight;
-		box-shadow: 0 2px 0 @orange;
-		color: darken(@orangeDark, 30%);
-		text-shadow: 0 1px 0 lighten(@orangeLight, 20%);
+		background-color: @pagination-hover-bg;
+		box-shadow: 0 2px 0 @pagination-hover-border;
+		color: @pagination-hover-text;
+		text-shadow: 0 1px 0 lighten(@pagination-hover-bg, 20%);
 	}
 
 	a:active {
 		box-shadow:
-			0 2px 0 @orange,
+			0 2px 0 @pagination-hover-border,
 			inset 2px 2px 8px fade(#000, 30%);
 	}
 
 	.current {
-		background-color: lighten(@grayDark, 10%);
+		background-color: lighten(@gray-dark, 10%);
 		box-shadow: 0 2px 0 #000;
 		color: #fff;
 		text-shadow: 0 -1px 0 #000;
@@ -228,7 +217,7 @@
 }
 
 .attachment-meta {
-	margin-bottom: @smallGutterWidth;
+	margin-bottom: @gutter-width-small;
 }
 
 .image-info {
@@ -241,7 +230,7 @@
 
 	dt,
 	dd {
-		border-bottom: 1px solid @grayLighter;
+		border-bottom: 1px solid @post-border-color;
 		padding: 5px;
 	}
 
@@ -265,20 +254,20 @@
    ========================================================================== */
 
 .error-404 .hentry {
-	.font-size(18);
+	.font-size(@font-size-large);
 
 	.entry-title {
-		margin-bottom: @smallGutterWidth;
+		margin-bottom: @gutter-width-small;
 	}
 }
 
 .not-found-widgets {
-	margin-top: @gutterWidth;
+	margin-top: @gutter-width;
 
 	.widget {
 		float: left;
 		width: 306px;
-		margin: 0 @gutterWidth @smallGutterWidth 0;
+		margin: 0 @gutter-width @gutter-width-small 0;
 
 		&:nth-of-type(3n) {
 			margin-right: 0;

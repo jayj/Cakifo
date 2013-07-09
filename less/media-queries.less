@@ -18,12 +18,12 @@
 	}
 
 	.flex-direction-nav .flex-prev {
-		left: @gutterWidth;
+		left: @gutter-width;
 		opacity: 1;
 	}
 
 	.flex-direction-nav .flex-next {
-		right: @gutterWidth;
+		right: @gutter-width;
 		opacity: 1;
 	}
 }
@@ -49,14 +49,14 @@
 
 	/* Remove box-shadow and border-radius */
 	#content,
-	#footer {
+	.site-footer {
 		border-radius: 0;
 		box-shadow: none;
 	}
 
 	/* Remove the negative margin and box-shadow */
 	.section-title {
-		padding-left: @smallGutterWidth;
+		padding-left: @gutter-width-small;
 		margin-left: 0;
 		box-shadow: none;
 	}
@@ -115,17 +115,17 @@
 
 	/* Switch padding from 40px to 25px */
 	#content,
-	#footer {
-		padding-left: @smallGutterWidth;
-		padding-right: @smallGutterWidth;
+	.site-footer {
+		padding-left: @gutter-width-small;
+		padding-right: @gutter-width-small;
 	}
 
 	#site-title {
-		margin-left: @smallGutterWidth;
+		margin-left: @gutter-width-small;
 	}
 
 	#site-description {
-		margin-right: @smallGutterWidth;
+		margin-right: @gutter-width-small;
 	}
 
 	/* Turn 3 column layouts into a layout with a full width #main and two 50% width sidebars underneath */
@@ -157,14 +157,14 @@
 		.clearfix;
 		float: none;
 		width: 100%;
-		padding: @smallGutterWidth 0;
-		border-bottom: 1px solid darken(@grayLighter, 5%);
+		padding: @gutter-width-small 0;
+		border-bottom: 1px solid @post-border-color;
 		margin-right: 0;
 		opacity: 1 !important;
 
 		&:hover,
 		&:active {
-			#gradient > .horizontal(@highlightBlue, #f7fafc, 50%);
+			background-color: @highlight-bg;
 		}
 
 		.entry-title {
@@ -173,12 +173,12 @@
 
 		.thumbnail {
 			float: left;
-			margin: 0 @smallGutterWidth 0 0;
+			margin: 0 @gutter-width-small 0 0;
 		}
 	}
 
 	.section-title {
-		margin-bottom: @smallGutterWidth;
+		margin-bottom: @gutter-width-small;
 	}
 
 	/* Attachment meta */
@@ -189,7 +189,7 @@
 	}
 
 	.image-info {
-		margin-bottom: @smallGutterWidth;
+		margin-bottom: @gutter-width-small;
 	}
 
 } // 980px
@@ -220,7 +220,7 @@
 	.slide {
 		.thumbnail {
 			max-width: 55%;
-			margin-right: @smallGutterWidth;
+			margin-right: @gutter-width-small;
 		}
 
 		// Remove the video
@@ -230,7 +230,7 @@
 	}
 
 	.flex-control-nav {
-		margin-top: @gutterWidth;
+		margin-top: @gutter-width;
 	}
 
 	/* Make the pagination bigger */
@@ -253,11 +253,11 @@
 	/* Make the Category Headlines list smaller */
 	.headline-list {
 		.entry-title {
-			.font-size(16);
+			.font-size(@font-size-base);
 		}
 
 		.headline-meta {
-			.font-size(14);
+			.font-size(@font-size-small);
 		}
 
 		.thumbnail {
@@ -273,7 +273,7 @@
 @media screen and (max-width: 620px) {
 
 	/* Turn the header and description into a single column */
-	#branding {
+	.site-header {
 		text-align: center;
 	}
 
@@ -287,7 +287,7 @@
 	}
 
 	.flexbox {
-		#branding hgroup {
+		.site-header hgroup {
 			.flex-direction(column);
 		}
 
@@ -305,11 +305,11 @@
 	/* Make the Recent Posts list smaller */
 	.recent-post {
 		.entry-title {
-			.font-size(18);
+			.font-size(@font-size-large);
 		}
 
 		.recent-posts-meta {
-			.font-size(12);
+			.font-size(@font-size-micro);
 		}
 
 		.thumbnail {
@@ -318,7 +318,7 @@
 		}
 
 		.entry-summary {
-			.font-size(14);
+			.font-size(@font-size-small);
 		}
 	}
 
@@ -340,7 +340,7 @@
 	}
 
 	/* Make the comment form inputs one column */
-	#commentform {
+	.comment-form {
 		.form-author,
 		.form-email {
 			float: none;
