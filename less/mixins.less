@@ -3,7 +3,7 @@
 // =============================================================================
 
 // Calculate font size in rems
-.font-size(@font-size: 16) {
+.font-size(@font-size: @font-size-base) {
 	@rem: (@font-size / 10);
 	font-size: (@font-size * 1px);
 	font-size: unit(@rem, rem);
@@ -12,62 +12,63 @@
 // Widget title bar
 // -------------------------
 .widget-title-bar(@radius: 50px 30px) {
-	#gradient > .vertical(#f9f9f9, #ececec);
-	border: 1px solid #e9e9e9;
-	border-bottom-color: #dfdfdf;
+	#gradient > .vertical(lighten(@title-widget-bg, 5%), @title-widget-bg);
+	border: 1px solid darken(@title-widget-bg, 2%);
+	border-bottom-color: darken(@title-widget-bg, 5%);
 	border-radius: @radius;
-	color: @grayDark;
+	color: @gray-dark;
 	.font-size(18);
+	margin: 0 0 @gutter-width-small;
 	padding: 8px 20px;
-	margin: 0 0 @smallGutterWidth;
 	text-shadow: 0 1px 0 #fff;
-
 }
 
 // Section title bar
 // -------------------------
 .section-title-bar(@radius: 30px, @space: 60px) {
-	#gradient > .vertical(#d54e21, #c8471b);
+	#gradient > .vertical(@title-section-bg, darken(@title-section-bg, 4%));
 	border-radius: @radius;
 	color: #fff;
 	.font-size(24);
+	margin: 0 0 @gutter-width (-@space);
 	padding: 10px @space;
-	margin: 0 0 @gutterWidth (-@space);
-	text-shadow: 1px 1px 0 #9c3412;
+	text-shadow: 1px 1px 0 darken(@title-section-bg, 14%);
 }
 
 // Quote box
+// @todo Rewrite the quote styles
 // -------------------------
-.quote-box(@padding: @gutterWidth) {
-	background: #f5f8f9 ~"url(images/quote.png)"; // Escaped because of bug in SimpLESS: https://github.com/Paratron/SimpLESS/issues/74
-	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px fade(@black, 5%);
+.quote-box(@padding: @gutter-width) {
+	background: #f5f8f9 url(images/quote.png);
+	box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px fade(#000, 5%);
 	border: 1px solid #dde5e8;
 	border-top: none;
 	border-radius: 5px;
 	color: darken(#56717d, 5%);
-	text-shadow: 0 1px 0 @white;
+	text-shadow: 0 1px 0 #fff;
 	#font > .serif(18, normal, 32px);
-	margin: @smallGutterWidth auto;
+	margin: @gutter-width-small auto;
 	padding: @padding;
 	position: relative;
 }
 
 // Blue box
+// @todo Combine with .highlight-box()
 // -------------------------
-.blue-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
-	background-color: #f2f7fc;
-	border: double darken(#dde5e8, 8%);
-	border-width: @borderWidth;
+.blue-box(@padding: 10px @gutter-width-small, @margin: 0 0 @gutter-width, @border-width: 4px 0) {
+	background-color: @highlight-bg;
+	border: double desaturate(darken(@highlight-bg, 15%), 40%); ;
+	border-width: @border-width;
 	margin: @margin;
 	padding: @padding;
 }
 
 // Highlight box
 // -------------------------
-.highlight-box(@padding: 10px @smallGutterWidth, @margin: 0 0 @gutterWidth, @borderWidth: 4px 0) {
-	background-color: @highlightBackground;
-	border: double #eedbbb;
-	border-width: @borderWidth;
+.highlight-box(@padding: 10px @gutter-width-small, @margin: 0 0 @gutter-width, @border-width: 4px 0) {
+	background-color: @highlight-bg-secondary;
+	border: double spin(desaturate(darken(#ffffdf, 10%), 40), -21); // use variable
+	border-width: @border-width;
 	margin: @margin;
 	padding: @padding;
 }
@@ -87,7 +88,7 @@
 // ------------------
 .tab-focus() {
 	// Default
-	outline: thin dotted #333;
+	outline: thin dotted @gray-dark;
 	// Webkit
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px;
@@ -118,14 +119,18 @@
 
 // Placeholder text
 // -------------------------
-.placeholder(@color: @placeholderText, @textShadow: none) {
+.placeholder(@color, @text-shadow: none) {
 	&::-moz-placeholder {
 		color: @color;
-		text-shadow: @textShadow;
+		text-shadow: @text-shadow;
+	}
+	&:-ms-input-placeholder {
+		color: @color;
+		text-shadow: @text-shadow;
 	}
 	&::-webkit-input-placeholder {
 		color: @color;
-		text-shadow: @textShadow;
+		text-shadow: @text-shadow;
 	}
 }
 
@@ -179,44 +184,43 @@
 #font {
 	#family {
 		.serif() {
-			font-family: @serifFontFamily;
+			font-family: @font-family-serif;
 		}
 
 		.sans-serif() {
-			font-family: @sansFontFamily;
+			font-family: @font-family-sans-serif;
 		}
 
 		.monospace() {
-			font-family: @monoFontFamily;
+			font-family: @font-family-monospace;
 		}
 	}
 
-	.shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+	.shorthand(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		.font-size(@size);
 		font-weight: @weight;
-		line-height: @lineHeight;
+		line-height: @line-height;
 	}
 
-	.serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+	.serif(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .serif;
-		#font > .shorthand(@size, @weight, @lineHeight);
+		#font > .shorthand(@size, @weight, @line-height);
 	}
 
-	.sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+	.sans-serif(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .sans-serif;
-		#font > .shorthand(@size, @weight, @lineHeight);
+		#font > .shorthand(@size, @weight, @line-height);
 	}
 
-	.monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+	.monospace(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .monospace;
-		#font > .shorthand(@size, @weight, @lineHeight);
+		#font > .shorthand(@size, @weight, @line-height);
 	}
 }
 
-// CSS3 Properties
+// Transitions
 // --------------------------------------------------
 
-// Transitions
 .transition(@transition) {
   -webkit-transition: @transition;
 		  transition: @transition;
@@ -228,6 +232,8 @@
 }
 
 // Transformations
+// --------------------------------------------------
+
 .transform(@transform) {
   -webkit-transform: @transform;
 	  -ms-transform: @transform;
@@ -257,8 +263,6 @@
 		  transform: translate3d(@x, @y, @z);
 }
 
-// transform: skew has been removed from the spec
-// https://developer.mozilla.org/en-US/docs/CSS/transform#skew
 .skewX(@x) {
   -webkit-transform: skewX(@x);
 	  -ms-transform: skewX(@x);
@@ -279,37 +283,44 @@
 			backface-visibility: @visibility;
 }
 
-// Box sizing
-.box-sizing(@boxmodel) {
-  -webkit-box-sizing: @boxmodel;
-	 -moz-box-sizing: @boxmodel;
-		  box-sizing: @boxmodel;
+// Box-sizing
+// --------------------------------------------------
+
+.box-sizing(@box-model) {
+  -webkit-box-sizing: @box-model;
+     -moz-box-sizing: @box-model;
+          box-sizing: @box-model;
 }
 
-// CSS3 Content Columns
-.content-columns(@columnCount, @columnGap: @gutterWidth) {
-  -webkit-column-count: @columnCount;
-	 -moz-column-count: @columnCount;
-		  column-count: @columnCount;
-  -webkit-column-gap: @columnGap;
-	 -moz-column-gap: @columnGap;
-		  column-gap: @columnGap;
+// Columns
+// --------------------------------------------------
+
+.content-columns(@column-count, @column-gap: @gutter-width) {
+  -webkit-column-count: @column-count;
+     -moz-column-count: @column-count;
+          column-count: @column-count;
+    -webkit-column-gap: @column-gap;
+       -moz-column-gap: @column-gap;
+            column-gap: @column-gap;
 }
 
 // Column breaks
-// auto | always | avoid | left | right | page | column | avoid-page | avoid-column
+
+// auto | avoid
 .content-columns-break-inside(@break: auto) {
 	-webkit-column-break-inside: @break;
 	-moz-column-break-inside: @break;
 	column-break-inside: @break;
 }
 
+// auto | always | avoid
 .content-columns-break-before(@break: auto) {
 	-webkit-column-break-before: @break;
 	-moz-column-break-before: @break;
 	column-break-before: @break;
 }
 
+// auto | always | avoid
 .content-columns-break-after(@break: auto) {
 	-webkit-column-break-after: @break;
 	-moz-column-break-after: @break;
@@ -335,8 +346,7 @@
 .flex-display(@display: flex) {
 	display: ~"-webkit-@{display}";
 	display: ~"-moz-@{display}";
-	display: ~"-ms-@{display}box";
-	display: ~"-o-@{display}";
+	display: ~"-ms-@{display}";
 	display: @display;
 }
 
@@ -460,13 +470,6 @@
 		background-repeat: repeat-x;
 	}
 
-	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
-		background-color: mix(@midColor, @endColor, 80%);
-		background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
-		background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
-		background-repeat: no-repeat;
-	}
-
 	.radial(@innerColor: #555, @outerColor: #333, @shape: circle)  {
 		background-color: @outerColor;
 		background-image: -webkit-radial-gradient(@shape, @innerColor, @outerColor);
@@ -474,12 +477,5 @@
 		background-image:      -o-radial-gradient(@shape, @innerColor, @outerColor);
 		background-image:         radial-gradient(@shape, @innerColor, @outerColor);
 		background-repeat: no-repeat;
-	}
-
-	.striped(@color, @angle: -45deg) {
-		@fade: fade(@white, 20%);
-		background-color: @color;
-		background-image: -webkit-linear-gradient(@angle, @fade 25%, transparent 25%, transparent 50%, @fade 50%, @fade 75%, transparent 75%, transparent);
-		background-image: linear-gradient(@angle, @fade 25%, transparent 25%, transparent 50%, @fade 50%, @fade 75%, transparent 75%, transparent);
 	}
 }
