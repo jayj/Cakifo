@@ -36,7 +36,7 @@
 	padding: (@gutter-width + 20px) 0 (@gutter-width + 10px);
 }
 
-#site-title {
+.site-title {
 	float: left;
 	margin: 0 0 0 @gutter-width;
 	#font > .shorthand(46, normal);
@@ -57,11 +57,12 @@
 	}
 }
 
-#site-description {
+.site-description {
 	float: right;
 	margin: @gutter-width-small @gutter-width 0 0;
 	padding: 2px 8px;
 	.font-size(@headings-size-small);
+	font-weight: normal;
 	background-color: #fff;
 	background-color: fade(#fff, 53%);
 	border-radius: 3px;
@@ -76,16 +77,16 @@
  * Use Flexbox to vertical center the site title and description
  */
 .flexbox {
-	.site-header hgroup {
+	.site-header .home-link {
 		.flex-display();
 	}
 
-	#site-title {
+	.site-title {
 		float: none;
 		margin: auto auto auto @gutter-width;
 	}
 
-	#site-description {
+	.site-description {
 		float: none;
 		margin: auto @gutter-width auto auto;
 	}

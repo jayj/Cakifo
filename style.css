@@ -535,7 +535,7 @@ caption {
 .site-header {
   padding: 60px 0 50px;
 }
-#site-title {
+.site-title {
   float: left;
   margin: 0 0 0 40px;
   font-size: 46px;
@@ -545,46 +545,47 @@ caption {
   text-shadow: 0 1px 0 #fff;
   letter-spacing: -2px;
 }
-#site-title img {
+.site-title img {
   max-width: 100%;
   width: auto\9;
   height: auto;
   vertical-align: middle;
 }
-#site-title a {
+.site-title a {
   color: #3083aa;
 }
-#site-title a:hover {
+.site-title a:hover {
   color: #d54e21;
 }
-#site-description {
+.site-description {
   float: right;
   margin: 25px 40px 0 0;
   padding: 2px 8px;
   font-size: 21px;
   font-size: 2.1rem;
+  font-weight: normal;
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.53);
   border-radius: 3px;
   color: #555555;
 }
-#site-description:empty {
+.site-description:empty {
   background: none;
 }
 /**
  * Use Flexbox to vertical center the site title and description
  */
-.flexbox .site-header hgroup {
+.flexbox .site-header .home-link {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
 }
-.flexbox #site-title {
+.flexbox .site-title {
   float: none;
   margin: auto auto auto 40px;
 }
-.flexbox #site-description {
+.flexbox .site-description {
   float: none;
   margin: auto 40px auto auto;
 }
@@ -2994,21 +2995,21 @@ html .btn-inverse:hover {
   .site-header {
     text-align: center;
   }
-  #site-title,
-  #site-description {
+  .site-title,
+  .site-description {
     float: none;
   }
-  #site-description {
+  .site-description {
     margin: 20px 0 0;
   }
-  .flexbox .site-header hgroup {
+  .flexbox .site-header .home-link {
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
   }
-  .flexbox #site-title,
-  .flexbox #site-description {
+  .flexbox .site-title,
+  .flexbox .site-description {
     margin: 0 auto 20px;
   }
   /* Hide the slider */
@@ -3379,7 +3380,7 @@ html .btn-inverse:hover {
   /**
   	 * Site title
   	 */
-  #site-title a:after {
+  .home-link:before {
     content: attr(title);
     color: #000;
     font-size: 46px;

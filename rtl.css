@@ -165,12 +165,12 @@ thead th {
 /**
  * Layout: Header
  */
-#site-title {
+.site-title {
 	float: right;
 	margin: 0 40px 0 0;
 }
 
-#site-description {
+.site-description {
 	float: left;
 	margin: 25px 0 0 40px;
 }
@@ -622,12 +622,12 @@ thead th {
    ========================================================================== */
 
 @media screen and (max-width: 980px) {
-	#site-title {
+	.site-title {
 		margin-right: 25px;
 		margin-left: auto;
 	}
 
-	#site-description {
+	.site-description {
 		margin-left: 25px;
 		margin-right: auto;
 	}

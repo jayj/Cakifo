@@ -40,10 +40,10 @@
 
 		<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
 
-			<hgroup>
-				<?php cakifo_logo(); ?>
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</hgroup> <!-- #branding -->
+		<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<?php cakifo_logo(); ?>
+			<h2 class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></h2>
+		</a>
 
 		<?php do_atomic( 'header' ); // cakifo_header ?>
 

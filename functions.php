@@ -529,7 +529,7 @@ function cakifo_header_style() {
 			// Has the text been hidden?
 			if ( ! display_header_text() ) :
 		?>
-			#site-title span {
+			.site-title span {
 				position: absolute !important;
 				clip: rect(1px 1px 1px 1px); /* IE7 */
 				clip: rect(1px, 1px, 1px, 1px);
@@ -538,8 +538,8 @@ function cakifo_header_style() {
 			// If the user has set a custom color for the text, use that
 			elseif ( 'blank' != get_header_textcolor() ) :
 		?>
-			#site-title a,
-			#site-description {
+			.site-title,
+			.site-description {
 				color: #<?php echo get_header_textcolor(); ?> !important;
 			}
 		<?php endif; ?>
@@ -548,7 +548,7 @@ function cakifo_header_style() {
 			// Hide the description if there's no header image and the text has been hidden
 			if ( ! get_header_image() && ! display_header_text() ) :
 		?>
-			#site-description {
+			.home-link {
 				position: absolute !important;
 				clip: rect(1px 1px 1px 1px); /* IE7 */
 				clip: rect(1px, 1px, 1px, 1px);
@@ -594,24 +594,25 @@ function cakifo_admin_header_image() { ?>
 			}
 		?>
 
-		<h1>
-			<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>" style="<?php echo $style; ?>">
-				<?php
-					if ( ! empty( $header_image ) )
-						echo '<img src="' . $header_image . '" alt="" />';
-				?>
+		<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>" style="<?php echo $style; ?>">
+			<h1>
 
-				<span class="displaying-header-text" style="<?php echo $span; ?>">
-					<?php bloginfo( 'name' ); ?>
-				</span>
-			</a>
-		</h1>
+					<?php
+						if ( ! empty( $header_image ) )
+							echo '<img src="' . $header_image . '" alt="" />';
+					?>
 
-		<?php
-			if ( empty( $header_image ) )
-				$class = 'displaying-header-text';
-		?>
-		<h2 id="desc" class="<?php echo $class; ?>" style="<?php echo $desc; ?>"><?php bloginfo( 'description' ); ?></h2>
+					<span class="displaying-header-text" style="<?php echo $span; ?>">
+						<?php bloginfo( 'name' ); ?>
+					</span>
+			</h1>
+
+			<?php
+				if ( empty( $header_image ) )
+					$class = 'displaying-header-text';
+			?>
+			<h2 id="desc" class="<?php echo $class; ?>" style="<?php echo $desc; ?>"><?php bloginfo( 'description' ); ?></h2>
+		</a>
 
 		<br class="clear" />
 	</div>
@@ -621,6 +622,7 @@ function cakifo_admin_header_image() { ?>
  * Styles the header styles displayed on the Appearance > Header admin panel.
  *
  * @since Cakifo 1.0.0
+ * @todo  Get font from Theme Customizer
  */
 function cakifo_admin_header_style() { ?>
 
@@ -639,7 +641,7 @@ function cakifo_admin_header_style() { ?>
 			font-family: 'PT Serif', Georgia, serif;
 		}
 
-		#headimg h1 a {
+		#headimg h1 span {
 			font-size: 46px;
 			font-weight: normal;
 			line-height: 1.8;
@@ -675,9 +677,7 @@ function cakifo_logo() {
 		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
 	}
 
-	$output = sprintf( '<h1 id="site-title"><a href="%s" title="%s" rel="home">%s<span>%s</span></a></h1>',
-		esc_url( home_url() ),
-		esc_attr( $title ),
+	$output = sprintf( '<h1 class="site-title" id="site-title">%s<span>%s</span></h1>',
 		$maybe_image,
 		$title
 	);
@@ -1056,7 +1056,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 			'id'        => 'title',
 			'label'     => __( 'Site title and description', 'cakifo' ),
 			'default'   => 'pt-serif-400',
-			'selectors' => '#site-title, #site-description',
+			'selectors' => '.site-title, .site-description',
 		)
 	);
 
@@ -1259,7 +1259,7 @@ function cakifo_register_colors( $color_palette ) {
 function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
 
 	if ( 'color' === $property && 'link' === $color_id )
-		$selectors = '#site-title a, .menu a, .section-title a, .widget-title a, .intro-post .post-edit-link';
+		$selectors = '.site-title, .menu a, .section-title a, .widget-title a, .intro-post .post-edit-link';
 
 	return $selectors;
 }

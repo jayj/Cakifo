@@ -207,13 +207,13 @@ function cakifo_customize_preview() {
 		( function( $ ){
 			wp.customize( 'blogname', function( value ) {
 				value.bind(function(to) {
-					$('#site-title span').text(to);
+					$('.site-title span').text(to);
 				});
 			});
 
 			wp.customize( 'blogdescription', function( value ) {
 				value.bind(function(to) {
-					$('#site-description').text(to);
+					$('.site-description').text(to);
 				});
 			});
 
@@ -227,23 +227,23 @@ function cakifo_customize_preview() {
 						if ( 'remove-header' == _wpCustomizeSettings.values.header_image ) {
 							$( '#branding' ).css( 'padding', '40px 0' );
 
-							$( '#site-description' ).css( {
+							$( '.site-description' ).css( {
 								'clip': 'rect(1px, 1px, 1px, 1px)',
 								'position': 'absolute'
 							} );
 						}
 
 						// Hide title
-						$( '#site-title span' ).css( {
+						$( '.site-title span' ).css( {
 							'clip': 'rect(1px, 1px, 1px, 1px)',
 							'position': 'absolute'
 						} );
 
 					} else {
 
-						$( '#branding' ).css( 'padding', '60px 0 50px' );
+						$( '.site-header' ).css( 'padding', '60px 0 50px' );
 
-						$( '#site-title span, #site-description' ).css( {
+						$( '.site-title span, .site-description' ).css( {
 							'clip': 'auto',
 							'color': to,
 							'position': 'relative'
