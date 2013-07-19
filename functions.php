@@ -45,9 +45,8 @@ function cakifo_theme_setup() {
 	/* Get action/filter hook prefix */
 	$prefix = hybrid_get_prefix();
 
-	/* Load Cakifo theme includes */
+	/* Load Cakifo theme includes. */
 	require_once( trailingslashit( THEME_DIR ) . 'functions/customize.php' );
-	require_once( trailingslashit( THEME_DIR ) . 'functions/shortcodes.php' );
 
 	/* Add theme support for core framework features */
 	add_theme_support( 'hybrid-core-menus', array( 'primary', 'secondary' ) );
@@ -78,7 +77,6 @@ function cakifo_theme_setup() {
 		'error-page'
 	));
 
-	add_theme_support( 'cakifo-shortcodes' );
 	add_theme_support( 'cakifo-colorbox' );
 
 	/* Load Theme Settings */
