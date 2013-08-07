@@ -25,7 +25,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</h1>
 
 		<h2 class="entry-date">
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+			<a href="<?php the_permalink(); ?>">
 				<?php echo do_shortcode( '[entry-published]' ); ?>
 			</a>
 		</h2>

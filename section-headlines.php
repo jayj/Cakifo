@@ -69,7 +69,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 			<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 
 			<h2 class="widget-title">
-				<a href="<?php echo get_term_link( $term ); ?>" title="<?php echo esc_attr( $term->description ); ?>"><?php echo $term->name; ?></a>
+				<a href="<?php echo get_term_link( $term ); ?>"><?php echo $term->name; ?></a>
 			</h2>
 
 			<ol>
@@ -97,7 +97,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 							}
 						?>
 
-						<h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+						<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 						<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' ); ?>
 
 						<?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>

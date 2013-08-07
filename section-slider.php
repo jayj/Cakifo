@@ -106,7 +106,7 @@
 					<div class="entry-summary">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
 						<?php the_excerpt(); ?>
-						<a class="more-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
+						<a class="more-link" href="<?php the_permalink(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>

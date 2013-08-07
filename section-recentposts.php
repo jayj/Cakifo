@@ -20,7 +20,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 	?>
 
 	<h1 class="section-title">
-		<a href="<?php echo esc_url( $posts_page ); ?>" title="<?php esc_attr_e( 'See more posts', 'cakifo' ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
+		<a href="<?php echo esc_url( $posts_page ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
 	</h1>
 
 	<?php
