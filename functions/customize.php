@@ -124,27 +124,6 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'twitter_username' setting */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[twitter_username]",
-		array(
-			'default'    => '',
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	/* Add the text control for the 'twitter_username' setting */
-	$wp_customize->add_control(
-		'twitter_username',
-		array(
-			'settings' => "{$prefix}_theme_settings[twitter_username]",
-			'label'    =>  esc_html__( 'Optional: Twitter username', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
-			'type'     => 'text',
-		)
-	);
-
 	/* Add the 'headlines_category' setting */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[headlines_category]",

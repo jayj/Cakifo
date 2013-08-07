@@ -116,14 +116,6 @@
 			<?php echo get_avatar( get_the_author_meta( 'user_email', $user_id ), 96, '', $name ); ?>
 
 			<?php echo wpautop( get_the_author_meta( 'description', $user_id ) ); ?>
-
-			<?php if ( $twitter = get_the_author_meta( 'twitter', $user_id ) ) { ?>
-				<p class="twitter-link">
-					<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), $name ); ?>">
-						<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), $name ); ?>
-					</a>
-				</p>
-			<?php } // Twitter ?>
 		</div> <!-- .loop-description -->
 
 	</div> <!-- .loop-meta -->

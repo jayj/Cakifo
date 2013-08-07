@@ -1328,17 +1328,6 @@ body.page-template-template-front-page .site-main {
   font-size: 18px;
   font-size: 1.8rem;
 }
-.author-profile .twitter-link,
-.loop-meta .twitter-link {
-  text-align: right;
-}
-.author-profile .twitter-link a,
-.loop-meta .twitter-link a {
-  padding-left: 23px;
-  font-size: 14px;
-  font-size: 1.4rem;
-  background: url(images/twitter.png) no-repeat left bottom;
-}
 /* =============================================================================
    Components:  Loop meta
    ========================================================================== */

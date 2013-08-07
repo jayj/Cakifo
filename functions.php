@@ -711,14 +711,6 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 					<?php echo wpautop( get_the_author_meta( 'description' ) ); ?>
 				</div>
 
-				<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) { ?>
-					<p class="twitter-link">
-						<a href="<?php echo esc_url( "http://twitter.com/{$twitter}" ); ?>" title="<?php printf( esc_attr__( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>">
-							<?php printf( __( 'Follow %s on Twitter', 'cakifo' ), get_the_author_meta( 'display_name' ) ); ?>
-						</a>
-					</p>
-				<?php } // Twitter ?>
-
 				<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
 
 			</div> <!-- .author-profile -->

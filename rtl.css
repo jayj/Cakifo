@@ -384,21 +384,6 @@ thead th {
 }
 
 /**
- * Components: Author box
- */
-.author-profile .twitter-link,
-.loop-meta .twitter-link {
-	text-align: left;
-}
-
-.author-profile .twitter-link a,
-.loop-meta .twitter-link a {
-	padding-right: 23px;
-	background-position: right bottom;
-	padding-left: 0;
-}
-
-/**
  * Components: Recent Posts
  */
 .recent-post {
