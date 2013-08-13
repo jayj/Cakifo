@@ -153,6 +153,9 @@ function cakifo_theme_meta_box() { ?>
 								/* Generate the value containing taxonomy and term ID. */
 								$id = $slug . ':' . $term->term_id;
 
+								/* Set the $selected variable in case $settings is empty. */
+								$selected = false;
+
 								/* Check if the current term is selected. */
 								foreach( $settings as $selected ) {
 
