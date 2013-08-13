@@ -62,10 +62,15 @@
 	<?php
 		/**
 		 * Include the slider `section-slider.php` template part file
-		 * if it's the front/post page and the setting is activated
+		 * if it's the front page template the setting is activated.
 		 *
 		 * Child Themes can replace this template part file via `section-slider.php`
+		 * The `cakifo_show_slider` filter can be used to apply new logic to whether
+		 * the slider should load or not.
 		 */
-		if ( ( is_home() || is_front_page() ) && hybrid_get_setting( 'featured_show' ) )
+		$show_slider = hybrid_get_setting( 'featured_show' ) && is_page_template( 'template-front-page.php' );
+
+		if ( apply_filters( 'cakifo_show_slider', $show_slider ) ) {
 			get_template_part( 'section', 'slider' );
+		}
 	?>
