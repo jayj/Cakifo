@@ -20,8 +20,12 @@ get_header(); // Loads the header.php template ?>
 				/**
 				 * If we have content for this page, let's display it.
 				 */
-				if ( hybrid_post_has_content() )
-					cakifo_get_loop_template( 'intro' );
+				while ( have_posts() ) : the_post();
+
+					if ( hybrid_post_has_content() )
+						cakifo_get_loop_template( 'intro' );
+
+				endwhile;
 			?>
 
 			<?php

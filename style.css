@@ -1276,7 +1276,7 @@ body.page-template-template-front-page .site-main {
   padding: 3px 10px;
   text-transform: uppercase;
   position: absolute;
-  top: 40%;
+  top: 0;
   right: 25px;
 }
 .intro-post .post-edit-link[href]:hover,
