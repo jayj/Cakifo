@@ -32,8 +32,8 @@ function cakifo_theme_admin_setup() {
 }
 
 /**
- * Loads the JavaScript and CSS files required for using the color picker on the theme settings
- * page, which allows users to change the link color
+ * Loads the JavaScript and CSS files required for the
+ * Theme Settings page.
  *
  * @since Cakifo 1.4.0
  * @param string $hook_suffix The current page being viewed.
@@ -43,13 +43,9 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
 		return;
 
-	wp_enqueue_script( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.js', array( 'jquery' ), '1.6' );
-	wp_enqueue_style( 'cakifo-theme-settings-multi-select', get_template_directory_uri() . '/functions/admin/multi-select.css', array(), '1.6' );
-
-	wp_localize_script( 'cakifo-theme-settings-multi-select', 'cakifo_admin', array(
-		'selectableHeader' => __( 'Selectable terms by taxonomy', 'cakifo' ),
-		'selectionHeader'  => __( 'Selected terms', 'cakifo' ),
-	) );
+	wp_enqueue_script( 'jquery-ui-sortable' );
+	wp_enqueue_script( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0' );
+	wp_enqueue_style( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.css', array(), '1.0' );
 }
 
 /**
@@ -79,122 +75,163 @@ function cakifo_theme_settings_meta_boxes() {
  */
 function cakifo_theme_meta_box() { ?>
 
-	<?php submit_button( esc_attr__( 'Update Settings', 'cakifo' ) ); ?>
+	<h2><?php _e( 'How to use the front page template: (Edit Page) Page Attributes > Template > Front Page', 'cakifo' ); ?></h2>
 
-	<table class="form-table">
+<table class="form-table">
 
-		<!-- Slider -->
-		<tr>
-			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show "Featured Content" slider?', 'cakifo' ); ?></label>
-			</th>
+	<!-- Slider -->
+	<tr>
+		<th>
+			<label for="<?php echo hybrid_settings_field_id( 'featured_show' ); ?>"><?php _e( 'Show "Featured Content" slider?', 'cakifo' ); ?></label>
+		</th>
 
-			<td>
-				<p><input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" value="1" <?php checked( hybrid_get_setting( 'featured_show' ), 1 ); ?> /></p>
-				<p><?php _e( 'Check to display the "Featured Content" slider', 'cakifo' ); ?></p>
-			</td>
-		</tr>
+		<td>
+			<label>
+				<input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" value="1" <?php checked( hybrid_get_setting( 'featured_show' ), 1 ); ?> />&nbsp;
+			 	<?php _e( 'Check to display the "Featured Content" slider', 'cakifo' ); ?>
+			 </label>
+		</td>
+	</tr>
 
-		<!-- Featured Category -->
-		<tr>
-			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category', 'cakifo' ); ?></label>
-			</th>
+	<!-- Featured Category -->
+	<tr>
+		<th>
+			<label for="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"><?php _e( 'Featured Category', 'cakifo' ); ?></label>
+		</th>
 
-			<td>
-				<?php $categories = get_categories(); ?>
+		<td>
+			<p>
+				<select name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>"
+					id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>"
+					data-placeholder="<?php esc_attr_e( 'Select a category', 'cakifo' ); ?>"
+					class="<?php if ( is_rtl() ) echo 'chosen-rtl'; ?>">
 
-				<p>
-					<select id="<?php echo hybrid_settings_field_id( 'featured_category' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_category' ); ?>">
-					<option value="" <?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
+					<option value=""<?php selected( hybrid_get_setting( 'featured_category' ), '' ); ?>></option>
 
-						<?php foreach ( $categories as $cat ) { ?>
-							<option value="<?php echo $cat->term_id; ?>" <?php selected( hybrid_get_setting( 'featured_category' ), $cat->term_id ); ?>><?php echo esc_attr( $cat->name ); ?></option>
-						<?php } ?>
+					<?php foreach ( get_categories() as $category ) { ?>
+						<option value="<?php echo $category->term_id; ?>"<?php selected( hybrid_get_setting( 'featured_category' ), $category->term_id ); ?>><?php echo esc_attr( $category->name ); ?></option>
+					<?php } ?>
+				</select>
+			</p>
 
-					</select>
-				</p>
+			<p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
+		</td>
+	</tr>
 
-				<p><?php _e( 'Leave blank to use sticky posts', 'cakifo' ); ?></p>
-			</td>
-		</tr>
+	<!-- Number of featured posts -->
+	<tr>
+		<th>
+			<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts', 'cakifo' ); ?></label>
+		</th>
+		<td>
+			<p><input type="number" min="-1" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
+			<p><?php _e( 'How many featured posts should be shown? <code>-1</code> will show all posts in the category.', 'cakifo' ); ?>
+			<?php printf( __( '%s is the default', 'cakifo' ), '<code>5</code>' ); ?></p>
+		</td>
+	</tr>
 
-		<!-- Number of featured posts -->
-		<tr>
-			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>"><?php _e( 'Featured Posts', 'cakifo' ); ?></label>
-			</th>
-			<td>
-				<p><input type="number" min="-1" id="<?php echo hybrid_settings_field_id( 'featured_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'featured_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'featured_posts' ) ); ?>" class="small-text" /></p>
-				<p><?php _e( 'How many featured posts should be shown? <code>-1</code> will show all posts in the category.', 'cakifo' ); ?>
-				<?php printf( __( '%s is the default', 'cakifo' ), '<code>5</code>' ); ?></p>
-			</td>
-		</tr>
+	<!-- Headline taxonomies -->
+	<tr>
+		<th>
+			<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Terms', 'cakifo' ); ?></label>
+		</th>
 
-		<!-- Headline taxonomies -->
-		<tr>
-			<th>
-				<label for="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"><?php _e( 'Headline Taxonomies', 'cakifo' ); ?></label>
-			</th>
+		<td>
+			<?php
+				$get_selected_terms = hybrid_get_setting( 'headlines_category' );
+				$exclude_term_ids   = array();
 
-			<td>
-				<select name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]" multiple="multiple" id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>">
+				/**
+				 * Get all the selected terms IDs in an array
+				 */
+				foreach( $get_selected_terms as $term ) :
+
+					// Back-compat when only an ID is used.
+					if ( is_string( $term ) || is_int( $term ) )
+						$exclude_term_ids[] = $term;
+					else
+						$exclude_term_ids[] = $term[1];
+
+				endforeach;
+
+				$exclude_term_ids = wp_parse_id_list( $exclude_term_ids );
+			?>
+
+			<select name="<?php echo hybrid_settings_field_name( 'headlines_category' ); ?>[]"
+				id="<?php echo hybrid_settings_field_id( 'headlines_category' ); ?>"
+				data-placeholder="<?php esc_attr_e( 'Select terms by taxonomy', 'cakifo' ); ?>"
+				multiple="multiple"
+				class="chosen-sortable<?php if ( is_rtl() ) echo ' chosen-rtl'; ?>">
 
 				<?php
-					/* Get the setting. */
-					$settings = (array) hybrid_get_setting( 'headlines_category' );
+					/**
+					 * First loop through each selected term.
+					 */
+					foreach ( $get_selected_terms as $selected_term ) :
+
+						// Back-compat when only an ID is used.
+						if ( is_string( $selected_term ) || is_int( $selected_term ) ) {
+							$tax_slug = 'category';
+							$term_id = $selected_term;
+						} else {
+							$tax_slug = $selected_term[0];
+							$term_id  = $selected_term[1];
+						}
+
+						// Generate the value containing the taxonomy and term ID.
+						$id = $tax_slug . ':' . $term_id;
+
+						// Get term and taxonomy information.
+						$term = get_term_by( 'id', $term_id, $tax_slug );
+						$tax  = get_taxonomy( $term->taxonomy );
 				?>
 
-				<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $slug => $taxonomy ) : ?>
+						<option value="<?php echo esc_attr( $id ); ?>" selected="selected">
+							<?php printf( '%s: %s', esc_attr( $tax->labels->singular_name ), esc_html( $term->name ) ); ?>
+						</option>
+
+				<?php endforeach; ?>
+
+				<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $tax_slug => $taxonomy ) : ?>
 
 					<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
+
 						<?php
-							foreach ( get_terms( $slug ) as $term ) :
-								/* Generate the value containing taxonomy and term ID. */
-								$id = $slug . ':' . $term->term_id;
+							/**
+							 * Loop through the rest of the terms.
+							 */
+							foreach ( get_terms( $tax_slug, array( 'exclude' => $exclude_term_ids ) ) as $term ) :
 
-								/* Set the $selected variable in case $settings is empty. */
-								$selected = false;
-
-								/* Check if the current term is selected. */
-								foreach( $settings as $selected ) {
-
-									/* in_array() is used for back-compat. */
-									if ( ( is_array( $selected ) && $term->term_id == $selected[1] ) || in_array( $term->term_id, $settings ) ) {
-										$selected = true;
-										break;
-									} else {
-										$selected = false;
-										continue;
-									}
-								}
+								// Generate the value containing taxonomy and term ID.
+								$id = $tax_slug . ':' . $term->term_id;
 							?>
 
-							<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $selected ); ?>>
+							<option value="<?php echo esc_attr( $id ); ?>">
 								<?php printf( '%s: %s', esc_attr( $taxonomy->labels->singular_name ), esc_html( $term->name )  ); ?>
 							</option>
+
 						<?php endforeach; ?>
 					</optgroup>
 
 				<?php endforeach; ?>
-				</select>
+			</select>
 
-				<p><?php _e( 'Used on the Front Page template. Click on a term to add/remove it.', 'cakifo' ); ?>
-			</p>
-			<td>
-		</tr>
+			<p><?php _e( 'Click to select a term. You can write to easier find the term.', 'cakifo' ); ?>
+		</p>
+		<td>
+	</tr>
 
-		<!-- Number of Headline posts -->
-		<tr>
-			<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts', 'cakifo' ); ?></label></th>
-			<td>
-				<p><input type="number" min="1" id="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_num_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'headlines_num_posts' ) ); ?>" class="small-text" /></p>
+	<!-- Number of Headline posts -->
+	<tr>
+		<th><label for="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>"><?php _e( 'Headlines Posts', 'cakifo' ); ?></label></th>
+		<td>
+			<p><input type="number" min="1" id="<?php echo hybrid_settings_field_id( 'headlines_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'headlines_num_posts' ); ?>" value="<?php echo esc_attr( hybrid_get_setting( 'headlines_num_posts' ) ); ?>" class="small-text" /></p>
 
-				<p><?php _e( 'How many posts should be shown per headline category?', 'cakifo' ); ?> <?php printf( __( '%s is the default', 'cakifo' ), '<code>4</code>' ); ?></p></p>
-			</td>
-		</tr>
+			<p><?php _e( 'How many posts should be shown per headline category?', 'cakifo' ); ?> <?php printf( __( '%s is the default', 'cakifo' ), '<code>4</code>' ); ?></p></p>
+		</td>
+	</tr>
 
-	</table> <!-- .form-table --> <?php
+</table> <!-- .form-table --> <?php
 }
 
 /**
