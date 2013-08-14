@@ -63,7 +63,7 @@ function cakifo_theme_settings_meta_boxes() {
 	/* Add a Featured content box */
 	add_meta_box(
 		'cakifo-theme-meta-box',// Custom meta box ID
-		__( 'Cakifo settings', 'cakifo' ),
+		__( 'Front Page settings', 'cakifo' ),
 		'cakifo_theme_meta_box', // Custom callback function
 		'appearance_page_theme-settings', // Page to load on, leave as is
 		'normal',
