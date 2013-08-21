@@ -170,6 +170,7 @@ h6 {
   font-size: 30px;
   font-size: 3rem;
   margin-bottom: 0;
+  word-wrap: break-word;
 }
 /* h3 headings in post content */
 .entry-content h3 {
