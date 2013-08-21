@@ -1969,86 +1969,89 @@ iframe[seamless] {
   margin: 0 25px 0 0;
 }
 /* =============================================================================
-   Layout:  Comments
+   Layout:  Comments area
    ========================================================================== */
 .comments-area {
   margin-top: 40px;
 }
-.comments-header {
+.comments-title {
   background-color: #ffffdf;
   border: double #eeddbd;
   border-width: 4px 0;
-  margin: 0 0 40px;
-  padding: 10px 25px;
+  margin: 0;
+  padding: 15px 25px;
 }
-.comment-list,
-.comment-list .children {
+/**
+ * Comments
+ */
+.comment-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.comment {
+.comment-body {
   border-bottom: 4px double #eeeeee;
+  padding: 40px 25px 25px;
+  word-wrap: break-word;
 }
-.comment .comment-wrapper {
-  padding: 25px;
-}
-.comment .comment-meta {
-  font-size: 13px;
-  font-size: 1.3rem;
-  font-weight: normal;
-  line-height: 25px;
-  color: #999999;
-}
-.comment .comment-meta a {
-  color: #555555;
-}
-.comment .comment-meta a:hover {
-  color: #d54e21;
-}
-.comment .comment-meta .comment-reply-link {
-  font-weight: bold;
-}
-.comment .comment-author {
-  display: block;
-  font-size: 16px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  line-height: 25px;
-  color: #555555;
-}
-.comment .comment-author cite {
-  font-style: normal;
-}
-/* Comment background colours */
-.comment .even {
-  background-color: #fff;
-}
-.comment .odd {
-  background-color: #ffffe9;
-}
-.comment .bypostauthor {
+.bypostauthor > .comment-body {
   background-color: #f2f7fc;
 }
-/* Child comments */
+/**
+ * Comment meta
+ */
+.comment-author {
+  line-height: 1.5;
+}
+.comment-metadata a {
+  color: #555555;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.comment-metadata a:hover {
+  color: #d54e21;
+}
+.comment-edit-link {
+  margin-left: 10px;
+}
+.comment-edit-link:before {
+  content: "\270D";
+  margin-right: 5px;
+}
+/**
+ * Closed comments
+ */
+.no-comments {
+  background-color: #ffffdf;
+  border: double #eeddbd;
+  border-width: 4px 0;
+  margin: 40px 0;
+  padding: 40px;
+  font-size: 26px;
+  font-size: 2.6rem;
+  text-align: center;
+}
+/**
+ * Child comments
+ */
 .comment-list .children {
-  margin-left: 40px;
+  list-style: none;
 }
-.comment-list .children .comment {
-  border-top: 1px solid #eeeeee;
-  border-bottom: none;
+.comment-list .children .comment-body {
+  border-left: 3px solid;
+  padding-left: 40px;
 }
-.comment-list .children .depth-2 {
-  border-left: 3px solid #04648d;
+.comment-list .children .depth-2 .comment-body {
+  border-left-color: #04648d;
 }
-.comment-list .children .depth-3 {
-  border-left: 3px solid #ce3000;
+.comment-list .children .depth-3 .comment-body {
+  border-left-color: #ce3000;
 }
-.comment-list .children .depth-4 {
-  border-left: 3px solid #008a2e;
+.comment-list .children .depth-4 .comment-body {
+  border-left-color: #008a2e;
 }
-.comment-list .children .depth-5 {
-  border-left: 3px solid #ea0863;
+.comment-list .children .depth-5 .comment-body {
+  border-left-color: #ea0863;
 }
 /* =============================================================================
    Forms
@@ -2282,7 +2285,8 @@ input[type="checkbox"][readonly] {
 .btn,
 input[type="submit"],
 input[type="reset"],
-input[type="button"] {
+input[type="button"],
+.comment-reply-link {
   display: inline-block;
   padding: 4px 14px;
   font-size: 16px;
@@ -2329,7 +2333,8 @@ fieldset[disabled] input[type="button"] {
 .btn,
 input[type="submit"],
 input[type="reset"],
-input[type="button"] {
+input[type="button"],
+.comment-reply-link {
   background-color: #fafafa;
   background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4 100%);
   background-image: linear-gradient(to bottom, #fefefe, #f4f4f4 100%);
@@ -2470,7 +2475,8 @@ html .btn-inverse:hover {
   font-size: 14px;
   font-size: 1.4rem;
 }
-.btn-mini {
+.btn-mini,
+.comment-reply-link {
   padding: 3px 7px;
   font-size: 13px;
   font-size: 1.3rem;
