@@ -1727,14 +1727,12 @@ iframe[seamless] {
   margin-bottom: 25px;
 }
 .format-status .entry-header .entry-author {
-  display: inline-block;
   margin: 0;
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: normal;
 }
 .format-status .entry-header .entry-date {
-  margin: 0;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: normal;
