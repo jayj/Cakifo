@@ -77,13 +77,14 @@
    ========================================================================== */
 
 .breadcrumbs {
-	padding: 12px @gutter-width-small;
-	border-bottom: 1px solid darken(@breadcrumb-bg, 5%);
-	margin-bottom: @gutter-width-small;
-	#font > .shorthand(@font-size-small, normal, 2);
 	background: @breadcrumb-bg;
+	border-bottom: 1px solid darken(@breadcrumb-bg, 5%);
 	border-radius: 5px;
 	color: @gray;
+	#font > .shorthand(@font-size-small, normal, 2);
+	margin-bottom: @gutter-width-small;
+	padding: 12px @gutter-width-small;
+	word-wrap: break-word;
 
 	a {
 		color: @gray-dark;

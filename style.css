@@ -1288,16 +1288,17 @@ body.page-template-template-front-page .site-main {
    Components:  Breadcrumbs
    ========================================================================== */
 .breadcrumbs {
-  padding: 12px 25px;
+  background: #f8f8f7;
   border-bottom: 1px solid #ecece9;
-  margin-bottom: 25px;
+  border-radius: 5px;
+  color: #555555;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: normal;
   line-height: 2;
-  background: #f8f8f7;
-  border-radius: 5px;
-  color: #555555;
+  margin-bottom: 25px;
+  padding: 12px 25px;
+  word-wrap: break-word;
 }
 .breadcrumbs a {
   color: #333333;
