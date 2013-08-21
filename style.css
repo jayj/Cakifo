@@ -242,6 +242,91 @@ dt {
   font-weight: bold;
 }
 /* =============================================================================
+   Typography:  Code
+   ========================================================================== */
+/**
+ * Corrects font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: Monaco, Consolas, "Courier New", monospace;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+/**
+ * Inline code
+ */
+code {
+  color: #009933;
+}
+/**
+ * Blocks of code
+ */
+pre {
+  overflow: auto;
+  padding: 25px;
+  background: #424242;
+  border-radius: 5px;
+  color: #fff;
+  white-space: pre-wrap;
+}
+pre code {
+  color: #fff;
+}
+/* =============================================================================
+   Typography:  HTML elements
+   ========================================================================== */
+abbr[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+acronym {
+  border-bottom: 1px dashed #555555;
+  text-transform: uppercase;
+  cursor: help;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+hr {
+  display: block;
+  clear: both;
+  border: 0;
+  height: 0;
+  padding: 0;
+  margin: 25px 0;
+  border-bottom: 4px double #eeeeee;
+}
+mark,
+ins {
+  background: #fff9c0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* =============================================================================
    Typography:  Quotes
    ========================================================================== */
 q {
@@ -374,104 +459,6 @@ blockquote p:only-of-type:after {
   font-size: 56px;
   font-size: 5.6rem;
   opacity: 0.2;
-}
-/* =============================================================================
-   Typography:  Code
-   ========================================================================== */
-/**
- * Corrects font family set oddly in Safari 5 and Chrome.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: Monaco, Consolas, "Courier New", monospace;
-  font-size: 16px;
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 1.6;
-}
-/**
- * Inline code
- */
-code {
-  color: #009933;
-}
-/**
- * Blocks of code
- */
-pre {
-  overflow: auto;
-  padding: 25px;
-  background: #424242;
-  border-radius: 5px;
-  color: #fff;
-  white-space: pre-wrap;
-}
-pre code {
-  color: #fff;
-}
-/* =============================================================================
-   Typography:  HTML elements
-   ========================================================================== */
-abbr[title] {
-  border-bottom: 1px dotted;
-  cursor: help;
-}
-acronym {
-  border-bottom: 1px dashed #555555;
-  text-transform: uppercase;
-  cursor: help;
-}
-b,
-strong {
-  font-weight: bold;
-}
-dfn {
-  font-style: italic;
-}
-hr {
-  display: block;
-  clear: both;
-  border: 0;
-  height: 0;
-  padding: 0;
-  margin: 25px 0;
-  border-bottom: 4px double #eeeeee;
-}
-mark,
-ins {
-  background: #fff9c0;
-  color: #000;
-}
-small {
-  font-size: 80%;
-}
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-sup {
-  top: -0.5em;
-}
-sub {
-  bottom: -0.25em;
-}
-/* =============================================================================
-   Typography:  Selections
-   ========================================================================== */
-::-moz-selection {
-  background-color: #568cbb;
-  color: #ffffff;
-  text-shadow: none;
-}
-::selection {
-  background-color: #568cbb;
-  color: #ffffff;
-  text-shadow: none;
 }
 table {
   width: 100%;
