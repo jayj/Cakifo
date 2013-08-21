@@ -61,8 +61,19 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 			<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 
+			<?php
+				/**
+				 * Gets the plural version of a post format name.
+				 */
+				if ( 'post_format' == $term->taxonomy ) {
+					$name = hybrid_get_plural_post_format_string( $term->slug );
+				} else {
+					$name = $term->name;
+				}
+			?>
+
 			<h2 class="widget-title">
-				<a href="<?php echo get_term_link( $term ); ?>"><?php echo $term->name; ?></a>
+				<a href="<?php echo get_term_link( $term ); ?>"><?php echo $name; ?></a>
 			</h2>
 
 			<ol>
