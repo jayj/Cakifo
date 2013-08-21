@@ -39,7 +39,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 			 *
 			 * @uses $GLOBALS['cakifo_do_not_duplicate'] Excludes posts being duplicated
 			 */
-			$headlines = get_posts(
+			$headlines = new WP_Query(
 				array(
 					'posts_per_page' => hybrid_get_setting( 'headlines_num_posts' ),
 					'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
@@ -54,7 +54,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 				)
 			);
 
-		if ( ! empty( $headlines ) ) :
+		if ( $headlines->have_posts() ) :
 	?>
 
 		<div class="headline-list">
@@ -77,10 +77,10 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 			</h2>
 
 			<ol>
-				<?php foreach( $headlines as $post ) : ?>
+				<?php while ( $headlines->have_posts() ) : $headlines->the_post(); ?>
 
 					<?php
-						setup_postdata( $post );
+						// Make sure the post is not duplicated
 						$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
 					?>
 
@@ -102,11 +102,12 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 						?>
 
 						<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+
 						<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' ); ?>
 
 						<?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>
 					</li>
-				<?php endforeach; ?>
+				<?php endwhile; ?>
 			</ol>
 
 			<?php do_atomic( 'close_headline_list' ); // cakifo_close_headline_list ?>
