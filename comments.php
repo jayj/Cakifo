@@ -9,8 +9,12 @@
  * @subpackage Template
  */
 
-/* If a post password is required or no comments are given and comments/pings are closed, return */
-if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! pings_open() ) )
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() )
 	return;
 ?>
 
@@ -18,7 +22,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 
 	<?php if ( have_comments() ) : ?>
 
-		<h2 class="comments-header">
+		<h2 class="comments-title">
 			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?>
 		</h2>
 
@@ -37,28 +41,23 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && ! p
 		<?php do_atomic( 'after_comment_list' ); // cakifo_after_comment_list ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<nav class="pagination comment-pagination">
-				<h3 class="assistive-text"><?php _e( 'Comment navigation', 'cakifo' ); ?></h3>
+			<nav class="pagination comment-pagination" role="navigation">
+				<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'cakifo' ); ?></h3>
 				<?php paginate_comments_links(); ?>
 			</nav> <!-- .comment-navigation -->
 		<?php endif; ?>
 
 	<?php endif; // have_comments() ?>
 
-	<?php if ( pings_open() && ! comments_open() ) : ?>
+	<?php
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
 
-		<p class="comments-closed pings-open warning">
-			<?php printf( __( 'Comments are closed, but <a href="%1$s" title="Trackback URL for this post">trackbacks</a> and pingbacks are open.', 'cakifo' ), get_trackback_url() ); ?>
-		</p> <!-- .comments-closed .pings-open .warning -->
-
-	<?php elseif ( ! comments_open() ) : ?>
-
-		<p class="comments-closed warning">
-			<?php _e( 'Comments are closed.', 'cakifo' ); ?>
-		</p> <!-- .comments-closed .warning -->
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'cakifo' ); ?></p> <!-- .comments-closed -->
 
 	<?php endif; ?>
 
-	<?php comment_form(); // Loads the comment form ?>
+	<?php comment_form(); ?>
 
 </section> <!-- .comments-area -->
