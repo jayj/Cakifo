@@ -137,19 +137,17 @@ iframe[seamless] {
 /**
  * Galleries
  */
-.gallery,
+.gallery {
+	display: block;
+	clear: both;
+	overflow: hidden;
+	margin: @gutter-width-small auto;
+}
+
 .gallery-row {
 	display: block;
-	overflow: hidden;
 	clear: both;
-}
-
-.gallery {
-	margin: @gutter-width-small auto;
-	text-align: center;
-}
-
-.gallery-row {
+	overflow: hidden;
 	margin: 0;
 }
 
@@ -160,20 +158,31 @@ iframe[seamless] {
 	text-align: center;
 }
 
+.gallery-icon img {
+	.square(auto);
+	max-width: 90%; // 97%
+}
+
 .gallery-caption {
 	.font-size(@font-size-small);
 	margin: 0 0 15px 0;
 }
 
-/* Gallery columns */
-.col-1  { width: percentage(( 100 / 1 / 100 ));  }
-.col-2  { width: percentage(( 100 / 2 / 100 ));  }
-.col-3  { width: percentage(( 100 / 3 / 100 ));  }
-.col-4  { width: percentage(( 100 / 4 / 100 ));  }
-.col-5  { width: percentage(( 100 / 5 / 100 ));  }
-.col-6  { width: percentage(( 100 / 6 / 100 ));  }
-.col-7  { width: percentage(( 100 / 7 / 100 ));  }
-.col-8  { width: percentage(( 100 / 8 / 100 ));  }
-.col-9  { width: percentage(( 100 / 9 / 100 ));  }
-.col-10 { width: percentage(( 100 / 10 / 100 )); }
+.gallery-col-7 .gallery-caption,
+.gallery-col-8 .gallery-caption,
+.gallery-col-9 .gallery-caption {
+	display: none;
+}
 
+/* Gallery item sizes depending on the number of columns. */
+.gallery-col-0 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
+.gallery-col-1 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
+.gallery-col-2 .gallery-item  {  width: percentage(( 100 / 2 / 100  ));   }
+.gallery-col-3 .gallery-item  {  width: percentage(( 100 / 3 / 100  ));   }
+.gallery-col-4 .gallery-item  {  width: percentage(( 100 / 4 / 100  ));   }
+.gallery-col-5 .gallery-item  {  width: percentage(( 100 / 5 / 100  ));   }
+.gallery-col-6 .gallery-item  {  width: percentage(( 100 / 6 / 100  ));   }
+.gallery-col-7 .gallery-item  {  width: percentage(( 100 / 7 / 100  ));   }
+.gallery-col-8 .gallery-item  {  width: percentage(( 100 / 8 / 100  ));   }
+.gallery-col-9 .gallery-item  {  width: percentage(( 100 / 9 / 100  ));   }
+.gallery-col-10 .gallery-item {  width: percentage(( 100 / 10 / 100 ));   }
