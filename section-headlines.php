@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying headlines from categories
+ * The template for displaying headlines from taxonomies
  * in the `template-front-page.php` page template
  *
  * Child Themes can replace this template part file via `section-headlines.php`
@@ -37,27 +37,20 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 			/**
 			 * Create the loop for each selected term.
 			 *
-			 * @uses $GLOBALS['cakifo_do_not_duplicate'] Excludes posts from the 'Recent Posts' section
+			 * @uses $GLOBALS['cakifo_do_not_duplicate'] Excludes posts being duplicated
 			 */
 			$headlines = get_posts(
 				array(
 					'posts_per_page' => hybrid_get_setting( 'headlines_num_posts' ),
 					'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
-					'tax_query'      => array(
-						'relation' => 'AND',
-						array(
-							'terms'    => $term_id,
-							'taxonomy' => $taxonomy,
-							'field'    => 'id',
-						),
-						array(
-							// Exclude posts with the Aside, Link, Quote, and Status format
-							'taxonomy' => 'post_format',
-							'terms'    => array( 'post-format-aside', 'post-format-link', 'post-format-quote', 'post-format-status' ),
-							'field'    => 'slug',
-							'operator' => 'NOT IN',
-						)
-					),
+					'tax_query'      => array( array(
+						'terms'    => $term_id,
+						'taxonomy' => $taxonomy,
+						'field'    => 'id',
+					) ),
+					'no_found_rows'          => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false
 				)
 			);
 
