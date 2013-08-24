@@ -1,0 +1,209 @@
+/*
+ * Theme Name: Cakifo
+ * Description: Used to style the TinyMCE editor
+ */
+/* =============================================================================
+   Base
+   ========================================================================== */
+html {
+  font-size: 62.5%;
+}
+
+html .mceContentBody {
+  max-width: 650px;
+}
+
+body {
+  color: #555;
+  font-family: Georgia, Cambria, "Bitstream Charter", serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+/**
+ * Set custom font families and weights
+ */
+.body-georgia-font-stack {
+  font-family: Georgia, Cambria, 'Bitstream Charter', serif;
+}
+
+.heading-georgia-font-stack h1, .heading-georgia-font-stack h2, .heading-georgia-font-stack h3, .heading-georgia-font-stack h4, .heading-georgia-font-stack h5, .heading-georgia-font-stack h6, .heading-georgia-font-stack caption {
+  font-family: Georgia, Cambria, 'Bitstream Charter', serif;
+}
+
+.body-arial-font-stack {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading-arial-font-stack h1, .heading-arial-font-stack h2, .heading-arial-font-stack h3, .heading-arial-font-stack h4, .heading-arial-font-stack h5, .heading-arial-font-stack h6, .heading-arial-font-stack caption {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.body-helvetica-font-stack {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.heading-helvetica-font-stack h1, .heading-helvetica-font-stack h2, .heading-helvetica-font-stack h3, .heading-helvetica-font-stack h4, .heading-helvetica-font-stack h5, .heading-helvetica-font-stack h6, .heading-helvetica-font-stack caption {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.body-segoe-font-stack {
+  font-family: 'Segoe UI', 'Trebuchet MS', Verdana, sans-serif;
+}
+
+.heading-segoe-font-stack h1, .heading-segoe-font-stack h2, .heading-segoe-font-stack h3, .heading-segoe-font-stack h4, .heading-segoe-font-stack h5, .heading-segoe-font-stack h6, .heading-segoe-font-stack caption {
+  font-family: 'Segoe UI', 'Trebuchet MS', Verdana, sans-serif;
+}
+
+.body-trebuchet-font-stack {
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+}
+
+.heading-trebuchet-font-stack h1, .heading-trebuchet-font-stack h2, .heading-trebuchet-font-stack h3, .heading-trebuchet-font-stack h4, .heading-trebuchet-font-stack h5, .heading-trebuchet-font-stack h6, .heading-trebuchet-font-stack caption {
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+}
+
+.body-pt-serif {
+  font-family: 'PT Serif', Georgia, serif;
+}
+
+.heading-pt-serif h1, .heading-pt-serif h2, .heading-pt-serif h3, .heading-pt-serif h4, .heading-pt-serif h5, .heading-pt-serif h6, .heading-pt-serif caption {
+  font-family: 'PT Serif', Georgia, serif;
+}
+
+.body-merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+.heading-merriweather h1, .heading-merriweather h2, .heading-merriweather h3, .heading-merriweather h4, .heading-merriweather h5, .heading-merriweather h6, .heading-merriweather caption {
+  font-family: 'Merriweather', serif;
+}
+
+.body-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.heading-roboto h1, .heading-roboto h2, .heading-roboto h3, .heading-roboto h4, .heading-roboto h5, .heading-roboto h6, .heading-roboto caption {
+  font-family: 'Roboto', sans-serif;
+}
+
+.body-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.heading-open-sans h1, .heading-open-sans h2, .heading-open-sans h3, .heading-open-sans h4, .heading-open-sans h5, .heading-open-sans h6, .heading-open-sans caption {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.body-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.heading-oswald h1, .heading-oswald h2, .heading-oswald h3, .heading-oswald h4, .heading-oswald h5, .heading-oswald h6, .heading-oswald caption {
+  font-family: 'Oswald', sans-serif;
+}
+
+.body-weight-100 {
+  font-weight: 100;
+}
+
+.heading-weight-100 h1, .heading-weight-100 h2, .heading-weight-100 h3, .heading-weight-100 h4, .heading-weight-100 h5, .heading-weight-100 h6, .heading-weight-100 caption {
+  font-weight: 100;
+}
+
+.body-weight-200 {
+  font-weight: 200;
+}
+
+.heading-weight-200 h1, .heading-weight-200 h2, .heading-weight-200 h3, .heading-weight-200 h4, .heading-weight-200 h5, .heading-weight-200 h6, .heading-weight-200 caption {
+  font-weight: 200;
+}
+
+.body-weight-300 {
+  font-weight: 300;
+}
+
+.heading-weight-300 h1, .heading-weight-300 h2, .heading-weight-300 h3, .heading-weight-300 h4, .heading-weight-300 h5, .heading-weight-300 h6, .heading-weight-300 caption {
+  font-weight: 300;
+}
+
+.body-weight-400 {
+  font-weight: 400;
+}
+
+.heading-weight-400 h1, .heading-weight-400 h2, .heading-weight-400 h3, .heading-weight-400 h4, .heading-weight-400 h5, .heading-weight-400 h6, .heading-weight-400 caption {
+  font-weight: 400;
+}
+
+.body-weight-normal {
+  font-weight: normal;
+}
+
+.heading-weight-normal h1, .heading-weight-normal h2, .heading-weight-normal h3, .heading-weight-normal h4, .heading-weight-normal h5, .heading-weight-normal h6, .heading-weight-normal caption {
+  font-weight: normal;
+}
+
+.body-weight-500 {
+  font-weight: 500;
+}
+
+.heading-weight-500 h1, .heading-weight-500 h2, .heading-weight-500 h3, .heading-weight-500 h4, .heading-weight-500 h5, .heading-weight-500 h6, .heading-weight-500 caption {
+  font-weight: 500;
+}
+
+.body-weight-600 {
+  font-weight: 600;
+}
+
+.heading-weight-600 h1, .heading-weight-600 h2, .heading-weight-600 h3, .heading-weight-600 h4, .heading-weight-600 h5, .heading-weight-600 h6, .heading-weight-600 caption {
+  font-weight: 600;
+}
+
+.body-weight-700 {
+  font-weight: 700;
+}
+
+.heading-weight-700 h1, .heading-weight-700 h2, .heading-weight-700 h3, .heading-weight-700 h4, .heading-weight-700 h5, .heading-weight-700 h6, .heading-weight-700 caption {
+  font-weight: 700;
+}
+
+.body-weight-bold {
+  font-weight: bold;
+}
+
+.heading-weight-bold h1, .heading-weight-bold h2, .heading-weight-bold h3, .heading-weight-bold h4, .heading-weight-bold h5, .heading-weight-bold h6, .heading-weight-bold caption {
+  font-weight: bold;
+}
+
+.body-weight-800 {
+  font-weight: 800;
+}
+
+.heading-weight-800 h1, .heading-weight-800 h2, .heading-weight-800 h3, .heading-weight-800 h4, .heading-weight-800 h5, .heading-weight-800 h6, .heading-weight-800 caption {
+  font-weight: 800;
+}
+
+.body-weight-900 {
+  font-weight: 900;
+}
+
+.heading-weight-900 h1, .heading-weight-900 h2, .heading-weight-900 h3, .heading-weight-900 h4, .heading-weight-900 h5, .heading-weight-900 h6, .heading-weight-900 caption {
+  font-weight: 900;
+}
+
+.body-weight-bolder {
+  font-weight: bolder;
+}
+
+.heading-weight-bolder h1, .heading-weight-bolder h2, .heading-weight-bolder h3, .heading-weight-bolder h4, .heading-weight-bolder h5, .heading-weight-bolder h6, .heading-weight-bolder caption {
+  font-weight: bolder;
+}
+
+.body-weight-lighter {
+  font-weight: lighter;
+}
+
+.heading-weight-lighter h1, .heading-weight-lighter h2, .heading-weight-lighter h3, .heading-weight-lighter h4, .heading-weight-lighter h5, .heading-weight-lighter h6, .heading-weight-lighter caption {
+  font-weight: lighter;
+}

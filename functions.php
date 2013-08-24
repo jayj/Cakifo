@@ -104,7 +104,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	/* Add theme support for editor styles. */
-	add_editor_style();
+	add_editor_style( 'css/editor-style.css' );
 
 	/* Add theme support for custom backgrounds. */
 	add_theme_support( 'custom-background', array(

@@ -1,0 +1,76 @@
+/*
+ * Theme Name: Cakifo
+ * Description: Used to style the TinyMCE editor
+ */
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+html {
+	font-size: 62.5%;
+}
+
+html .mceContentBody {
+	max-width: 650px;
+}
+
+body {
+	color: #555;
+	font: {
+		family: Georgia, Cambria, "Bitstream Charter", serif; // Will be overwritten by custom font
+		size: 16px;
+		size: 1.6rem;
+	}
+	line-height: 1.6;
+}
+
+
+// Rest to come
+
+
+/**
+ * Set custom font families and weights
+ */
+$fonts:
+	(georgia-font-stack    "Georgia, Cambria, 'Bitstream Charter', serif")
+	(arial-font-stack      "Arial, Helvetica, sans-serif")
+	(helvetica-font-stack  "'Helvetica Neue', Helvetica, Arial, sans-serif")
+	(segoe-font-stack      "'Segoe UI', 'Trebuchet MS', Verdana, sans-serif")
+	(trebuchet-font-stack  "'Trebuchet MS', Verdana, sans-serif")
+	(pt-serif              "'PT Serif', Georgia, serif")
+	(merriweather          "'Merriweather', serif")
+	(roboto                "'Roboto', sans-serif")
+	(open-sans             "'Open Sans', sans-serif")
+	(oswald                "'Oswald', sans-serif");
+
+$weights: 100, 200, 300, 400, normal, 500, 600, 700, bold, 800, 900, bolder, lighter;
+
+// Font families
+@each $font in $fonts {
+	$selector: nth($font, 1);
+	$font-family: nth($font, 2);
+
+	.body-#{$selector} {
+		font-family: #{$font-family};
+	}
+
+	.heading-#{$selector} {
+		h1, h2, h3, h4, h5, h6, caption {
+			font-family: #{$font-family};
+		}
+	}
+}
+
+// Font weights
+@each $weight in $weights {
+	.body-weight-#{$weight} {
+		font-weight: #{$weight};
+	}
+
+	.heading-weight-#{$weight} {
+		h1, h2, h3, h4, h5, h6, caption {
+			font-weight: #{$weight};
+		}
+	}
+}
