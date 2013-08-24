@@ -20,7 +20,7 @@
 
 		breadcrumb_trail( array(
 			'labels' => array(
-				'browse' => __( 'You are here: ', 'cakifo' )
+				'browse' => __( 'You are here:', 'cakifo' )
 			)
 		));
 
