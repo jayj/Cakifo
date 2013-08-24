@@ -15,6 +15,6 @@ jQuery(document).ready( function() {
 		allow_single_deselect: true
 	});
 
-	jQuery( '#cakifo_theme_settings-headlines_category' ).chosen().chosenSortable();
+	jQuery( '#cakifo_theme_settings-headlines_category, #customize-control-headlines_category .chosen-sortable' ).chosen().chosenSortable();
 
 });

@@ -14,3 +14,8 @@
 .chosen-container.sorting .chosen-drop {
 	display: none;
 }
+
+/* Customizer CSS */
+#customize-control-headlines_category .chosen-container {
+	width: 100% !important;
+}

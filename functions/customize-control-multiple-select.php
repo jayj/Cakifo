@@ -11,7 +11,7 @@
  */
 
 /**
- * Multiple select customize control class.
+ * Multiple Select customize control class.
  *
  * @since Cakifo 1.5.0
  */
@@ -45,5 +45,122 @@ class Cakifo_Customize_Control_Multiple_Select extends WP_Customize_Control {
 				?>
 			</select>
 		</label>
+	<?php }
+}
+
+/**
+ * Custom Multiple Select for the headline terms.
+ *
+ * @since Cakifo 1.6.0
+ */
+class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Control {
+
+	/**
+	 * The type of customize control being rendered.
+	 *
+	 * @since Cakifo 1.6.0
+	 */
+	public $type = 'cakifo-headlines-multiple-select';
+
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @since Cakifo 1.6.0
+	 */
+	public function enqueue() {
+		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0' );
+		wp_enqueue_style( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.css', array(), '1.0' );
+	}
+
+	/**
+	 * Displays the multiple select on the customize screen.
+	 *
+	 * @since Cakifo 1.6.0
+	 */
+	public function render_content() {
+
+		$get_selected_terms = $this->value();
+		$exclude_term_ids   = array();
+
+		/**
+		 * Get all the selected terms IDs in an array
+		 */
+		foreach( $get_selected_terms as $term ) :
+
+			// Back-compat when only an ID is used.
+			if ( is_string( $term ) || is_int( $term ) )
+				$exclude_term_ids[] = $term;
+			else
+				$exclude_term_ids[] = $term[1];
+
+		endforeach;
+
+		$exclude_term_ids = wp_parse_id_list( $exclude_term_ids );
+	?>
+
+	<label>
+		<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+
+		<select <?php $this->link(); ?>
+				data-placeholder="<?php esc_attr_e( 'Select terms by taxonomy', 'cakifo' ); ?>"
+				multiple="multiple"
+				class="chosen-sortable<?php if ( is_rtl() ) echo ' chosen-rtl'; ?>">
+
+			<?php
+				/**
+				 * First loop through each selected term.
+				 */
+				foreach ( $get_selected_terms as $selected_term ) :
+
+					// Back-compat when only an ID is used.
+					if ( is_string( $selected_term ) || is_int( $selected_term ) ) {
+						$tax_slug = 'category';
+						$term_id = $selected_term;
+					} else {
+						$tax_slug = $selected_term[0];
+						$term_id  = $selected_term[1];
+					}
+
+					// Generate the value containing the taxonomy and term ID.
+					$id = $tax_slug . ':' . $term_id;
+
+					// Get term and taxonomy information.
+					$term = get_term_by( 'id', $term_id, $tax_slug );
+					$tax  = get_taxonomy( $term->taxonomy );
+			?>
+
+					<option value="<?php echo esc_attr( $id ); ?>" selected="selected">
+						<?php printf( '%s: %s', esc_attr( $tax->labels->singular_name ), esc_html( $term->name ) ); ?>
+					</option>
+
+			<?php endforeach; ?>
+
+			<?php foreach ( get_object_taxonomies( 'post', 'objects' ) as $tax_slug => $taxonomy ) : ?>
+
+				<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
+					<?php
+						/**
+						 * Loop through the rest of the terms.
+						 */
+						foreach ( get_terms( $tax_slug, array( 'exclude' => $exclude_term_ids ) ) as $term ) :
+
+							// Generate the value containing taxonomy and term ID.
+							$id = $tax_slug . ':' . $term->term_id;
+						?>
+
+						<option value="<?php echo esc_attr( $id ); ?>">
+							<?php printf( '%s: %s', esc_attr( $taxonomy->labels->singular_name ), esc_html( $term->name )  ); ?>
+						</option>
+
+					<?php endforeach; ?>
+				</optgroup>
+
+			<?php endforeach; ?>
+		</select>
+
+		<p><?php _e( 'Click to select a term. You can type the name to easier find the term.', 'cakifo' ); ?></p>
+	</label>
+
 	<?php }
 }
