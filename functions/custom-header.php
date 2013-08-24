@@ -163,18 +163,6 @@ function cakifo_admin_header_image() { ?>
 <?php }
 
 /**
- * Enqueue fonts selected in the theme customizer.
- *
- * @since Cakifo 1.6.0
- * @param object $this Theme_Fonts class
- */
-function cakifo_admin_header_enqueue_fonts( $this ) {
-	add_action( 'cakifo_admin_header_style', array( &$this, 'enqueue_styles' ) );
-}
-
-add_action( 'theme_fonts_register', 'cakifo_admin_header_enqueue_fonts' );
-
-/**
  * Styles the header styles displayed on the Appearance > Header admin panel.
  *
  * @since Cakifo 1.0.0
@@ -182,26 +170,9 @@ add_action( 'theme_fonts_register', 'cakifo_admin_header_enqueue_fonts' );
  */
 function cakifo_admin_header_style() { ?>
 
-	<?php do_action( 'cakifo_admin_header_style' ); ?>
-
 	<?php
-		/* Set the font in the 'title' setting. */
-		$font_handle = get_theme_mod( 'theme_font_title' );
-
-		/**
-		 * Get the font name and weight from the handle
-		 * The handles can be strings like:
-		 * 		roboto-700
-		 * 	 	pt-serif-400
-		 * 	 	arial-normal
-		 */
-		$font = explode( '-', $font_handle );
-
-		// The weight is the last element in the array
-		$font_weight = array_pop( $font );
-
-		// Combine the rest of the array again into the name
-		$font_name = implode( '-', $font );
+		/* Get the font in the 'title' setting. */
+		$font = cakifo_get_font_info( get_theme_mod( 'theme_font_title' ) );
 	?>
 
 	<style type="text/css">
@@ -213,8 +184,8 @@ function cakifo_admin_header_style() { ?>
 
 		#headimg h1,
 		#desc {
-			font-family: <?php echo esc_attr( $font_name ); ?>, Georgia, serif;
-			font-weight: <?php echo esc_attr( $font_weight ); ?>;
+			font-family: <?php echo esc_attr( $font['name'] ); ?>, Georgia, serif;
+			font-weight: <?php echo esc_attr( $font['weight'] ); ?>;
 		}
 
 		#headimg h1 {
