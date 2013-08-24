@@ -60,6 +60,51 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
+	/* Add the 'headlines_category' setting. */
+	$wp_customize->add_setting(
+		"{$prefix}_theme_settings[headlines_category]",
+		array(
+			'default'    => array(),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	/* Add the multiple select control for the 'headlines_category' setting. */
+	$wp_customize->add_control(
+		new Cakifo_Customize_Control_Multiple_Select_Headlines(
+			$wp_customize,
+			'headlines_category',
+			array(
+				'settings' => "{$prefix}_theme_settings[headlines_category]",
+				'label'    =>  esc_html__( 'Headline Terms', 'cakifo' ),
+				'section'  => 'cakifo_customize_settings',
+				'type'     => 'cakifo-headlines-multiple-select'
+			)
+		)
+	);
+
+	/* Add the 'headlines_num_posts' setting. */
+	$wp_customize->add_setting(
+		"{$prefix}_theme_settings[headlines_num_posts]",
+		array(
+			'default'    => $defaults['headlines_num_posts'],
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	/* Add the text control for the 'headlines_num_posts' setting */
+	$wp_customize->add_control(
+		'headlines_num_posts',
+		array(
+			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
+			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
+			'section'  => 'cakifo_customize_settings',
+			'type'     => 'text',
+		)
+	);
+
 	/* Add the 'featured_show' setting */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
@@ -119,51 +164,6 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_posts]",
 			'label'    =>  esc_html__( 'Number of posts in the slider', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
-			'type'     => 'text',
-		)
-	);
-
-	/* Add the 'headlines_category' setting. */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[headlines_category]",
-		array(
-			'default'    => array(),
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	/* Add the multiple select control for the 'headlines_category' setting. */
-	$wp_customize->add_control(
-		new Cakifo_Customize_Control_Multiple_Select_Headlines(
-			$wp_customize,
-			'headlines_category',
-			array(
-				'settings' => "{$prefix}_theme_settings[headlines_category]",
-				'label'    =>  esc_html__( 'Headline Terms', 'cakifo' ),
-				'section'  => 'cakifo_customize_settings',
-				'type'     => 'cakifo-headlines-multiple-select'
-			)
-		)
-	);
-
-	/* Add the 'headlines_num_posts' setting. */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[headlines_num_posts]",
-		array(
-			'default'    => $defaults['headlines_num_posts'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	/* Add the text control for the 'headlines_num_posts' setting */
-	$wp_customize->add_control(
-		'headlines_num_posts',
-		array(
-			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
-			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
 			'section'  => 'cakifo_customize_settings',
 			'type'     => 'text',
 		)
