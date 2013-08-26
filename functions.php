@@ -268,9 +268,10 @@ function cakifo_enqueue_script() {
 	/* Enqueue the theme javascript */
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.6', true );
 
-	/* Enqueue the Flexslider jQuery Plugin */
-	if ( hybrid_get_setting( 'featured_show' ) )
+	/* Enqueue the Flexslider jQuery Plugin. */
+	if ( cakifo_is_active_slider() ) {
 		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.0', true );
+	}
 }
 
 /**
@@ -281,12 +282,7 @@ function cakifo_enqueue_script() {
  */
 function cakifo_slider_javascript() {
 
-	/* If we're not looking at the front page, return */
-	if ( ! is_home() && ! is_front_page() )
-		return;
-
-	/* If slider is disabled, return */
-	if ( ! hybrid_get_setting( 'featured_show' ) )
+	if ( ! cakifo_is_active_slider() )
 		return;
 
 	/**
@@ -337,6 +333,22 @@ function cakifo_slider_javascript() {
 			});
 		</script>";
 }
+
+
+/**
+ * Determines if the slider is active
+ *
+ * @since  Cakifo 1.6.0
+ * @uses   apply_filters() Use the `cakifo_show_slider` filter to apply new logic to
+ * whether the slider should load or not.
+ * @return bool true|false
+ */
+function cakifo_is_active_slider() {
+	$show_slider = hybrid_get_setting( 'featured_show' ) && is_page_template( 'template-front-page.php' );
+
+	return (bool) apply_filters( 'cakifo_show_slider', $show_slider );
+}
+
 
 /**
  * Change the thumbnail size to 'small' for archives and search pages.
