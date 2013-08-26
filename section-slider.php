@@ -74,31 +74,35 @@
 					<?php
 						if ( current_theme_supports( 'get-the-image' ) ) :
 
-							/**
-							 * Get the post thumbnail with the slider image size
-							 */
+							// Get the post thumbnail with the slider image size
 							$thumbnail = get_the_image(
 								array(
 									'size'        => 'slider',
-									'attachment'  => false,
-									'meta_key'    => null, // Don't allow to set thumbnail with custom field. That way you can have 2 thumbnails. One for the post and one for the slider
 									'image_class' => 'thumbnail',
+									'attachment'  => false,
+									'meta_key'    => null,
 									'echo'        => false
 								)
 							);
 
-							/* Get the size for the 'slider' image size */
-							$thumbnail_size = cakifo_get_image_size( 'slider' );
-
-							/* There's a thumbnail! */
-							if ( $thumbnail ) {
+							// There's an image thumbnail.
+							if ( $thumbnail ) :
 
 								echo $thumbnail;
 
-							/* Try to embed a video from the post content */
-							} elseif ( has_post_format( 'video' ) ) {
-							//	the_post_format_video();
-							}
+							// Try to embed a video from the post content.
+							elseif ( has_post_format( 'video' ) && current_theme_supports( 'hybrid-core-media-grabber' ) ) :
+
+								$thumbnail_size = cakifo_get_image_size( 'slider' );
+
+								echo hybrid_media_grabber( array(
+									'type'   => 'video',
+									'width'  => $thumbnail_size['width'],
+									'before' => '<div class="slider-video">',
+									'after'  => '</div>'
+								) );
+
+							endif;
 
 						endif;
 					?>
