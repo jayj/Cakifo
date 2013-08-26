@@ -4,7 +4,7 @@
  *
  * A custom page template for displaying blog archives.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 

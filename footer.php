@@ -7,7 +7,7 @@
  * wrapper, which is opened with the header.php file. It also executes key functions needed
  * by the theme, child themes, and plugins.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 ?>
@@ -39,8 +39,9 @@
 				 * A sidebar in the footer? Yep. You can can customize your footer
 				 * with three columns of widgets.
 				 */
-				if ( ! is_404() )
+				if ( ! is_404() ) {
 					get_sidebar( 'subsidiary' );
+				}
 			?>
 
 		<?php do_atomic( 'close_footer' ); // cakifo_close_footer ?>

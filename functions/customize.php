@@ -4,7 +4,7 @@
  *
  * @package Cakifo
  * @subpackage Functions
- * @since Cakifo 1.4.0
+ * @since Cakifo 1.6.0
  */
 
 /* Register custom sections, settings, and controls. */
@@ -18,7 +18,6 @@ add_action( 'customize_register', 'cakifo_load_customize_controls', 1 );
  * WP_Customize_Control class to create unique classes that can be used within the theme.
  *
  * @since Cakifo 1.5.0
- * @access private
  */
 function cakifo_load_customize_controls() {
 	/* Loads the multiple select customize control class. */
@@ -33,24 +32,23 @@ function cakifo_load_customize_controls() {
  */
 function cakifo_customize_register( $wp_customize ) {
 
-	/* Get the theme prefix. */
 	$prefix = hybrid_get_prefix();
 
-	/* Get the default theme settings. */
+	// Get the default theme settings.
 	$defaults = hybrid_get_default_theme_settings();
 
-	/* Create the categories array */
-	$categories = array( '' => '' ); // Add an empty option in the beginning of the array
+	// Create the categories array with an empty option
+	$categories = array( '' => '' );
 
 	foreach ( get_categories() as $cat ) {
 		$categories[$cat->term_id] = $cat->name;
 	}
 
-	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	/* Add the Cakifo section */
+	/* Add the Cakifo section. */
 	$wp_customize->add_section(
 		'cakifo_customize_settings',
 		array(
@@ -94,7 +92,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the text control for the 'headlines_num_posts' setting */
+	/* Add the text control for the 'headlines_num_posts' setting. */
 	$wp_customize->add_control(
 		'headlines_num_posts',
 		array(
@@ -105,7 +103,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'featured_show' setting */
+	/* Add the 'featured_show' setting. */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
 		array(
@@ -115,7 +113,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the checkbox control for the 'featured_show' setting */
+	/* Add the checkbox control for the 'featured_show' setting. */
 	$wp_customize->add_control(
 		'featured_show',
 		array(
@@ -126,7 +124,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'featured_category' setting */
+	/* Add the 'featured_category' setting. */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_category]",
 		array(
@@ -136,7 +134,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the select control for the 'featured_category' setting */
+	/* Add the select control for the 'featured_category' setting. */
 	$wp_customize->add_control(
 		'featured_category',
 		array(
@@ -148,7 +146,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'featured_posts' setting */
+	/* Add the 'featured_posts' setting. */
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_posts]",
 		array(
@@ -158,7 +156,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the text control for the 'featured_posts' setting */
+	/* Add the text control for the 'featured_posts' setting. */
 	$wp_customize->add_control(
 		'featured_posts',
 		array(

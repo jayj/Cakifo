@@ -1,10 +1,10 @@
 <?php
 /**
- * The template for displaying Recent Posts in the template-front-page.php page template
+ * The template for displaying Recent Posts in the template-front-page.php template.
  *
- * Child Themes can replace this template part file via {section-recentposts.php}
+ * Child Themes can replace this template part file by overwriting section-recentposts.php
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 
@@ -15,7 +15,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 	<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
 
 	<?php
-		/* Get the link to the Posts (blog) page */
+		// Get the link to the Posts (blog) page.
 		$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
 	?>
 
@@ -24,9 +24,9 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 	</h1>
 
 	<?php
-		// Create the Recent Posts query
+		// Create the Recent Posts query.
 		$recent_args = array(
-			'showposts'           => 4, // Show 4 posts
+			'posts_per_page'      => 4,
 			'ignore_sticky_posts' => 1,
 			'post_status'         => 'publish',
 			'no_found_rows'       => true,
@@ -49,8 +49,8 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 			),
 		);
 
-		// Fire the Recent Posts query
-		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
+		// Fire the Recent Posts query.
+		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );  // Filter the query with the `cakifo_recent_posts_query` filter
 
 		while ( $recent->have_posts() ) : $recent->the_post();
 
@@ -65,7 +65,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 			<?php do_atomic( 'open_recent_posts_item' ); // cakifo_open_recent_posts_item ?>
 
 				<?php
-					/* Get the thumbnail */
+					// Get the thumbnail.
 					if ( current_theme_supports( 'get-the-image' ) )
 						get_the_image(
 							array(

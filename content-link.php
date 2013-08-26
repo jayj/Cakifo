@@ -6,9 +6,8 @@
  *
  * This can be overridden in child themes with content-link.php
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.6.0
  */
 
 do_atomic( 'before_entry' ); // cakifo_before_entry ?>
@@ -26,14 +25,13 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</header> <!-- .entry-header -->
 
 		<?php
-			/**
-			 * Get the thumbnail
-			 */
-			if ( current_theme_supports( 'get-the-image' ) )
+			// Get the thumbnail.
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image( array(
 					'size'       => 'thumbnail',
 					'attachment' => false
 				));
+			}
 		?>
 
 		<div class="entry-content">
@@ -55,14 +53,13 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</header> <!-- .entry-header -->
 
 		<?php
-			/**
-			 * Get the thumbnail
-			 */
-			if ( current_theme_supports( 'get-the-image' ) )
+			// Get the thumbnail.
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image( array(
 						'size'       => 'thumbnail',
 						'attachment' => false
 				));
+			}
 		?>
 
 		<div class="entry-content">

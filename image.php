@@ -5,9 +5,8 @@
  * This is the image attachment template.  It is used when visiting the singular view of an image attachment
  * page.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.5.0
  */
 
 get_header(); // Loads the header.php template ?>

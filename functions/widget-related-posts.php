@@ -1,17 +1,14 @@
 <?php
 /**
- * The related posts widget is created to give users the ability to show related posts after each posts
+ * The related posts widget is created to give users the ability to show related posts after each posts.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Classes
- * @since Cakifo 1.3.0
- * @version 1.1.0
- * @author Jesper Johansen <kontakt@jayj.dk>
- * @copyright Copyright (c) 2011-2012, Jesper Johansen
- * @link http://wpthemes.jayj.dk/cakifo
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ * @since      Cakifo 1.3.0
+ * @version    1.1.0
+ * @author     Jesper Johansen <kontakt@jayj.dk>
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
-
 class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 	/**
@@ -21,16 +18,16 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'related-posts',
 			'description' => esc_html__( 'Use this widget to list related posts to the current viewed post, based on taxonomies.', 'cakifo' )
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		$this->WP_Widget( 'cakifo-related-posts', __( 'Cakifo: Related Posts', 'cakifo' ), $widget_options );
 
-		/* Flush the cache when a post is updated or deleted */
+		// Flush the cache when a post is updated or deleted.
 		add_action( 'save_post', array( &$this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( &$this, 'flush_widget_cache' ) );
 	}
@@ -48,10 +45,10 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		$post_id = get_the_ID();
 
-		/* Get related posts from post meta. */
+		// Get related posts from post meta.
 		$related_posts = get_post_meta( $post_id, 'related', false );
 
-		/* No related posts found, get them! */
+		// No related posts found, get them.
 		if ( empty( $related_posts ) ) :
 			$this->_get_related_posts( $post_id, $instance );
 
@@ -59,14 +56,13 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			$related_posts = get_post_meta( $post_id, 'related', false );
 		endif;
 
-		/* Output the theme's $before_widget wrapper. */
 		echo $before_widget;
 
-		/* If a title was input by the user, display it. */
+		// Display title
 		if ( ! empty( $instance['title'] ) )
 			echo $before_title . apply_filters( 'widget_title', sprintf( $instance['title'], get_the_title( $post_id ) ), $instance, $this->id_base ) . $after_title;
 
-		/* Are there any related posts? */
+		// Are there any related posts?
 		if ( ! empty( $related_posts ) ) :
 
 			$show_thumbnails = (boolean) $instance['show_thumbnail'];
@@ -120,29 +116,28 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 			do_atomic( 'after_related_posts_list' ); // cakifo_after_related_posts_list
 
-		/* Nope, no related posts */
+		// Nope, no related posts.
 		else :
 
 			_e( 'No related posts.', 'cakifo' );
 
 		endif;
 
-		/* Close the theme's widget wrapper. */
 		echo $after_widget;
 	}
 
 	/**
-	* Gets the related posts based on the choosen taxonomies
-	* and puts them in the post meta
+	* Get the related posts from the choosen taxonomies
+	* and add them to the post meta.
 	*
-	* @since Cakifo 1.3.0
 	* @access private
-	* @param int $post_id
-	* @param array $args
+	* @since  Cakifo 1.3.0
+	* @param  int $post_id
+	* @param  array $args
 	*/
 	private function _get_related_posts( $post_id, $args ) {
 
-		/* Set up the query */
+		// Set up the query.
 		$related_query = array(
 			'posts_per_page'      => $args['limit'],
 			'orderby'             => $args['orderby'],
@@ -151,21 +146,19 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			'tax_query'           => array( 'relation' => 'OR' )
 		);
 
-		// Make sure the taxonomies are set. They won't be if an user updates the theme and doesn't resave the widget settings
+		// Make sure the taxonomies are set.
 		$taxonomies = ( isset( $args['taxonomies'] ) ) ? $args['taxonomies'] : array();
 
-		/**
-		 * Loop through each selected taxonomy
-		 */
+		// Loop through each selected taxonomy.
 		foreach ( $taxonomies as $taxonomy ) :
 
-			// Skip post formats
+			// Skip post formats.
 			if ( 'post_format' == $taxonomy )
 				continue;
 
 			$terms = get_the_terms( $post_id, $taxonomy );
 
-			// No terms in the current taxonomy
+			// No terms in the current taxonomy.
 			if ( ! $terms )
 				continue;
 
@@ -182,9 +175,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 		endforeach;
 
-		/**
-		 * Post formats query
-		 */
+		// Post formats query.
 		if ( in_array( 'post_format', $taxonomies ) ) :
 			$format = ( get_post_format() ) ? 'post-format-' . get_post_format() : '';
 
@@ -195,12 +186,10 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			);
 		endif;
 
-		/* Fire up the query */
+		// Fire up the query.
 		$related = new WP_Query( $related_query );
 
-		/**
-		 * Find all related posts and put them in a post meta field called 'related'
-		 */
+		// Add the posts in a post meta field called 'related'.
 		if ( $related->have_posts() ) while ( $related->have_posts() ) : $related->the_post();
 
 			add_post_meta( $post_id, 'related',
@@ -234,36 +223,42 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		$instance['orderby']        = strip_tags( $new_instance['orderby'] );
 		$instance['show_thumbnail'] = ( isset( $new_instance['show_thumbnail'] ) ? 1 : 0 );
 
+		// Update the post meta cache.
 		$this->flush_widget_cache();
 
 		return $instance;
 	}
 
 	/**
-	 * Flush the related posts meta when a post is updated, deleted or the settings has been changed
+	 * Flush the related posts meta when a post is updated, deleted,
+	 * or the settings has been changed.
 	 *
 	 * @since Cakifo 1.3.0
 	 * @param int|null $post_ID
 	 */
 	function flush_widget_cache( $post_ID = null ) {
 
-		$related_meta = get_post_meta( $post_ID, 'related', false );
-
-		/* A post is being updated or deleted */
+		// A post is being updated or deleted.
 		if ( isset( $post_ID ) ) :
-			// Delete the related post meta for all the related posts
+
+			$related_meta = get_post_meta( $post_ID, 'related', false );
+
+			// Delete the related post meta for all the related posts.
 			if ( isset( $related_meta ) ) :
 
 				$related_posts = array( $post_ID );
 
-				foreach ( $related_meta as $related )
+				foreach ( $related_meta as $related ) {
 					$related_posts[] = $related['post_id'];
+				}
 
-				foreach( get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) ) as $postinfo )
-					delete_post_meta( $postinfo->ID, 'related' );
+				foreach( get_posts( array( 'include' => $related_posts, 'post_type' => 'post' ) ) as $post_info ) {
+					delete_post_meta( $post_info->ID, 'related' );
+				}
+
 			endif;
 
-		// The widget settings has been updated: delete the post meta for all posts
+		// The widget settings has been updated: delete the post meta for all posts.
 		else :
 
 			 delete_metadata( 'post', null, 'related', '', true );
@@ -279,7 +274,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Set up the default form values. */
+		// Set up the default form values.
 		$defaults = array(
 			'title'          => esc_attr__( 'Related Posts', 'cakifo' ),
 			'limit'          => 5,
@@ -288,13 +283,13 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 			'show_thumbnail' => true
 		);
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		/* Create an array of orderby types. */
+		// Create an array of orderby types.
 		$orderby = array(
-			'rand'          => _x( 'Random', 'order by', 'cakifo' ),
-			'date'          => _x( 'Date', 'order by', 'cakifo' ),
+			'rand'          => _x( 'Random',        'order by', 'cakifo' ),
+			'date'          => _x( 'Date',          'order by', 'cakifo' ),
 			'comment_count' => _x( 'Comment count', 'order by', 'cakifo' ),
 		);
 	?>

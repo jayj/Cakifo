@@ -51,6 +51,9 @@ class Cakifo_Customize_Control_Multiple_Select extends WP_Customize_Control {
 /**
  * Custom Multiple Select for the headline terms.
  *
+ * The terms is grouped in <optgroup> by taxonomy
+ * and the select is enhanced by Chosen.js.
+ *
  * @since Cakifo 1.6.0
  */
 class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Control {
@@ -83,9 +86,7 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 		$get_selected_terms = $this->value();
 		$exclude_term_ids   = array();
 
-		/**
-		 * Get all the selected terms IDs in an array
-		 */
+		// Get all the selected terms IDs in an array
 		foreach( $get_selected_terms as $term ) :
 
 			// Back-compat when only an ID is used.
@@ -108,9 +109,7 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 				class="chosen-sortable<?php if ( is_rtl() ) echo ' chosen-rtl'; ?>">
 
 			<?php
-				/**
-				 * First loop through each selected term.
-				 */
+				// First loop through each selected term.
 				foreach ( $get_selected_terms as $selected_term ) :
 
 					// Back-compat when only an ID is used.
@@ -140,9 +139,7 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 
 				<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
 					<?php
-						/**
-						 * Loop through the rest of the terms.
-						 */
+						// Loop through the rest of the terms.
 						foreach ( get_terms( $tax_slug, array( 'exclude' => $exclude_term_ids ) ) as $term ) :
 
 							// Generate the value containing taxonomy and term ID.

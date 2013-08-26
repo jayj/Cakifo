@@ -5,7 +5,7 @@
  * This is the default page template.  It is used when a more specific template can't be found to display
  * singular views of pages.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 
@@ -30,8 +30,8 @@ get_header(); // Loads the header.php template ?>
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 
 					<?php
-						// Get the thumbnail
-						if ( current_theme_supports( 'get-the-image' ) )
+						// Get the thumbnail.
+						if ( current_theme_supports( 'get-the-image' ) ) {
 							get_the_image(
 								array(
 									'meta_key'   => 'Thumbnail',
@@ -39,6 +39,7 @@ get_header(); // Loads the header.php template ?>
 									'attachment' => false
 								)
 							);
+						}
 					?>
 
 					<div class="entry-content">

@@ -2,10 +2,9 @@
 /**
  * Creates additional theme settings
  *
- * @since Cakifo 1.0.0
- * @package Cakifo
+ * @since      Cakifo 1.0.0
+ * @package    Cakifo
  * @subpackage Functions
- * @link http://themehybrid.com/hybrid-core/features/theme-settings
  */
 
 add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
@@ -14,20 +13,18 @@ add_action( 'admin_menu', 'cakifo_theme_admin_setup' );
  * Add the theme options to the Hybrid Core options page
  *
  * @since Cakifo 1.0.0
- * @return void
  */
 function cakifo_theme_admin_setup() {
 
-	/* Get the theme prefix */
 	$prefix = hybrid_get_prefix();
 
-	/* Create a settings meta box only on the theme settings page */
+	// Create a settings meta box only on the theme settings page.
 	add_action( 'load-appearance_page_theme-settings', 'cakifo_theme_settings_meta_boxes' );
 
-	/* Add script and styles */
+	// Add script and styles.
 	add_action( 'admin_enqueue_scripts', 'cakifo_theme_settings_enqueue_scripts' );
 
-	/* Add a filter to validate/sanitize the settings */
+	// Add a filter to validate/sanitize the settings.
 	add_filter( "sanitize_option_{$prefix}_theme_settings", 'cakifo_theme_validate_settings' );
 }
 
@@ -38,6 +35,14 @@ function cakifo_theme_admin_setup() {
  * @since Cakifo 1.4.0
  * @param string $hook_suffix The current page being viewed.
  * @return void
+ */
+
+/**
+ * Loads the JavaScript and CSS files required for the
+ * Theme Settings page.
+ *
+ * @since  Cakifo 1.4.0
+ * @param  string  $hook_suffix The current page.
  */
 function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
 	if ( $hook_suffix != hybrid_get_settings_page_name() )
@@ -52,7 +57,6 @@ function cakifo_theme_settings_enqueue_scripts( $hook_suffix ) {
  * Adds custom meta boxes to the theme settings page
  *
  * @since Cakifo 1.0.0
- * @return void
  */
 function cakifo_theme_settings_meta_boxes() {
 
@@ -71,7 +75,6 @@ function cakifo_theme_settings_meta_boxes() {
  * Function for displaying the meta box
  *
  * @since Cakifo 1.0.0
- * @return void
  */
 function cakifo_theme_meta_box() { ?>
 
@@ -141,9 +144,7 @@ function cakifo_theme_meta_box() { ?>
 				$get_selected_terms = hybrid_get_setting( 'headlines_category' );
 				$exclude_term_ids   = array();
 
-				/**
-				 * Get all the selected terms IDs in an array
-				 */
+				// Get all the selected terms IDs in an array
 				foreach( $get_selected_terms as $term ) :
 
 					// Back-compat when only an ID is used.
@@ -164,9 +165,7 @@ function cakifo_theme_meta_box() { ?>
 				class="chosen-sortable<?php if ( is_rtl() ) echo ' chosen-rtl'; ?>">
 
 				<?php
-					/**
-					 * First loop through each selected term.
-					 */
+					// First loop through each selected term.
 					foreach ( $get_selected_terms as $selected_term ) :
 
 						// Back-compat when only an ID is used.
@@ -197,9 +196,7 @@ function cakifo_theme_meta_box() { ?>
 					<optgroup label="<?php echo esc_attr( $taxonomy->label ); ?>">
 
 						<?php
-							/**
-							 * Loop through the rest of the terms.
-							 */
+							// Loop through the rest of the terms.
 							foreach ( get_terms( $tax_slug, array( 'exclude' => $exclude_term_ids ) ) as $term ) :
 
 								// Generate the value containing taxonomy and term ID.
@@ -234,20 +231,20 @@ function cakifo_theme_meta_box() { ?>
 }
 
 /**
- * Validates theme settings
+ * Validate the saved theme settings.
  *
- * @since Cakifo 1.0.0
- * @param array $input The entered theme options
- * @return array       The validated theme options
+ * @since  Cakifo 1.0.0
+ * @param  array  $input The entered theme options.
+ * @return array         The validated theme options.
  */
 function cakifo_theme_validate_settings( $input ) {
 
-	/* Validate and/or sanitize the options */
+	// Validate and/or sanitize the options.
 	$input['featured_show']     = ( isset( $input['featured_show'] ) ? 1 : 0 );
 	$input['featured_category'] = absint( $input['featured_category'] );
 	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : 5 ); // 5 is the default number of featured posts
 
-	/* Save the headline terms in an array containing the taxonomy and term ID. */
+	// Save the headline terms in an array containing the taxonomy and term ID.
 	$headlines = array();
 
 	foreach( $input['headlines_category'] as $headline ) {
@@ -256,7 +253,7 @@ function cakifo_theme_validate_settings( $input ) {
 
 	$input['headlines_category'] = $headlines;
 
-	/* Return the array of theme settings */
+	// Return the array of theme setting.
 	return $input;
 }
 

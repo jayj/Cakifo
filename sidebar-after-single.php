@@ -4,7 +4,7 @@
  *
  * Displays any widgets for the After Single dynamic sidebar if they are available.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 

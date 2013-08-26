@@ -4,7 +4,7 @@
  *
  * The archive template is the default template used for archives pages without a more specific template.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 

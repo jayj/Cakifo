@@ -2,9 +2,8 @@
 /**
  * The template for displaying page content in the template-front-page.php page template
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.6.0
  */
 
 do_atomic( 'before_intro' ); // cakifo_before_intro ?>

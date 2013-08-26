@@ -5,9 +5,8 @@
  * This is the default attachment template.  It is used when visiting the singular view of a post attachment
  * page (images, videos, audio, etc.).
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.0.0
  */
 
 get_header(); // Loads the header.php template ?>

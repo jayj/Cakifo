@@ -5,7 +5,7 @@
  * This is the home template.  Technically, it is the "posts page" template.  It is used when a visitor is on the
  * page assigned to show a site's latest blog posts.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 

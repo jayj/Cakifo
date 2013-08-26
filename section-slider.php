@@ -5,7 +5,7 @@
  * This template file is used for the slider on the home and blog page.
  * Child Themes can replace it via {section-slider.php}
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 ?>
@@ -22,8 +22,8 @@
 			array(
 				array(
 					'taxonomy' => 'post_format',
-					'field' => 'slug',
-					'terms' =>
+					'field'    => 'slug',
+					'terms'    =>
 						array(
 							'post-format-aside',
 							'post-format-audio',
@@ -47,7 +47,7 @@
 		$feature_query['post__in'] = get_option( 'sticky_posts' );
 	}
 
-	/* Fire the query */
+	/* Fire the query. */
 	$loop = new WP_Query( apply_filters( 'cakifo_slider_query', $feature_query ) ); // Filter the query with the `cakifo_slider_query` filter
 ?>
 
@@ -110,7 +110,7 @@
 					<div class="entry-summary">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
 						<?php the_excerpt(); ?>
-						<a class="more-link" href="<?php the_permalink(); ?>"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
+						<a href="<?php the_permalink(); ?>" class="more-link"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>

@@ -4,15 +4,13 @@
  * These functions should not be used in child themes as they will all be
  * removed at some point.
  *
- * @package Cakifo
+ * @since      Cakifo 1.6.0
+ * @package    Cakifo
  * @subpackage Functions
- * @since Cakifo 1.6.0
  */
 
 /**
  * Custom Background callback
- *
- * @since Cakifo 1.3.0
  * @deprecated Cakifo 1.4.0
  */
 function cakifo_custom_background_callback() {
@@ -26,11 +24,10 @@ function cakifo_custom_background_callback() {
  *
  * No longer showed by default in version 1.3.
  * If you still want it, you should create your own
- * functiion
+ * function
  *
- * @since Cakifo 1.0.0
- * @deprecated 1.6.0
- * @return string The RSS feed
+ * @deprecated Cakifo 1.6.0
+ * @return string  The RSS feed
  */
 function cakifo_topbar_rss() {
 	_deprecated_function( __FUNCTION__, '1.6.0' );
@@ -41,8 +38,7 @@ function cakifo_topbar_rss() {
 }
 
 /**
- * @since Cakifo 1.3.0
- * @deprecated 1.4.0
+ * @deprecated Cakifo 1.4.0
  */
 function cakifo_topbar_search() {
 	_deprecated_function( __FUNCTION__, '1.4.0', 'get_search_form()' );
@@ -50,7 +46,6 @@ function cakifo_topbar_search() {
 }
 
 /**
- * @since Cakifo 1.0.0
  * @deprecated Cakifo 1.3.0 Use wp_trim_words() instead.
  */
 function cakifo_the_excerpt( $length = 55, $echo = true ) {

@@ -2,7 +2,7 @@
 /**
  * Setup the Hybrid Core Theme Fonts extention.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Functions
  */
 
@@ -132,7 +132,7 @@ function cakifo_register_fonts( $theme_fonts ) {
 		),
 	);
 
-	/* Add each font and font weight */
+	/* Add each font and font weight. */
 	foreach( $fonts as $font ) :
 
 		foreach( $font['weights'] as $weight ) {
@@ -155,11 +155,11 @@ function cakifo_register_fonts( $theme_fonts ) {
 }
 
 /**
- * Convert numeric font weights to more user-friendly names
+ * Convert numeric font weights to more user-friendly names.
  *
- * @since Cakifo 1.6.0
- * @param string $weight Numeric font weight
- * @return string Font weight name
+ * @since  Cakifo 1.6.0
+ * @param  string  $weight Numeric font weight
+ * @return string          Font weight name
  */
 function cakifo_convert_font_weight( $weight ) {
 	$convert = array(
@@ -189,17 +189,17 @@ function cakifo_convert_font_weight( $weight ) {
  *    pt-serif-400
  *    arial-normal
  *
- * @since Cakifo 1.6.0
- * @param string $font_handle The font handle
- * @return array The name and weight
+ * @since  Cakifo 1.6.0
+ * @param  string  $font_handle The font handle
+ * @return array                Font name and weight
  */
 function cakifo_get_font_info( $font_handle ) {
 	$font = explode( '-', $font_handle );
 
-	// The weight is the last element in the array
+	// The weight is the last element in the array.
 	$weight = array_pop( $font );
 
-	// Combine the rest of the array again into the name
+	// Combine the rest of the array again into the name.
 	$name = implode( '-', $font );
 
 	return array(
@@ -211,8 +211,8 @@ function cakifo_get_font_info( $font_handle ) {
 /**
  * Enqueue fonts selected in the theme customizer.
  *
- * @since Cakifo 1.6.0
- * @param object $theme_fonts Theme_Fonts class
+ * @since  Cakifo 1.6.0
+ * @param  object  $theme_fonts Theme_Fonts class
  */
 function cakifo_admin_fonts_extra( $theme_fonts ) {
 	global $cakifo_theme_fonts;
@@ -237,17 +237,17 @@ function cakifo_admin_header_enqueue_fonts( $hook_suffix ) {
 /**
  * Add font classes to the editor body class
  *
- * @since Cakifo 1.6.0
- * @param array $settings
+ * @since  Cakifo 1.6.0
+ * @param  array  $settings
  * @return array
  */
 function cakifo_editor_font_classes( $settings ) {
 
-	/* Get fonts. */
-	$body_font = cakifo_get_font_info( get_theme_mod( 'theme_font_body' ) );
+	// Get fonts.
+	$body_font    = cakifo_get_font_info( get_theme_mod( 'theme_font_body' ) );
 	$heading_font = cakifo_get_font_info( get_theme_mod( 'theme_font_headings' ) );
 
-	/* Set the classes. */
+	// Set the body classes.
 	$settings['body_class'] .= ' body-' . $body_font['name'];
 	$settings['body_class'] .= ' heading-' . $heading_font['name'];
 

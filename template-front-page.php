@@ -2,9 +2,9 @@
 /**
  * Template Name: Front Page
  *
- * This page template is used to display a custom front page
+ * This page template is used to display a custom front page.
  *
- * @package Cakifo
+ * @package   Cakifo
  * @subpackage Template
  */
 

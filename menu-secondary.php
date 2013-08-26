@@ -5,7 +5,7 @@
  * Displays Secondary Menua above the content section if
  * it has active menu items.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 
@@ -20,14 +20,12 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 			<a class="assistive-text" href="#main"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
 
 			<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'secondary',
-						'after'          => '<span class="sep">|</span>',
-						'container'      => '',
-						'fallback_cb'    => ''
-					)
-				);
+				wp_nav_menu( array(
+					'theme_location' => 'secondary',
+					'after'          => '<span class="sep">|</span>',
+					'container'      => '',
+					'fallback_cb'    => ''
+				) );
 			?>
 
 		<?php do_atomic( 'close_menu_secondary' ); // cakifo_close_menu_secondary ?>

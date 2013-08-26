@@ -5,7 +5,7 @@
  *
  * Child Themes can replace this template part file via `section-headlines.php`
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 
@@ -21,17 +21,17 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 		 */
 		foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
 
-			/* Separate the taxonomy and term ID. */
+			// Separate the taxonomy and term ID.
 			if ( is_array( $selected_term ) ) {
 				list( $taxonomy, $term_id ) = $selected_term;
 
-			/* Back-compat when only an ID is used. */
+			// Back-compat when only an ID is used.
 			} elseif ( is_string( $selected_term ) || is_int( $selected_term )  ) {
 				$term_id = $selected_term;
 				$taxonomy = 'category';
 			}
 
-			/* Get term info. */
+			// Get term info.
 			$term = get_term_by( 'id', $term_id, $taxonomy );
 
 			/**
@@ -43,11 +43,13 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 				array(
 					'posts_per_page' => hybrid_get_setting( 'headlines_num_posts' ),
 					'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
-					'tax_query'      => array( array(
-						'terms'    => $term_id,
-						'taxonomy' => $taxonomy,
-						'field'    => 'id',
-					) ),
+					'tax_query'      => array(
+						array(
+							'terms'    => $term_id,
+							'taxonomy' => $taxonomy,
+							'field'    => 'id',
+						)
+					),
 					'no_found_rows'          => true,
 					'update_post_term_cache' => false,
 					'update_post_meta_cache' => false
@@ -62,9 +64,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 			<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
 
 			<?php
-				/**
-				 * Gets the plural version of a post format name.
-				 */
+				// Get the plural version of a post format name.
 				if ( 'post_format' == $term->taxonomy ) {
 					$name = hybrid_get_plural_post_format_string( $term->slug );
 				} else {
@@ -80,7 +80,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 				<?php while ( $headlines->have_posts() ) : $headlines->the_post(); ?>
 
 					<?php
-						// Make sure the post is not duplicated
+						// Make sure the post is not duplicated.
 						$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
 					?>
 
@@ -88,9 +88,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 						<?php do_atomic( 'open_headline_list_item' ); // cakifo_open_headline_list_item ?>
 
 						<?php
-							/**
-							 * Get the thumbnail
-							 */
+							// Get the thumbnail.
 							if ( current_theme_supports( 'get-the-image' ) ) {
 								get_the_image( array(
 									'size'          => 'small',
@@ -118,7 +116,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 	<?php endforeach; ?>
 
-	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the variable ?>
+	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the variable. ?>
 
 	<?php do_atomic( 'close_headlines' ); // cakifo_close_headlines ?>
 

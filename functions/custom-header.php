@@ -2,7 +2,7 @@
 /**
  * Setup the WordPress core custom header feature.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Functions
  */
 
@@ -50,7 +50,7 @@ if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo
 			)
 		)
 	);
-endif; // is_child_theme() && file_exists()
+endif;
 
 /**
  * Styles the header image and text displayed on the blog.
@@ -62,7 +62,7 @@ function cakifo_header_style() {
 	$default_text_color = get_theme_support( 'custom-header', 'default-text-color' );
 	$header_text_color  = get_header_textcolor();
 
-	/* If no custom options for text are set, let's bail. */
+	// If no custom options for text are set, let's bail.
 	if ( $header_text_color == $default_text_color )
 		return;
 
@@ -112,17 +112,17 @@ function cakifo_admin_header_image() { ?>
 
 	<div id="headimg">
 		<?php
-			/* Get header information. */
+			// Get header information.
 			$header_image  = get_header_image();
 			$default_color = get_theme_support( 'custom-header', 'default-text-color' );
 			$text_color    = get_header_textcolor();
 
-			/* Set up variables. */
+			// Set up variables.
 			$style = $span = $desc = $class = '';
 		?>
 
 		<?php
-			/* Set the styling for the individual elements. */
+			// Set the styling for the individual elements.
 			if ( display_header_text() && $default_color != $text_color ) {
 				$style = "color: #{$text_color}; ";
 				$desc  = "color: #{$text_color}; ";
@@ -140,15 +140,14 @@ function cakifo_admin_header_image() { ?>
 
 		<a id="name" onclick="return false;" href="<?php echo esc_url( home_url() ); ?>" style="<?php echo $style; ?>">
 			<h1>
+				<?php
+					if ( ! empty( $header_image ) )
+						echo '<img src="' . $header_image . '" alt="" />';
+				?>
 
-					<?php
-						if ( ! empty( $header_image ) )
-							echo '<img src="' . $header_image . '" alt="" />';
-					?>
-
-					<span class="displaying-header-text" style="<?php echo $span; ?>">
-						<?php bloginfo( 'name' ); ?>
-					</span>
+				<span class="displaying-header-text" style="<?php echo $span; ?>">
+					<?php bloginfo( 'name' ); ?>
+				</span>
 			</h1>
 
 			<?php
@@ -166,12 +165,11 @@ function cakifo_admin_header_image() { ?>
  * Styles the header styles displayed on the Appearance > Header admin panel.
  *
  * @since Cakifo 1.0.0
- * @todo  Get font from Theme Customizer
  */
 function cakifo_admin_header_style() { ?>
 
 	<?php
-		/* Get the font in the 'title' setting. */
+		// Get the font in the 'title' setting.
 		$font = cakifo_get_font_info( get_theme_mod( 'theme_font_title' ) );
 	?>
 
@@ -216,24 +214,26 @@ function cakifo_admin_header_style() { ?>
  * Display the site title as logo and/or name.	What this function
  * returns depends on what the user has choosen in `Apperance > Header`.
  *
- * @since Cakifo 1.0.0
- * @return string The site title. Either as text, as an image or both.
+ * @since  Cakifo 1.0.0
+ * @return string  The site title. Either as text, as an image or both.
  */
 function cakifo_logo() {
 
-	/* Get the site title. */
+	// Get the site title.
 	$title = get_bloginfo( 'name' );
 	$maybe_image = '';
 
+	// Get header image.
 	if ( get_header_image() ) {
 		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
 	}
 
+	// Generate the markup.
 	$output = sprintf( '<h1 class="site-title" id="site-title">%s<span>%s</span></h1>',
 		$maybe_image,
 		$title
 	);
 
-	/* Display the site title and allow child themes to overwrite the final output. */
+	// Display the site title and allow child themes to overwrite the final output.
 	echo apply_atomic( 'site_title', $output );
 }

@@ -6,9 +6,8 @@
  *
  * This can be overridden in child themes with `content-chat.php`
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.6.0
  */
 
 do_atomic( 'before_entry' ); // cakifo_before_entry ?>

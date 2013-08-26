@@ -10,9 +10,8 @@
  * be used if it exists and we ask for the loop with:
  * <code>get_template_part( 'loop', 'index' );</code>
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
- * @since Cakifo 1.1.0
  */
 
 do_atomic( 'before_entry' ); // cakifo_before_entry ?>
@@ -29,14 +28,13 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</header> <!-- .entry-header -->
 
 		<?php
-			/**
-			 * Get the thumbnail
-			 */
-			if ( current_theme_supports( 'get-the-image' ) )
+			// Get the thumbnail.
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image( array(
 					'size'       => 'thumbnail',
 					'attachment' => false
 				));
+			}
 		?>
 
 		<div class="entry-content">
@@ -58,14 +56,13 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 		</header> <!-- .entry-header -->
 
 		<?php
-			/**
-			 * Get the thumbnail
-			 */
-			if ( current_theme_supports( 'get-the-image' ) )
+			// Get the thumbnail.
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image( array(
 					'size'       => 'thumbnail',
 					'attachment' => false
 				));
+			}
 		?>
 
 		<?php if ( is_archive() || is_search() ) : ?>

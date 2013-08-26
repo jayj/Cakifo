@@ -3,15 +3,14 @@
  * Colorbox script
  *
  * Adds the Colorbox jQuery lightbox script to the theme if supported.
- *
- * Supported by default, remove it in a child theme with
+ * Supported by default, remove it in a child theme with:
  * `remove_theme_support( 'cakifo-colorbox' );`
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Functions
- * @since Cakifo 1.3.0
- * @version 1.5.0
- * @link http://jacklmoore.com/colorbox/
+ * @since      Cakifo 1.3.0
+ * @version    1.5.0
+ * @link       http://jacklmoore.com/colorbox/
  */
 
 add_action( 'wp_enqueue_scripts', 'cakifo_colorbox_script' );
@@ -21,8 +20,8 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
  * Load the Colorbox script and style
  *
  * @since Cakifo 1.3.0
- * @uses wp_enqueue_script()
- * @uses wp_enqueue_style()
+ * @uses  wp_enqueue_script()
+ * @uses  wp_enqueue_style()
  */
 function cakifo_colorbox_script() {
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.4.24', true );
@@ -36,9 +35,7 @@ function cakifo_colorbox_script() {
  */
 function cakifo_colorbox() {
 
-	/**
-	 * See all arguments at http://jacklmoore.com/colorbox/
-	 */
+	// See all arguments at http://jacklmoore.com/colorbox/
 	$defaults = array(
 		'selector'       => '.colorbox',
 		'maxWidth'       => '80%',
@@ -72,9 +69,7 @@ function cakifo_colorbox() {
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );
 
-	/**
-	 * Parse incoming $args into an array and merge it with $defaults
-	 */
+	// Parse incoming $args into an array and merge it with $defaults.
 	$args = wp_parse_args( $args, $defaults );
 
 	// Get the selector and remove it from the arguments

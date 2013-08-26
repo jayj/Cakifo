@@ -18,13 +18,13 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, write
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Functions
- * @version 1.6-dev
- * @author Jesper Johansen <kontakt@jayj.dk>
- * @copyright Copyright (c) 2011-2013, Jesper Johansen
- * @link http://wpthemes.jayj.dk/cakifo
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ * @version    1.6-dev
+ * @author     Jesper Johansen <kontakt@jayj.dk>
+ * @copyright  Copyright (c) 2011-2013, Jesper Johansen
+ * @link       http://wpthemes.jayj.dk/cakifo
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
 
 /* Load the core theme framework */
@@ -42,7 +42,7 @@ add_action( 'after_setup_theme', 'cakifo_theme_setup', 10 );
  */
 function cakifo_theme_setup() {
 
-	/* Get action/filter hook prefix */
+	/* Get action/filter hook prefix. */
 	$prefix = hybrid_get_prefix();
 
 	/* Load Cakifo theme includes. */
@@ -51,7 +51,7 @@ function cakifo_theme_setup() {
 	require_once( trailingslashit( THEME_DIR ) . 'functions/customize.php' );
 	require_once( trailingslashit( THEME_DIR ) . 'functions/deprecated.php' );
 
-	/* Add theme support for core framework features */
+	/* Add theme support for core framework features. */
 	add_theme_support( 'hybrid-core-menus', array( 'primary', 'secondary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
@@ -59,7 +59,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'hybrid-core-styles', array( 'style' ) );
 	add_theme_support( 'hybrid-core-scripts' );
 
-	/* Add theme support for framework extensions */
+	/* Add theme support for framework extensions. */
 	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r', '3c-l', '3c-r', '3c-c' ) );
 	add_theme_support( 'hybrid-core-media-grabber' );
 	add_theme_support( 'post-stylesheets' );
@@ -69,7 +69,7 @@ function cakifo_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
 
-	/* Add theme support for theme functions */
+	/* Add theme support for theme functions. */
 	add_theme_support( 'cakifo-sidebars', array(
 		'primary',
 		'secondary',
@@ -83,7 +83,7 @@ function cakifo_theme_setup() {
 
 	add_theme_support( 'cakifo-colorbox' );
 
-	/* Load Theme Settings */
+	/* Load Theme Settings. */
 	if ( is_admin() ) {
 		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
@@ -192,6 +192,7 @@ function cakifo_theme_setup() {
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
 }
 
+
 /**
  * Load the Cakifo loop template
  *
@@ -213,6 +214,28 @@ function cakifo_theme_setup() {
  * @uses do_action() Calls 'get_template_part_content' action.
  * @param string $name The name of the specialised template.
  */
+
+/**
+ * Load the Cakifo loop template
+ *
+ * It's modified version of get_template_part() to make sure the theme
+ * stays compatible with child themes as the loop files were changed
+ * from `loop.php` to `content.php` in Cakifo 1.6
+ *
+ * First it tries to get the old `loop-$name.php` then the new `content-$name.php`
+ * If neither of those exists, it will try `loop.php` and `content.php`
+ *
+ * The template is included using require, not require_once, so you may include the
+ * same template part multiple times.
+ *
+ * For the $name parameter, if the file is called "content-special.php" then specify
+ * "special".
+ *
+ * @since  Cakifo 1.6.0
+ * @uses   locate_template()
+ * @uses   do_action()       Calls 'get_template_part_content' action.
+ * @param  string  $name     (optional) The name
+ */
 function cakifo_get_loop_template( $name = null ) {
 	do_action( 'get_template_part_content', 'content', $name );
 	$templates = array();
@@ -227,6 +250,7 @@ function cakifo_get_loop_template( $name = null ) {
 
 	locate_template( $templates, true, false );
 }
+
 
 /**
  * Load the theme functions, if the theme/child theme supports them.
@@ -244,6 +268,7 @@ function cakifo_load_theme_support() {
 }
 
 add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
+
 
 /**
  * Enqueue theme scripts, includes jQuery, Modernizr, and Flexslider.
@@ -263,10 +288,10 @@ function cakifo_enqueue_script() {
 	 */
 	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', array(), '2.5.3' );
 
-	/* Enqueue jQuery */
+	/* Enqueue jQuery. */
 	wp_enqueue_script( 'jquery' );
 
-	/* Enqueue the theme javascript */
+	/* Enqueue the theme javascript. */
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.6', true );
 
 	/* Enqueue the Flexslider jQuery Plugin. */
@@ -275,11 +300,12 @@ function cakifo_enqueue_script() {
 	}
 }
 
+
 /**
- * Add Flexslider scripts
+ * Add Flexslider scripts.
  *
  * @since Cakifo 1.0.0
- * @uses apply_filters() The `cakifo_flexslider_args` filter allows you to change the default values.
+ * @uses  apply_filters() The `cakifo_flexslider_args` filter allows you to change the default values.
  */
 function cakifo_slider_javascript() {
 
@@ -311,7 +337,7 @@ function cakifo_slider_javascript() {
 
 	/**
 	 * Use the `cakifo_flexslider_args` filter to filter the defaults
-	 * You can't change the Flexslider callbacks
+	 * You can't change the Flexslider callbacks.
 	 *
 	 * For more information about the arguments, see:
 	 *
@@ -323,7 +349,7 @@ function cakifo_slider_javascript() {
 	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
 
-	// JSON encode the arguments
+	// JSON encode the arguments.
 	$json = json_encode( $args );
 
 	echo "<script>
@@ -354,9 +380,9 @@ function cakifo_is_active_slider() {
 /**
  * Change the thumbnail size to 'small' for archives and search pages.
  *
- * @since Cakifo 1.1.0
- * @param array $args The 'Get the Image' arguments
- * @return array      The filtered arguments
+ * @since  Cakifo 1.1.0
+ * @param  array  $args The 'Get the Image' arguments
+ * @return array        The filtered arguments
  */
 function cakifo_get_the_image_arguments( $args ) {
 
@@ -368,63 +394,65 @@ function cakifo_get_the_image_arguments( $args ) {
 	return $args;
 }
 
+
 /**
  * Edit the "More link" for archive excerpts.
  *
- * @since Cakifo 1.0.0
- * @param string $more The default more link
- * @return string      The changed more link with a more descriptive text
+ * @since  Cakifo 1.0.0
+ * @param  string  $more The default more link
+ * @return string        The changed more link with a more descriptive text
  */
 function cakifo_excerpt_more( $more ) {
 	global $post;
 
-	if ( is_archive() )
-		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .
-					__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) .
-				'</a></p>';
+	if ( is_archive() ) {
+		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .	__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a></p>';
+	}
 
 	return $more;
 }
 
+
 /**
- * Function for deciding which pages should have a one-column layout.
+ * Determines which pages should have a one-column layout.
  *
  * @since Cakifo 1.5.0
- * @return void
  */
 function cakifo_theme_layout() {
 
-	// No active sidebars
+	// No active sidebars.
 	if ( ! is_active_sidebar( 'primary' ) && ! is_active_sidebar( 'secondary' ) ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	// Front page template
+	// Front page template.
 	} elseif ( is_page_template( 'template-front-page.php' ) ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
-	// Attachment or default layout
+	// Attachment with default layout.
 	} elseif ( is_attachment() && 'layout-default' == theme_layouts_get_layout() ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 	}
 }
 
+
 /**
  * Filters `get_theme_layout` by returning `layout-1c`.
  *
- * @since Cakifo 1.0.0
- * @param string $layout
- * @return string Returns 'layout-1c'
+ * @since  Cakifo 1.0.0
+ * @param  string  $layout
+ * @return string
  */
 function cakifo_theme_layout_one_column( $layout ) {
 	return 'layout-1c';
 }
 
+
 /**
- * Disables sidebars if viewing a one-column page.
+ * Disable the primary and secondary sidebars if viewing a one-column page.
  *
- * @since Cakifo 1.0.0
- * @param array $sidebars_widgets Array with all the widgets for all the sidebars
- * @return array                  Same array but with the primary and secondary sidebar removed
+ * @since  Cakifo 1.0.0
+ * @param  array  $sidebars_widgets
+ * @return array
  */
 function cakifo_disable_sidebars( $sidebars_widgets ) {
 
@@ -439,16 +467,20 @@ function cakifo_disable_sidebars( $sidebars_widgets ) {
 	return $sidebars_widgets;
 }
 
+
 /**
  * Overwrites the default widths for embeds.  This is especially useful for making sure videos properly
  * expand the full width on video pages.  This function overwrites what the `$content_width` variable handles
  * with context-based widths.
  *
- * @since Cakifo 1.3.0
- * @uses hybrid_get_content_width()
- * @uses hybrid_set_content_width()
- * @uses theme_layouts_get_layout()
- * @param array $args Array with default embed settings
+ * @since  Cakifo 1.3.0
+ *
+ * @uses   hybrid_get_content_width()
+ * @uses   hybrid_set_content_width()
+ * @uses   theme_layouts_get_layout()
+ *
+ * @param  array  $args  Array with default embed settings
+ * @return array
  */
 function cakifo_content_width( $args ) {
 
@@ -474,8 +506,8 @@ function cakifo_content_width( $args ) {
 	return $args;
 }
 
-if ( ! function_exists( 'cakifo_author_box' ) ) :
 
+if ( ! function_exists( 'cakifo_author_box' ) ) :
 	/**
 	 * Function to add an author box
 	 *
@@ -509,8 +541,8 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 
 		endif;
 	}
-
 endif; // cakifo_author_box
+
 
 /**
  * Place the author box at the end of single posts
@@ -526,6 +558,7 @@ function cakifo_place_author_box() {
 		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
 }
 
+
 /**
  * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
  *
@@ -533,13 +566,13 @@ function cakifo_place_author_box() {
  * separate each of the elements into an attachment API that can be used across multiple themes.  Keep
  * this in mind if you plan on using the current filter hooks in this function.
  *
- * @since Cakifo 1.0.0
+ * @since  Cakifo 1.0.0
  * @author Justin Tadlock
- * @link http://justintadlock.com
+ * @link   http://justintadlock.com
  */
 function cakifo_image_info() {
 
-	/* Set up some default variables and get the image metadata. */
+	// Set up some default variables and get the image metadata.
 	$meta  = wp_get_attachment_metadata( get_the_ID() );
 	$items = array();
 	$list  = '';
@@ -548,30 +581,30 @@ function cakifo_image_info() {
 	if ( empty( $meta ) )
 		return;
 
-	/* Add the width/height to the $items array. */
+	// Add the width/height to the $items array.
 	$items['dimensions'] = array( _x( 'Dimensions', 'image dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( _x( '%1$s &#215; %2$s pixels', 'image dimensions', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
 
-	/* If a timestamp exists, add it to the $items array */
+	// If a timestamp exists, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
 		$items['created_timestamp'] = array( _x( 'Date', 'image creation', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
 
-	/* If a camera exists, add it to the $items array */
+	// If a camera exists, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['camera'] ) )
 		$items['camera'] = array( __( 'Camera', 'cakifo' ), $meta['image_meta']['camera'] );
 
-	/* If an aperture exists, add it to the $items array */
+	// If an aperture exists, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['aperture'] ) )
 		$items['aperture'] = array( __( 'Aperture', 'cakifo' ), sprintf( _x( 'f/%s', 'exif: aperture', 'cakifo' ), $meta['image_meta']['aperture'] ) );
 
-	/* If a focal length is set, add it to the $items array */
+	// If a focal length is set, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['focal_length'] ) )
 		$items['focal_length'] = array( __( 'Focal Length', 'cakifo' ), sprintf( _x( '%s mm', 'exif: focal length', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
 
-	/* If an ISO is set, add it to the $items array */
+	// If an ISO is set, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['iso'] ) )
 		$items['iso'] = array( __( 'ISO', 'cakifo' ), $meta['image_meta']['iso'] );
 
-	/* If a shutter speed is given, format the float into a fraction and add it to the $items array */
+	// If a shutter speed is given, format the float into a fraction and add it to the $items array.
 	if ( ! empty( $meta['image_meta']['shutter_speed'] ) ) {
 
 		if ( ( 1 / $meta['image_meta']['shutter_speed'] ) > 1 ) {
@@ -594,27 +627,28 @@ function cakifo_image_info() {
 	 */
 	$items = apply_atomic( 'image_meta_items', $items );
 
-	/* Loop through the items, wrapping the first item in the array in <dt> and the second in <dd> */
+	// Loop through the items, wrapping the first item in the array in <dt> and the second in <dd>
 	foreach ( $items as $item ) {
 		$list .= "<dt>{$item[0]}</dt>";
 		$list .= "<dd>{$item[1]}</dd>";
 	}
 
-	/* Format the HTML output of the function */
+	// Format the HTML output of the function.
 	$output = '<div class="image-info clearfix">
 					<h3>' . __( 'Image Info', 'cakifo' ) . '</h3>
 					<dl>' . $list . '</dl>
 				</div> <!-- .image-info -->';
 
-	/* Display the image info and allow child themes to overwrite the final output */
+	// Display the image info and allow child themes to overwrite the final output.
 	echo apply_atomic( 'image_info', $output );
 }
 
+
 /**
- * Get the values of all registered image sizes. Both the custom and the default
+ * Get the values of all registered image sizes. Both the customs and the defaults.
  *
- * @since Cakifo 1.3.0
- * @return array An array of all the images sizes
+ * @since  Cakifo 1.3.0
+ * @return array  All image sizes
  */
 function cakifo_get_image_sizes() {
 	global $_wp_additional_image_sizes;
@@ -641,12 +675,13 @@ function cakifo_get_image_sizes() {
 	return $builtin_sizes;
 }
 
+
 /**
  * Get the values of a specific image size
  *
- * @since Cakifo 1.3.0
- * @param string $name The unique name for the image size or a WP default
- * @return array       Array containing 'width', 'height', 'crop'
+ * @since  Cakifo 1.3.0
+ * @param  string  $name  The unique name for the image size or a WP default.
+ * @return array          Array containing 'width', 'height', 'crop'
  */
 function cakifo_get_image_size( $name ) {
 	$image_sizes = cakifo_get_image_sizes();
@@ -657,57 +692,60 @@ function cakifo_get_image_size( $name ) {
 	return false;
 }
 
+
 /**
  * Returns a set of image attachment links based on size.
  *
- * @since Cakifo 1.5.0
+ * @since  Cakifo 1.5.0
  * @author Justin Tadlock
- * @link http://justintadlock.com
- * @return string Links to various image sizes for the image attachment.
+ * @link   http://justintadlock.com
+ * @return string  Links to various image sizes for the image attachment.
  */
 function cakifo_get_image_size_links() {
 
-	/* If not viewing an image attachment page, return. */
+	// If not viewing an image attachment page, return.
 	if ( ! wp_attachment_is_image( get_the_ID() ) )
 		return;
 
-	/* Set up an empty array for the links. */
+	// Set up an empty array for the links.
 	$links = array();
 
-	/* Get the intermediate image sizes and add the full size to the array. */
+	// Get the intermediate image sizes and add the full size to the array.
 	$sizes = get_intermediate_image_sizes();
 	$sizes[] = 'full';
 
-	/* Loop through each of the image sizes. */
+	// Loop through each of the image sizes.
 	foreach ( $sizes as $size ) {
 
-		/* Get the image source, width, height, and whether it's intermediate. */
+		// Get the image source, width, height, and whether it's intermediate.
 		$image = wp_get_attachment_image_src( get_the_ID(), $size );
 
-		/* Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size. */
+		// Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size.
 		if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) )
 			$links[] = "<a class='image-size-link' href='" . esc_url( $image[0] ) . "'>{$image[1]} &times; {$image[2]}</a>";
 	}
 
-	/* Join the links in a string and return. */
+	// Join the links in a string and return.
 	return join( ' <span class="sep">/</span> ', $links );
 }
 
+
 /**
- * Returns the default link color for Cakifo with no hash
+ * Returns the default link color with no hashtag
  *
- * @since Cakifo 1.4.0
- * @return string The default color with no hash
+ * @since  Cakifo 1.4.0
+ * @return string
  */
 function cakifo_get_default_link_color_no_hash() {
 	return apply_filters( 'cakifo_default_link_color_no_hash', '3083aa' );
 }
 
+
 /**
- * Filter the default theme settings
+ * Filters the default theme settings
  *
- * @since Cakifo 1.4.0
- * @param array $settings The default theme settings.
+ * @since  Cakifo 1.4.0
+ * @param  array  $settings The default theme settings.
  * @return array
  */
 function cakifo_filter_default_theme_settings( $settings ) {
@@ -717,6 +755,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
 
 	return $settings;
 }
+
 
 /**
  * Extends the default WordPress body class to denote:
@@ -736,6 +775,7 @@ function cakifo_body_class( $classes ) {
 	return $classes;
 }
 
+
 /**
  * Load all necessary files and hooks for singular pages.  This includes the sidebars, the loop-nav.php
  * template, comments template and the `after_singular` atomic hook.
@@ -743,29 +783,31 @@ function cakifo_body_class( $classes ) {
  * @since Cakifo 1.5.0
  */
 function cakifo_load_in_singular() {
-	// Load the sidebar-after-single.php template
+	// Load the sidebar-after-single.php template.
 	if ( is_single() )
 		get_sidebar( 'after-single' );
 
-	// Loads the sidebar-after-singular.php template
+	// Loads the sidebar-after-singular.php template.
 	get_sidebar( 'after-singular' );
 
 	do_atomic( 'after_singular' ); // cakifo_after_singular
 
-	// Loads the loop-nav.php template
+	// Loads the loop-nav.php template.
 	get_template_part( 'loop-nav' );
 
-	// Loads the comments.php template
+	// Loads the comments.php template.
 	if ( post_type_supports( get_post_type(), 'comments' ) ) {
 		comments_template( '/comments.php', true );
 	}
 }
 
+
 /**
- * Filter the arguments for the wp_link_pages(), used in the loop files.
+ * Filters the arguments for the wp_link_pages()
  *
- * @since 1.5.0
- * @return array $args Arguments for the wp_link_pages() function.
+ * @since  Cakifo 1.5.0
+ * @param  array  $args Default arguments for the wp_link_pages() function.
+ * @return array        Filterted arguments for the wp_link_pages() function.
  */
 function cakifo_link_pages_args( $args ) {
 	$args['before'] = '<p class="page-links">' . __( 'Pages:', 'cakifo' );
@@ -773,6 +815,7 @@ function cakifo_link_pages_args( $args ) {
 
 	return $args;
 }
+
 
 /**
  * Back compat for the 'show_singular_comments' filter
@@ -840,6 +883,7 @@ function cakifo_register_colors( $color_palette ) {
 		)
 	);
 }
+
 
 /**
  * Filters the 'color_palette_preview_js_ignore' hook with some selectors that should be ignored on the

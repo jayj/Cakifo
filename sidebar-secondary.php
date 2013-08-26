@@ -5,7 +5,7 @@
  * Displays widgets for the Secondary dynamic sidebar if any have been added to the sidebar through the
  * widgets screen in the admin by the user.  Otherwise, nothing is displayed.
  *
- * @package Cakifo
+ * @package    Cakifo
  * @subpackage Template
  */
 
