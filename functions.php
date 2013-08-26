@@ -192,29 +192,6 @@ function cakifo_theme_setup() {
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
 }
 
-
-/**
- * Load the Cakifo loop template
- *
- * It's modified version of get_template_part() to make sure the theme
- * stays compatible with child themes as the loop files were changed
- * from `loop.php` to `content.php` in Cakifo 1.6
- *
- * First it tries to get the old `loop-$name.php` then the new `content-$name.php`
- * If neither of those exists, it will try `loop.php` and `content.php`
- *
- * The template is included using require, not require_once, so you may include the
- * same template part multiple times.
- *
- * For the $name parameter, if the file is called "content-special.php" then specify
- * "special".
- *
- * @since Cakifo 1.6.0
- * @uses locate_template()
- * @uses do_action() Calls 'get_template_part_content' action.
- * @param string $name The name of the specialised template.
- */
-
 /**
  * Load the Cakifo loop template
  *
