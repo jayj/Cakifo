@@ -219,7 +219,7 @@ function cakifo_customize_preview() {
 
 						$( '.site-header' ).css( 'padding', '60px 0 50px' );
 
-						$( '.site-title span, .site-description' ).css( {
+						$( '.home-link, .site-title span, .site-description' ).css( {
 							'clip': 'auto',
 							'color': to,
 							'position': 'relative'
