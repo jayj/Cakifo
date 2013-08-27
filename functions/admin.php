@@ -90,7 +90,7 @@ function cakifo_theme_meta_box() { ?>
 
 		<td>
 			<label>
-				<input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" value="1" <?php checked( hybrid_get_setting( 'featured_show' ), 1 ); ?> />&nbsp;
+				<input id="featured_show" name="<?php echo hybrid_settings_field_name( 'featured_show' ); ?>" type="checkbox" <?php checked( hybrid_get_setting( 'featured_show' ) ); ?> />&nbsp;
 			 	<?php _e( 'Check to display the "Featured Content" slider', 'cakifo' ); ?>
 			 </label>
 		</td>
@@ -240,7 +240,7 @@ function cakifo_theme_meta_box() { ?>
 function cakifo_theme_validate_settings( $input ) {
 
 	// Validate and/or sanitize the options.
-	$input['featured_show']     = ( isset( $input['featured_show'] ) ? 1 : 0 );
+	$input['featured_show']     = ( ! empty( $input['featured_show'] ) ? 1 : 0 );
 	$input['featured_category'] = absint( $input['featured_category'] );
 	$input['featured_posts']    = ( $input['featured_posts'] ? intval( $input['featured_posts'] ) : 5 ); // 5 is the default number of featured posts
 

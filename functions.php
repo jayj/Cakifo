@@ -727,6 +727,9 @@ function cakifo_get_default_link_color_no_hash() {
  */
 function cakifo_filter_default_theme_settings( $settings ) {
 	$settings['link_color']          = '#' . cakifo_get_default_link_color_no_hash();
+	$settings['headlines_category']  = array();
+	$settings['featured_show']       = false;
+	$settings['featured_category']   = '';
 	$settings['featured_posts']      = 5;
 	$settings['headlines_num_posts'] = 4;
 
