@@ -817,14 +817,16 @@ function cakifo_compat_show_singular_comments() {
  */
 function cakifo_register_colors( $color_palette ) {
 
+	$defaults = hybrid_get_default_theme_settings();
+
 	// Get the link color from the Cakifo settings.
 	// @todo Figure out why I can't use hybrid_get_setting()
-	$options = get_option( 'cakifo_theme_settings', hybrid_get_default_theme_settings() );
+	$options = get_option( hybrid_get_prefix() . '_theme_settings', $defaults );
 
 	if ( isset( $options['link_color'] ) ) {
 		$default_link_color = ltrim( $options['link_color'], '#' );
 	} else {
-		$default_link_color = cakifo_get_default_link_color_no_hash();
+		$default_link_color = $defaults['link_color'];
 	}
 
 	/* Add custom colors. */
