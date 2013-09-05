@@ -16,6 +16,9 @@
 }
 
 /* Customizer CSS */
-#customize-control-headlines_category .chosen-container {
+#customize-control-headlines_category .search-field input[type="text"] {
 	width: 100% !important;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 }
