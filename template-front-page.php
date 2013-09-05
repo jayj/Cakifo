@@ -39,8 +39,9 @@ get_header(); // Loads the header.php template ?>
 				/**
 				 * Get the section-headlines.php template file
 				 */
-				if ( hybrid_get_setting( 'headlines_category' ) )
+				if ( hybrid_get_setting( 'headlines_category' ) ) {
 					get_template_part( 'section', 'headlines' );
+				}
 			?>
 
 		<?php do_atomic( 'close_main' ); // cakifo_close_main ?>

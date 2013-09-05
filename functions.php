@@ -866,8 +866,8 @@ function cakifo_register_colors( $color_palette ) {
 	$color_palette->add_rule_set(
 		'secondary',
 		array(
-			'background-color' => '.flex-control-paging li a, .flex-direction-nav a:focus',
-			'border-top-color' => '.site-content, .site-footer, .comment-respond',
+			'background-color'    => '.flex-control-paging li a, .flex-direction-nav a:focus',
+			'border-top-color'    => '.site-content, .site-footer, .comment-respond',
 			'border-bottom-color' => '.loop-meta-home'
 		)
 	);
