@@ -86,14 +86,22 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 		$get_selected_terms = $this->value();
 		$exclude_term_ids   = array();
 
-		// Get all the selected terms IDs in an array
+		/* Get all the selected terms IDs in an array. */
 		foreach( $get_selected_terms as $term ) :
 
-			// Back-compat when only an ID is used.
-			if ( is_string( $term ) || is_int( $term ) )
-				$exclude_term_ids[] = $term;
-			else
+			// The Customizer stores the terms in a string in the `taxonomy:id` format
+			if ( is_string( $term ) && strpos( $term, ':' ) !== false ) {
+				$term = explode( ':', $term );
 				$exclude_term_ids[] = $term[1];
+
+			// Back-compat when only an ID is used.
+			} elseif ( is_string( $term ) || is_int( $term ) ) {
+				$exclude_term_ids[] = $term;
+
+			// Normal array
+			} else {
+				$exclude_term_ids[] = $term[1];
+			}
 
 		endforeach;
 
@@ -115,6 +123,9 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 					// Get term and taxonomy information.
 					$term = cakifo_get_headline_term( $selected_term );
 					$tax  = get_taxonomy( $term->taxonomy );
+
+					// Generate the value containing the taxonomy and term ID.
+					$id = $tax->name . ':' . $term->term_id;
 			?>
 
 					<option value="<?php echo esc_attr( $id ); ?>" selected="selected">
