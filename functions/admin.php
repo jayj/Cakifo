@@ -147,11 +147,19 @@ function cakifo_theme_meta_box() { ?>
 				// Get all the selected terms IDs in an array
 				foreach( $get_selected_terms as $term ) :
 
-					// Back-compat when only an ID is used.
-					if ( is_string( $term ) || is_int( $term ) )
-						$exclude_term_ids[] = $term;
-					else
+					// The Customizer stores the terms in a string in the `taxonomy:id` format
+					if ( is_string( $term ) && strpos( $term, ':' ) !== false ) {
+						$term = explode( ':', $term );
 						$exclude_term_ids[] = $term[1];
+
+					// Back-compat when only an ID is used.
+					} elseif ( is_string( $term ) || is_int( $term ) ) {
+						$exclude_term_ids[] = $term;
+
+					// Normal array
+					} else {
+						$exclude_term_ids[] = $term[1];
+					}
 
 				endforeach;
 
@@ -168,21 +176,12 @@ function cakifo_theme_meta_box() { ?>
 					// First loop through each selected term.
 					foreach ( $get_selected_terms as $selected_term ) :
 
-						// Back-compat when only an ID is used.
-						if ( is_string( $selected_term ) || is_int( $selected_term ) ) {
-							$tax_slug = 'category';
-							$term_id = $selected_term;
-						} else {
-							$tax_slug = $selected_term[0];
-							$term_id  = $selected_term[1];
-						}
+						// Get term and taxonomy information.
+						$term = cakifo_get_headline_term( $selected_term );
+						$tax  = get_taxonomy( $term->taxonomy );
 
 						// Generate the value containing the taxonomy and term ID.
-						$id = $tax_slug . ':' . $term_id;
-
-						// Get term and taxonomy information.
-						$term = get_term_by( 'id', $term_id, $tax_slug );
-						$tax  = get_taxonomy( $term->taxonomy );
+						$id = $tax->name . ':' . $term->term_id;
 				?>
 
 						<option value="<?php echo esc_attr( $id ); ?>" selected="selected">
