@@ -708,6 +708,35 @@ function cakifo_get_image_size_links() {
 
 
 /**
+ * Get info about a term selected in the 'Headlines' option.
+ *
+ * @since  Cakifo 1.6.0
+ * @param  mixed  $selected_term Either an array, string in the `taxonomy:id` format,
+ *   a string with just the ID, or an int with the ID.
+ * @return object
+ */
+function cakifo_get_headline_term( $selected_term ) {
+	// Separate the taxonomy and term ID.
+	if ( is_array( $selected_term ) ) {
+
+		list( $taxonomy, $term_id ) = $selected_term;
+
+	// The Customizer stores the terms in a string in the `taxonomy:id` format
+	} elseif ( strpos( $selected_term, ':' ) !== false ) {
+
+		list( $taxonomy, $term_id ) = explode( ':', $selected_term );
+
+	// Back-compat when only an ID is used.
+	} else {
+		$term_id = $selected_term;
+		$taxonomy = 'category';
+	}
+
+	return get_term_by( 'id', $term_id, $taxonomy );
+}
+
+
+/**
  * Returns the default link color with no hashtag
  *
  * @since  Cakifo 1.4.0

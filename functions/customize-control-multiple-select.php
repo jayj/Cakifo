@@ -112,20 +112,8 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 				// First loop through each selected term.
 				foreach ( $get_selected_terms as $selected_term ) :
 
-					// Back-compat when only an ID is used.
-					if ( is_string( $selected_term ) || is_int( $selected_term ) ) {
-						$tax_slug = 'category';
-						$term_id = $selected_term;
-					} else {
-						$tax_slug = $selected_term[0];
-						$term_id  = $selected_term[1];
-					}
-
-					// Generate the value containing the taxonomy and term ID.
-					$id = $tax_slug . ':' . $term_id;
-
 					// Get term and taxonomy information.
-					$term = get_term_by( 'id', $term_id, $tax_slug );
+					$term = cakifo_get_headline_term( $selected_term );
 					$tax  = get_taxonomy( $term->taxonomy );
 			?>
 

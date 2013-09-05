@@ -21,18 +21,8 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 		 */
 		foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
 
-			// Separate the taxonomy and term ID.
-			if ( is_array( $selected_term ) ) {
-				list( $taxonomy, $term_id ) = $selected_term;
-
-			// Back-compat when only an ID is used.
-			} elseif ( is_string( $selected_term ) || is_int( $selected_term )  ) {
-				$term_id = $selected_term;
-				$taxonomy = 'category';
-			}
-
 			// Get term info.
-			$term = get_term_by( 'id', $term_id, $taxonomy );
+			$term = cakifo_get_headline_term( $selected_term );
 
 			/**
 			 * Create the loop for each selected term.
@@ -45,8 +35,8 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 					'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
 					'tax_query'      => array(
 						array(
-							'terms'    => $term_id,
-							'taxonomy' => $taxonomy,
+							'terms'    => $term->term_id,
+							'taxonomy' => $term->taxonomy,
 							'field'    => 'id',
 						)
 					),
