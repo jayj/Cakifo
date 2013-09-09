@@ -333,132 +333,67 @@ q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 /**
- * Blockquotes
- * @todo New quote styles
+ * Block quotes
  */
 blockquote {
-  background: #f5f8f9 url(images/quote.png);
-  box-shadow: inset 0 0 20px #e8f0f4, 0 1px 1px #dde5e8, 0 0 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #dde5e8;
-  border-top: none;
-  border-radius: 5px;
-  color: #4c636e;
-  text-shadow: 0 1px 0 #fff;
-  font-family: Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 18px;
-  font-size: 1.8rem;
-  font-weight: normal;
-  line-height: 32px;
-  margin: 25px auto;
-  padding: 30px 50px;
-  position: relative;
-  clear: both;
-}
-blockquote blockquote {
-  background: #eef7f9;
-  color: #33505c;
+  font-style: italic;
+  margin: 0 40px 25px;
 }
 blockquote p {
-  position: relative;
-  margin-top: 5px;
+  color: #8c8c8c;
+  font-size: 19px;
+  font-size: 1.9rem;
 }
 blockquote em,
+blockquote i,
 blockquote cite {
-  font-style: italic;
-}
-blockquote p:last-of-type {
-  margin-bottom: 0;
-}
-blockquote cite,
-blockquote span {
-  display: block;
-  margin-top: 20px;
-  font-size: 15px;
-  font-size: 1.5rem;
-  color: #91acbe;
-}
-blockquote span cite {
-  display: inline;
+  font-style: normal;
 }
 blockquote.alignleft,
 blockquote.alignright {
-  clear: none;
-  width: 33%;
-  padding: 30px 25px;
-}
-blockquote.aligncenter {
-  width: 66%;
-  text-align: center;
-}
-blockquote.alignleft {
-  margin-right: 25px;
+  width: 100%;
 }
 blockquote.alignright {
-  margin-left: 25px;
+  text-align: right;
 }
-blockquote:before {
-  content: "\201C";
-  position: absolute;
-  top: -45px;
-  left: -25px;
-  font-family: Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 170px;
-  font-size: 17rem;
-  font-weight: normal;
-  line-height: normal;
-  color: #5e8db5;
-  opacity: 0.35;
+blockquote.aligncenter {
+  text-align: center;
 }
-blockquote p:first-of-type:after {
-  content: "\201E";
-  position: absolute;
-  bottom: -10px;
-  margin-left: 10px;
-  font-family: Georgia, Cambria, "Bitstream Charter", serif;
-  font-size: 70px;
-  font-size: 7rem;
-  font-weight: normal;
-  line-height: normal;
-  color: #5e8db5;
-  opacity: 0.25;
+/* Quote attributions */
+blockquote cite,
+.quote-caption {
+  display: block;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: normal;
+  margin-top: 25px;
 }
-blockquote p:only-of-type:after {
-  display: none;
+blockquote cite:before,
+.quote-caption:before {
+  content: '\2014 \00A0';
 }
-/* Hide the quote for embedded tweets */
-.twt-tweet:before {
-  display: none;
+blockquote + .quote-caption {
+  margin-left: 40px;
 }
-/* Pull quotes */
-.pull {
-  font-size: 19px;
-  font-size: 1.9rem;
-  /* Reset styles inherited from 'blockquote' */
-
-  background: none;
-  border: none;
-  text-shadow: none;
-  box-shadow: none;
+/**
+ * Pull quotes
+ */
+blockquote.pull {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  margin-left: 0;
 }
-.pull.alignleft {
-  padding-right: 0;
-  margin: 0 25px 0 0;
+blockquote.pull.alignleft,
+blockquote.pull.alignright {
+  width: 50%;
 }
-.pull.alignright {
-  margin: 0 0 0 25px;
+blockquote.pull.alignleft {
+  margin: 10px 40px 10px 0;
 }
-.pull:before {
-  top: -22px;
-  left: -12px;
-  font-size: 120px;
-  font-size: 12rem;
-  opacity: 0.25;
-}
-.pull:after,
-.pull p:first-of-type:after {
-  font-size: 56px;
-  font-size: 5.6rem;
-  opacity: 0.2;
+blockquote.pull.alignright {
+  margin: 10px 0 10px 40px;
 }
 table {
   width: 100%;
