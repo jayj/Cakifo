@@ -118,6 +118,13 @@ function cakifo_theme_setup() {
 		'callback' => 'cakifo_register_colors'
 	));
 
+	/* Add theme support for Jetpack Infinite Scroll. */
+	add_theme_support( 'infinite-scroll', array(
+		'container'      => 'main',
+		'footer'         => 'footer',
+		'footer_widgets' => array( 'subsidiary', 'subsidiary-two', 'subsidiary-three' ),
+	) );
+
 	/* Ignore some selectors for the Color Palette extension in the theme customizer. */
 	add_filter( 'color_palette_preview_js_ignore', 'cakifo_cp_preview_js_ignore', 10, 3 );
 

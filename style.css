@@ -1326,6 +1326,10 @@ body.page-template-template-front-page .site-main {
 .post-pagination a[rel="next"] {
   float: right;
 }
+/* Hide pagination when Jetpack Infinite Scroll is active */
+.infinite-scroll .loop-pagination {
+  display: none;
+}
 /* =============================================================================
    Layout:  Attachment pages
    ========================================================================== */
