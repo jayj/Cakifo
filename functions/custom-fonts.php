@@ -78,6 +78,12 @@ function cakifo_register_fonts( $theme_fonts ) {
 			'weights' => array( '400', '700' )
 		),
 		array(
+			'handle'  => 'helvetica-neue-font-stack',
+			'label'   => __( 'Helvetica Neue', 'cakifo' ),
+			'stack'   => '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif',
+			'weights' => array( '300' )
+		),
+		array(
 			'handle'  => 'segoe-font-stack',
 			'label'   => __( 'Segoe UI', 'cakifo' ),
 			'stack'   => '"Segoe UI", "Trebuchet MS", Verdana, sans-serif',
