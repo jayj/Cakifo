@@ -2499,14 +2499,14 @@ html .btn-inverse:hover {
 /* =============================================================================
    Components:  Message boxes
    ========================================================================== */
-.note,
-.alert,
-.warning,
-.success,
-.download,
-.danger,
-.error,
-.info {
+.hentry .note,
+.hentry .alert,
+.hentry .warning,
+.hentry .success,
+.hentry .download,
+.hentry .danger,
+.hentry .error,
+.hentry .info {
   padding: 25px;
   border: double #dadada;
   border-width: 4px 0;
@@ -2515,25 +2515,25 @@ html .btn-inverse:hover {
   background-color: #eeeeee;
   color: #222222;
 }
-.warning,
-.alert {
+.hentry .warning,
+.hentry .alert {
   background-color: #fef9c7;
   border-color: #fcdd4a;
   color: #3b3601;
 }
-.success,
-.download {
+.hentry .success,
+.hentry .download {
   background-color: #dff0d8;
   border-color: #54b646;
   color: #0d370d;
 }
-.danger,
-.error {
+.hentry .danger,
+.hentry .error {
   background-color: #f2dede;
   border-color: #ce838f;
   color: #4b0706;
 }
-.info {
+.hentry .info {
   background-color: #f2f7fc;
   border-color: double #d6e3e5;
   color: #3c3c3c;

@@ -2,48 +2,50 @@
    Components:  Message boxes
    ========================================================================== */
 
-.note,
-.alert,
-.warning,
-.success,
-.download,
-.danger,
-.error,
-.info {
-	padding: @gutter-width-small;
-	border: double @alert-border;
-	border-width: 4px 0;
-	margin-bottom: @gutter-width-small;
-	text-shadow: 0 1px 0 fade(#fff, 50%);
-	background-color: @alert-bg;
-	color: @alert-text;
-}
+.hentry {
+	.note,
+	.alert,
+	.warning,
+	.success,
+	.download,
+	.danger,
+	.error,
+	.info {
+		padding: @gutter-width-small;
+		border: double @alert-border;
+		border-width: 4px 0;
+		margin-bottom: @gutter-width-small;
+		text-shadow: 0 1px 0 fade(#fff, 50%);
+		background-color: @alert-bg;
+		color: @alert-text;
+	}
 
-.warning,
-.alert {
-	background-color: @alert-warning-bg;
-	border-color: @alert-warning-border;
-	color: @alert-warning-text;
-}
+	.warning,
+	.alert {
+		background-color: @alert-warning-bg;
+		border-color: @alert-warning-border;
+		color: @alert-warning-text;
+	}
 
-.success,
-.download {
-	background-color: @alert-success-bg;
-	border-color: @alert-success-border;
-	color: @alert-success-text;
-}
+	.success,
+	.download {
+		background-color: @alert-success-bg;
+		border-color: @alert-success-border;
+		color: @alert-success-text;
+	}
 
-.danger,
-.error {
-	background-color: @alert-error-bg;
-	border-color: @alert-error-border;
-	color: @alert-error-text;
-}
+	.danger,
+	.error {
+		background-color: @alert-error-bg;
+		border-color: @alert-error-border;
+		color: @alert-error-text;
+	}
 
-.info {
-	background-color: @alert-info-bg;
-	border-color: @alert-info-border;
-	color: @alert-info-text;
+	.info {
+		background-color: @alert-info-bg;
+		border-color: @alert-info-border;
+		color: @alert-info-text;
+	}
 }
 
 .box-blue {
