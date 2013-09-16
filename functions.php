@@ -302,19 +302,17 @@ function cakifo_slider_javascript() {
 	 */
 	$defaults = array(
 		'selector'       => '.slides-container > .slide',
+		'slideshow'      => false, // don't autoplay
 		'animation'      => 'slide',
-		'slideshow'      => true,
 		'slideshowSpeed' => 7000,
 		'animationSpeed' => 450,
+		'smoothHeight'   => true,
 		'pauseOnHover'   => true,
 		'video'          => true,
 		'prevText'       => esc_js( _x( 'Previous', 'slide', 'cakifo' ) ),
 		'nextText'       => esc_js( _x( 'Next',     'slide', 'cakifo' ) ),
 		'pauseText'      => esc_js( _x( 'Pause',    'slide', 'cakifo' ) ),
 		'playText'       => esc_js( _x( 'Play',     'slide', 'cakifo' ) ),
-
-		// REMOVE BEFORE RELEASE?
-		'slideshow'      => false,
 	);
 
 	$args = array();
