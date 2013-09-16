@@ -5,45 +5,28 @@
 .cakifo-slider {
 	position: relative;
 
-	// .highlight-box(
-	// 	0 @gutter-width @gutter-width-small,
-	// 	0 (-@gutter-width) @gutter-width (-@gutter-width),
-	// 	0 0 4px
-	// );
-
+	// padding, margin, border-width
 	.highlight-box(
 		(@gutter-width) @gutter-width @gutter-width-small,
 		(-@gutter-width) (-@gutter-width) @gutter-width (-@gutter-width),
 		0 0 4px
 	);
-
-	// Use a pseudo-element to give the illusion of the slider goes all the way to the top
-	// The optimal solution should be use to use negative margin-top on #slider but some mobile
-	// devices don't like that
-	// &:before {
-	// 	content: " ";
-	// 	position: absolute;
-	// 	top: -40px;
-	// 	left: 0;
-	// 	.size(100%, 40px);
-	// 	background-color: darken(#ffffe9, 2%);
-	// }
 }
 
 .flex-viewport {
-	max-height: 2000px;
-	.transition(all 1s ease);
-}
-
-.loading .flex-viewport {
-	max-height: 300px;
+	min-height: 200px;
 }
 
 /* Slider content */
 .slide {
-	/* Hide the slides before the JS is loaded to avoid page jumping */
+	// Hide the slides before the JS is loaded to avoid page jumping
 	display: none;
 	.backface-visibility(hidden);
+
+	// Display the first slide (technically the second because Flexslider makes a clone)
+	&:nth-of-type(2) {
+		display: block;
+	}
 
 	.thumbnail,
 	.slider-video {

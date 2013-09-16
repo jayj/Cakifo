@@ -986,20 +986,16 @@ body.page-template-template-front-page .site-main {
   padding: 40px 40px 25px;
 }
 .flex-viewport {
-  max-height: 2000px;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.loading .flex-viewport {
-  max-height: 300px;
+  min-height: 200px;
 }
 /* Slider content */
 .slide {
-  /* Hide the slides before the JS is loaded to avoid page jumping */
-
   display: none;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+.slide:nth-of-type(2) {
+  display: block;
 }
 .slide .thumbnail,
 .slide .slider-video {
