@@ -994,9 +994,6 @@ body.page-template-template-front-page .site-main {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.slide:nth-of-type(2) {
-  display: block;
-}
 .slide .thumbnail,
 .slide .slider-video {
   float: left;
