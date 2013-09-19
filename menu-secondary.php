@@ -17,13 +17,17 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 
 		<?php do_atomic( 'open_menu_secondary' ); // cakifo_open_menu_secondary ?>
 
+			<h3 class="menu-toggle" title="<?php esc_attr_e( 'Toggle secondary menu', 'cakifo' ); ?>">
+				<?php _e( 'Secondary menu', 'cakifo' ); ?>
+			</h3>
+
 			<a class="assistive-text" href="#main"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
 
 			<?php
 				wp_nav_menu( array(
 					'theme_location' => 'secondary',
+					'container_class' => 'menu-list-container',
 					'after'          => '<span class="sep">|</span>',
-					'container'      => '',
 					'fallback_cb'    => ''
 				) );
 			?>
