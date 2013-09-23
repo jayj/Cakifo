@@ -111,7 +111,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 							// Else, show the post title
 							} else {
-								echo ( empty( $title ) ) ? '<span>Untitled</span>' : '<span>' . $title . '</span>';
+								echo ( empty( $title ) ) ? '<span>' . _x( 'Untitled', 'untitled post', 'cakifo' ) . '</span>' : '<span>' . $title . '</span>';
 							}
 						?>
 					</a>
