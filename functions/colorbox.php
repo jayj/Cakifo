@@ -6,10 +6,11 @@
  * Supported by default, remove it in a child theme with:
  * `remove_theme_support( 'cakifo-colorbox' );`
  *
+ * The selector is '.colorbox'
+ *
  * @package    Cakifo
  * @subpackage Functions
  * @since      Cakifo 1.3.0
- * @version    1.5.0
  * @link       http://jacklmoore.com/colorbox/
  */
 
@@ -24,8 +25,8 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
  * @uses  wp_enqueue_style()
  */
 function cakifo_colorbox_script() {
-	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.4.24', true );
-	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.4.24', 'screen' );
+	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.4.29', true );
+	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.4.29', 'screen' );
 }
 
 /**
@@ -35,11 +36,11 @@ function cakifo_colorbox_script() {
  */
 function cakifo_colorbox() {
 
-	// See all arguments at http://jacklmoore.com/colorbox/
+	// All arguments @link http://jacklmoore.com/colorbox/
 	$defaults = array(
 		'selector'       => '.colorbox',
-		'maxWidth'       => '80%',
-		'maxHeight'      => '80%',
+		'maxWidth'       => '90%',
+		'maxHeight'      => '90%',
 		'opacity'        => '0.6',
 		'fixed'          => true,
 		'slideshowStart' => '&#9654;', // Play symbol
@@ -55,8 +56,9 @@ function cakifo_colorbox() {
 	$args = array();
 
 	/**
-	 * Allow child themes to filter the arguments. Use it like this:
+	 * Allows child themes to filter the arguments.
 	 *
+	 * Usage:
 	 * <code>
 	 * 	add_filter( 'cakifo_colorbox_args', 'my_child_colorbox_args' );
 	 *  function my_child_colorbox_args( $args ) {
@@ -65,14 +67,14 @@ function cakifo_colorbox() {
 	 *	 }
 	 * </code>
 	 *
-	 * @var array
+	 * @param array $args The Colorbox arguments
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );
 
 	// Parse incoming $args into an array and merge it with $defaults.
 	$args = wp_parse_args( $args, $defaults );
 
-	// Get the selector and remove it from the arguments
+	// Get the CSS selector and remove it from the arguments
 	$selector = $args['selector'];
 	unset( $args['selector'] );
 
