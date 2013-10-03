@@ -349,14 +349,23 @@ blockquote i,
 blockquote cite {
   font-style: normal;
 }
+blockquote.aligncenter,
 blockquote.alignleft,
 blockquote.alignright {
-  width: 100%;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  width: 50%;
+}
+blockquote.alignleft {
+  margin: 10px 40px 10px 0;
 }
 blockquote.alignright {
+  margin: 10px 0 10px 40px;
   text-align: right;
 }
 blockquote.aligncenter {
+  width: 100%;
+  margin-left: 0;
   text-align: center;
 }
 /* Quote attributions */
@@ -376,24 +385,6 @@ blockquote cite:before,
 }
 blockquote + .quote-caption {
   margin-left: 40px;
-}
-/**
- * Pull quotes
- */
-blockquote.pull {
-  border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-  margin-left: 0;
-}
-blockquote.pull.alignleft,
-blockquote.pull.alignright {
-  width: 50%;
-}
-blockquote.pull.alignleft {
-  margin: 10px 40px 10px 0;
-}
-blockquote.pull.alignright {
-  margin: 10px 0 10px 40px;
 }
 table {
   width: 100%;

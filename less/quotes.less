@@ -23,17 +23,27 @@ blockquote {
 		font-style: normal;
 	}
 
-	// Aligned blockquotes
+	// Style aligned blockquotes as pull quotes
+	&.aligncenter,
 	&.alignleft,
 	&.alignright {
-		width: 100%;
+		border-top: 1px solid darken(@gray-lighter, 3.5%);
+		border-bottom: 1px solid darken(@gray-lighter, 3.5%);
+		width: 50%;
+	}
+
+	&.alignleft {
+		margin: 10px @gutter-width 10px 0;
 	}
 
 	&.alignright {
+		margin: 10px 0 10px @gutter-width;
 		text-align: right;
 	}
 
 	&.aligncenter {
+		width: 100%;
+		margin-left: 0;
 		text-align: center;
 	}
 }
@@ -53,25 +63,4 @@ blockquote cite,
 
 blockquote + .quote-caption {
 	margin-left: @gutter-width;
-}
-
-/**
- * Pull quotes
- */
-blockquote.pull {
-	border-top: 1px solid darken(@gray-lighter, 3.5%);
-	border-bottom: 1px solid darken(@gray-lighter, 3.5%);
-	margin-left: 0;
-
-	&.alignleft,
-	&.alignright {
-		width: 50%;
-	}
-
-	&.alignleft {
-		margin: 10px @gutter-width 10px 0;
-	}
-	&.alignright {
-		margin: 10px 0 10px @gutter-width;
-	}
 }
