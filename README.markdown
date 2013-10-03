@@ -5,10 +5,8 @@
 This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.
 
 * [Cakifo in the official theme directory](http://wordpress.org/extend/themes/cakifo)
-* Requires at least WordPress 3.6 (stable version 3.5)
-* Tested up to 3.6
-
-**This dev version requires WordPress 3.6**
+* Requires at least WordPress 3.6
+* Tested up to 3.7
 
 ## Demo
 
@@ -27,7 +25,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Multiple widget-ready areas
 * Custom logo (text, image or both)
 * Custom background
-* Custom link color
+* Custom colors
 * Custom front page
 * Per-post/page layouts - Quickly change the layout of your site
 * Add a custom stylesheet for individual posts
@@ -61,14 +59,16 @@ Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Ch
 
 ## License
 
-<em>Cakifo</em> is licensed under the [GNU General Public License v2.0](http://www.gnu.org/licenses/gpl-2.0.html)
+*Cakifo* is licensed under the [GNU General Public License v2.0](http://www.gnu.org/licenses/gpl-2.0.html)
 
 ## Credits
 
 * [Hybrid Core](http://themehybrid.com/hybrid-core "Hybrid Core") by Justin Tadlock
 * [Modernizr](http://modernizr.com)
-* Flexslider by [Woothemes](http://www.woothemes.com/flexslider/)
-* Jack Moore for [Colorbox](http://colorpowered.com/colorbox/)
+* [Flexslider](http://www.woothemes.com/flexslider/) by Woothemes
+* [Colorbox](http://colorpowered.com/colorbox/) by Jack Moore
+* [Chosen.js](http://harvesthq.github.io/chosen/) by Harvest
+* [Chosen Sortable](https://github.com/mrhenry/jquery-chosen-sortable) by Yves Van Broekhoven & Simon Menke
 * And others! More people are credited in the source
 
 ## Support
