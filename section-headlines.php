@@ -11,7 +11,7 @@
 
 do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
-<section class="headline-columns" class="clearfix">
+<section class="headline-columns clearfix">
 
 	<?php do_atomic( 'open_headlines' ); // cakifo_open_headlines ?>
 
