@@ -212,7 +212,7 @@ function cakifo_theme_meta_box() { ?>
 				<?php endforeach; ?>
 			</select>
 
-			<p><?php _e( 'Click to select a term. You can type the name to easier find the term.', 'cakifo' ); ?></p>
+			<p><?php _e( 'Click to select a term. Drag to reorder. You can type the name to easier find the term.', 'cakifo' ); ?></p>
 		<td>
 	</tr>
 
