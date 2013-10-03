@@ -2840,6 +2840,10 @@ html .btn-inverse:hover {
   .site-description {
     margin-right: 25px;
   }
+  .cakifo-slider {
+    margin-left: -25px;
+    margin-right: -25px;
+  }
   /* Turn 3 column layouts into a layout with a full width .site-main and two 50% width sidebars underneath */
   .layout-3c-c .site-main,
   .layout-3c-r .site-main,
