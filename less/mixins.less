@@ -354,13 +354,15 @@
 // CSS3 flexbox
 // http://css-tricks.com/old-flexbox-and-new-flexbox/
 // http://www.w3.org/TR/css3-flexbox
+// https://gist.github.com/jayj/4012969
 // --------------------------------------------------
 
 // flex or inline-flex
 .flex-display(@display: flex) {
 	display: ~"-webkit-@{display}";
 	display: ~"-moz-@{display}";
-	display: ~"-ms-@{display}";
+	display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
+	display: ~"-ms-@{display}"; // IE11
 	display: @display;
 }
 
