@@ -246,7 +246,7 @@ function cakifo_theme_validate_settings( $input ) {
 	// Save the headline terms in an array containing the taxonomy and term ID.
 	$headlines = array();
 
-	foreach( $input['headlines_category'] as $headline ) {
+	foreach( (array) $input['headlines_category'] as $headline ) {
 		$headlines[] = explode( ':', $headline );
 	}
 
