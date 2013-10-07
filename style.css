@@ -3193,15 +3193,10 @@ html .btn-inverse:hover {
   	 */
   pre,
   blockquote {
-    border: 1px solid #999;
     page-break-inside: avoid;
   }
-  blockquote {
-    font-style: italic;
-    padding: 5px;
-  }
-  blockquote blockquote {
-    margin: 5px;
+  pre {
+    border: 1px solid #999;
   }
   /**
   	 * Tables, images and lists
@@ -3224,53 +3219,30 @@ html .btn-inverse:hover {
   /**
   	 * Hide elements
   	 */
+  .cakifo-slider,
+  .pagination,
+  .search-form,
+  .topbar,
+  .secondary-navigation,
+  .more-link,
+  .post-edit-link,
+  .entry-meta .permalink,
+  .comments-link,
+  .comment-respond,
+  .comment-reply-link,
+  .comment-edit-link,
   object,
   embed,
   video,
   audio,
-  iframe[src*="youtube"],
-  blockquote:before,
-  blockquote p:first-of-type:after,
-  .topbar,
-  .cakifo-slider,
-  .comment-respond,
-  #wpadminbar,
-  .site-title img,
-  .pagination,
-  .search,
-  .loop-meta-home,
-  .post-format-link,
-  .twitter-link,
-  .comment .permalink,
-  .comment-edit-link,
-  .comment-reply-link,
-  .more-link,
-  .comments-link,
-  .post-edit-link {
+  iframe[src*="youtube"] {
     display: none !important;
-  }
-  .singular-attachment .loop-nav,
-  .singular-attachment .byline,
-  .singular-attachment .image-gallery,
-  .singular-attachment .related-posts {
-    display: none;
-  }
-  .singular-attachment .image-info {
-    width: 100%;
-    float: none;
-  }
-  .singular-attachment .image-info h3 {
-    margin: 0;
   }
   /**
   	 * Change layout
   	 */
   #wrapper {
-    clear: both !important;
-    display: block !important;
-    float: none !important;
     max-width: 100%;
-    position: relative !important;
   }
   .site-main,
   .sidebar-primary,
@@ -3307,57 +3279,59 @@ html .btn-inverse:hover {
   	 */
   .site-content,
   .site-footer,
-  .headline-columns,
-  .author-profile,
-  .singular .hentry,
+  .comments-area,
   .widget-title,
   .section-title,
-  .breadcrumbs,
-  blockquote cite,
-  blockquote span {
+  .author-profile {
     margin: 0;
   }
   .site-content,
   .site-footer,
   .site-header,
-  .widget-title,
+  .sticky .widget-title,
   .section-title,
-  .hentry,
   .breadcrumbs,
   .author-profile {
     padding: 0;
   }
-  .note,
-  .alert,
-  .warning,
-  .success,
-  .download,
-  .danger,
-  .error,
-  .info,
-  .hentry,
+  .comment-body {
+    padding: 20px 20px 0;
+  }
+  .site-content,
+  .site-footer,
+  .loop-meta-home,
   .widget-title,
+  .comments-title,
   .breadcrumbs,
-  .pull {
+  .author-profile {
     border: 0;
   }
-  .note,
-  .alert,
-  .warning,
-  .success,
-  .download,
-  .danger,
-  .error,
-  .info {
-    padding: 5px 20px;
+  .hentry,
+  .comment-body {
+    border-bottom: 1px solid;
   }
-  /**
-  	 * Site title
-  	 */
-  .home-link:before {
-    content: attr(title);
-    color: #000;
-    font-size: 46px;
-    letter-spacing: -2px;
+  .hentry .note,
+  .hentry .alert,
+  .hentry .warning,
+  .hentry .success,
+  .hentry .download,
+  .hentry .danger,
+  .hentry .error,
+  .hentry .info {
+    padding: 5px 20px;
+    border: 1px solid;
+  }
+  /* Attachment pages */
+  .singular-attachment .loop-nav,
+  .singular-attachment .byline,
+  .singular-attachment .image-gallery {
+    display: none;
+  }
+  .singular-attachment .image-info {
+    width: 100%;
+    float: none;
+  }
+  .singular-attachment .image-info h3 {
+    margin: 0;
   }
 }

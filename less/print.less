@@ -73,17 +73,11 @@
 	 */
 	pre,
 	blockquote {
-		border: 1px solid #999;
 		page-break-inside: avoid;
 	}
 
-	blockquote {
-		font-style: italic;
-		padding: 5px;
-
-		blockquote {
-			margin: 5px;
-		}
+	pre {
+		border: 1px solid #999;
 	}
 
 	/**
@@ -109,38 +103,22 @@
 	/**
 	 * Hide elements
 	 */
-	object, embed, video, audio, iframe[src*="youtube"], blockquote:before, blockquote p:first-of-type:after,
-	.topbar, .cakifo-slider, .comment-respond, #wpadminbar, .pagination, .search, .loop-meta-home,
-	.post-format-link, .twitter-link, .comment .permalink, .comment-edit-link, .comment-reply-link,
-	.more-link, .comments-link, .post-edit-link {
+	// .topbar, .loop-meta-home, .secondary-navigation
+	// .post-format-link, .twitter-link,
+
+	.cakifo-slider, .pagination, .search-form, .topbar, .secondary-navigation,
+	.more-link, .post-edit-link, .entry-meta .permalink, .comments-link,
+	.comment-respond, .comment-reply-link, .comment-edit-link,
+	object, embed, video, audio, iframe[src*="youtube"],
+	{
 		display: none !important;
-	}
-
-	.singular-attachment {
-		.loop-nav,
-		.byline,
-		.image-gallery,
-		.related-posts {
-			display: none;
-		}
-
-		.image-info {
-			width: 100%;
-			float: none;
-
-			h3 { margin: 0; }
-		}
 	}
 
 	/**
 	 * Change layout
 	 */
 	#wrapper {
-		clear: both !important;
-		display: block !important;
-		float: none !important;
 		max-width: 100%;
-		position: relative !important;
 	}
 
 	.site-main,
@@ -176,24 +154,56 @@
 	/**
 	 * Remove margins, paddings and borders
 	 */
-	.site-content, .site-footer, .headline-columns, .author-profile, .singular .hentry,
-	.widget-title, .section-title, .breadcrumbs,
-	blockquote cite, blockquote span {
+	.site-content, .site-footer, .comments-area,
+	.widget-title, .section-title, .author-profile {
 		margin: 0;
 	}
 
-	.site-content, .site-footer, .site-header,
-	.widget-title, .section-title, .hentry,
-	.breadcrumbs, .author-profile {
+	.site-content, .site-footer, .site-header, .sticky
+	.widget-title, .section-title, .breadcrumbs, .author-profile {
 		padding: 0;
 	}
 
-	.note, .alert, .warning, .success, .download, .danger, .error, .info,
-	.hentry, .widget-title, .breadcrumbs, .pull {
+	.comment-body {
+		padding: 20px 20px 0;
+	}
+
+	.site-content, .site-footer, .loop-meta-home,
+	.widget-title, .comments-title, .breadcrumbs, .author-profile {
 		border: 0;
 	}
 
-	.note, .alert, .warning, .success, .download, .danger, .error, .info {
-		padding: 5px 20px;
+	.hentry, .comment-body  {
+		border-bottom: 1px solid;
+	}
+
+	.hentry {
+		.note,
+		.alert,
+		.warning,
+		.success,
+		.download,
+		.danger,
+		.error,
+		.info {
+			padding: 5px 20px;
+			border: 1px solid;
+		}
+	}
+
+	/* Attachment pages */
+	.singular-attachment {
+		.loop-nav,
+		.byline,
+		.image-gallery {
+			display: none;
+		}
+
+		.image-info {
+			width: 100%;
+			float: none;
+
+			h3 { margin: 0; }
+		}
 	}
 }
