@@ -1,10 +1,25 @@
-/*
+/**
  * Theme Name: Cakifo
  * Description: Used to style the TinyMCE editor
  */
 
+/**
+ * Table of Contents:
+ *
+ * 1.0 - Body
+ * 2.0 - Headings
+ * 3.0 - Text Elements
+ * 4.0 - Links
+ * 5.0 - Images
+ * 6.0 - Tables
+ * 7.0 - Message boxes
+ * 8.0 - RTL
+ * 9.0 - Custom Fonts
+ * ----------------------------------------------------------------------------
+ */
+
 /* =============================================================================
-   Base
+   1.0	Body
    ========================================================================== */
 
 html {
@@ -25,12 +40,481 @@ body {
 	line-height: 1.6;
 }
 
+/* =============================================================================
+   2.0	Headings
+   ========================================================================== */
 
-// Rest to come
+h1 {
+	margin: 0.67em 0;
+}
 
+h1,
+h2 {
+	font-size: 26px;
+	font-size: 2.6rem;
+	letter-spacing: -1px;
+}
+
+h3 {
+	background: #f5f5f5;
+	color: #d54e21;
+	font-size: 23px;
+	font-size: 2.3rem;
+	padding: 8px 10px;
+}
+
+h4 {
+	font-size: 21px;
+	font-size: 2.1rem;
+}
+
+h5 {
+	font-size: 20px;
+	font-size: 2rem;
+}
+
+h6 {
+	font-size: 19px;
+	font-size: 1.9rem;
+	font-weight: normal;
+	line-height: 1.6;
+}
+
+/* =============================================================================
+   3.0	Text elements
+   ========================================================================== */
+
+/**
+ * Lists
+ */
+li {
+	line-height: 2;
+}
+
+ol ol {
+	list-style: upper-roman;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ol ol ol ol {
+	list-style: upper-alpha;
+}
+
+ol ol ol ol ol {
+	list-style: lower-alpha;
+}
+
+dt {
+	font-weight: bold;
+}
+
+/**
+ * Code
+ */
+
+code,
+kbd,
+pre,
+samp {
+	font-family: Monaco, Consolas, "Courier New", monospace;
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: normal;
+	line-height: 1.6;
+}
+
+code {
+	color: #009933;
+}
+
+pre {
+	overflow: auto;
+	padding: 25px;
+	background: #424242;
+	border-radius: 5px;
+	color: #fff;
+	white-space: pre-wrap;
+}
+
+pre code {
+	color: #fff;
+}
+
+/**
+ * Quotes
+ */
+
+q {
+	quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+blockquote {
+	font-style: italic;
+	margin: 0 40px 25px;
+}
+
+blockquote p {
+	color: #8c8c8c;
+	font-size: 19px;
+	font-size: 1.9rem;
+}
+
+blockquote em,
+blockquote i,
+blockquote cite {
+	font-style: normal;
+}
+
+blockquote.aligncenter,
+blockquote.alignleft,
+blockquote.alignright {
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+	width: 50%;
+}
+
+blockquote.alignleft {
+	margin: 10px 40px 10px 0;
+}
+
+blockquote.alignright {
+	margin: 10px 0 10px 40px;
+	text-align: right;
+}
+
+blockquote.aligncenter {
+	width: 100%;
+	margin-left: 0;
+	text-align: center;
+}
+
+blockquote cite,
+.quote-caption {
+	display: block;
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.6;
+	font-style: normal;
+	margin-top: 25px;
+}
+
+blockquote cite:before,
+.quote-caption:before {
+	content: '\2014 \00A0';
+}
+
+blockquote + .quote-caption {
+	margin-left: 40px;
+}
+
+/**
+ * HTML elements
+ */
+abbr[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+acronym {
+	border-bottom: 1px dashed #555;
+	text-transform: uppercase;
+	cursor: help;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+
+hr {
+	display: block;
+	clear: both;
+	border: 0;
+	height: 0;
+	padding: 0;
+	margin: 25px 0;
+	border-bottom: 4px double #eee;
+}
+
+mark,
+ins {
+	background: #fff9c0;
+	color: #000;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+/* =============================================================================
+   4.0	Links
+   ========================================================================== */
+
+a {
+	color: #3083aa;
+	text-decoration: none;
+
+	&:active,
+	&:hover {
+		color: #d54e21;
+		outline: 0;
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+}
+
+/* =============================================================================
+   5.0 	Images
+   ========================================================================== */
+
+img {
+	border-radius: 3px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	max-width: 100%;
+	height: auto;
+}
+
+img.aligncenter {
+	margin: 25px auto;
+}
+
+img.alignleft {
+	margin: 0 25px 12px 0;
+}
+
+img.alignright {
+	margin: 0 0 12px 25px;
+}
+
+.wp-smiley,
+.no-image-border {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+iframe {
+	border: none;
+}
+
+/**
+ * Captions [caption]
+ */
+.wp-caption {
+	clear: both;
+	max-width: 100%;
+	padding-top: 5px;
+	margin: 25px 0;
+	background: #222222;
+	border-radius: 0 0 3px 3px;
+	text-align: center;
+}
+
+.wp-caption img {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.wp-caption.aligncenter {
+	margin: 25px auto;
+}
+
+.wp-caption.alignleft {
+	margin: 0 25px 0 0;
+}
+
+.wp-caption.alignright {
+	margin: 0 0 0 25px;
+}
+
+.wp-caption-dd {
+	padding: 20px;
+	margin: 0;
+	font-size: 14px;
+	font-size: 1.4rem;
+	color: #dfdfdf;
+}
+
+/* =============================================================================
+   6.0 	Tables
+   ========================================================================== */
+
+table {
+	width: 100%;
+	margin: 0 0 25px 0;
+	background-color: #ffffff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th,
+td {
+	padding: 8px;
+	border: 1px solid #dddddd;
+	text-align: left;
+}
+
+tr:hover td {
+	background: #f5f5f5;
+}
+
+thead th {
+	background: #f2f7fc;
+}
+
+th {
+	font-weight: bold;
+}
+
+tfoot td {
+	background: #f9f9f9;
+	box-shadow: inset 0 1px 1px 0 #eeeeee;
+	color: #666666;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+
+caption {
+	margin-bottom: 10px;
+}
+
+/* =============================================================================
+   7.0 	Message boxes
+   ========================================================================== */
+
+.note,
+.alert,
+.warning,
+.success,
+.download,
+.danger,
+.error,
+.info {
+	padding: 25px;
+	border: double #dadada;
+	border-width: 4px 0;
+	margin-bottom: 25px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #eeeeee;
+	color: #222222;
+}
+
+.warning,
+.alert {
+	background-color: #fef9c7;
+	border-color: #fcdd4a;
+	color: #3b3601;
+}
+
+.success,
+.download {
+	background-color: #dff0d8;
+	border-color: #54b646;
+	color: #0d370d;
+}
+
+.danger,
+.error {
+	background-color: #f2dede;
+	border-color: #ce838f;
+	color: #4b0706;
+}
+
+.info {
+	background-color: #f2f7fc;
+	border-color: #d6e3e5;
+	color: #3c3c3c;
+}
+
+.box-blue {
+	background-color: #f2f7fc;
+	border: double #c6d1db;
+	border-width: 4px 0;
+	margin: 0 0 40px;
+	padding: 25px;
+}
+
+.box-orange {
+	background-color: #ffffdf;
+	border: double #eeddbd;
+	border-width: 4px 0;
+	margin: 0 0 40px;
+	padding: 25px;
+}
+
+/* =============================================================================
+   8.0 	RTL
+   ========================================================================== */
+
+pre {
+	direction: ltr;
+	text-align: left;
+}
+
+img.alignleft {
+	margin: 0 25px 12px 0;
+}
+
+img.alignright {
+	margin: 0 0 12px 25px;
+}
+
+.wp-caption.alignright {
+	margin: 0 0 0 25px;
+}
+
+.wp-caption.alignleft {
+	margin: 0 25px 0 0;
+}
+
+caption,
+th,
+td {
+	text-align: right;
+}
+
+/* =============================================================================
+   9.0 	Custom Fonts
+   ========================================================================== */
 
 /**
  * Set custom font families and weights
+ * Better solution: http://themehybrid.com/support/topic/load-fonts-in-editor-and-on-apperance-header#post-81355
  */
 $fonts:
 	(georgia-font-stack    "Georgia, Cambria, 'Bitstream Charter', serif")
