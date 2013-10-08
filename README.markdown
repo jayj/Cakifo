@@ -1,4 +1,4 @@
-# Cakifo 1.6-dev
+# Cakifo 1.6
 
 > Cakifo is a free WordPress theme built with from the rock-solid [Hybrid Core theme framework](http://themehybrid.com/hybrid-core "Hybrid Core by Justin Tadlock"), so it provides a great starting point with many useful features..
 
@@ -16,33 +16,38 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 
 ## Features
 
-* Child theme friendly - Nearly everything can be customized in a child theme
+* Child theme friendly – Nearly everything can be customized in a child theme
 * Hybrid Core as framework
 * HTML5 markup
 * Responsive design
+
 * Theme Customizer – Make changes to the theme and live preview them
-* Post Formats
-* Multiple widget-ready areas
-* Custom logo (text, image or both)
+* Custom logo (text, image, or both)
 * Custom background
 * Custom colors
+* Custom fonts
 * Custom front page
-* Per-post/page layouts - Quickly change the layout of your site
-* Add a custom stylesheet for individual posts
+
+* Supports all Post Formats
+* Multiple widget-ready areas
+* Per-post/page layouts – Quickly change the layout of your site
+* Custom stylesheet for individual posts
 * Featured Content Slider
 * Breadcrumbs
 * Built-in pagination
-* Supports post thumbnails
+* Post thumbnails
 * Colorbox - a jQuery lightbox plugin
-* Fully internationalized, so you can run the theme in any language (Danish and French are already added!)
+
+* Ready for translation – run the theme in any language (Danish and French are already added!)
 * RTL stylesheet
 * Editor stylesheet
+
 * Uses the built-in WordPress menu system
 * Context-aware action and filter hooks
 * Small theme settings page (yep, that's a feature)
 * Highly-configurable widgets that give you full control over their display
 * Update notification when a version is available - download the update directly from WordPress.org
-* And much, much more!
+* _And much, much more!_
 
 ## Child themes
 
@@ -50,12 +55,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 
 If you don't and make changes direcly to Cakifo, you will lose them upon updating.
 
-*Don't know how to make a child theme?* It's relatively simple. Just follow the below steps.
-
-
-Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations. *Don't know how to make a child theme?* It's relatively simple.
-
-Just follow [the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Child-themes)
+*Don't know how to make a child theme?* It's quite simple if you [follow the steps shown in the Wiki](https://github.com/jayj/Cakifo/wiki/Child-themes)
 
 ## License
 

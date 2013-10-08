@@ -133,7 +133,7 @@ table caption {
 
 <div id="wrapper">
 
-<h1>Cakifo 1.5.1 <small>By <a href="http://jayj.dk">Jesper J. / Jayj.dk</a></small></h1>
+<h1>Cakifo 1.6 <small>By <a href="http://jayj.dk">Jesper Johansen</a></small></h1>
 
 	<blockquote>
 		<p>Cakifo is a free WordPress theme built with from the rock-solid <a href="http://themehybrid.com/hybrid-core" title="Hybrid Core by Justin Tadlock">Hybrid Core theme framework</a>, so it provides a great starting point with many useful features..</p>
@@ -142,40 +142,47 @@ table caption {
 	<p>This theme is a parent theme. What this means is that to customize it, you should be creating a child theme. Is it a theme framework? Some people might call it that. All you need to know is that it's a solid, yet flexible, starting point for any blog.</p>
 
 <ul>
-	<li>Requires at least WordPress 3.5</li>
-	<li>Tested up to 3.5</li>
-	<li><a href="http://wordpress.org/extend/themes/cakifo">Cakifo in the official theme directory</a></li>
+	<li>Requires at least WordPress 3.6</li>
+	<li>Tested up to 3.7</li>
+	<li><a href="http://wordpress.org/extend/themes/cakifo">Cakifo on WordPress.org</a></li>
 	<li><a href="https://github.com/jayj/Cakifo">Cakifo on Github</a></li>
 </ul>
 
 <h2>Features</h2>
 
 <ul>
-	<li>Child theme friendly - Nearly everything can be customized in a child theme</li>
+	<li>Child theme friendly – Nearly everything can be customized in a child theme</li>
 	<li>Uses Hybrid Core as framework</li>
 	<li>HTML5 markup</li>
 	<li>Responsive design</li>
+</ul>
+<ul>
 	<li>Theme Customizer – Make changes to the theme and live preview them</li>
-	<li>Post Formats</li>
-	<li>Multiple widget-ready areas</li>
-	<li>Custom logo (text, image or both)</li>
+	<li>Custom logo (text, image, or both)</li>
 	<li>Custom background</li>
-	<li>Custom link color</li>
+	<li>Custom colors</li>
+	<li>Custom Fonts</li>
 	<li>Custom front page</li>
-	<li>Per-post layouts - Quickly change the layout of your site</li>
-	<li>Add a custom stylesheet for individual posts</li>
+</ul>
+<ul>
+	<li>Supports all Post Formats</li>
+	<li>Multiple widget-ready areas</li>
+	<li>Per-post/page layouts - Quickly change the layout of your site</li>
+	<li>Custom stylesheet for individual posts</li>
 	<li>Featured Content Slider</li>
 	<li>Breadcrumbs</li>
 	<li>Built-in pagination</li>
-	<li>Killer post thumbnails function that work with WordPress' featured image functionality and provide extra features</li>
+	<li>Post Thumbnails</li>
 	<li>Colorbox - a jQuery lightbox plugin</li>
-	<li>Multiple sidebars that you can customize however you like</li>
-	<li>Fully internationalized, so you can run the theme in any language (Danish is already added!)</li>
+</ul>
+<ul>
+	<li>Ready for translation – run the theme in any language (Danish and French are already added!)</li>
 	<li>RTL stylesheet</li>
 	<li>Editor stylesheet</li>
+</ul>
+<ul>
 	<li>Uses the built-in WordPress menu system</li>
 	<li>Context-aware action and filter hooks</li>
-	<li>Many useful shortcodes</li>
 	<li>Small theme settings page (yep, that's a feature)</li>
 	<li>Highly-configurable widgets that give you full control over their display</li>
 	<li>Update notification when a version is available - download the update directly from WordPress.org</li>
@@ -188,131 +195,13 @@ table caption {
 
 <h2>Child themes</h2>
 
-	<p class="note">
-		This may not be fully up-to-date. Please see <a href="https://github.com/jayj/Cakifo/wiki">the Wiki on Github</a> for newer information
-	</p>
-
 	<p><strong>Since Cakifo is a parent theme, you'll want to create a child theme if you plan on making any customizations.</strong></p>
 
 	<p>If you don't and make changes direcly to Cakifo, you will lose them upon updating. </p>
 
-	<p><em>Don't know how to make a child theme?</em> It's relatively simple. Just follow the below steps.</p>
-
-	<ul>
-		<li>Create a theme folder in your /wp-content/themes directory called cakifo-child (or something else - you decide)</li>
-		<li>Then, create a style.css file within your theme folder</li>
-		<li>At the top of your style.css file, add the below information</li>
-	</ul>
-	<pre>
-/**
- * Theme Name: Cakifo child
- * Theme URI: http://link-to-your-site.com
- * Description: Describe what your theme should be like.
- * Version: 1.0
- * Author: Your Name
- * Author URI: http://link-to-your-site.com
- * Tags: Add, Whatever, Tags, You, Want
- * Template: cakifo
- */
-</pre>
-
-	<p>This will give you a blank design. If you want to import the Cakifo parent theme style, simply append this code after the above information:</p>
-
-<pre>
-@import url( '../cakifo/style.css' );
-
-/* Custom code goes below here. */
-</pre>
-
-	<p>See more about <a href="http://codex.wordpress.org/Child_Themes">Child Themes at the Codex</a></p>
-
-<h4>Functions.php</h4>
-
-	<p>You can make more than just style changes in a child theme. Unlike style.css, the functions.php of a child theme does not override its counterpart from the parent. Instead, it is loaded in addition to the parent's functions.php. (Specifically, it is loaded right before the parent's file.)</p>
-
-	<p>Adding functions or changing things in the parent theme will be lost when it's updated. Fortunately Cakifo is very user child theme friendly. It has a lot of hooks and filter to make it easy for you to change the functionality of the parent theme <em>in your child theme</em>. See the <a href="http://themehybrid.com/docs">Hybrid Core Docs</a> for more information.</p>
-
-	<h5>Child theme setup function</h5>
-
-	For full explanation, please see the <a href="http://themehybrid.com/docs/tutorials/theme-setup-function">Theme Hybrid Docs</a>.</p>
-
-<pre>
-&lt;?php
-
-add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
-
-function my_child_setup() {
-
-	/* Get the parent theme prefix. */
-	$prefix = hybrid_get_prefix();
-
-	/* Actions and filters calls go here in the future. */
-}
-
-?&gt;
-</pre>
-
-
-
-	<h5>Example</h5>
-
-	<p>Let's say you want to change the speed of the slider and/or remove comments from pages. In your child theme functions.php do this</p>
-
-<pre>
-&lt;?php
-
-add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
-
-function my_child_setup() {
-
-	/* Get the parent theme prefix. */
-	$prefix = hybrid_get_prefix();
-
-	/* Set the slider speed. */
-	add_filter( 'cakifo_flexslider_args', 'my_child_slider_args' );
-
-	/* Remove comments from pages. */
-	add_action( 'init', 'my_child_disable_comments_for_pages', 11 );
-
-	/* Other Actions and filters calls go here. */
-}
-
-function my_child_slider_args( $args ) {
-	$args['slideshowSpeed'] = 4000; // Sets the speed to 4 seconds
-	return $args;
-}
-
-function cakifo_child_disable_comments_for_pages() {
-	remove_post_type_support( 'page', 'comments' );
-}
-
-?&gt;
-</pre>
-
-Or what about adding some content to the header? Easy.
-<pre>
-&lt;?php
-
-add_action( &#39;after_setup_theme&#39;, &#39;my_child_setup&#39;, 11 );
-
-function my_child_setup() {
-
-	/* Get the parent theme prefix. */
-	$prefix = hybrid_get_prefix();
-
-	/* Add content to the header. */
-	add_action( "{$prefix}_header", 'my_child_header_content' );
-
-	/* Other Actions and filters calls go here. */
-}
-
-function my_child_header_content() {
-	echo 'Header Content';
-}
-
-?&gt;
-</pre>
-
+	<p class="note">
+		<em>Don't know how to make a child theme?</em> It's quite simple if you <a href="https://github.com/jayj/Cakifo/wiki/Child-themes">follow the guide on Github</a>.
+	</p>
 
 <h2>License</h2>
 
@@ -323,45 +212,78 @@ function my_child_header_content() {
 <ul id="credits">
 	<li>
 		<a href="http://themehybrid.com/hybrid-core" title="Hybrid Core">Hybrid Core</a>
-		<small>GPLv2, Copyright (c), Justin Tadlock</small>
+		<small>GPLv2, ©, Justin Tadlock</small>
 	</li>
 	<li>
 		<a href="http://modernizr.com">Modernizr</a>
-		<small>MIT/BSD, Copyright (c) Faruk Ates, Paul Irish, Alex Sexton</small>
+		<small>MIT/BSD, © Faruk Ates, Paul Irish, Alex Sexton</small>
 	</li>
 	<li>
 		<a href="http://www.woothemes.com/flexslider/">FlexSlider</a>
-		<small>GPLv2, Copyright 2012 WooThemes</small>
+		<small>GPLv2, © WooThemes</small>
 	</li>
 	<li>
 		<a href="http://colorpowered.com/colorbox/">Colorbox</a>
-		<small>MIT, (c) Jack Moore</small>
+		<small>MIT, © Jack Moore</small>
 	</li>
 	<li>
-		Twitter bird from <a href="http://www.smashingmagazine.com/2008/09/23/practika-a-free-icon-set/">Practika icon set</a>
-		<small>DryIcons and Smashing Magazine</small>
+		<a href="http://harvesthq.github.io/chosen/">Chosen.js</a>
+		<small>MIT, © Harvest</small>
+	</li>
+	<li>
+		<a href="https://github.com/mrhenry/jquery-chosen-sortable">Chosen Sortable</a>
+		<small>© Yves Van Broekhoven &amp; Simon Menke</small>
 	</li>
 	<li>And others! More people are credited in the source</li>
 </ul>
 
 <h2>Changelog</h2>
 
-	<h4>Version 1.5.1</h4>
-	<ul>
-		<li>Bug fix: fatal error with the image post format: <code>Call to undefined function cakifo_post_has_content()</code></li>
-	</ul>
+	<h4>Version 1.6.0</h4>
 
-	<h4>Version 1.5.0</h4>
-	<ul>
-		<li>Hybrid Core 1.5 - <a href="http://themehybrid.com/weblog/hybrid-core-version-1-5">See the changelog</a></li>
-		<li>Some of the features from Hybrid Core 1.5 mentioned in the link above</li>
-		<li>Design update</li>
-		<li>Improved Post Format support</li>
-		<li>Secondary Navigation</li>
-		<li>Changed from <code>px</code> to <code>rem</code> in font sizes</li>
-		<li>Code improvements</li>
-		<li>Bug fixes</li>
-	</ul>
+<p>Changes include:</p>
+
+<ul>
+<li>Updated: Hybrid Core 1.6 (<a href="http://themehybrid.com/weblog/hybrid-core-version-1-6">changelog</a>)</li>
+<li>Updated: Colorbox updated to version XXX</li>
+</ul><hr><ul>
+<li>New: Choose custom fonts from the theme customizer</li>
+<li>New: Choose custom colors from the theme customizer</li>
+<li>New: Chosen.js added to the settings page to make the 'Featured Category' and 'Headlines Terms' even better.</li>
+<li>New: Support for custom taxonomies in the 'headlines' section on the front page</li>
+<li>New: Support for reordering of the taxonomies in the 'headlines' section</li>
+<li>New: Support for Jetpack Infinite Scroll</li>
+<li>New: Added the <code>viewport</code> meta tag for better mobile experience</li>
+</ul><hr><ul>
+<li>Tweak: Content files renamed from <code>loop-{$format}.php</code> to <code>content-{$format}.php</code> (has backward compatibility so child themes won't break)</li>
+<li>Tweak: Post formats - many small changes - such as streamlining of the entry meta text)</li>
+<li>Tweak: Better inline docs</li>
+</ul><hr><ul>
+<li>Tweak: HTML5: Use core comment list markup</li>
+<li>Tweak: HTML5: Use core comment form markup</li>
+<li>Tweak: HTML5: Use core search form markup</li>
+</ul><hr><ul>
+<li>Tweak: Use a white background in the footer</li>
+<li>Tweak: Mobile version of the secondary navigation</li>
+<li>Tweak: Don't use the mobile version of the navigations in IE8</li>
+<li>Tweak: Classes are used instead of IDs (the IDs are kept in most cases to keep compability with child themes but this will make it easier for them to overwrite parent theme styling)</li>
+<li>Tweak: Blockquote styles updated (no more blue box) (the .pull class are removed - pull quote styling is added to aligned quotes)</li>
+<li>Tweak: LESS: Better variable names and mixins.</li>
+</ul><hr><ul>
+<li>Tweak: Related Posts widget: only store the post ID in the meta field</li>
+<li>Tweak: Related Posts widget: use Get The Image to grab the thumbnail</li>
+</ul><hr><ul>
+<li>Tweak: Slider: Only show on the front page template (<code><a class="internal present" href="/jayj/Cakifo/wiki/Filters#cakifo_show_slider">cakifo_show_slider</a></code> filter added)</li>
+<li>Tweak: Slider: Don't auto play the slider</li>
+<li>Tweak: Slider: Use smooth height if some slides are higher than others</li>
+</ul><hr><ul>
+<li>Removal: Related Posts widget: <code>cakifo_related_posts_list_item</code> hooks (the list hooks are still there)</li>
+<li>Removal: 'Twitter Username' option (<a href="https://github.com/jayj/Cakifo/commit/5f5cb06d4eeb41d7b43d605f75ba1e6002748da1">5f5cb06d4</a>)</li>
+<li>Removal: All Cakifo shortcodes - some of them because their functionality is now in Hybrid Core, others because they never should have been added in the first place (like the share buttons no one used)</li>
+<li>Removal: Tweet Button extension</li>
+<li>Removal: <code>&lt;hgroup&gt;</code> as it's removed from the HTML5 spec</li>
+</ul>
+
 
 <h2>Support</h2>
 
