@@ -38,7 +38,7 @@ This theme is a parent theme. What this means is that to customize it, you shoul
 * Post thumbnails
 * Colorbox - a jQuery lightbox plugin
 
-* Ready for translation – run the theme in any language (Danish and French are already added!)
+* Ready for translation – run the theme in any language (Danish is already added!)
 * RTL stylesheet
 * Editor stylesheet
 
