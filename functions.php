@@ -20,7 +20,7 @@
  *
  * @package    Cakifo
  * @subpackage Functions
- * @version    1.6-dev
+ * @version    1.6.0
  * @author     Jesper Johansen <kontakt@jayj.dk>
  * @copyright  Copyright (c) 2011-2013, Jesper Johansen
  * @link       http://wpthemes.jayj.dk/cakifo

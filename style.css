@@ -1,11 +1,11 @@
 /*!
  * Theme Name: Cakifo
  * Theme URI: http://wpthemes.jayj.dk/cakifo
- * Description: Cakifo is a nice, responsive theme built from the rock-solid Hybrid Core theme framework. With its HTML5 markup and support for all the WordPress features you love, it might be the perfect theme and a great starting point for your blog! Other features include a homepage template, content slider, post formats, improved widgets and many more useful features. Customize it with a custom background, logo and link color or use a child theme. The theme is very child theme friendly.
- * Version: 1.6-dev
+ * Description: Cakifo is a nice, responsive theme built from the rock-solid Hybrid Core theme framework. With its HTML5 markup and support for all the WordPress features you love, it might be the perfect theme and a great starting point for your blog! Other features include a homepage template, content slider, post formats, improved widgets and many more useful features. Customize it with a custom background, logo, colors and fonts – or use a child theme as the theme is very child theme friendly.
+ * Version: 1.6
  * Author: Jesper Johansen
  * Author URI: http://jayj.dk
- * Tags: blue, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, custom-colors, editor-style, featured-images, post-formats, microformats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+ * Tags: blue, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, custom-colors, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
  * Github Theme URI: https://github.com/jayj/Cakifo
  * Support URI: http://themehybrid.com/support/forum/cakifo
  * Documentation URI: https://github.com/jayj/Cakifo/wiki
@@ -21,12 +21,14 @@
  * NOTICE: Uncompiled .LESS version can be found at style.dev.less
  **********
  */
+
 /*!
  *
  * You shouldn't make changes to this file. Use a child theme instead
  * https://github.com/jayj/Cakifo/wiki/Child-themes
  *
  */
+
 /* =============================================================================
    HTML5 display definitions
    ========================================================================= */
@@ -898,7 +900,7 @@ body.page-template-template-front-page .site-main {
   .secondary-navigation {
     padding: 0;
     /* Menu is toggled on */
-  
+
   }
   .main-navigation .menu-toggle,
   .secondary-navigation .menu-toggle {
@@ -3202,7 +3204,7 @@ html .btn-inverse:hover {
   thead {
     display: table-header-group;
     /* h5bp.com/t */
-  
+
   }
   tr,
   img {
