@@ -25,8 +25,12 @@ add_action( 'wp_footer', 'cakifo_colorbox', 100 );
  * @uses  wp_enqueue_style()
  */
 function cakifo_colorbox_script() {
+
+	// Use the .min stylesheet if SCRIPT_DEBUG is turned off.
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
 	wp_enqueue_script( 'colorbox', THEME_URI . '/js/jquery.colorbox-min.js', array( 'jquery' ), '1.4.31', true );
-	wp_enqueue_style( 'colorbox', THEME_URI . '/css/colorbox.css', array(), '1.4.31', 'screen' );
+	wp_enqueue_style( 'colorbox', trailingslashit( THEME_URI ) . "css/colorbox{$suffix}.css", array(), '1.4.31', 'screen' );
 }
 
 /**
