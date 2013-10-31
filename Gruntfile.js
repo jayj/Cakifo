@@ -122,6 +122,17 @@ module.exports = function(grunt) {
 				},
 				src: ['functions.php'],
 			}
+		},
+		// Compress the build folder into an upload-ready zip file
+		compress: {
+			build: {
+				options: {
+					archive: 'build/cakifo.zip'
+				},
+				cwd: 'build/',
+				src: ['**/*'],
+				dest: 'cakifo/'
+			}
 		}
 	});
 
@@ -132,6 +143,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'pre-build', [ 'version', 'less', 'sass', 'imagemin' ]);
 
 	// Build task
-	grunt.registerTask( 'build', [ 'clean:build', 'copy:build', 'cssmin' ]);
+	grunt.registerTask( 'build', [ 'clean:build', 'copy:build', 'cssmin', 'compress:build' ]);
 
 };
