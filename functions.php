@@ -926,4 +926,21 @@ function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
 	return $selectors;
 }
 
+/**
+ * Filter the page templates to remove the bookmarks
+ * template when the link manager is disabled
+ * @param  array  $templates
+ * @return array
+ */
+function cakifo_filter_templates( $templates ) {
+
+	if ( ! get_option( 'link_manager_enabled' ) ) {
+		unset( $templates['template-bookmarks.php'] );
+	}
+
+	return $templates;
+}
+
+add_filter( 'theme_page_templates', 'cakifo_filter_templates' );
+
 ?>
