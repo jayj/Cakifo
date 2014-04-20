@@ -197,6 +197,10 @@ function cakifo_theme_setup() {
 
 	/* Filter the arguments for wp_link_pages(), used in the loop files */
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
+
+ 	/* Filter the page templates to remove the bookmarks template */
+	add_filter( 'theme_page_templates', 'cakifo_filter_page_templates' );
+
 }
 
 /**
@@ -927,12 +931,15 @@ function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
 }
 
 /**
- * Filter the page templates to remove the bookmarks
- * template when the link manager is disabled
- * @param  array  $templates
+ * Filter the page templates to remove the bookmarks template
+ * when the link manager is disabled.
+ *
+ * @since  Cakifo 1.6.1
+ *
+ * @param  array  $templates All page templates
  * @return array
  */
-function cakifo_filter_templates( $templates ) {
+function cakifo_filter_page_templates( $templates ) {
 
 	if ( ! get_option( 'link_manager_enabled' ) ) {
 		unset( $templates['template-bookmarks.php'] );
@@ -940,7 +947,5 @@ function cakifo_filter_templates( $templates ) {
 
 	return $templates;
 }
-
-add_filter( 'theme_page_templates', 'cakifo_filter_templates' );
 
 ?>
