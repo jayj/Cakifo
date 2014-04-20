@@ -20,9 +20,9 @@
  *
  * @package    Cakifo
  * @subpackage Functions
- * @version    1.6.0
+ * @version    1.6.1
  * @author     Jesper Johansen <kontakt@jayj.dk>
- * @copyright  Copyright (c) 2011-2013, Jesper Johansen
+ * @copyright  Copyright (c) 2011-2014, Jesper Johansen
  * @link       http://wpthemes.jayj.dk/cakifo
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
