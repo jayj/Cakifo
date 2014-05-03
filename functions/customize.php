@@ -199,31 +199,28 @@ function cakifo_customize_preview() {
 
 					if ( 'blank' == to ) {
 
-						// No header image and no title
-						if ( 'remove-header' == _wpCustomizeSettings.values.header_image ) {
-							$( '#branding' ).css( 'padding', '40px 0' );
-
-							$( '.site-description' ).css( {
-								'clip': 'rect(1px, 1px, 1px, 1px)',
-								'position': 'absolute'
-							} );
-						}
-
 						// Hide title
 						$( '.site-title span' ).css( {
 							'clip': 'rect(1px, 1px, 1px, 1px)',
 							'position': 'absolute'
 						} );
 
-					} else {
+						// No header image and no title: hide the description
+						if ( 'remove-header' == _wpCustomizeSettings.values.header_image ) {
+							$( '.site-description' ).css( {
+								'clip': 'rect(1px, 1px, 1px, 1px)',
+								'position': 'absolute'
+							} );
+						}
 
-						$( '.site-header' ).css( 'padding', '60px 0 50px' );
+					} else {
 
 						$( '.home-link, .site-title span, .site-description' ).css( {
 							'clip': 'auto',
 							'color': to,
 							'position': 'relative'
 						} );
+						
 					}
 				} );
 			} );
