@@ -1,0 +1,28 @@
+{
+  "name": "Cakifo",
+  "version": "1.6.2",
+  "description": "Cakifo is a nice, responsive theme built from the rock-solid Hybrid Core theme framework. With its HTML5 markup and support for all the WordPress features you love, it might be the perfect theme and a great starting point for your blog! Other features include a homepage template, content slider, post formats, improved widgets and many more useful features. Customize it with a custom background, logo, colors and fonts – or use a child theme as the theme is very child theme friendly.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jayj/Cakifo.git"
+  },
+  "author": "Jesper Johansen",
+  "license": "GNU General Public License v2.0",
+  "bugs": {
+    "url": "https://github.com/jayj/Cakifo/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.6.2",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-imagemin": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-version": "~0.2.2",
+    "connect-livereload": "~0.3.0",
+    "grunt-contrib-compress": "~0.5.2"
+  }
+}
