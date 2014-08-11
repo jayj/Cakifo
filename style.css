@@ -2,7 +2,7 @@
  * Theme Name: Cakifo
  * Theme URI: http://wpthemes.jayj.dk/cakifo
  * Description: Cakifo is a nice, responsive theme built from the rock-solid Hybrid Core theme framework. With its HTML5 markup and support for all the WordPress features you love, it might be the perfect theme and a great starting point for your blog! Other features include a homepage template, content slider, post formats, improved widgets and many more useful features. Customize it with a custom background, logo, colors and fonts – or use a child theme as the theme is very child theme friendly.
- * Version: 1.6.1
+ * Version: 1.6.2
  * Author: Jesper Johansen
  * Author URI: http://jayj.dk
  * Tags: blue, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, custom-colors, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -21,14 +21,12 @@
  * NOTICE: Uncompiled .LESS version can be found at style.dev.less
  **********
  */
-
 /*!
  *
  * You shouldn't make changes to this file. Use a child theme instead
  * https://github.com/jayj/Cakifo/wiki/Child-themes
  *
  */
-
 /* =============================================================================
    HTML5 display definitions
    ========================================================================= */
@@ -534,9 +532,7 @@ caption {
   clear: both;
   margin-top: 25px;
   /* Two columns */
-
   /* Three columns */
-
 }
 .sidebar-subsidiary.two-col .widget-area {
   float: left;
@@ -667,7 +663,6 @@ body.page-template-template-front-page .site-main {
   margin: 0 auto;
   *zoom: 1;
   /* Level 2 */
-
 }
 .main-navigation:before,
 .main-navigation:after {
@@ -900,7 +895,6 @@ body.page-template-template-front-page .site-main {
   .secondary-navigation {
     padding: 0;
     /* Menu is toggled on */
-
   }
   .main-navigation .menu-toggle,
   .secondary-navigation .menu-toggle {
@@ -1856,7 +1850,6 @@ iframe[seamless] {
   -webkit-transition: opacity 250ms;
   transition: opacity 250ms;
   /* Lower opacity on every column except the hovered */
-
 }
 .recent-post:last-of-type {
   margin-right: 0;
@@ -2082,7 +2075,6 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-
 }
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
@@ -3106,7 +3098,6 @@ html .btn-inverse:hover {
   left: 5px;
   z-index: 100000;
   /* Above WP toolbar */
-
   width: auto;
   height: auto;
   padding: 12px;
@@ -3144,7 +3135,7 @@ html .btn-inverse:hover {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  @page  {
+  @page {
     margin: 0.5cm;
   }
   p,
@@ -3162,15 +3153,15 @@ html .btn-inverse:hover {
     margin: 0;
   }
   /**
-  	 * Insert page breaks before the sidebar and comments
-  	 */
+	 * Insert page breaks before the sidebar and comments
+	 */
   .sidebar-primary,
   .comments-area {
     page-break-before: always;
   }
   /**
-  	 * Show links
-  	 */
+	 * Show links
+	 */
   a,
   a:visited {
     text-decoration: underline;
@@ -3182,15 +3173,15 @@ html .btn-inverse:hover {
     content: " (" attr(title) ")";
   }
   /**
-  	 * Don't show links for javascript/internal links
-  	 */
+	 * Don't show links for javascript/internal links
+	 */
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: "";
   }
   /**
-  	 * Code and quotes
-  	 */
+	 * Code and quotes
+	 */
   pre,
   blockquote {
     page-break-inside: avoid;
@@ -3199,12 +3190,11 @@ html .btn-inverse:hover {
     border: 1px solid #999;
   }
   /**
-  	 * Tables, images and lists
-  	 */
+	 * Tables, images and lists
+	 */
   thead {
     display: table-header-group;
     /* h5bp.com/t */
-
   }
   tr,
   img {
@@ -3217,8 +3207,8 @@ html .btn-inverse:hover {
     line-height: 1.3;
   }
   /**
-  	 * Hide elements
-  	 */
+	 * Hide elements
+	 */
   .cakifo-slider,
   .pagination,
   .search-form,
@@ -3239,8 +3229,8 @@ html .btn-inverse:hover {
     display: none !important;
   }
   /**
-  	 * Change layout
-  	 */
+	 * Change layout
+	 */
   #wrapper {
     max-width: 100%;
   }
@@ -3275,8 +3265,8 @@ html .btn-inverse:hover {
     float: right;
   }
   /**
-  	 * Remove margins, paddings and borders
-  	 */
+	 * Remove margins, paddings and borders
+	 */
   .site-content,
   .site-footer,
   .comments-area,
