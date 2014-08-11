@@ -544,10 +544,6 @@ function cakifo_place_author_box() {
 /**
  * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
  *
- * Note: This function will most likely be restructured completely in the future.  The eventual plan is to
- * separate each of the elements into an attachment API that can be used across multiple themes.  Keep
- * this in mind if you plan on using the current filter hooks in this function.
- *
  * @since  Cakifo 1.0.0
  * @author Justin Tadlock
  * @link   http://justintadlock.com
@@ -560,31 +556,57 @@ function cakifo_image_info() {
 	$list  = '';
 
 	// If there's no image meta, return
-	if ( empty( $meta ) )
+	if ( empty( $meta ) ) {
 		return;
+	}
 
 	// Add the width/height to the $items array.
-	$items['dimensions'] = array( _x( 'Dimensions', 'image dimensions', 'cakifo' ), '<a href="' . wp_get_attachment_url() . '">' . sprintf( _x( '%1$s &#215; %2$s pixels', 'image dimensions', 'cakifo' ), $meta['width'], $meta['height'] ) . '</a>' );
+	if ( ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ) {
+		$items['dimensions'] = array(
+			__( 'Dimensions', 'cakifo' ),
+			/* Translators: Media dimensions - 1 is width and 2 is height. */
+			'<a href="' . esc_url( wp_get_attachment_url() ) . '">' . sprintf( __( '%1$s &#215; %2$s pixels', 'cakifo' ), number_format_i18n( absint( $meta['width'] ) ), number_format_i18n( absint( $meta['height'] ) ) ) . '</a>'
+		);
+	}
 
 	// If a timestamp exists, add it to the $items array.
-	if ( ! empty( $meta['image_meta']['created_timestamp'] ) )
-		$items['created_timestamp'] = array( _x( 'Date', 'image creation', 'cakifo' ), date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $meta['image_meta']['created_timestamp'] ) );
+	if ( ! empty( $meta['image_meta']['created_timestamp'] ) ) {
+		$items['created_timestamp'] = array(
+			_x( 'Date', 'image creation', 'cakifo' ),
+			date_i18n( get_option( 'date_format' ), $meta['image_meta']['created_timestamp'] )
+		);
+	}
 
 	// If a camera exists, add it to the $items array.
-	if ( ! empty( $meta['image_meta']['camera'] ) )
-		$items['camera'] = array( __( 'Camera', 'cakifo' ), $meta['image_meta']['camera'] );
+	if ( ! empty( $meta['image_meta']['camera'] ) ) {
+		$items['camera'] = array(
+			__( 'Camera', 'cakifo' ),
+			esc_html( $meta['image_meta']['camera'] )
+		);
+	}
 
 	// If an aperture exists, add it to the $items array.
-	if ( ! empty( $meta['image_meta']['aperture'] ) )
-		$items['aperture'] = array( __( 'Aperture', 'cakifo' ), sprintf( _x( 'f/%s', 'exif: aperture', 'cakifo' ), $meta['image_meta']['aperture'] ) );
+	if ( ! empty( $meta['image_meta']['aperture'] ) ) {
+		$items['aperture'] = array(
+			__( 'Aperture', 'cakifo' ),
+			sprintf( _x( 'f/%s', 'exif: aperture', 'cakifo' ), esc_html( $meta['image_meta']['aperture'] ) )
+		);
+	}
 
 	// If a focal length is set, add it to the $items array.
 	if ( ! empty( $meta['image_meta']['focal_length'] ) )
-		$items['focal_length'] = array( __( 'Focal Length', 'cakifo' ), sprintf( _x( '%s mm', 'exif: focal length', 'cakifo' ), $meta['image_meta']['focal_length'] ) );
+		$items['focal_length'] = array(
+			__( 'Focal Length', 'cakifo' ),
+			sprintf( _x( '%s mm', 'exif: focal length', 'cakifo' ), esc_html( $meta['image_meta']['focal_length'] ) )
+		);
 
 	// If an ISO is set, add it to the $items array.
-	if ( ! empty( $meta['image_meta']['iso'] ) )
-		$items['iso'] = array( __( 'ISO', 'cakifo' ), $meta['image_meta']['iso'] );
+	if ( ! empty( $meta['image_meta']['iso'] ) ) {
+		$items['iso'] = array(
+			__( 'ISO', 'cakifo' ),
+			esc_html( $meta['image_meta']['iso'] )
+		);
+	}
 
 	// If a shutter speed is given, format the float into a fraction and add it to the $items array.
 	if ( ! empty( $meta['image_meta']['shutter_speed'] ) ) {
@@ -600,7 +622,10 @@ function cakifo_image_info() {
 			$shutter_speed = $meta['image_meta']['shutter_speed'];
 		}
 
-		$items['shutter_speed'] = array( __( 'Shutter Speed', 'cakifo' ), sprintf( _x( '%s sec', 'exif: shutter speed', 'cakifo' ), $shutter_speed ) );
+		$items['shutter_speed'] = array(
+			__( 'Shutter Speed', 'cakifo' ),
+			sprintf( _x( '%s sec', 'exif: shutter speed', 'cakifo' ), esc_html( $shutter_speed ) )
+		);
 	}
 
 	/**
