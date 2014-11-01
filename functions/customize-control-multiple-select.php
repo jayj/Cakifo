@@ -72,8 +72,8 @@ class Cakifo_Customize_Control_Multiple_Select_Headlines extends WP_Customize_Co
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-sortable' );
-		wp_enqueue_script( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0' );
-		wp_enqueue_style( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.css', array(), '1.0' );
+		wp_enqueue_script( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.js', array( 'jquery', 'jquery-ui-sortable' ), '1.2', true );
+		wp_enqueue_style( 'cakifo-theme-settings-chosen', get_template_directory_uri() . '/functions/admin/chosen.css', array(), '1.2' );
 	}
 
 	/**
