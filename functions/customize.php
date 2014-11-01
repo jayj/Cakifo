@@ -167,8 +167,10 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	if ( $wp_customize->is_preview() && ! is_admin() )
+	if ( $wp_customize->is_preview() && ! is_admin() ) {
 		add_action( 'wp_footer', 'cakifo_customize_preview', 21 );
+	}
+
 }
 
 /**
@@ -220,7 +222,7 @@ function cakifo_customize_preview() {
 							'color': to,
 							'position': 'relative'
 						} );
-						
+
 					}
 				} );
 			} );
