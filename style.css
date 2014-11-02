@@ -2497,23 +2497,6 @@ html .btn-inverse:hover {
 .comment-form .form-url {
   clear: both;
 }
-#submit {
-  background-color: #006dcc;
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc 100%);
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc 100%);
-  border-color: #0036a3 #0036a3 #002266;
-  color: #ffffff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-}
-#submit:hover,
-#submit:focus {
-  background-color: #005dac;
-  background-image: -webkit-linear-gradient(top, #0077b3, #0036a3 100%);
-  background-image: linear-gradient(to bottom, #0077b3, #0036a3 100%);
-  border-color: #002a80 #002a80 #001133;
-  color: #ffffff;
-  text-decoration: none;
-}
 /* =============================================================================
    Layout:  Search form
    ========================================================================== */

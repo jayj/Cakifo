@@ -404,15 +404,16 @@ function cakifo_excerpt_more( $more ) {
 /**
  * Filters the comment form arguments.
  *
- * WordPress 4.1 added two new arguments but Hybrid Core overwrites the default
+ * 1) WordPress 4.1 added two new arguments but Hybrid Core overwrites the default
  * arguments which caused a PHP notice.
+ * 2) Adds two button classes to the submit button
  *
  * @since  Cakifo 1.7.0
  * @param  array    $args
  * @return array
  */
 function cakifo_comment_form_args( $args ) {
-	$args['class_submit'] = 'submit';
+	$args['class_submit'] = 'submit btn btn-primary';
 	$args['name_submit'] = 'submit';
 
 	return $args;
