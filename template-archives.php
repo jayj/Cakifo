@@ -77,9 +77,9 @@ get_header(); ?>
 
 		<?php endwhile; ?>
 
-		<?php do_atomic( 'close_main' ); ?>
-
 		<?php get_template_part( 'loop-nav' ); ?>
+
+		<?php do_atomic( 'close_main' ); ?>
 
 	</main> <!-- .site-main -->
 
