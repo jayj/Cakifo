@@ -29,18 +29,7 @@ get_header(); ?>
 
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 
-					<?php
-						// Get the thumbnail.
-						if ( current_theme_supports( 'get-the-image' ) ) {
-							get_the_image(
-								array(
-									'meta_key'   => 'Thumbnail',
-									'size'       => 'thumbnail',
-									'attachment' => false
-								)
-							);
-						}
-					?>
+					<?php cakifo_post_thumbnail(); ?>
 
 					<div class="entry-content">
 						<?php the_content(); ?>

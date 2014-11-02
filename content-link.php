@@ -24,15 +24,7 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
-		<?php
-			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) ) {
-				get_the_image( array(
-					'size'       => 'thumbnail',
-					'attachment' => false
-				));
-			}
-		?>
+		<?php cakifo_post_thumbnail(); ?>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -52,15 +44,7 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
-		<?php
-			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) ) {
-				get_the_image( array(
-						'size'       => 'thumbnail',
-						'attachment' => false
-				));
-			}
-		?>
+		<?php cakifo_post_thumbnail(); ?>
 
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>

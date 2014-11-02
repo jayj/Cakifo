@@ -67,15 +67,13 @@ do_atomic( 'before_recent_posts' ); ?>
 
 				<?php
 					// Get the thumbnail.
-					if ( current_theme_supports( 'get-the-image' ) )
-						get_the_image(
-							array(
-							'meta_key'      => 'Thumbnail',
+					if ( current_theme_supports( 'get-the-image' ) ) {
+						get_the_image( array(
 							'size'          => 'recent',
 							'image_class'   => 'thumbnail',
 							'default_image' => THEME_URI . '/images/default-thumb-220-150.png',
-							)
-						);
+						));
+					}
 				?>
 
 				<header class="entry-header">

@@ -22,17 +22,7 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 		</header> <!-- .entry-header -->
 
-		<?php
-			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) ) {
-				get_the_image(
-					array(
-						'size'       => 'thumbnail',
-						'attachment' => false
-					)
-				);
-			}
-		?>
+		<?php cakifo_post_thumbnail(); ?>
 
 		<div class="entry-content">
 			<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
@@ -57,17 +47,7 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 		</header> <!-- .entry-header -->
 
-		<?php
-			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) ) {
-				get_the_image(
-					array(
-						'size'       => 'thumbnail',
-						'attachment' => false
-					)
-				);
-			}
-		?>
+		<?php cakifo_post_thumbnail(); ?>
 
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
