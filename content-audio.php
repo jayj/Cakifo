@@ -24,6 +24,8 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
+		<?php cakifo_post_thumbnail(); ?>
+
 		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
@@ -41,6 +43,8 @@ do_atomic( 'before_entry' ); ?>
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
+
+		<?php cakifo_post_thumbnail(); ?>
 
 		<?php if ( has_excerpt() ) : ?>
 
