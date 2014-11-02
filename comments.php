@@ -24,10 +24,14 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 
 		<h2 class="comments-title">
-			<?php comments_number( __( 'No Responses', 'cakifo' ), __( 'One Response', 'cakifo' ), __( '% Responses', 'cakifo' ) ); ?>
+			<?php
+				printf( _nx( 'One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'cakifo' ),
+				number_format_i18n( get_comments_number() ), get_the_title() );
+			?>
 		</h2>
 
-		<?php do_atomic( 'before_comment_list' ); // cakifo_before_comment_list ?>
+
+		<?php do_atomic( 'before_comment_list' ); ?>
 
 		<ol class="comment-list">
 			<?php
@@ -39,7 +43,7 @@ if ( post_password_required() ) {
 			?>
 		</ol> <!-- .comment-list -->
 
-		<?php do_atomic( 'after_comment_list' ); // cakifo_after_comment_list ?>
+		<?php do_atomic( 'after_comment_list' ); ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav class="pagination comment-pagination" role="navigation">
