@@ -16,45 +16,42 @@ do_atomic( 'before_entry' ); ?>
 
 	<?php do_atomic( 'open_entry' ); ?>
 
-	<?php if ( is_singular() ) : ?>
+	<header class="entry-header">
+		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
+		<?php echo apply_atomic_shortcode( 'byline_attachment', '<div class="byline">' . __( 'Uploaded on [entry-published] [entry-edit-link before="| "]', 'cakifo' ) . '</div>' ); ?>
+	</header> <!-- .entry-header -->
 
-		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-		</header> <!-- .entry-header -->
+	<?php cakifo_post_thumbnail(); ?>
 
-		<?php cakifo_post_thumbnail(); ?>
+	<div class="entry-content">
+		<?php the_content(); ?>
 
-		<div class="entry-content">
-			<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
+		<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
 
-			<p class="download">
-					<?php printf( __( 'Download %s', 'cakifo' ), the_title( '<span class="fn">&quot;', '&quot;</span>', false ) ); ?>
-				</a>
-			</p> <!-- .download -->
-			<a download href="<?php echo esc_url( wp_get_attachment_url() ); ?>" type="<?php echo esc_attr( get_post_mime_type() ); ?>">
+		<?php wp_link_pages(); ?>
+	</div> <!-- .entry-content -->
 
-			<?php the_content(); ?>
-			<?php wp_link_pages(); ?>
-		</div> <!-- .entry-content -->
+	<?php echo apply_atomic_shortcode( 'entry_meta_attachment', '' ); ?>
 
-		<?php echo apply_atomic_shortcode( 'entry_meta_attachment', '<footer class="entry-meta">' . __( 'Published on [entry-published] [entry-edit-link before="| "]', 'cakifo' ) . '</footer> <!-- .entry-meta -->' ); ?>
+	<aside class="attachment-meta clearfix">
+		<div class="attachment-info">
+			<h3><?php _e( 'Attachment Info', 'cakifo' ) ?></h3>
 
-		<?php do_atomic( 'in_singular' ); ?>
+			<?php hybrid_media_meta(); ?>
+		</div> <!-- .attachment-info -->
 
-	<?php else : ?>
+		<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20"]', $post->post_parent, get_the_ID() ) ); ?>
 
-		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-		</header> <!-- .entry-header -->
+		<?php if ( ! empty( $gallery ) ) { ?>
+			<div class="attachment-gallery">
+				<h3><?php _e( 'Gallery', 'cakifo' ); ?></h3>
+				<?php echo $gallery; ?>
+			</div> <!-- .attachment-gallery -->
+		<?php } ?>
 
-		<?php cakifo_post_thumbnail(); ?>
+	</aside> <!-- .attachment-meta -->
 
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-			<?php wp_link_pages(); ?>
-		</div> <!-- .entry-summary -->
-
-	<?php endif; ?>
+	<?php do_atomic( 'in_singular' ); ?>
 
 	<?php do_atomic( 'close_entry' ); ?>
 
