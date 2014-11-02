@@ -26,12 +26,15 @@ get_header( '404' ); ?>
 		<article id="post-0" class="<?php hybrid_entry_class(); ?>">
 
 			<header class="entry-header">
-				<h1 class="error-404-title entry-title"><?php _e( "Whoah! 404 error! We can't find the page!", 'cakifo' ); ?></h1>
+				<h1 class="error-404-title entry-title">
+					<?php esc_html_e( 'Whoah! That page can&rsquo;t be found.', 'cakifo' ); ?>
+				</h1>
 			</header> <!-- .entry-header -->
 
 			<div class="entry-content">
 				<p>
-					<?php printf( __( "You tried going to %s but the page no longer exists. All is not lost!  Perhaps searching, or one of the links below, can help.", 'cakifo' ), '<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?>
+					<?php printf( __( 'You tried going to %s but nothing was found at this location. Maybe try a search?', 'cakifo' ),
+						'<code>' . esc_html( $_SERVER['REQUEST_URI'] ) . '</code>' ); ?>
 				</p>
 
 				<?php get_search_form(); ?>
