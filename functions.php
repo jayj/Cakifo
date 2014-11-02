@@ -70,7 +70,7 @@ function cakifo_theme_setup() {
 
 	/* Cakifo uses the Hybrid Core 2.0 version of Media grabber */
 	remove_theme_support( 'hybrid-core-media-grabber' ); // in case a child theme has added support
-	add_theme_support( 'cakifo-core-media-grabber' );
+	add_theme_support( 'cakifo-media' );
 
 
 	/* Add theme support for theme functions. */
@@ -246,8 +246,9 @@ function cakifo_get_loop_template( $name = null ) {
 function cakifo_load_theme_support() {
 	$template_directory = trailingslashit( get_template_directory() );
 
-	/* Load Cakifo Media Grabber if supported. */
-	require_if_theme_supports( 'cakifo-core-media-grabber', $template_directory . 'functions/cakifo-media-grabber.php' );
+	/* Load Cakifo media functions if supported. */
+	require_if_theme_supports( 'cakifo-media', $template_directory . 'functions/cakifo-media-grabber.php' );
+	require_if_theme_supports( 'cakifo-media', $template_directory . 'functions/cakifo-media-meta.php' );
 
 	/* Load the Cakifo sidebars if supported. */
 	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
