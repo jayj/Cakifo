@@ -20,7 +20,7 @@ get_header(); ?>
 
 		<?php get_template_part( 'loop-meta' ); ?>
 
-		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php cakifo_get_loop_template( 'attachment' ); ?>
 
