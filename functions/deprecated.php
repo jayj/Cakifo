@@ -58,3 +58,18 @@ function cakifo_the_excerpt( $length = 55, $echo = true ) {
 	else
 		return wp_trim_words( get_the_excerpt(), $length, $more_link );
 }
+
+/**
+ * Displays an attachment image's metadata and exif data while viewing a singular attachment page.
+ *
+ * @deprecated Cakifo 1.7.0 Use hybrid_media_meta() instead.
+ */
+function cakifo_image_info() {
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.7.0', 'hybrid_media_meta()' );
+
+	echo '<div class="attachment-info image-info clearfix">';
+		echo '<h3>' . __( 'Image Info', 'cakifo' ) . '</h3>';
+		hybrid_media_meta();
+	echo '</div> <!-- .attachment-info -->';
+}
+
