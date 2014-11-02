@@ -49,15 +49,20 @@ get_header(); ?>
 					</div> <!-- .entry-content -->
 
 					<aside class="attachment-meta clearfix">
-						<?php cakifo_image_info(); ?>
+
+						<div class="attachment-info image-info">
+							<h3><?php _e( 'Image Info', 'cakifo' ) ?></h3>
+
+							<?php hybrid_media_meta(); ?>
+						</div> <!-- .attachment-info -->
 
 						<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20" orderby="rand"]', $post->post_parent, get_the_ID() ) ); ?>
 
 						<?php if ( ! empty( $gallery ) ) { ?>
-							<div class="image-gallery">
+							<div class="attachment-gallery image-gallery">
 								<h3><?php _e( 'Gallery', 'cakifo' ); ?></h3>
 								<?php echo $gallery; ?>
-							</div> <!-- .image-gallery -->
+							</div> <!-- .attachment-gallery -->
 						<?php } ?>
 					</aside> <!-- .attachment-meta -->
 
