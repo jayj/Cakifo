@@ -39,6 +39,8 @@ do_atomic( 'before_entry' ); ?>
 
 	<?php else : ?>
 
+		<?php $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) ); ?>
+
 		<header class="entry-header">
 			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
@@ -60,6 +62,8 @@ do_atomic( 'before_entry' ); ?>
 			</div> <!-- .entry-content -->
 
 		<?php endif; ?>
+
+		<?php echo $audio; ?>
 
 		<footer class="entry-meta">
 			<?php echo apply_atomic_shortcode( 'entry_meta_audio', __( '[post-format-link] published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) ); ?>
