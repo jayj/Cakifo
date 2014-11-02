@@ -16,15 +16,25 @@ get_header(); ?>
 
 		<?php do_atomic( 'open_main' ); ?>
 
-		<?php get_template_part( 'loop-meta' ); ?>
 
-		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : ?>
 
-			<?php cakifo_get_loop_template( get_post_format() ); ?>
+			<?php get_template_part( 'loop-meta' ); ?>
 
-		<?php endwhile; ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'loop-nav' ); ?>
+				<?php cakifo_get_loop_template( get_post_format() ); ?>
+
+			<?php endwhile; ?>
+
+			<?php get_template_part( 'loop-nav' ); ?>
+
+		<?php else : ?>
+
+			<?php get_template_part( 'content', 'none' ); ?>
+
+		<?php endif; ?>
+
 
 		<?php do_atomic( 'close_main' ); ?>
 
