@@ -42,7 +42,7 @@
 
 		<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<?php cakifo_logo(); ?>
-			<h2 class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<p class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></p>
 		</a>
 
 		<?php do_atomic( 'header' ); ?>
