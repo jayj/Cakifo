@@ -385,24 +385,22 @@ td {
 /**
  * Layout: Attachment pages
  */
-.image-info {
+.attachment-info {
 	float: right;
 }
 
-.image-info dt {
+.attachment-info .prep {
 	float: right;
 	clear: right;
 	text-align: right;
 }
 
-.image-info dd {
+.attachment-info .data {
 	float: left;
-	padding-left: 5px;
 	text-align: left;
-	padding-right: 0;
 }
 
-.image-gallery {
+.attachment-gallery {
 	float: left;
 }
 

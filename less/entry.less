@@ -215,31 +215,32 @@
 	margin-bottom: @gutter-width-small;
 }
 
-.image-info {
+.attachment-info {
 	float: left;
 	width: 35%;
 
-	dl {
-		line-height: 40px;
+	.media-meta {
+		.no-list-style();
 	}
 
-	dt,
-	dd {
+	li {
+		.clearfix();
 		border-bottom: 1px solid @post-border-color;
 		padding: 5px;
 	}
 
-	dt {
+	.prep {
+		font-weight: 700;
 		float: left;
-		clear: left;
 	}
 
-	dd {
+	.data {
+		float: right;
 		text-align: right;
 	}
 }
 
-.image-gallery {
+.attachment-gallery {
 	float: right;
 	width: 60%;
 }

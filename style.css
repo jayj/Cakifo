@@ -1374,26 +1374,37 @@ body.page-template-template-front-page .site-main {
 .attachment-meta {
   margin-bottom: 25px;
 }
-.image-info {
+.attachment-info {
   float: left;
   width: 35%;
 }
-.image-info dl {
-  line-height: 40px;
+.attachment-info .media-meta {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
-.image-info dt,
-.image-info dd {
+.attachment-info li {
+  *zoom: 1;
   border-bottom: 1px solid #eeeeee;
   padding: 5px;
 }
-.image-info dt {
-  float: left;
-  clear: left;
+.attachment-info li:before,
+.attachment-info li:after {
+  content: "";
+  display: table;
 }
-.image-info dd {
+.attachment-info li:after {
+  clear: both;
+}
+.attachment-info .prep {
+  font-weight: 700;
+  float: left;
+}
+.attachment-info .data {
+  float: right;
   text-align: right;
 }
-.image-gallery {
+.attachment-gallery {
   float: right;
   width: 60%;
 }
@@ -2876,12 +2887,12 @@ html .btn-inverse:hover {
     margin-bottom: 25px;
   }
   /* Attachment meta */
-  .image-info,
-  .image-gallery {
+  .attachment-info,
+  .attachment-gallery {
     float: none;
     width: 100%;
   }
-  .image-info {
+  .attachment-info {
     margin-bottom: 25px;
   }
 }
@@ -3296,14 +3307,14 @@ html .btn-inverse:hover {
   /* Attachment pages */
   .singular-attachment .loop-nav,
   .singular-attachment .byline,
-  .singular-attachment .image-gallery {
+  .singular-attachment .attachment-gallery {
     display: none;
   }
-  .singular-attachment .image-info {
+  .singular-attachment .attachment-info {
     width: 100%;
     float: none;
   }
-  .singular-attachment .image-info h3 {
+  .singular-attachment .attachment-info h3 {
     margin: 0;
   }
 }
