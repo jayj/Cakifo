@@ -56,7 +56,7 @@ get_header(); ?>
 							<?php hybrid_media_meta(); ?>
 						</div> <!-- .attachment-info -->
 
-						<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20" orderby="rand"]', $post->post_parent, get_the_ID() ) ); ?>
+						<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20"]', $post->post_parent, get_the_ID() ) ); ?>
 
 						<?php if ( ! empty( $gallery ) ) { ?>
 							<div class="attachment-gallery image-gallery">
