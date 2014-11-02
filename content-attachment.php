@@ -28,10 +28,10 @@ do_atomic( 'before_entry' ); ?>
 			<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
 
 			<p class="download">
-				<a href="<?php echo esc_url( wp_get_attachment_url() ); ?>" type="<?php echo esc_attr( get_post_mime_type() ); ?>">
 					<?php printf( __( 'Download %s', 'cakifo' ), the_title( '<span class="fn">&quot;', '&quot;</span>', false ) ); ?>
 				</a>
 			</p> <!-- .download -->
+			<a download href="<?php echo esc_url( wp_get_attachment_url() ); ?>" type="<?php echo esc_attr( get_post_mime_type() ); ?>">
 
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
