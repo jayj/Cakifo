@@ -196,6 +196,9 @@ function cakifo_theme_setup() {
 
 	/* Filter the arguments for wp_link_pages(), used in the loop files */
  	add_filter( 'wp_link_pages_args', 'cakifo_link_pages_args' );
+
+ 	/* Filter the comment form arguments. */
+ 	add_filter( 'comment_form_defaults', 'cakifo_comment_form_args', 11 );
 }
 
 /**
@@ -395,6 +398,24 @@ function cakifo_excerpt_more( $more ) {
 	}
 
 	return $more;
+}
+
+
+/**
+ * Filters the comment form arguments.
+ *
+ * WordPress 4.1 added two new arguments but Hybrid Core overwrites the default
+ * arguments which caused a PHP notice.
+ *
+ * @since  Cakifo 1.7.0
+ * @param  array    $args
+ * @return array
+ */
+function cakifo_comment_form_args( $args ) {
+	$args['class_submit'] = 'submit';
+	$args['name_submit'] = 'submit';
+
+	return $args;
 }
 
 
