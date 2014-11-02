@@ -8,7 +8,7 @@
  * @package    Cakifo
  * @subpackage Classes
  * @since      Cakifo 1.3.0
- * @version    1.2.0
+ * @version    1.2.1
  * @author     Jesper Johansen <kontakt@jayj.dk>
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
@@ -74,7 +74,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 			$class = ( $show_thumbnails ) ? 'with-thumbnails clearfix' : 'clearfix';
 
-			do_atomic( 'before_related_posts_list' ); // cakifo_before_related_posts_list
+			do_atomic( 'before_related_posts_list' );
 
 			echo '<ul class="' . esc_attr( $class ) . '">';
 
@@ -130,7 +130,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 
 			echo '</ul>';
 
-			do_atomic( 'after_related_posts_list' ); // cakifo_after_related_posts_list
+			do_atomic( 'after_related_posts_list' );
 
 		/* Nope, no related posts. */
 		else :
@@ -171,14 +171,16 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		foreach ( $taxonomies as $taxonomy ) :
 
 			// Skip post formats.
-			if ( 'post_format' == $taxonomy )
+			if ( 'post_format' == $taxonomy ) {
 				continue;
+			}
 
 			$terms = get_the_terms( $post_id, $taxonomy );
 
 			// No terms in the current taxonomy.
-			if ( ! $terms )
+			if ( ! $terms ) {
 				continue;
+			}
 
 			$term__in = array();
 

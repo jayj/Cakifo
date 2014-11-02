@@ -2,22 +2,23 @@
 /**
  * Home Template
  *
- * This is the home template.  Technically, it is the "posts page" template.  It is used when a visitor is on the
- * page assigned to show a site's latest blog posts.
+ * This is the home template.  Technically, it is the "posts page" template.
+ * It is used when a visitor is on the page assigned to show a site's
+ * latest blog posts.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-get_header(); // Loads the header.php template ?>
+get_header(); ?>
 
-	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
+	<?php do_atomic( 'before_main' ); ?>
 
 	<main id="main" class="site-main" role="main">
 
-		<?php do_atomic( 'open_main' ); // cakifo_open_main ?>
+		<?php do_atomic( 'open_main' ); ?>
 
-		<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template ?>
+		<?php get_template_part( 'loop-meta' ); ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -25,12 +26,12 @@ get_header(); // Loads the header.php template ?>
 
 		<?php endwhile; ?>
 
-		<?php do_atomic( 'close_main' ); // cakifo_close_main ?>
+		<?php do_atomic( 'close_main' ); ?>
 
-		<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
+		<?php get_template_part( 'loop-nav' ); ?>
 
 	</main> <!-- .site-main -->
 
-	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
+	<?php do_atomic( 'after_main' ); ?>
 
-<?php get_footer(); // Loads the footer.php template ?>
+<?php get_footer(); ?>

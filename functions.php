@@ -93,10 +93,7 @@ function cakifo_theme_setup() {
 		'comment-list', 'comment-form', 'search-form'
 	));
 
-	/**
-	 * This theme supports all available post formats.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
+	/* This theme supports all available post formats. */
 	add_theme_support( 'post-formats', array(
 		'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
 	));
@@ -131,9 +128,7 @@ function cakifo_theme_setup() {
 	/* Set $content_width */
 	hybrid_set_content_width( 650 );
 
-	/**
-	 * Set new image sizes
-	 */
+	/* Set new image sizes */
 	add_image_size(
 		'small',
 		apply_filters( 'small_thumb_width', 100 ),
@@ -244,7 +239,7 @@ function cakifo_get_loop_template( $name = null ) {
 function cakifo_load_theme_support() {
 	$template_directory = trailingslashit( get_template_directory() );
 
-	/* Load the Cakifo sidebars if supported */
+	/* Load the Cakifo sidebars if supported. */
 	require_if_theme_supports( 'cakifo-sidebars', $template_directory . 'functions/sidebars.php' );
 
 	/* Load the Colorbox Script extention if supported. */
@@ -260,7 +255,7 @@ add_action( 'after_setup_theme', 'cakifo_load_theme_support', 12 );
  * @since Cakifo 1.0.0
  */
 function cakifo_enqueue_script() {
-	/**
+	/*
 	 * Modernizr enables HTML5 elements & feature detects
 	 *
 	 * For more/fewer features and optimal performance in your child theme,
@@ -293,8 +288,9 @@ function cakifo_enqueue_script() {
  */
 function cakifo_slider_javascript() {
 
-	if ( ! cakifo_is_active_slider() )
+	if ( ! cakifo_is_active_slider() ) {
 		return;
+	}
 
 	/**
 	 * Default arguments
@@ -499,11 +495,11 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 
 		<?php if ( get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
 
-			<?php do_atomic( 'before_author_box' ); // cakifo_before_author_box ?>
+			<?php do_atomic( 'before_author_box' ); ?>
 
 			<div class="author-profile clearfix vcard">
 
-				<?php do_atomic( 'open_author_box' ); // cakifo_open_author_box ?>
+				<?php do_atomic( 'open_author_box' ); ?>
 
 				<h4 class="author-name fn n">
 					<?php echo do_shortcode( __( 'Article written by [entry-author]', 'cakifo' ) ); ?>
@@ -515,11 +511,11 @@ if ( ! function_exists( 'cakifo_author_box' ) ) :
 					<?php echo wpautop( get_the_author_meta( 'description' ) ); ?>
 				</div>
 
-				<?php do_atomic( 'close_author_box' ); // cakifo_close_author_box ?>
+				<?php do_atomic( 'close_author_box' ); ?>
 
 			</div> <!-- .author-profile -->
 
-			<?php do_atomic( 'after_author_box' ); // cakifo_after_author_box
+			<?php do_atomic( 'after_author_box' );
 
 		endif;
 	}
@@ -534,10 +530,11 @@ endif; // cakifo_author_box
 function cakifo_place_author_box() {
 	$prefix = hybrid_get_prefix();
 
-	if ( is_active_sidebar( 'after-single' ) )
+	if ( is_active_sidebar( 'after-single' ) ) {
 		add_action( "{$prefix}_before_sidebar_single", 'cakifo_author_box' );
-	else
+	} else {
 		add_action( "{$prefix}_singular-post_after_singular", 'cakifo_author_box' );
+	}
 }
 
 
@@ -628,10 +625,7 @@ function cakifo_image_info() {
 		);
 	}
 
-	/**
-	 * Allow child themes to overwrite the array of items
-	 * @note Changed name to 'image_meta_items' in Version 1.3
-	 */
+	/* Allow child themes to overwrite the array of items */
 	$items = apply_atomic( 'image_meta_items', $items );
 
 	// Loop through the items, wrapping the first item in the array in <dt> and the second in <dd>
@@ -676,8 +670,9 @@ function cakifo_get_image_sizes() {
 		)
 	);
 
-	if ( $_wp_additional_image_sizes )
+	if ( $_wp_additional_image_sizes ) {
 		return array_merge( $builtin_sizes, $_wp_additional_image_sizes );
+	}
 
 	return $builtin_sizes;
 }
@@ -693,8 +688,9 @@ function cakifo_get_image_sizes() {
 function cakifo_get_image_size( $name ) {
 	$image_sizes = cakifo_get_image_sizes();
 
-	if ( isset( $image_sizes[$name] ) )
+	if ( isset( $image_sizes[$name] ) ) {
 		return $image_sizes[$name];
+	}
 
 	return false;
 }
@@ -711,8 +707,9 @@ function cakifo_get_image_size( $name ) {
 function cakifo_get_image_size_links() {
 
 	// If not viewing an image attachment page, return.
-	if ( ! wp_attachment_is_image( get_the_ID() ) )
+	if ( ! wp_attachment_is_image( get_the_ID() ) ) {
 		return;
+	}
 
 	// Set up an empty array for the links.
 	$links = array();
@@ -728,8 +725,9 @@ function cakifo_get_image_size_links() {
 		$image = wp_get_attachment_image_src( get_the_ID(), $size );
 
 		// Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size.
-		if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) )
+		if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) ) {
 			$links[] = "<a class='image-size-link' href='" . esc_url( $image[0] ) . "'>{$image[1]} &times; {$image[2]}</a>";
+		}
 	}
 
 	// Join the links in a string and return.
@@ -823,8 +821,9 @@ function cakifo_body_class( $classes ) {
  */
 function cakifo_load_in_singular() {
 	// Load the sidebar-after-single.php template.
-	if ( is_single() )
+	if ( is_single() ) {
 		get_sidebar( 'after-single' );
+	}
 
 	// Loads the sidebar-after-singular.php template.
 	get_sidebar( 'after-singular' );
@@ -862,8 +861,9 @@ function cakifo_link_pages_args( $args ) {
  * @since Cakifo 1.5.0
  */
 function cakifo_compat_show_singular_comments() {
-	if ( false === apply_filters( 'show_singular_comments', true ) )
+	if ( false === apply_filters( 'show_singular_comments', true ) ) {
 		remove_post_type_support( 'page', 'comments' );
+	}
 }
 
 
@@ -945,8 +945,9 @@ function cakifo_register_colors( $color_palette ) {
  */
 function cakifo_cp_preview_js_ignore( $selectors, $color_id, $property ) {
 
-	if ( 'color' === $property && 'link' === $color_id )
+	if ( 'color' === $property && 'link' === $color_id ) {
 		$selectors = '.site-title, .menu a, .section-title a, .widget-title a, .intro-post .post-edit-link';
+	}
 
 	return $selectors;
 }

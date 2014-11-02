@@ -6,15 +6,15 @@
  *
  * This can be overridden in child themes with content-attachment.php
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-do_atomic( 'before_entry' ); // cakifo_before_entry ?>
+do_atomic( 'before_entry' ); ?>
 
 <article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
-	<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
+	<?php do_atomic( 'open_entry' ); ?>
 
 	<?php if ( is_singular() ) : ?>
 
@@ -24,13 +24,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<?php
 			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) )
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image(
 					array(
 						'size'       => 'thumbnail',
 						'attachment' => false
 					)
 				);
+			}
 		?>
 
 		<div class="entry-content">
@@ -48,7 +49,7 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<?php echo apply_atomic_shortcode( 'entry_meta_attachment', '<footer class="entry-meta">' . __( 'Published on [entry-published] [entry-edit-link before="| "]', 'cakifo' ) . '</footer> <!-- .entry-meta -->' ); ?>
 
-		<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
+		<?php do_atomic( 'in_singular' ); ?>
 
 	<?php else : ?>
 
@@ -58,13 +59,14 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 		<?php
 			// Get the thumbnail.
-			if ( current_theme_supports( 'get-the-image' ) )
+			if ( current_theme_supports( 'get-the-image' ) ) {
 				get_the_image(
 					array(
 						'size'       => 'thumbnail',
 						'attachment' => false
 					)
 				);
+			}
 		?>
 
 		<div class="entry-summary">
@@ -74,8 +76,8 @@ do_atomic( 'before_entry' ); // cakifo_before_entry ?>
 
 	<?php endif; ?>
 
-	<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
+	<?php do_atomic( 'close_entry' ); ?>
 
 </article> <!-- #post-<?php the_ID(); ?> -->
 
-<?php do_atomic( 'after_entry' ); // cakifo_after_entry ?>
+<?php do_atomic( 'after_entry' ); ?>

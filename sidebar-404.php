@@ -4,7 +4,7 @@
  *
  * Displays any widgets for the Error Page dynamic sidebar if they are available.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 

@@ -2,33 +2,33 @@
 /**
  * Attachment Template
  *
- * This is the image attachment template.  It is used when visiting the singular view of an image attachment
+ * This is the image attachment template. It is used when visiting the singular view of an image attachment
  * page.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-get_header(); // Loads the header.php template ?>
+get_header(); ?>
 
-	<?php do_atomic( 'before_main' ); // cakifo_before_main ?>
+	<?php do_atomic( 'before_main' ); ?>
 
 	<main id="main" class="site-main" role="main">
 
-		<?php do_atomic( 'open_main' ); // cakifo_open_main ?>
+		<?php do_atomic( 'open_main' ); ?>
 
-		<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template ?>
+		<?php get_template_part( 'loop-meta' ); ?>
 
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-			<?php do_atomic( 'before_entry' ); // cakifo_before_entry ?>
+			<?php do_atomic( 'before_entry' ); ?>
 
 			<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
-				<?php do_atomic( 'open_entry' ); // cakifo_open_entry ?>
+				<?php do_atomic( 'open_entry' ); ?>
 
 					<header class="entry-header">
-						<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template ?>
+						<?php get_template_part( 'loop-nav' ); ?>
 
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 						<?php echo apply_atomic_shortcode( 'byline_attachment_image', '<div class="byline">' . sprintf( __( 'Sizes: %s', 'cakifo' ), cakifo_get_image_size_links() ) . '</div>' ); ?>
@@ -49,7 +49,7 @@ get_header(); // Loads the header.php template ?>
 					</div> <!-- .entry-content -->
 
 					<aside class="attachment-meta clearfix">
-						<?php cakifo_image_info(); // Get image meta data ?>
+						<?php cakifo_image_info(); ?>
 
 						<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20" orderby="rand"]', $post->post_parent, get_the_ID() ) ); ?>
 
@@ -61,17 +61,17 @@ get_header(); // Loads the header.php template ?>
 						<?php } ?>
 					</aside> <!-- .attachment-meta -->
 
-					<?php do_atomic( 'in_singular' ); // cakifo_in_singular (+ cakifo_after_singular) ?>
+					<?php do_atomic( 'in_singular' ); ?>
 
-				<?php do_atomic( 'close_entry' ); // cakifo_close_entry ?>
+				<?php do_atomic( 'close_entry' ); ?>
 			</article> <!-- #post-<?php the_ID(); ?> -->
 
 		<?php endwhile; ?>
 
-		<?php do_atomic( 'close_main' ); // cakifo_close_main ?>
+		<?php do_atomic( 'close_main' ); ?>
 
 	</main> <!-- .site-main -->
 
-	<?php do_atomic( 'after_main' ); // cakifo_after_main ?>
+	<?php do_atomic( 'after_main' ); ?>
 
-<?php get_footer(); // Loads the footer.php template ?>
+<?php get_footer(); ?>

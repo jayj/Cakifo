@@ -4,15 +4,15 @@
  *
  * Child Themes can replace this template part file by overwriting section-recentposts.php
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
+do_atomic( 'before_recent_posts' ); ?>
 
 <section class="recent-post-columns clearfix">
 
-	<?php do_atomic( 'open_recent_posts' ); // cakifo_open_recent_posts ?>
+	<?php do_atomic( 'open_recent_posts' ); ?>
 
 	<?php
 		// Get the link to the Posts (blog) page.
@@ -49,12 +49,13 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 			),
 		);
 
-		// Fire the Recent Posts query.
-		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );  // Filter the query with the `cakifo_recent_posts_query` filter
+		// Fire up the Recent Posts query.
+		// Filter it with the `cakifo_recent_posts_query` filter
+		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
 
 		while ( $recent->have_posts() ) : $recent->the_post();
 
-			/**
+			/*
 			 * Put the post ID in an array to make sure it's only showing once
 			 * on the page as this array is used in the headline lists as well.
 			 */
@@ -62,7 +63,7 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 	?>
 
 		<article class="recent-post">
-			<?php do_atomic( 'open_recent_posts_item' ); // cakifo_open_recent_posts_item ?>
+			<?php do_atomic( 'open_recent_posts_item' ); ?>
 
 				<?php
 					// Get the thumbnail.
@@ -92,13 +93,13 @@ do_atomic( 'before_recent_posts' ); // cakifo_before_recent_posts ?>
 					?>
 				</div> <!-- .entry-summary -->
 
-			<?php do_atomic( 'close_recent_posts_item' ); // cakifo_close_recent_posts_item ?>
+			<?php do_atomic( 'close_recent_posts_item' ); ?>
 		</article> <!-- .recent-post -->
 
 	<?php endwhile; wp_reset_query(); ?>
 
-	<?php do_atomic( 'close_recent_posts' ); // cakifo_close_recent_posts ?>
+	<?php do_atomic( 'close_recent_posts' ); ?>
 
-</section> <!-- .recent-posts -->
+</section> <!-- .recent-post-columns -->
 
-<?php do_atomic( 'after_recent_posts' ); // cakifo_after_recent_posts ?>
+<?php do_atomic( 'after_recent_posts' ); ?>

@@ -35,8 +35,9 @@ function cakifo_register_sidebars() {
 	$supported_sidebars = get_theme_support( 'cakifo-sidebars' );
 
 	/* If there is no array of sidebars IDs, return */
-	if ( ! is_array( $supported_sidebars[0] ) )
+	if ( ! is_array( $supported_sidebars[0] ) ) {
 		return;
+	}
 
 	/* Set up some default sidebar arguments. */
 	$defaults = array(

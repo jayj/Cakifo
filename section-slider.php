@@ -5,13 +5,13 @@
  * This template file is used for the slider on the home and blog page.
  * Child Themes can replace it via {section-slider.php}
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 ?>
 
 <?php
-	/**
+	/*
 	 * Set up the slider query
 	 */
 	$feature_query = array(
@@ -36,7 +36,7 @@
 			)
 	);
 
-	/**
+	/*
 	 * Select posts from the selected categories
 	 * or use Sticky Posts
 	 */
@@ -47,13 +47,17 @@
 		$feature_query['post__in'] = get_option( 'sticky_posts' );
 	}
 
-	/* Fire the query. */
-	$loop = new WP_Query( apply_filters( 'cakifo_slider_query', $feature_query ) ); // Filter the query with the `cakifo_slider_query` filter
+	/*
+	 * Fire up the query.
+	 *
+	 * Filter it with the `cakifo_slider_query` filter
+	 */
+	$loop = new WP_Query( apply_filters( 'cakifo_slider_query', $feature_query ) );
 ?>
 
 <?php if ( $loop->have_posts() ) : ?>
 
-	<?php do_atomic( 'before_slider' ); // cakifo_before_slider ?>
+	<?php do_atomic( 'before_slider' ); ?>
 
 	<section id="slider" class="cakifo-slider">
 
@@ -61,15 +65,15 @@
 
 		<div class="slides-container clearfix">
 
-		<?php do_atomic( 'open_slider' ); // cakifo_open_slider ?>
+		<?php do_atomic( 'open_slider' ); ?>
 
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-				<?php do_atomic( 'before_slide' ); // cakifo_before_slide ?>
+				<?php do_atomic( 'before_slide' ); ?>
 
 				<article class="slide">
 
-					<?php do_atomic( 'open_slide' ); // cakifo_open_slide ?>
+					<?php do_atomic( 'open_slide' ); ?>
 
 					<?php
 						if ( current_theme_supports( 'get-the-image' ) ) :
@@ -113,20 +117,20 @@
 						<a href="<?php the_permalink(); ?>" class="more-link"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
 					</div> <!-- .entry-summary -->
 
-					<?php do_atomic( 'close_slide' ); // cakifo_close_slide ?>
+					<?php do_atomic( 'close_slide' ); ?>
 
 				</article> <!-- .slide -->
 
-				<?php do_atomic( 'after_slide' ); // after_close_slide ?>
+				<?php do_atomic( 'after_slide' ); ?>
 
 			<?php endwhile; ?>
 
-			<?php do_atomic( 'close_slider' ); // cakifo_close_slider ?>
+			<?php do_atomic( 'close_slider' ); ?>
 
 		</div> <!-- .slides-container -->
 
 	</section> <!-- .cakifo-slider -->
 
-	<?php do_atomic( 'after_slider' ); // cakifo_after_slider ?>
+	<?php do_atomic( 'after_slider' ); ?>
 
 <?php endif; wp_reset_query(); ?>

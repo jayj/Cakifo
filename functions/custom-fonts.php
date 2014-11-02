@@ -6,7 +6,7 @@
  * @subpackage Functions
  */
 
-/**
+/*
  * Add theme support for theme fonts.
  */
 add_theme_support( 'theme-fonts', array(

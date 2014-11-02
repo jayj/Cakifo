@@ -5,18 +5,18 @@
  *
  * Child Themes can replace this template part file via `section-headlines.php`
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
+do_atomic( 'before_headlines' ); ?>
 
 <section class="headline-columns clearfix">
 
-	<?php do_atomic( 'open_headlines' ); // cakifo_open_headlines ?>
+	<?php do_atomic( 'open_headlines' ); ?>
 
 	<?php
-		/**
+		/*
 		 * Loop through each selected term.
 		 */
 		foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
@@ -51,7 +51,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 		<div class="headline-list">
 
-			<?php do_atomic( 'open_headline_list' ); // cakifo_open_headline_list ?>
+			<?php do_atomic( 'open_headline_list' ); ?>
 
 			<?php
 				// Get the plural version of a post format name.
@@ -75,7 +75,7 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 					?>
 
 					<li class="headline-item clearfix">
-						<?php do_atomic( 'open_headline_list_item' ); // cakifo_open_headline_list_item ?>
+						<?php do_atomic( 'open_headline_list_item' ); ?>
 
 						<?php
 							// Get the thumbnail.
@@ -93,12 +93,12 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 						<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' ); ?>
 
-						<?php do_atomic( 'close_headline_list_item' ); // cakifo_close_headline_list_item ?>
+						<?php do_atomic( 'close_headline_list_item' ); ?>
 					</li>
 				<?php endwhile; ?>
 			</ol>
 
-			<?php do_atomic( 'close_headline_list' ); // cakifo_close_headline_list ?>
+			<?php do_atomic( 'close_headline_list' ); ?>
 
 		</div> <!-- .headline-list -->
 
@@ -106,10 +106,10 @@ do_atomic( 'before_headlines' ); // cakifo_before_headlines ?>
 
 	<?php endforeach; ?>
 
-	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the variable. ?>
+	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the global variable. ?>
 
-	<?php do_atomic( 'close_headlines' ); // cakifo_close_headlines ?>
+	<?php do_atomic( 'close_headlines' ); ?>
 
-</section> <!-- #headlines -->
+</section> <!-- .headline-columns -->
 
-<?php do_atomic( 'after_headlines' ); // cakifo_after_headlines ?>
+<?php do_atomic( 'after_headlines' ); ?>

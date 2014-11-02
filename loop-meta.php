@@ -5,11 +5,11 @@
  * Displays information at the top of the page about archive and search results when viewing those pages.
  * This is not shown on the front page or singular views.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-do_atomic( 'before_loop_meta' ); // cakifo_before_loop_meta ?>
+do_atomic( 'before_loop_meta' ); ?>
 
 <?php
 	/**
@@ -162,4 +162,4 @@ do_atomic( 'before_loop_meta' ); // cakifo_before_loop_meta ?>
 
 <?php endif; ?>
 
-<?php do_atomic( 'after_loop_meta' ); // cakifo_after_loop_meta ?>
+<?php do_atomic( 'after_loop_meta' ); ?>

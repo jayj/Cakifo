@@ -6,7 +6,7 @@
  * @subpackage Functions
  */
 
-/**
+/*
  * Custom header for logo upload.
  */
 add_theme_support( 'custom-header',
@@ -22,7 +22,7 @@ add_theme_support( 'custom-header',
 	)
 );
 
-/**
+/*
  * Register the default logo.
  */
 register_default_headers( array(
@@ -37,7 +37,7 @@ register_default_headers( array(
 	)
 );
 
-/**
+/*
  * Register child theme default logo if images/logo.png exists.
  */
 if ( is_child_theme() && file_exists( get_stylesheet_directory() . '/images/logo.png' ) ) :
@@ -63,8 +63,9 @@ function cakifo_header_style() {
 	$header_text_color  = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail.
-	if ( $header_text_color == $default_text_color )
+	if ( $header_text_color == $default_text_color ) {
 		return;
+	}
 
 	// If we get this far, we have custom styles. Let's do this. ?>
 

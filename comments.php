@@ -5,17 +5,18 @@
  * Lists comments and calls the comment form.  Individual comments have their own templates.  The
  * hierarchy for these templates is `$comment_type.php, comment.php`.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 
-/**
+/*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() )
+if ( post_password_required() ) {
 	return;
+}
 ?>
 
 <section id="comments" class="comments-area">

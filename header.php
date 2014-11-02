@@ -6,7 +6,7 @@
  * somewhere near the top of the file. It is used mostly as an opening wrapper, which is closed with the
  * footer.php file. It also executes key functions needed by the theme, child themes, and plugins.
  *
- * @package    Cakifo
+ * @package Cakifo
  * @subpackage Template
  */
 ?>
@@ -28,39 +28,39 @@
 
 <body class="<?php hybrid_body_class(); ?>">
 
-	<?php do_atomic( 'open_body' ); // cakifo_open_body ?>
+	<?php do_atomic( 'open_body' ); ?>
 
-	<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template ?>
+	<?php get_template_part( 'menu', 'primary' ); ?>
 
 <div id="wrapper">
 
-	<?php do_atomic( 'before_header' ); // cakifo_before_header ?>
+	<?php do_atomic( 'before_header' ); ?>
 
 	<header id="branding" class="site-header clearfix" role="banner">
 
-		<?php do_atomic( 'open_header' ); // cakifo_open_header ?>
+		<?php do_atomic( 'open_header' ); ?>
 
 		<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<?php cakifo_logo(); ?>
 			<h2 class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</a>
 
-		<?php do_atomic( 'header' ); // cakifo_header ?>
+		<?php do_atomic( 'header' ); ?>
 
 	</header> <!-- .site-header -->
 
-	<?php do_atomic( 'after_header' ); // cakifo_after_header ?>
+	<?php do_atomic( 'after_header' ); ?>
 
-	<?php get_template_part( 'menu', 'secondary' ); // Loads the menu-secondary.php template ?>
+	<?php get_template_part( 'menu', 'secondary' ); ?>
 
-<?php do_atomic( 'before_content' ); // cakifo_before_content ?>
+<?php do_atomic( 'before_content' ); ?>
 
 <div id="content" class="site-content clearfix">
 
-	<?php do_atomic( 'open_content' ); // cakifo_open_content ?>
+	<?php do_atomic( 'open_content' ); ?>
 
 	<?php
-		/**
+		/*
 		 * Include the slider `section-slider.php` template part file
 		 * if the slider is active.
 		 */

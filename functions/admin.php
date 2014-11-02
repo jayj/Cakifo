@@ -28,14 +28,6 @@ function cakifo_theme_admin_setup() {
 	add_filter( "sanitize_option_{$prefix}_theme_settings", 'cakifo_theme_validate_settings' );
 }
 
-/**
- * Loads the JavaScript and CSS files required for the
- * Theme Settings page.
- *
- * @since Cakifo 1.4.0
- * @param string $hook_suffix The current page being viewed.
- * @return void
- */
 
 /**
  * Loads the JavaScript and CSS files required for the
