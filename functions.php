@@ -276,7 +276,7 @@ function cakifo_enqueue_script() {
 	 * 	wp_enqueue_script( 'modernizr', CHILD_THEME_URI . '/js/modernizr-2.x.min.js', '', '2.x' );
 	 * in your child theme functions.php
 	 */
-	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', array(), '2.5.3' );
+	wp_enqueue_script( 'modernizr', THEME_URI . '/js/modernizr.js', array(), '2.8.3' );
 
 	/* Enqueue jQuery. */
 	wp_enqueue_script( 'jquery' );
