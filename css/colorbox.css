@@ -66,12 +66,6 @@
    ========================================================================= */
 #cboxOverlay {
   background: #000000;
-  background-color: rgba(0, 0, 0, 0.9);
-  background-image: -webkit-radial-gradient(ellipse, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.9));
-  background-image: -moz-radial-gradient(ellipse, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.9));
-  background-image: -o-radial-gradient(ellipse, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.9));
-  background-image: radial-gradient(ellipse, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.9));
-  background-repeat: no-repeat;
 }
 #cboxContent {
   padding: 15px 15px 55px;
