@@ -1302,10 +1302,6 @@ iframe[seamless] {
  * Use Flexbox to vertical center the site title and description
  */
 .flexbox .site-header .home-link {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
   display: flex;
 }
 .flexbox .site-title {
@@ -3086,9 +3082,6 @@ body.page-template-template-front-page .site-main {
     margin: 20px 0 0;
   }
   .flexbox .site-header .home-link {
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
   .flexbox .site-title,
