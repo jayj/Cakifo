@@ -241,40 +241,7 @@
           box-sizing: @box-model;
 }
 
-// Columns
-// --------------------------------------------------
 
-.content-columns(@column-count, @column-gap: @gutter-width) {
-  -webkit-column-count: @column-count;
-     -moz-column-count: @column-count;
-          column-count: @column-count;
-    -webkit-column-gap: @column-gap;
-       -moz-column-gap: @column-gap;
-            column-gap: @column-gap;
-}
-
-// Column breaks
-
-// auto | avoid
-.content-columns-break-inside(@break: auto) {
-	-webkit-column-break-inside: @break;
-	-moz-column-break-inside: @break;
-	column-break-inside: @break;
-}
-
-// auto | always | avoid
-.content-columns-break-before(@break: auto) {
-	-webkit-column-break-before: @break;
-	-moz-column-break-before: @break;
-	column-break-before: @break;
-}
-
-// auto | always | avoid
-.content-columns-break-after(@break: auto) {
-	-webkit-column-break-after: @break;
-	-moz-column-break-after: @break;
-	column-break-after: @break;
-}
 
 // Hyphenation
 .hyphens(@mode: auto) {
