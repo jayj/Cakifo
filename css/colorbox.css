@@ -123,7 +123,6 @@
   opacity: 0.4;
   background: #ffffff url(../images/colorbox.png) no-repeat;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -webkit-transition: opacity 150ms ease;
   transition: opacity 150ms ease;
 }
 #cboxContent:hover #cboxPrevious,
