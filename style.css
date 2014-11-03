@@ -2248,10 +2248,6 @@ body.page-template-template-front-page .site-main {
 .widget {
   margin-bottom: 25px;
   word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -o-hyphens: auto;
   hyphens: auto;
 }
 /**
@@ -2312,10 +2308,6 @@ body.page-template-template-front-page .site-main {
   padding-top: 4px;
   text-align: center;
   word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -o-hyphens: auto;
   hyphens: auto;
 }
 .related-posts .with-thumbnails .related-post > a:hover {
@@ -2364,10 +2356,6 @@ body.page-template-template-front-page .site-main {
 }
 .recent-post .entry-summary {
   word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -o-hyphens: auto;
   hyphens: auto;
 }
 .recent-post-columns:hover .recent-post {

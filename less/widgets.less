@@ -4,7 +4,8 @@
 
 .widget {
 	margin-bottom: @gutter-width-small;
-	.hyphens;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 /**
@@ -63,7 +64,8 @@
 			.square(100%);
 			padding-top: 4px;
 			text-align: center;
-			.hyphens;
+			word-wrap: break-word;
+			hyphens: auto;
 
 			&:hover {
 				color: @related-post-hover-text;
@@ -118,7 +120,8 @@
 	}
 
 	.entry-summary {
-		.hyphens;
+		word-wrap: break-word;
+		hyphens: auto;
 	}
 
 	/* Lower opacity on every column except the hovered */
