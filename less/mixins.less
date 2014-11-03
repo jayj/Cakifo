@@ -12,7 +12,8 @@
 // Widget title bar
 // -------------------------
 .widget-title-bar(@radius: 50px 30px) {
-	#gradient > .vertical(lighten(@title-widget-bg, 5%), @title-widget-bg);
+	background-color: mix(lighten(@title-widget-bg, 5%), @title-widget-bg, 60%);
+	background-image: linear-gradient(to bottom, lighten(@title-widget-bg, 5%), @title-widget-bg);
 	border: 1px solid darken(@title-widget-bg, 2%);
 	border-bottom-color: darken(@title-widget-bg, 5%);
 	border-radius: @radius;
@@ -26,7 +27,8 @@
 // Section title bar
 // -------------------------
 .section-title-bar(@radius: 30px, @space: 60px) {
-	#gradient > .vertical(@title-section-bg, darken(@title-section-bg, 4%));
+	background-color: @title-section-bg;
+	background-image: linear-gradient(to bottom, @title-section-bg, darken(@title-section-bg, 4%));
 	border-radius: @radius;
 	color: #fff;
 	.font-size(24);
@@ -40,8 +42,8 @@
 .toggle-button( @bg-color: @gray, @bg-secondary-color: darken( @gray, 6% ) ) {
 	.menu-toggle {
 		display: none;
-
-		#gradient > .vertical( @bg-color, @bg-secondary-color );
+		background-color: @bg-secondary-color;
+		background-image: linear-gradient(to bottom, @bg-color, @bg-secondary-color);
 		border-bottom: 1px solid @bg-color;
 		box-shadow: 0 1px 0 fade( #fff, 10% );
 		color: contrast( @bg-color, darken( @gray, 6% ));
@@ -152,7 +154,8 @@
 // -------------------------
 
 .btn-pseudo-states(@background, @secondary, @color) {
-	#gradient > .vertical(@background, @secondary);
+	background-color: mix(@background, @secondary, 60%);
+	background-image: linear-gradient(to bottom, @background, @secondary);
 	border-color:
 		darken(@secondary, 8%)
 		darken(@secondary, 8%)
@@ -162,7 +165,8 @@
 
 	&:hover,
 	&:focus {
-		#gradient > .vertical(darken(@background, 5%), darken(@secondary, 8%));
+		background-color: mix(darken(@background, 5%), darken(@secondary, 8%), 60%);
+		background-image: linear-gradient(to bottom, darken(@background, 5%), darken(@secondary, 8%));
 		border-color:
 			darken(@secondary, 15%)
 			darken(@secondary, 15%)
@@ -229,38 +233,5 @@
 	.monospace(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .monospace;
 		#font > .shorthand(@size, @weight, @line-height);
-	}
-}
-
-// Gradients
-// --------------------------------------------------
-#gradient {
-	.horizontal(@startColor: #555, @endColor: #333, @colorStop: 0%) {
-		background-color: @endColor;
-		background-image: -webkit-linear-gradient(left, @startColor @colorStop, @endColor);
-		background-image: linear-gradient(to right, @startColor @colorStop, @endColor);
-		background-repeat: repeat-x;
-	}
-
-	.vertical(@startColor: #555, @endColor: #333, @colorStop: 100%) {
-		background-color: mix(@startColor, @endColor, 60%);
-		background-image: -webkit-linear-gradient(top, @startColor, @endColor @colorStop);
-		background-image: linear-gradient(to bottom, @startColor, @endColor @colorStop);
-	}
-
-	.directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
-		background-color: @endColor;
-		background-image: -webkit-linear-gradient(@deg, @startColor, @endColor);
-		background-image: linear-gradient(@deg, @startColor, @endColor);
-		background-repeat: repeat-x;
-	}
-
-	.radial(@innerColor: #555, @outerColor: #333, @shape: circle)  {
-		background-color: @outerColor;
-		background-image: -webkit-radial-gradient(@shape, @innerColor, @outerColor);
-		background-image:    -moz-radial-gradient(@shape, @innerColor, @outerColor);
-		background-image:      -o-radial-gradient(@shape, @innerColor, @outerColor);
-		background-image:         radial-gradient(@shape, @innerColor, @outerColor);
-		background-repeat: no-repeat;
 	}
 }

@@ -170,7 +170,8 @@
 
 		&:hover,
 		&:active {
-			#gradient > .horizontal(lighten(@highlight-bg, 1%), @highlight-bg, 50%);
+			background-color: @highlight-bg;
+			background-image: linear-gradient(to right, lighten(@highlight-bg, 1%) 50%, @highlight-bg);
 		}
 	}
 

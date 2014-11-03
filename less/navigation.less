@@ -53,8 +53,8 @@
 	.menu-item > a:focus,
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
-		background-color: lighten(@topbar-bg, 12%);
-		#gradient > .vertical(fade(#fff, 0%), fade(#fff, 20%));
+		background-color: fade(#fff, 8%);
+		background-image: linear-gradient(to bottom, fade(#fff, 0%), fade(#fff, 20%) 100%);
 		color: lighten(@topbar-color, 14%);
 	}
 
@@ -123,10 +123,10 @@
 // =============================================================================
 
 .secondary-navigation {
-	#gradient > .vertical(fade(#fff, 20%), fade(#fff, 50%));
+	background-image: linear-gradient(to bottom, fade(#fff, 40%), fade(#fff, 70%));
 	border-radius: 5px 5px 0 0;
 
-	.no-rgba & {
+	.no-cssgradients & {
 		background-color: #f8fafb;
 	}
 
