@@ -2445,7 +2445,6 @@ body.page-template-template-front-page .site-main {
 /* Slider content */
 .slide {
   display: none;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .slide .thumbnail,
@@ -2488,8 +2487,6 @@ body.page-template-template-front-page .site-main {
 .flex-control-paging li .flex-active:hover {
   background: #d54e21;
   cursor: default;
-  -webkit-transform: scale(1.07);
-  -ms-transform: scale(1.07);
   transform: scale(1.07);
 }
 .flex-pauseplay a {

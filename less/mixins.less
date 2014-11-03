@@ -232,58 +232,6 @@
 	}
 }
 
-// Transformations
-// --------------------------------------------------
-
-.transform(@transform) {
-  -webkit-transform: @transform;
-	  -ms-transform: @transform;
-		  transform: @transform;
-}
-
-.rotate(@degrees) {
-  -webkit-transform: rotate(@degrees);
-	  -ms-transform: rotate(@degrees);
-		  transform: rotate(@degrees);
-}
-
-.scale(@ratio) {
-  -webkit-transform: scale(@ratio);
- 	  -ms-transform: scale(@ratio);
-		  transform: scale(@ratio);
-}
-
-.translate(@x, @y) {
-  -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y);
-		  transform: translate(@x, @y);
-}
-
-.translate3d(@x, @y, @z) {
-  -webkit-transform: translate3d(@x, @y, @z);
-		  transform: translate3d(@x, @y, @z);
-}
-
-.skewX(@x) {
-  -webkit-transform: skewX(@x);
-	  -ms-transform: skewX(@x);
-		  transform: skewX(@x);
-}
-
-.skewY(@y) {
-  -webkit-transform: skewY(@y);
-	  -ms-transform: skewY(@y);
-		  transform: skewY(@y);
-}
-
-// Backface visibility
-// Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden`
-.backface-visibility(@visibility){
-	-webkit-backface-visibility: @visibility;
-			backface-visibility: @visibility;
-}
-
 // Box-sizing
 // --------------------------------------------------
 

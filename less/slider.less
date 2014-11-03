@@ -21,7 +21,7 @@
 .slide {
 	// Hide the slides before the JS is loaded to avoid page jumping
 	display: none;
-	.backface-visibility(hidden);
+	backface-visibility: hidden;
 
 	.thumbnail,
 	.slider-video {
@@ -71,7 +71,7 @@
 	.flex-active:hover {
 		background: @slider-pagination-color-active;
 		cursor: default;
-		.scale(1.07);
+		transform: scale(1.07);
 	}
 }
 
