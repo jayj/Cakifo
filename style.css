@@ -236,14 +236,13 @@ th {
 /* =============================================================================
    Base
    ========================================================================== */
-/**
- * Apply a natural box layout model to all elements
- * @link http://paulirish.com/2012/box-sizing-border-box-ftw/
- */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+html {
   box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 /**
  * Sets 1 rem = 10px
