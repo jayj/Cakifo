@@ -61,7 +61,7 @@
 
 	<section id="slider" class="cakifo-slider">
 
-		<h2 class="assistive-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Featured Posts', 'cakifo' ); ?></h2>
 
 		<div class="slides-container clearfix">
 

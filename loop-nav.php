@@ -19,7 +19,7 @@
 	<?php elseif ( is_singular( 'post' ) ) : ?>
 
 		<nav class="pagination post-pagination clearfix">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
+			<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php previous_post_link( '%link', '<span class="previous">' . sprintf( __( '<span class="meta-nav">&larr;</span> %s', 'cakifo' ), '%title' ) . '</span>' ); ?>
 			<?php next_post_link( '%link', '<span class="next">' . sprintf( __( '%s <span class="meta-nav">&rarr;</span>', 'cakifo' ), '%title' ) . '</span>' ); ?>
 		</nav> <!-- .pagination.post-pagination -->
@@ -29,7 +29,7 @@
 		elseif ( ! is_singular() && current_theme_supports( 'loop-pagination' ) ) :
 
 			loop_pagination( array(
-				'before'    => '<nav class="pagination loop-pagination clearfix"> <h3 class="assistive-text">' . __( 'Post navigation', 'cakifo' ) . '</h3>',
+				'before'    => '<nav class="pagination loop-pagination clearfix"> <h3 class="screen-reader-text">' . __( 'Post navigation', 'cakifo' ) . '</h3>',
 				'after'     => '</nav>',
 				'mid_size'  => 2,
 				'prev_text' => __( '<span class="meta-nav">&larr;</span> Previous', 'cakifo' ),
@@ -40,7 +40,7 @@
 		elseif ( ! is_singular() && $nav = get_posts_nav_link( array( 'sep' => '', 'prelabel' => '<span class="previous">' . __( '<span class="meta-nav">&larr;</span> Previous', 'cakifo' ) . '</span>', 'nxtlabel' => '<span class="next">' . __( 'Next <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</span>' ) ) ) : ?>
 
 		<nav class="pagination clearfix">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
+			<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
 			<?php echo $nav; ?>
 		</nav> <!-- .pagination -->
 
