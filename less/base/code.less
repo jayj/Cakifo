@@ -1,0 +1,32 @@
+/* =============================================================================
+   Base:  Code
+   ========================================================================== */
+
+/**
+ * Set code font
+ */
+code, kbd, pre, samp {
+	#font > .monospace(@font-size-base, normal);
+}
+
+/**
+ * Inline code
+ */
+code {
+	color: @green;
+}
+
+/**
+ * Blocks of code
+ */
+pre {
+	padding: @gutter-width-small;
+	background: lighten(@gray-dark, 6%);
+	border-radius: 5px;
+	color: #fff;
+	white-space: pre-wrap; // Improves readability of pre-formatted text
+
+	code {
+		color: #fff;
+	}
+}

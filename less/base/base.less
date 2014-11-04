@@ -28,15 +28,6 @@ body {
 }
 
 /**
- * Set site width and center the site.
- */
-#wrapper {
-	width: 100%;
-	max-width: @width-site;
-	margin: 0 auto;
-}
-
-/**
  * Remove background color if a user removes the color
  */
 .custom-background-empty {
@@ -46,23 +37,5 @@ body {
 	.site-footer {
 		-webkit-box-shadow: none;
 		box-shadow: none;
-	}
-}
-
-/* =============================================================================
-   Links
-   ========================================================================== */
-
-a {
-	color: @link-color;
-	text-decoration: none;
-
-	&:hover {
-		color: @link-color-hover;
-	}
-
-	// Addresses `outline` inconsistency between Chrome and other browsers
-	&:focus {
-		.tab-focus();
 	}
 }

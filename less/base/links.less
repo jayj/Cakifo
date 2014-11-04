@@ -1,0 +1,17 @@
+/* =============================================================================
+   Base:  Links
+   ========================================================================== */
+
+a {
+	color: @link-color;
+	text-decoration: none;
+
+	&:hover {
+		color: @link-color-hover;
+	}
+
+	// Addresses `outline` inconsistency between Chrome and other browsers
+	&:focus {
+		.tab-focus();
+	}
+}

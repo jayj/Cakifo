@@ -260,14 +260,6 @@ body {
   color: #555555;
 }
 /**
- * Set site width and center the site.
- */
-#wrapper {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-/**
  * Remove background color if a user removes the color
  */
 .custom-background-empty {
@@ -279,7 +271,7 @@ body {
   box-shadow: none;
 }
 /* =============================================================================
-   Links
+   Base:  Links
    ========================================================================== */
 a {
   color: #3083aa;
@@ -294,7 +286,7 @@ a:focus {
   outline-offset: -2px;
 }
 /* =============================================================================
-   Typography:  Headings
+   Base:  Headings
    ========================================================================== */
 h1,
 h2,
@@ -383,7 +375,7 @@ h6 {
   color: #eeeeee;
 }
 /* =============================================================================
-   Typography:  Lists
+   Base:  Lists
    ========================================================================== */
 li {
   line-height: 2;
@@ -404,7 +396,7 @@ dt {
   font-weight: bold;
 }
 /* =============================================================================
-   Typography:  Code
+   Base:  Code
    ========================================================================== */
 /**
  * Set code font
@@ -439,23 +431,7 @@ pre code {
   color: #fff;
 }
 /* =============================================================================
-   Typography:  HTML elements
-   ========================================================================== */
-acronym {
-  border-bottom: 1px dashed #555555;
-  text-transform: uppercase;
-  cursor: help;
-}
-hr {
-  display: block;
-  clear: both;
-  border: 0;
-  padding: 0;
-  margin: 25px 0;
-  border-bottom: 4px double #eeeeee;
-}
-/* =============================================================================
-   Typography:  Quotes
+   Base:  Quotes
    ========================================================================== */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
@@ -514,6 +490,9 @@ blockquote cite:before,
 blockquote + .quote-caption {
   margin-left: 40px;
 }
+/* =============================================================================
+   Base:  Tables
+   ========================================================================== */
 table {
   width: 100%;
   margin: 0 0 25px 0;
@@ -548,7 +527,23 @@ caption {
   margin-bottom: 10px;
 }
 /* =============================================================================
-   Forms
+   Base:  HTML elements
+   ========================================================================== */
+acronym {
+  border-bottom: 1px dashed #555555;
+  text-transform: uppercase;
+  cursor: help;
+}
+hr {
+  display: block;
+  clear: both;
+  border: 0;
+  padding: 0;
+  margin: 25px 0;
+  border-bottom: 4px double #eeeeee;
+}
+/* =============================================================================
+   Base:  Forms
    ========================================================================== */
 label,
 input,
@@ -1215,6 +1210,14 @@ iframe[seamless] {
 }
 .gallery-col-10 .gallery-item {
   width: 10%;
+}
+/**
+ * Set site width and center the site.
+ */
+#wrapper {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 .site-content,
 .site-footer {

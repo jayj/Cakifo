@@ -1,5 +1,5 @@
 /* =============================================================================
-   Typography:  Headings
+   Base:  Headings
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,87 +87,4 @@ h6 {
 			color: @gray-lighter;
 		}
 	}
-}
-
-/* =============================================================================
-   Typography:  Lists
-   ========================================================================== */
-
-li {
-	line-height: ( @line-height-base * 1.25 );
-}
-
-// Ordered lists
-ol ol {
-	list-style: upper-roman;
-}
-
-ol ol ol {
-	list-style: lower-roman;
-}
-
-ol ol ol ol {
-	list-style: upper-alpha;
-}
-
-ol ol ol ol ol {
-	list-style: lower-alpha;
-}
-
-// Definition lists
-dt {
-	font-weight: bold;
-}
-
-/* =============================================================================
-   Typography:  Code
-   ========================================================================== */
-
-/**
- * Set code font
- */
-code, kbd, pre, samp {
-	#font > .monospace(@font-size-base, normal);
-}
-
-/**
- * Inline code
- */
-code {
-	color: @green;
-}
-
-/**
- * Blocks of code
- */
-pre {
-	padding: @gutter-width-small;
-	background: lighten(@gray-dark, 6%);
-	border-radius: 5px;
-	color: #fff;
-	white-space: pre-wrap; // Improves readability of pre-formatted text
-
-	code {
-		color: #fff;
-	}
-}
-
-/* =============================================================================
-   Typography:  HTML elements
-   ========================================================================== */
-
-acronym {
-	border-bottom: 1px dashed @gray;
-	text-transform: uppercase;
-	cursor: help;
-}
-
-// Horizontal rule
-hr {
-	display: block;
-	clear: both;
-	border: 0;
-	padding: 0;
-	margin: @gutter-width-small 0;
-	border-bottom: 4px double @gray-lighter;
 }
