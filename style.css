@@ -1002,9 +1002,6 @@ html .btn-inverse:hover {
 /* =============================================================================
    Helper classes:  Alignments
    ========================================================================== */
-/*
- * @todo add image, wp-captions and blockquotes
- */
 .alignleft {
   float: left;
 }
@@ -1016,8 +1013,19 @@ html .btn-inverse:hover {
   margin-left: auto;
   margin-right: auto;
 }
-.clear {
+img.alignleft,
+.wp-caption.alignleft {
+  margin: 5px 25px 25px 0;
+}
+img.alignright,
+.wp-caption.alignright {
+  margin: 5px 0 25px 25px;
+}
+img.aligncenter,
+.wp-caption.aligncenter {
   clear: both;
+  margin-top: 5px;
+  margin-bottom: 25px;
 }
 /*
  * Clearfix
@@ -1028,6 +1036,9 @@ html .btn-inverse:hover {
   display: table;
 }
 .clearfix:after {
+  clear: both;
+}
+.clear {
   clear: both;
 }
 /* =============================================================================
@@ -1050,15 +1061,6 @@ img {
   float: right;
   margin: 0 0 25px 25px;
 }
-img.aligncenter {
-  margin: 25px auto;
-}
-img.alignleft {
-  margin: 0 25px 12px 0;
-}
-img.alignright {
-  margin: 0 0 12px 25px;
-}
 .avatar {
   float: left;
   margin-right: 18px;
@@ -1077,7 +1079,6 @@ img.alignright {
   clear: both;
   max-width: 100%;
   padding-top: 5px;
-  margin: 25px 0;
   background: #222222;
   border-radius: 0 0 3px 3px;
   text-align: center;
@@ -1085,15 +1086,6 @@ img.alignright {
 .wp-caption img {
   border-radius: 0;
   box-shadow: none;
-}
-.wp-caption.aligncenter {
-  margin: 25px auto;
-}
-.wp-caption.alignleft {
-  margin: 0 25px 0 0;
-}
-.wp-caption.alignright {
-  margin: 0 0 0 25px;
 }
 .wp-caption-text {
   padding: 10px 20px 20px;

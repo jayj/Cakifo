@@ -2,9 +2,6 @@
    Helper classes:  Alignments
    ========================================================================== */
 
-/*
- * @todo add image, wp-captions and blockquotes
- */
 .alignleft {
 	float: left;
 }
@@ -19,8 +16,23 @@
 	margin-right: auto;
 }
 
-.clear {
+
+// Aligned images
+img.alignleft,
+.wp-caption.alignleft {
+	margin: 5px @image-spacing @image-spacing 0;
+}
+
+img.alignright,
+.wp-caption.alignright {
+	margin: 5px 0 @image-spacing @image-spacing;
+}
+
+img.aligncenter,
+.wp-caption.aligncenter {
 	clear: both;
+	margin-top: 5px;
+	margin-bottom: @image-spacing;
 }
 
 
@@ -37,4 +49,9 @@
 	&:after {
 		clear: both;
 	}
+}
+
+
+.clear {
+	clear: both;
 }
