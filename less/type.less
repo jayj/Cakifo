@@ -44,7 +44,16 @@ h6 {
 
 /* Widget titles */
 .widget-title {
-	.widget-title-bar;
+	background-color: mix(lighten(@title-widget-bg, 5%), @title-widget-bg, 60%);
+	background-image: linear-gradient(to bottom, lighten(@title-widget-bg, 5%), @title-widget-bg);
+	border: 1px solid darken(@title-widget-bg, 2%);
+	border-bottom-color: darken(@title-widget-bg, 5%);
+	border-radius: 50px 30px;
+	color: @gray-dark;
+	.font-size(18);
+	margin: 0 0 @gutter-width-small;
+	padding: 8px 20px;
+	text-shadow: 0 1px 0 #fff;
 	letter-spacing: -1px;
 
 	// Links
@@ -57,7 +66,14 @@ h6 {
 
 /* Section titles */
 .section-title {
-	.section-title-bar;
+	background-color: @title-section-bg;
+	background-image: linear-gradient(to bottom, @title-section-bg, darken(@title-section-bg, 4%));
+	border-radius: 30px;
+	color: #fff;
+	.font-size(24);
+	margin: 0 0 @gutter-width (-60px);
+	padding: 10px 60px;
+	text-shadow: 1px 1px 0 darken(@title-section-bg, 14%);
 	box-shadow:
 		0 0 0 3px fade(#fff, 90%),
 		-4px 0 3px fade(#000, 30%),

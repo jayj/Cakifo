@@ -9,33 +9,6 @@
 	font-size: unit(@rem, rem);
 }
 
-// Widget title bar
-// -------------------------
-.widget-title-bar(@radius: 50px 30px) {
-	background-color: mix(lighten(@title-widget-bg, 5%), @title-widget-bg, 60%);
-	background-image: linear-gradient(to bottom, lighten(@title-widget-bg, 5%), @title-widget-bg);
-	border: 1px solid darken(@title-widget-bg, 2%);
-	border-bottom-color: darken(@title-widget-bg, 5%);
-	border-radius: @radius;
-	color: @gray-dark;
-	.font-size(18);
-	margin: 0 0 @gutter-width-small;
-	padding: 8px 20px;
-	text-shadow: 0 1px 0 #fff;
-}
-
-// Section title bar
-// -------------------------
-.section-title-bar(@radius: 30px, @space: 60px) {
-	background-color: @title-section-bg;
-	background-image: linear-gradient(to bottom, @title-section-bg, darken(@title-section-bg, 4%));
-	border-radius: @radius;
-	color: #fff;
-	.font-size(24);
-	margin: 0 0 @gutter-width (-@space);
-	padding: 10px @space;
-	text-shadow: 1px 1px 0 darken(@title-section-bg, 14%);
-}
 
 // Menu toggle button
 // -------------------------
