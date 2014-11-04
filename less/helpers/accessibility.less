@@ -1,0 +1,50 @@
+/* =============================================================================
+   Helper classes:  Accessibility
+   ========================================================================== */
+
+/* Text meant only for screen readers */
+.screen-reader-text,
+.assistive-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	.square(1px);
+	overflow: hidden;
+	position: absolute !important;
+}
+
+
+/* Skip links, shown on focus */
+.skip-link {
+	background-color: #f1f1f1;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+	color: @link-color;
+	display: block;
+	left: -9999em;
+	outline: none;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	text-transform: none;
+	top: -9999em;
+
+	&:focus {
+		clip: auto;
+		height: auto;
+		left: 6px;
+		top: 7px;
+		width: auto;
+		z-index: 100000; // Above WP toolbar
+	}
+}
+
+
+/* Hide from both screenreaders and browsers */
+/* Not used by Cakifo but not removed as it might be used by a child theme */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+/* Not used by Cakifo but not removed as it might be used by a child theme */
+.invisible {
+	visibility: hidden;
+}

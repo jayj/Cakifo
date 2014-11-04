@@ -956,21 +956,54 @@ html .btn-inverse:hover {
   background-image: none;
 }
 /* =============================================================================
-   Helper classes
+   Helper classes:  Accessibility
    ========================================================================== */
-.clearfix {
-  *zoom: 1;
+/* Text meant only for screen readers */
+.screen-reader-text,
+.assistive-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
 }
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
+/* Skip links, shown on focus */
+.skip-link {
+  background-color: #f1f1f1;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: #3083aa;
+  display: block;
+  left: -9999em;
+  outline: none;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  text-transform: none;
+  top: -9999em;
 }
-.clearfix:after {
-  clear: both;
+.skip-link:focus {
+  clip: auto;
+  height: auto;
+  left: 6px;
+  top: 7px;
+  width: auto;
+  z-index: 100000;
 }
-/**
- * Alignments
+/* Hide from both screenreaders and browsers */
+/* Not used by Cakifo but not removed as it might be used by a child theme */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+/* Hide visually and from screenreaders, but maintain layout */
+/* Not used by Cakifo but not removed as it might be used by a child theme */
+.invisible {
+  visibility: hidden;
+}
+/* =============================================================================
+   Helper classes:  Alignments
+   ========================================================================== */
+/*
+ * @todo add image, wp-captions and blockquotes
  */
 .alignleft {
   float: left;
@@ -983,56 +1016,19 @@ html .btn-inverse:hover {
   margin-left: auto;
   margin-right: auto;
 }
-.alignnone {
-  clear: both;
-}
 .clear {
   clear: both;
 }
-/**
- * Screen reader text
- * This is used to hide content from browsers but allow screen readers to see it
+/*
+ * Clearfix
  */
-.assistive-text,
-.screen-reader-text {
-  overflow: hidden;
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
 }
-.site-navigation .assistive-text:hover,
-.site-navigation .assistive-text:active,
-.site-navigation .assistive-text:focus {
-  display: block;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  z-index: 100000;
-  /* Above WP toolbar */
-  width: auto;
-  height: auto;
-  padding: 12px;
-  border: 2px solid #333;
-  background: #fff;
-  border-radius: 3px;
-  color: #000;
-  clip: auto !important;
-  font-size: 12px;
-}
-/**
- * Hide from both screenreaders and browsers: h5bp.com/u
- */
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-/**
- * Hide visually and from screenreaders, but maintain layout
- */
-.invisible {
-  visibility: hidden;
+.clearfix:after {
+  clear: both;
 }
 /* =============================================================================
    Media:  Embedded content
@@ -1456,7 +1452,6 @@ body.page-template-template-front-page .site-main {
   width: 1080px;
   padding: 0 40px 0 25px;
   margin: 0 auto;
-  *zoom: 1;
   /* Level 2 */
 }
 .main-navigation:before,
@@ -1577,7 +1572,6 @@ body.page-template-template-front-page .site-main {
   margin: 0;
 }
 .secondary-navigation .menu {
-  *zoom: 1;
   margin-left: 25px;
 }
 .secondary-navigation .menu:before,
@@ -1934,7 +1928,6 @@ body.page-template-template-front-page .site-main {
   border-width: 4px 0;
   margin: 0 0 40px;
   padding: 10px 25px;
-  *zoom: 1;
 }
 .loop-meta:before,
 .loop-meta:after {
@@ -2022,7 +2015,6 @@ body.page-template-template-front-page .site-main {
   margin: 0;
 }
 .attachment-info li {
-  *zoom: 1;
   border-bottom: 1px solid #eeeeee;
   padding: 5px;
 }
@@ -2949,7 +2941,6 @@ body.page-template-template-front-page .site-main {
   }
   /* Show Recent Posts in one column */
   .recent-post {
-    *zoom: 1;
     float: none;
     width: 100%;
     padding: 25px 0;
