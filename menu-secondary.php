@@ -21,8 +21,6 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 				<?php _e( 'Secondary menu', 'cakifo' ); ?>
 			</h3>
 
-			<a class="assistive-text" href="#main"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
-
 			<?php
 				wp_nav_menu( array(
 					'theme_location' => 'secondary',

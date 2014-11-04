@@ -30,6 +30,8 @@
 
 	<?php do_atomic( 'open_body' ); ?>
 
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'cakifo' ); ?></a>
+
 	<?php get_template_part( 'menu', 'primary' ); ?>
 
 <div id="wrapper">
