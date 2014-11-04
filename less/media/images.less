@@ -1,0 +1,59 @@
+/* =============================================================================
+   Media:  Images
+   ========================================================================== */
+
+// Responsive images
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+
+// Add fancy borders to all WordPress-added images
+.entry-content img,
+.comment-content img,
+.wp-post-image,
+.widget img,
+.thumbnail,
+.avatar {
+	border-radius: 3px;
+	box-shadow: 0 1px 4px fade(#000, 20%);
+}
+
+
+// Post thumbnails
+.thumbnail {
+	float: right;
+	margin: 0 0 @gutter-width-small @gutter-width-small;
+}
+
+
+// Aligned images
+img.aligncenter {
+	margin: @gutter-width-small auto;
+}
+
+img.alignleft {
+	margin: 0 @gutter-width-small 12px 0;
+}
+
+img.alignright {
+	margin: 0 0 12px @gutter-width-small;
+}
+
+
+// Avatars
+.avatar {
+	float: left;
+	margin-right: (@gutter-width-small - 7px);
+}
+
+
+// Remove borders from some images
+.wp-smiley,
+.wp-playlist-current-item img,
+.no-image-border,
+.rsswidget img {
+	border-radius: 0;
+	box-shadow: none;
+}

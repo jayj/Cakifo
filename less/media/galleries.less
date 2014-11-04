@@ -1,0 +1,54 @@
+/* =============================================================================
+   Media:  Galleries
+   ========================================================================== */
+
+.gallery {
+	display: block;
+	clear: both;
+	overflow: hidden;
+	margin: @gutter-width-small auto;
+}
+
+.gallery-row {
+	display: block;
+	clear: both;
+	overflow: hidden;
+	margin: 0;
+}
+
+.gallery-item {
+	overflow: hidden;
+	float: left;
+	.no-list-style();
+	text-align: center;
+}
+
+.gallery-icon img {
+	.square(auto);
+	max-width: 90%; // 97%
+}
+
+.gallery-caption {
+	.font-size(@font-size-small);
+	margin: 0 0 15px 0;
+}
+
+.gallery-col-7 .gallery-caption,
+.gallery-col-8 .gallery-caption,
+.gallery-col-9 .gallery-caption {
+	display: none;
+}
+
+
+// Gallery item sizes depending on the number of columns
+.gallery-col-0 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
+.gallery-col-1 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
+.gallery-col-2 .gallery-item  {  width: percentage(( 100 / 2 / 100  ));   }
+.gallery-col-3 .gallery-item  {  width: percentage(( 100 / 3 / 100  ));   }
+.gallery-col-4 .gallery-item  {  width: percentage(( 100 / 4 / 100  ));   }
+.gallery-col-5 .gallery-item  {  width: percentage(( 100 / 5 / 100  ));   }
+.gallery-col-6 .gallery-item  {  width: percentage(( 100 / 6 / 100  ));   }
+.gallery-col-7 .gallery-item  {  width: percentage(( 100 / 7 / 100  ));   }
+.gallery-col-8 .gallery-item  {  width: percentage(( 100 / 8 / 100  ));   }
+.gallery-col-9 .gallery-item  {  width: percentage(( 100 / 9 / 100  ));   }
+.gallery-col-10 .gallery-item {  width: percentage(( 100 / 10 / 100 ));   }

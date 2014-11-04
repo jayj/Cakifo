@@ -1031,19 +1031,12 @@ html .btn-inverse:hover {
   clear: both;
 }
 /* =============================================================================
-   Media:  Embedded content
-   ========================================================================== */
-figure {
-  margin: 0;
-}
-/* =============================================================================
    Media:  Images
    ========================================================================== */
 img {
   max-width: 100%;
   height: auto;
 }
-/* Add fancy borders to all WordPress-added images */
 .entry-content img,
 .comment-content img,
 .wp-post-image,
@@ -1053,12 +1046,10 @@ img {
   border-radius: 3px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
-/* Post thumbnails */
 .thumbnail {
   float: right;
   margin: 0 0 25px 25px;
 }
-/* Aligned images */
 img.aligncenter {
   margin: 25px auto;
 }
@@ -1068,12 +1059,10 @@ img.alignleft {
 img.alignright {
   margin: 0 0 12px 25px;
 }
-/* Avatars */
 .avatar {
   float: left;
   margin-right: 18px;
 }
-/* Remove borders from some images */
 .wp-smiley,
 .wp-playlist-current-item img,
 .no-image-border,
@@ -1081,30 +1070,9 @@ img.alignright {
   border-radius: 0;
   box-shadow: none;
 }
-/* Make sure videos and embeds fit their containers */
-embed,
-iframe,
-object,
-video {
-  max-width: 100%;
-}
-iframe {
-  border: none;
-}
-/* Style `seamless` iframes */
-iframe[seamless] {
-  overflow: hidden;
-  padding: 0;
-  border: 0 none transparent;
-  background-color: transparent;
-}
-/* Override the Twitter embed fixed width */
-.entry-content .twitter-tweet-rendered {
-  max-width: 100% !important;
-}
-/**
- * Captions [caption]
- */
+/* =============================================================================
+   Media:  Captions
+   ========================================================================== */
 .wp-caption {
   clear: both;
   max-width: 100%;
@@ -1127,7 +1095,6 @@ iframe[seamless] {
 .wp-caption.alignright {
   margin: 0 0 0 25px;
 }
-/* Caption text */
 .wp-caption-text {
   padding: 10px 20px 20px;
   margin: 0;
@@ -1135,9 +1102,9 @@ iframe[seamless] {
   font-size: 1.4rem;
   color: #dfdfdf;
 }
-/**
- * Galleries
- */
+/* =============================================================================
+   Media:  Galleries
+   ========================================================================== */
 .gallery {
   display: block;
   clear: both;
@@ -1173,7 +1140,6 @@ iframe[seamless] {
 .gallery-col-9 .gallery-caption {
   display: none;
 }
-/* Gallery item sizes depending on the number of columns. */
 .gallery-col-0 .gallery-item {
   width: 100%;
 }
@@ -1206,6 +1172,27 @@ iframe[seamless] {
 }
 .gallery-col-10 .gallery-item {
   width: 10%;
+}
+/* =============================================================================
+   Media:  Embedded content
+   ========================================================================== */
+embed,
+iframe,
+object,
+video {
+  max-width: 100%;
+}
+iframe {
+  border: none;
+}
+iframe[seamless] {
+  overflow: hidden;
+  padding: 0;
+  border: 0 none transparent;
+  background-color: transparent;
+}
+.entry-content .twitter-tweet-rendered {
+  max-width: 100% !important;
 }
 /**
  * Set site width and center the site.

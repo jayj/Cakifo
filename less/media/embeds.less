@@ -1,0 +1,30 @@
+/* =============================================================================
+   Media:  Embedded content
+   ========================================================================== */
+
+// Make sure videos and embeds fit their containers
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+
+// Iframes
+iframe {
+	border: none;
+}
+
+iframe[seamless] {
+	overflow: hidden;
+	padding: 0;
+	border: 0 none transparent;
+	background-color: transparent;
+}
+
+
+// Override the Twitter embed fixed width
+.entry-content .twitter-tweet-rendered {
+	max-width: 100% !important;
+}
