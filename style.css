@@ -1215,6 +1215,9 @@ iframe[seamless] {
   max-width: 1080px;
   margin: 0 auto;
 }
+.site-content {
+  outline: 0;
+}
 .site-content,
 .site-footer {
   position: relative;
