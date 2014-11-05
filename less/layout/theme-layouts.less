@@ -116,39 +116,6 @@ body.page-template-template-front-page .site-main {
 }
 
 
-// Layout: Three columns (sidebar | content | sidebar)
-// =============================================================================
-
-.layout-3c-c {
-	.site-main {
-		float: left;
-		margin-left: ( @three-col-main-width / 2 );
-	}
-
-	.sidebar-primary {
-		float: left;
-
-		// This sidebar has to have a margin of -760px
-		margin-left: (
-			-(
-				@three-col-main-width +
-				@three-col-sidebar-width + (
-					(@three-col-gutter + @gutter-width) / 2
-				)
-			)
-		);
-	}
-
-	.sidebar-secondary {
-		float: right;
-		// the default padding on .site-content is 40px
-		// this makes sure that the outer gutter is 30px (the inner is 35px)
-		// by setting a margin on -10px
-		margin-right: -( @three-col-gutter - @gutter-width );
-	}
-}
-
-
 // Layout: Three columns (content | sidebar | sidebar)
 // =============================================================================
 
@@ -187,6 +154,39 @@ body.page-template-template-front-page .site-main {
 		// this makes sure that the gutter between the columns is 30px
 		// by setting a margin on -10px
 		margin-left: -( @three-col-gutter - @gutter-width );
+	}
+}
+
+
+// Layout: Three columns (sidebar | content | sidebar)
+// =============================================================================
+
+.layout-3c-c {
+	.site-main {
+		float: left;
+		margin-left: ( @three-col-main-width / 2 );
+	}
+
+	.sidebar-primary {
+		float: left;
+
+		// This sidebar has to have a margin of -760px
+		margin-left: (
+			-(
+				@three-col-main-width +
+				@three-col-sidebar-width + (
+					(@three-col-gutter + @gutter-width) / 2
+				)
+			)
+		);
+	}
+
+	.sidebar-secondary {
+		float: right;
+		// the default padding on .site-content is 40px
+		// this makes sure that the outer gutter is 30px (the inner is 35px)
+		// by setting a margin on -10px
+		margin-right: -( @three-col-gutter - @gutter-width );
 	}
 }
 
