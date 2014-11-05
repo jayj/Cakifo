@@ -2,6 +2,25 @@
    Layout:  Theme Layouts
    ========================================================================== */
 
+
+// Default layout: Two columns (content | sidebar)
+// =============================================================================
+
+.site-main {
+	position: relative;
+	width: @width-main;
+	float: left;
+}
+
+.sidebar-primary,
+.sidebar-secondary {
+	width: @width-secondary;
+	float: right;
+}
+
+.sidebar-secondary {
+	clear: right;
+}
 /**
  * One column layout
  */
