@@ -65,7 +65,6 @@ function cakifo_theme_setup() {
 	add_theme_support( 'loop-pagination' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
-	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'custom-field-series' );
 
 	/* Cakifo uses the Hybrid Core 2.0 version of Media grabber */
