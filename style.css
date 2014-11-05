@@ -1098,45 +1098,79 @@ img {
    Media:  Galleries
    ========================================================================== */
 .gallery {
-  display: block;
-  clear: both;
-  overflow: hidden;
   margin: 25px auto;
 }
-.gallery-row {
-  display: block;
-  clear: both;
-  overflow: hidden;
-  margin: 0;
-}
 .gallery-item {
-  overflow: hidden;
-  float: left;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  display: inline-block;
   text-align: center;
+  vertical-align: top;
+  width: 100%;
+  margin: 0;
 }
-.gallery-icon img {
-  width: auto;
-  height: auto;
-  max-width: 90%;
+.gallery-item img {
+  max-width: 96%;
 }
 .gallery-caption {
+  color: #555555;
   font-size: 14px;
   font-size: 1.4rem;
   margin: 0 0 15px 0;
 }
 .gallery-col-7 .gallery-caption,
 .gallery-col-8 .gallery-caption,
-.gallery-col-9 .gallery-caption {
+.gallery-col-9 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
   display: none;
 }
-.gallery-col-0 .gallery-item {
-  width: 100%;
+/* Column sizes */
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
 }
-.gallery-col-1 .gallery-item {
-  width: 100%;
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%;
+}
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+/**
+ * Compatibility with the Cleaner Gallery extension
+ */
+.gallery-row {
+  display: block;
+  clear: both;
+  overflow: hidden;
+  margin: 0;
+}
+.gallery-row img {
+  width: auto;
+  height: auto;
+  max-width: 90%;
+}
+.gallery-row .gallery-item {
+  overflow: hidden;
+  float: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  width: auto;
 }
 .gallery-col-2 .gallery-item {
   width: 50%;

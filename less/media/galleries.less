@@ -3,46 +3,99 @@
    ========================================================================== */
 
 .gallery {
-	display: block;
-	clear: both;
-	overflow: hidden;
 	margin: @gutter-width-small auto;
 }
 
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+	margin: 0;
+
+	// Make sure there's some spaces between the images
+	img {
+		max-width: 96%;
+	}
+}
+
+
+.gallery-caption {
+	color: @gray;
+	.font-size(@font-size-small);
+	margin: 0 0 15px 0;
+}
+
+.gallery-col-7,
+.gallery-col-8,
+.gallery-col-9,
+.gallery-columns-7,
+.gallery-columns-8,
+.gallery-columns-9 {
+	.gallery-caption {
+		display: none;
+	}
+}
+
+
+/* Column sizes */
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+
+/**
+ * Compatibility with the Cleaner Gallery extension
+ */
 .gallery-row {
 	display: block;
 	clear: both;
 	overflow: hidden;
 	margin: 0;
+
+	img {
+		.square(auto);
+		max-width: 90%;
+	}
 }
 
-.gallery-item {
+.gallery-row .gallery-item {
 	overflow: hidden;
 	float: left;
 	.no-list-style();
 	text-align: center;
+	width: auto;
 }
 
-.gallery-icon img {
-	.square(auto);
-	max-width: 90%; // 97%
-}
-
-.gallery-caption {
-	.font-size(@font-size-small);
-	margin: 0 0 15px 0;
-}
-
-.gallery-col-7 .gallery-caption,
-.gallery-col-8 .gallery-caption,
-.gallery-col-9 .gallery-caption {
-	display: none;
-}
-
-
-// Gallery item sizes depending on the number of columns
-.gallery-col-0 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
-.gallery-col-1 .gallery-item  {  width: percentage(( 100 / 1 / 100  ));   }
 .gallery-col-2 .gallery-item  {  width: percentage(( 100 / 2 / 100  ));   }
 .gallery-col-3 .gallery-item  {  width: percentage(( 100 / 3 / 100  ));   }
 .gallery-col-4 .gallery-item  {  width: percentage(( 100 / 4 / 100  ));   }
