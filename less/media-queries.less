@@ -63,39 +63,6 @@
 		margin-right: 2%;
 	}
 
-	/* Prevent the sidebars on 3 column layouts from moving underneath the content */
-	.layout-3c-c,
-	.layout-3c-r,
-	.layout-3c-l {
-		.site-main {
-			float: none;
-			width: 50%;
-		}
-
-		.sidebar-primary,
-		.sidebar-secondary {
-			width: 20%;
-		}
-	}
-
-	.layout-3c-c .sidebar-primary {
-		margin-left: -740px;
-	}
-
-	.layout-3c-l {
-		.sidebar-primary,
-		.sidebar-secondary {
-			margin-right: 1%;
-		}
-
-		.sidebar-secondary {
-			float: right;
-		}
-	}
-
-	.layout-3c-r .sidebar-secondary {
-		margin-left: 2%;
-	}
 } // 1080px
 
 /* =============================================================================
@@ -122,30 +89,6 @@
 	.cakifo-slider {
 		margin-left: ( -(@gutter-width-small) );
 		margin-right: ( -(@gutter-width-small) );
-	}
-
-	/* Turn 3 column layouts into a layout with a full width .site-main and two 50% width sidebars underneath */
-	.layout-3c-c,
-	.layout-3c-r,
-	.layout-3c-l {
-		.site-main {
-			clear: both;
-			width: 100%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		.sidebar-primary,
-		.sidebar-secondary {
-			clear: none;
-			width: 48%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		.sidebar-secondary {
-			float: right;
-		}
 	}
 
 	/* Show Recent Posts in one column */
@@ -306,12 +249,6 @@
 	.headline-list {
 		width: 100%;
 		margin-right: 0;
-	}
-
-	/* Make the widget areas full width */
-	.widget-area {
-		width: 100% !important;
-		float: none !important;
 	}
 
 	/* Gallery on attachment pages */

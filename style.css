@@ -1218,31 +1218,6 @@ iframe {
 .sidebar-secondary {
   clear: right;
 }
-@media screen and (max-width: 1080px) {
-  .site-main {
-    width: 65%;
-  }
-  .sidebar-primary,
-  .sidebar-secondary {
-    width: 32%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .site-main {
-    width: 100%;
-    float: none;
-  }
-  .sidebar-primary,
-  .sidebar-secondary {
-    width: 48%;
-  }
-  .sidebar-primary {
-    float: left;
-  }
-  .sidebar-secondary {
-    float: right;
-  }
-}
 .layout-2c-r .site-main {
   float: right;
 }
@@ -1251,80 +1226,111 @@ iframe {
   float: left;
   clear: left;
 }
-@media screen and (max-width: 768px) {
-  .layout-2c-r .site-main {
-    float: none;
-  }
-  .layout-2c-r .sidebar-secondary {
-    float: right;
-    clear: none;
-  }
-}
-.layout-1c .site-main,
-body.page-template-template-front-page .site-main {
+.layout-1c .site-wrapper .site-main {
   float: none;
   width: 100%;
 }
 /* Make sure the front page layout doesn't get overwritten if changing global layout in the Customizer */
-body.page-template-template-front-page .site-main {
+body.page-template-template-front-page .site-wrapper .site-main {
   margin: 0;
 }
-/**
- * Three columns
- */
-.layout-3c-c .sidebar-primary,
-.layout-3c-r .sidebar-primary,
-.layout-3c-l .sidebar-primary,
-.layout-3c-c .sidebar-secondary,
-.layout-3c-r .sidebar-secondary,
-.layout-3c-l .sidebar-secondary {
-  clear: none;
-  width: 225px;
-}
 .layout-3c-l .site-main,
-.layout-3c-r .site-main {
-  width: 500px;
-}
-/* Three columns, center */
+.layout-3c-r .site-main,
 .layout-3c-c .site-main {
-  float: left;
   width: 500px;
-  margin-left: 250px;
 }
-.layout-3c-c .sidebar-primary {
-  float: left;
-  margin-left: -765px;
-}
+.layout-3c-l .sidebar-primary,
+.layout-3c-r .sidebar-primary,
+.layout-3c-c .sidebar-primary,
+.layout-3c-l .sidebar-secondary,
+.layout-3c-r .sidebar-secondary,
 .layout-3c-c .sidebar-secondary {
-  float: right;
-  margin-right: -15px;
-}
-/* Three columns, left */
-.layout-3c-l .site-main {
-  float: left;
+  width: 225px;
+  clear: none;
 }
 .layout-3c-l .sidebar-primary,
 .layout-3c-l .sidebar-secondary {
   float: left;
-  margin-left: 25px;
-}
-.layout-3c-l .sidebar-primary {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 .layout-3c-l .sidebar-secondary {
-  margin-right: -15px;
+  margin-right: -10px;
 }
-/* Three columns, right */
 .layout-3c-r .site-main {
   float: right;
 }
 .layout-3c-r .sidebar-primary,
 .layout-3c-r .sidebar-secondary {
   float: left;
-  margin-right: 25px;
+  margin-right: 30px;
 }
 .layout-3c-r .sidebar-primary {
-  margin-left: -15px;
+  margin-left: -10px;
+}
+.layout-3c-c .site-main {
+  float: left;
+  margin-left: 250px;
+}
+.layout-3c-c .sidebar-primary {
+  float: left;
+  margin-left: -760px;
+}
+.layout-3c-c .sidebar-secondary {
+  float: right;
+  margin-right: -10px;
+}
+@media screen and (max-width: 1080px) {
+  /**
+	 * Turn all layouts, except one-col, into two columns
+	 */
+  .site-wrapper .site-main {
+    width: 65%;
+  }
+  .site-wrapper .sidebar-primary,
+  .site-wrapper .sidebar-secondary {
+    width: 31%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .layout-3c-l .sidebar-primary,
+  .layout-3c-c .sidebar-primary,
+  .layout-3c-l .sidebar-secondary,
+  .layout-3c-c .sidebar-secondary {
+    float: right;
+    clear: right;
+  }
+  .layout-3c-c .site-main {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  /**
+	 * All layouts
+	 *
+	 * Full width main content, and two column sidebars
+	 */
+  .site-wrapper .site-main {
+    width: 100%;
+    float: none;
+  }
+  .site-wrapper .sidebar-primary,
+  .site-wrapper .sidebar-secondary {
+    width: 48%;
+    clear: none;
+  }
+  .site-wrapper .sidebar-primary {
+    float: left;
+  }
+  .site-wrapper .sidebar-secondary {
+    float: right;
+  }
+}
+@media screen and (max-width: 620px) {
+  .site-wrapper .sidebar-primary,
+  .site-wrapper .sidebar-secondary {
+    width: 100%;
+    float: none;
+  }
 }
 /* =============================================================================
    Layout:  Header
@@ -2864,34 +2870,6 @@ body.page-template-template-front-page .site-main {
     width: 48%;
     margin-right: 2%;
   }
-  /* Prevent the sidebars on 3 column layouts from moving underneath the content */
-  .layout-3c-c .site-main,
-  .layout-3c-r .site-main,
-  .layout-3c-l .site-main {
-    float: none;
-    width: 50%;
-  }
-  .layout-3c-c .sidebar-primary,
-  .layout-3c-r .sidebar-primary,
-  .layout-3c-l .sidebar-primary,
-  .layout-3c-c .sidebar-secondary,
-  .layout-3c-r .sidebar-secondary,
-  .layout-3c-l .sidebar-secondary {
-    width: 20%;
-  }
-  .layout-3c-c .sidebar-primary {
-    margin-left: -740px;
-  }
-  .layout-3c-l .sidebar-primary,
-  .layout-3c-l .sidebar-secondary {
-    margin-right: 1%;
-  }
-  .layout-3c-l .sidebar-secondary {
-    float: right;
-  }
-  .layout-3c-r .sidebar-secondary {
-    margin-left: 2%;
-  }
 }
 /* =============================================================================
    Media Queries:  Max-width 980px
@@ -2912,31 +2890,6 @@ body.page-template-template-front-page .site-main {
   .cakifo-slider {
     margin-left: -25px;
     margin-right: -25px;
-  }
-  /* Turn 3 column layouts into a layout with a full width .site-main and two 50% width sidebars underneath */
-  .layout-3c-c .site-main,
-  .layout-3c-r .site-main,
-  .layout-3c-l .site-main {
-    clear: both;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .layout-3c-c .sidebar-primary,
-  .layout-3c-r .sidebar-primary,
-  .layout-3c-l .sidebar-primary,
-  .layout-3c-c .sidebar-secondary,
-  .layout-3c-r .sidebar-secondary,
-  .layout-3c-l .sidebar-secondary {
-    clear: none;
-    width: 48%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .layout-3c-c .sidebar-secondary,
-  .layout-3c-r .sidebar-secondary,
-  .layout-3c-l .sidebar-secondary {
-    float: right;
   }
   /* Show Recent Posts in one column */
   .recent-post {
@@ -3068,11 +3021,6 @@ body.page-template-template-front-page .site-main {
   .headline-list {
     width: 100%;
     margin-right: 0;
-  }
-  /* Make the widget areas full width */
-  .widget-area {
-    width: 100% !important;
-    float: none !important;
   }
   /* Gallery on attachment pages */
   .image-gallery .gallery-item {

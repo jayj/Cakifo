@@ -22,38 +22,6 @@
 	clear: right;
 }
 
-@media screen and (max-width: 1080px) {
-	.site-main {
-		width: 65%;
-	}
-
-	.sidebar-primary,
-	.sidebar-secondary {
-		width: 32%;
-	}
-}
-
-// Make the main content full width and move the sidebars underneath it.
-@media screen and (max-width: 768px) {
-	.site-main {
-		width: 100%;
-		float: none;
-	}
-
-	.sidebar-primary,
-	.sidebar-secondary {
-		width: 48%;
-	}
-
-	.sidebar-primary {
-		float: left;
-	}
-
-	.sidebar-secondary {
-		float: right;
-	}
-}
-
 
 // Layout: Two columns (sidebar | content)
 // =============================================================================
@@ -68,31 +36,19 @@
 		float: left;
 		clear: left; // make sure the sidebars are under each other
 	}
-
-	// Sidebars in two columns
-	@media screen and (max-width: 768px) {
-		.site-main {
-			float: none;
-		}
-
-		.sidebar-secondary {
-			float: right;
-			clear: none;
-		}
-	}
 }
 
 
 // Layout: One column (sidebar | content)
 // =============================================================================
 
-.layout-1c .site-main {
+.layout-1c .site-wrapper .site-main {
 	float: none;
 	width: 100%;
 }
 
 /* Make sure the front page layout doesn't get overwritten if changing global layout in the Customizer */
-body.page-template-template-front-page .site-main {
+body.page-template-template-front-page .site-wrapper .site-main {
 	&:extend(.layout-1c .site-main);
 	margin: 0;
 }
@@ -101,9 +57,9 @@ body.page-template-template-front-page .site-main {
 // Layout: Three columns
 // =============================================================================
 
-.layout-3c-c,
+.layout-3c-l,
 .layout-3c-r,
-.layout-3c-l {
+.layout-3c-c {
 	.site-main {
 		width: @three-col-main-width;
 	}
@@ -190,3 +146,74 @@ body.page-template-template-front-page .site-main {
 	}
 }
 
+
+
+@media screen and (max-width: 1080px) {
+
+	/**
+	 * Turn all layouts, except one-col, into two columns
+	 */
+	.site-wrapper {
+		.site-main {
+			width: 65%;
+		}
+
+		.sidebar-primary,
+		.sidebar-secondary {
+			width: 31%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.layout-3c-l,
+	.layout-3c-c {
+		.sidebar-primary,
+		.sidebar-secondary {
+			float: right;
+			clear: right;
+		}
+	}
+
+	.layout-3c-c .site-main {
+		margin-left: 0;
+	}
+}
+
+
+@media screen and (max-width: 768px) {
+
+	/**
+	 * All layouts
+	 *
+	 * Full width main content, and two column sidebars
+	 */
+	.site-wrapper {
+		.site-main {
+			width: 100%;
+			float: none;
+		}
+
+		.sidebar-primary,
+		.sidebar-secondary {
+			width: 48%;
+			clear: none;
+		}
+
+		.sidebar-primary {
+			float: left;
+		}
+
+		.sidebar-secondary {
+			float: right;
+		}
+	}
+}
+
+@media screen and (max-width: 620px) {
+	.site-wrapper .sidebar-primary,
+	.site-wrapper .sidebar-secondary {
+		width: 100%;
+		float: none;
+	}
+}
