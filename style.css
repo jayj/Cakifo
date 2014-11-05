@@ -1075,6 +1075,9 @@ img {
 /* =============================================================================
    Media:  Captions
    ========================================================================== */
+figure {
+  margin: 0;
+}
 .wp-caption {
   clear: both;
   max-width: 100%;
@@ -1105,7 +1108,6 @@ img {
   text-align: center;
   vertical-align: top;
   width: 100%;
-  margin: 0;
 }
 .gallery-item img {
   max-width: 96%;
