@@ -98,25 +98,23 @@ body.page-template-template-front-page .site-main {
 }
 
 
-/**
- * Three columns
- */
+// Layout: Three columns
+// =============================================================================
+
 .layout-3c-c,
 .layout-3c-r,
 .layout-3c-l {
-	.sidebar-primary,
-	.sidebar-secondary {
-		clear: none;
-		width: @three-col-sidebar-width;
-	}
-}
-
-.layout-3c-l,
-.layout-3c-r {
 	.site-main {
 		width: @three-col-main-width;
 	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		width: @three-col-sidebar-width;
+		clear: none; // overwrites the default clear to the sidebars can be next to each other
+	}
 }
+
 
 /* Three columns, center */
 .layout-3c-c {
