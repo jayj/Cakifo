@@ -167,7 +167,10 @@ body.page-template-template-front-page .site-main {
 	}
 }
 
-/* Three columns, right */
+
+// Layout: Three columns (sidebar | sidebar | content)
+// =============================================================================
+
 .layout-3c-r {
 	.site-main {
 		float: right;
@@ -176,10 +179,14 @@ body.page-template-template-front-page .site-main {
 	.sidebar-primary,
 	.sidebar-secondary {
 		float: left;
-		margin-right: @gutter-width-small;
+		margin-right: @three-col-gutter;
 	}
 
 	.sidebar-primary {
-		margin-left: ( -(@gutter-width-small - 10px) );
+		// the default padding on .site-content is 40px
+		// this makes sure that the gutter between the columns is 30px
+		// by setting a margin on -10px
+		margin-left: -( @three-col-gutter - @gutter-width );
 	}
 }
+
