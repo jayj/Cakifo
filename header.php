@@ -34,7 +34,7 @@
 
 	<?php get_template_part( 'menu', 'primary' ); ?>
 
-<div id="wrapper">
+<div id="wrapper" class="site-wrapper">
 
 	<?php do_atomic( 'before_header' ); ?>
 

@@ -1186,7 +1186,7 @@ iframe {
 /*
  * Set site width and center the site.
  */
-#wrapper {
+.site-wrapper {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
