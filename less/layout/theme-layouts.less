@@ -83,20 +83,19 @@
 }
 
 
-/**
- * One column layout
- */
+// Layout: One column (sidebar | content)
+// =============================================================================
+
 .layout-1c .site-main {
 	float: none;
 	width: 100%;
 }
 
-/* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
+/* Make sure the front page layout doesn't get overwritten if changing global layout in the Customizer */
 body.page-template-template-front-page .site-main {
 	&:extend(.layout-1c .site-main);
 	margin: 0;
 }
-
 
 
 /**

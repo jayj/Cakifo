@@ -1260,15 +1260,12 @@ iframe {
     clear: none;
   }
 }
-/**
- * One column layout
- */
 .layout-1c .site-main,
 body.page-template-template-front-page .site-main {
   float: none;
   width: 100%;
 }
-/* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
+/* Make sure the front page layout doesn't get overwritten if changing global layout in the Customizer */
 body.page-template-template-front-page .site-main {
   margin: 0;
 }
