@@ -93,7 +93,7 @@ function cakifo_theme_setup() {
 
 	/* Add theme support for HTML5. */
 	add_theme_support( 'html5', array(
-		'comment-list', 'comment-form', 'search-form', 'gallery'
+		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'
 	));
 
 	/* This theme supports all available post formats. */
