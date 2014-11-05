@@ -116,22 +116,35 @@ body.page-template-template-front-page .site-main {
 }
 
 
-/* Three columns, center */
+// Layout: Three columns (sidebar | content | sidebar)
+// =============================================================================
+
 .layout-3c-c {
 	.site-main {
 		float: left;
-		width: @three-col-main-width;
-  		margin-left: ( @three-col-main-width / 2 );
+		margin-left: ( @three-col-main-width / 2 );
 	}
 
 	.sidebar-primary {
 		float: left;
-		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutter-width) ); // -765px
+
+		// This sidebar has to have a margin of -760px
+		margin-left: (
+			-(
+				@three-col-main-width +
+				@three-col-sidebar-width + (
+					(@three-col-gutter + @gutter-width) / 2
+				)
+			)
+		);
 	}
 
 	.sidebar-secondary {
 		float: right;
-		margin-right: ( -(@gutter-width-small - 10px) );
+		// the default padding on .site-content is 40px
+		// this makes sure that the outer gutter is 30px (the inner is 35px)
+		// by setting a margin on -10px
+		margin-right: -( @three-col-gutter - @gutter-width );
 	}
 }
 
