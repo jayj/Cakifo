@@ -1180,16 +1180,16 @@ iframe {
 .entry-content .twitter-tweet-rendered {
   max-width: 100% !important;
 }
-/**
+/* =============================================================================
+   Layout
+   ========================================================================== */
+/*
  * Set site width and center the site.
  */
 #wrapper {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-}
-.site-content {
-  outline: 0;
 }
 .site-content,
 .site-footer {
@@ -1198,6 +1198,9 @@ iframe {
   background-color: #fff;
   border-top: 5px solid #ffc768;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+.site-content {
+  outline: 0;
 }
 .site-main {
   position: relative;
@@ -1211,111 +1214,6 @@ iframe {
 }
 .sidebar-secondary {
   clear: right;
-}
-/* =============================================================================
-   Layout:  Header
-   ========================================================================== */
-.site-header {
-  padding: 60px 0 50px;
-}
-.site-title {
-  float: left;
-  margin: 0 0 0 40px;
-  font-size: 46px;
-  font-size: 4.6rem;
-  font-weight: normal;
-  line-height: 1.6;
-  text-shadow: 0 1px 0 #fff;
-  letter-spacing: -2px;
-}
-.site-title img {
-  max-width: 100%;
-  width: auto\9;
-  height: auto;
-  vertical-align: middle;
-}
-.site-title a {
-  color: #3083aa;
-}
-.site-title a:hover {
-  color: #d54e21;
-}
-.site-description {
-  float: right;
-  margin: 25px 40px 0 0;
-  padding: 2px 8px;
-  font-size: 21px;
-  font-size: 2.1rem;
-  font-weight: normal;
-  letter-spacing: -1px;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, 0.53);
-  border-radius: 3px;
-  color: #555555;
-}
-.site-description:empty {
-  background: none;
-}
-/**
- * Use Flexbox to vertical center the site title and description
- */
-.flexbox .site-header .home-link {
-  display: flex;
-}
-.flexbox .site-title {
-  float: none;
-  margin: auto auto auto 40px;
-}
-.flexbox .site-description {
-  float: none;
-  margin: auto 40px auto auto;
-}
-/* =============================================================================
-   Layout:  Footer
-   ========================================================================== */
-.site-footer {
-  position: relative;
-  margin: 40px 0;
-  background-color: #fff;
-  text-shadow: 1px 1px 0 #fff;
-}
-.site-footer .copyright,
-.site-footer .credit {
-  width: 50%;
-  margin: 0;
-}
-.site-footer .copyright {
-  float: left;
-}
-.site-footer .credit,
-.site-footer .column-last {
-  float: right;
-  text-align: right;
-}
-/**
- * Footer Widget Area
- */
-.sidebar-subsidiary {
-  clear: both;
-  margin-top: 25px;
-  /* Two columns */
-  /* Three columns */
-}
-.sidebar-subsidiary.two-col .widget-area {
-  float: left;
-  width: 48%;
-  margin-right: 4%;
-}
-.sidebar-subsidiary.two-col .widget-area + .widget-area {
-  margin-right: 0;
-}
-.sidebar-subsidiary.three-col .widget-area {
-  float: left;
-  width: 31%;
-  margin-right: 3.5%;
-}
-.sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
-  margin-right: 0;
 }
 /* =============================================================================
    Layout:  Theme Layouts
@@ -1400,6 +1298,64 @@ body.page-template-template-front-page .site-main {
 }
 .layout-3c-r .sidebar-primary {
   margin-left: -15px;
+}
+/* =============================================================================
+   Layout:  Header
+   ========================================================================== */
+.site-header {
+  padding: 60px 0 50px;
+}
+.site-title {
+  float: left;
+  margin: 0 0 0 40px;
+  font-size: 46px;
+  font-size: 4.6rem;
+  font-weight: normal;
+  line-height: 1.6;
+  text-shadow: 0 1px 0 #fff;
+  letter-spacing: -2px;
+}
+.site-title img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+}
+.site-title a {
+  color: #3083aa;
+}
+.site-title a:hover {
+  color: #d54e21;
+}
+.site-description {
+  float: right;
+  margin: 25px 40px 0 0;
+  padding: 2px 8px;
+  font-size: 21px;
+  font-size: 2.1rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.53);
+  border-radius: 3px;
+  color: #555555;
+}
+.site-description:empty {
+  background: none;
+}
+/**
+ * Use Flexbox to vertical center the site title and description
+ */
+.flexbox .site-header .home-link {
+  display: flex;
+}
+.flexbox .site-title {
+  float: none;
+  margin: auto auto auto 40px;
+}
+.flexbox .site-description {
+  float: none;
+  margin: auto 40px auto auto;
 }
 /* =============================================================================
    Layout:  Topbar
@@ -1775,6 +1731,53 @@ body.page-template-template-front-page .site-main {
 }
 .no-js .menu-toggle {
   display: none;
+}
+/* =============================================================================
+   Layout:  Footer
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  margin: 40px 0;
+  background-color: #fff;
+  text-shadow: 1px 1px 0 #fff;
+}
+.site-footer .copyright,
+.site-footer .credit {
+  width: 50%;
+  margin: 0;
+}
+.site-footer .copyright {
+  float: left;
+}
+.site-footer .credit,
+.site-footer .column-last {
+  float: right;
+  text-align: right;
+}
+/**
+ * Footer Widget Area
+ */
+.sidebar-subsidiary {
+  clear: both;
+  margin-top: 25px;
+  /* Two columns */
+  /* Three columns */
+}
+.sidebar-subsidiary.two-col .widget-area {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.sidebar-subsidiary.two-col .widget-area + .widget-area {
+  margin-right: 0;
+}
+.sidebar-subsidiary.three-col .widget-area {
+  float: left;
+  width: 31%;
+  margin-right: 3.5%;
+}
+.sidebar-subsidiary.three-col .widget-area + .widget-area + .widget-area {
+  margin-right: 0;
 }
 /* =============================================================================
    Layout:  Posts

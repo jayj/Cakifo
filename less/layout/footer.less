@@ -1,0 +1,56 @@
+/* =============================================================================
+   Layout:  Footer
+   ========================================================================== */
+
+.site-footer {
+	position: relative;
+	margin: @gutter-width 0;
+	background-color: #fff;
+	text-shadow: 1px 1px 0 #fff;
+
+	.copyright,
+	.credit {
+		width: 50%;
+		margin: 0;
+	}
+
+	.copyright {
+		float: left;
+	}
+
+	.credit,
+	.column-last {
+		float: right;
+		text-align: right;
+	}
+}
+
+/**
+ * Footer Widget Area
+ */
+.sidebar-subsidiary {
+	clear: both;
+	margin-top: @gutter-width-small;
+
+	/* Two columns */
+	&.two-col .widget-area {
+		float: left;
+		width: 48%;
+		margin-right: 4%;
+	}
+
+	&.two-col .widget-area + .widget-area {
+		margin-right: 0;
+	}
+
+	/* Three columns */
+	&.three-col .widget-area {
+		float: left;
+		width: 31%;
+		margin-right: 3.5%;
+	}
+
+	&.three-col .widget-area + .widget-area + .widget-area {
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,110 @@
+/* =============================================================================
+   Layout:  Theme Layouts
+   ========================================================================== */
+
+/**
+ * One column layout
+ */
+.layout-1c .site-main {
+	float: none;
+	width: 100%;
+}
+
+/* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
+body.page-template-template-front-page .site-main {
+	&:extend(.layout-1c .site-main);
+	margin: 0;
+}
+
+/**
+ * Two columns
+ */
+.layout-2c-r {
+	.site-main {
+		float: right;
+	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		float: left;
+		clear: left;
+		margin-left: ( -(@gutter-width-small - 10px) );
+	}
+}
+
+/**
+ * Three columns
+ */
+.layout-3c-c,
+.layout-3c-r,
+.layout-3c-l {
+	.sidebar-primary,
+	.sidebar-secondary {
+		clear: none;
+		width: @three-col-sidebar-width;
+	}
+}
+
+.layout-3c-l,
+.layout-3c-r {
+	.site-main {
+		width: @three-col-main-width;
+	}
+}
+
+/* Three columns, center */
+.layout-3c-c {
+	.site-main {
+		float: left;
+		width: @three-col-main-width;
+  		margin-left: ( @three-col-main-width / 2 );
+	}
+
+	.sidebar-primary {
+		float: left;
+		margin-left: ( -(@three-col-main-width + @three-col-sidebar-width + @gutter-width) ); // -765px
+	}
+
+	.sidebar-secondary {
+		float: right;
+		margin-right: ( -(@gutter-width-small - 10px) );
+	}
+}
+
+/* Three columns, left */
+.layout-3c-l {
+	.site-main {
+		float: left;
+	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		float: left;
+		margin-left: @gutter-width-small;
+	}
+
+	.sidebar-primary {
+		margin-left: @gutter-width;
+	}
+
+	.sidebar-secondary {
+		margin-right: ( -(@gutter-width-small - 10px) );
+	}
+}
+
+/* Three columns, right */
+.layout-3c-r {
+	.site-main {
+		float: right;
+	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		float: left;
+		margin-right: @gutter-width-small;
+	}
+
+	.sidebar-primary {
+		margin-left: ( -(@gutter-width-small - 10px) );
+	}
+}

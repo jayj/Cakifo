@@ -1,0 +1,64 @@
+/* =============================================================================
+   Layout:  Header
+   ========================================================================== */
+
+.site-header {
+	padding: (@gutter-width + 20px) 0 (@gutter-width + 10px);
+}
+
+.site-title {
+	float: left;
+	margin: 0 0 0 @gutter-width;
+	#font > .shorthand(46, normal);
+	text-shadow: 0 1px 0 #fff;
+	letter-spacing: -2px;
+
+	img {
+		max-width: 100%;
+		width: auto\9; // IE7-8 need help adjusting responsive images
+		height: auto; // Scale the height according to the width, otherwise you get stretching
+		vertical-align: middle;
+	}
+
+	a {
+		color: @link-color;
+
+		&:hover { color: @link-color-hover; }
+	}
+}
+
+.site-description {
+	float: right;
+	margin: @gutter-width-small @gutter-width 0 0;
+	padding: 2px 8px;
+	.font-size(@headings-size-small);
+	font-weight: normal;
+	letter-spacing: -1px;
+	background-color: #fff;
+	background-color: fade(#fff, 53%);
+	border-radius: 3px;
+	color: @gray;
+
+	&:empty {
+		background: none;
+	}
+}
+
+/**
+ * Use Flexbox to vertical center the site title and description
+ */
+.flexbox {
+	.site-header .home-link {
+		display: flex;
+	}
+
+	.site-title {
+		float: none;
+		margin: auto auto auto @gutter-width;
+	}
+
+	.site-description {
+		float: none;
+		margin: auto @gutter-width auto auto;
+	}
+}
