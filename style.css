@@ -1202,6 +1202,9 @@ iframe {
 .site-content {
   outline: 0;
 }
+/* =============================================================================
+   Layout:  Theme Layouts
+   ========================================================================== */
 .site-main {
   position: relative;
   width: 650px;
@@ -1215,9 +1218,48 @@ iframe {
 .sidebar-secondary {
   clear: right;
 }
-/* =============================================================================
-   Layout:  Theme Layouts
-   ========================================================================== */
+@media screen and (max-width: 1080px) {
+  .site-main {
+    width: 65%;
+  }
+  .sidebar-primary,
+  .sidebar-secondary {
+    width: 32%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .site-main {
+    width: 100%;
+    float: none;
+  }
+  .sidebar-primary,
+  .sidebar-secondary {
+    width: 48%;
+  }
+  .sidebar-primary {
+    float: left;
+  }
+  .sidebar-secondary {
+    float: right;
+  }
+}
+.layout-2c-r .site-main {
+  float: right;
+}
+.layout-2c-r .sidebar-primary,
+.layout-2c-r .sidebar-secondary {
+  float: left;
+  clear: left;
+}
+@media screen and (max-width: 768px) {
+  .layout-2c-r .site-main {
+    float: none;
+  }
+  .layout-2c-r .sidebar-secondary {
+    float: right;
+    clear: none;
+  }
+}
 /**
  * One column layout
  */
@@ -1229,18 +1271,6 @@ body.page-template-template-front-page .site-main {
 /* Make sure that the layout on the front page doesn't get overwritten in the Theme Customizer preview */
 body.page-template-template-front-page .site-main {
   margin: 0;
-}
-/**
- * Two columns
- */
-.layout-2c-r .site-main {
-  float: right;
-}
-.layout-2c-r .sidebar-primary,
-.layout-2c-r .sidebar-secondary {
-  float: left;
-  clear: left;
-  margin-left: -15px;
 }
 /**
  * Three columns
@@ -2813,13 +2843,6 @@ body.page-template-template-front-page .site-main {
    Media Queries:  Max-width 1080px
    ========================================================================== */
 @media screen and (max-width: 1080px) {
-  .site-main {
-    width: 65%;
-  }
-  .sidebar-primary,
-  .sidebar-secondary {
-    width: 32%;
-  }
   .main-navigation {
     width: 100%;
   }
@@ -2963,19 +2986,6 @@ body.page-template-template-front-page .site-main {
    Media Queries:  Max-width 768px
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  /* Make the main content full width and move the sidebars underneath it */
-  .site-main {
-    float: none;
-    width: 100%;
-  }
-  .sidebar-primary {
-    float: left;
-    width: 48%;
-  }
-  .sidebar-secondary {
-    width: 48%;
-    float: right;
-  }
   /* Make the slider smaller */
   .slide .thumbnail {
     max-width: 55%;
