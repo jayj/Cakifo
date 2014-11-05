@@ -148,24 +148,22 @@ body.page-template-template-front-page .site-main {
 	}
 }
 
-/* Three columns, left */
-.layout-3c-l {
-	.site-main {
-		float: left;
-	}
 
+// Layout: Three columns (content | sidebar | sidebar)
+// =============================================================================
+
+.layout-3c-l {
 	.sidebar-primary,
 	.sidebar-secondary {
 		float: left;
-		margin-left: @gutter-width-small;
-	}
-
-	.sidebar-primary {
-		margin-left: @gutter-width;
+		margin-left: @three-col-gutter;
 	}
 
 	.sidebar-secondary {
-		margin-right: ( -(@gutter-width-small - 10px) );
+		// the default padding on .site-content is 40px
+		// this makes sure that the gutter between the columns is 30px
+		// by setting a margin on -10px
+		margin-right: -( @three-col-gutter - @gutter-width );
 	}
 }
 
