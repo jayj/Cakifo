@@ -21,6 +21,38 @@
 .sidebar-secondary {
 	clear: right;
 }
+
+@media screen and (max-width: 1080px) {
+	.site-main {
+		width: 65%;
+	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		width: 32%;
+	}
+}
+
+// Make the main content full width and move the sidebars underneath it.
+@media screen and (max-width: 768px) {
+	.site-main {
+		width: 100%;
+		float: none;
+	}
+
+	.sidebar-primary,
+	.sidebar-secondary {
+		width: 48%;
+	}
+
+	.sidebar-primary {
+		float: left;
+	}
+
+	.sidebar-secondary {
+		float: right;
+	}
+}
 /**
  * One column layout
  */
