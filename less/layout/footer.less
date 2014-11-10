@@ -21,10 +21,16 @@
 		padding-right: @gutter-width-small;
 	}
 }
+
+/*
+ * Footer content
+ */
+.footer-content {
+	.alignleft,
+	.alignright,
 	.copyright,
 	.credit {
-		width: 50%;
-		margin: 0;
+		width: 48%;
 	}
 
 	.copyright {
@@ -32,9 +38,20 @@
 	}
 
 	.credit,
+	.alignright,
 	.column-last {
 		float: right;
 		text-align: right;
+	}
+
+	@media screen and (max-width: 620px) {
+		.alignleft,
+		.alignright,
+		.copyright,
+		.credit {
+			width: 100%;
+			text-align: center;
+		}
 	}
 }
 
