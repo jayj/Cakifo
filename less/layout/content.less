@@ -24,4 +24,14 @@
 
 	// Remove outline when focused by a skip-to-content link
 	outline: 0;
+
+	@media screen and (max-width: 1080px) {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	@media screen and (max-width: 980px) {
+		padding-left: @gutter-width-small;
+		padding-right: @gutter-width-small;
+	}
 }

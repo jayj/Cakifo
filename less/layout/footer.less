@@ -11,6 +11,16 @@
 	box-shadow: 1px 1px 10px fade(#000, 10%);
 	text-shadow: 1px 1px 0 #fff;
 
+	@media screen and (max-width: 1080px) {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	@media screen and (max-width: 980px) {
+		padding-left: @gutter-width-small;
+		padding-right: @gutter-width-small;
+	}
+}
 	.copyright,
 	.credit {
 		width: 50%;
