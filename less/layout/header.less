@@ -3,35 +3,29 @@
    ========================================================================== */
 
 .site-header {
-	padding: (@gutter-width + 20px) 0 (@gutter-width + 10px);
+	margin-top: @topbar-height-bottom;
+	padding: (@gutter-width * 1.5) @gutter-width;
 }
+
 
 .site-title {
 	float: left;
-	margin: 0 0 0 @gutter-width;
-	#font > .shorthand(46, normal);
-	text-shadow: 0 1px 0 #fff;
+	margin: 0;
+	.font-size(46);
 	letter-spacing: -2px;
+	text-shadow: 0 1px 0 #fff;
 
 	img {
 		vertical-align: middle;
 	}
-
-	a {
-		color: @link-color;
-
-		&:hover {
-			color: @link-color-hover;
-		}
-	}
 }
+
 
 .site-description {
 	float: right;
-	margin: @gutter-width-small @gutter-width 0 0;
+	margin: @gutter-width-small 0 0 0;
 	padding: 2px 8px;
 	.font-size(@headings-size-small);
-	font-weight: normal;
 	letter-spacing: -1px;
 	background-color: #fff;
 	background-color: fade(#fff, 53%);
@@ -43,38 +37,37 @@
 	}
 }
 
-/**
- * Use Flexbox to vertical center the site title and description
+
+/*
+ * Use Flexbox to vertically center the site title and description
  */
 .flexbox {
-	.site-header .home-link {
+	.site-header {
 		display: flex;
 	}
 
-	.site-title {
-		float: none;
-		margin: auto auto auto @gutter-width;
+	.site-title,
+	.site-description {
+		margin: auto;
 	}
 
 	.site-description {
-		float: none;
-		margin: auto @gutter-width auto auto;
+		margin-right: 0;
 	}
 }
+
 
 @media screen and (max-width: 980px) {
-	.site-title {
-		margin-left: @gutter-width-small;
-	}
-
-	.site-description {
-		margin-right: @gutter-width-small;
+	.site-header {
+		padding-left: @gutter-width-small;
+		padding-right: @gutter-width-small;
 	}
 }
 
-@media screen and (max-width: 620px) {
 
-	/* Turn the header and description into a single column */
+// Turn the header into a single column
+@media screen and (max-width: 768px) {
+
 	.site-header {
 		text-align: center;
 	}
@@ -84,18 +77,18 @@
 		float: none;
 	}
 
-	.site-description {
-		margin: 20px 0 0;
-	}
-
 	.flexbox {
-		.site-header .home-link {
+		.site-header {
 			flex-direction: column;
 		}
 
 		.site-title,
 		.site-description {
-			margin: 0 auto 20px;
+			margin: 0 auto;
+		}
+
+		.site-title {
+			margin-bottom: @gutter-width-small;
 		}
 	}
 }
