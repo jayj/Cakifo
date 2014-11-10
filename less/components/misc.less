@@ -1,71 +1,4 @@
 /* =============================================================================
-   Components:  Message boxes
-   ========================================================================== */
-
-.hentry {
-	.note,
-	.alert,
-	.warning,
-	.success,
-	.download,
-	.danger,
-	.error,
-	.info {
-		padding: @gutter-width-small;
-		border: double @alert-border;
-		border-width: 4px 0;
-		margin-bottom: @gutter-width-small;
-		text-shadow: 0 1px 0 fade(#fff, 50%);
-		background-color: @alert-bg;
-		color: @alert-text;
-	}
-
-	.warning,
-	.alert {
-		background-color: @alert-warning-bg;
-		border-color: @alert-warning-border;
-		color: @alert-warning-text;
-	}
-
-	.success,
-	.download {
-		background-color: @alert-success-bg;
-		border-color: @alert-success-border;
-		color: @alert-success-text;
-	}
-
-	.danger,
-	.error {
-		background-color: @alert-error-bg;
-		border-color: @alert-error-border;
-		color: @alert-error-text;
-	}
-
-	.info {
-		background-color: @alert-info-bg;
-		border-color: @alert-info-border;
-		color: @alert-info-text;
-	}
-}
-
-.box-blue {
-	.blue-box(@gutter-width-small);
-}
-
-.box-orange {
-	.highlight-box(@gutter-width-small);
-}
-
-/* =============================================================================
-   Components:  Surprise!
-   ========================================================================== */
-
-.shake-it-baby{-webkit-animation:shake-it-baby 1s infinite;-moz-animation:shake-it-baby 1s infinite;animation:shake-it-baby 1s infinite;transition:all 1s ease; }
-@-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
-@-moz-keyframes shake-it-baby{0%{-moz-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-moz-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-moz-transform:scale(1.0) skew(0);background-color:#fff}}
-@keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
-
-/* =============================================================================
    Misc:  Internet Explorer styles
    ========================================================================== */
 
@@ -88,3 +21,13 @@
 	position: relative;
 	z-index: 100;
 }
+
+
+/* =============================================================================
+   Components:  Surprise!
+   ========================================================================== */
+
+.shake-it-baby{-webkit-animation:shake-it-baby 1s infinite;-moz-animation:shake-it-baby 1s infinite;animation:shake-it-baby 1s infinite;transition:all 1s ease; }
+@-webkit-keyframes shake-it-baby{0%{-webkit-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-webkit-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-webkit-transform:scale(1.0) skew(0);background-color:#fff}}
+@-moz-keyframes shake-it-baby{0%{-moz-transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{-moz-transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{-moz-transform:scale(1.0) skew(0);background-color:#fff}}
+@keyframes shake-it-baby{0%{transform:scale(1.1) skew(-2deg)}10%{background-color:#f00}20%{background-color:#f300ff}30%{background-color:#f3ffba}40%{background-color:#00f9ff}50%{transform:scale(1.15) skew(1deg); background-color:#08ff00}60%{background-color:#fff700}70%{background-color:#ff2a00}80%{background-color:#60a63a}90%{background-color:#0500ff}100%{transform:scale(1.0) skew(0);background-color:#fff}}
