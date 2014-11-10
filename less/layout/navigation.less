@@ -12,9 +12,9 @@
 	&:after {
 		content: "";
 		position: absolute;
-		bottom: -11px;
+		bottom: (-@topbar-height-bottom - 1px); // -11px
 		left: 0;
-		.size(100%, 10px);
+		.size(100%, @topbar-height-bottom);
 		background: url(images/topbar-bottom.png) repeat-x;
 	}
 }
