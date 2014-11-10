@@ -42,10 +42,11 @@
 
 		<?php do_atomic( 'open_header' ); ?>
 
-		<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<?php cakifo_logo(); ?>
-			<p class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></p>
 		</a>
+
+		<p class="site-description" id="site-description"><?php bloginfo( 'description' ); ?></p>
 
 		<?php do_atomic( 'header' ); ?>
 
