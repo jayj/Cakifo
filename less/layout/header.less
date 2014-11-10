@@ -20,7 +20,9 @@
 	a {
 		color: @link-color;
 
-		&:hover { color: @link-color-hover; }
+		&:hover {
+			color: @link-color-hover;
+		}
 	}
 }
 
@@ -57,5 +59,43 @@
 	.site-description {
 		float: none;
 		margin: auto @gutter-width auto auto;
+	}
+}
+
+@media screen and (max-width: 980px) {
+	.site-title {
+		margin-left: @gutter-width-small;
+	}
+
+	.site-description {
+		margin-right: @gutter-width-small;
+	}
+}
+
+@media screen and (max-width: 620px) {
+
+	/* Turn the header and description into a single column */
+	.site-header {
+		text-align: center;
+	}
+
+	.site-title,
+	.site-description {
+		float: none;
+	}
+
+	.site-description {
+		margin: 20px 0 0;
+	}
+
+	.flexbox {
+		.site-header .home-link {
+			flex-direction: column;
+		}
+
+		.site-title,
+		.site-description {
+			margin: 0 auto 20px;
+		}
 	}
 }
