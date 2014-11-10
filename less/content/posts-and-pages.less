@@ -1,0 +1,54 @@
+/* =============================================================================
+   Layout:  Posts
+   ========================================================================== */
+
+.hentry {
+	position: relative;
+	padding-bottom: @gutter-width-small;
+	border-bottom: 4px double @post-border-color;
+	margin-bottom: @gutter-width-small;
+	word-wrap: break-word;
+
+	.singular & {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+}
+
+.sticky {
+	padding: @gutter-width-small;
+	background: @highlight-bg-secondary;
+
+	.entry-title {
+		margin-top: 0;
+	}
+}
+
+/**
+ * Entry meta
+ */
+
+.byline,
+.entry-meta {
+	#font > .shorthand(@font-size-small, normal, 2);
+	color: @post-meta-color;
+	clear: both;
+}
+
+.byline {
+	margin-bottom: 15px;
+
+	.entry-header & {
+		margin-top: 5px;
+	}
+}
+
+.singular .entry-meta {
+	padding: 15px 0 0;
+	border-top: 1px solid @post-border-color;
+	margin: @gutter-width-small 0;
+}
+
+.page-links {
+	clear: both;
+}

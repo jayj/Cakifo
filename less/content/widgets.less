@@ -1,0 +1,84 @@
+/* =============================================================================
+   Components:  Widgets
+   ========================================================================== */
+
+.widget {
+	margin-bottom: @gutter-width-small;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
+/**
+ * Calendar
+ */
+#wp-calendar {
+	th, td {
+		.font-size(@font-size-small);
+		padding: 4px;
+		text-align: center;
+
+		.layout-3c-c &,
+		.layout-3c-l &,
+		.layout-3c-r & {
+			padding: 2px;
+		}
+	}
+}
+
+/**
+ * Related Posts widget
+ */
+
+.related-posts .with-thumbnails {
+	.no-list-style();
+	margin-left: 20px;
+
+	.sidebar-after-singular &,
+	.sidebar-after-single & {
+		margin-left: 0;
+	}
+
+	.related-post {
+		float: left;
+		.square(110px);
+		border: 1px solid @related-post-border;
+		margin: 0 @gutter-width-small @gutter-width-small 0;
+		background: @related-post-bg;
+		border-radius: 3px;
+
+		&:hover {
+			background: @related-post-hover-bg;
+			border-color: @related-post-hover-border;
+			box-shadow: 0 2px 0 @related-post-hover-border;
+			color: @related-post-hover-text;
+			text-shadow: 0 1px 0 lighten(@related-post-hover-bg, 15%);
+		}
+
+		&:nth-of-type(5n) {
+			margin-right: 0;
+		}
+
+		> a {
+			display: block;
+			overflow: hidden;
+			.square(100%);
+			padding-top: 4px;
+			text-align: center;
+			word-wrap: break-word;
+			hyphens: auto;
+
+			&:hover {
+				color: @related-post-hover-text;
+			}
+		}
+
+		img {
+			box-shadow: none;
+		}
+
+		span {
+			.font-size(@font-size-mini);
+		}
+	}
+}
+

@@ -1,0 +1,59 @@
+/* =============================================================================
+   Components:  Pagination
+   ========================================================================== */
+
+.pagination {
+	margin: @gutter-width 0;
+
+	a,
+	> span {
+		display: inline-block;
+		padding: 13px 14px 12px;
+		margin-right: 2px;
+		line-height: normal;
+		background-color: @pagination-bg;
+		box-shadow: 0 2px 0 darken(@pagination-bg, 15%);
+		border-radius: 3px;
+		color: darken(@gray, 5%);
+		text-shadow: 0 1px 0 #fff;
+		transition: all 150ms ease;
+	}
+
+	a:hover {
+		background-color: @pagination-hover-bg;
+		box-shadow: 0 2px 0 @pagination-hover-border;
+		color: @pagination-hover-text;
+		text-shadow: 0 1px 0 lighten(@pagination-hover-bg, 20%);
+	}
+
+	a:active {
+		box-shadow:
+			0 2px 0 @pagination-hover-border,
+			inset 2px 2px 8px fade(#000, 30%);
+	}
+
+	.current {
+		background-color: lighten(@gray-dark, 10%);
+		box-shadow: 0 2px 0 #000;
+		color: #fff;
+		text-shadow: 0 -1px 0 #000;
+	}
+}
+
+/* Prev and next post pagination */
+.post-pagination a {
+	max-width: 49%;
+
+	&[rel="prev"] {
+		float: left;
+	}
+
+	&[rel="next"] {
+		float: right;
+	}
+}
+
+/* Hide pagination when Jetpack Infinite Scroll is active */
+.infinite-scroll .loop-pagination {
+	display: none;
+}

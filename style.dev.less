@@ -36,8 +36,9 @@
  * 4.0 - Accessibility
  * 5.0 - Alignments
  * 6.0 - Media
- *    14.1 - Captions
- *    14.2 - Galleries
+ *    6.1 - Captions
+ *    6.2 - Galleries
+ *    6.3 - Embeds
  * 7.0 - Layout
  *    7.1 Header
  *    7.2 Footer
@@ -46,11 +47,11 @@
  * 9.0 - Content
  *    9.1 - Posts and pages
  *    9.2 - Post Formats
- *    9.3 - Loop meta
- *    9.4 - Pagination
- * 10.0 - Widgets and components
+ *    9.3 - Front page
+ *    9.4 - Slider
+ * 10.0 - Widgets
  * 11.0 - Comments
- * 12.0 - Misc
+ * 12.0 - Components
  * 13.0 - Media Queries
  * 14.0 - Print
  */
@@ -60,8 +61,10 @@
 @import "less/variables.less";
 @import "less/mixins.less";
 
+
 // Reset
 @import "less/normalize.less";
+
 
 // Base styles
 @import "less/base/base.less";
@@ -74,15 +77,18 @@
 @import "less/base/elements.less";
 @import "less/base/forms.less";
 
+
 // Helper classes
 @import "less/helpers/accessibility.less";
 @import "less/helpers/alignments.less";
+
 
 // Media
 @import "less/media/images.less";
 @import "less/media/captions.less";
 @import "less/media/galleries.less";
 @import "less/media/embeds.less";
+
 
 // Page structure
 @import "less/layout/content.less";
@@ -91,18 +97,30 @@
 @import "less/layout/navigation.less";
 @import "less/layout/footer.less";
 
-// Posts, media, comments, and widgets
-@import "less/entry.less";
-@import "less/post-formats.less";
-@import "less/widgets.less";
-@import "less/slider.less";
-@import "less/comments.less";
 
-// Components: Misc
-@import "less/misc.less";
+// Content
+@import "less/content/posts-and-pages.less";
+@import "less/content/post-formats.less";
+@import "less/content/attachments.less";
+@import "less/content/front-page.less";
+@import "less/content/slider.less";
+
+@import "less/content/widgets.less";
+@import "less/content/comments.less";
+
+
+// Components
+@import "less/components/loop-meta.less"
+@import "less/components/pagination.less"
+@import "less/components/breadcrumbs.less"
+@import "less/components/author-box.less"
+@import "less/components/alerts.less";
+@import "less/components/misc.less";
+
 
 // Media queries
 @import "less/media-queries.less";
+
 
 // Print
 @import "less/print.less";

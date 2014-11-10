@@ -1,0 +1,41 @@
+/* =============================================================================
+   Layout:  Attachment pages
+   ========================================================================== */
+
+.attachment-title {
+	margin-top: 0;
+}
+
+.attachment-meta {
+	margin-bottom: @gutter-width-small;
+}
+
+.attachment-info {
+	float: left;
+	width: 35%;
+
+	.media-meta {
+		.no-list-style();
+	}
+
+	li {
+		.clearfix();
+		border-bottom: 1px solid @post-border-color;
+		padding: 5px;
+	}
+
+	.prep {
+		font-weight: 700;
+		float: left;
+	}
+
+	.data {
+		float: right;
+		text-align: right;
+	}
+}
+
+.attachment-gallery {
+	float: right;
+	width: 60%;
+}
