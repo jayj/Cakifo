@@ -55,32 +55,51 @@
 	}
 }
 
-/**
+
+/*
  * Footer Widget Area
  */
 .sidebar-subsidiary {
 	clear: both;
 	margin-top: @gutter-width-small;
 
-	/* Two columns */
+	// Two columns
 	&.two-col .widget-area {
 		float: left;
 		width: 48%;
 		margin-right: 4%;
 	}
 
-	&.two-col .widget-area + .widget-area {
-		margin-right: 0;
-	}
-
-	/* Three columns */
+	// Three columns
 	&.three-col .widget-area {
 		float: left;
 		width: 31%;
 		margin-right: 3.5%;
 	}
 
-	&.three-col .widget-area + .widget-area + .widget-area {
+	// Remove margin on the last widget-area
+	.widget-area:last-of-type {
 		margin-right: 0;
+	}
+
+	// Turn 3 columns into 2 columns
+	@media screen and (max-width: 768px) {
+		&.three-col .widget-area {
+			width: 48%;
+			margin-right: 4%;
+		}
+
+		.widget-area:nth-of-type(2) {
+			margin-right: 0;
+		}
+	}
+
+	// Turn 2 columns into 1 column
+	@media screen and (max-width: 620px) {
+		&.two-col .widget-area,
+		&.three-col .widget-area {
+			width: 100%;
+			margin-right: 0;
+		}
 	}
 }
