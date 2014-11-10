@@ -87,6 +87,10 @@ function cakifo_header_style() {
 			.site-description {
 				color: #<?php echo $header_text_color; ?>;
 			}
+
+			.site-header a[rel="home"]:hover .site-title {
+				color: #555;
+			}
 		<?php endif; ?>
 
 		<?php
