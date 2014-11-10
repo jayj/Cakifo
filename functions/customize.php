@@ -217,7 +217,7 @@ function cakifo_customize_preview() {
 
 					} else {
 
-						$( '.home-link, .site-title span, .site-description' ).css( {
+						$( '.site-title span, .site-description' ).css( {
 							'clip': 'auto',
 							'color': to,
 							'position': 'relative'

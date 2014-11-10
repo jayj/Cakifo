@@ -93,7 +93,7 @@ function cakifo_header_style() {
 			// Hide the description if there's no header image and the text has been hidden
 			if ( ! get_header_image() && ! display_header_text() ) :
 		?>
-			.home-link {
+			.site-description {
 				position: absolute;
 				clip: rect(1px 1px 1px 1px); /* IE7 */
 				clip: rect(1px, 1px, 1px, 1px);
