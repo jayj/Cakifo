@@ -11,8 +11,11 @@
 	margin: 0 auto;
 }
 
-.site-content,
-.site-footer {
+
+/*
+ * Style the main content
+ */
+.site-content {
 	position: relative;
 	padding: @gutter-width @gutter-width @gutter-width;
 	background-color: #fff;
@@ -20,6 +23,7 @@
 	box-shadow: 1px 1px 10px fade(#000, 10%);
 }
 
+// Remove outline when focused by a skip-to-content link
 .site-content {
-	outline: 0; // remove outline when focused by a skip-to-content link
+	outline: 0;
 }
