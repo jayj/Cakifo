@@ -19,8 +19,11 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 			<?php do_atomic( 'open_menu_primary' ); ?>
 
 				<h3 class="menu-toggle" title="<?php esc_attr_e( 'Toggle menu', 'cakifo' ); ?>">
-					<?php _e( 'Menu', 'cakifo' ); ?>
 				</h3>
+					<?php
+						/* Translators: %s is the nav menu name. */
+						printf( _x( '%s Menu', 'nav menu title', 'cakifo' ), cakifo_get_menu_name( 'primary' ) );
+					?>
 
 				<?php
 					wp_nav_menu( array(

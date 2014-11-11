@@ -908,4 +908,44 @@ function cakifo_filter_templates( $templates ) {
 
 add_filter( 'theme_page_templates', 'cakifo_filter_templates' );
 
+
+/**
+ * Get the custom menu name by location.
+ *
+ * @since  Cakifo 1.7.0
+ * @author David Chandra Purnama
+ * @link   http://shellcreeper.com/
+ *
+ * @param  string    $location The location to get the menu name from.
+ * @return string|bool         The menu name if it exists. False if not.
+ */
+function cakifo_get_menu_name( $location ) {
+
+	$menus = get_registered_nav_menus();
+
+	// If no menu available, bail early.
+	if ( empty( $menus ) ) {
+		return false;
+	}
+
+	// Check if menu is set.
+	if ( has_nav_menu( $location ) ) {
+
+		// Get menu locations.
+		$locations = get_nav_menu_locations();
+
+		// If location not set, return false.
+		if ( ! isset( $locations[$location] ) ) {
+			return false;
+		}
+
+		// Get the menu name.
+		$menu_obj = get_term( $locations[$location], 'nav_menu' );
+
+		return $menu_obj->name;
+	}
+
+	return false;
+}
+
 ?>
