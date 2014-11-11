@@ -17,13 +17,12 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 
 		<?php do_atomic( 'open_menu_secondary' ); ?>
 
-			<h3 class="menu-toggle" title="<?php esc_attr_e( 'Toggle secondary menu', 'cakifo' ); ?>">
-				<?php _e( 'Secondary menu', 'cakifo' ); ?>
-			</h3>
+			<button class="menu-toggle">
 				<?php
 					/* Translators: %s is the nav menu name. */
 					printf( _x( '%s Menu', 'nav menu title', 'cakifo' ), cakifo_get_menu_name( 'secondary' ) );
 				?>
+			</button>
 
 			<?php
 				wp_nav_menu( array(
