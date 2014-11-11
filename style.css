@@ -1457,7 +1457,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
    ========================================================================== */
 .topbar {
   position: relative;
-  width: 100%;
   min-height: 60px;
   background: #262626 url(images/topbar.png) repeat;
   color: #cccccc;
