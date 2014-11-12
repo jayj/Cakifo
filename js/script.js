@@ -1,4 +1,30 @@
-(function($) {
+/* global screenReaderText */
+/**
+ * Theme functions file.
+ */
+
+( function( $ ) {
+
+	/*
+	 * Add dropdown toggle that display child menu items.
+	 *
+	 * @author	Twenty Fifteen
+	 */
+	$( '.site-navigation .menu-item-has-children > a' )
+		.after( '<button class="dropdown-toggle" aria-expanded="false">' + screenReaderText.expand + '</button>' );
+
+	$( '.dropdown-toggle' ).on( 'click', function( e ) {
+		var $this = $( this );
+
+		$this.toggleClass( 'submenu-open' );
+		$this.siblings( '.sub-menu' ).toggleClass( 'submenu-toggled-on' );
+
+		$this.attr( 'aria-expanded', $this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+
+		$this.html( $this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
+
+		e.preventDefault();
+	} );
 
 	/*
 	 * Enables menu toggle for small screens.

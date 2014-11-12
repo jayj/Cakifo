@@ -283,6 +283,11 @@ function cakifo_enqueue_script() {
 	/* Enqueue the theme javascript. */
 	wp_enqueue_script( 'cakifo-theme', THEME_URI . '/js/script.js', array( 'jquery' ), '1.6', true );
 
+	wp_localize_script( 'cakifo-theme', 'screenReaderText', array(
+		'expand'   => '<span class="screen-reader-text">' . esc_html__( 'expand child menu', 'cakifo' ) . '</span>',
+		'collapse' => '<span class="screen-reader-text">' . esc_html__( 'collapse child menu', 'cakifo' ) . '</span>',
+	) );
+
 	/* Enqueue the Flexslider jQuery Plugin. */
 	if ( cakifo_is_active_slider() ) {
 		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.2', true );
