@@ -25,7 +25,7 @@
 		}
 
 		$( '.menu-toggle' ).on( 'click.cakifo', function() {
-			$(this).parent().toggleClass( 'toggled-on' );
+			$(this).parents(nav).toggleClass( 'toggled-on' );
 		} );
 	} )();
 
