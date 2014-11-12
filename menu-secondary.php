@@ -30,7 +30,6 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 				wp_nav_menu( array(
 					'theme_location' => 'secondary',
 					'container_class' => 'menu-list-container',
-					'after'          => '<span class="sep">|</span>',
 					'fallback_cb'    => ''
 				) );
 			?>
