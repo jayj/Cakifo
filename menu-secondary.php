@@ -17,7 +17,7 @@ if ( has_nav_menu( 'secondary' ) ) : ?>
 
 		<?php do_atomic( 'open_menu_secondary' ); ?>
 
-			<h3 class="menu-title">
+			<h3 class="menu-title screen-reader-text">
 				<button class="menu-toggle">
 					<?php
 						/* Translators: %s is the nav menu name. */
