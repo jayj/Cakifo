@@ -34,37 +34,34 @@
 // Menu toggle button
 // -------------------------
 .toggle-button( @bg-color: @gray, @bg-secondary-color: darken( @gray, 6% ) ) {
-	.menu-toggle {
-		display: none;
-		background-color: @bg-secondary-color;
-		background-image: linear-gradient(to bottom, @bg-color, @bg-secondary-color);
-		border-bottom: 1px solid @bg-color;
-		box-shadow: 0 1px 0 fade( #fff, 10% );
-		color: contrast( @bg-color, darken( @gray, 6% ));
-
-		width: 100%;
-		padding: 15px 0;
-		margin: 0;
-
-		text-align: center;
-		cursor: pointer;
-
-		&:hover {
-			background: @gray-dark;
-			color: #fff;
-		}
+	background-color: @bg-secondary-color;
+	background-image: linear-gradient(to bottom, @bg-color, @bg-secondary-color);
+	border: 0;
+	border-bottom: 1px solid @bg-color;
+	box-shadow: 0 1px 0 fade( #fff, 10% );
+	color: contrast( @bg-color, darken( @gray, 6% ));
+	width: 100%;
+	padding: 15px 0;
+	margin: 0;
 	#font > .shorthand(18, bold);
+	text-align: center;
+	cursor: pointer;
 
-		&:active,
-		&:focus {
-			background: @gray-darker;
-		}
 	&:before {
 		.icon();
 		content: '\f419';
 		margin-right: 5px;
 		vertical-align: -1px;
 	}
+
+	&:hover {
+		background: @gray-dark;
+		color: #fff;
+	}
+
+	&:active,
+	&:focus {
+		background: @gray-darker;
 	}
 }
 
