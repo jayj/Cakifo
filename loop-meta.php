@@ -40,54 +40,6 @@ do_atomic( 'before_loop_meta' ); ?>
 
 	</div> <!-- .loop-meta-home -->
 
-<?php elseif ( is_category() ) : ?>
-
-	<div class="loop-meta">
-
-		<h1 class="loop-title"><?php printf( __( 'Category Archives: %s', 'cakifo' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
-
-		<div class="loop-description">
-			<?php echo category_description(); ?>
-		</div> <!-- .loop-description -->
-
-	</div> <!-- .loop-meta -->
-
-<?php elseif ( is_tag() ) : ?>
-
-	<div class="loop-meta">
-
-		<h1 class="loop-title"><?php printf( __( 'Tag Archives: %s', 'cakifo' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
-
-		<div class="loop-description">
-			<?php echo tag_description(); ?>
-		</div> <!-- .loop-description -->
-
-	</div> <!-- .loop-meta -->
-
-<?php elseif ( is_tax( 'post_format' ) ) : ?>
-
-	<div class="loop-meta">
-
-		<h1 class="loop-title"><?php single_term_title(); ?></h1>
-
-		<div class="loop-description">
-			<?php echo term_description( '', get_query_var( 'taxonomy' ) ); ?>
-		</div> <!-- .loop-description -->
-
-	</div> <!-- .loop-meta -->
-
-<?php elseif ( is_tax() ) : ?>
-
-	<div class="loop-meta">
-
-		<h1 class="loop-title"><?php printf( __( 'Archives: %s', 'cakifo' ), '<span>' . single_term_title( '', false ) . '</span>' ); ?></h1>
-
-		<div class="loop-description">
-			<?php echo term_description( '', get_query_var( 'taxonomy' ) ); ?>
-		</div> <!-- .loop-description -->
-
-	</div> <!-- .loop-meta -->
-
 <?php elseif ( is_author() ) : ?>
 
 	<?php
@@ -97,10 +49,10 @@ do_atomic( 'before_loop_meta' ); ?>
 
 	<div id="hcard-<?php the_author_meta( 'user_nicename', $user_id ); ?>" class="loop-meta vcard">
 
-		<h1 class="loop-title"><?php printf( __( 'Author: %s', 'cakifo' ), '<span class="fn n">' . $name . '</span>' ); ?></h1>
+		<?php the_archive_title( '<h1 class="loop-title">', '</h1>' ); ?>
 
 		<div class="loop-description">
-			<?php echo get_avatar( get_the_author_meta( 'user_email', $user_id ), 96 ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email', $user_id ), 80 ); ?>
 
 			<?php echo wpautop( get_the_author_meta( 'description', $user_id ) ); ?>
 		</div> <!-- .loop-description -->
@@ -121,18 +73,6 @@ do_atomic( 'before_loop_meta' ); ?>
 
 	</div> <!-- .loop-meta -->
 
-<?php elseif ( is_date() ) : ?>
-
-	<div class="loop-meta">
-
-		<h1 class="loop-title"><?php _e( 'Archives by date', 'cakifo' ); ?></h1>
-
-		<div class="loop-description">
-			<p><?php _e( 'You are browsing the site archives by date.', 'cakifo' ); ?></p>
-		</div> <!-- .loop-description -->
-
-	</div> <!-- .loop-meta -->
-
 <?php elseif ( is_post_type_archive() ) : ?>
 
 	<?php $post_type = get_post_type_object( get_query_var( 'post_type' ) ); ?>
@@ -143,8 +83,9 @@ do_atomic( 'before_loop_meta' ); ?>
 
 		<div class="loop-description">
 			<?php
-				if ( ! empty( $post_type->description ) )
+				if ( ! empty( $post_type->description ) ) {
 					echo wpautop( $post_type->description );
+				}
 			?>
 		</div> <!-- .loop-description -->
 
@@ -154,11 +95,10 @@ do_atomic( 'before_loop_meta' ); ?>
 
 	<div class="loop-meta">
 
-		<h1 class="loop-title"><?php _e( 'Archives', 'cakifo' ); ?></h1>
-
-		<div class="loop-description">
-			<p><?php _e( 'You are browsing the site archives.', 'cakifo' ); ?></p>
-		</div> <!-- .loop-description -->
+		<?php
+			the_archive_title( '<h1 class="loop-title">', '</h1>' );
+			the_archive_description( '<div class="loop-description">', '</div>' );
+		?>
 
 	</div> <!-- .loop-meta -->
 
