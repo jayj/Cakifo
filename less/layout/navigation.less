@@ -18,31 +18,130 @@
 	}
 }
 
+
 /* =============================================================================
-   Layout:  Primary navigation
+   Layout:  Shared navigation styles
    ========================================================================== */
 
-.main-navigation {
-	position: relative;
-	width: @width-site;
-	padding: 0 @gutter-width 0 (@gutter-width - 15px); // 15px is the padding-left on .menu-item a {}
-	margin: 0 auto;
-	.clearfix();
-
-	.menu,
-	.menu ul {
+.site-navigation {
+	ul {
 		.no-list-style();
 	}
 
 	.menu-item {
 		position: relative;
-		float: left;
 	}
 
 	.menu-item > a {
 		display: inline-block;
+	}
+
+	// Sub menu
+	.sub-menu {
+		display: none;
+
+		.menu-item > a {
+			display: block;
+		}
+	}
+
+	// Display the sub menus toggle click
+	.submenu-toggled-on {
+		display: block;
+	}
+}
+
+
+// Mobile navigation
+@media screen and (max-width: 979px) {
+
+	.site-navigation {
+		.menu-list-container,
+		.search-form {
+			display: none;
+		}
+
+		&.toggled-on .menu-list-container,
+		&.toggled-on .search-form {
+			display: block;
+		}
+
+		.menu-list-container {
+			padding: @gutter-width-small;
+		}
+
+		.menu-item > a {
+			width: 100%;
+			border-bottom: 1px solid;
+		}
+
+		.sep {
+			display: none;
+		}
+
+		.sub-menu {
+			margin-left: @gutter-width;
+		}
+	}
+
+	// Show menu titles
+	.menu-title {
+		clip: auto;
+		position: static;
+		overflow: visible;
+		.size(100%, auto);
+		margin: 0;
+		clear: both;
+		position: static !important;
+	}
+
+}
+
+
+// Desktop navigation
+@media screen and (min-width: 980px) {
+
+	.site-navigation {
+		.menu-item {
+			float: left;
+		}
+
+		.menu-item:last-of-type .sep,
+		.sub-menu .sep, {
+			display: none;
+		}
+
+		.sub-menu {
+			position: absolute;
+			z-index: 500;
+			top: 100%;
+			left: 0;
+			min-width: 200px;
+		}
+
+		.sub-menu .menu-item {
+			float: none;
+		}
+
+		// Level n
+		.sub-menu .sub-menu {
+			top: 0;
+			left: 100%;
+		}
+	}
+
+}
+
+
+/* =============================================================================
+   Layout:  Primary navigation
+   ========================================================================== */
+
+.main-navigation {
+	.menu-item > a {
 		padding: 20px 15px;
 		color: @topbar-color;
+		border-bottom-color: lighten(@topbar-bg, 10%);
 		#font > .shorthand(@font-size-medium, bold, normal);
 		text-shadow: 1px 1px 0 darken(@topbar-color, 70%);
 		transition: all 150ms ease;
@@ -54,317 +153,281 @@
 	.current-menu-ancestor > a {
 		background-color: fade(#fff, 8%);
 		background-image: linear-gradient(to bottom, fade(#fff, 0%), fade(#fff, 20%) 100%);
-		color: lighten(@topbar-color, 14%);
+		color: #fff;
 	}
 
 	.menu-item > a:active {
 		background: lighten(@topbar-bg, 8%);
 	}
-
-	.sep {
-		color: darken(@topbar-color, 20%);
-	}
-
-	.sub-menu .sep,
-	.menu-item:last-of-type .sep {
-		display: none;
-	}
-
-	/* Level 2 */
-	.sub-menu {
-		display: none;
-		position: absolute;
-		z-index: 500;
-		top: 100%;
-		left: 0;
-		min-width: 200px;
-		background: @topbar-bg url(images/topbar.png) repeat;
-		border-radius: 0 0 5px 5px;
-		box-shadow: 1px 2px 2px fade(#000, 30%);
-
-		.menu-item {
-			float: none;
-		}
-
-		.menu-item > a {
-			width: 100%;
-			border-top: 1px solid lighten(@topbar-bg, 10%);
-			border-bottom: 1px solid darken(@topbar-bg, 10%);
-		}
-
-		.menu-item:first-of-type > a {
-			border-top: none;
-		}
-
-		.menu-item:last-of-type > a {
-			border-bottom: none;
-		}
-
-		// Level n
-		.sub-menu {
-			top: 0;
-			left: 100%;
-			border-radius: 0 5px 5px 0;
-		}
-	}
-
-	// Display the sub menus on hover
-	.menu-item:hover > .sub-menu {
-		display: block;
-	}
-
-	// Toggle button
-	.toggle-button();
 }
+
+
+@media screen and (max-width: 979px) {
+	.main-navigation .menu-toggle {
+		.toggle-button();
+	}
+}
+
+
+@media screen and (min-width: 980px) {
+
+	.main-navigation {
+		.clearfix();
+		width: @width-site;
+		margin: 0 auto;
+		padding: 0 @gutter-width 0 (@gutter-width - 15px); // 15px is the padding-left on .menu-item a {}
+
+		.sep {
+			color: darken(@topbar-color, 20%);
+		}
+
+		// Sub menus
+		.sub-menu {
+			background: @topbar-bg url(images/topbar.png) repeat;
+			border-radius: 0 0 5px 5px;
+
+			.menu-item > a {
+				border-top: 1px solid lighten(@topbar-bg, 10%);
+				border-bottom: 1px solid darken(@topbar-bg, 10%);
+			}
+
+			.menu-item:first-of-type > a {
+				border-top: none;
+			}
+
+			.menu-item:last-of-type > a {
+				border-bottom: none;
+			}
+
+			.sub-menu {
+				border-radius: 0;
+			}
+		}
+
+		// Display the sub menus on hover
+		.menu-item:hover > .sub-menu {
+			display: block;
+		}
+	}
+
+}
+
 
 // =============================================================================
 // Secondary Navigation
 // =============================================================================
 
 .secondary-navigation {
-	background-image: linear-gradient(to bottom, fade(#fff, 40%), fade(#fff, 70%));
-	border-radius: 5px 5px 0 0;
-
-	.no-cssgradients & {
-		background-color: #f8fafb;
-	}
-
-	ul {
-		.no-list-style();
-	}
-
-	.menu {
-		.clearfix();
-		margin-left: 20px;
-	}
-
-	.menu-item {
-		position: relative;
-		float: left;
-		.font-size(@font-size-small);
-	}
-
 	.menu-item > a {
-		display: inline-block;
-		padding: 14px 20px;
 		color: darken(@gray, 5%);
-		text-transform: uppercase;
+	}
 
-		&:hover {
-			background-color: #fff;
-			background-color: fade(#fff, 53%);
-			color: @link-color-hover;
-		}
+	.menu-item > a:hover,
+	.menu-item > a:focus {
+		background-color: darken(#fff, 10%);
+		color: @link-color-hover;
 	}
 
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
-		font-weight: bold;
+		background-color: @separator-border-border;
 		color: @gray-darker;
-	}
+		font-weight: bold;
 
-	// Separator
-	.sep {
-		color: @gray-light;
-	}
-
-	.sub-menu .sep,
-	.menu-item:last-of-type .sep {
-		display: none;
-	}
-
-	// Level two
-	.sub-menu {
-		display: none;
-		position: absolute;
-		z-index: 500;
-		top: 100%;
-		left: 0;
-		min-width: 200px;
-		box-shadow: 1px 1px 2px fade(#000, 25%);
-
-		.menu-item {
-			float: none;
-		}
-
-		a {
-			display: block;
-			// width: 100%;
-			padding: 10px 12px;
-			border-bottom: 1px solid lighten(@gray-dark, 10%);
-			.font-size(@font-size-small);
-			background: @gray-darker;
-			color: @gray-lighter;
-			text-transform: none;
-			white-space: normal;
-
-			&:hover {
-				background: darken(@gray-darker, 13%);
-			}
-		}
-
-		.menu-item:last-of-type > a {
-			border-bottom: none;
-		}
-
-		// Level n
-		.sub-menu {
-			top: 0;
-			left: 100%;
+		&:hover {
+			background-color: lighten(@separator-border-border, 10%);
+			color: @gray-dark;
 		}
 	}
-
-	// Display the sub menu on hover
-	.menu-item:hover > ul {
-		display: block;
-	}
-
-	// Toggle button
-	.toggle-button( darken( #fff, 1% ), darken( #fff, 5% ) );
 }
 
-// =============================================================================
-// Navigation for screens < 980px
-// =============================================================================
 
 @media screen and (max-width: 979px) {
-
-	.main-navigation,
-	.secondary-navigation {
-		padding: 0;
-
-		.menu-toggle {
-			display: block;
-		}
-
-		.menu-list-container,
-		.search-form {
-			display: none;
-		}
-
-		/* Menu is toggled on */
-		&.toggled-on .menu-list-container,
-		&.toggled-on .search-form {
-			display: block;
-		}
-
-		.menu-list-container {
-			padding: @gutter-width;
-		}
-
-		.menu-item {
-			float: none;
-		}
-
-		.menu-item > a {
-			width: 100%;
-			border-top: 1px solid;
-			border-bottom: 1px solid;
-		}
-
-		.menu-item:first-of-type > a {
-			border-top: none;
-		}
-
-		.menu-item:last-of-type > a {
-			border-bottom: none;
-		}
-
-		.sep {
-			display: none;
-		}
-
-		// Sub-menu
-		ul.sub-menu {
-			display: block;
-			position: static;
-			list-style-type: disc;
-
-			box-shadow: none;
-			margin-left: @gutter-width;
-
-			.menu-item {
-
-			}
-		}
-	}
-
-	.main-navigation {
-		.menu-item > a {
-			border-top-color: lighten(@topbar-bg, 10%);
-			border-bottom-color: darken(@topbar-bg, 10%);
-		}
-	}
 
 	.secondary-navigation {
 		background: #fff;
 
 		.menu-item > a {
-			background: #fff;
-			border-top: #fff;
 			border-bottom-color: darken(#fff, 10%);
-			color: darken(@gray, 5%);
+			padding: 10px 14px;
 		}
 
-		.menu-item > a:hover {
-			background-color: darken(#fff, 10%);
+		.menu-toggle {
+			.toggle-button( darken( #fff, 1% ), darken( #fff, 5% ) );
 		}
 	}
 
-} // Media query: max-width 979px;
+}
+
+@media screen and (min-width: 980px) {
+
+	.secondary-navigation {
+		background-image: linear-gradient(to bottom, fade(#fff, 40%), fade(#fff, 70%));
+		border-radius: 5px 5px 0 0;
+
+		.no-cssgradients & {
+			background-color: #f8fafb;
+		}
+
+		.menu {
+			.clearfix();
+			margin-left: 20px;
+		}
+
+		.menu-item > a {
+			padding: 14px 20px;
+			.font-size(@font-size-small);
+			text-transform: uppercase;
+		}
+
+		// Sub menus
+		.sub-menu {
+			a {
+				padding: 10px 14px;
+				border-bottom: 1px solid lighten(@gray-dark, 10%);
+				.font-size(@font-size-small);
+				background: @gray-darker;
+				color: @gray-lighter;
+				text-transform: none;
+				white-space: normal;
+
+				&:hover {
+					background: darken(@gray-darker, 13%);
+				}
+			}
+
+			.menu-item:last-of-type > a {
+				border-bottom: none;
+			}
+		}
+
+		// Display the sub menus on hover
+		.menu-item:hover > .sub-menu {
+			display: block;
+		}
+	}
+
+}
 
 // =============================================================================
-// Search form in the topbar
+// Navigation dropdown toggles
 // =============================================================================
 
-.main-navigation .search-form {
-	float: right;
-	margin-top: 10px;
+.dropdown-toggle {
+	background-color: transparent;
+	border: 0;
+	padding: 10px 0;
+	text-transform: lowercase; // Stop screen readers to read the text as capital letters
+	position: absolute;
+	top: 0;
+	right: 0;
 
-	label {
+	// The icon
+	&:after {
+		.icon();
+		content: "\f431"; // 'expand' icon
+		width: @dropdown-toggle-width;
+		font-size: @dropdown-toggle-size;
+		position: relative;
+		top: 0;
+		right: 0;
+	}
+
+	&.submenu-open:after {
+		content: "\f432"; // 'collapse' icon
+	}
+}
+
+
+.site-navigation .menu-item-has-children > a {
+	// Make room for the toggle icons
+	padding-right: (@dropdown-toggle-width + @dropdown-toggle-spacing);
+}
+
+
+.main-navigation .dropdown-toggle {
+	&:hover,
+	&:focus {
+		background-color: fade(#000, 30%);
+	}
+
+	&:focus {
+		outline: 1px solid fade(#000, 80%);
+	}
+}
+
+.secondary-navigation .dropdown-toggle {
+	&:hover,
+	&:focus {
+		background-color: fade(#000, 10%);
+	}
+
+	&:focus {
+		outline: 1px solid fade(#000, 30%);
+	}
+}
+
+
+@media screen and (max-width: 979px) {
+
+	.main-navigation .dropdown-toggle {
+		padding: 20px 0; // centered
+	}
+
+	.secondary-navigation .dropdown-toggle {
+		padding: 16px 0; // centered
+	}
+
+}
+
+
+@media screen and (min-width: 980px) {
+
+	.site-navigation .dropdown-toggle {
+		height: 100%;
+	}
+
+	.site-navigation .sub-menu .dropdown-toggle {
+		&:focus {
+			outline: 0;
+		}
+
+		// Sub menus expand to the right
+		&:after {
+			transform: rotate(-90deg);
+		}
+	}
+
+	.main-navigation .dropdown-toggle {
+		margin-left: @dropdown-toggle-spacing;
+		margin-right: @dropdown-toggle-spacing;
+	}
+
+	.main-navigation .sub-menu .dropdown-toggle {
+		padding-left: @dropdown-toggle-spacing;
+		padding-right: @dropdown-toggle-spacing;
 		margin: 0;
 	}
 
-	.search-field {
-		margin-bottom: 0;
-		background-color: @gray;
-		background-color: fade(#fff, 30%);
-		border: 1px solid #000;
-		box-shadow:
-			inset 0 1px 2px fade(#000, 10%),
-			0 1px 0px fade(#fff, 30%);
-		color: #fff;
-		color: fade(#fff, 80%);
 
-		// Give the input placeholder a lighter colour
-		.placeholder( lighten(@gray-light, 15%), -1px -1px 0 fade(#000, 30%) );
-	}
+	.secondary-navigation .sub-menu .dropdown-toggle {
+		&:hover,
+		&:focus {
+			background-color: fade(#000, 30%);
+		}
 
-	.search-submit {
-		padding: 2px 14px;
-		border-color: #000;
-		margin-left: 5px;
-	}
-}
-
-@media screen and (max-width: 979px) {
-	.main-navigation .search-form {
-		float: none;
-		padding: @gutter-width-small @gutter-width;
-		margin-top: (-@gutter-width-small);
-		border: solid @topbar-search-border;
-		border-width: 1px 0;
-		box-shadow:
-			inset 0 1px 0 fade(#fff, 10%),
-			0 1px 0 fade(#fff, 10%);
-
-		.search-submit {
-			display: inline-block;
+		&:after {
+			color: @gray-lighter;
 		}
 	}
+
 }
 
-/* No JS: show the menu */
+
+// =============================================================================
+// No-javascript fallback for the navigations
+// =============================================================================
+
 .no-js .site-navigation .menu-list-container,
 .no-js .site-navigation .search-form {
 	display: block;
