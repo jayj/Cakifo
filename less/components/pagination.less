@@ -2,7 +2,8 @@
    Components:  Pagination
    ========================================================================== */
 
-.pagination {
+.pagination,
+.post-navigation {
 	margin: @gutter-width 0;
 
 	a,
@@ -40,20 +41,28 @@
 	}
 }
 
-/* Prev and next post pagination */
-.post-pagination a {
-	max-width: 49%;
 
-	&[rel="prev"] {
+/* Prev/next post navigation */
+.post-navigation {
+	.clearfix();
+
+	.nav-previous,
+	.nav-next {
+		max-width: 49%;
+	}
+
+	.nav-previous {
 		float: left;
 	}
 
-	&[rel="next"] {
+	.nav-next {
 		float: right;
 	}
 }
 
+
 /* Hide pagination when Jetpack Infinite Scroll is active */
+.infinite-scroll .pagination,
 .infinite-scroll .loop-pagination {
 	display: none;
 }

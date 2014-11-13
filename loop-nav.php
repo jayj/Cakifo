@@ -12,17 +12,15 @@
 
 	<?php if ( is_attachment() ) : ?>
 
-		<div class="loop-nav">
-			<?php previous_post_link( '%link', '<span class="previous">' . __( '<span class="meta-nav">&larr;</span> Return to entry', 'cakifo' ) . '</span>' ); ?>
-		</div> <!-- .loop-nav -->
+		<?php
+			the_post_navigation( array(
+				'prev_text' => _x( '<span class="meta-nav">&larr;</span> Return to <span class="post-title">%title</span>', 'Parent post link', 'cakifo' ),
+			) );
+		?>
 
 	<?php elseif ( is_singular( 'post' ) ) : ?>
 
-		<nav class="pagination post-pagination clearfix">
-			<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'cakifo' ); ?></h3>
-			<?php previous_post_link( '%link', '<span class="previous">' . sprintf( __( '<span class="meta-nav">&larr;</span> %s', 'cakifo' ), '%title' ) . '</span>' ); ?>
-			<?php next_post_link( '%link', '<span class="next">' . sprintf( __( '%s <span class="meta-nav">&rarr;</span>', 'cakifo' ), '%title' ) . '</span>' ); ?>
-		</nav> <!-- .pagination.post-pagination -->
+		<?php the_post_navigation(); ?>
 
 	<?php elseif ( ! is_singular() ) : ?>
 

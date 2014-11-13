@@ -3217,11 +3217,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /* =============================================================================
    Components:  Pagination
    ========================================================================== */
-.pagination {
+.pagination,
+.post-navigation {
   margin: 40px 0;
 }
 .pagination a,
-.pagination .current {
+.post-navigation a,
+.pagination .current,
+.post-navigation .current {
   display: inline-block;
   padding: 13px 14px 12px;
   margin-right: 2px;
@@ -3233,32 +3236,45 @@ body.page-template-template-front-page .site-wrapper .site-main {
   text-shadow: 0 1px 0 #fff;
   transition: all 150ms ease;
 }
-.pagination a:hover {
+.pagination a:hover,
+.post-navigation a:hover {
   background-color: #ffc768;
   box-shadow: 0 2px 0 #f89406;
   color: #511d0c;
   text-shadow: 0 1px 0 #ffedce;
 }
-.pagination a:active {
+.pagination a:active,
+.post-navigation a:active {
   box-shadow: 0 2px 0 #f89406, inset 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
-.pagination .current {
+.pagination .current,
+.post-navigation .current {
   background-color: #4d4d4d;
   box-shadow: 0 2px 0 #000;
   color: #fff;
   text-shadow: 0 -1px 0 #000000;
 }
-/* Prev and next post pagination */
-.post-pagination a {
+/* Prev/next post navigation */
+.post-navigation:before,
+.post-navigation:after {
+  content: "";
+  display: table;
+}
+.post-navigation:after {
+  clear: both;
+}
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
   max-width: 49%;
 }
-.post-pagination a[rel="prev"] {
+.post-navigation .nav-previous {
   float: left;
 }
-.post-pagination a[rel="next"] {
+.post-navigation .nav-next {
   float: right;
 }
 /* Hide pagination when Jetpack Infinite Scroll is active */
+.infinite-scroll .pagination,
 .infinite-scroll .loop-pagination {
   display: none;
 }
