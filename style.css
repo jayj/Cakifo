@@ -2210,6 +2210,10 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background-color: #e6e6e6;
   color: #d54e21;
 }
+.secondary-navigation .current-menu-item,
+.secondary-navigation .current-menu-ancestor {
+  z-index: 10;
+}
 .secondary-navigation .current-menu-item > a,
 .secondary-navigation .current-menu-ancestor > a {
   background-color: #ffc768;

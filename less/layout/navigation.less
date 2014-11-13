@@ -228,6 +228,11 @@
 		color: @link-color-hover;
 	}
 
+	.current-menu-item,
+	.current-menu-ancestor {
+		z-index: 10; // Move above the box-shadow on .site-content
+	}
+
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
 		background-color: @separator-border-border;
