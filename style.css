@@ -2942,7 +2942,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 0 25px 0 0;
 }
 /* =============================================================================
-   Components:  Widgets
+   Content:  Widgets
    ========================================================================== */
 .widget {
   margin-bottom: 25px;
@@ -3020,19 +3020,37 @@ body.page-template-template-front-page .site-wrapper .site-main {
   font-size: 1.3rem;
 }
 /* =============================================================================
-   Layout:  Search form
+   Widget:  Search form
    ========================================================================== */
 .search-form label {
+  margin: 0;
+  position: relative;
+}
+.search-form label:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   display: inline-block;
-  margin-right: 5px;
+  font-family: "Genericons";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  speak: none;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  vertical-align: top;
+  content: '\f400';
+  color: #999999;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .search-form .search-field {
-  padding-left: 27px;
-  background: #ffffff url(images/search.png) no-repeat 5px center;
-}
-.search-form .search-field[results] {
-  padding-left: 6px;
-  background-image: none;
+  padding-left: 28px;
+  margin-bottom: 0;
 }
 .search-form .search-submit.screen-reader-text {
   width: 1px;
