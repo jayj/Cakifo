@@ -91,6 +91,9 @@ function cakifo_theme_setup() {
 		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
 	}
 
+	/* Let WordPress manage the document title. */
+	add_theme_support( 'title-tag' );
+
 	/* Add theme support for HTML5. */
 	add_theme_support( 'html5', array(
 		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'
