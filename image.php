@@ -28,8 +28,6 @@ get_header(); ?>
 				<?php do_atomic( 'open_entry' ); ?>
 
 					<header class="entry-header">
-						<?php get_template_part( 'loop-nav' ); ?>
-
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 						<?php echo apply_atomic_shortcode( 'byline_attachment_image', '<div class="byline">' . sprintf( __( 'Sizes: %s', 'cakifo' ), cakifo_get_image_size_links() ) . '</div>' ); ?>
 					</header> <!-- .entry-header -->
