@@ -3221,7 +3221,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 40px 0;
 }
 .pagination a,
-.pagination > span {
+.pagination .current {
   display: inline-block;
   padding: 13px 14px 12px;
   margin-right: 2px;
