@@ -1432,75 +1432,6 @@ html .btn-inverse:hover {
   clear: both;
 }
 /* =============================================================================
-   Layout:  Search form
-   ========================================================================== */
-.search-form label {
-  display: inline-block;
-  margin-right: 5px;
-}
-.search-form .search-field {
-  padding-left: 27px;
-  background: #ffffff url(images/search.png) no-repeat 5px center;
-}
-.search-form .search-field[results] {
-  padding-left: 6px;
-  background-image: none;
-}
-.search-form .search-submit.screen-reader-text {
-  width: 1px;
-}
-.main-navigation .search-form {
-  float: right;
-  margin-top: 10px;
-}
-.main-navigation .search-form label {
-  margin: 0;
-}
-.main-navigation .search-form .search-field {
-  background-color: #555555;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid #000;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.3);
-  color: #fff;
-  color: rgba(255, 255, 255, 0.8);
-}
-.main-navigation .search-form .search-field::-moz-placeholder {
-  color: #bfbfbf;
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-}
-.main-navigation .search-form .search-field:-ms-input-placeholder {
-  color: #bfbfbf;
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-}
-.main-navigation .search-form .search-field::-webkit-input-placeholder {
-  color: #bfbfbf;
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-}
-.main-navigation .search-form .search-submit {
-  padding: 4px 14px;
-  border-color: #000;
-}
-@media screen and (max-width: 979px) {
-  .main-navigation .search-form {
-    float: none;
-    padding: 25px 40px;
-    margin-top: 0;
-    border: solid #222222;
-    border-width: 1px 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  .main-navigation .search-form label {
-    width: 100%;
-  }
-  .main-navigation .search-form .search-field {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .main-navigation .search-form .search-submit {
-    display: inline-block;
-  }
-}
-/* =============================================================================
    Helper classes:  Accessibility
    ========================================================================== */
 /* Text meant only for screen readers */
@@ -3084,6 +3015,75 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .related-posts .with-thumbnails .related-post span {
   font-size: 13px;
   font-size: 1.3rem;
+}
+/* =============================================================================
+   Layout:  Search form
+   ========================================================================== */
+.search-form label {
+  display: inline-block;
+  margin-right: 5px;
+}
+.search-form .search-field {
+  padding-left: 27px;
+  background: #ffffff url(images/search.png) no-repeat 5px center;
+}
+.search-form .search-field[results] {
+  padding-left: 6px;
+  background-image: none;
+}
+.search-form .search-submit.screen-reader-text {
+  width: 1px;
+}
+.main-navigation .search-form {
+  float: right;
+  margin-top: 10px;
+}
+.main-navigation .search-form label {
+  margin: 0;
+}
+.main-navigation .search-form .search-field {
+  background-color: #555555;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid #000;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+}
+.main-navigation .search-form .search-field::-moz-placeholder {
+  color: #bfbfbf;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.main-navigation .search-form .search-field:-ms-input-placeholder {
+  color: #bfbfbf;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.main-navigation .search-form .search-field::-webkit-input-placeholder {
+  color: #bfbfbf;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+.main-navigation .search-form .search-submit {
+  padding: 4px 14px;
+  border-color: #000;
+}
+@media screen and (max-width: 979px) {
+  .main-navigation .search-form {
+    float: none;
+    padding: 25px 40px;
+    margin-top: 0;
+    border: solid #222222;
+    border-width: 1px 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .main-navigation .search-form label {
+    width: 100%;
+  }
+  .main-navigation .search-form .search-field {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .main-navigation .search-form .search-submit {
+    display: inline-block;
+  }
 }
 /* =============================================================================
    Layout:  Comments area
