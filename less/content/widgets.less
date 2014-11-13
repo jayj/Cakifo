@@ -1,5 +1,5 @@
 /* =============================================================================
-   Components:  Widgets
+   Content:  Widgets
    ========================================================================== */
 
 .widget {
@@ -103,7 +103,6 @@
 			// Vertically center the icon
 			top: 50%;
 			transform: translateY(-50%);
-
 		}
 	}
 
@@ -117,60 +116,60 @@
 	}
 }
 
-// =============================================================================
+
 // Search form in the topbar
 // =============================================================================
 
 .main-navigation .search-form {
-	float: right;
-	margin-top: 10px;
-
-	label {
-		margin: 0;
-	}
 
 	.search-field {
 		background-color: @gray;
-		background-color: fade(#fff, 30%);
+		background-color: fade(#fff, 20%);
 		border: 1px solid #000;
 		box-shadow:
 			inset 0 1px 2px fade(#000, 10%),
-			0 1px 0px fade(#fff, 30%);
+			0 1px 0px fade(#fff, 20%);
 		color: #fff;
 		color: fade(#fff, 80%);
 
 		// Give the input placeholder a lighter colour
-		.placeholder( lighten(@gray-light, 15%), -1px -1px 0 fade(#000, 30%) );
+		.placeholder( @topbar-search-placeholder, -1px -1px 0 fade(#000, 30%) );
 	}
 
-	.search-submit {
-		padding: 4px 14px;
-		border-color: #000;
+	// The search icon
+	label:before {
+		color: @topbar-search-placeholder;
 	}
+
+}
+
+
+@media screen and (min-width: 980px) {
+
+	.main-navigation .search-form {
+		float: right;
+		margin-top: 12px;
+	}
+
 }
 
 @media screen and (max-width: 979px) {
+
 	.main-navigation .search-form {
-		float: none;
+		margin-top: (-@gutter-width-small);
 		padding: @gutter-width-small @gutter-width;
-		margin-top: 0;
-		border: solid @topbar-search-border;
-		border-width: 1px 0;
-		box-shadow:
-			inset 0 1px 0 fade(#fff, 10%),
-			0 1px 0 fade(#fff, 10%);
 
-		label {
-			width: 100%;
-		}
-
+		// Increase search field size
 		.search-field {
-			width: 100%;
-			box-sizing: border-box;
+			.font-size(@font-size-base);
+			padding: 20px 0 20px 40px;
 		}
 
-		.search-submit {
-			display: inline-block;
+		label:before {
+			.font-size(21);
+			left: 12px;
 		}
 	}
+
+
 }
