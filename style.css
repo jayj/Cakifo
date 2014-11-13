@@ -1138,6 +1138,9 @@ input[type="radio"],
 input[type="checkbox"] {
   width: auto;
 }
+input[type="search"] {
+  box-sizing: border-box;
+}
 input[type="color"] {
   padding: 0;
 }
