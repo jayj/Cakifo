@@ -12,7 +12,7 @@
 do_atomic( 'before_loop_meta' ); ?>
 
 <?php
-	/**
+	/*
 	 * Add Breadcrumb Trail
 	 */
 	if ( current_theme_supports( 'breadcrumb-trail' ) && ( ! is_home() && ! is_front_page() ) ) :
@@ -32,9 +32,11 @@ do_atomic( 'before_loop_meta' ); ?>
 
 		<h1 class="loop-title"><?php echo get_post_field( 'post_title', get_queried_object_id() ); ?></h1>
 
-		<div class="loop-description">
-			<?php echo apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', get_queried_object_id() ) ); ?>
-		</div> <!-- .loop-description -->
+		<?php if ( has_excerpt() ) : ?>
+			<div class="loop-description">
+				<?php echo apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', get_queried_object_id() ) ); ?>
+			</div> <!-- .loop-description -->
+		<?php endif; ?>
 
 	</div> <!-- .loop-meta-home -->
 
