@@ -3,10 +3,12 @@
    ========================================================================== */
 
 .pagination,
-.post-navigation {
+.post-navigation,
+.page-links {
 	margin: @gutter-width 0;
 
 	a,
+	> span, // used in .page-links
 	.current {
 		display: inline-block;
 		padding: 13px 14px 12px;
@@ -33,6 +35,7 @@
 			inset 2px 2px 8px fade(#000, 30%);
 	}
 
+	> span,
 	.current {
 		background-color: lighten(@gray-dark, 10%);
 		box-shadow: 0 2px 0 #000;
@@ -42,7 +45,34 @@
 }
 
 
-/* Prev/next post navigation */
+/*
+ * Post pagination
+ */
+.page-links {
+	clear: both;
+}
+
+.page-links a,
+.page-links > span {
+	padding: 8px 12px;
+	margin-right: 5px;
+}
+
+.page-links > .page-links-title {
+	color: @post-meta-color;
+	padding-right: 8px;
+
+	// overwrite span styles because the current page doesn't have its own class
+	background: none;
+	padding-left: 0;
+	border: 0;
+	margin: 0;
+}
+
+
+/*
+ * Prev/next post navigation
+ */
 .post-navigation {
 	.clearfix();
 
