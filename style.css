@@ -2477,8 +2477,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   hyphens: auto;
   word-wrap: break-word;
 }
-}
-/**
+/*
  * Entry meta
  */
 .byline,
@@ -2488,19 +2487,13 @@ body.page-template-template-front-page .site-wrapper .site-main {
   color: #808080;
   clear: both;
 }
-.byline {
-  margin-bottom: 15px;
-}
-.entry-header .byline {
-  margin-top: 5px;
+.entry-meta {
+  margin-top: 40px;
 }
 .singular .entry-meta {
-  padding: 15px 0 0;
+  padding-top: 15px;
   border-top: 1px solid #eeeeee;
-  margin: 25px 0;
-}
-.page-links {
-  clear: both;
+  margin: 40px 0;
 }
 /* =============================================================================
    Layout:  Post formats
@@ -3223,6 +3216,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .loop-meta-home {
   border-bottom: 5px solid #ffc768;
+  margin-bottom: 40px;
 }
 .loop-title {
   font-size: 23px;

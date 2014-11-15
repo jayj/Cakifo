@@ -44,10 +44,10 @@
 	word-wrap: break-word;
 }
 
-/**
+
+/*
  * Entry meta
  */
-
 .byline,
 .entry-meta {
 	.font-size(@font-size-medium);
@@ -55,20 +55,12 @@
 	clear: both;
 }
 
-.byline {
-	margin-bottom: 15px;
-
-	.entry-header & {
-		margin-top: 5px;
-	}
+.entry-meta {
+	margin-top: @gutter-width;
 }
 
 .singular .entry-meta {
-	padding: 15px 0 0;
+	padding-top: 15px;
 	border-top: 1px solid @post-border-color;
-	margin: @gutter-width-small 0;
-}
-
-.page-links {
-	clear: both;
+	margin: @gutter-width 0;
 }
