@@ -789,14 +789,20 @@ function cakifo_load_in_singular() {
 
 /**
  * Filters the arguments for the wp_link_pages()
+ * to be more accessible.
  *
  * @since  Cakifo 1.5.0
+ *
  * @param  array  $args Default arguments for the wp_link_pages() function.
  * @return array        Filterted arguments for the wp_link_pages() function.
  */
 function cakifo_link_pages_args( $args ) {
-	$args['before'] = '<p class="page-links">' . __( 'Pages:', 'cakifo' );
-	$args['after']  = '</p>';
+	$args['before']      = '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'cakifo' ) . '</span>';
+	$args['after']       = '</div>';
+	$args['link_before'] = '<span>';
+	$args['link_after']  = '</span>';
+	$args['pagelink']    = '<span class="screen-reader-text">' . esc_html__( 'Page', 'cakifo' ) . ' </span>%';
+	$args['separator']   = '<span class="screen-reader-text">, </span>';
 
 	return $args;
 }
