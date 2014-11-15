@@ -2477,6 +2477,26 @@ body.page-template-template-front-page .site-wrapper .site-main {
   hyphens: auto;
   word-wrap: break-word;
 }
+.entry-content .more-link:after,
+.entry-summary .more-link:after {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: "Genericons";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  speak: none;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  vertical-align: top;
+  content: "\f429";
+  position: relative;
+  top: 5px;
+}
 /*
  * Entry meta
  */
