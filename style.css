@@ -816,13 +816,6 @@ h6 {
   font-weight: normal;
   line-height: 1.6;
 }
-/* Entry titles */
-.entry-title {
-  font-size: 30px;
-  font-size: 3rem;
-  margin-bottom: 0;
-  word-wrap: break-word;
-}
 /* Widget titles */
 .widget-title {
   background-color: #f4f4f4;
@@ -2465,6 +2458,20 @@ body.page-template-template-front-page .site-wrapper .site-main {
   border-bottom-color: #ffc768;
   margin-top: -40px;
 }
+/*
+ * Entry header
+ */
+.entry-header {
+  margin-bottom: 25px;
+}
+.entry-title {
+  font-size: 30px;
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+}
+/*
+ * Entry content
+ */
 .entry-content,
 .entry-summary {
   hyphens: auto;
