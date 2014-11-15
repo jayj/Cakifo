@@ -2462,9 +2462,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .sticky {
   padding: 25px;
   background: #ffffdf;
+  margin-top: -40px;
 }
-.sticky .entry-title {
-  margin-top: 0;
 .entry-content,
 .entry-summary {
   hyphens: auto;
