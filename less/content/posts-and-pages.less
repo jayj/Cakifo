@@ -6,7 +6,6 @@
 	position: relative;
 	padding-bottom: @gutter-width;
 	border-bottom: 4px double @post-border-color;
-	word-wrap: break-word;
 	margin-bottom: @gutter-width;
 
 	.singular & {
@@ -22,6 +21,10 @@
 	.entry-title {
 		margin-top: 0;
 	}
+.entry-content,
+.entry-summary {
+	hyphens: auto;
+	word-wrap: break-word;
 }
 
 /**

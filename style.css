@@ -2453,7 +2453,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   padding-bottom: 40px;
   border-bottom: 4px double #eeeeee;
-  word-wrap: break-word;
   margin-bottom: 40px;
 }
 .singular .hentry {
@@ -2466,6 +2465,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .sticky .entry-title {
   margin-top: 0;
+.entry-content,
+.entry-summary {
+  hyphens: auto;
+  word-wrap: break-word;
+}
 }
 /**
  * Entry meta
