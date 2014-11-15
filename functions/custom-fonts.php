@@ -136,6 +136,14 @@ function cakifo_register_fonts( $theme_fonts ) {
 			'type'    => 'google',
 			'weights' => array( '300', '400', '700' )
 		),
+		array(
+			'handle'  => 'oxygen',
+			'label'   => __( 'Oxygen', 'cakifo' ),
+			'family'  => 'Oxygen',
+			'stack'   => "'Oxygen', sans-serif",
+			'type'    => 'google',
+			'weights' => array( '300', '400', '700' )
+		),
 	);
 
 	/* Add each font and font weight. */
