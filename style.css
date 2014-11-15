@@ -2483,10 +2483,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
  */
 .byline,
 .entry-meta {
-  font-size: 14px;
-  font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 2;
+  font-size: 15px;
+  font-size: 1.5rem;
   color: #808080;
   clear: both;
 }
