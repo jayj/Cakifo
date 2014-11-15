@@ -2462,6 +2462,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .sticky {
   padding: 25px;
   background: #ffffdf;
+  border-bottom-color: #ffc768;
   margin-top: -40px;
 }
 .entry-content,
