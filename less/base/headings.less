@@ -15,6 +15,11 @@ h1, h2 {
 h3 {
 	.font-size(@headings-size-medium);
 	color: @orange-dark;
+
+	.entry-content & {
+		background: lighten(@gray-lighter, 2.5%);
+		padding: 8px 10px;
+	}
 }
 
 h4 {
@@ -36,11 +41,6 @@ h6 {
 	word-wrap: break-word;
 }
 
-/* h3 headings in post content */
-.entry-content h3 {
-	background: lighten(@gray-lighter, 2.5%);
-	padding: 8px 10px;
-}
 
 /* Widget titles */
 .widget-title {
