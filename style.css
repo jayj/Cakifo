@@ -3244,26 +3244,29 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .post-navigation .current,
 .page-links .current {
   display: inline-block;
-  padding: 13px 14px 12px;
+  padding: 12px 14px;
   margin-right: 2px;
   line-height: normal;
   background-color: #eeeeee;
-  box-shadow: 0 2px 0 #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
   border-radius: 3px;
   color: #494949;
-  text-shadow: 0 1px 0 #fff;
   transition: all 150ms ease;
 }
 .pagination a:hover,
-.post-navigation a:hover {
+.post-navigation a:hover,
+.page-links a:hover,
+.pagination a:focus,
+.post-navigation a:focus,
+.page-links a:focus {
   background-color: #ffc768;
-  box-shadow: 0 2px 0 #f89406;
+  border-bottom-color: #f89406;
   color: #511d0c;
-  text-shadow: 0 1px 0 #ffedce;
 }
 .pagination a:active,
-.post-navigation a:active {
-  box-shadow: 0 2px 0 #f89406, inset 2px 2px 8px rgba(0, 0, 0, 0.3);
+.post-navigation a:active,
+.page-links a:active {
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 .pagination > span,
 .post-navigation > span,
@@ -3272,9 +3275,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .post-navigation .current,
 .page-links .current {
   background-color: #4d4d4d;
-  box-shadow: 0 2px 0 #000;
+  border-bottom-color: #4d4d4d;
   color: #fff;
-  text-shadow: 0 -1px 0 #000000;
 }
 /*
  * Post pagination

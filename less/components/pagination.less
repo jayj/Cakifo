@@ -11,36 +11,32 @@
 	> span, // used in .page-links
 	.current {
 		display: inline-block;
-		padding: 13px 14px 12px;
+		padding: 12px 14px;
 		margin-right: 2px;
 		line-height: normal;
 		background-color: @pagination-bg;
-		box-shadow: 0 2px 0 darken(@pagination-bg, 15%);
+		border-bottom: 1px solid @pagination-border-color;
 		border-radius: 3px;
 		color: darken(@gray, 5%);
-		text-shadow: 0 1px 0 #fff;
 		transition: all 150ms ease;
 	}
 
-	a:hover {
+	a:hover,
+	a:focus {
 		background-color: @pagination-hover-bg;
-		box-shadow: 0 2px 0 @pagination-hover-border;
+		border-bottom-color: @pagination-hover-border;
 		color: @pagination-hover-text;
-		text-shadow: 0 1px 0 lighten(@pagination-hover-bg, 20%);
 	}
 
 	a:active {
-		box-shadow:
-			0 2px 0 @pagination-hover-border,
-			inset 2px 2px 8px fade(#000, 30%);
+		box-shadow: inset 2px 2px 8px fade(#000, 30%);
 	}
 
 	> span,
 	.current {
 		background-color: lighten(@gray-dark, 10%);
-		box-shadow: 0 2px 0 #000;
+		border-bottom-color: lighten(@gray-dark, 10%);
 		color: #fff;
-		text-shadow: 0 -1px 0 #000;
 	}
 }
 
