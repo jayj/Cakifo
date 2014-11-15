@@ -2451,7 +2451,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
    ========================================================================== */
 .hentry {
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 25px;
   border-bottom: 4px double #eeeeee;
   margin-bottom: 40px;
 }
