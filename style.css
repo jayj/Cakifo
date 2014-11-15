@@ -2452,14 +2452,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
    ========================================================================== */
 .hentry {
   position: relative;
-  padding-bottom: 25px;
+  padding-bottom: 40px;
   border-bottom: 4px double #eeeeee;
-  margin-bottom: 25px;
   word-wrap: break-word;
+  margin-bottom: 40px;
 }
 .singular .hentry {
   padding-bottom: 0;
-  border-bottom: none;
+  border-bottom-width: 0;
 }
 .sticky {
   padding: 25px;

@@ -1,17 +1,17 @@
 /* =============================================================================
-   Layout:  Posts
+   Content:  Posts
    ========================================================================== */
 
 .hentry {
 	position: relative;
-	padding-bottom: @gutter-width-small;
+	padding-bottom: @gutter-width;
 	border-bottom: 4px double @post-border-color;
-	margin-bottom: @gutter-width-small;
 	word-wrap: break-word;
+	margin-bottom: @gutter-width;
 
 	.singular & {
 		padding-bottom: 0;
-		border-bottom: none;
+		border-bottom-width: 0;
 	}
 }
 
