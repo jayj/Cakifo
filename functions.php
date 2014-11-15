@@ -392,20 +392,22 @@ function cakifo_get_the_image_arguments( $args ) {
 
 
 /**
- * Edit the "More link" for archive excerpts.
+ * Replaces "[...]" (appended to automatically generated excerpts) with ...
+ * and a Continue reading link.
  *
  * @since  Cakifo 1.0.0
- * @param  string  $more The default more link
- * @return string        The changed more link with a more descriptive text
+ *
+ * @param  string  $more The default [...] text.
+ * @return string        The changed text with a Continue reading link.
  */
 function cakifo_excerpt_more( $more ) {
-	global $post;
+	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Name of current post */
+		sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
+		);
 
-	if ( is_archive() ) {
-		$more = '<p><a href="'. get_permalink( $post->ID ) . '" class="more-link">' .	__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) . '</a></p>';
-	}
-
-	return $more;
+	return ' &hellip; ' . $link;
 }
 
 

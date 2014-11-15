@@ -37,8 +37,15 @@ do_atomic( 'before_entry' ); ?>
 	<?php else : ?>
 
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ) ); ?>
-			<?php wp_link_pages(); ?>
+			<?php
+				/* translators: %s: Name of current post */
+				the_content( sprintf(
+					esc_html__( 'Continue reading %s', 'cakifo' ),
+					the_title( '<span class="screen-reader-text">', '</span>', false )
+				) );
+
+				wp_link_pages();
+			?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
