@@ -2713,6 +2713,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
   float: right;
   width: 60%;
 }
+.attachment-gallery .gallery-caption {
+  display: none;
+}
 /**
  * Intro
  */
