@@ -20,10 +20,18 @@
 }
 
 .chat-row {
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 }
 
-/* The name of the soeaker */
+.chat-author {
+	float: left;
+	width: @format-chat-author-width;
+}
+
+.chat-text {
+	padding-left: (@format-chat-author-width + 10px);
+}
+
 .chat-author {
 	color: #000;
 
@@ -36,28 +44,16 @@
 	}
 
 	// Give the chat person different colors
-	.chat-speaker-1 & { color: @orange-dark; }
+	.chat-speaker-1 & { color: @orange-dark;           }
 	.chat-speaker-2 & { color: darken(@blue-dark, 5%); }
-	.chat-speaker-3 & { color: @purple; }
-	.chat-speaker-4 & { color: darken(@green, 5%); }
-	.chat-speaker-5 & { color: darken(@pink, 5%); }
-	.chat-speaker-6 & { color: @red; }
+	.chat-speaker-3 & { color: @purple;                }
+	.chat-speaker-4 & { color: darken(@green, 5%);     }
+	.chat-speaker-5 & { color: darken(@pink, 5%);      }
+	.chat-speaker-6 & { color: @red;                   }
 }
 
-/* The speaker text */
-.chat-text {
-	padding-left: @gutter-width-small;
 
-	p {
-		margin-top: 10px;
-		margin-bottom: 0;
-	}
 
-	.no-speaker &,
-	.chat-speaker-0 & {
-		padding-left: 0;
-		color: lighten(@gray, 8%);
-	}
 }
 
 /**

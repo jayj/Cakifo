@@ -2545,9 +2545,15 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 25px 0;
 }
 .chat-row {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
-/* The name of the soeaker */
+.chat-author {
+  float: left;
+  width: 80px;
+}
+.chat-text {
+  padding-left: 90px;
+}
 .chat-author {
   color: #000;
 }
@@ -2577,18 +2583,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .chat-speaker-6 .chat-author {
   color: #9d261d;
 }
-/* The speaker text */
-.chat-text {
-  padding-left: 25px;
 }
-.chat-text p {
-  margin-top: 10px;
-  margin-bottom: 0;
 }
-.no-speaker .chat-text,
-.chat-speaker-0 .chat-text {
-  padding-left: 0;
-  color: #6a6a6a;
 }
 /**
  * Format: Status
