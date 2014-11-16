@@ -40,14 +40,17 @@ do_atomic( 'before_entry' ); ?>
 			<?php hybrid_media_meta(); ?>
 		</div> <!-- .attachment-info -->
 
-		<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small" numberposts="20"]', $post->post_parent, get_the_ID() ) ); ?>
+		<?php if ( $post->post_parent ) : ?>
+			<?php $gallery = do_shortcode( sprintf( '[gallery id="%1$s" exclude="%2$s" columns="5" size="small"]', $post->post_parent, get_the_ID() ) ); ?>
 
-		<?php if ( ! empty( $gallery ) ) { ?>
-			<div class="attachment-gallery">
-				<h3><?php _e( 'Gallery', 'cakifo' ); ?></h3>
-				<?php echo $gallery; ?>
-			</div> <!-- .attachment-gallery -->
-		<?php } ?>
+			<?php if ( ! empty( $gallery ) ) : ?>
+				<div class="attachment-gallery">
+					<h3><?php _e( 'Gallery', 'cakifo' ); ?></h3>
+					<?php echo $gallery; ?>
+				</div> <!-- .attachment-gallery -->
+			<?php endif; ?>
+
+		<?php endif; ?>
 
 	</aside> <!-- .attachment-meta -->
 
