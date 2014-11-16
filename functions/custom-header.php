@@ -75,9 +75,11 @@ function cakifo_header_style() {
 			if ( ! display_header_text() ) :
 		?>
 			.site-title span {
-				position: absolute;
-				clip: rect(1px 1px 1px 1px); /* IE7 */
 				clip: rect(1px, 1px, 1px, 1px);
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				position: absolute;
 			}
 		<?php
 			// If the user has set a custom color for the text, use that
