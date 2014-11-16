@@ -10,7 +10,7 @@
  */
 ?>
 
-	<?php if ( is_attachment() ) : ?>
+	<?php if ( is_attachment() && $post->post_parent  ) : ?>
 
 		<?php
 			the_post_navigation( array(
