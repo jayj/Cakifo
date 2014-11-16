@@ -2674,11 +2674,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /* =============================================================================
    Layout:  Attachment pages
    ========================================================================== */
-.attachment-title {
-  margin-top: 0;
+.attachment .byline .image-size-link:before {
+  content: '\f402';
+  top: 4px;
+  margin-right: 3px;
+  position: relative;
 }
-.attachment-meta {
-  margin-bottom: 25px;
+.attachment .byline .sep {
+  margin: 0 3px;
 }
 .attachment-info {
   float: left;
