@@ -2,19 +2,58 @@
    Layout:  Post formats
    ========================================================================== */
 
-/**
- * Post format link
+/*
+ * Post format link with icon
  */
+.post-format-link:before {
+	.icon();
+	top: 4px;
+	margin-right: 4px;
+	position: relative;
+}
+
 .entry-header .post-format-link {
 	.label-variant();
 	position: absolute;
 	top: 10px;
 	right: 0;
+
+	&:before {
+		top: -1px;
+	}
 }
 
-/**
+
+/*
+ * Format: Aside
+ */
+.format-aside {
+	.post-format-link:before {
+		content: "\f101";
+	}
+
+	.permalink {
+		.font-size(@font-size-large);
+	}
+}
+
+
+/*
+ * Format: Audio
+ */
+.format-audio .post-format-link:before {
+	content: "\f109";
+}
+
+
+/*
  * Format: Chat
  */
+.format-chat .post-format-link:before {
+	content: "\f108";
+	margin-right: 5px;
+}
+
 .chat-transcript {
 	margin: @gutter-width-small 0;
 }
@@ -52,7 +91,29 @@
 	.chat-speaker-6 & { color: @red;                   }
 }
 
+/*
+ * Format: Gallery
+ */
+.format-gallery .post-format-link:before {
+	content: "\f103";
+	margin-right: 5px;
+}
 
+
+/*
+ * Format: Image
+ */
+.format-image .post-format-link:before {
+	content: "\f473";
+}
+
+
+/*
+ * Format: Link
+ */
+.format-link .post-format-link:before {
+	content: "\f107";
+}
 
 .format-link .entry-title a:after {
 	.icon();
@@ -61,9 +122,28 @@
 	margin-left: 2px;
 }
 
+
+/**
+ * Format: Quote
+ */
+.format-quote .post-format-link:before {
+	content: "\f106";
+}
+
+.format-quote .entry-meta {
+	// Set z-index higher than the quotes on <blockquote>
+	position: relative;
+	z-index: 10;
+}
+
+
 /**
  * Format: Status
  */
+.format-status .post-format-link:before {
+	content: "\f105";
+}
+
 .format-status .entry-header {
 	position: relative;
 	margin-bottom: @gutter-width-small;
@@ -82,61 +162,16 @@
 	a {
 		color: @gray;
 
-		&:hover { color: @link-color-hover; }
-	}
-}
-
-/**
- * Format: Quote
- */
-.format-quote .entry-meta {
-	// Set z-index higher than the quotes on <blockquote>
-	position: relative;
-	z-index: 10;
-}
-
-/**
- * Format: Aside
- */
-.format-aside .permalink {
-	.font-size(@font-size-large);
-}
-
-
-/**
- * Format: Link
- */
-.format-link .entry-title:hover .meta-nav {
-	margin-left: 5px;
-	transition: margin-left 200ms ease-in-out;
-}
-
-/**
- * Format: Video
- */
-.format-video .entry-header {
-	margin-bottom: (@gutter-width-small - 10px);
-}
-
-/**
- * Format: Image
- */
-.format-image {
-
-	.entry-media {
-		line-height: normal;
-	}
-
-	.entry-meta {
-		margin-top: (@gutter-width-small + 5px);
-		padding: @gutter-width-small;
-		#font > .shorthand(@font-size-small, normal, 1.8);
-		background: @format-image-meta-bg;
-		border-radius: 3px;
-		color: @gray;
-
-		p {
-			margin: 0;
+		&:hover {
+			color: @link-color-hover;
 		}
 	}
+}
+
+
+/*
+ * Format: Video
+ */
+.format-video .post-format-link:before {
+	content: "\f104";
 }

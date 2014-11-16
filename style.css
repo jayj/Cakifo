@@ -2518,16 +2518,36 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /* =============================================================================
    Layout:  Post formats
    ========================================================================== */
-/**
- * Post format link
+/*
+ * Post format link with icon
  */
+.post-format-link:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: "Genericons";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  speak: none;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  vertical-align: top;
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
+}
 .entry-header .post-format-link {
   background-color: #eeeeee;
   border-radius: 3px;
   color: #6f6f6f;
   font-size: 12px;
   font-size: 1.2rem;
-  padding: 3px 10px;
+  line-height: normal;
+  padding: 7px 10px 5px;
   text-transform: uppercase;
   position: absolute;
   top: 10px;
@@ -2538,9 +2558,32 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background-color: #d54e21;
   color: #fff;
 }
-/**
+.entry-header .post-format-link:before {
+  top: -1px;
+}
+/*
+ * Format: Aside
+ */
+.format-aside .post-format-link:before {
+  content: "\f101";
+}
+.format-aside .permalink {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+/*
+ * Format: Audio
+ */
+.format-audio .post-format-link:before {
+  content: "\f109";
+}
+/*
  * Format: Chat
  */
+.format-chat .post-format-link:before {
+  content: "\f108";
+  margin-right: 5px;
+}
 .chat-transcript {
   margin: 25px 0;
 }
@@ -2583,12 +2626,61 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .chat-speaker-6 .chat-author {
   color: #9d261d;
 }
+/*
+ * Format: Gallery
+ */
+.format-gallery .post-format-link:before {
+  content: "\f103";
+  margin-right: 5px;
 }
+/*
+ * Format: Image
+ */
+.format-image .post-format-link:before {
+  content: "\f473";
 }
+/*
+ * Format: Link
+ */
+.format-link .post-format-link:before {
+  content: "\f107";
+}
+.format-link .entry-title a:after {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: "Genericons";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  speak: none;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  vertical-align: top;
+  content: "\f442";
+  font-size: 30px;
+  font-size: 3rem;
+  margin-left: 2px;
+}
+/**
+ * Format: Quote
+ */
+.format-quote .post-format-link:before {
+  content: "\f106";
+}
+.format-quote .entry-meta {
+  position: relative;
+  z-index: 10;
 }
 /**
  * Format: Status
  */
+.format-status .post-format-link:before {
+  content: "\f105";
+}
 .format-status .entry-header {
   position: relative;
   margin-bottom: 25px;
@@ -2610,52 +2702,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .format-status .entry-header a:hover {
   color: #d54e21;
 }
-/**
- * Format: Quote
- */
-.format-quote .entry-meta {
-  position: relative;
-  z-index: 10;
-}
-/**
- * Format: Aside
- */
-.format-aside .permalink {
-  font-size: 18px;
-  font-size: 1.8rem;
-}
-/**
- * Format: Link
- */
-.format-link .entry-title:hover .meta-nav {
-  margin-left: 5px;
-  transition: margin-left 200ms ease-in-out;
-}
-/**
+/*
  * Format: Video
  */
-.format-video .entry-header {
-  margin-bottom: 15px;
-}
-/**
- * Format: Image
- */
-.format-image .entry-media {
-  line-height: normal;
-}
-.format-image .entry-meta {
-  margin-top: 30px;
-  padding: 25px;
-  font-size: 14px;
-  font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.8;
-  background: #e0e6e8;
-  border-radius: 3px;
-  color: #555555;
-}
-.format-image .entry-meta p {
-  margin: 0;
+.format-video .post-format-link:before {
+  content: "\f104";
 }
 /* =============================================================================
    Layout:  Attachment pages
@@ -2715,7 +2766,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
   color: #6f6f6f;
   font-size: 12px;
   font-size: 1.2rem;
-  padding: 3px 10px;
+  line-height: normal;
+  padding: 7px 10px 5px;
   text-transform: uppercase;
   position: absolute;
   top: 0;
