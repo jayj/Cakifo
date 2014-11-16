@@ -66,7 +66,7 @@ do_atomic( 'before_entry' ); ?>
 		<?php endif; ?>
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_chat', __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before="| "]', 'cakifo' ) ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_meta_chat', __( '[post-format-link] [entry-terms taxonomy="category" before="posted in "] [entry-terms before="| Tagged "] [entry-comments-link before="| "]', 'cakifo' ) ); ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
