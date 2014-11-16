@@ -2748,6 +2748,100 @@ body.page-template-template-front-page .site-wrapper .site-main {
   color: #fff;
 }
 /* =============================================================================
+   Components:  Recent Posts
+   ========================================================================== */
+.recent-post {
+  float: left;
+  width: 220px;
+  margin-right: 40px;
+  transition: opacity 250ms;
+  /* Lower opacity on every column except the hovered */
+}
+.recent-post:last-of-type {
+  margin-right: 0;
+}
+.recent-post .entry-title {
+  margin: 0;
+  font-size: 16px;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  word-wrap: break-word;
+}
+.recent-post .entry-header {
+  margin: 7px 0;
+}
+.recent-post .recent-posts-meta {
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #8c8c8c;
+}
+.recent-post .thumbnail {
+  float: none;
+  max-height: 150px;
+  margin: 0;
+}
+.recent-post .entry-summary {
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.recent-post-columns:hover .recent-post {
+  opacity: 0.75;
+}
+.recent-post-columns:hover .recent-post:hover {
+  opacity: 1;
+}
+/* =============================================================================
+   Components:  Headlines Lists
+   ========================================================================== */
+.headline-columns {
+  margin: 40px 0;
+}
+.headline-columns .widget-title {
+  margin-bottom: 15px;
+}
+.headline-list {
+  float: left;
+  width: 470px;
+  margin: 0 60px 40px 0;
+}
+.headline-list:nth-child(2n) {
+  margin-right: 0;
+}
+.headline-list:nth-child(2n + 1) {
+  clear: left;
+}
+.headline-list ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.headline-list .headline-item {
+  padding: 25px 20px;
+  border-bottom: 1px solid #e2e2e2;
+  line-height: 1.6;
+}
+.headline-list .headline-item:hover,
+.headline-list .headline-item:active {
+  background-color: #f2f7fc;
+  background-image: linear-gradient(to right, #f6fafd 50%, #f2f7fc);
+}
+.headline-list .entry-title {
+  margin: 0;
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.headline-list .headline-meta {
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #8c8c8c;
+}
+.headline-list .thumbnail {
+  float: left;
+  margin: 0 25px 0 0;
+}
+/* =============================================================================
    Layout:  Slider
    ========================================================================== */
 .cakifo-slider {
@@ -2889,100 +2983,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .no-js .slides-container > .slide:first-child {
   display: block;
-}
-/* =============================================================================
-   Components:  Recent Posts
-   ========================================================================== */
-.recent-post {
-  float: left;
-  width: 220px;
-  margin-right: 40px;
-  transition: opacity 250ms;
-  /* Lower opacity on every column except the hovered */
-}
-.recent-post:last-of-type {
-  margin-right: 0;
-}
-.recent-post .entry-title {
-  margin: 0;
-  font-size: 16px;
-  font-size: 1.6rem;
-  letter-spacing: 0;
-  word-wrap: break-word;
-}
-.recent-post .entry-header {
-  margin: 7px 0;
-}
-.recent-post .recent-posts-meta {
-  font-size: 12px;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #8c8c8c;
-}
-.recent-post .thumbnail {
-  float: none;
-  max-height: 150px;
-  margin: 0;
-}
-.recent-post .entry-summary {
-  word-wrap: break-word;
-  hyphens: auto;
-}
-.recent-post-columns:hover .recent-post {
-  opacity: 0.75;
-}
-.recent-post-columns:hover .recent-post:hover {
-  opacity: 1;
-}
-/* =============================================================================
-   Components:  Headlines Lists
-   ========================================================================== */
-.headline-columns {
-  margin: 40px 0;
-}
-.headline-columns .widget-title {
-  margin-bottom: 15px;
-}
-.headline-list {
-  float: left;
-  width: 470px;
-  margin: 0 60px 40px 0;
-}
-.headline-list:nth-child(2n) {
-  margin-right: 0;
-}
-.headline-list:nth-child(2n + 1) {
-  clear: left;
-}
-.headline-list ol {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.headline-list .headline-item {
-  padding: 25px 20px;
-  border-bottom: 1px solid #e2e2e2;
-  line-height: 1.6;
-}
-.headline-list .headline-item:hover,
-.headline-list .headline-item:active {
-  background-color: #f2f7fc;
-  background-image: linear-gradient(to right, #f6fafd 50%, #f2f7fc);
-}
-.headline-list .entry-title {
-  margin: 0;
-  font-size: 18px;
-  font-size: 1.8rem;
-}
-.headline-list .headline-meta {
-  font-size: 14px;
-  font-size: 1.4rem;
-  font-style: italic;
-  color: #8c8c8c;
-}
-.headline-list .thumbnail {
-  float: left;
-  margin: 0 25px 0 0;
 }
 /* =============================================================================
    Content:  Widgets
