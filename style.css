@@ -2543,11 +2543,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
  */
 .chat-transcript {
   margin: 25px 0;
-  font-family: Monaco, Consolas, "Courier New", monospace;
-  font-size: 14px;
-  font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.6;
 }
 .chat-row {
   margin-bottom: 10px;
