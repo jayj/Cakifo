@@ -1921,7 +1921,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     float: none;
   }
   .flexbox .site-header {
-    flex-direction: column;
+    display: block;
   }
   .flexbox .site-title,
   .flexbox .site-description {
