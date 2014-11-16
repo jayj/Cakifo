@@ -24,6 +24,7 @@ do_atomic( 'before_entry' ); ?>
 				echo apply_atomic_shortcode( 'entry_title', '[entry-title]' );
 			}
 		?>
+		<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 	</header> <!-- .entry-header -->
 
 	<div class="entry-content">
