@@ -12,6 +12,18 @@
 }
 
 
+// Icon
+// -------------------------
+
+.icon( @icon: '', @right: 4px, @top: 4px ) {
+	&:extend(.genericon);
+	content: @icon;
+	top: @top;
+	margin-right: @right;
+	position: relative;
+}
+
+
 // Menu toggle button
 // -------------------------
 .toggle-button( @bg-color: @gray, @bg-secondary-color: darken( @gray, 6% ) ) {
@@ -29,10 +41,8 @@
 	cursor: pointer;
 
 	&:before {
-		&:extend(.genericon);
-		content: '\f419';
-		margin-right: 5px;
-		vertical-align: -1px;
+		.genericon(); // can't extend inside a mixin
+		.icon('\f419', 5px, 5px);
 	}
 
 	&:hover {

@@ -967,10 +967,15 @@ html .btn-inverse:hover {
 .genericon,
 .dropdown-toggle:after,
 .entry-content .more-link:after,
+.entry-content .more-link:after,
+.entry-summary .more-link:after,
 .entry-summary .more-link:after,
 .post-format-link:before,
 .format-link .entry-title a:after,
-.search-form label:before {
+.attachment .byline .image-size-link:before,
+.search-form label:before,
+.breadcrumbs .trail-begin a:before,
+.breadcrumbs .sep:before {
   font-size: 16px;
   vertical-align: top;
   text-align: center;
@@ -2078,9 +2083,26 @@ body.page-template-template-front-page .site-wrapper .site-main {
     cursor: pointer;
   }
   .main-navigation .menu-toggle:before {
+    font-size: 16px;
+    vertical-align: top;
+    text-align: center;
+    -moz-transition: color 0.1s ease-in 0;
+    -webkit-transition: color 0.1s ease-in 0;
+    display: inline-block;
+    font-family: "Genericons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    speak: none;
     content: '\f419';
+    top: 5px;
     margin-right: 5px;
-    vertical-align: -1px;
+    position: relative;
   }
   .main-navigation .menu-toggle:hover {
     background: #333333;
@@ -2178,9 +2200,26 @@ body.page-template-template-front-page .site-wrapper .site-main {
     cursor: pointer;
   }
   .secondary-navigation .menu-toggle:before {
+    font-size: 16px;
+    vertical-align: top;
+    text-align: center;
+    -moz-transition: color 0.1s ease-in 0;
+    -webkit-transition: color 0.1s ease-in 0;
+    display: inline-block;
+    font-family: "Genericons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    speak: none;
     content: '\f419';
+    top: 5px;
     margin-right: 5px;
-    vertical-align: -1px;
+    position: relative;
   }
   .secondary-navigation .menu-toggle:hover {
     background: #333333;
@@ -2443,9 +2482,10 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .entry-content .more-link:after,
 .entry-summary .more-link:after {
-  content: "\f429";
-  position: relative;
+  content: '\f429';
   top: 5px;
+  margin-right: 0;
+  position: relative;
 }
 /*
  * Entry meta
@@ -2472,6 +2512,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
  * Post format link with icon
  */
 .post-format-link:before {
+  content: '';
   top: 4px;
   margin-right: 4px;
   position: relative;
