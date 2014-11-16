@@ -966,6 +966,7 @@ html .btn-inverse:hover {
  */
 .genericon,
 .dropdown-toggle:after,
+.sticky .byline:before,
 .entry-content .more-link:after,
 .entry-content .more-link:after,
 .entry-summary .more-link:after,
@@ -2460,6 +2461,12 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background: #ffffdf;
   border-bottom-color: #ffc768;
   margin-top: -40px;
+}
+.sticky .byline:before {
+  content: '\f408';
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
 }
 /*
  * Entry header
