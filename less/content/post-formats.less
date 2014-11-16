@@ -6,7 +6,7 @@
  * Post format link with icon
  */
 .post-format-link:before {
-	.icon();
+	&:extend(.genericon);
 	top: 4px;
 	margin-right: 4px;
 	position: relative;
@@ -116,7 +116,7 @@
 }
 
 .format-link .entry-title a:after {
-	.icon();
+	&:extend(.genericon);
 	content: "\f442"; // external icon
 	.font-size(@headings-size-large);
 	margin-left: 2px;
