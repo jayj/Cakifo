@@ -18,8 +18,11 @@ do_atomic( 'before_loop_meta' ); ?>
 	if ( current_theme_supports( 'breadcrumb-trail' ) && ( ! is_home() && ! is_front_page() ) ) :
 
 		breadcrumb_trail( array(
-			'labels' => array(
-				'browse' => __( 'You are here:', 'cakifo' )
+			'container' => 'nav',
+			'separator' => '<span class="screen-reader-text">&#47;</span>',
+			'labels'    => array(
+				'home'   => '<span class="screen-reader-text">' . __( 'Home', 'cakifo' ) . '</span>',
+				'browse' => '<span class="screen-reader-text">' . __( 'You are here:', 'cakifo' ) . '</span>'
 			)
 		));
 

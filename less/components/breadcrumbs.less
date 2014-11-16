@@ -5,12 +5,10 @@
 .breadcrumbs {
 	background: @breadcrumb-bg;
 	border-bottom: 1px solid darken(@breadcrumb-bg, 5%);
-	border-radius: 5px;
-	color: @gray;
-	#font > .shorthand(@font-size-small, normal, 2);
+	border-radius: 3px;
+	#font > .shorthand(@font-size-medium, normal, normal);
 	margin-bottom: @gutter-width-small;
-	padding: 12px @gutter-width-small;
-	word-wrap: break-word;
+	padding: 16px 15px;
 
 	a {
 		color: @gray-dark;
@@ -20,15 +18,16 @@
 		}
 	}
 
-	.trail-browse {
-		margin-right: 3px;
+	.trail-begin a:before {
+		.icon('\f409', -3px, 1px);
 	}
 
-	.sep {
-		margin: 0 3px;
-	}
+	.sep:before {
+		.icon('\f431', 3px, 0);
+		margin-left: 3px;
 
-	.trail-end {
-		font-style: italic;
+		// using the expand icon and rotating it because genericon doesn't do that
+		// https://github.com/Automattic/Genericons/issues/55
+		transform: rotate(-90deg);
 	}
 }
