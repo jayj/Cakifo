@@ -19,7 +19,7 @@ do_atomic( 'before_entry' ); ?>
 	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( hybrid_get_the_post_format_url() ) . '">', ' <span class="meta-nav">&rarr;</span></a></h1>' ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
 			<?php echo apply_atomic_shortcode( 'byline_link', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
@@ -40,7 +40,7 @@ do_atomic( 'before_entry' ); ?>
 	<?php else : ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( hybrid_get_the_post_format_url() ) . '">', ' <span class="meta-nav">&rarr;</span></a></h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( hybrid_get_the_post_format_url() ) . '">', '</a></h1>' ); ?>
 			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
 		</header> <!-- .entry-header -->
 
