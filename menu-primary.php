@@ -31,7 +31,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 					wp_nav_menu( array(
 						'theme_location'  => 'primary',
 						'container_class' => 'menu-list-container',
-						'after'           => '<span class="sep">|</span>',
+						'after'           => '<span class="sep" aria-hidden="true">|</span>',
 						'fallback_cb'     => ''
 					) );
 				?>
