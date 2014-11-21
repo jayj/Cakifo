@@ -232,7 +232,7 @@ function cakifo_logo() {
 
 	// Get header image.
 	if ( get_header_image() ) {
-		$maybe_image = '<img src="' . get_header_image() . '" alt="' . esc_attr( $title ) . '" />';
+		$maybe_image = '<img src="' . esc_url( get_header_image() ) . '" alt="' . esc_attr( $title ) . '" />';
 	}
 
 	// Generate the markup.
