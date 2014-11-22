@@ -359,15 +359,27 @@ function cakifo_slider_javascript() {
 
 
 /**
+ * Determines if the current page has the front page template
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return bool
+ */
+function cakifo_is_front_page_template() {
+	return is_page_template( 'template-front-page.php' );
+}
+
+/**
  * Determines if the slider is active
  *
  * @since  Cakifo 1.6.0
+ *
  * @uses   apply_filters() Use the `cakifo_show_slider` filter to apply new logic to
  * whether the slider should load or not.
  * @return bool true|false
  */
 function cakifo_is_active_slider() {
-	$show_slider = hybrid_get_setting( 'featured_show' ) && is_page_template( 'template-front-page.php' );
+	$show_slider = hybrid_get_setting( 'featured_show' ) && cakifo_is_front_page_template();
 
 	return (bool) apply_filters( 'cakifo_show_slider', $show_slider );
 }
@@ -442,7 +454,7 @@ function cakifo_theme_layout() {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
 	// Front page template.
-	} elseif ( is_page_template( 'template-front-page.php' ) ) {
+	} elseif ( cakifo_is_front_page_template() ) {
 		add_filter( 'get_theme_layout', 'cakifo_theme_layout_one_column' );
 
 	// Attachment with default layout.
