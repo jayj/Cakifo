@@ -685,14 +685,19 @@ function cakifo_post_thumbnail() {
 
 
 /**
- * Get info about a term selected in the 'Headlines' option.
+ * Gets info about a term by on term ID and taxonomy
  *
- * @since  Cakifo 1.6.0
- * @param  mixed  $selected_term Either an array, string in the `taxonomy:id` format,
+ * This is used to show the Headline terms on the front page and provides
+ * back-compat for older versions of the theme.
+ *
+ * @since Cakifo 1.6.0
+ *
+ * @param mixed $selected_term Either an array, string in the `taxonomy:id` format,
  *   a string with just the ID, or an int with the ID.
  * @return object
  */
 function cakifo_get_headline_term( $selected_term ) {
+
 	// Separate the taxonomy and term ID.
 	if ( is_array( $selected_term ) ) {
 
@@ -709,7 +714,20 @@ function cakifo_get_headline_term( $selected_term ) {
 		$taxonomy = 'category';
 	}
 
-	return get_term_by( 'id', $term_id, $taxonomy );
+	$term = get_term_by( 'id', $term_id, $taxonomy );
+
+	/*
+	 * `$term` might be false if the term has previously been shared between
+	 * taxonomies and now has been split into two by WordPress.
+	 *
+	 * To avoid errors if the `headlines_category` has not been updated to use
+	 * the new ID, we try to get the term by using the `term_taxonomy_id`.
+	 */
+	if ( ! $term ) {
+		$term = get_term_by( 'term_taxonomy_id', $term_id, $taxonomy );
+	}
+
+	return $term;
 }
 
 
