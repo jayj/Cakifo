@@ -30,23 +30,6 @@ do_atomic( 'before_recent_posts' ); ?>
 			'ignore_sticky_posts' => 1,
 			'post_status'         => 'publish',
 			'no_found_rows'       => true,
-			'tax_query'           => array(
-				array(
-					// Only show posts with the standard post format
-					'taxonomy' => 'post_format',
-					'field' => 'slug',
-					'terms' => array(
-						'post-format-aside',
-						'post-format-audio',
-						'post-format-chat',
-						'post-format-link',
-						'post-format-quote',
-						'post-format-status',
-						'post-format-video'
-					),
-					'operator' => 'NOT IN'
-				)
-			),
 		);
 
 		// Fire up the Recent Posts query.
