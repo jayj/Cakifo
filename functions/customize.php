@@ -123,9 +123,8 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
 		array(
-			'default'    => $defaults['featured_show'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
+			'default' => $defaults['featured_show'],
+			'type'    => 'option',
 		)
 	);
 
@@ -144,9 +143,8 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_category]",
 		array(
-			'default'    => $defaults['featured_category'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
+			'default' => $defaults['featured_category'],
+			'type'    => 'option',
 		)
 	);
 
@@ -166,9 +164,8 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_posts]",
 		array(
-			'default'    => $defaults['featured_posts'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
+			'default' => $defaults['featured_posts'],
+			'type'    => 'option',
 		)
 	);
 
