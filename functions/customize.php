@@ -46,15 +46,20 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_image' )->transport     = 'postMessage';
 
 
-	/* Add the Cakifo section. */
+	/*
+	 * Add the Headline Lists section.
+	 */
 	$wp_customize->add_section(
-		'cakifo_customize_settings',
+		'cakifo_customize_headlines_settings',
 		array(
-			'title'      => esc_html__( 'Cakifo settings', 'cakifo' ),
-			'priority'   => 35,
-			'capability' => 'edit_theme_options'
+			'title'           => esc_html__( 'Headline Lists', 'cakifo' ),
+			'priority'        => 125, // After the static front page section
+			'capability'      => 'edit_theme_options',
+			'active_callback' => 'cakifo_is_front_page_template',
 		)
 	);
+
+
 
 	/* Add the 'headlines_category' setting. */
 	$wp_customize->add_setting(
@@ -74,7 +79,7 @@ function cakifo_customize_register( $wp_customize ) {
 			array(
 				'settings' => "{$prefix}_theme_settings[headlines_category]",
 				'label'    =>  esc_html__( 'Headline Terms', 'cakifo' ),
-				'section'  => 'cakifo_customize_settings',
+				'section'  => 'cakifo_customize_headlines_settings',
 				'type'     => 'cakifo-headlines-multiple-select'
 			)
 		)
@@ -96,8 +101,8 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
 			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
 			'type'     => 'text',
+			'section'  => 'cakifo_customize_headlines_settings',
 		)
 	);
 
