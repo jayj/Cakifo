@@ -109,7 +109,7 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'featured_show' setting. */
+
 	/*
 	 * Add the Slider section
 	 */
@@ -157,6 +157,7 @@ function cakifo_customize_register( $wp_customize ) {
 			'label'           => esc_html__( 'Category', 'cakifo' ),
 			'description'     => __( 'Leave blank to use sticky posts', 'cakifo' ),
 			'section'         => 'cakifo_customize_slider_settings',
+			'active_callback' => 'cakifo_is_active_slider',
 			'type'            => 'select',
 			'choices'         => _cakifo_customize_get_categories(),
 		)
@@ -179,6 +180,7 @@ function cakifo_customize_register( $wp_customize ) {
 			'label'           =>  esc_html__( 'Number of posts', 'cakifo' ),
 			'description'     => sprintf( __( '%1$d will show all posts in the category. %2$d is the default.', 'cakifo' ), -1, $defaults['featured_posts'] ),
 			'section'         => 'cakifo_customize_slider_settings',
+			'active_callback' => 'cakifo_is_active_slider',
 			'type'            => 'number',
 			'input_attrs'     => array(
 				'min' => -1
