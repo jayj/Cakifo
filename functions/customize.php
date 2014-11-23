@@ -102,6 +102,16 @@ function cakifo_customize_register( $wp_customize ) {
 	);
 
 	/* Add the 'featured_show' setting. */
+	/*
+	 * Add the Slider section
+	 */
+	$wp_customize->add_section(
+		'cakifo_customize_slider_settings',
+		array(
+			'title'    => esc_html__( 'Slider', 'cakifo' ),
+			'priority' => 125, // After the static front page section
+		)
+	);
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
 		array(
@@ -117,8 +127,8 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_show]",
 			'label'    => esc_html__( 'Show "Featured Content" slider?', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
 			'type'     => 'checkbox',
+			'section'     => 'cakifo_customize_slider_settings',
 		)
 	);
 
@@ -138,8 +148,8 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_category]",
 			'label'    => esc_html__( 'Featured Category', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
 			'type'     => 'select',
+			'section'         => 'cakifo_customize_slider_settings',
 			'choices'         => _cakifo_customize_get_categories(),
 		)
 	);
@@ -160,8 +170,8 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[featured_posts]",
 			'label'    =>  esc_html__( 'Number of posts in the slider', 'cakifo' ),
-			'section'  => 'cakifo_customize_settings',
 			'type'     => 'text',
+			'section'         => 'cakifo_customize_slider_settings',
 		)
 	);
 
