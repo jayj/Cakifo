@@ -44,70 +44,6 @@ function cakifo_customize_register( $wp_customize ) {
 
 
 	/*
-	 * Add the Headline Lists section.
-	 */
-	$wp_customize->add_section(
-		'cakifo_customize_headlines_settings',
-		array(
-			'title'           => esc_html__( 'Headline Lists', 'cakifo' ),
-			'priority'        => 125, // After the static front page section
-			'capability'      => 'edit_theme_options',
-			'active_callback' => 'cakifo_is_front_page_template',
-		)
-	);
-
-
-
-	/* Add the 'headlines_category' setting. */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[headlines_category]",
-		array(
-			'default'    => $defaults['headlines_category'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	/* Add the multiple select control for the 'headlines_category' setting. */
-	$wp_customize->add_control(
-		new Cakifo_Customize_Control_Multiple_Select_Headlines(
-			$wp_customize,
-			'headlines_category',
-			array(
-				'settings' => "{$prefix}_theme_settings[headlines_category]",
-				'label'    =>  esc_html__( 'Headline Terms', 'cakifo' ),
-				'section'  => 'cakifo_customize_headlines_settings',
-				'type'     => 'cakifo-headlines-multiple-select'
-			)
-		)
-	);
-
-	/* Add the 'headlines_num_posts' setting. */
-	$wp_customize->add_setting(
-		"{$prefix}_theme_settings[headlines_num_posts]",
-		array(
-			'default'    => $defaults['headlines_num_posts'],
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	/* Add the text control for the 'headlines_num_posts' setting. */
-	$wp_customize->add_control(
-		'headlines_num_posts',
-		array(
-			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
-			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
-			'section'  => 'cakifo_customize_headlines_settings',
-			'type'     => 'number',
-			'input_attrs' => array(
-				'min'   => 1,
-			),
-		)
-	);
-
-
-	/*
 	 * Add the Slider section
 	 */
 	$wp_customize->add_section(
@@ -184,6 +120,69 @@ function cakifo_customize_register( $wp_customize ) {
 			),
 		)
 	);
+
+
+	/*
+	 * Add the Headline Lists section.
+	 */
+	$wp_customize->add_section(
+		'cakifo_customize_headlines_settings',
+		array(
+			'title'           => esc_html__( 'Headline Lists', 'cakifo' ),
+			'priority'        => 125, // After the static front page section
+			'capability'      => 'edit_theme_options',
+			'active_callback' => 'cakifo_is_front_page_template',
+		)
+	);
+
+	/* Add the 'headlines_category' setting. */
+	$wp_customize->add_setting(
+		"{$prefix}_theme_settings[headlines_category]",
+		array(
+			'default'    => $defaults['headlines_category'],
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	/* Add the multiple select control for the 'headlines_category' setting. */
+	$wp_customize->add_control(
+		new Cakifo_Customize_Control_Multiple_Select_Headlines(
+			$wp_customize,
+			'headlines_category',
+			array(
+				'settings' => "{$prefix}_theme_settings[headlines_category]",
+				'label'    =>  esc_html__( 'Headline Terms', 'cakifo' ),
+				'section'  => 'cakifo_customize_headlines_settings',
+				'type'     => 'cakifo-headlines-multiple-select'
+			)
+		)
+	);
+
+	/* Add the 'headlines_num_posts' setting. */
+	$wp_customize->add_setting(
+		"{$prefix}_theme_settings[headlines_num_posts]",
+		array(
+			'default'    => $defaults['headlines_num_posts'],
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	/* Add the text control for the 'headlines_num_posts' setting. */
+	$wp_customize->add_control(
+		'headlines_num_posts',
+		array(
+			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
+			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
+			'section'  => 'cakifo_customize_headlines_settings',
+			'type'     => 'number',
+			'input_attrs' => array(
+				'min'   => 1,
+			),
+		)
+	);
+
 }
 
 
@@ -195,7 +194,7 @@ function cakifo_customize_register( $wp_customize ) {
  * @return array
  */
 function _cakifo_customize_get_categories() {
-	$categories = array( '' => '' ); // add empty option add the start
+	$categories = array( '' => '' ); // add empty option at the start
 
 	foreach ( get_categories() as $cat ) {
 		$categories[$cat->term_id] = $cat->name;
