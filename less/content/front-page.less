@@ -4,7 +4,7 @@
  */
 
 .intro-post {
-	margin-bottom: @gutter-width;
+	margin-bottom: (@gutter-width * 1.5);
 
 	.entry-content {
 		.font-size(@headings-size-small);
@@ -14,11 +14,12 @@
 		.label-variant();
 		position: absolute;
 		top: 0;
-		right: @gutter-width-small;
+		right: 0;
 	}
 }
 
 @import "slider.less";
+
 
 /* =============================================================================
    Components:  Recent Posts
