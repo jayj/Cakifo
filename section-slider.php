@@ -15,10 +15,10 @@
 	 * Set up the slider query
 	 */
 	$feature_query = array(
-		'showposts'     => (int) hybrid_get_setting( 'featured_posts' ),
-		'post_status'   => 'publish',
-		'no_found_rows' => true,
-		'tax_query' =>
+		'posts_per_page' => (int) hybrid_get_setting( 'featured_posts' ),
+		'post_status'    => 'publish',
+		'no_found_rows'  => true,
+		'tax_query'      =>
 			array(
 				array(
 					'taxonomy' => 'post_format',
