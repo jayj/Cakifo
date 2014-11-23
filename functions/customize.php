@@ -9,6 +9,7 @@
 
 /* Register custom sections, settings, and controls. */
 add_action( 'customize_register', 'cakifo_customize_register' );
+add_action( 'customize_preview_init', 'cakifo_customize_preview' );
 
 /* Load custom control classes. */
 add_action( 'customize_register', 'cakifo_load_customize_controls', 1 );
@@ -167,69 +168,17 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	if ( $wp_customize->is_preview() && ! is_admin() ) {
-		add_action( 'wp_footer', 'cakifo_customize_preview', 21 );
 	}
 
 }
 
 /**
- * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
- * Used with blogname and blogdescription.
+ * Binds JS handlers to make the Customizer preview reload changes asynchronously.
  *
  * @since Cakifo 1.4.0
  */
 function cakifo_customize_preview() {
-	?>
-	<script type="text/javascript">
-		( function( $ ){
-			wp.customize( 'blogname', function( value ) {
-				value.bind(function(to) {
-					$('.site-title span').text(to);
-				});
-			});
-
-			wp.customize( 'blogdescription', function( value ) {
-				value.bind(function(to) {
-					$('.site-description').text(to);
-				});
-			});
-
-			// Header text
-			wp.customize( 'header_textcolor', function( value ) {
-				value.bind( function( to ) {
-
-					if ( 'blank' == to ) {
-
-						// Hide title
-						$( '.site-title span' ).css( {
-							'clip': 'rect(1px, 1px, 1px, 1px)',
-							'position': 'absolute'
-						} );
-
-						// No header image and no title: hide the description
-						if ( 'remove-header' == _wpCustomizeSettings.values.header_image ) {
-							$( '.site-description' ).css( {
-								'clip': 'rect(1px, 1px, 1px, 1px)',
-								'position': 'absolute'
-							} );
-						}
-
-					} else {
-
-						$( '.site-title span, .site-description' ).css( {
-							'clip': 'auto',
-							'color': to,
-							'position': 'relative'
-						} );
-
-					}
-				} );
-			} );
-
-		} )( jQuery )
-	</script>
-	<?php
+	wp_enqueue_script( 'cakifo-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '1.7', true );
 }
 
 ?>
