@@ -11,7 +11,7 @@ c.find(".chosen-choices").sortable({placeholder:"ui-state-highlight",items:"li:n
  */
 jQuery(document).ready( function() {
 
-	jQuery( '#cakifo_theme_settings-featured_category, #customize-control-featured_category select' ).chosen({
+	jQuery( '#cakifo_theme_settings-featured_category' ).chosen({
 		allow_single_deselect: true,
 		width: "100%"
 	});
