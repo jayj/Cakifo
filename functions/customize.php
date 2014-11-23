@@ -1,32 +1,31 @@
 <?php
 /**
- * Functions for registering and setting theme settings that tie into the WordPress theme customizer.
+ * Handles the theme's Customizer functionality.
  *
  * @package Cakifo
  * @subpackage Functions
  * @since Cakifo 1.6.0
  */
 
-/* Register custom sections, settings, and controls. */
+
+/* Customizer setup. */
+add_action( 'customize_register', 'cakifo_load_customize_controls' );
 add_action( 'customize_register', 'cakifo_customize_register' );
 add_action( 'customize_preview_init', 'cakifo_customize_preview' );
 
-/* Load custom control classes. */
-add_action( 'customize_register', 'cakifo_load_customize_controls', 1 );
 
 /**
- * Loads theme-specific customize control classes.  Customize control classes extend the WordPress
- * WP_Customize_Control class to create unique classes that can be used within the theme.
+ * Loads theme-specific customize control classes.
  *
  * @since Cakifo 1.5.0
  */
 function cakifo_load_customize_controls() {
-	/* Loads the multiple select customize control class. */
 	require_once( trailingslashit( THEME_DIR ) . 'functions/customize-control-multiple-select.php' );
 }
 
+
 /**
- * Registers custom sections, settings, and controls for the $wp_customize instance.
+ * Sets up the theme customizer sections, controls, and settings.
  *
  * @since Cakifo 1.4.0
  * @param object $wp_customize
@@ -34,8 +33,6 @@ function cakifo_load_customize_controls() {
 function cakifo_customize_register( $wp_customize ) {
 
 	$prefix = hybrid_get_prefix();
-
-	// Get the default theme settings.
 	$defaults = hybrid_get_default_theme_settings();
 
 
