@@ -38,12 +38,6 @@ function cakifo_customize_register( $wp_customize ) {
 	// Get the default theme settings.
 	$defaults = hybrid_get_default_theme_settings();
 
-	// Create the categories array with an empty option
-	$categories = array( '' => '' );
-
-	foreach ( get_categories() as $cat ) {
-		$categories[$cat->term_id] = $cat->name;
-	}
 
 	/* Enable live preview for WordPress theme features. */
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
@@ -146,7 +140,7 @@ function cakifo_customize_register( $wp_customize ) {
 			'label'    => esc_html__( 'Featured Category', 'cakifo' ),
 			'section'  => 'cakifo_customize_settings',
 			'type'     => 'select',
-			'choices'  => $categories
+			'choices'         => _cakifo_customize_get_categories(),
 		)
 	);
 
@@ -171,8 +165,22 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
+
+/**
+ * Gets all categories ready to be added as choices in a select field.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return array
+ */
+function _cakifo_customize_get_categories() {
+	$categories = array( '' => '' ); // add empty option add the start
+
+	foreach ( get_categories() as $cat ) {
+		$categories[$cat->term_id] = $cat->name;
 	}
 
+	return $categories;
 }
 
 /**
