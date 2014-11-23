@@ -45,12 +45,7 @@
 		box-shadow: none;
 	}
 
-	/* Fluid width on the Recent Posts and Headlines lists */
-	.recent-post {
-		width: 23%;
-		margin-right: 2%;
-	}
-
+	/* Fluid width on the Headlines lists */
 	.headline-list {
 		width: 48%;
 		margin-right: 2%;
@@ -68,31 +63,6 @@
 	.cakifo-slider {
 		margin-left: ( -(@gutter-width-small) );
 		margin-right: ( -(@gutter-width-small) );
-	}
-
-	/* Show Recent Posts in one column */
-	.recent-post {
-		.clearfix;
-		float: none;
-		width: 100%;
-		padding: @gutter-width-small 0;
-		border-bottom: 1px solid @post-border-color;
-		margin-right: 0;
-		opacity: 1 !important;
-
-		&:hover,
-		&:active {
-			background-color: @highlight-bg;
-		}
-
-		.entry-title {
-			margin: 0;
-		}
-
-		.thumbnail {
-			float: left;
-			margin: 0 @gutter-width-small 0 0;
-		}
 	}
 
 	.section-title {
@@ -169,26 +139,6 @@
 		display: none;
 	}
 
-	/* Make the Recent Posts list smaller */
-	.recent-post {
-		.entry-title {
-			.font-size(@font-size-large);
-		}
-
-		.recent-posts-meta {
-			.font-size(@font-size-micro);
-		}
-
-		.thumbnail {
-			max-width: 150px;
-			margin-bottom: 10px;
-		}
-
-		.entry-summary {
-			.font-size(@font-size-small);
-		}
-	}
-
 	/* Make the Category Headlines list two columns */
 	.headline-list {
 		width: 100%;
@@ -219,11 +169,6 @@
 	/* Make sure the post format label and post title don't collide */
 	.entry-header .post-format-link {
 		top: -20px;
-	}
-
-	/* Hide the Recent Posts thumbnails */
-	.recent-post .thumbnail {
-		display: none;
 	}
 
 	/* Gallery on attachment pages */

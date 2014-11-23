@@ -2908,25 +2908,28 @@ body.page-template-template-front-page .site-wrapper .site-main {
   float: left;
   width: 220px;
   margin-right: 40px;
-  transition: opacity 250ms;
-  /* Lower opacity on every column except the hovered */
+  transition: opacity 220ms;
 }
 .recent-post:last-of-type {
   margin-right: 0;
 }
+.recent-post .entry-header {
+  margin: 10px 0;
+}
 .recent-post .entry-title {
-  margin: 0;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 18px;
+  font-size: 1.8rem;
   letter-spacing: 0;
   word-wrap: break-word;
 }
-.recent-post .entry-header {
-  margin: 7px 0;
+.recent-post .more-link {
+  display: block;
+  margin-top: 5px;
 }
 .recent-post .recent-posts-meta {
-  font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 1.2;
   font-style: italic;
   color: #8c8c8c;
 }
@@ -2935,15 +2938,70 @@ body.page-template-template-front-page .site-wrapper .site-main {
   max-height: 150px;
   margin: 0;
 }
-.recent-post .entry-summary {
-  word-wrap: break-word;
-  hyphens: auto;
-}
 .recent-post-columns:hover .recent-post {
-  opacity: 0.75;
+  opacity: 0.7;
 }
 .recent-post-columns:hover .recent-post:hover {
   opacity: 1;
+}
+@media screen and (max-width: 1080px) {
+  .recent-post {
+    width: 23%;
+    margin-right: 2%;
+  }
+}
+@media screen and (max-width: 980px) {
+  .recent-post {
+    float: none;
+    width: 100%;
+    padding: 25px 0;
+    border-bottom: 1px solid #eeeeee;
+    margin-right: 0;
+  }
+  .recent-post:before,
+  .recent-post:after {
+    content: "";
+    display: table;
+  }
+  .recent-post:after {
+    clear: both;
+  }
+  .recent-post:hover,
+  .recent-post:active {
+    background-color: #f2f7fc;
+  }
+  .recent-post .entry-header {
+    margin-top: 0;
+  }
+  .recent-post .entry-title {
+    margin-bottom: 5px;
+  }
+  .recent-post .thumbnail {
+    float: left;
+    width: 25%;
+    max-width: 220px;
+    margin-right: 5%;
+  }
+  .recent-post .entry-header,
+  .recent-post .entry-summary {
+    float: left;
+    width: 70%;
+  }
+  .recent-post-columns:hover .recent-post {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 480px) {
+  .recent-post {
+    padding: 25px;
+  }
+  .recent-post .entry-header,
+  .recent-post .entry-summary {
+    width: 100%;
+  }
+  .recent-post .thumbnail {
+    display: none;
+  }
 }
 /* =============================================================================
    Components:  Headlines Lists
@@ -3654,11 +3712,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     margin-left: 0;
     box-shadow: none;
   }
-  /* Fluid width on the Recent Posts and Headlines lists */
-  .recent-post {
-    width: 23%;
-    margin-right: 2%;
-  }
+  /* Fluid width on the Headlines lists */
   .headline-list {
     width: 48%;
     margin-right: 2%;
@@ -3672,34 +3726,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .cakifo-slider {
     margin-left: -25px;
     margin-right: -25px;
-  }
-  /* Show Recent Posts in one column */
-  .recent-post {
-    float: none;
-    width: 100%;
-    padding: 25px 0;
-    border-bottom: 1px solid #eeeeee;
-    margin-right: 0;
-    opacity: 1 !important;
-  }
-  .recent-post:before,
-  .recent-post:after {
-    content: "";
-    display: table;
-  }
-  .recent-post:after {
-    clear: both;
-  }
-  .recent-post:hover,
-  .recent-post:active {
-    background-color: #f2f7fc;
-  }
-  .recent-post .entry-title {
-    margin: 0;
-  }
-  .recent-post .thumbnail {
-    float: left;
-    margin: 0 25px 0 0;
   }
   .section-title {
     margin-bottom: 25px;
@@ -3756,23 +3782,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .slider {
     display: none;
   }
-  /* Make the Recent Posts list smaller */
-  .recent-post .entry-title {
-    font-size: 18px;
-    font-size: 1.8rem;
-  }
-  .recent-post .recent-posts-meta {
-    font-size: 12px;
-    font-size: 1.2rem;
-  }
-  .recent-post .thumbnail {
-    max-width: 150px;
-    margin-bottom: 10px;
-  }
-  .recent-post .entry-summary {
-    font-size: 14px;
-    font-size: 1.4rem;
-  }
   /* Make the Category Headlines list two columns */
   .headline-list {
     width: 100%;
@@ -3796,10 +3805,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   /* Make sure the post format label and post title don't collide */
   .entry-header .post-format-link {
     top: -20px;
-  }
-  /* Hide the Recent Posts thumbnails */
-  .recent-post .thumbnail {
-    display: none;
   }
   /* Gallery on attachment pages */
   .image-gallery .gallery-item {
