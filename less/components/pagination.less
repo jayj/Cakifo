@@ -42,6 +42,19 @@
 
 
 /*
+ * Pagination
+ */
+
+.pagination .prev:before {
+	.icon('\f430', 6px, 2px); // previous arrow
+}
+
+.pagination .next:after {
+	.icon('\f429', 0, 2px); // next arrow
+	margin-left: 6px;
+}
+
+/*
  * Post pagination
  */
 .page-links {
@@ -79,10 +92,18 @@
 
 	.nav-previous {
 		float: left;
+
+		a:before {
+			&:extend(.pagination .prev:before);
+		}
 	}
 
 	.nav-next {
 		float: right;
+
+		a:after {
+			&:extend(.pagination .next:after);
+		}
 	}
 }
 

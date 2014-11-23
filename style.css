@@ -975,8 +975,12 @@ html .btn-inverse:hover {
 .format-link .entry-title a:after,
 .attachment .byline .image-size-link:before,
 .search-form label:before,
+.pagination .prev:before,
+.pagination .next:after,
 .breadcrumbs .trail-begin a:before,
-.breadcrumbs .sep:before {
+.breadcrumbs .sep:before,
+.post-navigation .nav-previous a:before,
+.post-navigation .nav-next a:after {
   font-size: 16px;
   vertical-align: top;
   text-align: center;
@@ -3302,6 +3306,24 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background-color: #4d4d4d;
   border-bottom-color: #4d4d4d;
   color: #fff;
+}
+/*
+ * Pagination
+ */
+.pagination .prev:before,
+.post-navigation .nav-previous a:before {
+  content: '\f430';
+  top: 2px;
+  margin-right: 6px;
+  position: relative;
+}
+.pagination .next:after,
+.post-navigation .nav-next a:after {
+  content: '\f429';
+  top: 2px;
+  margin-right: 0;
+  position: relative;
+  margin-left: 6px;
 }
 /*
  * Post pagination

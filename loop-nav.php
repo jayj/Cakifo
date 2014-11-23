@@ -27,8 +27,8 @@
 		<?php
 			the_pagination( array(
 				'mid_size'           => 2,
-				'prev_text'          => __( '<span class="meta-nav">&larr;</span> Previous page', 'cakifo' ),
-				'next_text'          => __( 'Next page <span class="meta-nav">&rarr;</span>', 'cakifo' ),
+				'prev_text'          => __( 'Previous page', 'cakifo' ),
+				'next_text'          => __( 'Next page', 'cakifo' ),
 				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'cakifo' ) . ' </span>',
 			) );
 		?>
