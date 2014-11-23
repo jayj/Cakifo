@@ -120,6 +120,8 @@ function cakifo_customize_register( $wp_customize ) {
 			'priority' => 125, // After the static front page section
 		)
 	);
+
+	// Add setting and control to toggle the visibility of the slider.
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_show]",
 		array(
@@ -128,18 +130,18 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the checkbox control for the 'featured_show' setting. */
 	$wp_customize->add_control(
 		'featured_show',
 		array(
-			'settings' => "{$prefix}_theme_settings[featured_show]",
-			'label'    => esc_html__( 'Show "Featured Content" slider?', 'cakifo' ),
-			'type'     => 'checkbox',
+			'settings'    => "{$prefix}_theme_settings[featured_show]",
+			'label'       => esc_html__( 'Show "Featured Content" slider?', 'cakifo' ),
+			'description' => __( 'The slider only shows on the front page template.', 'cakifo' ),
 			'section'     => 'cakifo_customize_slider_settings',
+			'type'        => 'checkbox',
 		)
 	);
 
-	/* Add the 'featured_category' setting. */
+	// Add setting and control to change the slider category.
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_category]",
 		array(
@@ -148,19 +150,19 @@ function cakifo_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the select control for the 'featured_category' setting. */
 	$wp_customize->add_control(
 		'featured_category',
 		array(
-			'settings' => "{$prefix}_theme_settings[featured_category]",
-			'label'    => esc_html__( 'Featured Category', 'cakifo' ),
-			'type'     => 'select',
+			'settings'        => "{$prefix}_theme_settings[featured_category]",
+			'label'           => esc_html__( 'Category', 'cakifo' ),
+			'description'     => __( 'Leave blank to use sticky posts', 'cakifo' ),
 			'section'         => 'cakifo_customize_slider_settings',
+			'type'            => 'select',
 			'choices'         => _cakifo_customize_get_categories(),
 		)
 	);
 
-	/* Add the 'featured_posts' setting. */
+	// Add setting and control to change the number of slider posts.
 	$wp_customize->add_setting(
 		"{$prefix}_theme_settings[featured_posts]",
 		array(
@@ -173,9 +175,9 @@ function cakifo_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'featured_posts',
 		array(
-			'settings' => "{$prefix}_theme_settings[featured_posts]",
-			'label'    =>  esc_html__( 'Number of posts in the slider', 'cakifo' ),
-			'type'     => 'text',
+			'settings'        => "{$prefix}_theme_settings[featured_posts]",
+			'label'           =>  esc_html__( 'Number of posts', 'cakifo' ),
+			'description'     => sprintf( __( '%1$d will show all posts in the category. %2$d is the default.', 'cakifo' ), -1, $defaults['featured_posts'] ),
 			'section'         => 'cakifo_customize_slider_settings',
 			'type'            => 'number',
 			'input_attrs'     => array(
@@ -183,6 +185,7 @@ function cakifo_customize_register( $wp_customize ) {
 			),
 		)
 	);
+}
 
 
 /**
@@ -201,6 +204,7 @@ function _cakifo_customize_get_categories() {
 
 	return $categories;
 }
+
 
 /**
  * Binds JS handlers to make the Customizer preview reload changes asynchronously.
