@@ -15,98 +15,35 @@ do_atomic( 'before_headlines' ); ?>
 
 	<?php do_atomic( 'open_headlines' ); ?>
 
-	<?php
-		/*
-		 * Loop through each selected term.
-		 */
-		foreach ( hybrid_get_setting( 'headlines_category' ) as $selected_term ) :
+	<?php if ( is_active_sidebar( 'front-page-headlines' ) ) : ?>
 
-			// Get term info.
-			$term = cakifo_get_headline_term( $selected_term );
+		<?php dynamic_sidebar( 'front-page-headlines' ); ?>
 
-			/**
-			 * Create the loop for each selected term.
-			 *
-			 * @uses $GLOBALS['cakifo_do_not_duplicate'] Excludes posts being duplicated
-			 */
-			$headlines = new WP_Query(
-				array(
-					'posts_per_page' => hybrid_get_setting( 'headlines_num_posts' ),
-					'post__not_in'   => $GLOBALS['cakifo_do_not_duplicate'],
-					'tax_query'      => array(
-						array(
-							'terms'    => $term->term_id,
-							'taxonomy' => $term->taxonomy,
-							'field'    => 'id',
-						)
+	<?php elseif ( hybrid_get_setting( 'headlines_category' ) ) : ?>
+
+		<?php
+			/* Back-compat for when the headline terms were stored in a setting. */
+			foreach ( hybrid_get_setting( 'headlines_category' ) as $term ) :
+
+				the_widget( 'Cakifo_Widget_Headline_Terms',
+					array(
+						'term'           => $term[0] . ':' . $term[1],
+						'limit'          => hybrid_get_setting( 'headlines_num_posts' ),
+						'show_thumbnail' => true,
+						'show_meta'      => true
 					),
-					'no_found_rows'          => true,
-					'update_post_term_cache' => false,
-					'update_post_meta_cache' => false
-				)
-			);
+					array(
+						'before_widget' => '<div class="headline-list">',
+						'after_widget'  => '</div> <!-- /.headline-lists -->',
+						'before_title'  => '<h2 class="widget-title">',
+						'after_title'   => '</h2>'
+					)
+				);
 
-		if ( $headlines->have_posts() ) :
-	?>
-
-		<div class="headline-list">
-
-			<?php do_atomic( 'open_headline_list' ); ?>
-
-			<?php
-				// Get the plural version of a post format name.
-				if ( 'post_format' == $term->taxonomy ) {
-					$name = hybrid_get_plural_post_format_string( $term->slug );
-				} else {
-					$name = $term->name;
-				}
-			?>
-
-			<h2 class="widget-title">
-				<a href="<?php echo get_term_link( $term ); ?>"><?php echo $name; ?></a>
-			</h2>
-
-			<ol>
-				<?php while ( $headlines->have_posts() ) : $headlines->the_post(); ?>
-
-					<?php
-						// Make sure the post is not duplicated.
-						$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
-					?>
-
-					<li class="headline-item clearfix">
-						<?php do_atomic( 'open_headline_list_item' ); ?>
-
-						<?php
-							// Get the thumbnail.
-							if ( current_theme_supports( 'get-the-image' ) ) {
-								get_the_image( array(
-									'size'          => 'small',
-									'image_class'   => 'thumbnail',
-									'meta_key'      => false,
-									'default_image' => THEME_URI . '/images/default-thumb-mini.png'
-								) );
-							}
-						?>
-
-						<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-						<?php echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' ); ?>
-
-						<?php do_atomic( 'close_headline_list_item' ); ?>
-					</li>
-				<?php endwhile; ?>
-			</ol>
-
-			<?php do_atomic( 'close_headline_list' ); ?>
-
-		</div> <!-- .headline-list -->
+			endforeach;
+		?>
 
 	<?php endif; ?>
-
-	<?php endforeach; ?>
-
-	<?php unset( $GLOBALS['cakifo_do_not_duplicate'] ); // Kill the global variable. ?>
 
 	<?php do_atomic( 'close_headlines' ); ?>
 

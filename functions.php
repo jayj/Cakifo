@@ -79,9 +79,10 @@ function cakifo_theme_setup() {
 		'subsidiary',
 		'subsidiary-two',
 		'subsidiary-three',
+		'front-page-headlines',
 		'after-single',
 		'after-singular',
-		'error-page'
+		'error-page',
 	));
 
 	add_theme_support( 'cakifo-colorbox' );

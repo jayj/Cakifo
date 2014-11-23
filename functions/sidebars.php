@@ -51,7 +51,7 @@ function cakifo_register_sidebars() {
 	$theme_sidebars = array(
 		'primary' => array(
 			'name'        => _x( 'Primary', 'sidebar', 'cakifo' ),
-			'description' => __( 'The main (primary) widget area, most often used as a sidebar.', 'cakifo' )
+			'description' => __( 'The main widget area, most often used as a sidebar.', 'cakifo' )
 		),
 		'secondary' => array(
 			'name'        => _x( 'Secondary', 'sidebar', 'cakifo' ),
@@ -94,6 +94,12 @@ function cakifo_register_sidebars() {
 		'error-page' => array(
 			'name'        => _x( 'Error Page', 'sidebar', 'cakifo' ),
 			'description' => __( 'Loaded on 404 (Not found) error pages.', 'cakifo' ),
+		),
+		'front-page-headlines' => array(
+			'name'        => _x( 'Front page: Headline Lists', 'sidebar', 'cakifo' ),
+			'description' => __( 'Use the "Cakifo: Recent Posts by Term" widget to show the latest posts from a term.', 'cakifo' ),
+			'before_widget' => '<div class="headline-list">',
+			'after_widget'  => '</div> <!-- /.headline-lists -->',
 		)
 	);
 
@@ -134,11 +140,11 @@ function cakifo_register_sidebars() {
  */
 function cakifo_register_widgets() {
 
-	/* Load the Related Posts widget class. */
 	require_once( trailingslashit( get_template_directory() ) . 'functions/widget-related-posts.php' );
+	require_once( trailingslashit( get_template_directory() ) . 'functions/widget-headline-terms.php' );
 
-	/* Register the Related Posts widget. */
 	register_widget( 'Cakifo_Widget_Related_Posts' );
+	register_widget( 'Cakifo_Widget_Headline_Terms' );
 }
 
 /**

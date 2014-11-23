@@ -54,12 +54,6 @@ do_atomic( 'before_recent_posts' ); ?>
 		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
 
 		while ( $recent->have_posts() ) : $recent->the_post();
-
-			/*
-			 * Put the post ID in an array to make sure it's only showing once
-			 * on the page as this array is used in the headline lists as well.
-			 */
-			$GLOBALS['cakifo_do_not_duplicate'][] = get_the_ID();
 	?>
 
 		<article class="recent-post">
