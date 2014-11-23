@@ -101,8 +101,11 @@ function cakifo_customize_register( $wp_customize ) {
 		array(
 			'settings' => "{$prefix}_theme_settings[headlines_num_posts]",
 			'label'    =>  esc_html__( 'Number of Headline posts', 'cakifo' ),
-			'type'     => 'text',
 			'section'  => 'cakifo_customize_headlines_settings',
+			'type'     => 'number',
+			'input_attrs' => array(
+				'min'   => 1,
+			),
 		)
 	);
 
@@ -177,6 +180,10 @@ function cakifo_customize_register( $wp_customize ) {
 			'label'    =>  esc_html__( 'Number of posts in the slider', 'cakifo' ),
 			'type'     => 'text',
 			'section'         => 'cakifo_customize_slider_settings',
+			'type'            => 'number',
+			'input_attrs'     => array(
+				'min' => -1
+			),
 		)
 	);
 
