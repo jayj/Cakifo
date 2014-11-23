@@ -45,9 +45,12 @@ function cakifo_customize_register( $wp_customize ) {
 		$categories[$cat->term_id] = $cat->name;
 	}
 
+	/* Enable live preview for WordPress theme features. */
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'header_image' )->transport     = 'postMessage';
+
 
 	/* Add the Cakifo section. */
 	$wp_customize->add_section(

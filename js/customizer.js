@@ -66,4 +66,32 @@
 
 		} );
 	} );
+
+
+	/*
+	 * Change the header image by replacing the "src" attribute for the image.
+	 */
+	wp.customize( 'header_image', function( value ) {
+		value.bind( function( to ) {
+
+			/* If removing the header image, make sure to hide it so there's not an error image. */
+			if ( 'remove-header' === to ) {
+				$( '.site-title img' ).hide();
+
+				/* Hides the description if the header text is hidden */
+				if ( 'blank' === _wpCustomizeSettings.values.header_textcolor ) {
+					$( '.site-description' ).hide();
+				}
+			}
+
+			/* Else, make sure to show the image and change the source. */
+			else {
+				$( '.site-title img, .site-description' ).show();
+				$( '.site-title img' ).attr( 'src', to );
+			}
+
+		} );
+	} );
+
+
 } )( jQuery );
