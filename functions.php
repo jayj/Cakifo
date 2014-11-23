@@ -86,11 +86,6 @@ function cakifo_theme_setup() {
 
 	add_theme_support( 'cakifo-colorbox' );
 
-	/* Load Theme Settings. */
-	if ( is_admin() ) {
-		require_once( trailingslashit( THEME_DIR ) . 'functions/admin.php' );
-	}
-
 	/* Let WordPress manage the document title. */
 	add_theme_support( 'title-tag' );
 
