@@ -14,13 +14,8 @@ do_atomic( 'before_recent_posts' ); ?>
 
 	<?php do_atomic( 'open_recent_posts' ); ?>
 
-	<?php
-		// Get the link to the Posts (blog) page.
-		$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
-	?>
-
 	<h1 class="section-title">
-		<a href="<?php echo esc_url( $posts_page ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
+		<a href="<?php echo esc_url( cakifo_get_blog_page_url() ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
 	</h1>
 
 	<?php

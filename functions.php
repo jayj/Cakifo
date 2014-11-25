@@ -990,6 +990,7 @@ function cakifo_get_menu_name( $location ) {
 	return false;
 }
 
+
 /**
  * Add a `screen-reader-text` class to the search form's submit button.
  *
@@ -1004,5 +1005,16 @@ function cakifo_search_form_modify( $html ) {
 }
 
 add_filter( 'get_search_form', 'cakifo_search_form_modify' );
+
+
+/**
+ * Gets the permalink to the blog page.
+ *
+ * @since  Cakifo 1.7.0
+ * @return string The permalink.
+ */
+function cakifo_get_blog_page_url() {
+	return ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
+}
 
 ?>
