@@ -76,21 +76,7 @@
 
 					<?php do_atomic( 'open_slide' ); ?>
 
-					<?php
-						if ( current_theme_supports( 'get-the-image' ) ) {
-
-							// Get the post thumbnail with the slider image size
-							get_the_image(
-								array(
-									'size'        => 'slider',
-									'image_class' => 'thumbnail',
-									'attachment'  => false,
-									'meta_key'    => null,
-								)
-							);
-
-						}
-					?>
+					<?php cakifo_post_thumbnail( 'slider' ); ?>
 
 					<div class="entry-summary">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
