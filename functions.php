@@ -674,19 +674,22 @@ function cakifo_get_image_size_links() {
 	return join( ' <span class="sep">/</span> ', $links );
 }
 
+
 /**
  * Gets the post thumbnail if the theme supports the Get The Image extension.
  *
  * @since  Cakifo 1.7.0
- * @return string    HTML for the thumbnail.
+ *
+ * @param  string    $size Optional. The image size. Default: thumbnail.
+ * @return string          HTML for the thumbnail.
  */
-function cakifo_post_thumbnail() {
+function cakifo_post_thumbnail( $size = 'thumbnail' ) {
 	if ( ! current_theme_supports( 'get-the-image' ) ) {
 		return;
 	}
 
 	get_the_image( array(
-		'size'       => 'thumbnail',
+		'size'       => $size,
 		'attachment' => false
 	));
 }
