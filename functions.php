@@ -319,10 +319,10 @@ function cakifo_slider_javascript() {
 		'smoothHeight'   => true,
 		'pauseOnHover'   => true,
 		'video'          => true,
-		'prevText'       => esc_js( _x( 'Previous', 'slide', 'cakifo' ) ),
-		'nextText'       => esc_js( _x( 'Next',     'slide', 'cakifo' ) ),
-		'pauseText'      => esc_js( _x( 'Pause',    'slide', 'cakifo' ) ),
-		'playText'       => esc_js( _x( 'Play',     'slide', 'cakifo' ) ),
+		'prevText'       => esc_js( _x( 'Previous slide',  'slide', 'cakifo' ) ),
+		'nextText'       => esc_js( _x( 'Next slide',      'slide', 'cakifo' ) ),
+		'pauseText'      => esc_js( _x( 'Pause slideshow', 'slide', 'cakifo' ) ),
+		'playText'       => esc_js( _x( 'Play slideshow',  'slide', 'cakifo' ) ),
 	);
 
 	$args = array();
