@@ -15,7 +15,7 @@ do_atomic( 'before_intro' ); ?>
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages(); ?>
-		<?php echo hybrid_entry_edit_link_shortcode( array() ); ?>
+		<?php edit_post_link( __( 'Edit', 'cakifo' ), '<span class="edit">', '</span>' ); ?>
 	</div> <!-- .entry-content -->
 
 	<?php do_atomic( 'close_intro' ); ?>
