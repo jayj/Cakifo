@@ -73,9 +73,17 @@ function cakifo_image_info() {
 	echo '</div> <!-- .attachment-info -->';
 }
 
-
 /**
  * @deprecated Cakifo 1.7.0
  */
 function cakifo_load_customize_controls() {}
 
+/**
+ * @deprecated Cakifo 1.7.0
+ */
+function cakifo_admin_header_image() {}
+
+/**
+ * @deprecated Cakifo 1.7.0
+ */
+function cakifo_admin_header_style() {}
