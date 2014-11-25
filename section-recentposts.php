@@ -19,7 +19,11 @@ do_atomic( 'before_recent_posts' ); ?>
 	</h1>
 
 	<?php
-		// Create the Recent Posts query.
+		/**
+		 * Create the Recent Posts query.
+		 *
+		 * @var array
+		 */
 		$recent_args = array(
 			'posts_per_page'      => 4,
 			'ignore_sticky_posts' => 1,
@@ -27,8 +31,11 @@ do_atomic( 'before_recent_posts' ); ?>
 			'no_found_rows'       => true,
 		);
 
-		// Fire up the Recent Posts query.
-		// Filter it with the `cakifo_recent_posts_query` filter
+		/**
+		 * Filter the recent posts query.
+		 *
+		 * @param array $recent_args An array of valid WP_Query arguments.
+		 */
 		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
 
 		while ( $recent->have_posts() ) : $recent->the_post();
@@ -38,7 +45,7 @@ do_atomic( 'before_recent_posts' ); ?>
 			<?php do_atomic( 'open_recent_posts_item' ); ?>
 
 				<?php
-					// Get the thumbnail.
+					/* Get the thumbnail */
 					if ( current_theme_supports( 'get-the-image' ) ) {
 						get_the_image( array(
 							'size'          => 'recent',
