@@ -1,0 +1,57 @@
+/* =============================================================================
+   Components:  Headlines Lists
+   ========================================================================== */
+
+.headline-columns {
+	margin: @gutter-width 0;
+
+	.widget-title {
+		margin-bottom: 15px;
+	}
+}
+
+.headline-list {
+	float: left;
+	width: @headline-box-width;
+	margin: 0 (@gutter-width + 20px) @gutter-width 0;
+
+	&:nth-child(@{headline-box-count}n) {
+		margin-right: 0;
+	}
+
+	&:nth-child(@{headline-box-count}n+1) {
+		clear: left;
+	}
+
+	ol {
+		.no-list-style();
+	}
+
+	.headline-item {
+		padding: @gutter-width-small 20px;
+		border-bottom: 1px solid darken(@gray-lighter, 5%);
+		line-height: @line-height-base;
+
+		&:hover,
+		&:active {
+			background-color: @highlight-bg;
+			background-image: linear-gradient(to right, lighten(@highlight-bg, 1%) 50%, @highlight-bg);
+		}
+	}
+
+	.entry-title {
+		margin: 0;
+		.font-size(@font-size-large);
+	}
+
+	.headline-meta {
+		.font-size(@font-size-small);
+		font-style: italic;
+		color: darken(@gray-light, 5%);
+	}
+
+	.thumbnail {
+		float: left;
+		margin: 0 @gutter-width-small 0 0;
+	}
+}

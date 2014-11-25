@@ -1,0 +1,122 @@
+/* =============================================================================
+   Components:  Recent Posts
+   ========================================================================== */
+
+.recent-post {
+	float: left;
+	width: 220px;
+	margin-right: @gutter-width;
+	transition: opacity 220ms;
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+
+	.entry-header {
+		margin: 10px 0;
+	}
+
+	.entry-title {
+		.font-size(@font-size-large);
+		letter-spacing: 0;
+		word-wrap: break-word;
+	}
+
+	.more-link {
+		display: block;
+		margin-top: 5px;
+	}
+
+	.recent-posts-meta {
+		.font-size(@font-size-mini);
+		line-height: 1.2;
+		font-style: italic;
+		color: darken(@gray-light, 5%);
+	}
+
+	.thumbnail {
+		float: none;
+		max-height: 150px; // image height
+		margin: 0;
+	}
+}
+
+// Lower opacity on every column except the hovered
+.recent-post-columns:hover .recent-post {
+	opacity: 0.7;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+
+@media screen and (max-width: 1080px) {
+	.recent-post {
+		width: 23%;
+		margin-right: 2%;
+	}
+}
+
+// Show Recent Posts in one column
+@media screen and (max-width: 980px) {
+
+	.recent-post {
+		.clearfix();
+		float: none;
+		width: 100%;
+		padding: @gutter-width-small 0;
+		border-bottom: 1px solid @post-border-color;
+		margin-right: 0;
+
+		&:hover,
+		&:active {
+			background-color: @highlight-bg;
+		}
+
+		.entry-header {
+			margin-top: 0;
+		}
+
+		.entry-title {
+			margin-bottom: 5px;
+		}
+
+		.thumbnail {
+			float: left;
+			width: 25%;
+			max-width: 220px; // thumbnail width
+			margin-right: 5%;
+		}
+
+		// Makes sure that some of the text doesn't go under the image
+		.entry-header,
+		.entry-summary {
+			float: left;
+			width: 70%;
+		}
+	}
+
+	// Don't change opacity
+	.recent-post-columns:hover .recent-post {
+		opacity: 1;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+
+	.recent-post {
+		padding: @gutter-width-small;
+
+		.entry-header,
+		.entry-summary {
+			width: 100%;
+		}
+
+		.thumbnail {
+			display: none;
+		}
+	}
+
+}

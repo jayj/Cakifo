@@ -2683,7 +2683,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   content: "\f104";
 }
 /* =============================================================================
-   Layout:  Attachment pages
+   Content:  Attachment pages
    ========================================================================== */
 .attachment .byline .image-size-link:before {
   content: '\f402';
@@ -2730,9 +2730,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .attachment-gallery .gallery-caption {
   display: none;
 }
-/**
- * Intro
- */
+/* =============================================================================
+   Content:  Front page template
+   ========================================================================== */
 .intro-post {
   margin-bottom: 60px;
 }
@@ -2759,7 +2759,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   color: #fff;
 }
 /* =============================================================================
-   Layout:  Slider
+   Component:  Slider
    ========================================================================== */
 .cakifo-slider {
   position: relative;
