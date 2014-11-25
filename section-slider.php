@@ -29,7 +29,8 @@
 							'post-format-audio',
 							'post-format-chat',
 							'post-format-quote',
-							'post-format-status'
+							'post-format-status',
+							'post-format-video'
 						),
 					'operator' => 'NOT IN'
 				)
@@ -76,39 +77,19 @@
 					<?php do_atomic( 'open_slide' ); ?>
 
 					<?php
-						if ( current_theme_supports( 'get-the-image' ) ) :
+						if ( current_theme_supports( 'get-the-image' ) ) {
 
 							// Get the post thumbnail with the slider image size
-							$thumbnail = get_the_image(
+							get_the_image(
 								array(
 									'size'        => 'slider',
 									'image_class' => 'thumbnail',
 									'attachment'  => false,
 									'meta_key'    => null,
-									'echo'        => false
 								)
 							);
 
-							// There's an image thumbnail.
-							if ( $thumbnail ) :
-
-								echo $thumbnail;
-
-							// Try to embed a video from the post content.
-							elseif ( has_post_format( 'video' ) && current_theme_supports( 'hybrid-core-media-grabber' ) ) :
-
-								$thumbnail_size = cakifo_get_image_size( 'slider' );
-
-								echo hybrid_media_grabber( array(
-									'type'   => 'video',
-									'width'  => $thumbnail_size['width'],
-									'before' => '<div class="slider-video">',
-									'after'  => '</div>'
-								) );
-
-							endif;
-
-						endif;
+						}
 					?>
 
 					<div class="entry-summary">
