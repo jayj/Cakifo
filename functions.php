@@ -409,6 +409,11 @@ function cakifo_get_the_image_arguments( $args ) {
  * @return string        The changed text with a Continue reading link.
  */
 function cakifo_excerpt_more( $more ) {
+	// Don't show the more link on the front page
+	if ( cakifo_is_front_page_template() ) {
+		return ' &hellip;';
+	}
+
 	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		/* translators: %s: Name of current post */
