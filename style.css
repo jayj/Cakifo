@@ -2300,7 +2300,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .dropdown-toggle.submenu-open:after {
   content: "\f432";
 }
-.site-navigation .menu-item-has-children > a {
+.js .site-navigation .menu-item-has-children > a {
   padding-right: 48px;
 }
 .main-navigation .dropdown-toggle:hover,
