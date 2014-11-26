@@ -1,33 +1,3 @@
-
-/* =============================================================================
-   Media Queries:  Max-width 1130px
-   ========================================================================== */
-
-@media screen and (max-width: 1130px) {
-	/* Move the navigation arrows when the screen is smaller */
-	.flex-direction-nav .flex-prev,
-	.flex-direction-nav .flex-next {
-		top: auto;
-		bottom: 15px;
-		.square(58px);
-
-		&:after {
-			font-size: 48px;
-			line-height: 48px;
-		}
-	}
-
-	.flex-direction-nav .flex-prev {
-		left: @gutter-width;
-		opacity: 1;
-	}
-
-	.flex-direction-nav .flex-next {
-		right: @gutter-width;
-		opacity: 1;
-	}
-}
-
 /* =============================================================================
    Media Queries:  Max-width 1080px
    ========================================================================== */
@@ -59,12 +29,6 @@
 
 @media screen and (max-width: 980px) {
 
-	/* Switch padding from 40px to 25px */
-	.cakifo-slider {
-		margin-left: ( -(@gutter-width-small) );
-		margin-right: ( -(@gutter-width-small) );
-	}
-
 	.section-title {
 		margin-bottom: @gutter-width-small;
 	}
@@ -87,23 +51,6 @@
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
-
-	/* Make the slider smaller */
-	.slide {
-		.thumbnail {
-			max-width: 55%;
-			margin-right: @gutter-width-small;
-		}
-
-		// Remove the video
-		.slider-video {
-			display: none;
-		}
-	}
-
-	.flex-control-nav {
-		margin-top: @gutter-width;
-	}
 
 	/* Make the pagination bigger */
 	.pagination a,
@@ -133,11 +80,6 @@
    ========================================================================== */
 
 @media screen and (max-width: 620px) {
-
-	/* Hide the slider */
-	.slider {
-		display: none;
-	}
 
 	/* Make the Category Headlines list two columns */
 	.headline-list {

@@ -4,55 +4,87 @@
 
 .cakifo-slider {
 	position: relative;
+	background-color: @slider-bg-color;
+	border-bottom: 4px double @slider-border-color;
 
-	// padding, margin, border-width
-	.highlight-box(
-		(@gutter-width) @gutter-width @gutter-width-small,
-		(-@gutter-width) (-@gutter-width) @gutter-width (-@gutter-width),
-		0 0 4px
-	);
+	margin: (-@gutter-width); // because of padding on .site-content
+	padding: @gutter-width; // same padding as .site-content
+	margin-bottom: @gutter-width;
+	padding-bottom: @gutter-width-small;
+
+	@media screen and (max-width: 980px) {
+		padding-left: @gutter-width-small;
+		padding-right: @gutter-width-small;
+		margin-left: ( -@gutter-width-small );
+		margin-right: ( -@gutter-width-small );
+	}
 }
 
 .flex-viewport {
-	min-height: 200px;
+	min-height: 233px; // image height + image bottom margin
 }
 
-/* Slider content */
 .slide {
 	// Hide the slides before the JS is loaded to avoid page jumping
 	display: none;
 	backface-visibility: hidden;
+	position: relative;
 
-	.thumbnail,
-	.slider-video {
+	.thumbnail {
 		float: left;
 		max-width: 100%;
-		margin: 0 @gutter-width 3px 3px;
+		margin: 0 @gutter-width 3px 3px; // 3px makes sure that the whole box-shadow can be seen and doesn't leak into the previously slide
 	}
 
-	.entry-title {
-		margin-top: 0;
+	@media screen and (max-width: 900px) {
+		.thumbnail {
+			max-width: 55%;
+			margin-right: @image-spacing;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.thumbnail {
+			max-width: 30%;
+			float: right;
+			margin: @gutter-width 3px @image-spacing 4%;
+		}
+
+		a + .entry-summary {
+			max-width: 65%;
+			float: left;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.thumbnail {
+			display: none;
+		}
+
+		a + .entry-summary {
+			max-width: 100%;
+			float: none;
+		}
 	}
 }
 
-/* Control navigation */
-.flex-control-nav {
-	list-style: none;
-	margin: @gutter-width-small auto 0 (-@gutter-width);
+
+/* Slider pagination */
+.flex-control-paging {
+	.no-list-style();
+	margin: @gutter-width auto 0 auto;
 	text-align: center;
 
 	li {
 		display: inline-block;
-		margin: 0 0 0 7px;
+		margin-left: 7px;
+		line-height: normal;
 
 		&:first-child {
 			margin-left: 0;
 		}
 	}
-}
 
-/* Slider pagination */
-.flex-control-paging li {
 	a {
 		display: block;
 		.square(@slider-pagination-size);
@@ -63,21 +95,42 @@
 		transition: all 150ms ease;
 
 		&:hover {
-			background: @slider-pagination-color-hover;
+			background-color: @slider-pagination-color-hover;
 		}
 	}
 
 	.flex-active,
 	.flex-active:hover {
-		background: @slider-pagination-color-active;
+		background-color: @slider-pagination-color-active;
 		cursor: default;
 		transform: scale(1.07);
 	}
 }
 
-.flex-pauseplay a {
-	cursor: pointer;
+
+/* Pause/play buttons */
+.flex-pauseplay {
+	position: absolute;
+	bottom: @gutter-width-small;
+	right: @gutter-width;
+
+	a {
+		cursor: pointer;
+	}
+
+	.flex-pause:before {
+		.icon('\f448'); // pause
+	}
+
+	.flex-play:before {
+		.icon('\f452'); // play
+	}
+
+	@media screen and (max-width: 980px) {
+		right: @gutter-width-small;
+	}
 }
+
 
 /* Next/prev buttons */
 .flex-direction-nav {
@@ -85,81 +138,141 @@
 
 	a {
 		position: absolute;
-		top: 40%;
-		.square(48px);
-		margin: 0;
-		background-color: #fff;
+		top: 50%;
+		transform: translateY(-50%); // Centers the buttons
+		.square(@slider-navigation-size);
+		background-color: @slider-navigation-color;
 		border-radius: 50%;
 		box-shadow: 0 0 7px fade(#000, 30%);
-		text-indent: -9999px;
-		opacity: 0.6;
-		transition: opacity 150ms ease;
-
-		&:focus {
-			background: @slider-pagination-color;
-			outline: 0;
-		}
+		text-indent: -9999px; // Hide the text
+		transition: all 200ms ease;
+		opacity: 0;
 
 		&:after {
+			&:extend(.genericon);
+			.font-size(48);
+			.square(100%);
+
 			position: absolute;
 			z-index: 10;
-			top: 0;
-			left: -2px;
-			.square(100%);
-			#font > .shorthand(38, bold, 41px);
+			top: 6px;
+
 			color: @gray;
 			text-align: center;
 			text-indent: 0;
 		}
 
+		&:hover {
+			background-color: @slider-pagination-color;
+
+			&:after {
+				color: @gray-dark;
+			}
+		}
+
+		&:focus {
+			background-color: @slider-pagination-color-active;
+			outline: 0;
+
+			&:after {
+				color: #fff;
+			}
+		}
+
+		&:active {
+			box-shadow:
+				inset 1px 1px 10px fade(#000, 50%),
+				0 0 7px fade(#000, 30%);
+		}
+
+		// Reveal buttons when the slider is hovered
 		.cakifo-slider:hover & {
 			opacity: 1;
 		}
 	}
 
+	// Previous button
 	.flex-prev {
-		left: (-@gutter-width-small);
+		left: (-@gutter-width * 1.5);
+
+		.cakifo-slider:hover & {
+			left: (-@gutter-width);
+		}
 
 		&:after {
-			content: "\00AB";
+			content: '\f430'; // previous arrow
+			left: -1px;
 		}
 	}
 
+	// Next button
 	.flex-next {
-		right: (-@gutter-width-small);
-		right: (-@gutter-width-small);
+		right: (-@gutter-width * 1.5);
+
+		.cakifo-slider:hover & {
+			right: (-@gutter-width);
+		}
 
 		&:after {
-			content: "\00BB";
+			content: '\f429'; // next arrow
 			left: 1px;
 		}
 	}
 
-	.flex-direction-nav .disabled {
+	// Disabled button
+	.flex-disabled {
 		cursor: default;
-		opacity: 0.3 !important;
-		filter: alpha(opacity=30);
+		opacity: 0;
 	}
 
-	.flex-prev:active,
-	.flex-next:active {
-		box-shadow:
-			inset 0 0 5px fade(#000, 30%),
-			0 0 7px fade(#000, 30%);
+
+	/* Reveal the buttons on smaller screens */
+	@media screen and (max-width: 1170px) {
+		.flex-prev,
+		.flex-next {
+			top: auto;
+			bottom: -15px;
+			opacity: 1;
+		}
+
+		.flex-prev {
+			&,
+			.cakifo-slider:hover & {
+				left: @gutter-width;
+			}
+		}
+
+		.flex-next {
+			&,
+			.cakifo-slider:hover & {
+				right: @gutter-width;
+			}
+		}
+	}
+
+	@media screen and (max-width: 980px) {
+		.flex-prev {
+			&,
+			.cakifo-slider:hover & {
+				left: @gutter-width-small;
+			}
+		}
+
+		.flex-next {
+			&,
+			.cakifo-slider:hover & {
+				right: @gutter-width-small;
+			}
+		}
 	}
 }
 
-/* Fallback to a border for browsers without box-shadow support */
-.no-boxshadow .flex-direction-nav .flex-prev,
-.no-boxshadow .flex-direction-nav .flex-next {
-	border: 2px solid @slider-pagination-color;
 
-	&:hover {
-		border-color: @slider-pagination-color-active;
-	}
-}
-
-/* No-javaScript fallback */
+/**
+ * Non-javascript fallback
+ *
+ * Hides all slides except the first
+ */
 .no-js .slides-container > .slide {
 	display: none;
 

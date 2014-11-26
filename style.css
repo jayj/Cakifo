@@ -974,6 +974,9 @@ html .btn-inverse:hover {
 .post-format-link:before,
 .format-link .entry-title a:after,
 .attachment .byline .image-size-link:before,
+.flex-pauseplay .flex-pause:before,
+.flex-pauseplay .flex-play:before,
+.flex-direction-nav a:after,
 .search-form label:before,
 .pagination .prev:before,
 .pagination .next:after,
@@ -2730,7 +2733,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .attachment-gallery .gallery-caption {
   display: none;
 }
-/* =============================================================================
+/* ============================================================================
    Content:  Front page template
    ========================================================================== */
 .intro-post {
@@ -2764,43 +2767,76 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .cakifo-slider {
   position: relative;
   background-color: #ffffdf;
-  border: double #eeddbd;
-  border-width: 0 0 4px;
-  margin: -40px -40px 40px -40px;
-  padding: 40px 40px 25px;
+  border-bottom: 4px double #f7d8a3;
+  margin: -40px;
+  padding: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+}
+@media screen and (max-width: 980px) {
+  .cakifo-slider {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: -25px;
+    margin-right: -25px;
+  }
 }
 .flex-viewport {
-  min-height: 200px;
+  min-height: 233px;
 }
-/* Slider content */
 .slide {
   display: none;
   backface-visibility: hidden;
+  position: relative;
 }
-.slide .thumbnail,
-.slide .slider-video {
+.slide .thumbnail {
   float: left;
   max-width: 100%;
   margin: 0 40px 3px 3px;
 }
-.slide .entry-title {
-  margin-top: 0;
+@media screen and (max-width: 900px) {
+  .slide .thumbnail {
+    max-width: 55%;
+    margin-right: 25px;
+  }
 }
-/* Control navigation */
-.flex-control-nav {
-  list-style: none;
-  margin: 25px auto 0 -40px;
-  text-align: center;
+@media screen and (max-width: 768px) {
+  .slide .thumbnail {
+    max-width: 30%;
+    float: right;
+    margin: 40px 3px 25px 4%;
+  }
+  .slide a + .entry-summary {
+    max-width: 65%;
+    float: left;
+  }
 }
-.flex-control-nav li {
-  display: inline-block;
-  margin: 0 0 0 7px;
-}
-.flex-control-nav li:first-child {
-  margin-left: 0;
+@media screen and (max-width: 600px) {
+  .slide .thumbnail {
+    display: none;
+  }
+  .slide a + .entry-summary {
+    max-width: 100%;
+    float: none;
+  }
 }
 /* Slider pagination */
-.flex-control-paging li a {
+.flex-control-paging {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin: 40px auto 0 auto;
+  text-align: center;
+}
+.flex-control-paging li {
+  display: inline-block;
+  margin-left: 7px;
+  line-height: normal;
+}
+.flex-control-paging li:first-child {
+  margin-left: 0;
+}
+.flex-control-paging a {
   display: block;
   width: 16px;
   height: 16px;
@@ -2810,91 +2846,147 @@ body.page-template-template-front-page .site-wrapper .site-main {
   cursor: pointer;
   transition: all 150ms ease;
 }
-.flex-control-paging li a:hover {
-  background: #f89406;
+.flex-control-paging a:hover {
+  background-color: #f89406;
 }
-.flex-control-paging li .flex-active,
-.flex-control-paging li .flex-active:hover {
-  background: #d54e21;
+.flex-control-paging .flex-active,
+.flex-control-paging .flex-active:hover {
+  background-color: #d54e21;
   cursor: default;
   transform: scale(1.07);
 }
+/* Pause/play buttons */
+.flex-pauseplay {
+  position: absolute;
+  bottom: 25px;
+  right: 40px;
+}
 .flex-pauseplay a {
   cursor: pointer;
+}
+.flex-pauseplay .flex-pause:before {
+  content: '\f448';
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
+}
+.flex-pauseplay .flex-play:before {
+  content: '\f452';
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
+}
+@media screen and (max-width: 980px) {
+  .flex-pauseplay {
+    right: 25px;
+  }
 }
 /* Next/prev buttons */
 .flex-direction-nav {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  /* Reveal the buttons on smaller screens */
 }
 .flex-direction-nav a {
   position: absolute;
-  top: 40%;
-  width: 48px;
-  height: 48px;
-  margin: 0;
-  background-color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+  background-color: #ffffff;
   border-radius: 50%;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
   text-indent: -9999px;
-  opacity: 0.6;
-  transition: opacity 150ms ease;
-}
-.flex-direction-nav a:focus {
-  background: #ffc768;
-  outline: 0;
+  transition: all 200ms ease;
+  opacity: 0;
 }
 .flex-direction-nav a:after {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: -2px;
+  font-size: 48px;
+  font-size: 4.8rem;
   width: 100%;
   height: 100%;
-  font-size: 38px;
-  font-size: 3.8rem;
-  font-weight: bold;
-  line-height: 41px;
+  position: absolute;
+  z-index: 10;
+  top: 6px;
   color: #555555;
   text-align: center;
   text-indent: 0;
+}
+.flex-direction-nav a:hover {
+  background-color: #ffc768;
+}
+.flex-direction-nav a:hover:after {
+  color: #333333;
+}
+.flex-direction-nav a:focus {
+  background-color: #d54e21;
+  outline: 0;
+}
+.flex-direction-nav a:focus:after {
+  color: #fff;
+}
+.flex-direction-nav a:active {
+  box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.5), 0 0 7px rgba(0, 0, 0, 0.3);
 }
 .cakifo-slider:hover .flex-direction-nav a {
   opacity: 1;
 }
 .flex-direction-nav .flex-prev {
-  left: -25px;
+  left: -60px;
+}
+.cakifo-slider:hover .flex-direction-nav .flex-prev {
+  left: -40px;
 }
 .flex-direction-nav .flex-prev:after {
-  content: "\00AB";
+  content: '\f430';
+  left: -1px;
 }
 .flex-direction-nav .flex-next {
-  right: -25px;
+  right: -60px;
+}
+.cakifo-slider:hover .flex-direction-nav .flex-next {
+  right: -40px;
 }
 .flex-direction-nav .flex-next:after {
-  content: "\00BB";
+  content: '\f429';
   left: 1px;
 }
-.flex-direction-nav .flex-direction-nav .disabled {
+.flex-direction-nav .flex-disabled {
   cursor: default;
-  opacity: 0.3 !important;
-  filter: alpha(opacity=30);
+  opacity: 0;
 }
-.flex-direction-nav .flex-prev:active,
-.flex-direction-nav .flex-next:active {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 0 7px rgba(0, 0, 0, 0.3);
+@media screen and (max-width: 1170px) {
+  .flex-direction-nav .flex-prev,
+  .flex-direction-nav .flex-next {
+    top: auto;
+    bottom: -15px;
+    opacity: 1;
+  }
+  .flex-direction-nav .flex-prev,
+  .cakifo-slider:hover .flex-direction-nav .flex-prev {
+    left: 40px;
+  }
+  .flex-direction-nav .flex-next,
+  .cakifo-slider:hover .flex-direction-nav .flex-next {
+    right: 40px;
+  }
 }
-/* Fallback to a border for browsers without box-shadow support */
-.no-boxshadow .flex-direction-nav .flex-prev,
-.no-boxshadow .flex-direction-nav .flex-next {
-  border: 2px solid #ffc768;
+@media screen and (max-width: 980px) {
+  .flex-direction-nav .flex-prev,
+  .cakifo-slider:hover .flex-direction-nav .flex-prev {
+    left: 25px;
+  }
+  .flex-direction-nav .flex-next,
+  .cakifo-slider:hover .flex-direction-nav .flex-next {
+    right: 25px;
+  }
 }
-.no-boxshadow .flex-direction-nav .flex-prev:hover,
-.no-boxshadow .flex-direction-nav .flex-next:hover {
-  border-color: #d54e21;
-}
-/* No-javaScript fallback */
+/**
+ * Non-javascript fallback
+ *
+ * Hides all slides except the first
+ */
 .no-js .slides-container > .slide {
   display: none;
 }
@@ -3674,32 +3766,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   }
 }
 /* =============================================================================
-   Media Queries:  Max-width 1130px
-   ========================================================================== */
-@media screen and (max-width: 1130px) {
-  /* Move the navigation arrows when the screen is smaller */
-  .flex-direction-nav .flex-prev,
-  .flex-direction-nav .flex-next {
-    top: auto;
-    bottom: 15px;
-    width: 58px;
-    height: 58px;
-  }
-  .flex-direction-nav .flex-prev:after,
-  .flex-direction-nav .flex-next:after {
-    font-size: 48px;
-    line-height: 48px;
-  }
-  .flex-direction-nav .flex-prev {
-    left: 40px;
-    opacity: 1;
-  }
-  .flex-direction-nav .flex-next {
-    right: 40px;
-    opacity: 1;
-  }
-}
-/* =============================================================================
    Media Queries:  Max-width 1080px
    ========================================================================== */
 @media screen and (max-width: 1080px) {
@@ -3722,11 +3788,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
    Media Queries:  Max-width 980px
    ========================================================================== */
 @media screen and (max-width: 980px) {
-  /* Switch padding from 40px to 25px */
-  .cakifo-slider {
-    margin-left: -25px;
-    margin-right: -25px;
-  }
   .section-title {
     margin-bottom: 25px;
   }
@@ -3744,17 +3805,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
    Media Queries:  Max-width 768px
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  /* Make the slider smaller */
-  .slide .thumbnail {
-    max-width: 55%;
-    margin-right: 25px;
-  }
-  .slide .slider-video {
-    display: none;
-  }
-  .flex-control-nav {
-    margin-top: 40px;
-  }
   /* Make the pagination bigger */
   .pagination a,
   .pagination > span {
@@ -3778,10 +3828,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
    Media Queries:  Max-width 620px
    ========================================================================== */
 @media screen and (max-width: 620px) {
-  /* Hide the slider */
-  .slider {
-    display: none;
-  }
   /* Make the Category Headlines list two columns */
   .headline-list {
     width: 100%;
