@@ -80,8 +80,16 @@
 
 					<div class="entry-summary">
 						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
+						
 						<?php the_excerpt(); ?>
-						<a href="<?php the_permalink(); ?>" class="more-link"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'cakifo' ); ?></a>
+
+						<?php
+							printf( '<a href="%1$s" class="more-link">%2$s</a>',
+								esc_url( get_permalink() ),
+								/* translators: %s: Name of current post */
+								sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), '<span class="screen-reader-text">' . get_the_title() . '</span>' )
+								);
+						?>
 					</div> <!-- .entry-summary -->
 
 					<?php do_atomic( 'close_slide' ); ?>
