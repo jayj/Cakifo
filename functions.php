@@ -318,7 +318,7 @@ function cakifo_slider_javascript() {
 		'animationSpeed' => 450,
 		'smoothHeight'   => true,
 		'pauseOnHover'   => true,
-		'video'          => true,
+		'video'          => false,
 		'prevText'       => esc_js( _x( 'Previous slide',  'slide', 'cakifo' ) ),
 		'nextText'       => esc_js( _x( 'Next slide',      'slide', 'cakifo' ) ),
 		'pauseText'      => esc_js( _x( 'Pause slideshow', 'slide', 'cakifo' ) ),
