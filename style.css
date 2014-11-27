@@ -3309,7 +3309,16 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 0;
   padding: 15px 25px;
 }
-/**
+.comments-title:before {
+  content: '\f300';
+  top: 6px;
+  margin-right: 6px;
+  position: relative;
+  text-decoration: none;
+  font-size: 26px;
+  font-size: 2.6rem;
+}
+/*
  * Comments
  */
 .comment-list {
