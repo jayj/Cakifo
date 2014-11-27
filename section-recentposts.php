@@ -8,77 +8,79 @@
  * @subpackage Template
  */
 
-do_atomic( 'before_recent_posts' ); ?>
+	/**
+	 * Create the Recent Posts query.
+	 *
+	 * @var array
+	 */
+	$recent_args = array(
+		'posts_per_page'      => 4,
+		'ignore_sticky_posts' => 1,
+		'post_status'         => 'publish',
+		'no_found_rows'       => true,
+	);
 
-<section class="recent-post-columns clearfix">
+	/**
+	 * Filter the recent posts query.
+	 *
+	 * @param array $recent_args An array of valid WP_Query arguments.
+	 */
+	$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) ); ?>
 
-	<?php do_atomic( 'open_recent_posts' ); ?>
+<?php if ( $recent->have_posts() ) : ?>
 
-	<h1 class="section-title">
-		<a href="<?php echo esc_url( cakifo_get_blog_page_url() ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
-	</h1>
+	<?php do_atomic( 'before_recent_posts' ); ?>
 
-	<?php
-		/**
-		 * Create the Recent Posts query.
-		 *
-		 * @var array
-		 */
-		$recent_args = array(
-			'posts_per_page'      => 4,
-			'ignore_sticky_posts' => 1,
-			'post_status'         => 'publish',
-			'no_found_rows'       => true,
-		);
+	<section class="recent-post-columns clearfix">
 
-		/**
-		 * Filter the recent posts query.
-		 *
-		 * @param array $recent_args An array of valid WP_Query arguments.
-		 */
-		$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
+		<?php do_atomic( 'open_recent_posts' ); ?>
 
-		while ( $recent->have_posts() ) : $recent->the_post();
-	?>
+		<h1 class="section-title">
+			<a href="<?php echo esc_url( cakifo_get_blog_page_url() ); ?>"><?php _e( 'Recent Posts', 'cakifo' ); ?></a>
+		</h1>
 
-		<article class="recent-post">
-			<?php do_atomic( 'open_recent_posts_item' ); ?>
+		<?php while ( $recent->have_posts() ) : $recent->the_post(); ?>
 
-				<?php
-					/* Get the thumbnail */
-					if ( current_theme_supports( 'get-the-image' ) ) {
-						get_the_image( array(
-							'size'          => 'recent',
-							'image_class'   => 'thumbnail',
-							'default_image' => THEME_URI . '/images/default-thumb-220-150.png',
-						));
-					}
-				?>
+			<article class="recent-post">
+				<?php do_atomic( 'open_recent_posts_item' ); ?>
 
-				<header class="entry-header">
 					<?php
-						echo apply_atomic_shortcode( 'recent_posts_entry_title', '[entry-title tag="h2"]' );
-						echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recent-posts-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' );
+						/* Get the thumbnail */
+						if ( current_theme_supports( 'get-the-image' ) ) {
+							get_the_image( array(
+								'size'          => 'recent',
+								'image_class'   => 'thumbnail',
+								'default_image' => THEME_URI . '/images/default-thumb-220-150.png',
+							));
+						}
 					?>
-				</header> <!-- .details -->
 
-				<div class="entry-summary">
-					<?php
-						echo wp_trim_words( get_the_excerpt(), 20 );
+					<header class="entry-header">
+						<?php
+							echo apply_atomic_shortcode( 'recent_posts_entry_title', '[entry-title tag="h2"]' );
+							echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recent-posts-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' );
+						?>
+					</header> <!-- .details -->
 
-						$more_text = sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), the_title( '<span class="screen-reader-text">', '</span>', false ) );
+					<div class="entry-summary">
+						<?php
+							echo wp_trim_words( get_the_excerpt(), 20 );
 
-						echo '<a href="' . esc_url( get_permalink() ) . '" class="more-link">' . $more_text . '</a>';
-					?>
-				</div> <!-- .entry-summary -->
+							$more_text = sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), the_title( '<span class="screen-reader-text">', '</span>', false ) );
 
-			<?php do_atomic( 'close_recent_posts_item' ); ?>
-		</article> <!-- .recent-post -->
+							echo '<a href="' . esc_url( get_permalink() ) . '" class="more-link">' . $more_text . '</a>';
+						?>
+					</div> <!-- .entry-summary -->
 
-	<?php endwhile; wp_reset_query(); ?>
+				<?php do_atomic( 'close_recent_posts_item' ); ?>
+			</article> <!-- .recent-post -->
 
-	<?php do_atomic( 'close_recent_posts' ); ?>
+		<?php endwhile; wp_reset_query(); ?>
 
-</section> <!-- .recent-post-columns -->
+		<?php do_atomic( 'close_recent_posts' ); ?>
 
-<?php do_atomic( 'after_recent_posts' ); ?>
+	</section> <!-- .recent-post-columns -->
+
+	<?php do_atomic( 'after_recent_posts' ); ?>
+
+<?php endif; ?>
