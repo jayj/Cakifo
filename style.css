@@ -280,6 +280,7 @@ a {
 }
 a:hover {
   color: #d54e21;
+  text-decoration: underline;
 }
 a:focus {
   outline: thin dotted #333333;
@@ -1982,6 +1983,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .site-navigation .menu-item > a {
   display: inline-block;
 }
+.site-navigation .menu-item > a:hover {
+  text-decoration: none;
+}
 .site-navigation .sub-menu {
   display: none;
 }
@@ -2848,6 +2852,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .flex-control-paging a:hover {
   background-color: #f89406;
+  text-decoration: none;
 }
 .flex-control-paging .flex-active,
 .flex-control-paging .flex-active:hover {
@@ -2915,6 +2920,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .flex-direction-nav a:hover {
   background-color: #ffc768;
+  text-decoration: none;
 }
 .flex-direction-nav a:hover:after {
   color: #333333;
@@ -3441,6 +3447,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background-color: #ffc768;
   border-bottom-color: #f89406;
   color: #511d0c;
+  text-decoration: none;
 }
 .pagination a:active,
 .post-navigation a:active,
