@@ -25,8 +25,8 @@ if ( post_password_required() ) {
 
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'cakifo' ),
-				number_format_i18n( get_comments_number() ), get_the_title() );
+				printf( _n( '1 comment', '%1$s comments', get_comments_number(), 'cakifo' ),
+				number_format_i18n( get_comments_number() ) );
 			?>
 		</h2>
 
