@@ -3317,6 +3317,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
   padding: 0;
   margin: 0;
 }
+.comment {
+  line-height: 1.6;
+}
 .comment-body {
   border-bottom: 4px double #eeeeee;
   padding: 40px 25px 25px;
