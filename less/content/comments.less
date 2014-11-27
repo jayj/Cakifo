@@ -15,7 +15,8 @@
 	}
 }
 
-/**
+
+/*
  * Comments
  */
 .comment-list {
@@ -28,16 +29,17 @@
 
 .comment-body {
 	border-bottom: 4px double @comments-border-color;
-	padding: @gutter-width @gutter-width-small @gutter-width-small;
+	padding: @gutter-width @gutter-width-small;
 	word-wrap: break-word;
+	hyphens: auto;
+
+	.bypostauthor > & {
+		background-color: @highlight-bg;
+	}
 }
 
-.bypostauthor > .comment-body {
-	background-color: @highlight-bg;
-}
 
-
-/**
+/*
  * Comment meta
  */
 .comment-meta {
@@ -73,19 +75,13 @@
 	}
 }
 
-/**
- * Closed comments
- */
-.no-comments {
-	.highlight-box(@gutter-width, @gutter-width 0);
-	.font-size(@headings-size-base);
-	text-align: center;
 // Reply link
 .comment-reply-link:before {
 	.icon('\f412'); // reply
 }
 
-/**
+
+/*
  * Child comments
  */
 .comment-list .children {
@@ -111,4 +107,26 @@
 	.depth-5 .comment-body {
 		border-left-color: darken(@pink, 5%);
 	}
+
+	@media screen and (max-width: 600px) {
+		padding-left: @gutter-width-small;
+
+		.comment-body {
+			padding-left: @gutter-width-small;
+		}
+
+		.children {
+			padding-left: 5px;
+		}
+	}
+}
+
+
+/*
+ * Closed comments
+ */
+.no-comments {
+	.highlight-box(@gutter-width, @gutter-width 0);
+	.font-size(@headings-size-base);
+	text-align: center;
 }

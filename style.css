@@ -3332,8 +3332,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .comment-body {
   border-bottom: 4px double #eeeeee;
-  padding: 40px 25px 25px;
+  padding: 40px 25px;
   word-wrap: break-word;
+  hyphens: auto;
 }
 .bypostauthor > .comment-body {
   background-color: #f2f7fc;
@@ -3341,7 +3342,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /*
  * Comment meta
  */
-.comment-author {
+.comment-meta {
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 .says {
@@ -3373,18 +3375,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   text-decoration: none;
 }
-/**
- * Closed comments
- */
-.no-comments {
-  background-color: #ffffdf;
-  border: double #eeddbd;
-  border-width: 4px 0;
-  margin: 40px 0;
-  padding: 40px;
-  font-size: 26px;
-  font-size: 2.6rem;
-  text-align: center;
 .comment-reply-link:before {
   content: '\f412';
   top: 4px;
@@ -3392,7 +3382,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   text-decoration: none;
 }
-/**
+/*
  * Child comments
  */
 .comment-list .children {
@@ -3413,6 +3403,30 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .comment-list .children .depth-5 .comment-body {
   border-left-color: #ea0863;
+}
+@media screen and (max-width: 600px) {
+  .comment-list .children {
+    padding-left: 25px;
+  }
+  .comment-list .children .comment-body {
+    padding-left: 25px;
+  }
+  .comment-list .children .children {
+    padding-left: 5px;
+  }
+}
+/*
+ * Closed comments
+ */
+.no-comments {
+  background-color: #ffffdf;
+  border: double #eeddbd;
+  border-width: 4px 0;
+  margin: 40px 0;
+  padding: 40px;
+  font-size: 26px;
+  font-size: 2.6rem;
+  text-align: center;
 }
 /* =============================================================================
    Components:  Loop meta
