@@ -2116,6 +2116,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     top: 5px;
     margin-right: 5px;
     position: relative;
+    text-decoration: none;
   }
   .main-navigation .menu-toggle:hover {
     background: #333333;
@@ -2233,6 +2234,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     top: 5px;
     margin-right: 5px;
     position: relative;
+    text-decoration: none;
   }
   .secondary-navigation .menu-toggle:hover {
     background: #333333;
@@ -2479,6 +2481,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 4px;
   margin-right: 4px;
   position: relative;
+  text-decoration: none;
 }
 /*
  * Entry header
@@ -2505,6 +2508,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 5px;
   margin-right: 0;
   position: relative;
+  text-decoration: none;
 }
 /*
  * Entry meta
@@ -2535,6 +2539,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 4px;
   margin-right: 4px;
   position: relative;
+  text-decoration: none;
 }
 .entry-header .post-format-link {
   background-color: #eeeeee;
@@ -2698,6 +2703,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 4px;
   margin-right: 3px;
   position: relative;
+  text-decoration: none;
 }
 .attachment .byline .sep {
   margin: 0 3px;
@@ -2875,12 +2881,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 4px;
   margin-right: 4px;
   position: relative;
+  text-decoration: none;
 }
 .flex-pauseplay .flex-play:before {
   content: '\f452';
   top: 4px;
   margin-right: 4px;
   position: relative;
+  text-decoration: none;
 }
 @media screen and (max-width: 980px) {
   .flex-pauseplay {
@@ -3520,6 +3528,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 2px;
   margin-right: 6px;
   position: relative;
+  text-decoration: none;
 }
 .pagination .next:after,
 .post-navigation .nav-next a:after {
@@ -3527,6 +3536,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 2px;
   margin-right: 0;
   position: relative;
+  text-decoration: none;
   margin-left: 6px;
 }
 /*
@@ -3599,12 +3609,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
   top: 1px;
   margin-right: -3px;
   position: relative;
+  text-decoration: none;
 }
 .breadcrumbs .sep:before {
   content: '\f431';
   top: 0;
   margin-right: 3px;
   position: relative;
+  text-decoration: none;
   margin-left: 3px;
   transform: rotate(-90deg);
 }
