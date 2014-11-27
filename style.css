@@ -975,7 +975,7 @@ html .btn-inverse:hover {
 .flex-pauseplay .flex-pause:before,
 .flex-pauseplay .flex-play:before,
 .flex-direction-nav a:after,
-.search-form label:before,
+.search-form > label:before,
 .comments-title:before,
 .bypostauthor .comment-meta .fn:after,
 .comment-edit-link:before,
@@ -3242,11 +3242,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /* =============================================================================
    Widget:  Search form
    ========================================================================== */
-.search-form label {
+.search-form > label {
   margin: 0;
   position: relative;
 }
-.search-form label:before {
+.search-form > label:before {
   content: '\f400';
   color: #999999;
   position: absolute;
