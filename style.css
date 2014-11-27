@@ -709,8 +709,7 @@ input[type="checkbox"][readonly] {
 .btn,
 input[type="submit"],
 input[type="reset"],
-input[type="button"],
-.comment-reply-link {
+input[type="button"] {
   display: inline-block;
   padding: 4px 14px;
   font-size: 16px;
@@ -757,8 +756,7 @@ fieldset[disabled] input[type="button"] {
 .btn,
 input[type="submit"],
 input[type="reset"],
-input[type="button"],
-.comment-reply-link {
+input[type="button"] {
   background-color: #fafafa;
   background-image: linear-gradient(to bottom, #fefefe, #f4f4f4);
   border-color: #e0e0e0 #e0e0e0 #c1c1c1;
@@ -885,8 +883,7 @@ html .btn-inverse:hover {
   font-size: 14px;
   font-size: 1.4rem;
 }
-.btn-mini,
-.comment-reply-link {
+.btn-mini {
   padding: 3px 7px;
   font-size: 13px;
   font-size: 1.3rem;
@@ -982,6 +979,7 @@ html .btn-inverse:hover {
 .comments-title:before,
 .bypostauthor .comment-meta .fn:after,
 .comment-edit-link:before,
+.comment-reply-link:before,
 .pagination .prev:before,
 .pagination .next:after,
 .breadcrumbs .trail-begin a:before,
@@ -3387,6 +3385,12 @@ body.page-template-template-front-page .site-wrapper .site-main {
   font-size: 26px;
   font-size: 2.6rem;
   text-align: center;
+.comment-reply-link:before {
+  content: '\f412';
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
+  text-decoration: none;
 }
 /**
  * Child comments

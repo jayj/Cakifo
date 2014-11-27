@@ -36,10 +36,6 @@
 	background-color: @highlight-bg;
 }
 
-.comment-reply-link {
-	&:extend(.btn);
-	&:extend(.btn-mini);
-}
 
 /**
  * Comment meta
@@ -84,6 +80,9 @@
 	.highlight-box(@gutter-width, @gutter-width 0);
 	.font-size(@headings-size-base);
 	text-align: center;
+// Reply link
+.comment-reply-link:before {
+	.icon('\f412'); // reply
 }
 
 /**
