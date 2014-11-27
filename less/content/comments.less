@@ -44,10 +44,21 @@
 /**
  * Comment meta
  */
-.comment-author {
+.comment-meta {
+	margin-bottom: 20px;
 	line-height: 1.5;
 }
 
+.says {
+	display: none;
+}
+
+.bypostauthor .comment-meta .fn:after {
+	.icon('\f304', 0); // user
+	margin-left: 4px;
+}
+
+// Comment date
 .comment-metadata a {
 	color: @gray;
 	.font-size(@font-size-small);
@@ -57,12 +68,12 @@
 	}
 }
 
+// Edit link
 .comment-edit-link {
 	margin-left: 10px;
 
 	&:before {
-		content: "\270D"; // ✍ icon
-		margin-right: 5px;
+		.icon('\f411'); // edit
 	}
 }
 

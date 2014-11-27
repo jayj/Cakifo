@@ -979,6 +979,9 @@ html .btn-inverse:hover {
 .flex-pauseplay .flex-play:before,
 .flex-direction-nav a:after,
 .search-form label:before,
+.comments-title:before,
+.bypostauthor .comment-meta .fn:after,
+.comment-edit-link:before,
 .pagination .prev:before,
 .pagination .next:after,
 .breadcrumbs .trail-begin a:before,
@@ -3337,11 +3340,22 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .bypostauthor > .comment-body {
   background-color: #f2f7fc;
 }
-/**
+/*
  * Comment meta
  */
 .comment-author {
   line-height: 1.5;
+}
+.says {
+  display: none;
+}
+.bypostauthor .comment-meta .fn:after {
+  content: '\f304';
+  top: 4px;
+  margin-right: 0;
+  position: relative;
+  text-decoration: none;
+  margin-left: 4px;
 }
 .comment-metadata a {
   color: #555555;
@@ -3355,8 +3369,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin-left: 10px;
 }
 .comment-edit-link:before {
-  content: "\270D";
-  margin-right: 5px;
+  content: '\f411';
+  top: 4px;
+  margin-right: 4px;
+  position: relative;
+  text-decoration: none;
 }
 /**
  * Closed comments
