@@ -1452,7 +1452,8 @@ html .btn-inverse:hover {
    ========================================================================== */
 /* Text meant only for screen readers */
 .screen-reader-text,
-.assistive-text {
+.assistive-text,
+.says {
   clip: rect(1px, 1px, 1px, 1px);
   width: 1px;
   height: 1px;
@@ -3353,9 +3354,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .comment-meta {
   margin-bottom: 20px;
   line-height: 1.5;
-}
-.says {
-  display: none;
 }
 .bypostauthor .comment-meta .fn:after {
   content: '\f304';
