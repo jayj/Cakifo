@@ -3287,7 +3287,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 @media screen and (min-width: 980px) {
   .main-navigation .search-form {
     float: right;
-    margin-top: 12px;
+    margin: 12px 0;
   }
 }
 @media screen and (max-width: 979px) {
