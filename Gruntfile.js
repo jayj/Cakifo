@@ -84,6 +84,20 @@ module.exports = function(grunt) {
 		jshint: {
 			all: ['js/script.js']
 		},
+		// Generate .pot file
+		makepot: {
+			cakifo: {
+				options: {
+					exclude: [ 'node_modules/.*' ],
+					type: 'wp-theme',
+					potHeaders: {
+						poedit: true,
+						'report-msgid-bugs-to': 'https://github.com/jayj/Cakifo/issues',
+					},
+				}
+			},
+		},
+
 		// Copy to build folder
 		copy: {
 			build: {
@@ -140,7 +154,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'watch' ]);
 
 	// Pre-build task
-	grunt.registerTask( 'pre-build', [ 'version', 'less', 'sass', 'imagemin' ]);
+	grunt.registerTask( 'pre-build', [ 'version', 'less', 'sass', 'imagemin', 'makepot' ] );
 
 	// Build task
 	grunt.registerTask( 'build', [ 'clean:build', 'copy:build', 'cssmin', 'compress:build' ]);
