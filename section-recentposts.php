@@ -25,9 +25,10 @@
 	 *
 	 * @param array $recent_args An array of valid WP_Query arguments.
 	 */
-	$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) ); ?>
+	$recent = new WP_Query( apply_filters( 'cakifo_recent_posts_query', $recent_args ) );
 
-<?php if ( $recent->have_posts() ) : ?>
+	if ( $recent->have_posts() ) :
+?>
 
 	<?php do_atomic( 'before_recent_posts' ); ?>
 

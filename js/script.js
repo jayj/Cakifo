@@ -8,7 +8,7 @@
 	/*
 	 * Add dropdown toggle that display child menu items.
 	 *
-	 * @author	Twenty Fifteen
+	 * @author Twenty Fifteen
 	 */
 	$( '.site-navigation .menu-item-has-children > a' )
 		.after( '<button class="dropdown-toggle" aria-expanded="false">' + screenReaderText.expand + '</button>' );

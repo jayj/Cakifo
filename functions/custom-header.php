@@ -11,12 +11,12 @@
  */
 add_theme_support( 'custom-header',
 	array(
-		'width'                  => 400,
-		'height'                 => 60,
-		'flex-width'             => true,
-		'flex-height'            => true,
-		'default-text-color'     => cakifo_get_default_link_color_no_hash(),
-		'wp-head-callback'       => 'cakifo_header_style',
+		'width'              => 400,
+		'height'             => 60,
+		'flex-width'         => true,
+		'flex-height'        => true,
+		'default-text-color' => cakifo_get_default_link_color_no_hash(),
+		'wp-head-callback'   => 'cakifo_header_style',
 	)
 );
 

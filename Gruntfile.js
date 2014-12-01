@@ -1,11 +1,11 @@
 module.exports = function(grunt) {
 
 	// Load tasks.
-	require('matchdep').filterDev('grunt-*').forEach( grunt.loadNpmTasks );
+	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	// Project configuration.
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON( 'package.json' ),
 
 		// Compile LESS
 		less: {
@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
 		// Compile Sass
 		sass: {
 			dev: {
@@ -31,19 +32,20 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
 		// Watch for file changes
 		watch: {
 			scripts: {
-				files: ['js/script.js'],
-				tasks: ['jshint']
+				files: [ 'js/script.js' ],
+				tasks: [ 'jshint' ]
 			},
 			less: {
-				files: ['**/*.less'],
-				tasks: ['less']
+				files: [ '**/*.less' ],
+				tasks: [ 'less' ]
 			},
 			sass: {
-				files: ['**/*.scss'],
-				tasks: ['sass']
+				files: [ '**/*.scss' ],
+				tasks: [ 'sass' ]
 			},
 			livereload: {
 				options: {
@@ -57,7 +59,8 @@ module.exports = function(grunt) {
 				],
 			}
 		},
-		// Minify CSS into *.min.css
+
+		// Minify CSS
 		cssmin: {
 			minify: {
 				expand: true,
@@ -69,6 +72,7 @@ module.exports = function(grunt) {
 				ext: '.min.css'
 			}
 		},
+
 		// Minify images
 		imagemin: {
 			dynamic: {
@@ -76,14 +80,16 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'images/',
 					dest: 'images/',
-					src: ['**/*.{png,jpg,gif}'],
+					src: [ '**/*.{png,jpg,gif}' ],
 				}]
 			}
 		},
+
 		// Use jshint
 		jshint: {
-			all: ['js/script.js']
+			all: [ 'js/script.js', 'js/customizer.js' ]
 		},
+
 		// Generate .pot file
 		makepot: {
 			cakifo: {
@@ -116,27 +122,30 @@ module.exports = function(grunt) {
 				dest: 'build/',
 			},
 		},
+
 		// Clean the build folder
 		clean: {
 			build: {
-				src: ['build/']
+				src: [ 'build/' ]
 			}
 		},
+
 		// Bump version numbers
 		version: {
 			css: {
 				options: {
 					prefix: 'Version\\:\\s'
 				},
-				src: ['style.dev.less'],
+				src: [ 'style.dev.less' ],
 			},
 			php: {
 				options: {
 					prefix: '\@version\\s+'
 				},
-				src: ['functions.php'],
+				src: [ 'functions.php' ],
 			}
 		},
+
 		// Compress the build folder into an upload-ready zip file
 		compress: {
 			build: {
@@ -144,19 +153,19 @@ module.exports = function(grunt) {
 					archive: 'build/cakifo.zip'
 				},
 				cwd: 'build/',
-				src: ['**/*'],
+				src: [ '**/*' ],
 				dest: 'cakifo/'
 			}
 		}
 	});
 
 	// Default task
-	grunt.registerTask('default', [ 'watch' ]);
+	grunt.registerTask( 'default', [ 'watch' ] );
 
 	// Pre-build task
 	grunt.registerTask( 'pre-build', [ 'version', 'less', 'sass', 'imagemin', 'makepot' ] );
 
 	// Build task
-	grunt.registerTask( 'build', [ 'clean:build', 'copy:build', 'cssmin', 'compress:build' ]);
+	grunt.registerTask( 'build', [ 'clean:build', 'copy:build', 'cssmin', 'compress:build' ] );
 
 };
