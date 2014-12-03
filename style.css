@@ -539,29 +539,15 @@ hr {
 /* =============================================================================
    Base:  Forms
    ========================================================================== */
-label,
-input,
-button,
-select,
-textarea {
-  font-size: 15px;
-  font-size: 1.5rem;
-  font-weight: normal;
-  line-height: normal;
-}
-/**
+/*
  * Labels
  */
 label {
   display: block;
   margin-bottom: 5px;
-  font-size: 15px;
-  font-size: 1.5rem;
-  font-weight: normal;
-  line-height: 1.6;
   cursor: pointer;
 }
-/**
+/*
  * Inputs
  */
 select,
@@ -583,6 +569,9 @@ input[type="color"] {
   padding: 8px 6px;
   margin-bottom: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-size: 1.5rem;
+  background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 3px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -647,33 +636,7 @@ input[type="search"] {
 input[type="color"] {
   padding: 0;
 }
-select:focus,
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-  outline: thin dotted #333333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.input-mini {
-  width: 60px;
-}
-.input-small {
-  width: 90px;
-}
-.input-medium {
-  width: 150px;
-}
-.input-large {
-  width: 210px;
-}
-.input-xlarge {
-  width: 270px;
-}
-.input-xxlarge {
-  width: 100%;
-}
-/**
+/*
  * Disabled and read-only inputs
  */
 input[disabled],
@@ -683,25 +646,28 @@ textarea[disabled],
 input[readonly],
 button[readonly],
 select[readonly],
-textarea[readonly] {
-  background: #eeeeee !important;
+textarea[readonly],
+fieldset[disabled] input,
+fieldset[disabled] button,
+fieldset[disabled] select,
+fieldset[disabled] textarea {
+  background: #eeeeee;
   cursor: not-allowed;
+  opacity: 1;
 }
-input[disabled]:active,
-button[disabled]:active,
-select[disabled]:active,
-textarea[disabled]:active,
-input[readonly]:active,
-button[readonly]:active,
-select[readonly]:active,
-textarea[readonly]:active {
-  box-shadow: none;
-}
-input[type="radio"][disabled],
-input[type="checkbox"][disabled],
-input[type="radio"][readonly],
-input[type="checkbox"][readonly] {
-  background-color: transparent;
+input[disabled]:hover,
+button[disabled]:hover,
+select[disabled]:hover,
+textarea[disabled]:hover,
+input[readonly]:hover,
+button[readonly]:hover,
+select[readonly]:hover,
+textarea[readonly]:hover,
+fieldset[disabled] input:hover,
+fieldset[disabled] button:hover,
+fieldset[disabled] select:hover,
+fieldset[disabled] textarea:hover {
+  border-color: #cccccc;
 }
 /* =============================================================================
    Buttons
