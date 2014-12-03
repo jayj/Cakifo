@@ -684,7 +684,7 @@ input[type="button"] {
   line-height: 1.6;
   border: 1px solid;
   border-radius: 3px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 .btn:focus,
 input[type="submit"]:focus,
@@ -716,7 +716,7 @@ fieldset[disabled] input[type="button"] {
   color: #555555;
   text-shadow: none;
   opacity: 0.65;
-  cursor: default;
+  cursor: not-allowed;
   pointer-events: none;
 }
 .btn,
@@ -725,7 +725,8 @@ input[type="reset"],
 input[type="button"] {
   background-color: #fafafa;
   background-image: linear-gradient(to bottom, #fefefe, #f4f4f4);
-  border-color: #e0e0e0 #e0e0e0 #c1c1c1;
+  border-color: #e0e0e0;
+  border-bottom-color: #c1c1c1;
   color: #555555;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
@@ -739,14 +740,16 @@ input[type="reset"]:focus,
 input[type="button"]:focus {
   background-color: #eaeaea;
   background-image: linear-gradient(to bottom, #f1f1f1, #e0e0e0);
-  border-color: #cecece #cecece #a8a8a8;
+  border-color: #cecece;
+  border-bottom-color: #a8a8a8;
   color: #555555;
   text-decoration: none;
 }
 html .btn-primary {
   background-color: #006dcc;
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  border-color: #0036a3 #0036a3 #002266;
+  border-color: #0036a3;
+  border-bottom-color: #002266;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -754,14 +757,16 @@ html .btn-primary:hover,
 html .btn-primary:focus {
   background-color: #005dac;
   background-image: linear-gradient(to bottom, #0077b3, #0036a3);
-  border-color: #002a80 #002a80 #001133;
+  border-color: #002a80;
+  border-bottom-color: #001133;
   color: #ffffff;
   text-decoration: none;
 }
 html .btn-success {
   background-color: #5bb75b;
   background-image: linear-gradient(to bottom, #62c462, #51a351);
-  border-color: #438843 #438843 #2f5f2f;
+  border-color: #438843;
+  border-bottom-color: #2f5f2f;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -769,14 +774,16 @@ html .btn-success:hover,
 html .btn-success:focus {
   background-color: #4ba84b;
   background-image: linear-gradient(to bottom, #4fbd4f, #438843);
-  border-color: #387038 #387038 #1e3d1e;
+  border-color: #387038;
+  border-bottom-color: #1e3d1e;
   color: #ffffff;
   text-decoration: none;
 }
 html .btn-warning {
   background-color: #f8941c;
   background-image: linear-gradient(to bottom, #faa51a, #f47a20);
-  border-color: #e0660b #e0660b #a64b08;
+  border-color: #e0660b;
+  border-bottom-color: #a64b08;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -784,14 +791,16 @@ html .btn-warning:hover,
 html .btn-warning:focus {
   background-color: #ed8508;
   background-image: linear-gradient(to bottom, #f59a05, #e0660b);
-  border-color: #be5609 #be5609 #753506;
+  border-color: #be5609;
+  border-bottom-color: #753506;
   color: #ffffff;
   text-decoration: none;
 }
 html .btn-danger {
   background-color: #da4f49;
   background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-  border-color: #9c2d27 #9c2d27 #6b1f1b;
+  border-color: #9c2d27;
+  border-bottom-color: #6b1f1b;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -799,14 +808,16 @@ html .btn-danger:hover,
 html .btn-danger:focus {
   background-color: #cc3d38;
   background-image: linear-gradient(to bottom, #ec4844, #9c2d27);
-  border-color: #802420 #802420 #421311;
+  border-color: #802420;
+  border-bottom-color: #421311;
   color: #ffffff;
   text-decoration: none;
 }
 html .btn-info {
   background-color: #49afcd;
   background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-  border-color: #277b94 #277b94 #1a5363;
+  border-color: #277b94;
+  border-bottom-color: #1a5363;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -814,14 +825,16 @@ html .btn-info:hover,
 html .btn-info:focus {
   background-color: #39a0be;
   background-image: linear-gradient(to bottom, #46b8da, #277b94);
-  border-color: #1f6377 #1f6377 #0f313b;
+  border-color: #1f6377;
+  border-bottom-color: #0f313b;
   color: #ffffff;
   text-decoration: none;
 }
 html .btn-inverse {
   background-color: #373737;
   background-image: linear-gradient(to bottom, #444444, #222222);
-  border-color: #0e0e0e #0e0e0e #000000;
+  border-color: #0e0e0e;
+  border-bottom-color: #000000;
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
@@ -829,7 +842,8 @@ html .btn-inverse:hover,
 html .btn-inverse:focus {
   background-color: #272727;
   background-image: linear-gradient(to bottom, #373737, #0e0e0e);
-  border-color: #000000 #000000 #000000;
+  border-color: #000000;
+  border-bottom-color: #000000;
   color: #ffffff;
   text-decoration: none;
 }
@@ -853,52 +867,6 @@ html .btn-inverse:hover {
   padding: 3px 7px;
   font-size: 13px;
   font-size: 1.3rem;
-  font-weight: normal;
-}
-/* =============================================================================
-   Layout:  Comment form
-   ========================================================================== */
-.comment-respond {
-  padding: 25px;
-  margin: 60px 0 0;
-  background: #f2f7fc;
-  border-top: 5px solid #ffc768;
-  color: #555555;
-}
-.comment-respond .log-in-out {
-  font-size: 18px;
-  font-size: 1.8rem;
-  text-align: center;
-}
-.comment-reply-title {
-  background-color: #ffffdf;
-  border: double #eeddbd;
-  border-width: 4px 0;
-  margin: -40px 0 25px;
-  padding: 10px 25px;
-  font-size: 26px;
-  font-size: 2.6rem;
-  letter-spacing: -1px;
-  text-align: center;
-}
-#cancel-comment-reply-link {
-  padding-left: 10px;
-  font-size: 18px;
-  font-size: 1.8rem;
-  font-style: italic;
-  font-weight: normal;
-}
-/* Comment form fields */
-.comment-form .form-author {
-  float: left;
-  width: 48%;
-}
-.comment-form .form-email {
-  float: right;
-  width: 48%;
-}
-.comment-form .form-url {
-  clear: both;
 }
 /**
 
@@ -1972,6 +1940,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .site-navigation.toggled-on .search-form {
     display: block;
   }
+  .site-navigation.toggled-on .search-form {
+    display: flex;
+  }
   .site-navigation .menu-list-container {
     padding: 25px;
   }
@@ -2261,6 +2232,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   background-color: transparent;
   border: 0;
   padding: 10px 0;
+  line-height: normal;
   text-transform: lowercase;
   position: absolute;
   top: 0;
@@ -3208,7 +3180,12 @@ body.page-template-template-front-page .site-wrapper .site-main {
 /* =============================================================================
    Widget:  Search form
    ========================================================================== */
+.search-form {
+  display: flex;
+}
 .search-form > label {
+  flex: 4;
+  display: inline-block;
   margin: 0;
   position: relative;
 }
@@ -3224,8 +3201,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
   padding-left: 28px;
   margin-bottom: 0;
 }
-.search-form .search-submit.screen-reader-text {
-  width: 1px;
+.search-form .search-submit {
+  flex: 1;
+  margin-left: 5px;
+}
+@media screen and (max-width: 979px) {
+  .search-form > label {
+    flex: 3;
+  }
 }
 .main-navigation .search-form .search-field {
   background-color: #555555;
@@ -3255,6 +3238,13 @@ body.page-template-template-front-page .site-wrapper .site-main {
     float: right;
     margin: 12px 0;
   }
+  .main-navigation .search-form .search-submit {
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+  }
 }
 @media screen and (max-width: 979px) {
   .main-navigation .search-form {
@@ -3265,6 +3255,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
     font-size: 16px;
     font-size: 1.6rem;
     padding: 20px 0 20px 40px;
+  }
+  .main-navigation .search-form .search-submit {
+    border: 1px solid #000;
   }
   .main-navigation .search-form label:before {
     font-size: 21px;
@@ -3295,8 +3288,8 @@ body.page-template-template-front-page .site-wrapper .site-main {
   font-size: 2.6rem;
 }
 /*
- * Comments
- */
+   Layout:  Comments
+   ========================================================================== */
 .comment-list {
   list-style-type: none;
   padding: 0;
@@ -3399,6 +3392,51 @@ body.page-template-template-front-page .site-wrapper .site-main {
   font-size: 26px;
   font-size: 2.6rem;
   text-align: center;
+}
+/*
+   Layout:  Comment form
+   ========================================================================== */
+.comment-respond {
+  padding: 25px;
+  margin: 60px 0 0;
+  background: #f2f7fc;
+  border-top: 5px solid #ffc768;
+  color: #555555;
+}
+.comment-respond .log-in-out {
+  font-size: 18px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.comment-reply-title {
+  background-color: #ffffdf;
+  border: double #eeddbd;
+  border-width: 4px 0;
+  margin: -40px 0 25px;
+  padding: 10px 25px;
+  font-size: 26px;
+  font-size: 2.6rem;
+  letter-spacing: -1px;
+  text-align: center;
+}
+#cancel-comment-reply-link {
+  padding-left: 10px;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: normal;
+}
+/* Comment form fields */
+.comment-form .form-author {
+  float: left;
+  width: 48%;
+}
+.comment-form .form-email {
+  float: right;
+  width: 48%;
+}
+.comment-form .form-url {
+  clear: both;
 }
 /* =============================================================================
    Components:  Loop meta
