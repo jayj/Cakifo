@@ -1000,22 +1000,6 @@ function cakifo_get_menu_name( $location ) {
 
 
 /**
- * Add a `screen-reader-text` class to the search form's submit button.
- *
- * @since Cakifo 1.7.0
- * @author Twenty Fifteen
- *
- * @param string $html Search form HTML
- * @return string Modified search form HTML
- */
-function cakifo_search_form_modify( $html ) {
-	return str_replace( 'class="search-submit"', 'class="search-submit screen-reader-text"', $html );
-}
-
-add_filter( 'get_search_form', 'cakifo_search_form_modify' );
-
-
-/**
  * Gets the permalink to the blog page.
  *
  * @since  Cakifo 1.7.0
