@@ -191,24 +191,28 @@
 		}
 	}
 
-	.shorthand(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
+	.set(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		.font-size(@size);
 		font-weight: @weight;
 		line-height: @line-height;
 	}
 
+	.shorthand(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
+		#font > .set(@size, @weight, @line-height);
+	}
+
 	.serif(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .serif;
-		#font > .shorthand(@size, @weight, @line-height);
+		#font > .set(@size, @weight, @line-height);
 	}
 
 	.sans-serif(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .sans-serif;
-		#font > .shorthand(@size, @weight, @line-height);
+		#font > .set(@size, @weight, @line-height);
 	}
 
 	.monospace(@size: @font-size-base, @weight: normal, @line-height: @line-height-base) {
 		#font > #family > .monospace;
-		#font > .shorthand(@size, @weight, @line-height);
+		#font > .set(@size, @weight, @line-height);
 	}
 }
