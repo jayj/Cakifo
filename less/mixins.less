@@ -133,25 +133,21 @@
 
 // Buttons
 // -------------------------
-.btn-pseudo-states(@background, @secondary, @color) {
+.btn-state(@background, @secondary, @text-color) {
 	background-color: mix(@background, @secondary, 60%);
 	background-image: linear-gradient(to bottom, @background, @secondary);
-	border-color:
-		darken(@secondary, 8%)
-		darken(@secondary, 8%)
-		darken(@secondary, 20%);
-	color: @color;
-	text-shadow: 0 1px 0 fade(contrast(@color), 50%); // Use the opposite color of @color
+	border-color: darken(@secondary, 8%);
+	border-bottom-color: darken(@secondary, 20%);
+	color: @text-color;
+	text-shadow: 0 1px 0 fade(contrast(@text-color), 50%); // Use the opposite of @text-color
 
 	&:hover,
 	&:focus {
 		background-color: mix(darken(@background, 5%), darken(@secondary, 8%), 60%);
 		background-image: linear-gradient(to bottom, darken(@background, 5%), darken(@secondary, 8%));
-		border-color:
-			darken(@secondary, 15%)
-			darken(@secondary, 15%)
-			darken(@secondary, 30%);
-		color: @color;
+		border-color: darken(@secondary, 15%);
+		border-bottom-color: darken(@secondary, 30%);
+		color: @text-color;
 		text-decoration: none;
 	}
 }

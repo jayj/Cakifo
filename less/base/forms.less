@@ -155,32 +155,32 @@ input[type="button"] {
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-	.btn-pseudo-states(@btn-default-bg, @btn-default-secondary, @btn-default-color);
+	.btn-state(@btn-default-bg, @btn-default-secondary, @btn-default-color);
 }
 
 html {
 	.btn-primary {
-		.btn-pseudo-states(@btn-primary-bg, @btn-primary-secondary, @btn-primary-color);
+		.btn-state(@btn-primary-bg, @btn-primary-secondary, @btn-primary-color);
 	}
 
 	.btn-success {
-		.btn-pseudo-states(@btn-success-bg, @btn-success-secondary, @btn-success-color);
+		.btn-state(@btn-success-bg, @btn-success-secondary, @btn-success-color);
 	}
 
 	.btn-warning {
-		.btn-pseudo-states(@btn-warning-bg, @btn-warning-secondary, @btn-warning-color);
+		.btn-state(@btn-warning-bg, @btn-warning-secondary, @btn-warning-color);
 	}
 
 	.btn-danger {
-		.btn-pseudo-states(@btn-danger-bg, @btn-danger-secondary, @btn-danger-color);
+		.btn-state(@btn-danger-bg, @btn-danger-secondary, @btn-danger-color);
 	}
 
 	.btn-info {
-		.btn-pseudo-states(@btn-info-bg, @btn-info-secondary, @btn-info-color);
+		.btn-state(@btn-info-bg, @btn-info-secondary, @btn-info-color);
 	}
 
 	.btn-inverse {
-		.btn-pseudo-states(@btn-inverse-bg, @btn-inverse-secondary, @btn-inverse-color);
+		.btn-state(@btn-inverse-bg, @btn-inverse-secondary, @btn-inverse-color);
 
 		&:hover {
 			background: @orange-dark;
