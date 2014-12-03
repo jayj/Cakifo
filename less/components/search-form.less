@@ -48,8 +48,6 @@
 // Search form in the topbar
 // =============================================================================
 
-// @TODO test long menu
-
 .main-navigation .search-form {
 
 	.search-field {
@@ -71,21 +69,18 @@
 		color: @topbar-search-placeholder;
 	}
 
-}
 
-
-@media screen and (min-width: 980px) {
-
-	.main-navigation .search-form {
+	@media screen and (min-width: 980px) {
 		float: right;
 		margin: 12px 0;
+
+		// Hide the search submit button
+		.search-submit {
+			.screen-reader-text();
+		}
 	}
 
-}
-
-@media screen and (max-width: 979px) {
-
-	.main-navigation .search-form {
+	@media screen and (max-width: 979px) {
 		margin-top: (-@gutter-width-small);
 		padding: @gutter-width-small @gutter-width;
 
@@ -95,11 +90,14 @@
 			padding: 20px 0 20px 40px;
 		}
 
+		.search-submit {
+			border: 1px solid #000;
+		}
+
 		label:before {
 			.font-size(21);
 			left: 12px;
 		}
 	}
-
 
 }
