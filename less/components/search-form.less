@@ -3,7 +3,12 @@
    ========================================================================== */
 
 .search-form {
+	// Use Flexbox to make the inputs share the available space
+	display: flex;
+
 	> label {
+		flex: 4; // take up 4 columns
+		display: inline-block;
 		margin: 0;
 		position: relative;
 
@@ -26,8 +31,16 @@
 		margin-bottom: 0;
 	}
 
-	.search-submit.screen-reader-text {
-		width: 1px;
+	.search-submit {
+		flex: 1; // take up 1 column
+		margin-left: 5px;
+	}
+
+	// Makes sure there's enought room for the submit button
+	@media screen and (max-width: 979px) {
+		> label {
+			flex: 3;
+		}
 	}
 }
 
