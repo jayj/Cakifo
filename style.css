@@ -245,16 +245,10 @@ html {
 *:after {
   box-sizing: inherit;
 }
-/**
- * Sets 1 rem = 10px
- */
-html {
-  font-size: 62.5%;
-}
 body {
   font-family: Georgia, Cambria, "Bitstream Charter", serif;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: normal;
   line-height: 1.6;
   background-color: #e3ecf2;
@@ -301,12 +295,12 @@ h6 {
 h1,
 h2 {
   font-size: 26px;
-  font-size: 2.6rem;
+  font-size: 1.625rem;
   letter-spacing: -1px;
 }
 h3 {
   font-size: 23px;
-  font-size: 2.3rem;
+  font-size: 1.4375rem;
   color: #d54e21;
 }
 .entry-content h3 {
@@ -315,15 +309,15 @@ h3 {
 }
 h4 {
   font-size: 21px;
-  font-size: 2.1rem;
+  font-size: 1.3125rem;
 }
 h5 {
   font-size: 20px;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 h6 {
   font-size: 19px;
-  font-size: 1.9rem;
+  font-size: 1.1875rem;
   font-weight: normal;
   line-height: 1.6;
 }
@@ -336,7 +330,7 @@ h6 {
   border-radius: 50px 30px;
   color: #333333;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   margin: 0 0 25px;
   padding: 8px 20px;
   text-shadow: 0 1px 0 #fff;
@@ -355,7 +349,7 @@ h6 {
   border-radius: 30px;
   color: #fff;
   font-size: 24px;
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   margin: 0 0 40px -60px;
   padding: 10px 60px;
   text-shadow: 1px 1px 0 #973717;
@@ -401,7 +395,7 @@ pre,
 samp {
   font-family: Monaco, Consolas, "Courier New", monospace;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: normal;
   line-height: 1.6;
 }
@@ -440,7 +434,7 @@ blockquote {
 blockquote p {
   color: #8c8c8c;
   font-size: 19px;
-  font-size: 1.9rem;
+  font-size: 1.1875rem;
 }
 blockquote em,
 blockquote i,
@@ -471,7 +465,7 @@ blockquote cite,
 .quote-caption {
   display: block;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
   font-style: normal;
@@ -515,7 +509,7 @@ tfoot td {
   box-shadow: inset 0 1px 1px 0 #eeeeee;
   color: #666666;
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
 }
 caption {
   margin-bottom: 10px;
@@ -570,7 +564,7 @@ input[type="color"] {
   margin-bottom: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 3px;
@@ -679,7 +673,7 @@ input[type="button"] {
   display: inline-block;
   padding: 4px 14px;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
   border: 1px solid;
@@ -854,19 +848,19 @@ html .btn-inverse:hover {
 .btn-large {
   padding: 9px 16px;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   line-height: normal;
   border-radius: 5px;
 }
 .btn-small {
   padding: 4px 9px;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
 }
 .btn-mini {
   padding: 3px 7px;
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
 }
 /**
 
@@ -1522,7 +1516,7 @@ figure {
   padding: 10px 20px 20px;
   margin: 0;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   color: #dfdfdf;
 }
 /* =============================================================================
@@ -1552,7 +1546,7 @@ figure {
 .gallery-caption {
   color: #555555;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   margin: 0 0 15px 0;
 }
 .gallery-col-7 .gallery-caption,
@@ -1828,7 +1822,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   float: left;
   margin: 0;
   font-size: 46px;
-  font-size: 4.6rem;
+  font-size: 2.875rem;
   letter-spacing: -2px;
   text-shadow: 0 1px 0 #fff;
 }
@@ -1840,7 +1834,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 25px 0 0 0;
   padding: 2px 8px;
   font-size: 21px;
-  font-size: 2.1rem;
+  font-size: 1.3125rem;
   letter-spacing: -1px;
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.53);
@@ -1999,7 +1993,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   color: #cccccc;
   border-bottom-color: #404040;
   font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   font-weight: bold;
   line-height: normal;
   text-shadow: 1px 1px 0 #1a1a1a;
@@ -2028,7 +2022,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     padding: 15px 0;
     margin: 0;
     font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 1.125rem;
     font-weight: bold;
     line-height: 1.6;
     text-align: center;
@@ -2146,7 +2140,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
     padding: 15px 0;
     margin: 0;
     font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 1.125rem;
     font-weight: bold;
     line-height: 1.6;
     text-align: center;
@@ -2206,14 +2200,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .secondary-navigation .menu-item > a {
     padding: 14px 20px;
     font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
     text-transform: uppercase;
   }
   .secondary-navigation .sub-menu a {
     padding: 10px 14px;
     border-bottom: 1px solid #4d4d4d;
     font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
     background: #222222;
     color: #eeeeee;
     text-transform: none;
@@ -2431,7 +2425,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .entry-title {
   font-size: 30px;
-  font-size: 3rem;
+  font-size: 1.875rem;
   margin: 0 0 10px 0;
 }
 /*
@@ -2456,7 +2450,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .byline,
 .entry-meta {
   font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: #808080;
   clear: both;
 }
@@ -2486,7 +2480,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   border-radius: 3px;
   color: #6f6f6f;
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   line-height: normal;
   padding: 7px 10px 5px;
   text-transform: uppercase;
@@ -2510,7 +2504,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .format-aside .permalink {
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
 }
 /*
  * Format: Audio
@@ -2543,7 +2537,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .chat-author cite {
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: bold;
   text-transform: uppercase;
@@ -2589,7 +2583,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .format-link .entry-title a:after {
   content: "\f442";
   font-size: 30px;
-  font-size: 3rem;
+  font-size: 1.875rem;
   margin-left: 2px;
 }
 /**
@@ -2615,12 +2609,12 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .format-status .entry-header .entry-author {
   margin: 0;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: normal;
 }
 .format-status .entry-header .entry-date {
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   font-weight: normal;
 }
 .format-status .entry-header a {
@@ -2692,14 +2686,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .intro-post .entry-content {
   font-size: 21px;
-  font-size: 2.1rem;
+  font-size: 1.3125rem;
 }
 .intro-post .post-edit-link {
   background-color: #eeeeee;
   border-radius: 3px;
   color: #6f6f6f;
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   line-height: normal;
   padding: 7px 10px 5px;
   text-transform: uppercase;
@@ -2857,7 +2851,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .flex-direction-nav a:after {
   font-size: 48px;
-  font-size: 4.8rem;
+  font-size: 3rem;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -2965,7 +2959,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .recent-post .entry-title {
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   letter-spacing: 0;
   word-wrap: break-word;
 }
@@ -2975,7 +2969,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .recent-post .recent-posts-meta {
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
   line-height: 1.2;
   font-style: italic;
   color: #8c8c8c;
@@ -3088,11 +3082,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .headline-list .entry-title {
   margin: 0;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
 }
 .headline-list .headline-meta {
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   font-style: italic;
   color: #8c8c8c;
 }
@@ -3114,7 +3108,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 #wp-calendar th,
 #wp-calendar td {
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   padding: 4px;
   text-align: center;
 }
@@ -3176,7 +3170,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .related-posts .with-thumbnails .related-post span {
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
 }
 /* =============================================================================
    Widget:  Search form
@@ -3254,7 +3248,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   }
   .main-navigation .search-form .search-field {
     font-size: 16px;
-    font-size: 1.6rem;
+    font-size: 1rem;
     padding: 20px 0 20px 40px;
   }
   .main-navigation .search-form .search-submit {
@@ -3262,7 +3256,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   }
   .main-navigation .search-form label:before {
     font-size: 21px;
-    font-size: 2.1rem;
+    font-size: 1.3125rem;
     left: 12px;
   }
 }
@@ -3286,7 +3280,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   text-decoration: none;
   font-size: 26px;
-  font-size: 2.6rem;
+  font-size: 1.625rem;
 }
 /*
    Layout:  Comments
@@ -3326,7 +3320,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .comment-metadata a {
   color: #555555;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
 }
 .comment-metadata a:hover {
   color: #d54e21;
@@ -3391,7 +3385,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: 40px 0;
   padding: 40px;
   font-size: 26px;
-  font-size: 2.6rem;
+  font-size: 1.625rem;
   text-align: center;
 }
 /*
@@ -3405,7 +3399,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .comment-respond .log-in-out {
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   text-align: center;
 }
 .comment-reply-title {
@@ -3415,14 +3409,14 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin: -60px 0 25px;
   padding: 10px 25px;
   font-size: 26px;
-  font-size: 2.6rem;
+  font-size: 1.625rem;
   letter-spacing: -1px;
   text-align: center;
 }
 .comment-reply-title small {
   padding-left: 10px;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   font-weight: normal;
 }
 .comment-reply-title small a:before {
@@ -3432,7 +3426,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   text-decoration: none;
   font-size: 26px;
-  font-size: 2.6rem;
+  font-size: 1.625rem;
 }
 /* Comment form fields */
 .comment-form .form-author {
@@ -3470,7 +3464,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .loop-title {
   font-size: 23px;
-  font-size: 2.3rem;
+  font-size: 1.4375rem;
 }
 .loop-title span {
   font-weight: normal;
@@ -3602,7 +3596,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   border-bottom: 1px solid #ecece9;
   border-radius: 3px;
   font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   font-weight: normal;
   line-height: normal;
   margin-bottom: 25px;
@@ -3642,7 +3636,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 }
 .author-profile .author-name {
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
 }
 /* =============================================================================
    Components:  Message boxes
@@ -3890,11 +3884,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
   /* Make the Category Headlines list smaller */
   .headline-list .entry-title {
     font-size: 16px;
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
   .headline-list .headline-meta {
     font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
   }
   .headline-list .thumbnail {
     max-width: 50px;

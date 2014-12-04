@@ -6,7 +6,8 @@
 // Calculate font size in rems
 // -------------------------
 .font-size(@font-size: @font-size-base) {
-	@rem: (@font-size / 10);
+	@rem-base: 16;
+	@rem: (@font-size / @rem-base);
 	font-size: (@font-size * 1px);
 	font-size: unit(@rem, rem);
 }
