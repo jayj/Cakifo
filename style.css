@@ -914,6 +914,7 @@ html .btn-inverse:hover {
 .bypostauthor .comment-meta .fn:after,
 .comment-edit-link:before,
 .comment-reply-link:before,
+.comment-reply-title small a:before,
 .pagination .prev:before,
 .pagination .next:after,
 .breadcrumbs .trail-begin a:before,
@@ -3419,12 +3420,21 @@ body.page-template-template-front-page .site-wrapper .site-main {
   letter-spacing: -1px;
   text-align: center;
 }
-#cancel-comment-reply-link {
+.comment-reply-title small {
   padding-left: 10px;
   font-size: 18px;
   font-size: 1.8rem;
   font-style: italic;
   font-weight: normal;
+}
+.comment-reply-title small a:before {
+  content: "\f405";
+  top: 11px;
+  margin-right: 3px;
+  position: relative;
+  text-decoration: none;
+  font-size: 26px;
+  font-size: 2.6rem;
 }
 /* Comment form fields */
 .comment-form .form-author {

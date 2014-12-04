@@ -161,12 +161,18 @@
 	text-align: center;
 }
 
-#cancel-comment-reply-link {
+// Cancel reply link
+.comment-reply-title small {
 	padding-left: 10px;
 	.font-size(@font-size-large);
-	font-style: italic;
 	font-weight: normal;
+
+	a:before {
+		.icon("\f405", 3px, 11px); // close
+		.font-size(26);
+	}
 }
+
 
 /* Comment form fields */
 .comment-form {
