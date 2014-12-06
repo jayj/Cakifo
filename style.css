@@ -2217,6 +2217,11 @@ body.page-template-template-front-page .site-wrapper .site-main {
     background: #010101;
     color: #fff;
   }
+  .secondary-navigation .sub-menu .current-menu-item > a,
+  .secondary-navigation .sub-menu .current-menu-ancestor > a {
+    background: #010101;
+    color: #eeeeee;
+  }
   .secondary-navigation .sub-menu .menu-item:last-of-type > a {
     border-bottom: none;
   }
