@@ -3179,7 +3179,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   display: flex;
 }
 .search-form > label {
-  flex: 4;
+  flex: 1;
   display: inline-block;
   margin: 0;
   position: relative;
@@ -3197,7 +3197,6 @@ body.page-template-template-front-page .site-wrapper .site-main {
   margin-bottom: 0;
 }
 .search-form .search-submit {
-  flex: 1;
   margin-left: 5px;
 }
 @media screen and (max-width: 979px) {
