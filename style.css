@@ -2058,6 +2058,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .main-navigation .menu-toggle:active,
   .main-navigation .menu-toggle:focus {
     background: #222222;
+    color: #fff;
   }
 }
 @media screen and (min-width: 980px) {
@@ -2176,6 +2177,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .secondary-navigation .menu-toggle:active,
   .secondary-navigation .menu-toggle:focus {
     background: #222222;
+    color: #fff;
   }
 }
 @media screen and (min-width: 980px) {
