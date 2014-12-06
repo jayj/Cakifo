@@ -2104,7 +2104,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .secondary-navigation .menu-item > a:hover,
 .secondary-navigation .menu-item > a:focus {
   background-color: #e6e6e6;
-  color: #d54e21;
+  color: #a93e1a;
 }
 .secondary-navigation .current-menu-item,
 .secondary-navigation .current-menu-ancestor {
@@ -2215,6 +2215,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   }
   .secondary-navigation .sub-menu a:hover {
     background: #010101;
+    color: #fff;
   }
   .secondary-navigation .sub-menu .menu-item:last-of-type > a {
     border-bottom: none;

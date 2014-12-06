@@ -233,7 +233,7 @@
 	.menu-item > a:hover,
 	.menu-item > a:focus {
 		background-color: darken(#fff, 10%);
-		color: @link-color-hover;
+		color: darken(@link-color-hover, 10%);
 	}
 
 	.current-menu-item,
@@ -306,6 +306,7 @@
 
 				&:hover {
 					background: darken(@gray-darker, 13%);
+					color: #fff;
 				}
 			}
 
