@@ -25,7 +25,7 @@
 	<?php elseif ( ! is_singular() ) : ?>
 
 		<?php
-			the_pagination( array(
+			the_posts_pagination( array(
 				'mid_size'           => 2,
 				'prev_text'          => __( 'Previous page', 'cakifo' ),
 				'next_text'          => __( 'Next page', 'cakifo' ),
