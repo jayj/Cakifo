@@ -14,7 +14,7 @@
 
 		<?php
 			the_post_navigation( array(
-				'prev_text' => _x( '<span class="meta-nav">&larr;</span> Return to <span class="post-title">%title</span>', 'Parent post link', 'cakifo' ),
+				'prev_text' => _x( 'Return to <span class="post-title">%title</span>', 'Parent post link', 'cakifo' ),
 			) );
 		?>
 
