@@ -73,11 +73,13 @@ class Cakifo_Widget_Headline_Terms extends WP_Widget {
 		 */
 		if ( 'post_format' == $term->taxonomy ) {
 			$title = hybrid_get_plural_post_format_string( $term->slug );
+			$icon = strtolower( $term->name );
 		} else {
 			$title = $term->name;
+			$icon = 'standard';
 		}
 
-		$title = sprintf( '<a href="%s">%s</a>', esc_url( get_term_link( $term ) ), apply_filters( 'widget_title', $title, $instance, $this->id_base ) );
+		$title = sprintf( '<a href="%s"><span class="widget-title-icon genericon genericon-%s"></span> %s</a>', esc_url( get_term_link( $term ) ), esc_attr( $icon ), apply_filters( 'widget_title', $title, $instance, $this->id_base ) );
 
 		echo $sidebar['before_title'] . $title . $sidebar['after_title'];
 
