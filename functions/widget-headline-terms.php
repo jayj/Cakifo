@@ -79,7 +79,7 @@ class Cakifo_Widget_Headline_Terms extends WP_Widget {
 			$icon = 'standard';
 		}
 
-		$title = sprintf( '<a href="%s"><span class="widget-title-icon genericon genericon-%s"></span> %s</a>', esc_url( get_term_link( $term ) ), esc_attr( $icon ), apply_filters( 'widget_title', $title, $instance, $this->id_base ) );
+		$title = sprintf( '<a href="%s"><span class="widget-title-icon genericon genericon-%s"></span>%s</a>', esc_url( get_term_link( $term ) ), esc_attr( $icon ), apply_filters( 'widget_title', $title, $instance, $this->id_base ) );
 
 		echo $sidebar['before_title'] . $title . $sidebar['after_title'];
 
