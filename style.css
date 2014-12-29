@@ -3119,6 +3119,7 @@ body.page-template-template-front-page .site-wrapper .site-main {
   position: relative;
   text-decoration: none;
   vertical-align: middle;
+  transition: none;
 }
 /**
  * Calendar
