@@ -14,7 +14,7 @@
  * @deprecated Cakifo 1.4.0
  */
 function cakifo_custom_background_callback() {
-	_deprecated_function( __FUNCTION__, '1.4.0' );
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.4.0' );
 	_custom_background_cb();
 	return;
 }
@@ -30,7 +30,7 @@ function cakifo_custom_background_callback() {
  * @return string  The RSS feed
  */
 function cakifo_topbar_rss() {
-	_deprecated_function( __FUNCTION__, '1.6.0' );
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.6.0' );
 
 	$rss = '<a href="' . esc_url( get_bloginfo( 'rss2_url' ) ) . '" class="rss-link">' . __( 'RSS', 'cakifo' ) . '</a>';
 
@@ -41,7 +41,7 @@ function cakifo_topbar_rss() {
  * @deprecated Cakifo 1.4.0
  */
 function cakifo_topbar_search() {
-	_deprecated_function( __FUNCTION__, '1.4.0', 'get_search_form()' );
+	_deprecated_function( __FUNCTION__, 'Cakifo 1.4.0', 'get_search_form()' );
 	get_search_form();
 }
 

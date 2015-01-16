@@ -2,9 +2,14 @@
 /**
  * Attachment Template
  *
- * This is the default attachment template.
- * It is used when visiting the singular view of a post attachment
+ * This is used when visiting the singular view of a post attachment
  * page (videos, audio, etc.).
+ *
+ * If you'd like to further customize these archive views, you may create a
+ * new template file for each specific one. For example, image.php for Image archives,
+ * video.php for Video archives, and audio.php for Audio archives.
+ *
+ * @link http://codex.wordpress.org/Template_Hierarchy
  *
  * @package Cakifo
  * @subpackage Template

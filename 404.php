@@ -1,9 +1,6 @@
 <?php
 /**
- * 404 template
- *
- * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will
- * display a generic message.
+ * The template for displaying 404 pages (not found).
  *
  * @package Cakifo
  * @subpackage Template

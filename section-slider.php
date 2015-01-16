@@ -38,7 +38,7 @@
 	);
 
 	/*
-	 * Select posts from the selected categories
+	 * Select posts from the selected category
 	 * or use Sticky Posts
 	 */
 	if ( hybrid_get_setting( 'featured_category' ) ) {
@@ -48,10 +48,10 @@
 		$feature_query['post__in'] = get_option( 'sticky_posts' );
 	}
 
-	/*
-	 * Fire up the query.
+	/**
+	 * Filter the featured posts query.
 	 *
-	 * Filter it with the `cakifo_slider_query` filter
+	 * @param array $feature_query An array of valid WP_Query arguments.
 	 */
 	$loop = new WP_Query( apply_filters( 'cakifo_slider_query', $feature_query ) );
 ?>
