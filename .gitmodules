@@ -1,4 +1,4 @@
 [submodule "library"]
 	path = library
-	url = git://github.com/justintadlock/hybrid-core.git
+	url = git@github.com:jayj/hybrid-core.git
 	ignore = dirty
