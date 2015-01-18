@@ -83,6 +83,38 @@ function cakifo_get_post_author() {
 		get_the_author()
 	);
 }
+
+
+/**
+ * Outputs link to the post format archive.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return void
+ */
+function cakifo_post_format_link() {
+	echo cakifo_get_post_format_link();
+}
+
+/**
+ * Generated a link to the current post format's archive.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return string
+ */
+function cakifo_get_post_format_link() {
+	$format = get_post_format();
+
+	if ( has_post_format( $format ) ) {
+		return sprintf( '<a href="%s" class="post-format-link">%s</a>',
+			esc_url( get_post_format_link( $format ) ),
+			get_post_format_string( $format )
+		);
+	}
+}
+
+
 if ( ! function_exists( 'cakifo_author_box' ) ) :
 /**
  * Function to add an author box
