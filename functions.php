@@ -785,16 +785,4 @@ function cakifo_filter_templates( $templates ) {
 
 add_filter( 'theme_page_templates', 'cakifo_filter_templates' );
 
-
-
-/**
- * Gets the permalink to the blog page.
- *
- * @since  Cakifo 1.7.0
- * @return string The permalink.
- */
-function cakifo_get_blog_page_url() {
-	return ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
-}
-
 ?>

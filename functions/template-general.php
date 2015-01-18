@@ -70,3 +70,24 @@ function cakifo_get_menu_name( $location ) {
 
 	return false;
 }
+
+/**
+ * Gets the permalink to the blog page.
+ *
+ * @since  Cakifo 1.7.0
+ * @author Justin Tadlock
+ *
+ * @return string
+ */
+function cakifo_get_blog_page_url() {
+	$blog_url = '';
+
+	if ( 'posts' === get_option( 'show_on_front' ) ) {
+		$blog_url = home_url();
+	} elseif ( 0 < ( $page_for_posts = get_option( 'page_for_posts' ) ) ) {
+		$blog_url = get_permalink( $page_for_posts );
+	}
+
+	return $blog_url;
+}
+}
