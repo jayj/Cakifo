@@ -5,6 +5,105 @@
  * @package    Cakifo
  * @subpackage Functions
  */
+
+/**
+ * Print HTML with meta information for the current post-date/time and author.
+ *
+ * @since Cakifo 1.7.0
+ */
+function cakifo_posted_on() {
+
+	$post_type = get_post_type();
+	$post_format = get_post_format();
+	$post_format_link = '';
+
+	/**
+	 * Filter the entry meta separator.
+	 *
+	 * @since Cakifo 1.7.0
+	 *
+	 * @param string $separator
+	 */
+	$separator = apply_filters( 'cakifo_entry_meta_separator', '<span class="sep"> | </span>' );
+
+
+	// Turn on output buffering so the whole string have apply_filters at the end
+	ob_start();
+
+
+	// Post format archive link
+	if ( has_post_format( $post_format ) ) {
+		printf( '<span class="entry-format">%s </span>', cakifo_get_post_format_link() );
+		$published_string = _x( 'published on', 'Used after post format name and before publish date.', 'cakifo' );
+	} else {
+		$post_format = 'standard';
+		$published_string = _x( 'Published on', 'Used before publish date.', 'cakifo' );
+	}
+
+	// Published date
+	if ( in_array( $post_type, array( 'post', 'attachment' ) ) ) {
+
+		$time_string = cakifo_get_post_date();
+
+		printf( '<span class="posted-on">%1$s <a href="%2$s" rel="bookmark">%3$s</a> </span>',
+			$published_string,
+			esc_url( get_permalink() ),
+			$time_string
+		);
+	}
+
+	// Author
+	if ( post_type_supports( $post_type, 'author' ) || is_multi_author() ) {
+		cakifo_post_author();
+	}
+
+	// Comments link
+	if ( post_type_supports( $post_type, 'comments' ) && ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		echo '<span class="comments-link">' . $separator;
+			comments_popup_link( __( 'Leave a comment', 'cakifo' ), __( '1 Comment', 'cakifo' ), __( '% Comments', 'cakifo' ) );
+		echo '</span>';
+	}
+
+	// Edit link
+	edit_post_link( __( 'Edit', 'cakifo' ), '<span class="edit">' . $separator, '</span>' );
+
+
+	// Attachment image metadata
+	if ( is_attachment() && wp_attachment_is_image() ) {
+		$post_format = 'attachment_image';
+
+		echo '<div class="image-sizes">';
+		printf( __( 'Sizes: %s', 'cakifo' ), cakifo_get_image_size_links() );
+		echo '</div>';
+
+	} else {
+		$post_format = 'attachment';
+	}
+
+	$output = ob_get_clean();
+
+	/**
+	 * Filter the posted on meta information.
+	 *
+	 * The filter name is based on the post format:
+	 * 	- Standard posts:    `cakifo_byline_standard`
+	 *  - Post formats:      `cakifo_byline_$format`
+	 *  - Image attachments: `cakifo_byline_attachment_image`
+	 *  - Other attachments: `cakifo_byline_attachment`
+	 *
+	 * This filter provides backward compatibility with earlier versions of Cakifo
+	 * that used shortcodes in the string. A compatibility plugin with the shortcodes
+	 * will be released soon.
+	 *
+	 *
+	 * @since Cakifo 1.0
+	 * @since Cakifo 1.7.0 Added the $post_id parameter
+	 *
+	 * @param string $output  The output string
+	 * @param int    $post_id ID of the current post
+	 */
+	echo do_shortcode( apply_filters( "cakifo_byline_{$post_format}", $output, get_the_ID() ) );
+}
 /**
  * Outputs the post thumbnail if the theme supports the Get The Image extension.
  *
