@@ -104,6 +104,66 @@ function cakifo_posted_on() {
 	 */
 	echo do_shortcode( apply_filters( "cakifo_byline_{$post_format}", $output, get_the_ID() ) );
 }
+
+/**
+ * Prints HTML with meta information for the categories, tags.
+ *
+ * @since Cakifo 1.7.0
+ */
+function cakifo_entry_meta() {
+
+	$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'cakifo' ) );
+
+	$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'cakifo' ) );
+
+
+	// Turn on output buffering so the whole string have apply_filters at the end
+	ob_start();
+
+
+	if ( $categories_list && cakifo_categorized_blog() ) {
+		printf( __( 'Posted in %s', 'cakifo' ), $categories_list );
+
+		if ( $tags_list ) {
+			echo apply_filters( 'cakifo_entry_meta_separator', '<span class="sep"> | </span>' );
+		}
+	}
+
+	if ( $tags_list ) {
+		printf( __( 'Tagged %s', 'cakifo' ), $tags_list );
+	}
+
+	$output = ob_get_clean();
+
+
+	// Get the post format name
+	if ( has_post_format( get_post_format() ) ) {
+		$post_format = get_post_format();
+	} else {
+		$post_format = 'standard';
+	}
+
+	/**
+	 * Filter the taxonomy meta information.
+	 *
+	 * The filter name is based on the post format:
+	 * 	- Standard posts:    `cakifo_entry_meta_standard`
+	 *  - Post formats:      `cakifo_entry_meta_$format`
+	 *
+	 * This filter provides backward compatibility with earlier versions of Cakifo
+	 * that used shortcodes in the string. A compatibility plugin with the shortcodes
+	 * will be released soon.
+	 *
+	 * @since Cakifo 1.0
+	 * @since Cakifo 1.7.0 Added the $post_id parameter
+	 *
+	 * @param string $output  The output string
+	 * @param int    $post_id ID of the current post
+	 */
+	echo do_shortcode( apply_filters( "cakifo_entry_meta_{$post_format}", $output, get_the_ID() ) );
+}
+
+
 /**
  * Outputs the post thumbnail if the theme supports the Get The Image extension.
  *
@@ -122,6 +182,7 @@ function cakifo_post_thumbnail( $size = 'thumbnail' ) {
 		'attachment' => false
 	));
 }
+
 
 /**
  * Outputs the current post's date.
