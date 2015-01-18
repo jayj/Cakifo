@@ -56,6 +56,33 @@ function cakifo_get_post_date() {
 		get_the_modified_date()
 	);
 }
+
+
+/**
+ * Outputs the current post's author with link to the author archive page.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return void
+ */
+function cakifo_post_author() {
+	echo cakifo_get_post_author();
+}
+
+/**
+ * Get the current post's author with link to the author archive page.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return string
+ */
+function cakifo_get_post_author() {
+	return sprintf( '<span class="author vcard">%1$s <a class="url fn n" href="%2$s">%3$s</a></span>',
+		_x( 'by', 'Used before post author name.', 'cakifo' ),
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		get_the_author()
+	);
+}
 if ( ! function_exists( 'cakifo_author_box' ) ) :
 /**
  * Function to add an author box
