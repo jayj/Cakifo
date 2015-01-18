@@ -2626,13 +2626,17 @@ body.page-template-template-front-page .site-wrapper .site-main {
 .format-status .entry-header .entry-date {
   font-size: 14px;
   font-size: 0.875rem;
-  font-weight: normal;
+  letter-spacing: -1px;
 }
 .format-status .entry-header a {
   color: #555555;
 }
 .format-status .entry-header a:hover {
   color: #d54e21;
+}
+.format-status .entry-header .entry-date,
+.format-status .entry-meta .entry-date {
+  font-weight: normal;
 }
 /*
  * Format: Video

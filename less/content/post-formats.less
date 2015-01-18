@@ -153,7 +153,7 @@
 
 	.entry-date {
 		.font-size(@font-size-small);
-		font-weight: normal;
+		letter-spacing: -1px; // same styling is added to the author name
 	}
 
 	a {
@@ -165,6 +165,10 @@
 	}
 }
 
+.format-status .entry-header .entry-date,
+.format-status .entry-meta .entry-date  {
+	font-weight: normal; // overwrites font weight added by the Custom Fonts extension
+}
 
 /*
  * Format: Video
