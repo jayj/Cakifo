@@ -105,7 +105,23 @@ class Cakifo_Widget_Headline_Terms extends WP_Widget {
 
 				<?php
 					if ( $instance['show_meta'] ) {
-						echo apply_atomic_shortcode( 'headline_meta', '<span class="headline-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' );
+						$time = cakifo_get_post_date();
+						$author = cakifo_get_post_author();
+
+						$meta = '<span class="headline-meta">' . $time . ' ' . $author . '</span>';
+
+						/**
+						 * Filter headline post meta.
+						 *
+						 * This filter provides backward compatibility with earlier versions of Cakifo
+						 * that used shortcodes in the string. A compatibility plugin with the shortcodes
+						 * will be released soon.
+						 *
+						 * @since Cakifo 1.2
+						 *
+						 * @param string $meta The meta string
+						 */
+						echo do_shortcode( apply_filters( 'cakifo_headline_meta', $meta ) );
 					}
 				?>
 

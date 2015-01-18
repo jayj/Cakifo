@@ -57,9 +57,26 @@
 					?>
 
 					<header class="entry-header">
+						<?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+
 						<?php
-							echo apply_atomic_shortcode( 'recent_posts_entry_title', '[entry-title tag="h2"]' );
-							echo apply_atomic_shortcode( 'recent_posts_meta', '<span class="recent-posts-meta">' . __( '[entry-published] by [entry-author]', 'cakifo' ) . '</span>' );
+							$time = cakifo_get_post_date();
+							$author = cakifo_get_post_author();
+
+							$meta = '<span class="recent-posts-meta">' . $time . ' ' . $author . '</span>';
+
+							/**
+							 * Filter recent posts post meta.
+							 *
+							 * This filter provides backward compatibility with earlier versions of Cakifo
+							 * that used shortcodes in the string. A compatibility plugin with the shortcodes
+							 * will be released soon.
+							 *
+							 * @since Cakifo 1.2
+							 *
+							 * @param string $meta The meta string
+							 */
+							echo do_shortcode( apply_filters( 'cakifo_recent_posts_meta', $meta ) );
 						?>
 					</header> <!-- .details -->
 
@@ -67,7 +84,7 @@
 						<?php
 							echo wp_trim_words( get_the_excerpt(), 20 );
 
-							$more_text = sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), the_title( '<span class="screen-reader-text">', '</span>', false ) );
+							$more_text = sprintf( __( 'Continue reading %s', 'cakifo' ), the_title( '<span class="screen-reader-text">', '</span>', false ) );
 
 							echo '<a href="' . esc_url( get_permalink() ) . '" class="more-link">' . $more_text . '</a>';
 						?>

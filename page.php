@@ -27,13 +27,13 @@ get_header(); ?>
 
 					<?php do_atomic( 'open_entry' ); ?>
 
-					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
+					<?php the_title( '<h1 class="entry-title post-title">', '</h1>' ); ?>
 
 					<?php cakifo_post_thumbnail(); ?>
 
 					<div class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'cakifo' ), 'after' => '</p>' ) ); ?>
+						<?php wp_link_pages(); ?>
 					</div> <!-- .entry-content -->
 
 					<?php edit_post_link( __( 'Edit', 'cakifo' ), '<div class="entry-meta">', '</div>' ); ?>

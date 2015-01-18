@@ -18,20 +18,21 @@ do_atomic( 'before_entry' ); ?>
 
 	<header class="entry-header">
 		<?php
-			if ( is_singular() ) {
-				echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' );
-			} else {
-				echo apply_atomic_shortcode( 'entry_title', '[entry-title]' );
-			}
+			if ( is_single() ) :
+				the_title( '<h1 class="entry-title post-title">', '</h1>' );
+			else :
+				the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+			endif;
 		?>
-		<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+
+		<?php cakifo_post_format_link(); ?>
 	</header> <!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				esc_html__( 'Continue reading %s', 'cakifo' ),
+				__( 'Continue reading %s', 'cakifo' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
 
@@ -40,11 +41,11 @@ do_atomic( 'before_entry' ); ?>
 	</div> <!-- .entry-content -->
 
 	<footer class="entry-meta">
-		<?php
-			echo apply_atomic_shortcode( 'byline_image', '<p>' . __( '[post-format-link] published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before="| "]', 'cakifo' ) . '</p>' );
+		<div class="byline"><?php cakifo_posted_on(); ?></div>
 
+		<?php
 			if ( is_singular() ) {
-				echo apply_atomic_shortcode( 'entry_meta_image', '<p>' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged: "]', 'cakifo' ) . '</p>' );
+				cakifo_entry_meta();
 			}
 		?>
 	</footer> <!-- .entry-meta -->

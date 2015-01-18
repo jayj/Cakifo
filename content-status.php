@@ -21,24 +21,24 @@ do_atomic( 'before_entry' ); ?>
 		<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_atomic( 'status_avatar', 48 ) ); ?>
 
 		<?php
-			echo hybrid_entry_author_shortcode( array(
-				'before' => '<h1 class="entry-author">',
-				'after'  => '</h1>'
-			) );
+			printf( '<h1 class="entry-author author vcard"><a class="url fn n" href="%1$s">%2$s</a></h1>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				get_the_author()
+			);
 		?>
 
 		<a href="<?php the_permalink(); ?>" class="entry-date">
-			<?php echo hybrid_entry_published_shortcode( array() ); ?>
+			<?php cakifo_post_date(); ?>
 		</a>
 
-		<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+		<?php cakifo_post_format_link(); ?>
 	</header> <!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				esc_html__( 'Continue reading %s', 'cakifo' ),
+				__( 'Continue reading %s', 'cakifo' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
 
@@ -48,7 +48,7 @@ do_atomic( 'before_entry' ); ?>
 
 	<?php if ( ! get_option( 'show_avatars' ) ) : ?>
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_aside', __( '[post-format-link] published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) ); ?>
+			<?php cakifo_posted_on(); ?>
 		</footer> <!-- .entry-meta -->
 	<?php endif; ?>
 

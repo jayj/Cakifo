@@ -25,7 +25,7 @@ get_header(); ?>
 
 					<?php do_atomic( 'open_entry' ); ?>
 
-					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+					<?php the_title( '<h1 class="entry-title post-title">', '</h1>' ); ?>
 
 					<?php cakifo_post_thumbnail(); ?>
 

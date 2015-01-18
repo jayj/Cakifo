@@ -17,8 +17,9 @@ do_atomic( 'before_entry' ); ?>
 	<?php do_atomic( 'open_entry' ); ?>
 
 	<header class="entry-header">
-		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-		<?php echo apply_atomic_shortcode( 'byline_attachment', '<div class="byline">' . __( 'Uploaded on [entry-published] [entry-edit-link before="| "]', 'cakifo' ) . '</div>' ); ?>
+		<h1 class="entry-title post-title"><?php single_post_title(); ?></h1>
+
+		<div class="byline"><?php cakifo_posted_on(); ?></div>
 	</header> <!-- .entry-header -->
 
 	<?php cakifo_post_thumbnail(); ?>
@@ -30,8 +31,6 @@ do_atomic( 'before_entry' ); ?>
 
 		<?php wp_link_pages(); ?>
 	</div> <!-- .entry-content -->
-
-	<?php echo apply_atomic_shortcode( 'entry_meta_attachment', '' ); ?>
 
 	<aside class="attachment-meta clearfix">
 		<div class="attachment-info">

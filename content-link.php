@@ -19,9 +19,9 @@ do_atomic( 'before_entry' ); ?>
 	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_link', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
-			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+			<?php the_title( sprintf( '<h1 class="entry-title post-title"><a href="%s">', esc_url( hybrid_get_the_post_format_url() ) ), '</a></h1>' ); ?>
+
+			<?php cakifo_post_format_link(); ?>
 		</header> <!-- .entry-header -->
 
 		<?php cakifo_post_thumbnail(); ?>
@@ -32,7 +32,8 @@ do_atomic( 'before_entry' ); ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_video', __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "]', 'cakifo' ) ); ?>
+			<div class="byline"><?php cakifo_posted_on(); ?></div>
+			<?php cakifo_entry_meta(); ?>
 		</footer> <!-- .entry-meta -->
 
 		<?php do_atomic( 'in_singular' ); ?>
@@ -40,8 +41,9 @@ do_atomic( 'before_entry' ); ?>
 	<?php else : ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( hybrid_get_the_post_format_url() ) . '">', '</a></h1>' ); ?>
-			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+			<?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s">', esc_url( hybrid_get_the_post_format_url() ) ), '</a></h2>' ); ?>
+
+			<?php cakifo_post_format_link(); ?>
 		</header> <!-- .entry-header -->
 
 		<?php cakifo_post_thumbnail(); ?>
@@ -50,7 +52,7 @@ do_atomic( 'before_entry' ); ?>
 			<?php
 				/* translators: %s: Name of current post */
 				the_content( sprintf(
-					esc_html__( 'Continue reading %s', 'cakifo' ),
+					__( 'Continue reading %s', 'cakifo' ),
 					the_title( '<span class="screen-reader-text">', '</span>', false )
 				) );
 
@@ -59,7 +61,7 @@ do_atomic( 'before_entry' ); ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_link', __( '[post-format-link] published on [entry-published] by [entry-author] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) ); ?>
+			<?php cakifo_posted_on(); ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>

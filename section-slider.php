@@ -79,15 +79,15 @@
 					<?php cakifo_post_thumbnail( 'slider' ); ?>
 
 					<div class="entry-summary">
-						<?php echo apply_atomic_shortcode( 'slider_entry_title', '[entry-title tag="h2"]' ); ?>
-						
+						<?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+
 						<?php the_excerpt(); ?>
 
 						<?php
 							printf( '<a href="%1$s" class="more-link">%2$s</a>',
 								esc_url( get_permalink() ),
 								/* translators: %s: Name of current post */
-								sprintf( esc_html__( 'Continue reading %s', 'cakifo' ), '<span class="screen-reader-text">' . get_the_title() . '</span>' )
+								sprintf( __( 'Continue reading %s', 'cakifo' ), '<span class="screen-reader-text">' . get_the_title() . '</span>' )
 								);
 						?>
 					</div> <!-- .entry-summary -->

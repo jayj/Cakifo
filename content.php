@@ -20,63 +20,52 @@ do_atomic( 'before_entry' ); ?>
 
 	<?php do_atomic( 'open_entry' ); ?>
 
-	<?php if ( is_singular() ) : ?>
+	<header class="entry-header">
+		<?php
+			if ( is_single() ) :
+				the_title( '<h1 class="entry-title post-title">', '</h1>' );
+			else :
+				the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+			endif;
+		?>
 
-		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_standard', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
-		</header> <!-- .entry-header -->
+		<div class="byline"><?php cakifo_posted_on(); ?></div>
+	</header> <!-- .entry-header -->
 
-		<?php cakifo_post_thumbnail(); ?>
+	<?php cakifo_post_thumbnail(); ?>
 
-		<div class="entry-content">
-			<?php the_content(); ?>
+	<?php if ( is_archive() || is_search() ) : ?>
+
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
 			<?php wp_link_pages(); ?>
-		</div> <!-- .entry-content -->
-
-		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_standard', __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "]', 'cakifo' ) ); ?>
-		</footer> <!-- .entry-meta -->
-
-		<?php do_atomic( 'in_singular' ); ?>
+		</div> <!-- .entry-summary -->
 
 	<?php else : ?>
 
-		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_standard', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
-		</header> <!-- .entry-header -->
+		<div class="entry-content">
+			<?php
+				/* translators: %s: Name of current post */
+				the_content( sprintf(
+					esc_html__( 'Continue reading %s', 'cakifo' ),
+					the_title( '<span class="screen-reader-text">', '</span>', false )
+				) );
 
-		<?php cakifo_post_thumbnail(); ?>
+				wp_link_pages();
+			?>
+		</div> <!-- .entry-content -->
 
-		<?php if ( is_archive() || is_search() ) : ?>
+	<?php endif; // is_archive() || is_search() ?>
 
-			<div class="entry-summary">
-				<?php the_excerpt(); ?>
-				<?php wp_link_pages(); ?>
-			</div> <!-- .entry-summary -->
+	<footer class="entry-meta">
+		<?php cakifo_entry_meta(); ?>
+	</footer> <!-- .entry-meta -->
 
-		<?php else : ?>
-
-			<div class="entry-content">
-				<?php
-					/* translators: %s: Name of current post */
-					the_content( sprintf(
-						esc_html__( 'Continue reading %s', 'cakifo' ),
-						the_title( '<span class="screen-reader-text">', '</span>', false )
-					) );
-
-					wp_link_pages();
-				?>
-			</div> <!-- .entry-content -->
-
-		<?php endif; // is_archive() || is_search() ?>
-
-		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_standard', __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before="| "]', 'cakifo' ) ); ?>
-		</footer> <!-- .entry-meta -->
-
-	<?php endif; // is_singular() ?>
+	<?php
+		if ( is_singular() ) {
+			do_atomic( 'in_singular' );
+		}
+	?>
 
 	<?php do_atomic( 'close_entry' ); ?>
 

@@ -28,8 +28,9 @@ get_header(); ?>
 				<?php do_atomic( 'open_entry' ); ?>
 
 					<header class="entry-header">
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-						<?php echo apply_atomic_shortcode( 'byline_attachment_image', '<div class="byline">' . sprintf( __( 'Sizes: %s', 'cakifo' ), cakifo_get_image_size_links() ) . '</div>' ); ?>
+						<h1 class="entry-title post-title"><?php single_post_title(); ?></h1>
+
+						<div class="byline"><?php cakifo_posted_on(); ?></div>
 					</header> <!-- .entry-header -->
 
 					<div class="entry-content">

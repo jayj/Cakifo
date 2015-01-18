@@ -19,9 +19,9 @@ do_atomic( 'before_entry' ); ?>
 	<?php if ( is_singular() ) : ?>
 
 		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink=""]' ); ?>
-			<?php echo apply_atomic_shortcode( 'byline_audio', '<div class="byline">' . __( 'Published on [entry-published] by [entry-author] [entry-edit-link before=" | "]', 'cakifo' ) . '</div>' ); ?>
-			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+			<h1 class="entry-title post-title"><?php single_post_title(); ?></h1>
+
+			<?php cakifo_post_format_link(); ?>
 		</header> <!-- .entry-header -->
 
 		<?php cakifo_post_thumbnail(); ?>
@@ -32,7 +32,8 @@ do_atomic( 'before_entry' ); ?>
 		</div> <!-- .entry-content -->
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_audio', __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "]', 'cakifo' ) ); ?>
+			<div class="byline"><?php cakifo_posted_on(); ?></div>
+			<?php cakifo_entry_meta(); ?>
 		</footer> <!-- .entry-meta -->
 
 		<?php do_atomic( 'in_singular' ); ?>
@@ -42,8 +43,9 @@ do_atomic( 'before_entry' ); ?>
 		<?php $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) ); ?>
 
 		<header class="entry-header">
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-			<?php echo apply_atomic_shortcode( 'post_format_link', '[post-format-link]' ); ?>
+			<?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+
+			<?php cakifo_post_format_link(); ?>
 		</header> <!-- .entry-header -->
 
 		<?php cakifo_post_thumbnail(); ?>
@@ -60,7 +62,7 @@ do_atomic( 'before_entry' ); ?>
 				<?php
 					/* translators: %s: Name of current post */
 					the_content( sprintf(
-						esc_html__( 'Continue reading %s', 'cakifo' ),
+						__( 'Continue reading %s', 'cakifo' ),
 						the_title( '<span class="screen-reader-text">', '</span>', false )
 					) );
 
@@ -73,7 +75,7 @@ do_atomic( 'before_entry' ); ?>
 		<?php echo $audio; ?>
 
 		<footer class="entry-meta">
-			<?php echo apply_atomic_shortcode( 'entry_meta_audio', __( '[post-format-link] published on [entry-published] by [entry-author] [entry-comments-link before="| "] [entry-edit-link before=" | "]', 'cakifo' ) ); ?>
+			<?php cakifo_posted_on(); ?>
 		</footer> <!-- .entry-meta -->
 
 	<?php endif; ?>
