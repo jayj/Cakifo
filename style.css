@@ -2473,6 +2473,9 @@ body.page-template-template-front-page .site-wrapper .site-main {
   border-top: 1px solid #eeeeee;
   margin: 40px 0;
 }
+.updated:not(.published) {
+  display: none;
+}
 /* =============================================================================
    Layout:  Post formats
    ========================================================================== */
