@@ -157,3 +157,43 @@ function cakifo_author_box() { ?>
 	endif;
 }
 endif; // cakifo_author_box
+
+
+/**
+ * Determine whether blog/site has more than one category.
+ *
+ * @since Cakifo 1.7.0
+ *
+ * @return bool True of there is more than one category, false otherwise.
+ */
+function cakifo_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'cakifo_categories' ) ) ) {
+
+		$all_the_cool_cats = get_categories( array(
+			'fields'     => 'ids',
+			'hide_empty' => 1,
+			'number'     => 2, // We only need to know if there is more than one category.
+		) );
+
+		$all_the_cool_cats = count( $all_the_cool_cats );
+		set_transient( 'cakifo_categories', $all_the_cool_cats );
+	}
+
+	if ( $all_the_cool_cats > 1 ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Flush out the transients used in {@see cakifo_categorized_blog()}.
+ *
+ * @since Cakifo 1.7.0
+ */
+function cakifo_category_transient_flusher() {
+	delete_transient( 'cakifo_categories' );
+}
+
+add_action( 'edit_category', 'cakifo_category_transient_flusher' );
+add_action( 'save_post',     'cakifo_category_transient_flusher' );
