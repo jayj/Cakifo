@@ -600,6 +600,21 @@ function cakifo_filter_default_theme_settings( $settings ) {
 	$settings['featured_posts']      = 5;
 	$settings['headlines_num_posts'] = 4;
 
+	/*
+	 * Generate the footer text
+	 */
+	$copyright = sprintf( _x( 'Copyright &#169; %1$s %2$s', '1: the year, 2: the site name', 'cakifo' ), date( 'Y' ), cakifo_get_site_link() );
+
+	if ( is_child_theme() ) {
+		$credits = sprintf( _x( 'Powered by %1$s, %2$s, and %3$s.', '1: WordPress link, 2: theme link, 3: child theme link', 'cakifo' ), cakifo_get_wp_link(), cakifo_get_theme_link(), cakifo_get_child_theme_link() );
+
+		$settings['footer_insert'] = '<p class="copyright">' . $copyright . '</p>' . "\n\n" . '<p class="credit">' . $credits . '</p>';
+	} else {
+		$credits = sprintf( _x( 'Powered by %1$s and %2$s.', '1: WordPress link, 2: theme link', 'cakifo' ), cakifo_get_wp_link(), cakifo_get_theme_link() );
+
+		$settings['footer_insert'] = '<p class="copyright">' . $copyright . '</p>' . "\n\n" . '<p class="credit">' . $credits . '</p>';
+	}
+
 	return $settings;
 }
 
