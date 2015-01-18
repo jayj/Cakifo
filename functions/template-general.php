@@ -90,4 +90,69 @@ function cakifo_get_blog_page_url() {
 
 	return $blog_url;
 }
+
+/**
+ * Returns a link back to the site.
+ *
+ * @since  Cakifo 1.7.0
+ * @author Justin Tadlock
+ *
+ * @return string
+ */
+function cakifo_get_site_link() {
+	return sprintf( '<a class="site-link" href="%s" rel="home">%s</a>', esc_url( home_url() ), get_bloginfo( 'name' ) );
+}
+
+/**
+ * Returns a link to WordPress.org.
+ *
+ * @since  Cakifo 1.7.0
+ * @author Justin Tadlock
+ *
+ * @return string
+ */
+function cakifo_get_wp_link() {
+	return sprintf( '<a class="wp-link" href="http://wordpress.org" title="%s">%s</a>', esc_attr__( 'State-of-the-art semantic personal publishing platform', 'cakifo' ), __( 'WordPress', 'cakifo' ) );
+}
+
+/**
+ * Returns a link to the parent theme URI.
+ *
+ * @since  Cakifo 1.7.0
+ * @author Justin Tadlock
+ *
+ * @return string
+ */
+function cakifo_get_theme_link() {
+	$theme = wp_get_theme( get_template() );
+	$uri   = $theme->get( 'ThemeURI' );
+	$name  = $theme->display( 'Name', false, true );
+
+	/* translators: Theme name. */
+	$title = sprintf( __( '%s WordPress Theme', 'cakifo' ), $name );
+
+	return sprintf( '<a class="theme-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+}
+
+/**
+ * Returns a link to the child theme URI.
+ *
+ * @since  Cakifo 1.7.0
+ * @author Justin Tadlock
+ *
+ * @return string
+ */
+function cakifo_get_child_theme_link() {
+	if ( ! is_child_theme() ) {
+		return '';
+	}
+
+	$theme = wp_get_theme();
+	$uri   = $theme->get( 'ThemeURI' );
+	$name  = $theme->display( 'Name', false, true );
+
+	/* translators: Theme name. */
+	$title = sprintf( __( '%s WordPress Theme', 'cakifo' ), $name );
+
+	return sprintf( '<a class="child-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
 }
