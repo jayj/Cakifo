@@ -3986,12 +3986,16 @@ body.page-template-template-front-page .site-wrapper .site-main {
    ========================================================================== */
 @media print {
   * {
+    /* autoprefixer: off */
     background: transparent !important;
     border-color: #000 !important;
     border-radius: 0 !important;
     color: #000 !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    /* autoprefixer: on */
   }
   @page {
     margin: 0.5cm;
