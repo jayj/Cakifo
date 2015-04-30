@@ -291,7 +291,7 @@ function cakifo_enqueue_script() {
 
 	/* Enqueue the Flexslider jQuery Plugin. */
 	if ( cakifo_is_active_slider() ) {
-		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.2.2', true );
+		wp_enqueue_script( 'flexslider', THEME_URI . '/js/jquery.flexslider.js', array( 'jquery' ), '2.4.0', true );
 	}
 }
 
