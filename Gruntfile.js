@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 		less: {
 			dev: {
 				options: {
-					strictMath: true,
-					strictUnits: true
+					strictMath: false,
+					strictUnits: false
 				},
 				files: {
 					'style.css': 'style.dev.less',

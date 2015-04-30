@@ -113,7 +113,8 @@
   opacity: 0.4;
   background: #ffffff url(../images/colorbox.png) no-repeat;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  transition: opacity 150ms ease;
+  -webkit-transition: opacity 150ms ease;
+          transition: opacity 150ms ease;
 }
 #cboxContent:hover #cboxPrevious,
 #cboxContent:hover #cboxNext {
@@ -141,6 +142,7 @@
   width: 24px;
   height: 24px;
   background-color: #e0e0e0;
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #e0e0e0);
   background-image: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
   border: 1px solid #cfcfcf;
 }
