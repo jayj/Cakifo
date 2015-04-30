@@ -148,6 +148,7 @@
 		text-indent: -9999px; // Hide the text
 		transition: all 200ms ease;
 		opacity: 0;
+		will-change: transform;
 
 		&:after {
 			&:extend(.genericon);
@@ -175,10 +176,6 @@
 		&:focus {
 			background-color: @slider-pagination-color-active;
 			outline: 0;
-
-			&:after {
-				color: #fff;
-			}
 		}
 
 		&:active {
@@ -195,10 +192,11 @@
 
 	// Previous button
 	.flex-prev {
-		left: (-@gutter-width * 1.5);
+		left: 0;
+		transform: translateX((-@gutter-width * 1.5)) translateY(-50%);
 
 		.cakifo-slider:hover & {
-			left: (-@gutter-width);
+			transform: translateX((-@gutter-width)) translateY(-50%);
 		}
 
 		&:after {
@@ -209,10 +207,11 @@
 
 	// Next button
 	.flex-next {
-		right: (-@gutter-width * 1.5);
+		right: 0;
+		transform: translateX((@gutter-width * 1.5)) translateY(-50%);
 
 		.cakifo-slider:hover & {
-			right: (-@gutter-width);
+			transform: translateX(@gutter-width) translateY(-50%);
 		}
 
 		&:after {
