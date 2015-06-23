@@ -8,21 +8,11 @@
  * Child themes should do their setup on the `after_setup_theme` hook with a priority of 11 if they want to
  * override parent theme features.  Use a priority of 9 if wanting to run before the parent theme.
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
- * that you can use any other version of the GPL.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
- * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * You should have received a copy of the GNU General Public License along with this program; if not, write
- * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- *
  * @package    Cakifo
  * @subpackage Functions
  * @version    1.7.0-dev
  * @author     Jesper Johansen <kontakt@jayj.dk>
- * @copyright  Copyright (c) 2011-2014, Jesper Johansen
+ * @copyright  Copyright (c) 2011-2015, Jesper Johansen
  * @link       http://wpthemes.jayj.dk/cakifo
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
@@ -708,6 +698,7 @@ function cakifo_register_colors( $color_palette ) {
 
 	// Get the link color from the Cakifo settings.
 	// @todo Figure out why I can't use hybrid_get_setting()
+	// see https://github.com/jayj/Cakifo/commit/32bb1e7dcae33ea33d6b570e686e4e8237ff023e
 	$options = get_option( hybrid_get_prefix() . '_theme_settings', $defaults );
 
 	if ( isset( $options['link_color'] ) ) {
@@ -753,7 +744,7 @@ function cakifo_register_colors( $color_palette ) {
 	$color_palette->add_rule_set(
 		'secondary',
 		array(
-			//'background-color'    => '.flex-control-paging li a, .flex-direction-nav a:focus',
+			'background-color'    => '.secondary-navigation .current-menu-item > a, .secondary-navigation .current-menu-ancestor > a, .secondary-navigation .current-menu-item > a:hover, .secondary-navigation .current-menu-ancestor > a:hover, .flex-control-paging li a, .flex-direction-nav a:hover, .flex-direction-nav a:focus',
 			'border-top-color'    => '.site-content, .site-footer, .comment-respond',
 			'border-bottom-color' => '.loop-meta-home'
 		)
@@ -796,5 +787,6 @@ function cakifo_filter_templates( $templates ) {
 }
 
 add_filter( 'theme_page_templates', 'cakifo_filter_templates' );
+
 
 ?>
