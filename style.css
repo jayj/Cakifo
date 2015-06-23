@@ -1721,7 +1721,8 @@ iframe {
   float: left;
   clear: left;
 }
-.layout-1c .site-wrapper .site-main {
+.layout-1c .site-wrapper .site-main,
+body.page-template-template-front-page .site-wrapper .site-main {
   float: none;
   width: 100%;
 }
