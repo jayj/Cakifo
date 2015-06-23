@@ -34,10 +34,10 @@ function cakifo_posted_on() {
 	// Post format archive link
 	if ( has_post_format( $post_format ) ) {
 		printf( '<span class="entry-format">%s </span>', cakifo_get_post_format_link() );
-		$published_string = _x( 'published on', 'Used after post format name and before publish date.', 'cakifo' );
+		$published_string = _x( 'posted on', 'Used after post format name and before publish date.', 'cakifo' );
 	} else {
 		$post_format = 'standard';
-		$published_string = _x( 'Published on', 'Used before publish date.', 'cakifo' );
+		$published_string = _x( 'Posted on', 'Used before publish date.', 'cakifo' );
 	}
 
 	// Published date
