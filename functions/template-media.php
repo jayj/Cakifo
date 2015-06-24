@@ -88,10 +88,24 @@ function cakifo_get_image_size_links() {
 
 		// Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size.
 		if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) ) {
-			$links[] = "<a class='image-size-link' href='" . esc_url( $image[0] ) . "'>{$image[1]} &times; {$image[2]}</a>";
+
+			/* Translators: Media dimensions - 1 is width and 2 is height. */
+			$label = sprintf( __( '%1$s &#215; %2$s', 'cakifo' ), absint( $image[1] ), absint( $image[2] ) );
+
+			$links[] = array(
+				'link'   => sprintf( '<a class="image-size-link" href="%s">%s</a>', esc_url( $image[0] ), $label ),
+				'width'  => $image[1],
+			);
 		}
 	}
 
+	// Sort by width
+	function sort_by_width( $a, $b ) {
+	    return $a['width'] - $b['width'];
+	}
+
+	uasort( $links, 'sort_by_width' );
+
 	// Join the links in a string and return.
-	return join( ' <span class="sep">/</span> ', $links );
+	return join( ' <span class="sep">/</span> ', wp_list_pluck( $links, 'link' ) );
 }
