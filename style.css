@@ -3565,15 +3565,15 @@ body.page-template-template-front-page .site-wrapper .site-main {
   font-size: 1.625rem;
 }
 /* Comment form fields */
-.comment-form .form-author {
+.comment-form .comment-form-author {
   float: left;
   width: 48%;
 }
-.comment-form .form-email {
+.comment-form .comment-form-email {
   float: right;
   width: 48%;
 }
-.comment-form .form-url {
+.comment-form .comment-form-url {
   clear: both;
 }
 /* =============================================================================
