@@ -12,18 +12,16 @@
     "url": "https://github.com/jayj/Cakifo/issues"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-cssmin": "~0.6.2",
-    "grunt-contrib-less": "~0.8.1",
-    "grunt-contrib-sass": "~0.5.0",
-    "grunt-contrib-imagemin": "~0.3.0",
-    "grunt-contrib-jshint": "~0.7.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-version": "~0.2.2",
-    "connect-livereload": "~0.3.0",
-    "grunt-contrib-compress": "~0.5.2",
-    "grunt-wp-i18n": "~0.4.9"
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-sass": "^1.0.0",
+    "grunt-version": "^1.0.0",
+    "grunt-wp-i18n": "^0.5.2"
   }
 }

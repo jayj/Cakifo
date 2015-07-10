@@ -33,33 +33,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Watch for file changes
-		watch: {
-			scripts: {
-				files: [ 'js/script.js' ],
-				tasks: [ 'jshint' ]
-			},
-			less: {
-				files: [ '**/*.less' ],
-				tasks: [ 'less' ]
-			},
-			sass: {
-				files: [ '**/*.scss' ],
-				tasks: [ 'sass' ]
-			},
-			livereload: {
-				options: {
-					livereload: true,
-				},
-				files: [
-					'style.css',
-					'css/colorbox.css',
-					'css/editor-style.css',
-					'js/script.js'
-				],
-			}
-		},
-
 		// Minify CSS
 		cssmin: {
 			minify: {
