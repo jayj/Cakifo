@@ -24,7 +24,7 @@ class Cakifo_Widget_Headline_Terms extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget( 'cakifo-headline-terms', __( 'Cakifo: Recent Posts by Term', 'cakifo' ), $widget_options );
+		parent::__construct( 'cakifo-headline-terms', __( 'Cakifo: Recent Posts by Term', 'cakifo' ), $widget_options );
 	}
 
 	/**

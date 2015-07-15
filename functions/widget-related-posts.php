@@ -26,7 +26,7 @@ class Cakifo_Widget_Related_Posts extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget( 'cakifo-related-posts', __( 'Cakifo: Related Posts', 'cakifo' ), $widget_options );
+		parent::__construct( 'cakifo-related-posts', __( 'Cakifo: Related Posts', 'cakifo' ), $widget_options );
 
 		/* Flush the cache when a post is updated or deleted. */
 		add_action( 'save_post', array( &$this, 'flush_widget_cache' ) );
