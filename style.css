@@ -2979,10 +2979,16 @@ body.page-template-template-front-page .site-wrapper .site-main {
   .flex-direction-nav .flex-prev,
   .cakifo-slider:hover .flex-direction-nav .flex-prev {
     left: 40px;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
   .flex-direction-nav .flex-next,
   .cakifo-slider:hover .flex-direction-nav .flex-next {
     right: 40px;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
 }
 @media screen and (max-width: 980px) {
