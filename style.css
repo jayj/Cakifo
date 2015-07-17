@@ -1517,7 +1517,6 @@ figure {
   margin: 0;
 }
 .wp-caption {
-  clear: both;
   max-width: 100%;
   padding-top: 5px;
   background: #222222;
