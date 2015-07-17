@@ -38,19 +38,19 @@ function cakifo_colorbox_script() {
  */
 function cakifo_colorbox() {
 
-	// All arguments @link http://jacklmoore.com/colorbox/
+	// All arguments: @link http://jacklmoore.com/colorbox/
 	$defaults = array(
 		'selector'       => '.colorbox',
-		'maxWidth'       => '90%',
-		'maxHeight'      => '90%',
+		'maxWidth'       => '98%',
+		'maxHeight'      => '95%',
 		'opacity'        => '0.6',
 		'fixed'          => true,
-		'slideshowStart' => '&#9654;', // Play symbol
-		'slideshowStop'  => 'll', // Stop symbol
-		'current'        => esc_js( sprintf( _x( 'Image %1$s of %2$s',  'colorbox', 'cakifo' ), '{current}', '{total}' ) ),
+		'current'        => esc_js( sprintf( _x( '%1$s of %2$s', 'colorbox. 1: image number, 2: image total ', 'cakifo' ), '{current}', '{total}' ) ),
 		'previous'       => esc_js( _x( 'Previous',                     'colorbox', 'cakifo' ) ),
 		'next'           => esc_js( _x( 'Next',                         'colorbox', 'cakifo' ) ),
 		'close'          => esc_js( _x( 'Close Lightbox',               'colorbox', 'cakifo' ) ),
+		'slideshowStart' => esc_js( _x( 'Start slideshow',              'colorbox', 'cakifo' ) ),
+		'slideshowStop'  => esc_js( _x( 'Stop slideshow',               'colorbox', 'cakifo' ) ),
 		'xhrError'       => esc_js( _x( 'This content failed to load.', 'colorbox', 'cakifo' ) ),
 		'imgError'       => esc_js( _x( 'This image failed to load.',   'colorbox', 'cakifo' ) ),
 	);
@@ -58,7 +58,7 @@ function cakifo_colorbox() {
 	$args = array();
 
 	/**
-	 * Allows child themes to filter the arguments.
+	 * Allows child themes to filter the Colorbox arguments.
 	 *
 	 * Usage:
 	 * <code>
@@ -69,18 +69,21 @@ function cakifo_colorbox() {
 	 *	 }
 	 * </code>
 	 *
-	 * @param array $args The Colorbox arguments
+	 * @param array $args The default Colorbox arguments
 	 */
 	$args = apply_filters( 'cakifo_colorbox_args', $args );
 
-	// Parse incoming $args into an array and merge it with $defaults.
 	$args = wp_parse_args( $args, $defaults );
+
+	// Add button texts as screen reader text
+	foreach ( array( 'previous', 'next', 'close', 'slideshowStart', 'slideshowStop' ) as $key ) {
+		$args[$key] = sprintf( '<span class="screen-reader-text">%s</span>', $args[$key] );
+	}
 
 	// Get the CSS selector and remove it from the arguments
 	$selector = $args['selector'];
 	unset( $args['selector'] );
 
-	// JSON encode the arguments
 	$json = json_encode( $args );
 
 	echo "<script>

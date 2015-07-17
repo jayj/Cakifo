@@ -3,6 +3,33 @@
 @import "../less/variables.less";
 @import "../less/mixins.less";
 
+// copied from .genericon as .genericon can't be extended in this file
+.cb-icon {
+	vertical-align: top;
+	text-align: center;
+	display: inline-block;
+	font-family: "Genericons";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: 1;
+	text-decoration: inherit;
+	text-transform: none;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	speak: none;
+	position: relative;
+	text-decoration: none;
+}
+
+.colorbox-icon( @icon: '', @fontSize: 16px, @right: 4px, @top: 4px ) {
+	&:extend(.cb-icon);
+	content: @icon;
+	top: @top;
+	margin-right: @right;
+	.font-size(@fontSize);
+}
+
 /* =============================================================================
    ColorBox Core Style
    ========================================================================= */
@@ -17,6 +44,10 @@
 	overflow: hidden;
 }
 
+#cboxWrapper {
+	max-width: none;
+}
+
 #colorbox:focus {
 	outline: 0;
 }
@@ -26,17 +57,13 @@
 	.square(100%);
 }
 
-#cboxMiddleLeft,
-#cboxBottomLeft {
-	clear: left;
-}
-
 #cboxContent {
 	position: relative;
 }
 
 #cboxLoadedContent {
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 #cboxTitle {
@@ -70,9 +97,13 @@
 	display: block;
 	.square(100%);
 	border: 0;
+	padding: 0;
+	margin: 0;
 }
 
-#colorbox {
+#colorbox,
+#cboxContent,
+#cboxLoadedContent {
 	box-sizing: content-box;
 }
 
@@ -81,33 +112,49 @@
    ========================================================================= */
 
 #cboxOverlay {
-	background: @colorbox-primary-color;
+	background: @colorbox-bg;
+}
+
+#cboxLoadingOverlay {
+	background: @colorbox-content-bg url(../images/loading.gif) no-repeat center center;
 }
 
 #cboxContent {
-	padding: 15px 15px 55px;
-	border: 10px solid fade(@colorbox-primary-color, 15%);
-	.font-size(@font-size-small);
-	background: #fff;
+	background: @colorbox-content-bg;
 	background-clip: padding-box; // Needed to make the border transparent
+	border: 10px solid fade(@colorbox-bg, 15%);
 	border-radius: 8px;
+	.font-size(@font-size-small);
+	padding: @colorbox-spacing @colorbox-spacing @colorbox-bar-height @colorbox-spacing;
 }
 
-#cboxTitle,
 #cboxCurrent,
-#cboxSlideshow,
-#cboxPrevious,
-#cboxNext,
-#cboxClose {
-	margin: 14px 15px 5px 0;
+#cboxTitle {
+	position: absolute;
+	bottom: 0;
+	height: @colorbox-bar-height;
+	line-height: @colorbox-bar-height;
+}
+
+#cboxCurrent {
+	left: (@colorbox-button-size * 2 + @colorbox-spacing * 3);
 }
 
 #cboxTitle {
+	left: (@colorbox-button-size * 3 + @colorbox-spacing * 4);
 	font-weight: bold;
-	text-align: center;
 
-	&:empty {
-		margin-right: 0;
+	@media screen and (max-width: 768px) {
+		bottom: @colorbox-bar-height;
+		left: @colorbox-spacing;
+		height: auto;
+		line-height: normal;
+		background-color: fade(#000, 50%);
+		color: #fff;
+
+	    &:not(:empty) {
+	    	padding: 10px;
+	    }
 	}
 }
 
@@ -118,84 +165,77 @@
 #cboxPrevious,
 #cboxNext,
 #cboxClose {
-	border-radius: 50%; // Makes the buttons round
 	padding: 0;
-	text-indent: -9999px;
+	border: 0;
+	border-radius: 50%;
+	text-align: center;
+
+	&:active,
+	&:focus {
+		outline: 0;
+	}
 }
 
-/* Next and prev buttons */
+#cboxSlideshow,
+#cboxClose,
 #cboxPrevious,
 #cboxNext {
 	position: absolute;
-	top: 45%;
-	.square(32px);
-	margin: 0;
-	opacity: 0.4;
-	background: #fff url(../images/colorbox.png) no-repeat;
-	box-shadow: 0 0 8px fade(@colorbox-primary-color, 30%);
-	transition: opacity 150ms ease;
+	bottom: @colorbox-spacing--small;
+	.square(@colorbox-button-size);
+	background: @colorbox-button-bg;
+	color: @colorbox-button-text;
+	transition: background 100ms ease;
 
-	#cboxContent:hover & {
-		opacity: 0.8;
-	}
-
-	#cboxContent &:hover {
-		opacity: 1;
+	&:hover,
+	&:focus,
+	&:active {
+		background: @colorbox-button-bg--hover;
 	}
 
 	&:active {
-		box-shadow:
-			inset 0 0 5px fade(@colorbox-primary-color, 30%),
-			0 0 10px fade(@colorbox-primary-color, 30%);
+		box-shadow: inset 1px 1px 5px @colorbox-bg;
 	}
 }
 
 #cboxPrevious {
-	background-position: 1px 1px;
-	left: 4%;
-}
+	left: @colorbox-spacing;
 
-#cboxNext {
-	background-position: -64px 1px;
-	right: 4%;
-}
-
-/* Close and slideshow buttons */
-#cboxClose,
-#cboxSlideshow {
-	.square(24px);
-	background-color: #e0e0e0;
-	background-image: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
-	border: 1px solid #cfcfcf;
-
-	&:hover {
-		border-color: darken(#cfcfcf, 15%);
-		box-shadow: 0 0 7px fade(@colorbox-primary-color, 20%);
+	&:after {
+		// left arrow
+		.colorbox-icon('\f430', @colorbox-button-icon, 2px, -1px);
 	}
 }
 
-#cboxSlideshow {
-	position: relative;
-	#font > .sans-serif(@font-size-small, bold);
-	text-shadow: 1px 1px 0 fade(#fff, 80%);
-	text-align: center;
-	text-indent: 0;
-}
-
-/* Move the close button to the right and add a × symbol */
-#cboxClose {
-	position: absolute;
-	bottom: 10px;
-	right: 0;
+#cboxNext {
+	left: (@colorbox-button-size + @colorbox-spacing + 7px);
 
 	&:after {
-		content: '\00D7'; // × symbol
-		position: absolute;
-		top: -7px;
-		left: 5px;
-		#font > .sans-serif(20, bold);
-		font-weight: bold;
-		color: darken(#717171, 15%);
-		text-indent: 0;
+		// right arrow
+		.colorbox-icon('\f429', @colorbox-button-icon, -2px, -1px);
+	}
+}
+
+#cboxClose {
+	right: @colorbox-spacing;
+
+	&:after {
+		// close
+		.colorbox-icon('\f405', @colorbox-button-icon, 2px, 1px);
+	}
+}
+
+
+#cboxSlideshow {
+	right: (@colorbox-button-size + @colorbox-spacing + 7px);
+
+	&:after {
+		// play
+		.colorbox-icon('\f452', (@colorbox-button-icon - 4px), -4px, 0);
+	}
+
+	.cboxSlideshow_on &:after {
+		// pause
+		.colorbox-icon('\f448', (@colorbox-button-icon - 4px), 0, 0);
 	}
 }
