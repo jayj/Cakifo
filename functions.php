@@ -586,6 +586,7 @@ function cakifo_filter_default_theme_settings( $settings ) {
 	$settings['featured_category']   = '';
 	$settings['featured_posts']      = 5;
 	$settings['headlines_num_posts'] = 4;
+	$settings['footer_has_shortcodes'] = true;
 
 	/*
 	 * Generate the footer text

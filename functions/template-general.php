@@ -71,6 +71,45 @@ function cakifo_get_menu_name( $location ) {
 	return false;
 }
 
+
+/**
+ * Gets the footer text from the settings.
+ *
+ * Provides backward compatibility with earlier versions of Cakifo by replacing
+ * the standard Cakifo shortcodes with HTML alternatives.
+ *
+ * @since Cakifo 1.7.0
+ * @return string The footer text
+ */
+function cakifo_footer_content() {
+	$text = apply_atomic_shortcode( 'footer_content', hybrid_get_setting( 'footer_insert' ) );
+
+	// Don't do anything if we've previously determined that the shortcodes has been replaced
+	// or the Cakifo Compatibility plugins is activated
+	if ( ! hybrid_get_setting( 'footer_has_shortcodes' ) || function_exists( 'cakifo_combat_add_shortcodes' ) ) {
+		echo $text;
+		return;
+	}
+
+	// Only replace shortcodes from the default footer text.
+	$text = str_replace( '[the-year]', date( 'Y' ), $text );
+	$text = str_replace( '[site-link]', cakifo_get_site_link(), $text );
+	$text = str_replace( '[wp-link]', cakifo_get_wp_link(), $text );
+	$text = str_replace( '[theme-link]', cakifo_get_theme_link(), $text );
+	$text = str_replace( '[child-link]', cakifo_get_child_theme_link(), $text );
+
+	// Update the footer text in the database
+	$settings = get_option( hybrid_get_prefix() . '_theme_settings', hybrid_get_default_theme_settings() );
+
+	$settings['footer_insert'] = $text;
+	$settings['footer_has_shortcodes'] = false;
+
+	update_option( hybrid_get_prefix() . '_theme_settings', $settings );
+
+	echo apply_atomic_shortcode( 'footer_content', $text );
+}
+
+
 /**
  * Gets the permalink to the blog page.
  *
